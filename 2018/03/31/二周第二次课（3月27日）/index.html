@@ -17,7 +17,9 @@
 <meta property="og:description" content="2.10 环境变量PATH2.11 cp命令2.12 mv命令2.13 文档查看cat/more/less/head/tail">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326215703.jpg">
-<meta property="og:updated_time" content="2018-03-31T15:07:14.793Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326230401.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326231006.jpg">
+<meta property="og:updated_time" content="2018-03-31T15:30:15.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二周第二次课（3月27日）">
 <meta name="twitter:description" content="2.10 环境变量PATH2.11 cp命令2.12 mv命令2.13 文档查看cat/more/less/head/tail">
@@ -196,21 +198,86 @@
 <h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h3><blockquote>
 <p>more：一屏屏显示文件内容</p>
 </blockquote>
-<p>|空格/Ctrl+f|往下翻页|<br>|Ctrl+b|往上翻页|</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空格/Ctrl+f</td>
+<td>往下翻页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>往上翻页</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326230401.jpg" alt=""></p>
 <h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><blockquote>
 <p>less：一屏屏显示文件内容，并支持方向键</p>
 </blockquote>
-<p>|空格/Ctrl+f|往下翻页|<br>Ctrl+b|往上翻页|<br>|g|回去第一屏|<br>|Shift+g|回去最后一屏|<br>|q|退出|<br>|/|寻找关键字|<br>|？|从尾端开始寻找关键字|<br>|n|关键字往下翻|<br>|Shift+n|关键字往上翻|</p>
-<p>head命令</p>
-<blockquote>
-<p>head：查看文件的头10行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# head /etc/profile</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空格/Ctrl+f</td>
+<td>往下翻页</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>往上翻页</td>
+</tr>
+<tr>
+<td>g</td>
+<td>回去第一屏</td>
+</tr>
+<tr>
+<td>Shift+g</td>
+<td>回去最后一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/</td>
+<td>寻找关键字 </td>
+</tr>
+<tr>
+<td>？</td>
+<td>从尾端开始寻找关键字</td>
+</tr>
+<tr>
+<td>n</td>
+<td>关键字往下翻</td>
+</tr>
+<tr>
+<td>Shift+n</td>
+<td>关键字往上翻</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326231006.jpg" alt=""></p>
+<h3 id="head命令"><a href="#head命令" class="headerlink" title="head命令"></a>head命令</h3><blockquote>
+<p>head：查看文件的头10行</p>
 </blockquote>
-<p>/etc/profile<br>System wide environment and startup programs, for login setup<br>Functions and aliases go in /etc/bashrc<br> It’s NOT a good idea to change this file unless you know what you<br>are doing. It’s much better to create a custom.sh shell script in<br>/etc/profile.d/ to make custom changes to your environment, as this<br> will prevent the need for merging in future updates.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">`-n`：指定查看行数</span><br></pre></td></tr></table></figure></p>
-<p>[root@test1 ~]# head -n 2 /etc/profile</p>
-<h1 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">### tail命令</span><br><span class="line"></span><br><span class="line">&gt;tail：查看文件的末10行</span><br></pre></td></tr></table></figure>
-<p>[root@test1 ~]# tail /etc/profile<br>           . “$i”<br>        else<br>            . “$i” &gt;/dev/null<br>        fi<br>    fi<br>done<br>unset i<br>unset -f pathmunge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">`-n`：指定查看行数</span><br></pre></td></tr></table></figure></p>
-<p>[root@test1 ~]# tail -n 2 /etc/profile<br>unset -f pathmunge<br>PATH =$PATH /tmp/<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`-f`：动态显示文件内容 查看日志使用</span><br></pre></td></tr></table></figure></p>
-<p>[root@test1 ~]# tail -f /etc/profile<br>            . “$i”<br>        else<br>            . “$i” &gt;/dev/null<br>        fi<br>    fi<br>done<br>unset i<br>unset -f pathmunge<br>PATH =$PATH /tmp/<br><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# head /etc/profile</span><br><span class="line">/etc/profile</span><br><span class="line">System wide environment and startup programs, for login setup</span><br><span class="line">Functions and aliases go in /etc/bashrc</span><br><span class="line"> It&apos;s NOT a good idea to change this file unless you know what you</span><br><span class="line">are doing. It&apos;s much better to create a custom.sh shell script in</span><br><span class="line">/etc/profile.d/ to make custom changes to your environment, as this</span><br><span class="line"> will prevent the need for merging in future updates.</span><br></pre></td></tr></table></figure>
+<p><code>-n</code>：指定查看行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# head -n 2 /etc/profile</span><br><span class="line"># /etc/profile</span><br></pre></td></tr></table></figure></p>
+<h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h3><blockquote>
+<p>tail：查看文件的末10行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tail /etc/profile</span><br><span class="line">           . &quot;$i&quot;</span><br><span class="line">        else</span><br><span class="line">            . &quot;$i&quot; &gt;/dev/null</span><br><span class="line">        fi</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line">unset i</span><br><span class="line">unset -f pathmunge</span><br></pre></td></tr></table></figure>
+<p><code>-n</code>：指定查看行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tail -n 2 /etc/profile</span><br><span class="line">unset -f pathmunge</span><br><span class="line">PATH =$PATH /tmp/</span><br></pre></td></tr></table></figure></p>
+<p><code>-f</code>：动态显示文件内容 查看日志使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tail -f /etc/profile</span><br><span class="line">            . &quot;$i&quot;</span><br><span class="line">        else</span><br><span class="line">            . &quot;$i&quot; &gt;/dev/null</span><br><span class="line">        fi</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line">unset i</span><br><span class="line">unset -f pathmunge</span><br><span class="line">PATH =$PATH /tmp/</span><br></pre></td></tr></table></figure></p>
 
       
 
