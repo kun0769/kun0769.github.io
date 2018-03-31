@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234252.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234409.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234452.jpg">
-<meta property="og:updated_time" content="2018-03-31T12:17:33.250Z">
+<meta property="og:updated_time" content="2018-03-31T12:21:17.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一周第四次课（3月22日）">
 <meta name="twitter:description" content="1.13 单用户模式1.14 救援模式1.15 克隆虚拟机1.16 Linux机器相互登录">
@@ -204,7 +204,7 @@
       
         <p>1.13 单用户模式<br>1.14 救援模式<br>1.15 克隆虚拟机<br>1.16 Linux机器相互登录<br><a id="more"></a></p>
 <h2 id="1-13单用户模式"><a href="#1-13单用户模式" class="headerlink" title="1.13单用户模式"></a>1.13单用户模式</h2><p>假若忘记了root密码 Linux有两种办法可以补救 第一种是机器上操作 不能远程连接</p>
-<p>小提示：<code>init 6 reboot shutdown -r</code>重启机器<br>                <code>init 0 poweroff</code>关闭机器</p>
+<p>小提示：<code>init 6 reboot shutdown -r</code>重启机器<code>init 0 poweroff</code>关闭机器</p>
 <p>为了满足实验 我们点“虚拟机”–&gt;“电源”–&gt;“重新启动客户机”</p>
 <p>进入到了启动界面 我们选择第一行 按下“e”键<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321212634.jpg" alt=""></p>
 <p>把光标移动到Linux16开头的那行 并把行中的<code>“ro”</code>改为<code>“rw init=/sysroot/bin/sh ”</code>并按下“Ctrl+x”进入单用户模式<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213017.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213255.jpg" alt=""></p>
@@ -219,7 +219,7 @@
 <p>进入BIOS的BOOT把CD-ROW Drive 排在第一行 F10保存退出<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321220426.jpg" alt=""></p>
 <p>进入以下界面 选择”Troubleshooting”–&gt;”Rescue a CentOS system”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221021.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221250.jpg" alt=""></p>
 <p>之后选1来继续<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221504.jpg" alt=""></p>
-<p>chroot /mut/sysimage 回去用来的系统<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221954.jpg" alt=""></p>
+<p><code>chroot /mut/sysimage</code>回去用来的系统<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221954.jpg" alt=""></p>
 <p>和之前的一样改密码<code>passwd root</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222227.jpg" alt=""></p>
 <p>之后关机出去把CD/DVD的“启动时连接 ”去掉<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222410.jpg" alt=""></p>
 <p>重新进入系统 密码更改成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222700.jpg" alt=""></p>
@@ -230,7 +230,7 @@
 <p><code>hostnamectl set-hostname test1/test2</code>改主机名<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225030.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225246.jpg" alt=""></p>
 <p>再用Xshell来分别连接两个主机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225415.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225442.jpg" alt=""></p>
 <h2 id="1-16Linux机器互相连通"><a href="#1-16Linux机器互相连通" class="headerlink" title="1.16Linux机器互相连通"></a>1.16Linux机器互相连通</h2><p><code>ssh username@ip</code>Linux远程连接命令<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230543.jpg" alt=""></p>
-<p><strong>-p</strong>指定连接的端口<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230903.jpg" alt=""></p>
+<p><strong>-p</strong>：指定连接的端口<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230903.jpg" alt=""></p>
 <p><code>w</code> 查看当前的负载 可以看谁连接自己<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321231314.jpg" alt=""></p>
 <p><code>ssh-keygen</code>Linux用来生成密钥的命令<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321232926.jpg" alt=""></p>
 <p>为了把test1用密钥连接到test2 我们把把公钥复制到test2上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234252.jpg" alt=""></p>
