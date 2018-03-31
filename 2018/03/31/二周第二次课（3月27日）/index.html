@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="2.10 环境变量PATH2.11 cp命令2.12 mv命令2.13 文档查看cat/more/less/head/tail">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T14:28:55.317Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326215703.jpg">
+<meta property="og:updated_time" content="2018-03-31T15:02:33.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二周第二次课（3月27日）">
 <meta name="twitter:description" content="2.10 环境变量PATH2.11 cp命令2.12 mv命令2.13 文档查看cat/more/less/head/tail">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326215703.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -166,129 +168,43 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>2.10 环境变量PATH<br>2.11 cp命令<br>2.12 mv命令<br>2.13 文档查看cat/more/less/head/tail<br><a id="more"></a></p>
-<h2 id="2-10环境变量PATH"><a href="#2-10环境变量PATH" class="headerlink" title="2.10环境变量PATH"></a>2.10环境变量PATH</h2><p>PATH是系统设定好的的一些文件路径，当命令有这些文件路径里面，就不需要输入绝对路径</p>
-<p>显示PATH有那些路径</p>
-<p>[root@test1 ~]# echo $PATH</p>
-<p>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</p>
-<p>我们尝试把ls复制到其他目录 并把环境变量改一改</p>
-<p>[root@test1 ~]# cp /usr/bin/ls /tmp/ls2        ##复制ls文件</p>
-<p>[root@test1 ~]# PATH=$PATH:/tmp/           ##临时为PATH添加路径</p>
-<p>[root@test1 ~]# echo $PATH</p>
-<p>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/tmp/</p>
-<p>为了永久的未PATH添加这个路径 可以找到/etc/profile 来添加命令 </p>
-<p>/etc/profile  开机就加载命令的配置文件</p>
-<p>[root@test1 ~]# vi /etc/profile</p>
-<h2 id="2-11cp命令"><a href="#2-11cp命令" class="headerlink" title="2.11cp命令"></a>2.11cp命令</h2><p>cp：复制文件</p>
-<p>[root@test1 ~]# cp /tmp/ls2 /tmp/100</p>
-<p>[root@test1 ~]# ls /tmp/</p>
-<p>100  systemd-private-e2d53c90f6b3419aab8fcaca913fa26b-vgauthd.service-3FqHy6</p>
-<p>ls   systemd-private-e2d53c90f6b3419aab8fcaca913fa26b-vmtoolsd.service-IEQvj1</p>
-<p>ls2</p>
-<p>-r ：连续复制目录和文件</p>
-<p>[root@test1 ~]# mkdir /tmp/kun1</p>
-<p>[root@test1 ~]# touch /tmp/kun1/sadf</p>
-<p>[root@test1 ~]# cp -r /tmp/kun1/ /tmp/kun2</p>
-<p>[root@test1 ~]# tree /tmp/kun2</p>
-<p>/tmp/kun2</p>
-<p>└── sadf</p>
-<p>0 directories, 1 file</p>
-<p>[root@test1 ~]# tree /tmp/kun1</p>
-<p>/tmp/kun1</p>
-<p>└── sadf</p>
-<p>0 directories, 1 file</p>
-<p>[root@test1 ~]# tree !$   ##！$显示上一条命令的最后一个参数</p>
-<p>tree /tmp/kun1</p>
-<p>/tmp/kun1</p>
-<p>└── sadf</p>
-<p>如果目标目录是不存在的 那么就会把原目录复制过去并改名了</p>
-<p>如果目标目录是本来存在的 ，那么就把原目录放到目标目录里面去</p>
-<p>[root@test1 ~]# cp -r /tmp/kun2/ /tmp/kun1</p>
-<p>[root@test1 ~]# tree /tmp/kun1</p>
-<p>/tmp/kun1</p>
-<p>├── kun2</p>
-<p>│   ├── kun2</p>
-<p>│   │   └── sadf</p>
-<p>│   └── sadf</p>
-<p>└── sadf</p>
-<h2 id="2-12mv命令"><a href="#2-12mv命令" class="headerlink" title="2.12mv命令"></a>2.12mv命令</h2><p>mv：移动目录或者文件 同一个目录下为改名字</p>
-<p>[root@test1 ~]# ls</p>
-<p>anaconda-ks.cfg</p>
-<p>[root@test1 ~]# mv anaconda-ks.cfg anaconda-ks.cfg.1</p>
-<p>[root@test1 ~]# ls</p>
-<p>anaconda-ks.cfg.1</p>
-<p>如果目标目录是不存在的 那么就会把原目录移动过去并改名了</p>
-<p>如果目标目录是本来存在的 ，那么就把原目录移动到目标目录里面去</p>
+<h2 id="2-10环境变量PATH"><a href="#2-10环境变量PATH" class="headerlink" title="2.10环境变量PATH"></a>2.10环境变量PATH</h2><p>PATH是系统设定好的的一些文件路径，当命令有这些文件路径里面，就不需要输入绝对路径<br>显示PATH有那些路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin</span><br></pre></td></tr></table></figure></p>
+<p>我们尝试把ls复制到其他目录 并把环境变量改一改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# cp /usr/bin/ls /tmp/ls2        ##复制ls文件</span><br><span class="line">[root@test1 ~]# PATH=$PATH:/tmp/           ##临时为PATH添加路径</span><br><span class="line">[root@test1 ~]# echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/tmp/</span><br></pre></td></tr></table></figure></p>
+<p>为了永久的未PATH添加这个路径 可以找到/etc/profile 来添加命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile  开机就加载命令的配置文件</span><br><span class="line">[root@test1 ~]# vi /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180326215703.jpg" alt=""> </p>
+<h2 id="2-11cp命令"><a href="#2-11cp命令" class="headerlink" title="2.11cp命令"></a>2.11cp命令</h2><blockquote>
+<p>cp：复制文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# cp /tmp/ls2 /tmp/100</span><br><span class="line">[root@test1 ~]# ls /tmp/</span><br><span class="line">100  systemd-private-e2d53c90f6b3419aab8fcaca913fa26b-vgauthd.service-3FqHy6</span><br><span class="line">ls   systemd-private-e2d53c90f6b3419aab8fcaca913fa26b-vmtoolsd.service-IEQvj1</span><br><span class="line">ls2</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>-r</code>：连续复制目录和文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# mkdir /tmp/kun1</span><br><span class="line">[root@test1 ~]# touch /tmp/kun1/sadf</span><br><span class="line">[root@test1 ~]# cp -r /tmp/kun1/ /tmp/kun2</span><br><span class="line">[root@test1 ~]# tree /tmp/kun2</span><br><span class="line">/tmp/kun2</span><br><span class="line">└── sadf</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tree /tmp/kun1</span><br><span class="line">/tmp/kun1</span><br><span class="line">└── sadf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tree !$   ##！$显示上一条命令的最后一个参数</span><br><span class="line">tree /tmp/kun1</span><br><span class="line">/tmp/kun1</span><br><span class="line">└── sadf</span><br></pre></td></tr></table></figure>
+<p>如果目标目录是不存在的 那么就会把原目录复制过去并改名了<br>如果目标目录是本来存在的 ，那么就把原目录放到目标目录里面去<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# cp -r /tmp/kun2/ /tmp/kun1</span><br><span class="line">[root@test1 ~]# tree /tmp/kun1</span><br><span class="line">/tmp/kun1</span><br><span class="line">├── kun2</span><br><span class="line">│   ├── kun2</span><br><span class="line">│   │   └── sadf</span><br><span class="line">│   └── sadf</span><br><span class="line">└── sadf</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-12mv命令"><a href="#2-12mv命令" class="headerlink" title="2.12mv命令"></a>2.12mv命令</h2><blockquote>
+<p>mv：移动目录或者文件 同一个目录下为改名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# ls</span><br><span class="line">anaconda-ks.cfg</span><br><span class="line">[root@test1 ~]# mv anaconda-ks.cfg anaconda-ks.cfg.1</span><br><span class="line">[root@test1 ~]# ls</span><br><span class="line">anaconda-ks.cfg.1</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>如果目标目录是不存在的 那么就会把原目录移动过去并改名了<br>如果目标目录是本来存在的 ，那么就把原目录移动到目标目录里面去</p>
 <h2 id="2-13cat命令"><a href="#2-13cat命令" class="headerlink" title="2.13cat命令"></a>2.13cat命令</h2><blockquote>
-<p>cat：查看文件内容</p>
+<p>cat：查看文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# cat /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>[root@test1 ~]# cat /etc/passwd</p>
-<p>root:x:0:0:root:/root:/bin/bash</p>
-<p>bin:x:1:1:bin:/bin:/sbin/nologin</p>
 <h3 id="tac命令"><a href="#tac命令" class="headerlink" title="tac命令"></a>tac命令</h3><blockquote>
-<p>tac：倒叙查看文件内容</p>
+<p>tac：倒叙查看文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# tac /etc/passwd</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun1:x:1000:1000::/home/kun1:/bin/bash</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>[root@test1 ~]# tac /etc/passwd</p>
-<p>kun2:x:1001:1001::/home/kun2:/bin/bash</p>
-<p>kun1:x:1000:1000::/home/kun1:/bin/bash</p>
 <h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h3><blockquote>
-<p>more：一屏屏显示文件内容</p>
+<p>more：一屏屏显示文件内容<br>|空格/Ctrl+f|往下翻页|<br>|Ctrl+b|往上翻页|</p>
 </blockquote>
-<p>空格/Ctrl+f：往下翻页</p>
-<p>Ctrl+b：往上翻页</p>
 <h3 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h3><blockquote>
-<p>less：一屏屏显示文件内容，并支持方向键</p>
+<p>less：一屏屏显示文件内容，并支持方向键<br>|空格/Ctrl+f|往下翻页|<br>Ctrl+b|往上翻页|<br>|g|回去第一屏|<br>|Shift+g|回去最后一屏|<br>|q|退出|<br>|/|寻找关键字|<br>|？|从尾端开始寻找关键字|<br>|n|关键字往下翻|<br>|Shift+n|关键字往上翻|</p>
 </blockquote>
-<p>空格/Ctrl+f：往下翻页</p>
-<p>Ctrl+b：往上翻页</p>
-<p>g：回去第一屏</p>
-<p>Shift+g：回去最后一屏</p>
-<p>q：退出</p>
-<p>/：寻找关键字  </p>
-<p>？：从尾端开始寻找关键字</p>
-<p>n：关键字往下翻</p>
-<p>Shift+n：关键字往上翻</p>
 <p>head命令</p>
 <blockquote>
-<p>head：查看文件的头10行</p>
+<p>head：查看文件的头10行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test1 ~]# head /etc/profile</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>[root@test1 ~]# head /etc/profile</p>
-<h1 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><h1 id="System-wide-environment-and-startup-programs-for-login-setup"><a href="#System-wide-environment-and-startup-programs-for-login-setup" class="headerlink" title="System wide environment and startup programs, for login setup"></a>System wide environment and startup programs, for login setup</h1><h1 id="Functions-and-aliases-go-in-etc-bashrc"><a href="#Functions-and-aliases-go-in-etc-bashrc" class="headerlink" title="Functions and aliases go in /etc/bashrc"></a>Functions and aliases go in /etc/bashrc</h1><h1 id="It’s-NOT-a-good-idea-to-change-this-file-unless-you-know-what-you"><a href="#It’s-NOT-a-good-idea-to-change-this-file-unless-you-know-what-you" class="headerlink" title="It’s NOT a good idea to change this file unless you know what you"></a>It’s NOT a good idea to change this file unless you know what you</h1><h1 id="are-doing-It’s-much-better-to-create-a-custom-sh-shell-script-in"><a href="#are-doing-It’s-much-better-to-create-a-custom-sh-shell-script-in" class="headerlink" title="are doing. It’s much better to create a custom.sh shell script in"></a>are doing. It’s much better to create a custom.sh shell script in</h1><h1 id="etc-profile-d-to-make-custom-changes-to-your-environment-as-this"><a href="#etc-profile-d-to-make-custom-changes-to-your-environment-as-this" class="headerlink" title="/etc/profile.d/ to make custom changes to your environment, as this"></a>/etc/profile.d/ to make custom changes to your environment, as this</h1><h1 id="will-prevent-the-need-for-merging-in-future-updates"><a href="#will-prevent-the-need-for-merging-in-future-updates" class="headerlink" title="will prevent the need for merging in future updates."></a>will prevent the need for merging in future updates.</h1><p>-n：指定查看行数</p>
+<h1 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><h1 id="System-wide-environment-and-startup-programs-for-login-setup"><a href="#System-wide-environment-and-startup-programs-for-login-setup" class="headerlink" title="System wide environment and startup programs, for login setup"></a>System wide environment and startup programs, for login setup</h1><h1 id="Functions-and-aliases-go-in-etc-bashrc"><a href="#Functions-and-aliases-go-in-etc-bashrc" class="headerlink" title="Functions and aliases go in /etc/bashrc"></a>Functions and aliases go in /etc/bashrc</h1><h1 id="It’s-NOT-a-good-idea-to-change-this-file-unless-you-know-what-you"><a href="#It’s-NOT-a-good-idea-to-change-this-file-unless-you-know-what-you" class="headerlink" title="It’s NOT a good idea to change this file unless you know what you"></a>It’s NOT a good idea to change this file unless you know what you</h1><h1 id="are-doing-It’s-much-better-to-create-a-custom-sh-shell-script-in"><a href="#are-doing-It’s-much-better-to-create-a-custom-sh-shell-script-in" class="headerlink" title="are doing. It’s much better to create a custom.sh shell script in"></a>are doing. It’s much better to create a custom.sh shell script in</h1><h1 id="etc-profile-d-to-make-custom-changes-to-your-environment-as-this"><a href="#etc-profile-d-to-make-custom-changes-to-your-environment-as-this" class="headerlink" title="/etc/profile.d/ to make custom changes to your environment, as this"></a>/etc/profile.d/ to make custom changes to your environment, as this</h1><h1 id="will-prevent-the-need-for-merging-in-future-updates"><a href="#will-prevent-the-need-for-merging-in-future-updates" class="headerlink" title="will prevent the need for merging in future updates."></a>will prevent the need for merging in future updates.</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">`-n`：指定查看行数</span><br></pre></td></tr></table></figure>
 <p>[root@test1 ~]# head -n 2 /etc/profile</p>
-<h1 id="etc-profile-1"><a href="#etc-profile-1" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h3><blockquote>
-<p>tail：查看文件的末10行</p>
-</blockquote>
-<p>[root@test1 ~]# tail /etc/profile</p>
-<pre><code>        . &quot;$i&quot;
-
-    else
-
-        . &quot;$i&quot; &gt;/dev/null
-
-    fi
-
-fi
-</code></pre><p>done</p>
-<p>unset i</p>
-<p>unset -f pathmunge</p>
-<p>-n：指定查看行数</p>
-<p>[root@test1 ~]# tail -n 2 /etc/profile</p>
-<p>unset -f pathmunge</p>
-<p>PATH =$PATH /tmp/</p>
-<p>-f：动态显示文件内容 查看日志使用</p>
-<p>[root@test1 ~]# tail -f /etc/profile</p>
-<pre><code>        . &quot;$i&quot;
-
-    else
-
-        . &quot;$i&quot; &gt;/dev/null
-
-    fi
-
-fi
-</code></pre><p>done</p>
-<p>unset i</p>
-<p>unset -f pathmunge</p>
-<p>PATH =$PATH /tmp/</p>
+<h1 id="etc-profile-1"><a href="#etc-profile-1" class="headerlink" title="/etc/profile"></a>/etc/profile</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">### tail命令</span><br><span class="line"></span><br><span class="line">&gt;tail：查看文件的末10行</span><br></pre></td></tr></table></figure>
+<p>[root@test1 ~]# tail /etc/profile<br>           . “$i”<br>        else<br>            . “$i” &gt;/dev/null<br>        fi<br>    fi<br>done<br>unset i<br>unset -f pathmunge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">`-n`：指定查看行数</span><br></pre></td></tr></table></figure></p>
+<p>[root@test1 ~]# tail -n 2 /etc/profile<br>unset -f pathmunge<br>PATH =$PATH /tmp/<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`-f`：动态显示文件内容 查看日志使用</span><br></pre></td></tr></table></figure></p>
+<p>[root@test1 ~]# tail -f /etc/profile<br>            . “$i”<br>        else<br>            . “$i” &gt;/dev/null<br>        fi<br>    fi<br>done<br>unset i<br>unset -f pathmunge<br>PATH =$PATH /tmp/<br><code>`</code></p>
 
       
 
@@ -521,11 +437,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
             
             <div class="clearfix"></div>
