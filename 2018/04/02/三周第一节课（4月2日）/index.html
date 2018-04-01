@@ -16,10 +16,17 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="2.27linux和windows互传文件3.1 用户配置文件和密码配置文件3.2 用户组管理3.3 用户管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-01T16:44:26.282Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221113.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401220821.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221601.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221735.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221748.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401231752.jpg">
+<meta property="og:updated_time" content="2018-04-01T16:52:23.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三周第一节课（4月2日）">
 <meta name="twitter:description" content="2.27linux和windows互传文件3.1 用户配置文件和密码配置文件3.2 用户组管理3.3 用户管理">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221113.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -171,14 +178,122 @@
 <p>sz：从Linux向window传东西</p>
 </blockquote>
 <p>用法：<code>sz 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /tmp/kun11/   ##kun11目录下有两个文件 两个目录</span><br><span class="line">总用量 0</span><br><span class="line">drwxr-xr-x. 2 root root 6 3月  29 07:20 kun1</span><br><span class="line">-rw-r--r--. 1 root root 0 3月  29 07:21 kun1.txt</span><br><span class="line">drwxr-sr-x. 2 root kun1 6 3月  29 07:23 kun2</span><br><span class="line">-rw-r--r--. 1 root kun1 0 3月  29 07:23 kun2.txt</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sz /tmp/kun11/*    ##目录不能传输</span><br><span class="line">sz: is not a file: /tmp/kun11/kun1 </span><br><span class="line">sz: is not a file: /tmp/kun11/kun2</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221113.jpg)</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# sz /tmp/kun11/kun1.txt</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401220821.jpg)</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221601.jpg)</span><br><span class="line"></span><br><span class="line">&gt;rz：从window向Linux传东西</span><br><span class="line"></span><br><span class="line">用法：`rz`</span><br></pre></td></tr></table></figure>
-<p>[root@localhost ~]# rz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221735.jpg)</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221748.jpg)</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# ll .  ##传过来的文件会在当前目录下<br>总用量 28<br>-rwx——. 3 kun1 root     9 3月  30 06:38 1.txt<br>-rw——-. 1 root root  1420 3月   4 20:47 anaconda-ks.cfg<br>-rw-r–r–. 1 root root 18660 3月  10 10:31 学习计划.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">## 3.1 用户配置文件和密码配置文件</span><br><span class="line"></span><br><span class="line">&gt;/etc/passwd/ 用户的配置文件</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# head -2 /etc/passwd  ##只看头2行<br>root:x:0:0:root:/root:/bin/bash   ##/bin/bash系统给终端的bash 代表可以登录<br>bin:x:1:1:bin:/bin:/sbin/nologin  ##/sbin/nologin 代表不可以登录<br>[root@localhost ~]# tail -2 /etc/passwd ##只看尾2行<br>kun1:x:1000:1000::/home/kun1:/bin/bash<br>kun2:x:1001:1001::/home/kun2:/bin/bash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">段数 | 意义</span><br><span class="line">---- | ----</span><br><span class="line">第一段 | 用户名</span><br><span class="line">第二段 | 早期存密码 现在用x代替密码</span><br><span class="line">第三段 | uid 用户id号 自己建的用户从1000开始</span><br><span class="line">第四段 | gid 用户组id号 自己建的组从1000开始</span><br><span class="line">第五段 | 用户备注信息 可忽略</span><br><span class="line">第六段 | 用户的家目录</span><br><span class="line">第七段 | 系统给终端的bash 可以看是否给用户登录系统</span><br><span class="line"></span><br><span class="line">&gt;/etc/shadow/用户密码的配置文件 和用户配置文件一一对应</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# head -2 /etc/shadow<br>root:$6$dGUqXk3D$l3zEIRq953iudi0uP0LkUUCfC525xGlLUkbm7X3DdPeK/1sYOhc0NPEGxR8Lj1TEUYAvrOxykIHJgO2YasJA//:17611:0:99999:7:::<br>bin:*:17110:0:99999:7:::<br>[root@localhost ~]# tail -2 /etc/shadow<br>kun1:!!:17617:0:99999:7:::<br>kun2:!!:17618:0:99999:7:::<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">段数 | 意义</span><br><span class="line">---- | ----</span><br><span class="line">第一段 | 用户名</span><br><span class="line">第二段 | 用户密码</span><br><span class="line">第三段 | 表示的是从1970年起，到用户最后一次修改口令时的天数</span><br><span class="line">第四段 | “最小时间间隔”指的是两次修改口令之间所需的最小天数。</span><br><span class="line">第五段 | “最大时间间隔”指的是口令保持有效的最大天数。</span><br><span class="line">第六段 | 警告时间，密码到期前多少天警告</span><br><span class="line">第七段 | 密码到期后还有多少天可以使用</span><br><span class="line">第八段 | 密码生命周期</span><br><span class="line">第九段 | 没意义</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">&gt;/etc/group 组配置文件</span><br><span class="line">&gt;/etc/gshadow 组密码配置文件</span><br><span class="line"></span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401231752.jpg)</span><br><span class="line"></span><br><span class="line">其中后面带-都是系统备份的配置文件</span><br><span class="line"></span><br><span class="line">## 3.2用户组管理</span><br><span class="line"></span><br><span class="line">&gt;groupadd：增加组</span><br><span class="line"></span><br><span class="line">用法：`groupadd 组名`</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# groupadd team01<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`-g`：指定gid</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# groupadd -g 8888 team02  ##指定team02组的gid是8888<br>[root@localhost ~]# tail -2 /etc/group<br>team01:x:1002:<br>team02:x:8888:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;gropdel：删除空组</span><br><span class="line"></span><br><span class="line">用法：`groupdel 组名`</span><br></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# groupdel team01<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">[root@localhost ~]# groupdel kun1</span><br><span class="line">groupdel：不能移除用户“kun1”的主组</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sz /tmp/kun11/*    ##目录不能传输</span><br><span class="line">sz: is not a file: /tmp/kun11/kun1 </span><br><span class="line">sz: is not a file: /tmp/kun11/kun2</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221113.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sz /tmp/kun11/kun1.txt</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401220821.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221601.jpg" alt=""></p>
+<blockquote>
+<p>rz：从window向Linux传东西</p>
+</blockquote>
+<p>用法：<code>rz</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rz</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221735.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221748.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll .  ##传过来的文件会在当前目录下</span><br><span class="line">总用量 28</span><br><span class="line">-rwx------. 3 kun1 root     9 3月  30 06:38 1.txt</span><br><span class="line">-rw-------. 1 root root  1420 3月   4 20:47 anaconda-ks.cfg</span><br><span class="line">-rw-r--r--. 1 root root 18660 3月  10 10:31 学习计划.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-1-用户配置文件和密码配置文件"><a href="#3-1-用户配置文件和密码配置文件" class="headerlink" title="3.1 用户配置文件和密码配置文件"></a>3.1 用户配置文件和密码配置文件</h2><blockquote>
+<p>/etc/passwd/ 用户的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head -2 /etc/passwd  ##只看头2行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash   ##/bin/bash系统给终端的bash 代表可以登录</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin  ##/sbin/nologin 代表不可以登录</span><br><span class="line">[root@localhost ~]# tail -2 /etc/passwd ##只看尾2行</span><br><span class="line">kun1:x:1000:1000::/home/kun1:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>段数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一段</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>第二段</td>
+<td>早期存密码 现在用x代替密码</td>
+</tr>
+<tr>
+<td>第三段</td>
+<td>uid 用户id号 自己建的用户从1000开始</td>
+</tr>
+<tr>
+<td>第四段</td>
+<td>gid 用户组id号 自己建的组从1000开始</td>
+</tr>
+<tr>
+<td>第五段</td>
+<td>用户备注信息 可忽略</td>
+</tr>
+<tr>
+<td>第六段</td>
+<td>用户的家目录</td>
+</tr>
+<tr>
+<td>第七段</td>
+<td>系统给终端的bash 可以看是否给用户登录系统</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>/etc/shadow/用户密码的配置文件 和用户配置文件一一对应</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head -2 /etc/shadow</span><br><span class="line">root:$6$dGUqXk3D$l3zEIRq953iudi0uP0LkUUCfC525xGlLUkbm7X3DdPeK/1sYOhc0NPEGxR8Lj1TEUYAvrOxykIHJgO2YasJA//:17611:0:99999:7:::</span><br><span class="line">bin:*:17110:0:99999:7:::</span><br><span class="line">[root@localhost ~]# tail -2 /etc/shadow</span><br><span class="line">kun1:!!:17617:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>段数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一段</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>第二段</td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>第三段</td>
+<td>表示的是从1970年起，到用户最后一次修改口令时的天数</td>
+</tr>
+<tr>
+<td>第四段</td>
+<td>“最小时间间隔”指的是两次修改口令之间所需的最小天数。</td>
+</tr>
+<tr>
+<td>第五段</td>
+<td>“最大时间间隔”指的是口令保持有效的最大天数。</td>
+</tr>
+<tr>
+<td>第六段</td>
+<td>警告时间，密码到期前多少天警告</td>
+</tr>
+<tr>
+<td>第七段</td>
+<td>密码到期后还有多少天可以使用</td>
+</tr>
+<tr>
+<td>第八段</td>
+<td>密码生命周期</td>
+</tr>
+<tr>
+<td>第九段</td>
+<td>没意义</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>/etc/group 组配置文件<br>/etc/gshadow 组密码配置文件</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401231752.jpg" alt=""></p>
+<p>其中后面带-都是系统备份的配置文件</p>
+<h2 id="3-2用户组管理"><a href="#3-2用户组管理" class="headerlink" title="3.2用户组管理"></a>3.2用户组管理</h2><blockquote>
+<p>groupadd：增加组</p>
+</blockquote>
+<p>用法：<code>groupadd 组名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd team01</span><br></pre></td></tr></table></figure></p>
+<p><code>-g</code>：指定gid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd -g 8888 team02  ##指定team02组的gid是8888</span><br><span class="line">[root@localhost ~]# tail -2 /etc/group</span><br><span class="line">team01:x:1002:</span><br><span class="line">team02:x:8888:</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>gropdel：删除空组</p>
+</blockquote>
+<p>用法：<code>groupdel 组名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupdel team01</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupdel kun1</span><br><span class="line">groupdel：不能移除用户“kun1”的主组</span><br></pre></td></tr></table></figure>
 <p>因为kun1组里有用户kun1在 所以不能删除</p>
 <h2 id="3-3用户管理"><a href="#3-3用户管理" class="headerlink" title="3.3用户管理"></a>3.3用户管理</h2><blockquote>
 <p>useradd：增加用户</p>
@@ -441,11 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
             
             <div class="clearfix"></div>
