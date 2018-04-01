@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>三周第一节课（4月2日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="2.27linux和windows互传文件3.1 用户配置文件和密码配置文件3.2 用户组管理3.3 用户管理">
+<meta name="keywords" content="Linux,用户与组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三周第一节课（4月2日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/三周第一节课（4月2日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="2.27linux和windows互传文件3.1 用户配置文件和密码配置文件3.2 用户组管理3.3 用户管理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-01T16:44:26.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="三周第一节课（4月2日）">
+<meta name="twitter:description" content="2.27linux和windows互传文件3.1 用户配置文件和密码配置文件3.2 用户组管理3.3 用户管理">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +145,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-三周第一节课（4月2日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/02/三周第一节课（4月2日）/" class="archive-article-date">
-  	<time datetime="2018-04-01T16:27:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/02/三周第一节课（4月2日）/">三周第一节课（4月2日）</a>
+    <h1 class="article-title" itemprop="name">
+      三周第一节课（4月2日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/02/三周第一节课（4月2日）/" class="archive-article-date">
+  	<time datetime="2018-04-01T16:27:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2.27linux和windows互传文件<br>3.1 用户配置文件和密码配置文件<br>3.2 用户组管理<br>3.3 用户管理<br><a id="more"></a></p>
+<h2 id="2-27Linux和windows互传文件"><a href="#2-27Linux和windows互传文件" class="headerlink" title="2.27Linux和windows互传文件"></a>2.27Linux和windows互传文件</h2><p><code>lrzsz</code>：本地window系统和远程服务器Linux系统互传文件 远程工具只能使用Xshell, SecureCRT，不能使用Putty<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y lrzsz   ##先安装lrzsz工具</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>sz：从Linux向window传东西</p>
+</blockquote>
+<p>用法：<code>sz 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /tmp/kun11/   ##kun11目录下有两个文件 两个目录</span><br><span class="line">总用量 0</span><br><span class="line">drwxr-xr-x. 2 root root 6 3月  29 07:20 kun1</span><br><span class="line">-rw-r--r--. 1 root root 0 3月  29 07:21 kun1.txt</span><br><span class="line">drwxr-sr-x. 2 root kun1 6 3月  29 07:23 kun2</span><br><span class="line">-rw-r--r--. 1 root kun1 0 3月  29 07:23 kun2.txt</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sz /tmp/kun11/*    ##目录不能传输</span><br><span class="line">sz: is not a file: /tmp/kun11/kun1 </span><br><span class="line">sz: is not a file: /tmp/kun11/kun2</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221113.jpg)</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# sz /tmp/kun11/kun1.txt</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401220821.jpg)</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221601.jpg)</span><br><span class="line"></span><br><span class="line">&gt;rz：从window向Linux传东西</span><br><span class="line"></span><br><span class="line">用法：`rz`</span><br></pre></td></tr></table></figure>
+<p>[root@localhost ~]# rz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221735.jpg)</span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401221748.jpg)</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# ll .  ##传过来的文件会在当前目录下<br>总用量 28<br>-rwx——. 3 kun1 root     9 3月  30 06:38 1.txt<br>-rw——-. 1 root root  1420 3月   4 20:47 anaconda-ks.cfg<br>-rw-r–r–. 1 root root 18660 3月  10 10:31 学习计划.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">## 3.1 用户配置文件和密码配置文件</span><br><span class="line"></span><br><span class="line">&gt;/etc/passwd/ 用户的配置文件</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# head -2 /etc/passwd  ##只看头2行<br>root:x:0:0:root:/root:/bin/bash   ##/bin/bash系统给终端的bash 代表可以登录<br>bin:x:1:1:bin:/bin:/sbin/nologin  ##/sbin/nologin 代表不可以登录<br>[root@localhost ~]# tail -2 /etc/passwd ##只看尾2行<br>kun1:x:1000:1000::/home/kun1:/bin/bash<br>kun2:x:1001:1001::/home/kun2:/bin/bash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">段数 | 意义</span><br><span class="line">---- | ----</span><br><span class="line">第一段 | 用户名</span><br><span class="line">第二段 | 早期存密码 现在用x代替密码</span><br><span class="line">第三段 | uid 用户id号 自己建的用户从1000开始</span><br><span class="line">第四段 | gid 用户组id号 自己建的组从1000开始</span><br><span class="line">第五段 | 用户备注信息 可忽略</span><br><span class="line">第六段 | 用户的家目录</span><br><span class="line">第七段 | 系统给终端的bash 可以看是否给用户登录系统</span><br><span class="line"></span><br><span class="line">&gt;/etc/shadow/用户密码的配置文件 和用户配置文件一一对应</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# head -2 /etc/shadow<br>root:$6$dGUqXk3D$l3zEIRq953iudi0uP0LkUUCfC525xGlLUkbm7X3DdPeK/1sYOhc0NPEGxR8Lj1TEUYAvrOxykIHJgO2YasJA//:17611:0:99999:7:::<br>bin:*:17110:0:99999:7:::<br>[root@localhost ~]# tail -2 /etc/shadow<br>kun1:!!:17617:0:99999:7:::<br>kun2:!!:17618:0:99999:7:::<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">段数 | 意义</span><br><span class="line">---- | ----</span><br><span class="line">第一段 | 用户名</span><br><span class="line">第二段 | 用户密码</span><br><span class="line">第三段 | 表示的是从1970年起，到用户最后一次修改口令时的天数</span><br><span class="line">第四段 | “最小时间间隔”指的是两次修改口令之间所需的最小天数。</span><br><span class="line">第五段 | “最大时间间隔”指的是口令保持有效的最大天数。</span><br><span class="line">第六段 | 警告时间，密码到期前多少天警告</span><br><span class="line">第七段 | 密码到期后还有多少天可以使用</span><br><span class="line">第八段 | 密码生命周期</span><br><span class="line">第九段 | 没意义</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">&gt;/etc/group 组配置文件</span><br><span class="line">&gt;/etc/gshadow 组密码配置文件</span><br><span class="line"></span><br><span class="line">![](http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180401231752.jpg)</span><br><span class="line"></span><br><span class="line">其中后面带-都是系统备份的配置文件</span><br><span class="line"></span><br><span class="line">## 3.2用户组管理</span><br><span class="line"></span><br><span class="line">&gt;groupadd：增加组</span><br><span class="line"></span><br><span class="line">用法：`groupadd 组名`</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# groupadd team01<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`-g`：指定gid</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# groupadd -g 8888 team02  ##指定team02组的gid是8888<br>[root@localhost ~]# tail -2 /etc/group<br>team01:x:1002:<br>team02:x:8888:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;gropdel：删除空组</span><br><span class="line"></span><br><span class="line">用法：`groupdel 组名`</span><br></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# groupdel team01<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">[root@localhost ~]# groupdel kun1</span><br><span class="line">groupdel：不能移除用户“kun1”的主组</span><br></pre></td></tr></table></figure></p>
+<p>因为kun1组里有用户kun1在 所以不能删除</p>
+<h2 id="3-3用户管理"><a href="#3-3用户管理" class="headerlink" title="3.3用户管理"></a>3.3用户管理</h2><blockquote>
+<p>useradd：增加用户</p>
+</blockquote>
+<p>用法：<code>useradd 用户名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd kun02</span><br></pre></td></tr></table></figure></p>
+<p><code>-u</code>：指定uid<br><code>-g</code>：指定gid 可以写组名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -u 1388 -g team02 kun03 ##指定kun03用户的uid是1288 他的用户是team02</span><br><span class="line">[root@localhost ~]# tail -2 /etc/passwd</span><br><span class="line">kun02:x:1002:1002::/home/kun02:/bin/bash</span><br><span class="line">kun03:x:1388:8888::/home/kun03:/bin/bash  ##8888就是team02</span><br></pre></td></tr></table></figure></p>
+<p><code>-d</code>：指定家目录<br><code>-s</code>：指定bash   /sbin/nologin不能登录系统<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -d /home/dalao/ -s /sbin/nologin kun04  ##指定kun04用户的家地址为/home/dalao/并不能登录系统</span><br><span class="line">[root@localhost ~]# tail -2 /etc/passwd</span><br><span class="line">kun03:x:1388:8888::/home/kun03:/bin/bash</span><br><span class="line">kun04:x:1389:1389::/home/dalao/:/sbin/nologin</span><br><span class="line">[root@localhost ~]# ls /home/</span><br><span class="line">dalao  kun02  kun03  kun1  kun2</span><br></pre></td></tr></table></figure></p>
+<p><code>-M</code>：不创建家目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -M kun05  ##kun05不创建家用户</span><br><span class="line">[root@localhost ~]# tail -2 /etc/passwd</span><br><span class="line">kun04:x:1389:1389::/home/dalao/:/sbin/nologin</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash  ##这里显示家目录地址 实际上是没创建家目录的</span><br><span class="line">[root@localhost ~]# ls /home/</span><br><span class="line">dalao  kun02  kun03  kun1  kun2</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>userdel：删除用户(默认家目录不删除)</p>
+</blockquote>
+<p>用法：<code>userdel 用户名</code><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# userdel kun04  ##删除用户04 但他的家目录dalao还在</span><br><span class="line">[root@localhost ~]# ls /home/</span><br><span class="line">dalao  kun02  kun03  kun1  kun2</span><br></pre></td></tr></table></figure></p>
+<p><code>-r</code>：删除家目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# userdel -r kun02 ##删除用户02并删除他的家目录</span><br><span class="line">[root@localhost ~]# ls /home/</span><br><span class="line">dalao  kun03  kun1  kun2</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,191 +215,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/02/三周第一节课（4月2日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第五次课（3月30日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/31/二周第五次课（3月30日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二周第五次课（3月30日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第五次课（3月30日）/">二周第五次课（3月30日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第四次课（3月29日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第四次课（3月29日）/">二周第四次课（3月29日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第三次课（3月28日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第三次课（3月28日）/">二周第三次课（3月28日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第二次课（3月27日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:17:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第二次课（3月27日）/">二周第二次课（3月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +359,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
