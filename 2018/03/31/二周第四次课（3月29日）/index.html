@@ -8,14 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>二周第四次课（3月29日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="2.18 特殊权限set_uid2.19 特殊权限set_gid2.20 特殊权限stick_bit2.21 软链接文件2.22 硬连接文件">
+<meta name="keywords" content="Linux,文件与目录">
+<meta property="og:type" content="article">
 <meta property="og:title" content="二周第四次课（3月29日）">
 <meta property="og:url" content="http://yoursite.com/2018/03/31/二周第四次课（3月29日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="2.18 特殊权限set_uid2.19 特殊权限set_gid2.20 特殊权限stick_bit2.21 软链接文件2.22 硬连接文件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T14:18:50.123Z">
+<meta property="og:updated_time" content="2018-04-01T03:15:24.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二周第四次课（3月29日）">
+<meta name="twitter:description" content="2.18 特殊权限set_uid2.19 特殊权限set_gid2.20 特殊权限stick_bit2.21 软链接文件2.22 硬连接文件">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -161,7 +165,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>2.18 特殊权限set_uid<br>2.19 特殊权限set_gid<br>2.20 特殊权限stick_bit<br>2.21 软链接文件<br>2.22 硬连接文件<br><a id="more"></a></p>
+<h2 id="2-18特殊权限set-uid"><a href="#2-18特殊权限set-uid" class="headerlink" title="2.18特殊权限set_uid"></a>2.18特殊权限set_uid</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l /usr/bin/passwd</span><br><span class="line">-rwsr-xr-x. 1 root root 27832 6月  10 2014 /usr/bin/passwd</span><br></pre></td></tr></table></figure>
+<p>可以看passwd的文件权限中有s 这个s就是特殊权限<code>set_uid</code></p>
+<blockquote>
+<p>set_uid作用是为了让普通用户去执行二进制文件或者命令时候临时拥有root用户的权限</p>
+</blockquote>
+<p>如何加上set_uid 或删除set_uid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /usr/bin/ls</span><br><span class="line">-rwxr-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br><span class="line">[root@localhost ~]# chmod u+s /usr/bin/ls       ##为ls加上set_uid</span><br><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rwsr-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chmod u-s !$           ##为ls删除set_uid</span><br><span class="line">chmod u-s /usr/bin/ls    </span><br><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rwxr-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br></pre></td></tr></table></figure>
+<p>另一种为ls加上set_uid的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chmod u=rws !$ </span><br><span class="line">chmod u=rws /usr/bin/ls</span><br><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rwSr-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br></pre></td></tr></table></figure></p>
+<p>这里的S是因为没有x 添加上x 就可以变回s 但是S和s的区别不太 </p>
+<h2 id="2-19特殊权限set-gid"><a href="#2-19特殊权限set-gid" class="headerlink" title="2.19特殊权限set_gid"></a>2.19特殊权限set_gid</h2><p>添加和删除set_gid方法和set_uid一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rw-r-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br><span class="line">[root@localhost ~]# chmod g+s !$     ##为ls加上set_gid</span><br><span class="line">chmod g+s /usr/bin/ls</span><br><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rw-r-sr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chmod g-s !$     ##为ls删除set_gid</span><br><span class="line">chmod g-s /usr/bin/ls</span><br><span class="line">[root@localhost ~]# !ll</span><br><span class="line">ll /usr/bin/ls</span><br><span class="line">-rw-r-xr-x. 1 root root 117656 11月  6 2016 /usr/bin/ls</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>set_gid作用 作用在文件上是让普通用户临时拥有文件所属组的权限；作用在目录上时，在该目录创建子目录和子文件时的所属组和父目录保持一致 </p>
+</blockquote>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /tmp/kun11</span><br><span class="line">[root@localhost ~]# chown :kun1 /tmp/kun11</span><br><span class="line">[root@localhost ~]# ls -ld /tmp/kun11</span><br><span class="line">drwxr-xr-x. 2 root kun1 6 3月  29 07:16 /tmp/kun11</span><br><span class="line">[root@localhost ~]# mkdir /tmp/kun11/kun1</span><br><span class="line">[root@localhost ~]# touch /tmp/kun11/kun1.txt</span><br><span class="line">[root@localhost ~]# chmod g+s /tmp/kun11    ##为kun11目录添加set_gid</span><br><span class="line">[root@localhost ~]# mkdir /tmp/kun11/kun2</span><br><span class="line">[root@localhost ~]# touch /tmp/kun11/kun2.txt</span><br><span class="line">[root@localhost ~]# ls -l /tmp/kun11/</span><br><span class="line">总用量 0</span><br><span class="line">drwxr-xr-x. 2 root root 6 3月  29 07:20 kun1</span><br><span class="line">-rw-r--r--. 1 root root 0 3月  29 07:21 kun1.txt</span><br><span class="line">drwxr-sr-x. 2 root kun1 6 3月  29 07:23 kun2</span><br><span class="line">-rw-r--r--. 1 root kun1 0 3月  29 07:23 kun2.txt</span><br></pre></td></tr></table></figure></p>
+<p>可以看出kun2 和kun2.txt和父目录kun11的所属组是一致的</p>
+<h2 id="2-20-特殊权限stick-bit"><a href="#2-20-特殊权限stick-bit" class="headerlink" title="2.20 特殊权限stick_bit"></a>2.20 特殊权限stick_bit</h2><blockquote>
+<p>stick_bit作用在目录时候防止其他用户删除自己的东西，root除外 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -ld /tmp/</span><br><span class="line">drwxrwxrwt. 14 root root 4096 3月  29 07:16 /tmp/   ##t表示 stick_bit /tmp/目录具有防删除功能</span><br><span class="line">``` </span><br><span class="line">我们切换kun1用户 在/tmp/目录建立文件</span><br><span class="line">``` </span><br><span class="line">[root@localhost ~]# su kun1</span><br><span class="line">[kun1@localhost root]$ touch /tmp/1.txt</span><br></pre></td></tr></table></figure>
+<p>再试试切换kun2去删除1.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su kun2</span><br><span class="line">[kun2@localhost root]$ rm -f /tmp/1.txt</span><br><span class="line">rm: 无法删除&quot;/tmp/1.txt&quot;: 不允许的操作</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-21软链接文件"><a href="#2-21软链接文件" class="headerlink" title="2.21软链接文件"></a>2.21软链接文件</h2><blockquote>
+<p>ln -s ：类是快捷方式 占用空间小 可以链接文件，也可以链接目录 删除原文件报错</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln -s /tmp/kun1/ /tmp/kun1.sort</span><br><span class="line">[root@localhost ~]# ll /tmp/</span><br><span class="line">总用量 0</span><br><span class="line">-rw-rw-r--. 1 kun1 kun1  0 3月  29 07:43 1.txt</span><br><span class="line">drwx------. 2 kun1 root 19 3月  28 06:06 kun1</span><br><span class="line">drwxr-sr-x. 4 root kun1 62 3月  29 07:23 kun11</span><br><span class="line">lrwxrwxrwx. 1 root root 10 3月  29 08:08 kun1.sort -&gt; /tmp/kun1/  ##kun1目录的软连接</span><br></pre></td></tr></table></figure>
+<h2 id="2-22硬链接文件"><a href="#2-22硬链接文件" class="headerlink" title="2.22硬链接文件"></a>2.22硬链接文件</h2><blockquote>
+<p>ln：和用来的文件大小一样 inod号也一样，不会占用空间 只能链接文件，不可以链接目录 删除原文件没影响</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln /tmp/kun1/1.txt /tmp/kun1/ying_1.txt</span><br><span class="line">[root@localhost ~]# ls -il /tmp/kun1/</span><br><span class="line">总用量 0</span><br><span class="line">16992050 -rwx------. 3 kun1 root 0 3月  28 07:31 1.txt</span><br><span class="line">16992050 -rwx------. 3 kun1 root 0 3月  28 07:31 ying_1.txt</span><br></pre></td></tr></table></figure>
+<p>硬链接不可以链接目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln /tmp/kun1/</span><br><span class="line">ln: &quot;/tmp/kun1/&quot;: 不允许将硬链接指向目录</span><br></pre></td></tr></table></figure></p>
+<p>硬链接时 文件不能跨分区 比如/boot/下的文件不能硬链接到/下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln /boot/initrd-plymouth.img /</span><br><span class="line">ln: 无法创建硬链接&quot;/initrd-plymouth.img&quot; =&gt; &quot;/boot/initrd-plymouth.img&quot;: 无效的跨设备连接</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -169,6 +206,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -370,15 +422,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
