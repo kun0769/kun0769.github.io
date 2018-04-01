@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="2.14 文件和目录权限chmod2.15 更改所有者和所属组chown2.16 umask2.17 隐藏权限lsattr chattr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-01T03:04:45.404Z">
+<meta property="og:updated_time" content="2018-04-01T03:06:06.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二周第三次课（3月28日）">
 <meta name="twitter:description" content="2.14 文件和目录权限chmod2.15 更改所有者和所属组chown2.16 umask2.17 隐藏权限lsattr chattr">
@@ -206,8 +206,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chattr -a /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# lsattr  /tmp/kun1/</span><br><span class="line">---------------- /tmp/kun1/1.txt</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chattr +i /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# lsattr  /tmp/kun1/</span><br><span class="line">----i----------- /tmp/kun1/1.txt</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chattr -i /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# lsattr  /tmp/kun1/</span><br><span class="line">---------------- /tmp/kun1/1.txt</span><br></pre></td></tr></table></figure>
-<p>小提示：touch命令 如果原来文件就存在 那就更改文件时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l  /tmp/kun1/1.txt</span><br><span class="line">-rwx------. 1 kun1 root 0 3月  28 06:06 /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# touch !$</span><br><span class="line">touch /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# !ls</span><br><span class="line">ls -l  /tmp/kun1/1.txt</span><br><span class="line">-rwx------. 1 kun1 root 0 3月  28 07:31 /tmp/kun1/1.txt</span><br></pre></td></tr></table></figure>
+<p>小提示：touch命令 如果原来文件就存在 那就更改文件时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l  /tmp/kun1/1.txt</span><br><span class="line">-rwx------. 1 kun1 root 0 3月  28 06:06 /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# touch !$</span><br><span class="line">touch /tmp/kun1/1.txt</span><br><span class="line">[root@localhost ~]# !ls</span><br><span class="line">ls -l  /tmp/kun1/1.txt</span><br><span class="line">-rwx------. 1 kun1 root 0 3月  28 07:31 /tmp/kun1/1.txt</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -439,11 +439,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
             
             <div class="clearfix"></div>
