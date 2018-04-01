@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="2.23/2.24/2.25 find命令2.26 文件名后缀">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-01T03:30:35.449Z">
+<meta property="og:updated_time" content="2018-04-01T03:38:12.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二周第五次课（3月30日）">
 <meta name="twitter:description" content="2.23/2.24/2.25 find命令2.26 文件名后缀">
@@ -166,7 +166,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>2.23/2.24/2.25 find命令<br>2.26 文件名后缀<br><a id="more"></a></p>
-<h2 id="2-23-2-24-2-25find命令"><a href="#2-23-2-24-2-25find命令" class="headerlink" title="2.23/2.24/2.25find命令"></a>2.23/2.24/2.25find命令</h2><p>系统自带了很多搜索文件或目录的工具<code>which`</code>whereis<code>locate</code>find`等等</p>
+<h2 id="2-23-2-24-2-25find命令"><a href="#2-23-2-24-2-25find命令" class="headerlink" title="2.23/2.24/2.25find命令"></a>2.23/2.24/2.25find命令</h2><p>系统自带了很多搜索文件或目录的工具 <code>which</code> <code>whereis</code> <code>locate</code> <code>find</code> 等等</p>
 <blockquote>
 <p>which：从环境变量寻找，并给出命令的别名</p>
 </blockquote>
@@ -179,7 +179,45 @@
 <p>locate：也是从准备好的库找文件，模糊寻找，可能找不全，并且开始还没安装此命令</p>
 </blockquote>
 <p>用法：<code>locate 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y mlocate     ##安装locate命令</span><br><span class="line">[root@localhost ~]# locate kun1/                    ##库还没更新找不到</span><br><span class="line">locate: 无法执行 stat () `/var/lib/mlocate/mlocate.db&apos;: 没有那个文件或目录</span><br><span class="line">[root@localhost ~]# updatedb                         ##手动生成库</span><br><span class="line">[root@localhost ~]# locate kun1                      ##寻找有kun1的文件或者目录</span><br><span class="line">/home/kun1</span><br><span class="line">/home/kun1/.bash_history</span><br><span class="line">/home/kun1/.bash_logout</span><br><span class="line">/home/kun1/.bash_profile</span><br><span class="line">/home/kun1/.bashrc</span><br><span class="line">/var/spool/mail/kun1</span><br></pre></td></tr></table></figure></p>
-<p>小知识：<br>快捷键 | 方式<br>—— | ——<br>Ctrl+l | 清屏<br>Ctrl+d | 退出终端，等于“exit”命令<br>Ctrl+c | 终止当前命令<br>Ctrl+k | 把光标后的命令删除<br>Ctrl+u | 把光标前的命令删除<br>Ctrl+e | 把光标移动到命令的末端<br>Ctrl+a | 把光标移动到命令的首端</p>
+<p>小知识：</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+l</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td>退出终端，等于“exit”命令</td>
+</tr>
+<tr>
+<td>Ctrl+c</td>
+<td>终止当前命令</td>
+</tr>
+<tr>
+<td>Ctrl+k</td>
+<td>把光标后的命令删除</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td>把光标前的命令删除</td>
+</tr>
+<tr>
+<td>Ctrl+e</td>
+<td>把光标移动到命令的末端</td>
+</tr>
+<tr>
+<td>Ctrl+a</td>
+<td>把光标移动到命令的首端</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>find： 在指定目录下查找文件</p>
 </blockquote>
@@ -421,15 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
