@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>三周第二次课程（4月3日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
+<meta name="keywords" content="Linux,用户与组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三周第二次课程（4月3日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/三周第二次课程（4月3日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-02T16:06:36.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="三周第二次课程（4月3日）">
+<meta name="twitter:description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +145,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-三周第二次课程（4月3日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      三周第二次课程（4月3日）
+    </h1>
+  
+
+        
+        <a href="/2018/04/02/三周第二次课程（4月3日）/" class="archive-article-date">
+  	<time datetime="2018-04-02T15:51:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>3.4 usermod命令<br>3.5 用户密码管理<br>3.6 mkpasswd命令<br><a id="more"></a></p>
+<h2 id="3-4usermod命令"><a href="#3-4usermod命令" class="headerlink" title="3.4usermod命令"></a>3.4usermod命令</h2><blockquote>
+<p>id：查看用户的iod gid和扩展组</p>
+</blockquote>
+<p>用法：<code>id 用户名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=1000(kun1) gid=1000(kun1) 组=1000(kun1)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>usermod：更改用户属性</p>
+</blockquote>
+<p>用法：<code>usermod [-u] [-g] [-s] [-d] [-G] [-L] [-U] 用户名</code><br><code>-u</code>：更改用户的uid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail -3 /etc/passwd    ##现在系统有三个普通用户</span><br><span class="line">kun1:x:1000:1000::/home/kun1:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -u 8888 kun1   ##更改kun1用户的uid为8888</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1000(kun1) 组=1000(kun1)</span><br></pre></td></tr></table></figure>
+<p><code>-g</code>：更改用户的gid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -g kun2 kun1  ##更改kun1用户的组为kun2</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -g 1001 kun1  ##更改kun1用户的gid为1001 即kun2组</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2)</span><br></pre></td></tr></table></figure>
+<p><code>-d</code>：更改用户的家目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -d /home/kun2/ kun1  ##更改kun1用户的家目录为/home/kun2/</span><br><span class="line">[root@localhost ~]# tail -3 /etc/passwd</span><br><span class="line">kun1:x:8888:1001::/home/kun2/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-s</code>；更改用户的shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -s /sbin/nologin kun1   ##更改kun1用户的shell为/sbin/nologin</span><br><span class="line">[root@localhost ~]# !tail</span><br><span class="line">tail -3 /etc/passwd</span><br><span class="line">kun1:x:8888:1001::/home/kun2/:/sbin/nologin</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-G</code>：更改用户的扩展组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -G kun2,kun05 kun1   ##更改kun1用户的扩展组为kun2和kun05 多个组用，分开</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2),1390(kun05)</span><br></pre></td></tr></table></figure></p>
+<p><code>-L</code>：锁定用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -L kun1   ##锁定kun1用户的密码</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow  ##！表示密码被锁定了</span><br><span class="line">kun1:!$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
+<p><code>-U</code>：解锁用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -U kun1   ##解锁kun1用户的密码</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-5用户密码管理"><a href="#3-5用户密码管理" class="headerlink" title="3.5用户密码管理"></a>3.5用户密码管理</h2><blockquote>
+<p>passwd：更改用户的密码</p>
+</blockquote>
+<p>用法：<code>passwd 用户名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd kun1  ##更改kun1用户的密码</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">新的 密码：</span><br><span class="line">重新输入新的 密码：</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::    ##!!表示密码为空 *为密码不能登录 都是不能登录的</span><br></pre></td></tr></table></figure></p>
+<p><code>-l</code>：锁定用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd -l kun1    ##锁定kun1用户的密码</span><br><span class="line">锁定用户 kun1 的密码 。</span><br><span class="line">passwd: 操作成功</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow   ##kun11的密码前有!!表示密码被锁定了</span><br><span class="line">kun1:!!$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
+<p><code>-u</code>：解锁用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd -u kun1   ##解锁kun1用户的密码</span><br><span class="line">解锁用户 kun1 的密码。</span><br><span class="line">passwd: 操作成功</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
+<p><code>--stdin</code>：更改用户密码 密码用明文显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd --stdin kun1</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">123456</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
+<p>为了以后学习脚本 先看下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &quot;888888&quot;|passwd --stdin kun1  ##|为管道符 表示把左边的字符传给右边 这样可以一条命令完成更改密码</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
+<p>也可以下面这样的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo -e &quot;11111111\n11111111&quot;|passwd kun1  ## -e可以把\n转译成换行</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">新的 密码：无效的密码： 密码是一个回文</span><br><span class="line">重新输入新的 密码：passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-6mkpasswd命令"><a href="#3-6mkpasswd命令" class="headerlink" title="3.6mkpasswd命令"></a>3.6mkpasswd命令</h2><blockquote>
+<p>mkpasswd：生成密码工具</p>
+</blockquote>
+<p>用法：<code>mkpasswd</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y expect  ##先安装包expect</span><br><span class="line">[root@localhost ~]# mkpasswd   </span><br><span class="line">vO70)dzmS</span><br></pre></td></tr></table></figure></p>
+<p><code>-l</code>：指定生成密码的长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkpasswd -l 20   ##指定生成的密码长度为20位</span><br><span class="line">uykpI1ng4rnekpezb&#125;pS</span><br></pre></td></tr></table></figure></p>
+<p><code>-s</code>：指定密码中特殊符号的数量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkpasswd -s 3  ##指定生成的密码有3个特殊符号</span><br><span class="line">KX60(i-)w</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第二次课（3月27日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:17:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第二次课（3月27日）/">二周第二次课（3月27日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,197 +214,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/02/三周第二次课程（4月3日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第一次课（3月26日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/02/三周第一次课（4月2日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">三周第一次课（4月2日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第一次课（3月26日）/">二周第一次课（3月26日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第五次课（3月23日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T12:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第五次课（3月23日）/">一周第五次课（3月23日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第四次课（3月22日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第四次课（3月22日）/">一周第四次课（3月22日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第三次课（3月21日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第三次课（3月21日）/">一周第三次课(3月21日)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
