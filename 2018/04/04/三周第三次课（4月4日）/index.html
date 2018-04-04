@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151324.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151823.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404150609.jpg">
-<meta property="og:updated_time" content="2018-04-04T08:12:33.048Z">
+<meta property="og:updated_time" content="2018-04-04T08:20:34.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三周第三次课（4月4日）">
 <meta name="twitter:description" content="3.7 su命令3.8 sudo命令3.9 限制root远程登录">
@@ -186,16 +186,17 @@
 <p><code>-c</code>：让切换后用户执行命令再恢复身份<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - -c &quot;touch /tmp/12.txt&quot; kun1    ##用kun1新建文档</span><br><span class="line">[root@localhost ~]# ls -l /tmp/</span><br><span class="line">总用量 0</span><br><span class="line">-rw-r--r--. 1 kun1 kun2  0 4月   4 20:26 12.txt</span><br></pre></td></tr></table></figure></p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -M kun3   ##新建用户kun3 并不建立家目录</span><br><span class="line">[root@localhost ~]# tail -1 /etc/passwd</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash    ##虽然kun3有家目录路径 但实际没建这个目录</span><br><span class="line">[root@localhost ~]# ls -l /home/</span><br><span class="line">总用量 0</span><br><span class="line">drwx------. 2 111  111  62 4月   4 20:14 111</span><br><span class="line">drwx------. 2 1389 1389 62 4月   2 07:51 dalao</span><br><span class="line">drwx------. 2 kun1 111  62 4月   2 07:38 kun03</span><br><span class="line">drwx------. 2 kun1 kun2 83 3月  29 08:31 kun1</span><br><span class="line">drwx------. 2 kun2 kun2 83 3月  29 08:31 kun2</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun3   </span><br><span class="line">su: 警告：无法更改到 /home/kun3 目录: 没有那个文件或目录</span><br><span class="line">-bash-4.2$    ##没有家目录和里面的配置文件显示的shell</span><br></pre></td></tr></table></figure>
-<ol>
-<li>思路：由于没有目录和配置文件<ol>
+<ul>
+<li>思路：由于没有目录和配置文件<ul>
 <li>创建家目录</li>
 <li>并把配置文件复制到家目录下</li>
 <li>更改家目录和文件的权限</li>
-</ol>
+</ul>
 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /home/kun3  ##创建kun3目录</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>[root@localhost ~]# ls -al /etc/skel/   ##这个是配置文件模版的路径<br>总用量 24<br>drwxr-xr-x.  2 root root   62 3月   4 20:40 .<br>drwxr-xr-x. 74 root root 8192 4月   4 20:30 ..<br>-rw-r–r–.  1 root root   18 8月   3 2017 .bash_logout<br>-rw-r–r–.  1 root root  193 8月   3 2017 .bash_profile<br>-rw-r–r–.  1 root root  231 8月   3 2017 .bashrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">[root@localhost ~]# cp /etc/skel/.bash* /home/kun3  ##复制配置文件</span><br><span class="line">[root@localhost ~]# ls -al /home/kun3</span><br><span class="line">总用量 12</span><br><span class="line">drwxr-xr-x. 2 root root  62 4月   4 20:42 .</span><br><span class="line">drwxr-xr-x. 8 root root  79 4月   4 20:40 ..</span><br><span class="line">-rw-r--r--. 1 root root  18 4月   4 20:42 .bash_logout</span><br><span class="line">-rw-r--r--. 1 root root 193 4月   4 20:42 .bash_profile</span><br><span class="line">-rw-r--r--. 1 root root 231 4月   4 20:42 .bashrc</span><br></pre></td></tr></table></figure></p>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /home/kun3  ##创建kun3目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -al /etc/skel/   ##这个是配置文件模版的路径</span><br><span class="line">总用量 24</span><br><span class="line">drwxr-xr-x.  2 root root   62 3月   4 20:40 .</span><br><span class="line">drwxr-xr-x. 74 root root 8192 4月   4 20:30 ..</span><br><span class="line">-rw-r--r--.  1 root root   18 8月   3 2017 .bash_logout</span><br><span class="line">-rw-r--r--.  1 root root  193 8月   3 2017 .bash_profile</span><br><span class="line">-rw-r--r--.  1 root root  231 8月   3 2017 .bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp /etc/skel/.bash* /home/kun3  ##复制配置文件</span><br><span class="line">[root@localhost ~]# ls -al /home/kun3</span><br><span class="line">总用量 12</span><br><span class="line">drwxr-xr-x. 2 root root  62 4月   4 20:42 .</span><br><span class="line">drwxr-xr-x. 8 root root  79 4月   4 20:40 ..</span><br><span class="line">-rw-r--r--. 1 root root  18 4月   4 20:42 .bash_logout</span><br><span class="line">-rw-r--r--. 1 root root 193 4月   4 20:42 .bash_profile</span><br><span class="line">-rw-r--r--. 1 root root 231 4月   4 20:42 .bashrc</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chown -R kun3:kun3 /home/kun3/  ##修改目录的权限</span><br><span class="line">[root@localhost ~]# ls -dl /home/kun3/</span><br><span class="line">drwxr-xr-x. 2 kun3 kun3 62 4月   4 20:42 /home/kun3/</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun3     </span><br><span class="line">上一次登录：三 4月  4 20:34:02 CST 2018pts/0 上</span><br><span class="line">[kun3@localhost ~]$               ##显示成功</span><br></pre></td></tr></table></figure>
 <h2 id="3-8sudo命令"><a href="#3-8sudo命令" class="headerlink" title="3.8sudo命令"></a>3.8sudo命令</h2><blockquote>
@@ -456,6 +457,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -464,15 +469,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
             
             <div class="clearfix"></div>
