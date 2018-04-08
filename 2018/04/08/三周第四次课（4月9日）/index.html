@@ -6,20 +6,60 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>三周第二次课（4月3日） | kun0769的博客</title>
+  <title>三周第四次课（4月9日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
-<meta name="keywords" content="Linux,用户与组">
+  <meta name="description" content="4.1 df命令4.2 du命令4.3/4.4 磁盘分区扩展学习    parted分区gpt格式">
+<meta name="keywords" content="Linux,磁盘管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三周第二次课（4月3日）">
-<meta property="og:url" content="http://yoursite.com/2018/04/02/三周第二次课（4月3日）/index.html">
+<meta property="og:title" content="三周第四次课（4月9日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/三周第四次课（4月9日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
+<meta property="og:description" content="4.1 df命令4.2 du命令4.3/4.4 磁盘分区扩展学习    parted分区gpt格式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-02T16:10:02.004Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407213731.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407214829.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407214846.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215653.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215720.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215733.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215745.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408215232.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407220708.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407221933.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222027.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222141.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408134749.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222356.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222800.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408135142.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/777_140301233035_1.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224219.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224303.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224435.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407225446.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407230543.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407231026.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407231624.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407235419.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407232729.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407234735.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407234935.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408000319.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408000331.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408110848.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408110940.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408115039.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408115337.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408123314.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408124030.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125127.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125303.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125910.jpg">
+<meta property="og:updated_time" content="2018-04-08T15:17:08.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三周第二次课（4月3日）">
-<meta name="twitter:description" content="3.4 usermod命令3.5 用户密码管理3.6 mkpasswd命令">
+<meta name="twitter:title" content="三周第四次课（4月9日）">
+<meta name="twitter:description" content="4.1 df命令4.2 du命令4.3/4.4 磁盘分区扩展学习    parted分区gpt格式">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407213731.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,58 +185,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-三周第二次课（4月3日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-三周第四次课（4月9日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      三周第二次课（4月3日）
+      三周第四次课（4月9日）
     </h1>
   
 
         
-        <a href="/2018/04/02/三周第二次课（4月3日）/" class="archive-article-date">
-  	<time datetime="2018-04-02T15:51:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+        <a href="/2018/04/08/三周第四次课（4月9日）/" class="archive-article-date">
+  	<time datetime="2018-04-08T14:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>3.4 usermod命令<br>3.5 用户密码管理<br>3.6 mkpasswd命令<br><a id="more"></a></p>
-<h2 id="3-4usermod命令"><a href="#3-4usermod命令" class="headerlink" title="3.4usermod命令"></a>3.4usermod命令</h2><blockquote>
-<p>id：查看用户的iod gid和扩展组</p>
+        <p>4.1 df命令<br>4.2 du命令<br>4.3/4.4 磁盘分区<br>扩展学习    parted分区gpt格式<br><a id="more"></a></p>
+<h2 id="4-1df命令"><a href="#4-1df命令" class="headerlink" title="4.1df命令"></a>4.1df命令</h2><blockquote>
+<p>df：显示磁盘空间的使用情况</p>
 </blockquote>
-<p>用法：<code>id 用户名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=1000(kun1) gid=1000(kun1) 组=1000(kun1)</span><br></pre></td></tr></table></figure></p>
+<p>用法：<code>df [-h][-k][-m][-i][-T] [文件系统/挂载点]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407213731.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>列数</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一列</td>
+<td>磁盘分区的名字</td>
+</tr>
+<tr>
+<td>第二列</td>
+<td>磁盘分区的总大小</td>
+</tr>
+<tr>
+<td>第三列</td>
+<td>已经使用磁盘分区的大小</td>
+</tr>
+<tr>
+<td>第四列</td>
+<td>剩余的磁盘分区大小</td>
+</tr>
+<tr>
+<td>第五列</td>
+<td>百分比显示已用磁盘分区大小</td>
+</tr>
+<tr>
+<td>第六列</td>
+<td>挂载目录</td>
+</tr>
+</tbody>
+</table>
+<p>第一列中带tmpfs的都是临时的文件系统，一般不看<br>df 后面加文件系统或者挂载点也是可以的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407214829.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407214846.jpg" alt=""></p>
+<p><code>-h</code>：人性化显示磁盘空间大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215653.jpg" alt=""><br><code>-m</code>：以MB显示磁盘空间大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215720.jpg" alt=""><br><code>-k</code>：以KB显示磁盘空间大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215733.jpg" alt=""><br><code>-i</code>：显示磁盘空间inode的使用情况 inode使用完即使还有剩余的磁盘空间也是不能写数据的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407215745.jpg" alt=""><br><code>-T</code>：显示文件类型<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408215232.jpg" alt=""></p>
 <blockquote>
-<p>usermod：更改用户属性</p>
+<p>free：显示内存的使用情况 可查swap的使用情况</p>
 </blockquote>
-<p>用法：<code>usermod [-u] [-g] [-s] [-d] [-G] [-L] [-U] 用户名</code><br><code>-u</code>：更改用户的uid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail -3 /etc/passwd    ##现在系统有三个普通用户</span><br><span class="line">kun1:x:1000:1000::/home/kun1:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -u 8888 kun1   ##更改kun1用户的uid为8888</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1000(kun1) 组=1000(kun1)</span><br></pre></td></tr></table></figure>
-<p><code>-g</code>：更改用户的gid<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -g kun2 kun1  ##更改kun1用户的组为kun2</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2)</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -g 1001 kun1  ##更改kun1用户的gid为1001 即kun2组</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2)</span><br></pre></td></tr></table></figure>
-<p><code>-d</code>：更改用户的家目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -d /home/kun2/ kun1  ##更改kun1用户的家目录为/home/kun2/</span><br><span class="line">[root@localhost ~]# tail -3 /etc/passwd</span><br><span class="line">kun1:x:8888:1001::/home/kun2/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<p><code>-s</code>；更改用户的shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -s /sbin/nologin kun1   ##更改kun1用户的shell为/sbin/nologin</span><br><span class="line">[root@localhost ~]# !tail</span><br><span class="line">tail -3 /etc/passwd</span><br><span class="line">kun1:x:8888:1001::/home/kun2/:/sbin/nologin</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<p><code>-G</code>：更改用户的扩展组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -G kun2,kun05 kun1   ##更改kun1用户的扩展组为kun2和kun05 多个组用，分开</span><br><span class="line">[root@localhost ~]# id kun1</span><br><span class="line">uid=8888(kun1) gid=1001(kun2) 组=1001(kun2),1390(kun05)</span><br></pre></td></tr></table></figure></p>
-<p><code>-L</code>：锁定用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -L kun1   ##锁定kun1用户的密码</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow  ##！表示密码被锁定了</span><br><span class="line">kun1:!$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
-<p><code>-U</code>：解锁用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod -U kun1   ##解锁kun1用户的密码</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-5用户密码管理"><a href="#3-5用户密码管理" class="headerlink" title="3.5用户密码管理"></a>3.5用户密码管理</h2><blockquote>
-<p>passwd：更改用户的密码</p>
+<p>用法：<code>free [-h][-b][-k][-m][-g]</code><br><code>-b</code>：以字节显示大小<br><code>-k</code>：以KB显示大小<br><code>-m</code>：以MB显示大小<br><code>-g</code>：以GB显示大小<br><code>-h</code>：人性化显示单位大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407220708.jpg" alt=""></p>
+<h2 id="4-2du命令"><a href="#4-2du命令" class="headerlink" title="4.2du命令"></a>4.2du命令</h2><blockquote>
+<p>du：查看文件或者目录的大小</p>
 </blockquote>
-<p>用法：<code>passwd 用户名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd kun1  ##更改kun1用户的密码</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">新的 密码：</span><br><span class="line">重新输入新的 密码：</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::    ##!!表示密码为空 *为密码不能登录 都是不能登录的</span><br></pre></td></tr></table></figure></p>
-<p><code>-l</code>：锁定用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd -l kun1    ##锁定kun1用户的密码</span><br><span class="line">锁定用户 kun1 的密码 。</span><br><span class="line">passwd: 操作成功</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow   ##kun11的密码前有!!表示密码被锁定了</span><br><span class="line">kun1:!!$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
-<p><code>-u</code>：解锁用户的密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd -u kun1   ##解锁kun1用户的密码</span><br><span class="line">解锁用户 kun1 的密码。</span><br><span class="line">passwd: 操作成功</span><br><span class="line">[root@localhost ~]# tail -3 /etc/shadow</span><br><span class="line">kun1:$6$c99FG6LD$EmcaYuauDJ8oLB7nOgQAc9ONYQAkeqAAucHlZDC4RmEwC0c9HREzwHh6kGkPDlSUJxSkj7VJqH7iAn/5uIVis.:17623:0:99999:7:::</span><br><span class="line">kun2:!!:17618:0:99999:7:::</span><br><span class="line">kun05:!!:17622:0:99999:7:::</span><br></pre></td></tr></table></figure></p>
-<p><code>--stdin</code>：更改用户密码 密码用明文显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# passwd --stdin kun1</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">123456</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
-<p>为了以后学习脚本 先看下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &quot;888888&quot;|passwd --stdin kun1  ##|为管道符 表示把左边的字符传给右边 这样可以一条命令完成更改密码</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
-<p>也可以下面这样的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo -e &quot;11111111\n11111111&quot;|passwd kun1  ## -e可以把\n转译成换行</span><br><span class="line">更改用户 kun1 的密码 。</span><br><span class="line">新的 密码：无效的密码： 密码是一个回文</span><br><span class="line">重新输入新的 密码：passwd：所有的身份验证令牌已经成功更新。</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-6mkpasswd命令"><a href="#3-6mkpasswd命令" class="headerlink" title="3.6mkpasswd命令"></a>3.6mkpasswd命令</h2><blockquote>
-<p>mkpasswd：生成密码工具</p>
+<p>用法：<code>du [-h][-b][-s] [文件或者目录]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407221933.jpg" alt=""><br><code>-h</code>：人性化显示单位大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222027.jpg" alt=""><br><code>-s</code>：显示目录的总计<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222141.jpg" alt=""><br><code>-b</code>：以字节显示文件大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408134749.jpg" alt=""><br>一般使用<code>du -sh</code>来查找文件或者目录的大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222356.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407222800.jpg" alt=""><br>du -sh 与ls -lh 命令查出来的文件大小并不一样 原因是系统中块的大小是 块/4k 当文件不够时候 du -sh也会显示一块的大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408135142.jpg" alt=""><br>但是du -sb 和ls-lh 查出来的文件大小是一样的</p>
+<h2 id="4-3-4-4磁盘分区"><a href="#4-3-4-4磁盘分区" class="headerlink" title="4.3/4.4磁盘分区"></a>4.3/4.4磁盘分区</h2><p>先了解基本分区 如图 其中扩展分区相当于壳子 逻辑分区只能建在扩展分区里面<br><img src="http://p6c0nmg4x.bkt.clouddn.com/777_140301233035_1.png" alt=""></p>
+<p>1.先在虚拟机上添加虚拟硬盘，在你的虚拟机名字右键点设置<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224219.jpg" alt=""><br>2.添加–&gt;硬盘–&gt;下一步<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224303.jpg" alt=""><br>3.这里我添加了5G的虚拟硬盘<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407224435.jpg" alt=""><br>4.重启并使用<code>fdisk -l</code>来查看刚刚添加的虚拟硬盘<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407225446.jpg" alt=""></p>
+<h3 id="fdisk命令"><a href="#fdisk命令" class="headerlink" title="fdisk命令"></a>fdisk命令</h3><blockquote>
+<p>fdisk：磁盘分区工具</p>
 </blockquote>
-<p>用法：<code>mkpasswd</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y expect  ##先安装包expect</span><br><span class="line">[root@localhost ~]# mkpasswd   </span><br><span class="line">vO70)dzmS</span><br></pre></td></tr></table></figure></p>
-<p><code>-l</code>：指定生成密码的长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkpasswd -l 20   ##指定生成的密码长度为20位</span><br><span class="line">uykpI1ng4rnekpezb&#125;pS</span><br></pre></td></tr></table></figure></p>
-<p><code>-s</code>：指定密码中特殊符号的数量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkpasswd -s 3  ##指定生成的密码有3个特殊符号</span><br><span class="line">KX60(i-)w</span><br></pre></td></tr></table></figure></p>
+<p>用法：<code>fdisk [-l] [磁盘名字]</code><br><code>-l</code>：查看系统都磁盘和分区情况<br><code>fdisk [磁盘名字]</code>进入磁盘分区模式 <code>只能支持2T以下的硬盘</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407230543.jpg" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407231026.jpg" alt=""><br>其中图中的几个命令经常使用</p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407231624.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407235419.jpg" alt=""><br><code>P为主分区 e为扩展分区 主分区和扩展分区总和最多建4个 序号1-4   l为逻辑分区 序号从5开始</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407232729.jpg" alt=""><br>我这里创建了1个1G大小的主分区 序号为1</p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407234735.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180407234935.jpg" alt=""><br>我这里删除了6号的逻辑分区 但是发现8浩分区不见了6号还在，说明了<code>逻辑分区的序号必须是连续的即使上一个逻辑分区给删除 下一个就会继承上一个逻辑分区的序号</code></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408000319.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408000331.jpg" alt=""><br>显示了刚刚配置的磁盘分区</p>
+<h2 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h2><p>这里我添加了一块3.2T的虚拟磁盘<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408110848.jpg" alt=""><br>使用fdisk来分区 发现警告<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408110940.jpg" alt=""><br>即使使用fdisk继续分区 这里我分了3T的扩展分区<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408115039.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408115337.jpg" alt=""><br>但是只能给我们分2T的空间 这样造成了磁盘空间的浪费</p>
+<blockquote>
+<p>parted命令</p>
+</blockquote>
+<p><code>parted</code>：磁盘分区工具，支持2T以上空间进行分区<br>用法：<code>parted [磁盘名字]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408123314.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408124030.jpg" alt=""><br><code>mkpart</code> 创建新分区。<br>格式：<code>mkpart PART-TYPE  [FS-TYPE]  START  END</code><br>PART-TYPE 类型主要有primary（主分区）, extended（扩展分区）, logical（逻辑区）. 扩展分区和逻辑分区只对msdos。<br>fs-type   文件系统类型，主要有fs32，NTFS，ext2，ext3等<br>start end 分区的起始和结束位置。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125127.jpg" alt=""><br>删除分区<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125303.jpg" alt=""><br>离开parted<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408125910.jpg" alt=""></p>
 
       
 
@@ -214,7 +286,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
         		</li>
       		
 		</ul>
@@ -270,7 +342,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/02/三周第二次课（4月3日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/08/三周第四次课（4月9日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +356,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/04/三周第三次课（4月4日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          三周第三次课（4月4日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/02/三周第一次课（4月2日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">三周第一次课（4月2日）</div>
+    <a href="/2018/04/04/三周第三次课（4月4日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">三周第三次课（4月4日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
