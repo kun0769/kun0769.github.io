@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152934.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408162210.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408163100.jpg">
-<meta property="og:updated_time" content="2018-04-09T13:51:50.678Z">
+<meta property="og:updated_time" content="2018-04-11T12:29:15.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三周第五次课（4月10日）">
 <meta name="twitter:description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
@@ -197,6 +197,7 @@
 <p>mount：挂载磁盘到目录下</p>
 </blockquote>
 <p>用法：<code>mount [-o] [磁盘名字] [挂载点]</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount /dev/sdb /mnt/  ##把sdb挂载到mnt目录下</span><br><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统        容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/sda3        18G 1013M   17G    6% /</span><br><span class="line">devtmpfs        483M     0  483M    0% /dev</span><br><span class="line">tmpfs           493M     0  493M    0% /dev/shm</span><br><span class="line">tmpfs           493M  6.8M  486M    2% /run</span><br><span class="line">tmpfs           493M     0  493M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1       197M   97M  100M   50% /boot</span><br><span class="line">tmpfs            99M     0   99M    0% /run/user/0</span><br><span class="line">/dev/sdb        5.0G   33M  5.0G    1% /mnt</span><br></pre></td></tr></table></figure></p>
+<p><code>-o</code>：对挂载内容(文件目录)设置参数</p>
 <table>
 <thead>
 <tr>
@@ -205,10 +206,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>-o</td>
-<td>对挂载内容(文件目录)设置参数</td>
-</tr>
 <tr>
 <td>defaults</td>
 <td>默认 包括rw suid exec auto nouser async</td>
@@ -556,19 +553,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
             
             <div class="clearfix"></div>
