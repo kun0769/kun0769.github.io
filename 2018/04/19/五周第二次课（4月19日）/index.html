@@ -6,15 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 磁盘管理 | kun0769的博客</title>
+  <title>五周第二次课（4月19日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/磁盘管理/index.html">
+  <meta name="description" content="7.6 yum更换国内源7.7 yum下载rpm包7.8/7.9 源码包安装">
+<meta name="keywords" content="Linux,软件包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五周第二次课（4月19日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/五周第二次课（4月19日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="7.6 yum更换国内源7.7 yum下载rpm包7.8/7.9 源码包安装">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180418234553.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180418235750.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419001708.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002024.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002545.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002905.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419201818.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419210322.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419211306.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419211940.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212412.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212739.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212852.jpg">
+<meta property="og:updated_time" content="2018-04-19T14:08:13.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="五周第二次课（4月19日）">
+<meta name="twitter:description" content="7.6 yum更换国内源7.7 yum下载rpm包7.8/7.9 源码包安装">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180418234553.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +159,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-五周第二次课（4月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      五周第二次课（4月19日）
+    </h1>
+  
+
+        
+        <a href="/2018/04/19/五周第二次课（4月19日）/" class="archive-article-date">
+  	<time datetime="2018-04-19T13:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>7.6 yum更换国内源<br>7.7 yum下载rpm包<br>7.8/7.9 源码包安装<br><a id="more"></a></p>
+<h2 id="7-6yum换国内源"><a href="#7-6yum换国内源" class="headerlink" title="7.6yum换国内源"></a>7.6yum换国内源</h2><h3 id="1-先删除系统默认源配置文件"><a href="#1-先删除系统默认源配置文件" class="headerlink" title="1.先删除系统默认源配置文件"></a>1.先删除系统默认源配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# rm -f CentOS-Base.repo  ##删除源配置文件</span><br></pre></td></tr></table></figure>
+<h3 id="2-下载国内的源配置文件"><a href="#2-下载国内的源配置文件" class="headerlink" title="2.下载国内的源配置文件"></a>2.下载国内的源配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# curl -O http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# wget http://mirrors.163.com/.help/CentOS7-Base-163.repo</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-清理缓存"><a href="#3-清理缓存" class="headerlink" title="3.清理缓存"></a>3.清理缓存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum clean all</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180418234553.jpg" alt=""></p>
+<blockquote>
+<p>yum安装扩张源</p>
+</blockquote>
+<p>当你觉得默认的仓库里面的命令还不够 可以下载扩张源来获得更多的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum install epel-release   ##安装扩张源</span><br></pre></td></tr></table></figure></p>
+<p>安装好了在/etc/yum.repos.d/ 目录下多了 epel.repo的源配置文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180418235750.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum list | grep epel  ##过滤出epel仓库中有哪些软件包</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-7yum下载rpm包"><a href="#7-7yum下载rpm包" class="headerlink" title="7.7yum下载rpm包"></a>7.7yum下载rpm包</h2><p>当你想下载某个软件包来放在系统中 前提系统没安装过此包 可以使用<code>--downloadonly</code></p>
+<blockquote>
+<p>yum install 软件包 –downloadonly：只下载软件包不安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum install zvbi --downloadonly</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419001708.jpg" alt=""></p>
+<p>系统默认软件包下载到 <code>/var/cache/yum/x86_64/7/对应仓库/packages/</code> 下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002024.jpg" alt=""></p>
+<blockquote>
+<p>yum install 软件包 –downloadonly –downloaddir 路径：只下载软件包不安装 并指定下载的路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum install zsh --downloadonly --downloaddir /tmp/  ##指定下载到tmp目录下</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002545.jpg" alt=""><br>zsh由于已经安装过可以使用下面命令</p>
+<blockquote>
+<p>yum reinstall 软件包 –downloadonly –downloaddir 路径：重新只下载软件包不安装 并指定下载的路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]# yum reinstall zsh --downloadonly --downloaddir /tmp/</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419002905.jpg" alt=""><br>可以发现zsh的软件包已经下载到了tmp目录下</p>
+<h2 id="7-8-7-9源码包安装"><a href="#7-8-7-9源码包安装" class="headerlink" title="7.8/7.9源码包安装"></a>7.8/7.9源码包安装</h2><h3 id="1-先去官网或者可信的网站去下载源码包"><a href="#1-先去官网或者可信的网站去下载源码包" class="headerlink" title="1.先去官网或者可信的网站去下载源码包"></a>1.先去官网或者可信的网站去下载源码包</h3><p>去下面网址来下载源码包 r.aminglinux.com<br>为了以后更加方便来管理源码包安装和卸载 我们以后默认把源码包下载到 <code>/usr/local/src</code> 目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/   ##进入/usr/local/src目录下</span><br><span class="line">[root@localhost src]# wget http://archive.apache.org/dist/httpd/httpd-2.2.9.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419201818.jpg" alt=""></p>
+<h3 id="2-解压源码包"><a href="#2-解压源码包" class="headerlink" title="2.解压源码包"></a>2.解压源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar -zxvf httpd-2.2.9.tar.gz</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419210322.jpg" alt=""><br>当你解压后发现多了个目录 该目录下就是源码包的内容 其中INSTALL是安装文档 README是介绍文件 </p>
+<h3 id="3-配置源码包"><a href="#3-配置源码包" class="headerlink" title="3.配置源码包"></a>3.配置源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.2.9]# ./configure --prefix=/usr/local/apache2   --prefix指定安装路径</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419211306.jpg" alt=""></p>
+<p>我们可以使用ehco $?来检查上一条命令有没问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.2.9]# echo $?  ##非零的数表示上一命令有问题</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>这里我们知道少了gcc工具，那就安装gcc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.2.9]# yum install -y gcc</span><br></pre></td></tr></table></figure></p>
+<p>之后再配置一次<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419211940.jpg" alt=""></p>
+<h3 id="4-编译源码包"><a href="#4-编译源码包" class="headerlink" title="4.编译源码包"></a>4.编译源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.2.9]# make  ##编译为二进制文件</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212412.jpg" alt=""><br>编译完成用 echo $? 看看有没有问题</p>
+<h3 id="5-安装源码包"><a href="#5-安装源码包" class="headerlink" title="5.安装源码包"></a>5.安装源码包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.2.9]# make install  ##把二进制文件安装到指定路径上</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212739.jpg" alt=""><br>安装完成用 echo $? 看看有没有问题</p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180419212852.jpg" alt=""><br>安装成功 下面这个目录就是这个源码包的安装目录 所以想删除卸载源码包 只需要删除此目录就可以了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/10/四周第一次课（4月11日）/" class="archive-article-date">
-  	<time datetime="2018-04-10T13:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/10/四周第一次课（4月11日）/">四周第一次课（4月11日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,109 +238,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">软件包</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/19/五周第二次课（4月19日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/09/三周第五次课（4月10日）/" class="archive-article-date">
-  	<time datetime="2018-04-09T13:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/18/五周第一次课（4月18日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">五周第一次课（4月18日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/09/三周第五次课（4月10日）/">三周第五次课（4月10日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/08/三周第四次课（4月9日）/" class="archive-article-date">
-  	<time datetime="2018-04-08T14:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/三周第四次课（4月9日）/">三周第四次课（4月9日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -304,9 +388,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
