@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>五周第四次课（4月23日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
+  <meta name="description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
+<meta name="keywords" content="Linux,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五周第四次课（4月23日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/五周第四次课（4月23日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210605.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223320.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223430.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223516.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223721.jpg">
+<meta property="og:updated_time" content="2018-04-22T15:07:25.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="五周第四次课（4月23日）">
+<meta name="twitter:description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +152,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-五周第四次课（4月23日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      五周第四次课（4月23日）
+    </h1>
+  
+
+        
+        <a href="/2018/04/22/五周第四次课（4月23日）/" class="archive-article-date">
+  	<time datetime="2018-04-22T14:50:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>8.6 管道符和作业控制<br>8.7/8.8 shell变量<br>8.9 环境变量配置文件<br><a id="more"></a></p>
+<h2 id="8-6-管道符"><a href="#8-6-管道符" class="headerlink" title="8.6 管道符"></a>8.6 管道符</h2><blockquote>
+<p>|：把前一个命令的内容输入给后面的命令</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens33 | grep &apos;IPADDR&apos; ##在ifcfg-ens33中找出带IPADDR的行</span><br><span class="line">IPADDR=192.168.80.100</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens33 | wc -l  ##统计ifcfg-ens33的行数</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
+<h2 id="作业控制"><a href="#作业控制" class="headerlink" title="作业控制"></a>作业控制</h2><blockquote>
+<p>Ctrl + z ：把运行的任务暂停并放进后台</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sleep 1000   ##sleep 1000 进入睡眠状态1000秒  </span><br><span class="line">^Z                                                  ##^Z 表示暂停</span><br><span class="line">[1]+  已停止               sleep 1000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>jobs：显示后台的任务列表情况</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# jobs    这里显示有一个任务停止 序号为1</span><br><span class="line">[1]+  已停止               sleep 1000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-l：显示进程号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# jobs -l</span><br><span class="line">[1]-  1158 运行中               sleep 1000 &amp;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>fg 序号：把任务放到前台运行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# fg 1</span><br><span class="line">sleep 1000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>bg 序号   或者  命令 &amp;： 把任务放到前台运行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bg 1</span><br><span class="line">[1]+ sleep 1000 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sleep 200 &amp;   ##命令后面加&amp;说明把任务放后台运行</span><br><span class="line">[2] 1160</span><br></pre></td></tr></table></figure>
+<h2 id="8-7-8-8-变量"><a href="#8-7-8-8-变量" class="headerlink" title="8.7/8.8 变量"></a>8.7/8.8 变量</h2><blockquote>
+<p>env：查看系统自带的变量</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg" alt=""></p>
+<blockquote>
+<p>set：查看系统所有的变量，包括用户自定义变量和系统变量</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210605.jpg" alt=""></p>
+<p>变量名命名规则：<code>数字，字母，下划线，首位不能是数字</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a1=1</span><br><span class="line">[root@localhost ~]# echo $a1</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a_1=2</span><br><span class="line">[root@localhost ~]# echo $a_1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# _1=3</span><br><span class="line">[root@localhost ~]# echo $_1</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# 1_a=4           ##首位不能是数字</span><br><span class="line">-bash: 1_a=4: 未找到命令</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>变量值用单引号 双引号 反引号的区别</p>
+<ul>
+<li><p>1.由单引号括起来的字符都作为普通字符出现。特殊字符用单引号括起来以后，也会失去原有意义，而只作为普通字符解释。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a=&apos;$d%^# sd[]&apos;  ##所有的特殊符号都作为普通字符打出来</span><br><span class="line">[root@localhost ~]# echo $a</span><br><span class="line">$d%^# sd[]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.由双引号括起来的字符，除$（美元符号）、\（反斜杠）、’（单引号）、和”（双引号）这几个字符仍是特殊字符并保留其特殊功能外，其余字符仍作为普通字符对待。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# b=&quot;$a\$&quot;    ##$a指定a的值     \$使$失去原意</span><br><span class="line">[root@localhost ~]# echo $b</span><br><span class="line">$d%^# sd[]$</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.反引号括起来的字符串被shell解释为命令行，在执行时，shell首先执行该命令行，并以它的标准输出结果取代整个反引号（包括两个反引号）部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# c=`whoami | wc -l`3  ##先执行反引号里面的命令</span><br><span class="line">[root@localhost ~]# echo $c</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
+<p><code>$()</code>也是可以表示反引号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# c=$(whoami | wc -l)3</span><br><span class="line">[root@localhost ~]# echo $c</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><blockquote>
+<p>export：设置全局变量 子bash中可以生效</p>
+</blockquote>
+<p>用法：<code>export 变量名=值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> [root@localhost ~]# export kun=&apos;234$$$@&apos;   ##父bash中定义变量</span><br><span class="line">[root@localhost ~]# echo $kun            </span><br><span class="line">234$$$@</span><br><span class="line">[root@localhost ~]# bash                    ##子bash中也生效</span><br><span class="line">[root@localhost ~]# echo $kun</span><br><span class="line">234$$$@</span><br></pre></td></tr></table></figure></p>
+<h2 id="取消变量"><a href="#取消变量" class="headerlink" title="取消变量"></a>取消变量</h2><blockquote>
+<p>unset：取消变量</p>
+</blockquote>
+<p>用法：<code>unset 变量名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unset kun</span><br><span class="line">[root@localhost ~]# echo $kun</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-9-环境变量的配置文件"><a href="#8-9-环境变量的配置文件" class="headerlink" title="8.9 环境变量的配置文件"></a>8.9 环境变量的配置文件</h2><p>环境变量的配置为解决分为系统级别 <code>/etc/profile</code> <code>/etc/bashrc</code> 和 用户级别 <code>~/.bashrc</code> <code>~/.bash_profile</code><br>其中<code>/etc/profile</code> <code>~/.bash_profile</code> 都是用户登录系统时候自动加载的<br>而<code>/etc/bashrc</code> <code>~/.bashrc</code>是不用用户登录 执行shell就生效的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223320.jpg" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223430.jpg" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223516.jpg" alt=""></p>
+<p><code>~/.bash_logout</code> 定义用户退出时候做的动作<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223721.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第四次课（3月29日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第四次课（3月29日）/">二周第四次课（3月29日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,197 +257,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/22/五周第四次课（4月23日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第三次课（3月28日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/20/五周第三次课（4月20日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">五周第三次课（4月20日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第三次课（3月28日）/">二周第三次课（3月28日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第二次课（3月27日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:17:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第二次课（3月27日）/">二周第二次课（3月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第一次课（3月26日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第一次课（3月26日）/">二周第一次课（3月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第五次课（3月23日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T12:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第五次课（3月23日）/">一周第五次课（3月23日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +407,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
