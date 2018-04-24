@@ -6,27 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>五周第四次课（4月23日） | kun0769的博客</title>
+  <title>五周第五次课（4月24日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
+  <meta name="description" content="8.10 shell特殊符号cut命令8.11 sort_wc_uniq命令8.12 tee_tr_split命令8.13 shell特殊符号下">
 <meta name="keywords" content="Linux,shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="五周第四次课（4月23日）">
-<meta property="og:url" content="http://yoursite.com/2018/04/22/五周第四次课（4月23日）/index.html">
+<meta property="og:title" content="五周第五次课（4月24日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/24/五周第五次课（4月24日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
+<meta property="og:description" content="8.10 shell特殊符号cut命令8.11 sort_wc_uniq命令8.12 tee_tr_split命令8.13 shell特殊符号下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210605.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223320.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223430.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223516.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223721.jpg">
-<meta property="og:updated_time" content="2018-04-22T15:07:25.752Z">
+<meta property="og:updated_time" content="2018-04-24T13:28:13.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="五周第四次课（4月23日）">
-<meta name="twitter:description" content="8.6 管道符和作业控制8.7/8.8 shell变量8.9 环境变量配置文件">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg">
+<meta name="twitter:title" content="五周第五次课（4月24日）">
+<meta name="twitter:description" content="8.10 shell特殊符号cut命令8.11 sort_wc_uniq命令8.12 tee_tr_split命令8.13 shell特殊符号下">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -152,94 +145,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-五周第四次课（4月23日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-五周第五次课（4月24日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      五周第四次课（4月23日）
+      五周第五次课（4月24日）
     </h1>
   
 
         
-        <a href="/2018/04/22/五周第四次课（4月23日）/" class="archive-article-date">
-  	<time datetime="2018-04-22T14:50:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
+        <a href="/2018/04/24/五周第五次课（4月24日）/" class="archive-article-date">
+  	<time datetime="2018-04-24T13:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>8.6 管道符和作业控制<br>8.7/8.8 shell变量<br>8.9 环境变量配置文件<br><a id="more"></a></p>
-<h2 id="8-6-管道符"><a href="#8-6-管道符" class="headerlink" title="8.6 管道符"></a>8.6 管道符</h2><blockquote>
+        <p>8.10 shell特殊符号cut命令<br>8.11 sort_wc_uniq命令<br>8.12 tee_tr_split命令<br>8.13 shell特殊符号下<br><a id="more"></a></p>
+<h2 id="8-10-8-13-shell中特殊符号"><a href="#8-10-8-13-shell中特殊符号" class="headerlink" title="8.10/8.13 shell中特殊符号"></a>8.10/8.13 shell中特殊符号</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>表示一个或多个任意字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>表示一个字符</td>
+</tr>
+<tr>
+<td>#</td>
+<td>注释符 </td>
+</tr>
+<tr>
+<td>\</td>
+<td>转义符</td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td>管道符</td>
+</tr>
+<tr>
+<td>$</td>
+<td>变量前缀，正则表示行尾</td>
+</tr>
+<tr>
+<td>;</td>
+<td>用于多条命令写一行</td>
+</tr>
+<tr>
+<td>~</td>
+<td>用户家目录 正则表示匹配符</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>放到命令后面，把命令放到后台运行</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>输出重定向符</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>指定字符中的一个</td>
+</tr>
+<tr>
+<td>&#124;&#124;</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*：表示一个或多个任意字符</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls *.txt</span><br><span class="line">1.txt  2.txt  3.txt  as1.txt  a.txt  学习计划.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>？：表示一个任意字符</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls ?.txt   </span><br><span class="line">1.txt  2.txt  3.txt  a.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>#：表示注释 不执行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# # rm /root/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>\： 将特殊字符变成一般字符</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# b=&quot;$a\$&quot;    ##$a指定a的值     \$使$失去原意</span><br><span class="line">[root@localhost ~]# echo $b</span><br><span class="line">$d%^# sd[]$</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>|：把前一个命令的内容输入给后面的命令</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens33 | grep &apos;IPADDR&apos; ##在ifcfg-ens33中找出带IPADDR的行</span><br><span class="line">IPADDR=192.168.80.100</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-ens33 | wc -l  ##统计ifcfg-ens33的行数</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
-<h2 id="作业控制"><a href="#作业控制" class="headerlink" title="作业控制"></a>作业控制</h2><blockquote>
-<p>Ctrl + z ：把运行的任务暂停并放进后台</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sleep 1000   ##sleep 1000 进入睡眠状态1000秒  </span><br><span class="line">^Z                                                  ##^Z 表示暂停</span><br><span class="line">[1]+  已停止               sleep 1000</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>jobs：显示后台的任务列表情况</p>
+<p>$：变量前缀，正则表示行尾</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# jobs    这里显示有一个任务停止 序号为1</span><br><span class="line">[1]+  已停止               sleep 1000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a1=1</span><br><span class="line">[root@localhost ~]# echo $a1   ##$a指定a1的值 </span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head -2 /etc/passwd |sed  &apos;1,$s/root/kun/g&apos;  ##$表示末行</span><br><span class="line">kun:x:0:0:kun:/kun:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>-l：显示进程号</p>
+<p>;：用于多条命令写一行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# jobs -l</span><br><span class="line">[1]-  1158 运行中               sleep 1000 &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir 1111;ls            ##依次执行两个命令</span><br><span class="line">111  1111  1.txt  2.txt  3.txt  anaconda-ks.cfg  as1.txt  a.txt  学习计划.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>fg 序号：把任务放到前台运行</p>
+<p>&amp;：放到命令后面，把命令放到后台运行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# fg 1</span><br><span class="line">sleep 1000</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>bg 序号   或者  命令 &amp;： 把任务放到前台运行</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# bg 1</span><br><span class="line">[1]+ sleep 1000 &amp;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sleep 200 &amp;   ##命令后面加&amp;说明把任务放后台运行</span><br><span class="line">[2] 1160</span><br></pre></td></tr></table></figure>
-<h2 id="8-7-8-8-变量"><a href="#8-7-8-8-变量" class="headerlink" title="8.7/8.8 变量"></a>8.7/8.8 变量</h2><blockquote>
-<p>env：查看系统自带的变量</p>
-</blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210402.jpg" alt=""></p>
 <blockquote>
-<p>set：查看系统所有的变量，包括用户自定义变量和系统变量</p>
+<p>>：把前一条命令的内容输出到文件里 </p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422210605.jpg" alt=""></p>
-<p>变量名命名规则：<code>数字，字母，下划线，首位不能是数字</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a1=1</span><br><span class="line">[root@localhost ~]# echo $a1</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a_1=2</span><br><span class="line">[root@localhost ~]# echo $a_1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# _1=3</span><br><span class="line">[root@localhost ~]# echo $_1</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# 1_a=4           ##首位不能是数字</span><br><span class="line">-bash: 1_a=4: 未找到命令</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>变量值用单引号 双引号 反引号的区别</p>
-<ul>
-<li><p>1.由单引号括起来的字符都作为普通字符出现。特殊字符用单引号括起来以后，也会失去原有意义，而只作为普通字符解释。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# a=&apos;$d%^# sd[]&apos;  ##所有的特殊符号都作为普通字符打出来</span><br><span class="line">[root@localhost ~]# echo $a</span><br><span class="line">$d%^# sd[]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2.由双引号括起来的字符，除$（美元符号）、\（反斜杠）、’（单引号）、和”（双引号）这几个字符仍是特殊字符并保留其特殊功能外，其余字符仍作为普通字符对待。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# b=&quot;$a\$&quot;    ##$a指定a的值     \$使$失去原意</span><br><span class="line">[root@localhost ~]# echo $b</span><br><span class="line">$d%^# sd[]$</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>3.反引号括起来的字符串被shell解释为命令行，在执行时，shell首先执行该命令行，并以它的标准输出结果取代整个反引号（包括两个反引号）部分。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# c=`whoami | wc -l`3  ##先执行反引号里面的命令</span><br><span class="line">[root@localhost ~]# echo $c</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
-<p><code>$()</code>也是可以表示反引号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# c=$(whoami | wc -l)3</span><br><span class="line">[root@localhost ~]# echo $c</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><blockquote>
-<p>export：设置全局变量 子bash中可以生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &apos;sadfsd&apos;&gt; a.txt  ##把sadfsd输出到a里 a原来的内容会删除</span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">sadfsd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>>&gt;：把前一条命令的内容追加到文件里 </p>
 </blockquote>
-<p>用法：<code>export 变量名=值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> [root@localhost ~]# export kun=&apos;234$$$@&apos;   ##父bash中定义变量</span><br><span class="line">[root@localhost ~]# echo $kun            </span><br><span class="line">234$$$@</span><br><span class="line">[root@localhost ~]# bash                    ##子bash中也生效</span><br><span class="line">[root@localhost ~]# echo $kun</span><br><span class="line">234$$$@</span><br></pre></td></tr></table></figure></p>
-<h2 id="取消变量"><a href="#取消变量" class="headerlink" title="取消变量"></a>取消变量</h2><blockquote>
-<p>unset：取消变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &apos;sadfsd&apos;&gt;&gt; a.txt  ##把sadfsd追加到a里 a原来的内容不删除</span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">sadfsd</span><br><span class="line">sadfsd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2&gt;：把前一条命令的错误内容输出到文件里 </p>
 </blockquote>
-<p>用法：<code>unset 变量名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# unset kun</span><br><span class="line">[root@localhost ~]# echo $kun</span><br></pre></td></tr></table></figure></p>
-<h2 id="8-9-环境变量的配置文件"><a href="#8-9-环境变量的配置文件" class="headerlink" title="8.9 环境变量的配置文件"></a>8.9 环境变量的配置文件</h2><p>环境变量的配置为解决分为系统级别 <code>/etc/profile</code> <code>/etc/bashrc</code> 和 用户级别 <code>~/.bashrc</code> <code>~/.bash_profile</code><br>其中<code>/etc/profile</code> <code>~/.bash_profile</code> 都是用户登录系统时候自动加载的<br>而<code>/etc/bashrc</code> <code>~/.bashrc</code>是不用用户登录 执行shell就生效的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223320.jpg" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223430.jpg" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223516.jpg" alt=""></p>
-<p><code>~/.bash_logout</code> 定义用户退出时候做的动作<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180422223721.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# eadf 2&gt; a.txt </span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">-bash: eadf: 未找到命令</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2&gt;&gt;：把前一条命令的错误内容追加到文件里 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# eadf 2&gt;&gt; a.txt</span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">-bash: eadf: 未找到命令</span><br><span class="line">-bash: eadf: 未找到命令</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&amp;&gt;：把前一条命令正确和错误内容输出到文件里 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [0-9].txt sd.txt &amp;&gt; a.txt </span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">ls: 无法访问sd.txt: 没有那个文件或目录</span><br><span class="line">1.txt</span><br><span class="line">2.txt</span><br><span class="line">3.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&amp;&gt;&gt;：把前一条命令正确和错误内容追加到文件里 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [0-9].txt sd.txt &amp;&gt;&gt; a.txt</span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">ls: 无法访问sd.txt: 没有那个文件或目录</span><br><span class="line">1.txt</span><br><span class="line">2.txt</span><br><span class="line">3.txt</span><br><span class="line">ls: 无法访问sd.txt: 没有那个文件或目录</span><br><span class="line">1.txt</span><br><span class="line">2.txt</span><br><span class="line">3.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [0-9].txt sd.txt &gt; a.txt 2&gt; 2.txt  ##把正确的内容输出到a.txt 错误的内容输出到2.txt</span><br><span class="line">[root@localhost ~]# cat a.txt</span><br><span class="line">1.txt</span><br><span class="line">2.txt</span><br><span class="line">3.txt</span><br><span class="line">[root@localhost ~]# cat 2.txt</span><br><span class="line">ls: 无法访问sd.txt: 没有那个文件或目录</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[]{}：指定字符中的一个</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [0-9].txt  ##表示0到9中的其中一个数字</span><br><span class="line">1.txt  2.txt  3.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls [0-9a-z].txt</span><br><span class="line">1.txt  2.txt  3.txt  a.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls &#123;1,2,3&#125;.txt ##表示1,2,3中的其中一个</span><br><span class="line">1.txt  2.txt  3.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>||：前一个命令为假才执行后一个命令，反之</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls as.txt || wc -l 学习计划.txt   ##前一个命令是假才执行下一个命令</span><br><span class="line">ls: 无法访问as.txt: 没有那个文件或目录</span><br><span class="line">657 学习计划.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls 1.txt || wc -l 学习计划.txt   ##前一个命令是真就不执行后一个命令</span><br><span class="line">1.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&amp;&amp;：前一个命令为真才执行后一个命令，反之</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls 1.txt &amp;&amp; wc -l 学习计划.txt  ##前一个命令是真才执行下一个命令</span><br><span class="line">1.txt</span><br><span class="line">657 学习计划.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls as.txt &amp;&amp; wc -l 学习计划.txt   ##前一个命令是假就不执行后一个命令</span><br><span class="line">ls: 无法访问as.txt: 没有那个文件或目录</span><br></pre></td></tr></table></figure>
+<h2 id="8-11-8-12-和管道符相关的命令"><a href="#8-11-8-12-和管道符相关的命令" class="headerlink" title="8.11/8.12 和管道符相关的命令"></a>8.11/8.12 和管道符相关的命令</h2><blockquote>
+<p>cut： 截取工具</p>
+</blockquote>
+<p><code>-d</code>：指定字符作为分隔符<br><code>-f</code>：指定段号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head -2 /etc/passwd | cut -d &quot;:&quot; -f 1-5   </span><br><span class="line">root:x:0:0:root</span><br><span class="line">bin:x:1:1:bin</span><br></pre></td></tr></table></figure></p>
+<p><code>-c</code>：截取指定第几个字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head -2 /etc/passwd | cut -c 3-6   ##指定第3个到第6个字符</span><br><span class="line">ot:x</span><br><span class="line">n:x:</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>sort：排序工具</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat 1.txt | sort   ##sort默认是以ascii码排序</span><br><span class="line">;;</span><br><span class="line">&#123;</span><br><span class="line">*&amp;</span><br><span class="line">+</span><br><span class="line">1212</span><br><span class="line">1222</span><br><span class="line">234</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">asdf</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<p><code>-n</code>：以数字顺序来排序 特殊符号默认为0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat 1.txt | sort -n</span><br><span class="line">;;</span><br><span class="line">&#123;</span><br><span class="line">*&amp;</span><br><span class="line">+</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">asdf</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">234</span><br><span class="line">1212</span><br><span class="line">1222</span><br></pre></td></tr></table></figure></p>
+<p><code>-r</code>：以数字顺序来反排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat 1.txt | sort -r</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">asdf</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">234</span><br><span class="line">1222</span><br><span class="line">1212</span><br><span class="line">+</span><br><span class="line">*&amp;</span><br><span class="line">&#123;</span><br><span class="line">;;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>wc：统计工具</p>
+</blockquote>
+<p><code>-l</code>：统计行数<br><code>-w</code>：统计词数<br><code>-m</code>：统计字符数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# wc 1.txt</span><br><span class="line">13  13 212 1.txt</span><br><span class="line">[root@localhost ~]# wc -l 1.txt</span><br><span class="line">13 1.txt</span><br><span class="line">[root@localhost ~]# wc -m 1.txt</span><br><span class="line">212 1.txt</span><br><span class="line">[root@localhost ~]# wc -w 1.txt</span><br><span class="line">13 1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>uniq：按照顺序去重复 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# uniq 2.txt   ##111并没有去重</span><br><span class="line">111</span><br><span class="line">sdfsdf</span><br><span class="line">111</span><br><span class="line">kun</span><br><span class="line">12442</span><br><span class="line">=</span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sort -n 2.txt |uniq   ##先sort来排序 在uniq来去重</span><br><span class="line">=</span><br><span class="line">-</span><br><span class="line">kun</span><br><span class="line">sdfsdf</span><br><span class="line">111</span><br><span class="line">12442</span><br></pre></td></tr></table></figure>
+<p><code>-c</code>：统计重复的行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sort -n 2.txt |uniq -c</span><br><span class="line">      1 =</span><br><span class="line">      1 -</span><br><span class="line">      2 kun</span><br><span class="line">      1 sdfsdf</span><br><span class="line">      2 111</span><br><span class="line">      1 12442</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>tee：重定向并在屏幕显示内容</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat 2.txt |tee 1.txt   ##把2.txt内容重定向到1.txt里</span><br><span class="line">111</span><br><span class="line">111</span><br></pre></td></tr></table></figure>
+<p><code>-a</code>：追加重定向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat 2.txt |tee -a 1.txt  ##-a表示追加内容到1.txt中</span><br><span class="line">111</span><br><span class="line">111</span><br><span class="line">[root@localhost ~]# cat 1.txt</span><br><span class="line">111</span><br><span class="line">111</span><br><span class="line">111</span><br><span class="line">111</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>tr：替换字符</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &apos;kunassd&apos; | tr &apos;a&apos; &apos;A&apos;</span><br><span class="line">kunAssd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>split：切割文件工具</p>
+</blockquote>
+<p><code>-b</code>：指定文件大小来切割文件（默认单位是字节）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# split -b 100k a.txt  ##按100k来切割文件</span><br><span class="line">[root@localhost test]# ll -h</span><br><span class="line">总用量 480K</span><br><span class="line">-rw-r--r--. 1 root root 237K 4月  25 03:45 a.txt</span><br><span class="line">-rw-r--r--. 1 root root 100K 4月  25 03:49 xaa</span><br><span class="line">-rw-r--r--. 1 root root 100K 4月  25 03:49 xab</span><br><span class="line">-rw-r--r--. 1 root root  37K 4月  25 03:49 xac</span><br></pre></td></tr></table></figure></p>
+<p><code>-l</code>：指定文件的行来切割文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# split -l 1000 a.txt   ##按文件中每1000行来切割文件</span><br><span class="line">[root@localhost test]# wc -l *</span><br><span class="line">  6047 a.txt</span><br><span class="line">  1000 xaa</span><br><span class="line">  1000 xab</span><br><span class="line">  1000 xac</span><br><span class="line">  1000 xad</span><br><span class="line">  1000 xae</span><br><span class="line">  1000 xaf</span><br><span class="line">    47 xag</span><br><span class="line">12094 总用量</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -313,7 +410,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/22/五周第四次课（4月23日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/24/五周第五次课（4月24日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -327,18 +424,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/24/五周第五次课（4月24日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          五周第五次课（4月24日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/20/五周第三次课（4月20日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">五周第三次课（4月20日）</div>
+    <a href="/2018/04/22/五周第四次课（4月23日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">五周第四次课（4月23日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
