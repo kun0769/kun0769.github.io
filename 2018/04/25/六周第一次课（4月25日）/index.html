@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/3 | kun0769的博客</title>
+  <title>六周第一次课（4月25日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/03/page/3/index.html">
+  <meta name="description" content="9.1 正则介绍_grep上9.2 grep中9.3 grep下">
+<meta name="keywords" content="Linux,正则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="六周第一次课（4月25日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/六周第一次课（4月25日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="9.1 正则介绍_grep上9.2 grep中9.3 grep下">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg">
+<meta property="og:updated_time" content="2018-04-25T15:08:30.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="六周第一次课（4月25日）">
+<meta name="twitter:description" content="9.1 正则介绍_grep上9.2 grep中9.3 grep下">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,64 +148,294 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-六周第一次课（4月25日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2018-03-25T12:50:50.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/25/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      六周第一次课（4月25日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/25/六周第一次课（4月25日）/" class="archive-article-date">
+  	<time datetime="2018-04-25T14:52:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>9.1 正则介绍_grep上<br>9.2 grep中<br>9.3 grep下<br><a id="more"></a></p>
+<h2 id="9-1正则"><a href="#9-1正则" class="headerlink" title="9.1正则"></a>9.1正则</h2><p>正则就是带有特殊符号的字符串 其中特殊符号代表某些含义，各种编程语言和shell脚本中都经常运用</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>表示字符中的一个</td>
+</tr>
+<tr>
+<td>^</td>
+<td>表示开头 在中括号里表示非</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>表示行尾</td>
+</tr>
+<tr>
+<td>.</td>
+<td>表示任意一个字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>表示前一个字符出现0次或者多次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>表示前一个字符出现1次或者多次 grep需转义</td>
+</tr>
+<tr>
+<td>?</td>
+<td>表示前一个字符出现0次或者1次 grep需转义</td>
+</tr>
+<tr>
+<td>.*</td>
+<td>表示任意字符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>表示转义</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>表示范围 出现次数 grep需转义</td>
+</tr>
+<tr>
+<td>()</td>
+<td>表示整体 grep需转义</td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td>表示或者 grep需转义</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-2-9-3grep-egrep命令"><a href="#9-2-9-3grep-egrep命令" class="headerlink" title="9.2/9.3grep/egrep命令"></a>9.2/9.3grep/egrep命令</h2><blockquote>
+<p>grep：文本搜索工具 过滤指定关键词</p>
+</blockquote>
+<p>用法：<code>grep [-cinvrABC] &#39;word&#39; 文件名</code><br><code>-n</code>：显示行号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -n &apos;root&apos; 1.txt   ##过滤带root的行和显示行号</span><br><span class="line">1:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">10:operator:x:11:0:operator:/root:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-c</code>：合计总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -c &apos;root&apos; 1.txt  ##合计出带root的行数</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p><code>-i</code>：不区分大小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -i &apos;root&apos; 1.txt    ##不区分关键词大小写来过滤带root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-v</code>：取反查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -v &apos;sbin&apos; 1.txt  ##过滤出不带有sbin行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-r</code>：遍历所有子目录来过滤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -r &apos;sbin&apos; /etc/  ##遍历etc目录下的所有文件和目录来过滤出带有sbin的行</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg" alt=""></p>
+<p><code>-An（n为数字）</code>：过滤出符合要求的行和下面n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nA2 &apos;root&apos; 1.txt   ##过滤出带root的行和下面2行</span><br><span class="line">1:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2-bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">3-daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-Bn（n为数字）</code>：过滤出符合要求的行和上面n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nB2 &apos;ROOT&apos; 1.txt   ##过滤出带ROOT的行和上面2行</span><br><span class="line">8-halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">9-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">10:operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-Cn（n为数字）</code>：过滤出符合要求的行和上下面各n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nC2 &apos;ROOT&apos; 1.txt    ##过滤出带ROOT的行和上面下面各2行</span><br><span class="line">8-halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">9-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">10:operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br><span class="line">11-games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">12-ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-E</code>：等同使用egrep命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -E &apos;o&#123;2&#125;&apos; 1.txt  ##等于egrp 其中&#123;&#125;在egrep中不需要转义</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<h2 id="grep中正则用法"><a href="#grep中正则用法" class="headerlink" title="grep中正则用法"></a>grep中正则用法</h2><blockquote>
+<p>grep ‘[0-9]’ /etc/inittab 过滤出带数字的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep &apos;[0-9]&apos; /etc/inittab  </span><br><span class="line"># multi-user.target: analogous to runlevel 3</span><br><span class="line"># graphical.target: analogous to runlevel 5</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep -v ‘[0-9]’ /etc/inittab  过滤出不带数字的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -v &apos;[0-9]&apos; /etc/inittab</span><br><span class="line"># inittab is no longer used when using systemd.</span><br><span class="line">#</span><br><span class="line"># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</span><br><span class="line">#</span><br><span class="line"># Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target</span><br><span class="line">#</span><br><span class="line"># systemd uses &apos;targets&apos; instead of runlevels. By default, there are two main targets:</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep -vn ‘^#’ 2.txt     过滤出开头不带#的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -vn &apos;^#&apos; 2.txt</span><br><span class="line">11:aasf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep  &apos;^#&apos; 2.txt |grep -v &apos;^#$&apos;  先过滤出开头是#的行再过滤出不是开头为#的空行的行</span><br><span class="line"># inittab is no longer used when using systemd.</span><br><span class="line"># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</span><br><span class="line"># Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target</span><br><span class="line"># systemd uses &apos;targets&apos; instead of runlevels. By default, there are two main targets:</span><br><span class="line"># multi-user.target: analogous to runlevel 3</span><br><span class="line"># graphical.target: analogous to runlevel 5</span><br><span class="line"># To view current default target, run:</span><br><span class="line"># systemctl get-default</span><br><span class="line"># To set a default target, run:</span><br><span class="line"># systemctl set-default TARGET.target</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep ‘^[^a-zA-Z]’ 2.txt   过滤出开头为非字母的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep &apos;^[^a-zA-Z]&apos; 2.txt</span><br><span class="line"># inittab is no longer used when using systemd.</span><br><span class="line">#</span><br><span class="line"># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</span><br><span class="line">#</span><br><span class="line"># Ctrl-Alt-Delete is handled by /usr/lib/systemd/system/ctrl-alt-del.target</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep ‘r.o’ 1.txt  过滤出有ro之间有任意一个字符的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep &apos;r.o&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep  ‘r*o’ 1.txt  过滤出有ro之间有0个或者多个r的行 即 o ro rro ….</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep  &apos;r*o&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep  ‘.*‘ 1.txt   过滤出任意字符  .*表示任意字符</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep  &apos;roo.*bash&apos; 1.txt  ##过滤出roo和bash之前任意字符的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>grep ‘o{2}‘ 1.txt   过滤出o出现2次的行 {2}表示出现2次 grep中需要转义</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep &apos;o\&#123;2\&#125;&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# egrep &apos;o&#123;2&#125;&apos; 1.txt  同上面一样 egrep不需要转义</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>egrep ‘(oo){1}’ 1.txt  过滤出oo出现1次的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# egrep &apos;(oo)&#123;1&#125;&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>egrep ‘o+o’ 1.txt   过滤出有oo之间有1个或者多个o的行 即oo ooo ….</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# egrep &apos;o+o&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>egrep ‘r?o’ 1.txt  过滤出有ro之间有0个或者1个r的行 即o或者ro</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# egrep &apos;r?o&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>egrep ‘root|sbin’ 1.txt 过滤出带有root或者sbin的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# egrep &apos;root|sbin&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">简介</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/25/六周第一次课（4月25日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/24/五周第五次课（4月24日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">五周第五次课（4月24日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/03/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/03/">1</a><a class="page-number" href="/archives/2018/03/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -220,8 +458,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
