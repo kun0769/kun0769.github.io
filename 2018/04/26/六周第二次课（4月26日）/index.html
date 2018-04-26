@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>六周第二次课（4月26日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/6/index.html">
+  <meta name="description" content="9.4/9.5 sed">
+<meta name="keywords" content="Linux,正则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="六周第二次课（4月26日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/六周第二次课（4月26日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="9.4/9.5 sed">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-26T15:36:30.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="六周第二次课（4月26日）">
+<meta name="twitter:description" content="9.4/9.5 sed">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +145,129 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-六周第二次课（4月26日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/一周第二次课（3月20日）/" class="archive-article-date">
-  	<time datetime="2018-03-30T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/一周第二次课（3月20日）/">一周第二次课（3月20日）</a>
+    <h1 class="article-title" itemprop="name">
+      六周第二次课（4月26日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
+  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>9.4/9.5 sed<br><a id="more"></a></p>
+<h2 id="9-4-9-5-sed命令"><a href="#9-4-9-5-sed命令" class="headerlink" title="9.4/9.5 sed命令"></a>9.4/9.5 sed命令</h2><blockquote>
+<p>sed：文本处理工具 主要用于替换指定字符</p>
+</blockquote>
+<p>用法：<code>sed [-nrei] &#39;内容&#39; 文件名</code></p>
+<h3 id="sed中的命令"><a href="#sed中的命令" class="headerlink" title="sed中的命令"></a>sed中的命令</h3><table>
+<thead>
+<tr>
+<th>字母</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p</td>
+<td>打印</td>
+</tr>
+<tr>
+<td>d</td>
+<td>删除 </td>
+</tr>
+<tr>
+<td>s</td>
+<td>替换</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局</td>
+</tr>
+<tr>
+<td>I</td>
+<td>不区分大小写</td>
+</tr>
+</tbody>
+</table>
+<p><code>-n</code>：只显示查找内容的行 可和p使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;p 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-r</code>：支持扩展正则表达式 即+ ? () {} | 不需要转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -nr &apos;/o+t/&apos;p 1.txt  ##+需要转义</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-e</code>：同时执行多个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -e &apos;5&apos;p -e &apos;/root/&apos;p -n 1.txt   ##打印出第五行和带有root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-i</code>：修改文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -i &apos;1,20&apos;d 1.txt   ##显示20行之后的行并删除文件1-20行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>p打印 </p>
+</blockquote>
+<p>用法：<code>sed -n &#39;内容&#39;p 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;5&apos;p 1.txt  ##打印第五行</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;2,4&apos;p 1.txt   ##打印第二到第四行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;p 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>I不区分匹配字符的大小写</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;Ip 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>d删除  实际对文件内容不影响</p>
+</blockquote>
+<p>用法：<code>sed &#39;内容&#39;d 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1&apos;d 1.txt  ##显示1行之后的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1,20&apos;d 1.txt   ##显示20行之后的行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;/oot/&apos;d 1.txt  ##显示不带有oot的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>s替换 不输人范围默认全部行</p>
+</blockquote>
+<p>用法：<code>sed &#39;范围 s/word1/word2/g&#39; 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1,5s/sbin/kun/g&apos; 1.txt  ##1-5行中把sbin全局替换为kun</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/kun/nologin</span><br><span class="line">daemon:x:2:2:daemon:/kun:/kun/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/kun/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/kun/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;s#/sbin/#123#g&apos; 1.txt  视同# @来做替换符也是可以的</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:123nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:123nologin</span><br></pre></td></tr></table></figure>
+<h2 id="sed中正则用法"><a href="#sed中正则用法" class="headerlink" title="sed中正则用法"></a>sed中正则用法</h2><blockquote>
+<p>sed -n ‘1,$’p 1.txt  打印出所有行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;1,$&apos;p 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -n ‘/^1/‘p 1.txt   打印开头是1的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/^1/&apos;p 1.txt</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -n ‘/lt$/‘p 1.txt  打印结尾是lt的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/lt$/&apos;p 1.txt</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -n ‘/r..o/‘p 1.txt  打印出ro间有两个任意字符的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/r..o/&apos;p 1.txt</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User for polkitd:/:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -n ‘/oo*/‘p 1.txt   打印带o oo … 的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/oo*/&apos;p 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -r ‘s/([^:]+):(.*):([^:]+)/\3:\2:\1/‘ 1.txt   把第一段和最后一段换位置  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -r &apos;s/([^:]+):(.*):([^:]+)/\3:\2:\1/&apos; 1.txt   ##([^:]+)表示非:的1或者多个字符  \数字表示前括号的序号</span><br><span class="line">/bin/bash:x:0:0:root:/root:root</span><br><span class="line">/sbin/nologin:x:1:1:bin:/bin:bin</span><br><span class="line">/sbin/nologin:x:2:2:daemon:/sbin:daemon</span><br><span class="line">/sbin/nologin:x:3:4:adm:/var/adm:adm</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed ‘s/[a-zA-Z]//g’ 1.txt  把字母替换成空 即删除字母</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;s/[a-zA-Z]//g&apos; 1.txt</span><br><span class="line">::0:0::/://</span><br><span class="line">::1:1::/://</span><br><span class="line">::2:2::/://</span><br><span class="line">::3:4:://://</span><br><span class="line">::4:7::///://</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed ‘s/[0-9]//g’ 1.txt  把数字替换成空 即删除数字</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;s/[0-9]//g&apos; 1.txt</span><br><span class="line">root:x:::root:/root:/bin/bash</span><br><span class="line">bin:x:::bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:::daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -r ‘s/(.*)/kun.&amp;/g’ 1.txt  把所有行前面加上kun.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -r &apos;s/(.*)/kun.&amp;/g&apos; 1.txt  ##&amp;表示前面的括号</span><br><span class="line">kun.root:x:0:0:root:/root:/bin/bash</span><br><span class="line">kun.bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">kun.daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,71 +277,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/26/六周第二次课（4月26日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/25/六周第一次课（4月25日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">六周第一次课（4月25日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/一周第一次课（3月19日）/">一周第一次课（3月19日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/page/5/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/4/">4</a><a class="page-number" href="/tags/Linux/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
   
+
+  
+
+  
+
 
 
           </div>
@@ -266,9 +427,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
