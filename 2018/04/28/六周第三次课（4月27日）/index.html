@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 基础配置 | kun0769的博客</title>
+  <title>六周第三次课（4月27日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/基础配置/index.html">
+  <meta name="description" content="9.6/9.7 awk">
+<meta name="keywords" content="Linux,正则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="六周第三次课（4月27日）">
+<meta property="og:url" content="http://yoursite.com/2018/04/28/六周第三次课（4月27日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="9.6/9.7 awk">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-27T16:49:00.445Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="六周第三次课（4月27日）">
+<meta name="twitter:description" content="9.6/9.7 awk">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +145,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-六周第三次课（4月27日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      六周第三次课（4月27日）
+    </h1>
+  
+
+        
+        <a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
+  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>9.6/9.7 awk<br><a id="more"></a></p>
+<h2 id="9-6-9-7awk命令"><a href="#9-6-9-7awk命令" class="headerlink" title="9.6/9.7awk命令"></a>9.6/9.7awk命令</h2><p>awk是一种编程语言工具 可以通过分段 算数和判断等方式来匹配内容 还内涵数组，函数等等 默认支持扩展正则<br>用法：<code>awk [-F 分隔符号] &#39;内容&#39; 文件名</code><br><code>-F</code>：指定分隔符号 不写默认空格为分隔符号</p>
+<h3 id="打印功能"><a href="#打印功能" class="headerlink" title="打印功能"></a>打印功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;&#123;print $1&#125;&apos; 1.txt   ##&#123;print $1&#125;为打印第一段</span><br><span class="line">root</span><br><span class="line">bin</span><br><span class="line">daemon</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;&#123;print $0&#125;&apos; 1.txt   ##$0表示整一行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>显示多段用，分开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;&#123;print $1,$4&#125;&apos; 1.txt  ##打印第一段和第四段 </span><br><span class="line">root 0</span><br><span class="line">bin 1</span><br><span class="line">daemon 2</span><br></pre></td></tr></table></figure></p>
+<p>我们也可以用#来显示打印的分隔符号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;&#123;print $1&quot;#&quot;$2&quot;#&quot;$5&#125;&apos; 1.txt  ##&quot;#&quot;为显示#这个字符 </span><br><span class="line">root#x#root</span><br><span class="line">bin#x#bin</span><br><span class="line">daemon#x#daemon</span><br></pre></td></tr></table></figure></p>
+<h3 id="匹配功能"><a href="#匹配功能" class="headerlink" title="匹配功能"></a>匹配功能</h3><p>匹配出有oo的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk &apos;/oo/&apos; 1.txt   ##匹配带有oo的行 类似sed的匹配</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p>以某段来匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;$1 ~ /oo/&apos; 1.txt  ##~表示含有 第一段含有oo的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>还支持多次匹配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;/root/ &#123;print $1,$3&#125; /kun/ &#123;print $1,$7&#125;&apos; 1.txt  </span><br><span class="line">root 0</span><br><span class="line">kun1 /bin/bash</span><br><span class="line">kun2 /bin/bash</span><br><span class="line">kun05 /bin/bash</span><br></pre></td></tr></table></figure></p>
+<h3 id="比较功能"><a href="#比较功能" class="headerlink" title="比较功能"></a>比较功能</h3><p><code>==</code>为等于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3==0&apos; 1.txt  ##第三段等于0的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3&gt;=500&apos; 1.txt  ##第三段大于等于500的行</span><br><span class="line">polkitd:x:999:997:User for polkitd:/:/sbin/nologin</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure>
+<p><code>&quot;&quot;</code>表示字符串 字符串比较用ascii码比较 500字符用第一位5来比较大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3&gt;=&quot;500&quot;&apos; 1.txt 第三段大于等于500这个字符串的行</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User for polkitd:/:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>!=</code>为不低于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$7!=&quot;/sbin/nologin&quot;&apos; 1.txt </span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br></pre></td></tr></table></figure></p>
+<p>比较两个段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3&lt;$4&apos; 1.txt  ##第三段小于第四段的行</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>&amp;&amp;</code>为并且<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3&gt;&quot;5&quot; &amp;&amp; $3&lt;&quot;7&quot;&apos; 1.txt ##第三段大于5并且小于7的字符串的行</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br></pre></td></tr></table></figure></p>
+<p><code>||</code>为或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$3&gt;1000 || $1 ~ /oo/&apos; 1.txt  ##第三段大于1000或者第一段含有oo的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OFS</td>
+<td>指定显示屏幕的分隔符号</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>段数</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>行数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>OFS指定@为显示的分隔符号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;OFS=&quot;@&quot;&#125; &#123;print $1,$2&#125;&apos; 1.txt</span><br><span class="line">root@x</span><br><span class="line">bin@x</span><br><span class="line">daemon@x</span><br></pre></td></tr></table></figure>
+<p>嵌套if语言来表示匹配的条件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;OFS=&quot;@&quot;&#125; &#123;if ($3&gt;1000) &#123;print $1,$7&#125;&#125;&apos; 1.txt</span><br><span class="line">kun1@/bin/bash</span><br><span class="line">kun2@/bin/bash</span><br><span class="line">kun05@/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;OFS=&quot;@&quot;&#125; $3&gt;1000 &#123;print $1,$7&#125;&apos; 1.txt</span><br><span class="line">kun1@/bin/bash</span><br><span class="line">kun2@/bin/bash</span><br><span class="line">kun05@/bin/bash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>NR显示行号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;print NR&quot;:&quot;$0&#125;&apos; 1.txt  ##每行开头加上 行数：</span><br><span class="line">1:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2:bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">3:daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>NF显示段数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;print NF&quot;:&quot;$0&#125;&apos; 1.txt</span><br><span class="line">7:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">7:bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">7:daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>NR NF可以作为判断条件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;NR&lt;10 &#123;print NR&quot;:&quot;$0&#125;&apos; 1.txt  ##打印前十行</span><br><span class="line">1:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2:bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">3:daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">4:adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">5:lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">6:sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">7:shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">8:halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">9:mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p>也可以和&amp;&amp; ||来作比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;NR&lt;=10 &amp;&amp; $1 ~/root|adm/ &#123;print $0&#125;&apos; 1.txt ##行号小于大于10并且第一段root或者adm的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;print $NR&quot;:&quot;$NF&#125;&apos; 1.txt ##理解为第一行$1:$7 第二行$2:$7...</span><br><span class="line">root:/bin/bash</span><br><span class="line">x:/sbin/nologin</span><br><span class="line">2:/sbin/nologin</span><br><span class="line">4:/sbin/nologin</span><br><span class="line">lp:/sbin/nologin</span><br><span class="line">/sbin:/bin/sync</span><br><span class="line">/sbin/shutdown:/sbin/shutdown</span><br><span class="line">:/sbin/halt</span><br><span class="line">:/sbin/nologin</span><br><span class="line">:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<h3 id="赋值功能"><a href="#赋值功能" class="headerlink" title="赋值功能"></a>赋值功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;$1=&quot;root&quot;&apos; 1.txt  ##把root赋值给第一段</span><br><span class="line">root x 0 0 root /root /bin/bash</span><br><span class="line">root x 1 1 bin /bin /sbin/nologin</span><br><span class="line">root x 2 2 daemon /sbin /sbin/nologin</span><br></pre></td></tr></table></figure>
+<h3 id="循环功能"><a href="#循环功能" class="headerlink" title="循环功能"></a>循环功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;(a=a+$3)&#125;;END &#123;print a&#125;&apos; 1.txt  ##求和第三段的和</span><br><span class="line">30665</span><br></pre></td></tr></table></figure>
+<h3 id="判断功能"><a href="#判断功能" class="headerlink" title="判断功能"></a>判断功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;&#123;if($1==&quot;root&quot;) &#123;print $0&#125;&#125;&apos; 1.txt  ##如果第一段大于root 那么大于那行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="awk中正则用法"><a href="#awk中正则用法" class="headerlink" title="awk中正则用法"></a>awk中正则用法</h2><blockquote>
+<p>awk -F ‘:’ ‘$1 ~ /o+/‘ 1.txt  匹配第一段含有o oo …的行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F &apos;:&apos; &apos;$1 ~ /o+/&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>awk -F’:’ ‘/root|kun/ {print $1,$7}’ 1.txt  匹配出root和kun行并且打印出改行的第一段和第七段</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# awk -F&apos;:&apos; &apos;/root|kun/ &#123;print $1,$7&#125;&apos; 1.txt</span><br><span class="line">root /bin/bash</span><br><span class="line">kun1 /bin/bash</span><br><span class="line">kun2 /bin/bash</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第四次课（3月22日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第四次课（3月22日）/">一周第四次课（3月22日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,151 +247,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/28/六周第三次课（4月27日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第三次课（3月21日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/26/六周第二次课（4月26日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">六周第二次课（4月26日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第三次课（3月21日）/">一周第三次课(3月21日)</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/一周第二次课（3月20日）/" class="archive-article-date">
-  	<time datetime="2018-03-30T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/一周第二次课（3月20日）/">一周第二次课（3月20日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/一周第一次课（3月19日）/">一周第一次课（3月19日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
 
 
           </div>
@@ -346,9 +397,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
