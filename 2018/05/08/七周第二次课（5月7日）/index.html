@@ -6,33 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>三周第五次课（4月10日） | kun0769的博客</title>
+  <title>七周第二次课（5月7日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
-<meta name="keywords" content="Linux,磁盘管理">
+  <meta name="description" content="10.6 监控io性能10.7 free命令10.8 ps命令10.9 查看网络状态10.10 linux下抓包">
+<meta name="keywords" content="Linux,日常运维">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三周第五次课（4月10日）">
-<meta property="og:url" content="http://yoursite.com/2018/04/09/三周第五次课（4月10日）/index.html">
+<meta property="og:title" content="七周第二次课（5月7日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/08/七周第二次课（5月7日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
+<meta property="og:description" content="10.6 监控io性能10.7 free命令10.8 ps命令10.9 查看网络状态10.10 linux下抓包">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408143648.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408144437.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408150108.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142719.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142757.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151236.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151707.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152701.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152934.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408162210.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408163100.jpg">
-<meta property="og:updated_time" content="2018-04-11T12:29:15.295Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507200302.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507201034.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507202157.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507203040.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507203947.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507210945.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507212323.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507215211.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507220151.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/687474703a2f2f6f6f327239726e7a702e626b742e636c6f7564646e2e636f6d2f6a656c6c797468696e6b544350342e6a7067.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507224824.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232019.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232524.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232854.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507233327.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507234548.jpg">
+<meta property="og:updated_time" content="2018-05-07T16:38:50.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三周第五次课（4月10日）">
-<meta name="twitter:description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg">
+<meta name="twitter:title" content="七周第二次课（5月7日）">
+<meta name="twitter:description" content="10.6 监控io性能10.7 free命令10.8 ps命令10.9 查看网络状态10.10 linux下抓包">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507200302.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -158,148 +162,231 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-三周第五次课（4月10日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-七周第二次课（5月7日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      三周第五次课（4月10日）
+      七周第二次课（5月7日）
     </h1>
   
 
         
-        <a href="/2018/04/09/三周第五次课（4月10日）/" class="archive-article-date">
-  	<time datetime="2018-04-09T13:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
+        <a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
+  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>4.5/4.6 磁盘格式化<br>4.7/4.8 磁盘挂载<br>4.9 手动增加swap空间<br><a id="more"></a></p>
-<h2 id="4-5-4-6磁盘格式化"><a href="#4-5-4-6磁盘格式化" class="headerlink" title="4.5/4.6磁盘格式化"></a>4.5/4.6磁盘格式化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/filesystems  ##系统支持的文件系统</span><br><span class="line">xfs</span><br><span class="line">ext4</span><br><span class="line">ext3</span><br><span class="line">ext2</span><br><span class="line">nodev proc</span><br><span class="line">nodev devpts</span><br><span class="line">iso9660</span><br><span class="line">vfat</span><br><span class="line">hfs</span><br><span class="line">hfsplus</span><br><span class="line">*</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>mke2fs：格式化磁盘</p>
+        <p>10.6 监控io性能<br>10.7 free命令<br>10.8 ps命令<br>10.9 查看网络状态<br>10.10 linux下抓包<br><a id="more"></a></p>
+<h2 id="10-6-iostat命令"><a href="#10-6-iostat命令" class="headerlink" title="10.6 iostat命令"></a>10.6 iostat命令</h2><blockquote>
+<p>iostat：查看磁盘io的情况</p>
 </blockquote>
-<p>用法：<code>mke2fs [-t ext2/ext3/ext4][-b][-m][-i] [磁盘名字]</code><br><code>-t</code>：指定格式化的文件系统 不指定参数默认是ext2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg" alt=""><br><code>-b</code>：指定单个块的大小 默认是4096<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408143648.jpg" alt=""><br><code>-m</code>：指定预留给root空间大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408144437.jpg" alt=""><br><code>-i</code>：指定单个inode的大小 单位为字节 默认为一个inode号又4个块组成 ，1个块为4K 即16K/inode<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408150108.jpg" alt=""></p>
-<blockquote>
-<p>mkfs.ext2 mkfs.ext3 mkfs.ext4 mkfs.xfs :指定特定文件系统来格式化磁盘</p>
+<p>系统默认没有这个工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y sysstat  ##安装sysstat包</span><br></pre></td></tr></table></figure></p>
+<p>用法：<code>iostat [-x] [n n (n为数字) 第一个n表示没n秒显示一次 第二个n表示显示次数]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507200302.jpg" alt=""><br>kB_read/s 磁盘每秒读取数据的速度 kB_wrtn/s 磁盘每秒写入数据的速度</p>
+<p><code>-x</code>：详细显示io情况<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507201034.jpg" alt=""><br>这里我们留意最多的%util 这列的数据 他表示单位时间内用于等待磁盘io的百分比  %util接近100%,表明I/O请求太多,I/O系统已经满负荷，磁盘可能存在瓶颈,一般%util大于60%,I/O压力就比較大。</p>
+<h2 id="iotop命令"><a href="#iotop命令" class="headerlink" title="iotop命令"></a>iotop命令</h2><blockquote>
+<p>iotop：查看进程使用磁盘io的情况</p>
 </blockquote>
-<p>用法：<code>mkfs.ext2 mkfs.ext3 mkfs.ext4 mkfs.xfs [磁盘名字]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142719.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142757.jpg" alt=""></p>
-<blockquote>
-<p>blkid：查看磁盘分区的uuid 文件系统等信息</p>
+<p>系统默认没这个工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y iotop  ##安装iotop工具</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507202157.jpg" alt=""><br>注意留意那个进程使用磁盘io的百分比多  swapin那列表示进程在进行swapin进行IO时占用的时间比例 其他和top命令的内容类似</p>
+<h2 id="10-7-free命令"><a href="#10-7-free命令" class="headerlink" title="10.7 free命令"></a>10.7 free命令</h2><blockquote>
+<p>free：显示内存的使用情况</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# blkid            ##可以查格式化完且没挂载的分区</span><br><span class="line">/dev/sda1: UUID=&quot;a8b3f01d-79b0-4e7a-9691-03218394ea7e&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sda2: UUID=&quot;9d673f9c-d501-4277-8b3c-c9eb16fec3d3&quot; TYPE=&quot;swap&quot;</span><br><span class="line">/dev/sda3: UUID=&quot;fe113fa8-c81a-4b9a-91f4-d322ba96adfb&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sdb1: UUID=&quot;03fb6c05-e7e0-41e9-becc-9d8b0795bd98&quot; TYPE=&quot;ext4&quot;</span><br><span class="line">/dev/sdb5: UUID=&quot;1d718345-e5c1-4ec2-9f0d-93c743aab472&quot; TYPE=&quot;ext4&quot;</span><br><span class="line">/dev/sdb6: UUID=&quot;db5d043c-bcd7-49fe-8441-96f12ef39ec2&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sdc2: PARTLABEL=&quot;extented&quot; PARTUUID=&quot;d49fb012-aa38-4735-9db5-9bcd5b464307&quot;</span><br></pre></td></tr></table></figure>
-<p>即使磁盘没有分区也是可以格式化 但是挂载前提是必须格式化<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151236.jpg" alt=""></p>
-<h2 id="4-7-4-8磁盘挂载"><a href="#4-7-4-8磁盘挂载" class="headerlink" title="4.7/4.8磁盘挂载"></a>4.7/4.8磁盘挂载</h2><blockquote>
-<p>mount：挂载磁盘到目录下</p>
-</blockquote>
-<p>用法：<code>mount [-o] [磁盘名字] [挂载点]</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount /dev/sdb /mnt/  ##把sdb挂载到mnt目录下</span><br><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统        容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/sda3        18G 1013M   17G    6% /</span><br><span class="line">devtmpfs        483M     0  483M    0% /dev</span><br><span class="line">tmpfs           493M     0  493M    0% /dev/shm</span><br><span class="line">tmpfs           493M  6.8M  486M    2% /run</span><br><span class="line">tmpfs           493M     0  493M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1       197M   97M  100M   50% /boot</span><br><span class="line">tmpfs            99M     0   99M    0% /run/user/0</span><br><span class="line">/dev/sdb        5.0G   33M  5.0G    1% /mnt</span><br></pre></td></tr></table></figure></p>
-<p><code>-o</code>：对挂载内容(文件目录)设置参数</p>
+<p>用法：<code>free [-h]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507203040.jpg" alt=""></p>
+<p><code>-h</code>：人性化显示内存的大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507203947.jpg" alt=""></p>
 <table>
 <thead>
 <tr>
-<th>参数</th>
-<th>意思</th>
+<th>字母</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>defaults</td>
-<td>默认 包括rw suid exec auto nouser async</td>
+<td>total</td>
+<td>总大小</td>
 </tr>
 <tr>
-<td>rw/ro</td>
-<td>读写/只读数据</td>
+<td>used</td>
+<td>已经使用的大小</td>
 </tr>
 <tr>
-<td>suid/nosuid</td>
-<td>可设置suid权限/不可设置suid权限</td>
+<td>free</td>
+<td>空闲大小</td>
 </tr>
 <tr>
-<td>exec/noexec</td>
-<td>可执行/不可执行</td>
+<td>buff</td>
+<td>缓冲 数据从cpu到磁盘时候使用的内存 快–&gt;慢</td>
 </tr>
 <tr>
-<td>auto/noauto</td>
-<td>自动/不自动挂载</td>
+<td>cache</td>
+<td>缓存 数据从磁盘到cpu时候使用的内存 慢–&gt;快</td>
 </tr>
 <tr>
-<td>user/nouser</td>
-<td>允许普通用户挂载/不允许普通用户挂载</td>
-</tr>
-<tr>
-<td>async/sync</td>
-<td>不同步数据/同步数据到硬盘</td>
-</tr>
-<tr>
-<td>remount</td>
-<td>重新挂载</td>
+<td>available</td>
+<td>可获得的大小 真正剩余大小</td>
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount -o ro,nouser /dev/sdb /mnt/</span><br><span class="line">[root@localhost ~]# mount -o rw,remount /dev/sdb /mnt/</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151707.jpg" alt=""><br>直接mount可以查看挂载到系统的分区的文件系统</p>
-<blockquote>
-<p>umount：卸载磁盘</p>
+<p>其中第一行是数码 第二行是内存 第三行是swap 系统在一开始的时候给把内存的一部分分给了buff/chche来做数据缓存/缓冲的地方 因此 <code>total = used + free + buff/chche</code>  而<code>available = free +buff/cache剩余的部分</code> 一般看内存还剩余多少 直接看available就可以了</p>
+<h2 id="10-8-ps命令"><a href="#10-8-ps命令" class="headerlink" title="10.8 ps命令"></a>10.8 ps命令</h2><blockquote>
+<p>ps：一次性显示当前系统进程</p>
 </blockquote>
-<p>用法：<code>umount [-l] [磁盘名字/挂载点]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152701.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152934.jpg" alt=""></p>
-<p><code>-l</code>：强制卸载磁盘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mnt]# umount -l /mnt/   ##身在mnt目录下也可以卸载挂载点</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>/etc/fstab配置文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi /etc/fstab  ##/etc/fstab是启动系统时挂载分区的配置文件</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408162210.jpg" alt=""></p>
+<p>用法：<code>ps aux</code>或者<code>ps -elf</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507210945.jpg" alt=""><br>第一列 USER 使用进程的用户<br>第二列 PID 进程的pid<br>第八列 STAT 进程的状态<br>第九列 START 进程的启动时间<br>第十列 TIME 进程已经使用的时间<br>第十一列 COMMAND 进程命令</p>
+<p>STAT中的字母表示的含义</p>
 <table>
 <thead>
 <tr>
-<th>列数</th>
-<th>意义</th>
+<th>字母</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>第一列</td>
-<td>分区对应的uuid号 </td>
+<td>D</td>
+<td>不能终端的进程</td>
 </tr>
 <tr>
-<td>第二列</td>
-<td>挂载点</td>
+<td>R</td>
+<td>正在运行的进程</td>
 </tr>
 <tr>
-<td>第三列</td>
-<td>文件系统</td>
+<td>S</td>
+<td>休眠进程 排队中的进程</td>
 </tr>
 <tr>
-<td>第四列</td>
-<td>挂载内容的参数</td>
+<td>T</td>
+<td>暂停进程 使用Ctrl+z 暂停</td>
 </tr>
 <tr>
-<td>第五列</td>
-<td>是否备份 0不备份 1备份</td>
+<td>Z</td>
+<td>僵尸进程</td>
 </tr>
 <tr>
-<td>第六列</td>
-<td>是否自检 0不自检 1自检 优先度最高 2自检</td>
+<td>&lt;</td>
+<td>高优先级进程</td>
+</tr>
+<tr>
+<td>N</td>
+<td>低优先级进程</td>
+</tr>
+<tr>
+<td>L</td>
+<td>内存中被所内存分页</td>
+</tr>
+<tr>
+<td>s</td>
+<td>主进程</td>
+</tr>
+<tr>
+<td>l</td>
+<td>多线程进程</td>
+</tr>
+<tr>
+<td>+</td>
+<td>前台进程</td>
 </tr>
 </tbody>
 </table>
-<p>只要你想刚刚格式化完的分区在系统启动是自动挂载可以在/etc/fstab下面添加<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408163100.jpg" alt=""></p>
-<h2 id="4-9手动添加swap空间"><a href="#4-9手动添加swap空间" class="headerlink" title="4.9手动添加swap空间"></a>4.9手动添加swap空间</h2><blockquote>
-<p>1.添加一个大小为100M文件</p>
+<p>听说查进程时ps和管道符更配哦<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ps aux |grep kworker</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507212323.jpg" alt=""></p>
+<h2 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h2><blockquote>
+<p>kill：杀死进程</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# dd if=/dev/zero of=/tmp/new_swap bs=1M count=100  ##dd指定大小的块来拷贝文件 if源地址 of输出地址 bs块大小 </span><br><span class="line">记录了100+0 的读入</span><br><span class="line">记录了100+0 的写出</span><br><span class="line">104857600字节(105 MB)已复制，1.04578 秒，100 MB/秒</span><br><span class="line">[root@localhost ~]# du -sh /tmp/new_swap</span><br><span class="line">100M    /tmp/new_swap</span><br></pre></td></tr></table></figure>
+<p>用法：<code>kill[-9] PID</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# kill 5  ##杀死PID是5的进程</span><br></pre></td></tr></table></figure></p>
+<p><code>-9</code>：强制杀死<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# kill -9 5  ##强制杀死PID是5的进程</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-9-netstat命令"><a href="#10-9-netstat命令" class="headerlink" title="10.9 netstat命令"></a>10.9 netstat命令</h2><blockquote>
+<p>netstat -lnp 查看监听端口</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507215211.jpg" alt=""><br>上面的查看是tcp/ip协议的的服务 下面unix的查看本机是sockt文件<br>可以看见sshd服务使用22端口 master服务使用了25端口</p>
 <blockquote>
-<p>2.格式化为swap文件系统</p>
+<p>netstat -an 查看所有的网络连接状态</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkswap -f /tmp/new_swap      ##mkswap创建swap文件系统  </span><br><span class="line">正在设置交换空间版本 1，大小 = 102396 KiB</span><br><span class="line">无标签，UUID=edd3b7f9-b031-4701-ae91-7ef06cb87e04</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>3.挂载swap空间</p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507220151.jpg" alt=""></p>
+<p>tcp协议的三次握手和四次挥手<br><img src="http://p6c0nmg4x.bkt.clouddn.com/687474703a2f2f6f6f327239726e7a702e626b742e636c6f7564646e2e636f6d2f6a656c6c797468696e6b544350342e6a7067.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LISTEN</td>
+<td>表示可以接受客服端的连接</td>
+</tr>
+<tr>
+<td>SYN_RCVD</td>
+<td>表示收到对方SYN的请求</td>
+</tr>
+<tr>
+<td>SYN_SENT</td>
+<td>表示已经发送SYN的请求 等待对面回复</td>
+</tr>
+<tr>
+<td>ESTABLISHED</td>
+<td>表示tcp已经建立</td>
+</tr>
+<tr>
+<td>FIN_WAIT_1</td>
+<td>主动发FIN标志给对方 等待对方回复</td>
+</tr>
+<tr>
+<td>FIN_WAIT_2</td>
+<td>接受到对方ACK标志 让对方把该做的事先做完</td>
+</tr>
+<tr>
+<td>TIME_WAIT</td>
+<td>收到对方的FIN标志 等待关闭</td>
+</tr>
+<tr>
+<td>CLOSE_WAIT</td>
+<td>收到对方的FIN标志 看看自己是否还有数据要传</td>
+</tr>
+<tr>
+<td>LAST_ACK</td>
+<td>发送FIN标志给对方 等待对面发回ACK标志来等待关闭</td>
+</tr>
+<tr>
+<td>CLOSING</td>
+<td>表示tcp已经关闭建立</td>
+</tr>
+</tbody>
+</table>
+<h3 id="小技巧-使用下面统计网络状态的数量"><a href="#小技巧-使用下面统计网络状态的数量" class="headerlink" title="小技巧 使用下面统计网络状态的数量"></a>小技巧 使用下面统计网络状态的数量</h3><p><code>netstat -an | awk &#39;/^tcp/ {++sta[$NF]} END {for(key in sta) print key,&quot;\t&quot;,sta[key]}&#39;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# netstat -an | awk &apos;/^tcp/ &#123;++sta[$NF]&#125; END &#123;for(key in sta) print key,&quot;\t&quot;,sta[key]&#125;&apos;</span><br><span class="line">LISTEN      4</span><br><span class="line">ESTABLISHED      1</span><br></pre></td></tr></table></figure></p>
+<p>一般ESTABLISHED 有1000已经很多了</p>
+<h2 id="ss命令"><a href="#ss命令" class="headerlink" title="ss命令"></a>ss命令</h2><blockquote>
+<p>ss -an 查看网络状态 类似netstat -an</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# swapon</span><br><span class="line">NAME      TYPE      SIZE USED PRIO</span><br><span class="line">/dev/sda2 partition   2G   0B   -1</span><br><span class="line">[root@localhost ~]# swapon /tmp/new_swap     ##swapon挂载swap空间</span><br><span class="line">swapon: /tmp/new_swap：不安全的权限 0644，建议使用 0600。</span><br><span class="line">[root@localhost ~]# swapon</span><br><span class="line">NAME          TYPE      SIZE USED PRIO</span><br><span class="line">/dev/sda2     partition   2G   0B   -1</span><br><span class="line">/tmp/new_swap file      100M   0B   -2</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1008152      118636      643848        6864      245668      714792</span><br><span class="line">Swap:       2199544           0     2199544</span><br><span class="line">[root@localhost ~]# swapoff /tmp/new_swap   ##swapoff卸载swap空间</span><br><span class="line">[root@localhost ~]# free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1008152      118460      643988        6864      245704      714968</span><br><span class="line">Swap:       2097148           0     2097148</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507224824.jpg" alt=""></p>
+<h2 id="10-10-tcpdump命令"><a href="#10-10-tcpdump命令" class="headerlink" title="10.10 tcpdump命令"></a>10.10 tcpdump命令</h2><blockquote>
+<p>tcpdump：抓包工具</p>
+</blockquote>
+<p>用法：<code>tcpdump [-nn] [-icwr]</code><br>系统默认没有安装tcpdump工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y tcpdump</span><br></pre></td></tr></table></figure></p>
+<p><code>-i</code>：指定抓包的网卡名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tcpdump -i ens33 ##指定ens33网卡</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232019.jpg" alt=""><br>第一列表示时间 第二列表示源ip地址:端口 目标ip地址:端口 第三列表示数据包的信息 </p>
+<p>也可以指定抓包的端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tcpdump -nn -i ens33 port 22</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#tcpdump -nn -i ens33 not port 22 and host 192.168.0.100</span><br></pre></td></tr></table></figure></p>
+<p><code>-nn</code>：显示ip地址和段口号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tcpdump -nn -i ens33</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232524.jpg" alt=""><br><code>-c</code>：指定抓包的数量<br><code>-w</code>：指定把抓包的信息存放的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tcpdump -nn -i ens33 -c 10 -w /tmp/bao.cap  ##抓10个包并把信息存在/tmp/bao.cap下</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507232854.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# file /tmp/bao.cap</span><br><span class="line">/tmp/bao.cap: tcpdump capture file (little-endian) - version 2.4 (Ethernet, capture length 262144)</span><br></pre></td></tr></table></figure>
+<p>注意：bao.cap文件是不能用cat查看的 只能用tcpdump命令来查看内容</p>
+<p><code>-r</code>：查看抓包文件的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tcpdump -r /tmp/bao.cap</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507233327.jpg" alt=""></p>
+<h2 id="tshark命令"><a href="#tshark命令" class="headerlink" title="tshark命令"></a>tshark命令</h2><blockquote>
+<p>tshark：抓包工具</p>
+</blockquote>
+<p>系统默认没有安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y wireshark</span><br></pre></td></tr></table></figure></p>
+<h3 id="小技巧-使用下面命令查看指定网卡web的情况"><a href="#小技巧-使用下面命令查看指定网卡web的情况" class="headerlink" title="小技巧 使用下面命令查看指定网卡web的情况"></a>小技巧 使用下面命令查看指定网卡web的情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -n -t a -R http.request -T fields -e &quot;frame.time&quot; -e &quot;ip.src&quot; -e &quot;http.host&quot; -e &quot;http.request.method&quot; -e &quot;http.request.uri&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180507234548.jpg" alt=""><br>第一列时间 第二列 客服端的ip地址 第三列 服务器的域名 第四列 服务端的连接，图片等等</p>
+
       
 
       
@@ -316,7 +403,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
         		</li>
       		
 		</ul>
@@ -372,7 +459,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/09/三周第五次课（4月10日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/08/七周第二次课（5月7日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -386,18 +473,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/10/四周第一次课（4月11日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          四周第一次课（4月11日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/08/三周第四次课（4月9日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">三周第四次课（4月9日）</div>
+    <a href="/2018/05/05/七周第一次课（5月4日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">七周第一次课（5月4日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
