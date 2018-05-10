@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>七周第五次课（5月10日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/7/index.html">
+  <meta name="description" content="10.19 iptables规则备份和恢复10.20 firewalld的9个zone10.21 firewalld关于zone的操作10.22 firewalld关于service的操作 10.19iptables的保存和备份iptbales的规则都是保存在/etc/sysconfig/iptables里面  service iptables save：保存规则到配置文件中    iptable">
+<meta name="keywords" content="Linux,日常运维,防火墙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七周第五次课（5月10日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/11/七周第五次课（5月10日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="10.19 iptables规则备份和恢复10.20 firewalld的9个zone10.21 firewalld关于zone的操作10.22 firewalld关于service的操作 10.19iptables的保存和备份iptbales的规则都是保存在/etc/sysconfig/iptables里面  service iptables save：保存规则到配置文件中    iptable">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510193900.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510194152.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/%E5%9B%BE%E7%89%871.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510230812.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510234653.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510235001.jpg">
+<meta property="og:updated_time" content="2018-05-10T16:22:43.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="七周第五次课（5月10日）">
+<meta name="twitter:description" content="10.19 iptables规则备份和恢复10.20 firewalld的9个zone10.21 firewalld关于zone的操作10.22 firewalld关于service的操作 10.19iptables的保存和备份iptbales的规则都是保存在/etc/sysconfig/iptables里面  service iptables save：保存规则到配置文件中    iptable">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510193900.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +152,125 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-七周第五次课（5月10日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      七周第五次课（5月10日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/11/七周第五次课（5月10日）/" class="archive-article-date">
+  	<time datetime="2018-05-10T16:10:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>10.19 iptables规则备份和恢复<br>10.20 firewalld的9个zone<br>10.21 firewalld关于zone的操作<br>10.22 firewalld关于service的操作<br><!--moce--></p>
+<h2 id="10-19iptables的保存和备份"><a href="#10-19iptables的保存和备份" class="headerlink" title="10.19iptables的保存和备份"></a>10.19iptables的保存和备份</h2><p>iptbales的规则都是保存在<code>/etc/sysconfig/iptables</code>里面<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510193900.jpg" alt=""></p>
+<blockquote>
+<p>service iptables save：保存规则到配置文件中</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510194152.jpg" alt=""></p>
+<blockquote>
+<p>iptables-save &gt;文件名：把当前规则备份到指定文件里</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables-save &gt; /tmp/backup.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>iptables-restore &lt; 文件名：把文件中规则还原出来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables-restore &lt; /tmp/backup.txt</span><br></pre></td></tr></table></figure>
+<p>当然也可以直接cp配置文件来备份<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# cp /etc/sysconfig/iptables /tmp/iptables.bak</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-20-10-21-10-22-firewalld"><a href="#10-20-10-21-10-22-firewalld" class="headerlink" title="10.20/10.21/10.22 firewalld"></a>10.20/10.21/10.22 firewalld</h2><p>firewalld是CentOS7上默认使用的防火墙工具，其中firewalld中有9个zone，默认使用public<br>我们先把iptbales服务停止并启动firewalld服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# systemctl disable iptables  ##禁止iptables开机启动</span><br><span class="line">[root@kun0769 ~]# systemctl stop iptables  ##停止iptables服务</span><br><span class="line">[root@kun0769 ~]# systemctl enable firewalld  ##允许firewalld开机启动</span><br><span class="line">[root@kun0769 ~]# systemctl start firewalld  ##开启firewalld服务</span><br></pre></td></tr></table></figure></p>
+<p>firewalld中的9个zone，zone相当于是规则的集合 每个zone都对应不同的规则 比喻开发某些端口或者禁掉某些端口等<br><img src="http://p6c0nmg4x.bkt.clouddn.com/%E5%9B%BE%E7%89%871.jpg" alt=""></p>
+<blockquote>
+<p>firewall-cmd –get-zones：查看9个zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --get-zones</span><br><span class="line">block dmz drop external home internal public trusted work</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –get-default-zone：查看默认的zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --get-default-zone   ##系统默认zone是public</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –set-default-znne：更改默认的zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --set-default-zone=home  ##把默认的zone改为home</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --get-default-zone   ##默认zone是home</span><br><span class="line">home</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –get-zone-of-interface=网卡名：查看指定网卡的zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --get-zone-of-interface=ens33 ##ens33没有任何的zone</span><br><span class="line">no zone</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –zone=zone名 –add-interface=网卡名：为指定的网卡设置zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=internal --add-interface=ens33  ##指定ens33的zone为internal</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --get-zone-of-interface=ens33</span><br><span class="line">internal</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –zone=zone名 –change-interface=网卡名：更改指定的网卡的zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=work --change-interface=ens33  ##更改ens33的zone为work</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --get-zone-of-interface=ens33</span><br><span class="line">work</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd zone=zone名 –remove-interface=网卡名：移除指定网卡的指定zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=work --remove-interface=ens33  ##在ens33上移除workzone</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --get-zone-of-interface=ens33</span><br><span class="line">no zone</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –get-active-zones：查看所有网卡的zone</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --get-active-zones</span><br><span class="line">work</span><br><span class="line">  interfaces: ens33</span><br></pre></td></tr></table></figure>
+<p>service是zone下的组成部分 相当于是zone里面的白名单 </p>
+<blockquote>
+<p>firewall-cmd –get-services：查看系统所有的service</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510230812.jpg" alt=""></p>
+<blockquote>
+<p>firewall-cmd –list-services：查看默认zone的service</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --list-services</span><br><span class="line">ssh mdns samba-client dhcpv6-client</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –zone=zone名 –list-services：查看指定zone中的service</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=public --list-services</span><br><span class="line">ssh dhcpv6-client</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd –zone=zone名 –add-service=服务：添加服务到指定的zone下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=home --add-service=http  ##把http服务添加到hone里</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --zone=home --list-services</span><br><span class="line">ssh mdns samba-client dhcpv6-client http</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>firewall-cmd–zone=zone名 –remove-service=服务：移除指定zone下的服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --zone=home --remove-service=samba-client  ##home下移除samba-client</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --zone=home --list-services</span><br><span class="line">ssh mdns dhcpv6-client http</span><br></pre></td></tr></table></figure>
+<p>其中service里面的服务可以更改端口的 其中serveices的配置文件在 <code>/etc/firewalld/services/</code> 目录下，zone的配置文件在<code>/etc/firewalld/zones/</code>目录下 而service和zone的模版文件分别在于 <code>/usr/lib/firewalld/services/</code> 和 <code>/usr/lib/firewalld/zones/</code> 下</p>
+<blockquote>
+<p>–permanent：同时更改配置文件 不加数据只在内存中存放 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# ls /etc/firewalld/zones/  ##只有pubic的配置文件</span><br><span class="line">public.xml  public.xml.old</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --zone=work --add-service=http --permanent  ##work中添加http服务并生成配置文件</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# ls /etc/firewalld/zones/  ##生成了work.xml</span><br><span class="line">public.xml  public.xml.old  work.xml</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>ftp服务自定义端口1121，需要在home zone下面放行ftp</p>
+<ul>
+<li><p>1.把ftp的模版文件复制到services配置文件里 并修改端口为1121</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# cp /usr/lib/firewalld/services/ftp.xml /etc/firewalld/services/ftp.xml</span><br><span class="line">[root@kun0769 ~]# vim !$</span><br></pre></td></tr></table></figure>
+<p>  <img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510234653.jpg" alt=""></p>
+</li>
+<li><p>2.把home的模版文件复制到zone配置文件里 并添加ftp</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# cp /usr/lib/firewalld/zones/home.xml /etc/firewalld/zones/home.xml</span><br><span class="line">[root@kun0769 ~]# vim !$</span><br></pre></td></tr></table></figure>
+<p>  <img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180510235001.jpg" alt=""></p>
+</li>
+<li><p>3.重新加载配置文件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# firewall-cmd --reload</span><br><span class="line">success</span><br><span class="line">[root@kun0769 ~]# firewall-cmd --zone=home --list-service  ##home上已经添加了ftp</span><br><span class="line">ssh mdns samba-client dhcpv6-client ftp</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第三次课（3月21日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第三次课（3月21日）/">一周第三次课(3月21日)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,113 +280,138 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/一周第二次课（3月20日）/" class="archive-article-date">
-  	<time datetime="2018-03-30T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/一周第二次课（3月20日）/">一周第二次课（3月20日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/11/七周第五次课（5月10日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/10/七周第四次课（5月9日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">七周第四次课（5月9日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/一周第一次课（3月19日）/">一周第一次课（3月19日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/page/6/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/5/">5</a><a class="page-number" href="/tags/Linux/page/6/">6</a><span class="page-number current">7</span>
-    </nav>
   
+
+  
+
+  
+
 
 
           </div>
@@ -308,9 +434,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
