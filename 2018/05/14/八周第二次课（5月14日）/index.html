@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>八周第二次课（5月14日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="10.28 rsync工具介绍10.29/10.30 rsync常用选项10.31 rsync通过ssh同步">
+<meta name="keywords" content="Linux,日常运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="八周第二次课（5月14日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/14/八周第二次课（5月14日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="10.28 rsync工具介绍10.29/10.30 rsync常用选项10.31 rsync通过ssh同步">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514214650.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215114.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215509.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215951.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514220504.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514220855.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514222222.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514232213.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514232702.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514233009.jpg">
+<meta property="og:updated_time" content="2018-05-14T15:52:24.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="八周第二次课（5月14日）">
+<meta name="twitter:description" content="10.28 rsync工具介绍10.29/10.30 rsync常用选项10.31 rsync通过ssh同步">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514214650.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +156,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-八周第二次课（5月14日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      八周第二次课（5月14日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/14/八周第二次课（5月14日）/" class="archive-article-date">
+  	<time datetime="2018-05-14T15:42:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>10.28 rsync工具介绍<br>10.29/10.30 rsync常用选项<br>10.31 rsync通过ssh同步<br><a id="more"></a></p>
+<h2 id="10-28-10-29-10-30-rsync工具"><a href="#10-28-10-29-10-30-rsync工具" class="headerlink" title="10.28/10.29/10.30 rsync工具"></a>10.28/10.29/10.30 rsync工具</h2><p>rsync 全称remote sync 远程同步工具 可以实现本机和其他机器实现文件同步 也可以在本机上文件和文件之前的拷贝 而且它比cp好用于它是增量备份的，即只备份不同的部分，这样更加节省时间和带宽。</p>
+<blockquote>
+<p>rsync：远程同步工具</p>
+</blockquote>
+<p>用法：<code>rsync [-av] [用户@ip:]源目录  [用户@ip:]目标目录</code>  或者 <code>rsync [-av] [用户@ip::]源目录  [用户@ip::]目标目录</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>等同于-rtplgoD</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>可视乎过程</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>同步目录</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>保持文件的时间属性</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保持文件的权限属性</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>保留软连接</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>保持文件的属组 目标文件没此组用gid代替</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>保持文件的属主 目标文件没此主用uid代替</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>保持设备文件信息</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>同步软连接时候把源文件也同步去目标目录</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>显示同步的速度等信息</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>目标目录中的文件比源目录的文件新 则不同步</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>传输时压缩</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>同步时删除目标目录中源目录里没有的文件 </td>
+</tr>
+<tr>
+<td>–exclude</td>
+<td>指定源目录的某个文件不同步 过滤某个文件</td>
+</tr>
+</tbody>
+</table>
+<p>注意：同步目录时候目录后面必须加<code>/</code> 如 /root/ 否则会出现意料之外的结果</p>
+<blockquote>
+<p>rsync -av 源目录 目标目录：把源目录同步到目录目录中 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av /root/ /tmp/root_backup/</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514214650.jpg" alt=""></p>
+<blockquote>
+<p>rsync -avL 源目录 目标目录：同步把软连接的源文件也一起同步</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -avL /root/ /tmp/root_backup/</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215114.jpg" alt=""></p>
+<p>同步后软连接变出普通文件 并把软连接的内存写进文件中<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215509.jpg" alt=""></p>
+<blockquote>
+<p>rsync -av –delete 源目录 目标目录：同步时删除目标目录多余的文件 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av --delete /root/ /tmp/root_backup/  ##删除root_backup目录下new文件</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514215951.jpg" alt=""></p>
+<blockquote>
+<p>rsync -av –exclude “内容” 源目录 目标目录：指定内容不同步 可指定多个内存</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av --exclude &quot;*.txt&quot; /root/ /tmp/root_backup/  ##同步目录 除了带txt的文件</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514220504.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av --exclude &quot;*.txt&quot; --exclude &quot;111&quot; /root/ /tmp/root_backup/  ##过滤多个内容</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>rsync -avP 源目录 目标目录：显示传输速度</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -avP /root/ /tmp/root_backup/ ##显示速度</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514220855.jpg" alt=""></p>
+<blockquote>
+<p>rsync -avu 源目录 目标目录：保护目标目录新文件不被覆盖</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# vim /tmp/root_backup/1.txt ##先编辑/root_backup/1.txt 现在目标目录的文件比源目录新</span><br><span class="line">[root@kun0769 ~]# rsync -avu /root/ /tmp/root_backup/</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514222222.jpg" alt=""></p>
+<blockquote>
+<p>rsync -avz 源目录 目标目录：传输时压缩 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -avz /root/ /tmp/root_backup/</span><br></pre></td></tr></table></figure>
+<h2 id="10-31-rsync通过ssh方式同步"><a href="#10-31-rsync通过ssh方式同步" class="headerlink" title="10.31 rsync通过ssh方式同步"></a>10.31 rsync通过ssh方式同步</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av /etc/passwd 192.168.80.102:/tmp/test.txt  ##同步目录到192.168.80.102里</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514232213.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av 192.168.80.102:/etc/passwd /tmp/test.txt ##把192.168.80.102的目录同步到本机里</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514232702.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync -av -e &quot;ssh -p 22&quot; /etc/passwd 192.168.80.102:/tmp/test.txt1 ##指定192.168.80.102的22端口</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180514233009.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第五次课（3月30日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第五次课（3月30日）/">二周第五次课（3月30日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,197 +312,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/14/八周第二次课（5月14日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第四次课（3月29日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/12/八周第一次课（5月11日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">八周第一次课（5月11日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第四次课（3月29日）/">二周第四次课（3月29日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第三次课（3月28日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第三次课（3月28日）/">二周第三次课（3月28日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第二次课（3月27日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:17:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第二次课（3月27日）/">二周第二次课（3月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/二周第一次课（3月26日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/二周第一次课（3月26日）/">二周第一次课（3月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/7/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +462,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
