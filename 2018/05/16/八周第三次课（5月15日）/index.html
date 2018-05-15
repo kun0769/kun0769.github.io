@@ -6,15 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>八周第三次课（5月15日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/2/index.html">
+  <meta name="description" content="10.32/10.33 rsync通过服务同步10.34 linux系统日志10.35 screen工具">
+<meta name="keywords" content="Linux,日常运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="八周第三次课（5月15日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/八周第三次课（5月15日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="10.32/10.33 rsync通过服务同步10.34 linux系统日志10.35 screen工具">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515224550.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515224747.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515225332.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515233721.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515233021.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515235557.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516000036.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516000625.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516002303.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516003837.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516005139.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516005443.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516010218.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516010533.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516011048.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516013126.jpg">
+<meta property="og:updated_time" content="2018-05-15T18:17:48.639Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="八周第三次课（5月15日）">
+<meta name="twitter:description" content="10.32/10.33 rsync通过服务同步10.34 linux系统日志10.35 screen工具">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515224550.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,82 +162,163 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-八周第三次课（5月15日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      八周第三次课（5月15日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/16/八周第三次课（5月15日）/" class="archive-article-date">
+  	<time datetime="2018-05-15T17:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>10.32/10.33 rsync通过服务同步<br>10.34 linux系统日志<br>10.35 screen工具<br><a id="more"></a></p>
+<h2 id="10-32-10-33-rsync通过服务方式同步"><a href="#10-32-10-33-rsync通过服务方式同步" class="headerlink" title="10.32/10.33 rsync通过服务方式同步"></a>10.32/10.33 rsync通过服务方式同步</h2><p>rsync可以通过服务的方式来同步数据 即一个机器作为服务器 另一个机器作为客户端 rsync服务的配置文件在<code>/etc/rsync.conf</code><br>服务器端先编辑配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# vim /etc/rsyncd.conf</span><br></pre></td></tr></table></figure></p>
+<p>输入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">port=873</span><br><span class="line">log file=/var/log/rsync.log</span><br><span class="line">pid file=/var/run/rsyncd.pid</span><br><span class="line">address=192.168.80.100</span><br><span class="line">[test]</span><br><span class="line">path=/tmp/rsync/</span><br><span class="line">use chroot=true</span><br><span class="line">max connections=0</span><br><span class="line">read only=no</span><br><span class="line">list=true</span><br><span class="line">uid=root</span><br><span class="line">gid=root</span><br><span class="line">auth users=test</span><br><span class="line">secrets file=/etc/rsyncd.passwd</span><br><span class="line">hosts allow=192.168.133.132 1.1.1.1 2.2.2.2  192.168.80.0/24</span><br></pre></td></tr></table></figure></p>
+<p>新建目录和修改文件的权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# mkdir -p /tmp/rsync/</span><br><span class="line">[root@kun0769 ~]# chmod 777 /tmp/rsync/</span><br></pre></td></tr></table></figure></p>
+<p>启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# rsync --daemon</span><br></pre></td></tr></table></figure></p>
+<p>查看服务是否启动 端口是否监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# ps aux |grep rsync</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515224550.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# netstat -lntp</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515224747.jpg" alt=""></p>
+<p>在客户端上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync -av /tmp/test.txt 192.168.80.100::test  ##test是指模块名</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515225332.jpg" alt=""></p>
+<p>配置文件的代码含义</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>指定在哪个端口启动rsyncd服务，默认是873端口。</td>
+</tr>
+<tr>
+<td>log file</td>
+<td>指定日志文件。</td>
+</tr>
+<tr>
+<td>pid file</td>
+<td>指定pid文件，这个文件的作用涉及服务的启动、停止等进程管理操作。</td>
+</tr>
+<tr>
+<td>address</td>
+<td>指定启动rsyncd服务的IP。假如你的机器有多个IP，就可以指定由其中一个启动rsyncd服务，如果不指定该参数，默认是在全部IP上启动。</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>指定模块名，里面内容自定义。</td>
+</tr>
+<tr>
+<td>path</td>
+<td>指定数据存放的路径。</td>
+</tr>
+<tr>
+<td>use chroot true&#124;false</td>
+<td>true表示在传输文件只能在指定数据的目录下读写数据 如有软连接的源文件是其他路径的 则传输就报错</td>
+</tr>
+<tr>
+<td>max connections</td>
+<td>指定最大的连接数，默认是0，即没有限制。</td>
+</tr>
+<tr>
+<td>read only ture&#124;false</td>
+<td>如果为true，则不能上传到该模块指定的路径下。</td>
+</tr>
+<tr>
+<td>list</td>
+<td>表示当用户查询该服务器上的可用模块时，该模块是否被列出，设定为true则列出，false则隐藏。</td>
+</tr>
+<tr>
+<td>uid/gid</td>
+<td>指定传输文件时以哪个用户/组的身份传输。</td>
+</tr>
+<tr>
+<td>auth users</td>
+<td>指定传输时要使用的用户名。</td>
+</tr>
+<tr>
+<td>secrets file</td>
+<td>指定密码文件，该参数连同上面的参数如果不指定，则不使用密码验证。注意该密码文件的权限一定要是600。格式：用户名:密码</td>
+</tr>
+<tr>
+<td>hosts allow</td>
+<td>表示被允许连接该模块的主机，可以是IP或者网段，如果是多个，中间用空格隔开。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><blockquote>
+<p>更改端口</p>
+</blockquote>
+<p>在配置文件中把port改为8730<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port=8730</span><br></pre></td></tr></table></figure></p>
+<p>再重启服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# killall rsync  ##杀掉rsync所有服务</span><br><span class="line">[root@kun0769 ~]# rsync --daemon</span><br><span class="line">[root@kun0769 ~]# netstat -pntl</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515233721.jpg" alt=""></p>
+<blockquote>
+<p>传输数据只能在指定的目录下读写</p>
+</blockquote>
+<p>在配置文件中 use chroot改为<code>trueuse chroot true</code><br>在服务端中使用软连接来指定其他目录 在客户端中使用-L来传输软连接的原文件 就是报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync -avL 192.168.80.100::test /tmp/</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515233021.jpg" alt=""></p>
+<p>客户端可以使用–port 来指定端口来传输<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync -av /tmp/ --port 8730 192.168.80.100::test  ##把/tmp/目录同步到192.168.80.100:8730指定的目录下</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>让客户端能查看服务端的模块名</p>
+</blockquote>
+<p>在配置文件中把 <code>list=true</code><br>在客户端上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync --port 8730 192.168.80.100::  </span><br><span class="line">test</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>指定使用用户名和密码来传输</p>
+</blockquote>
+<p>在配置文件中把auth users=test 来指定用户名 <code>secrets file=/etc/rsyncd.passwd</code>来指定存放密码的文件路径<br>并建立存密码的文件和修改权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# vim /etc/rsyncd.passwd</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180515235557.jpg" alt=""><br>内容是 用户名:密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# chmod 600 /etc/rsyncd.passwd</span><br></pre></td></tr></table></figure></p>
+<p>在客户端上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync -av /etc/passwd --port 8730 test@192.168.80.100::test</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516000036.jpg" alt=""></p>
+<p>为了使用脚本时候不用输入密码 我们可以在客户端上放一个文件来存放密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# vi /etc/pass</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516000625.jpg" alt=""></p>
+<p>内容就是一个密码，权限要改为600<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# chmod 600 /etc/pass</span><br></pre></td></tr></table></figure></p>
+<p>在客户端上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@test2 ~]# rsync -av /etc/passwd --port 8730 --password-file=/etc/pass test@192.168.80.100::test</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516002303.jpg" alt=""></p>
+<h2 id="10-34-系统日志"><a href="#10-34-系统日志" class="headerlink" title="10.34 系统日志"></a>10.34 系统日志</h2><p>linux系统的总日志 <code>/var/log/messages</code> 记录各种各样的信息 包括网络 系统 内核… 除非服务有指定日志路径 不然全记录此日志下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516003837.jpg" alt=""></p>
+<p>为了防止日志文件大小过大 系统自带一个系统切割服务logrotate 此服务的配置文件在<code>/etc/logrotate.conf</code>下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516005139.jpg" alt=""></p>
+<blockquote>
+<p>dmesg：列出系统硬件设备的日志 内容存在内存中</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516005443.jpg" alt=""></p>
+<p><code>-c</code>：清空日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# dmesg -c</span><br></pre></td></tr></table></figure></p>
+<p> 系统启动日志 /var/log/dmesg 和dmesg命令没有关系</p>
+<blockquote>
+<p>last：查看登录成功历史 其日志文件在 /var/log/wtmp 该文件不能直接cat</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516010218.jpg" alt=""></p>
+<blockquote>
+<p>lastb：查看登录失败历史 其日志文件在 /var/log/btmp 该文件不能直接cat</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516010533.jpg" alt=""></p>
+<p>系统安全日志 <code>/var/log/secure</code> 可以看用户登录情况<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516011048.jpg" alt=""></p>
+<h2 id="10-35-screen命令"><a href="#10-35-screen命令" class="headerlink" title="10.35 screen命令"></a>10.35 screen命令</h2><blockquote>
+<p>screen：虚拟终端</p>
+</blockquote>
+<p>为了不让一个任务因为远程终端断开而中断，并且可以随时调用屏幕 使用Ctrl+a+d 来后面运行 exit退出screen<br><code>-ls</code>：查看虚拟终端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# screen -ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180516013126.jpg" alt=""></p>
+<p><code>-r</code>：进入指定虚拟终端 后面可跟id 可跟终端名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# screen -r 2087</span><br><span class="line">[root@kun0769 ~]# screen -r kun1</span><br></pre></td></tr></table></figure></p>
+<p><code>-S</code>：指定终端名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# screen -S kun1</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/七周第三次课（5月8日）/" class="archive-article-date">
-  	<time datetime="2018-05-08T16:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/七周第三次课（5月8日）/">七周第三次课（5月8日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/七周第二次课（5月7日）/">七周第二次课（5月7日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -231,149 +334,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/16/八周第三次课（5月15日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/05/七周第一次课（5月4日）/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/14/八周第二次课（5月14日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">八周第二次课（5月14日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/七周第一次课（5月4日）/">七周第一次课（5月4日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
-  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/26/六周第二次课（4月26日）/">六周第二次课（4月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/Linux/page/3/">3</a><a class="page-number" href="/tags/Linux/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/8/">8</a><a class="extend next" rel="next" href="/tags/Linux/page/3/">Next &raquo;</a>
-    </nav>
   
+
 
 
           </div>
@@ -396,9 +478,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
