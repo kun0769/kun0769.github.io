@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | kun0769的博客</title>
+  <title>LAMP第一节（5月23日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/4/index.html">
+  <meta name="description" content="11.1 LAMP架构介绍11.2 MySQL、MariaDB介绍11.3/11.4/11.5 MySQL安装">
+<meta name="keywords" content="Linux,LAMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP第一节（5月23日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/24/LAMP第一节（5月23日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="11.1 LAMP架构介绍11.2 MySQL、MariaDB介绍11.3/11.4/11.5 MySQL安装">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg">
+<meta property="og:updated_time" content="2018-05-23T16:39:19.458Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LAMP第一节（5月23日）">
+<meta name="twitter:description" content="11.1 LAMP架构介绍11.2 MySQL、MariaDB介绍11.3/11.4/11.5 MySQL安装">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +153,133 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LAMP第一节（5月23日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LAMP第一节（5月23日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/24/LAMP第一节（5月23日）/" class="archive-article-date">
+  	<time datetime="2018-05-23T16:19:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>11.1 LAMP架构介绍<br>11.2 MySQL、MariaDB介绍<br>11.3/11.4/11.5 MySQL安装<br><a id="more"></a></p>
+<h2 id="11-1-LAMP架构"><a href="#11-1-LAMP架构" class="headerlink" title="11.1 LAMP架构"></a>11.1 LAMP架构</h2><p>LAMP其实是<code>Linux</code>，<code>Apache</code>，<code>MySQL</code>和<code>PHP</code>的简写。<br>Linux是一个操作系统。<br>Apache是个提供web服务的软件，可以叫作httpd。<br>MySQL是个关系型数据库，一般用来存储数据。<br>PHP是个脚本语言，多用于服务器上用来编写网页。<br>其中Apache，MySQL和PHP可以安装在同一台服务器上，也可以让MySQL单独在一台机器上 Apache和PHP在另外一台机器上（PHP和 Apache必须在同一台机器上）通过网络来通信<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg" alt=""></p>
+<p>工作流程：当用户使用浏览器来访问服务器 ，Apache就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等） Apache就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Apache就是调用PHP来访问MySQL数据库，其中PHP只作为Apache的模块来和MySQL打交道，而Apache自己是不会去访问数据库的。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg" alt=""></p>
+<h2 id="11-2-MySQL和Mariadb介绍"><a href="#11-2-MySQL和Mariadb介绍" class="headerlink" title="11.2 MySQL和Mariadb介绍"></a>11.2 MySQL和Mariadb介绍</h2><p>MySQL是一个关系型数据库，由mysql ab公司开发，mysql在2008年被sun公司收购，2009年sun公司被oracle公司收购。因此以后MySQL有可能要收钱了<br> MySQL最新版本是5.7GA/8.0DMR，其中MySQL5.6变化比较大，5.7性能上有很大提升。<br>Mariadb是MySQL的一个分支，最新版本10.2，他是由MySQL原作者创作的，他是款开源软件，其中Mariadb5.5版本对应MySQL的5.5，10.0对应MySQL5.6。</p>
+<p>版本号常识</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Community</td>
+<td>社区版本（免费）</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td>企业版（收费）</td>
+</tr>
+<tr>
+<td>GA（Generally Available)</td>
+<td>通用版本，在生产环境中用的（通用版）</td>
+</tr>
+<tr>
+<td>DMR（Development Milestone Release)</td>
+<td>开发里程碑发布版（有重大技术改进）</td>
+</tr>
+<tr>
+<td>RC（Release Candidate)</td>
+<td>发行候选版本</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>开放测试版本</td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>内部测试版本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-3-11-4-11-5-MySQL安装"><a href="#11-3-11-4-11-5-MySQL安装" class="headerlink" title="11.3/11.4/11.5 MySQL安装"></a>11.3/11.4/11.5 MySQL安装</h2><h3 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h3><p>通常安装MySQL有三种方式 ：<br>1.rpm包安装，用yum安装 但是不能自定义安装路径<br>2.源码包安装，使用编译安装 可自定义安装路径，但安装时间长，步骤繁琐<br>3.二进制免编译包安装， 二进制免编译包就是在别的机器上编译后把内容放到一个目录下并打包压缩的的包，可自定义安装路径，他不够源码包稳定，但是安装时间短，步骤简单</p>
+<p>这里我们使用二进制免编译包安装<br>我们可以去 r.aminglinux.com 去下载MySQL的二进制免编译包</p>
+<blockquote>
+<p>uname -a ：查看系统的位数</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg" alt=""><br>x86_64对应的是64位系统，i686 i586对应的是32位系统，因此我们下载5.6的64位即可</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.我们默认把所有安装的应用软件和包都放在/usr/local/src/目录下 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/   ##移动到src目录下</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.下载二进制免编译包 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.解压二进制免编译包 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.把解压的包的目录放在/etc/local/下并改名为mysql目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# mv mysql-5.6.36-linux-glibc2.5-x86_64 /usr/local/mysql/</span><br></pre></td></tr></table></figure>
+<p>可以用ls看看是否如下 和下面不一样有可能是路径搞错了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg" alt=""></p>
+<blockquote>
+<p>5.进入mysql目录下 并建立mysql用户和创建data目录（默认已经在mysql目录下）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd /usr/local/mysql/   ##进入mysql/目录</span><br><span class="line">[root@localhost mysql]# useradd mysql   ##创建mysql用户</span><br><span class="line">[root@localhost mysql]# mkdir data   ##创建data目录 默认有可以不用创建</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.初始化mysql 并指定用户和数据目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# ./scripts/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data/mysql</span><br></pre></td></tr></table></figure>
+<p><code>./scripts/mysql_install_db</code> 初始化mysql<br><code>--user</code> 指定运行软件的用户<br><code>--datadir</code> 指定数据的目录路径 最后是绝对路径</p>
+<p>错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FATAL ERROR: please install the following Perl modules before executing ./scripts/mysql_install_db:</span><br><span class="line">Data::Dumper</span><br></pre></td></tr></table></figure></p>
+<p>我们遇到错误可以使用两种思路：<br>1.模糊搜索 这里少模块就是少哪个包 关键字Dumper perl<br><code>yum list |grep perl |grep -i dumper</code><br>2.利用搜索引擎 谷歌 百度等</p>
+<p>这里是<code>./scripts/mysql_install_db</code>是Perl脚本编写的 缺少了Perl的Dumper模块<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg" alt=""><br>之后一个个安装在初始化试试 这里少了perl-Data-Dumper包</p>
+<p>初始化完成成功后可以观察是否有两个OK<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg" alt=""></p>
+<p>也可以使用echo $? 是否为0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# echo $?</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>7.从模版中复制配置文件和启动脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# cp support-files/my-default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<p><code>support-files/my-default.cnf</code>是mysql的模版配置文件<br><code>/etc/my.cnf</code>是mysql的配置文件 系统默认存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# cp support-files/mysql.server /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+<p><code>support-files/mysql.server</code>是mysql的模版启动脚本<br><code>/etc/init.d/</code>是系统服务启动的目录 </p>
+<blockquote>
+<p>8.编辑启动脚本mysqld并开机启动服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# vim /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+<p>定义下basedir和datadir的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mysql/</span><br><span class="line">datadir=/usr/local/mysql/data/mysql/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# chkconfig --add mysqld  ##添加服务</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg" alt=""></p>
+<p>也可以使用service命令启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# service mysqld start   ##启动服务</span><br></pre></td></tr></table></figure></p>
+<p>查看服务是否运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# ps aux |grep mysqld  ##查看mysqld进程是否启动</span><br><span class="line">[root@localhost mysql]# netstat -ltnp  ##查看3306端口是否监听</span><br></pre></td></tr></table></figure></p>
+<p>都有说明mysql安装成功了</p>
+<p>也可以使用内置命令来启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# /usr/local/mysql/bin/mysqld_safe --defaults-file=/etc/my.cnf --user=mysql --datadir=/usr/local/mysql/data/mysql/ &amp;  ##&amp;后台执行</span><br></pre></td></tr></table></figure></p>
+<p>但要停止服务只能使用killall命令 killall命令会把数据先从内存中存放到硬盘上之后再杀死进程的 这样就不怕因为杀死进程而数据丢失<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# killall mysqld</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/五周第二次课（4月19日）/" class="archive-article-date">
-  	<time datetime="2018-04-19T13:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/五周第二次课（4月19日）/">五周第二次课（4月19日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,197 +289,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">软件包</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/24/LAMP第一节（5月23日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/五周第一次课（4月18日）/" class="archive-article-date">
-  	<time datetime="2018-04-18T14:41:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/16/八周第三次课（5月15日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">八周第三次课（5月15日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/五周第一次课（4月18日）/">五周第一次课（4月18日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">软件包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/17/四周第五次课（4月17日）/" class="archive-article-date">
-  	<time datetime="2018-04-17T11:43:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/四周第五次课（4月17日）/">四周第五次课（4月17日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">压缩和打包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/四周第四次课（4月16日）/" class="archive-article-date">
-  	<time datetime="2018-04-15T15:27:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/四周第四次课（4月16日）/">四周第四次课（4月16日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">压缩和打包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/13/四周第三次课（4月13日）/" class="archive-article-date">
-  	<time datetime="2018-04-13T13:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/13/四周第三次课（4月13日）/">四周第三次课（4月13日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2018/page/5/">5</a><a class="page-number" href="/archives/2018/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/8/">8</a><a class="extend next" rel="next" href="/archives/2018/page/5/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +439,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
