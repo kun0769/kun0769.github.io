@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 正则 | kun0769的博客</title>
+  <title>LAMP第二节（5月24日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/正则/index.html">
+  <meta name="description" content="11.6 MariaDB安装11.7/11.8/11.9 Apache安装">
+<meta name="keywords" content="Linux,LAMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP第二节（5月24日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/LAMP第二节（5月24日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="11.6 MariaDB安装11.7/11.8/11.9 Apache安装">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524223231.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524224921.jpg">
+<meta property="og:updated_time" content="2018-05-24T18:25:51.811Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LAMP第二节（5月24日）">
+<meta name="twitter:description" content="11.6 MariaDB安装11.7/11.8/11.9 Apache安装">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524223231.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +148,129 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LAMP第二节（5月24日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LAMP第二节（5月24日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/25/LAMP第二节（5月24日）/" class="archive-article-date">
+  	<time datetime="2018-05-24T18:09:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>11.6 MariaDB安装<br>11.7/11.8/11.9 Apache安装<br><a id="more"></a></p>
+<h2 id="11-6-MariaDB安装"><a href="#11-6-MariaDB安装" class="headerlink" title="11.6 MariaDB安装"></a>11.6 MariaDB安装</h2><p>由于MariaDB和MySQL是姐妹的关系 他们的安装方法也是类似的 这里我们也是安装二进制的免编译包来安装 包可以去 r.aminglinux.com 下载</p>
+<p>步骤</p>
+<blockquote>
+<p>1.我们默认把所有安装的应用软件和包都放在/usr/local/src/目录下 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/   ##移动到src目录下 </span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.下载二进制免编译包 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# wget https://downloads.mariadb.com/MariaDB/mariadb-10.2.6/bintar-linux-glibc_214-x86_64/mariadb-10.2.6-linux-glibc_214-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.解压二进制免编译包 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf mariadb-10.2.6-linux-glibc_214-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.把解压的包的目录放在/etc/local/下并改名为mariadb目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# mv mariadb-10.2.6-linux-glibc_214-x86_64 /usr/local/mariadb/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.进入mysql目录下 并建立mysql用户和创建data目录（默认已经在mysql目录下）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd /usr/local/mairadb/   ##进入mariadb/目录</span><br></pre></td></tr></table></figure>
+<p>由于刚刚我们在这台机器上建立了mysql用户，所以可以忽略此步骤。如果第一次安装数据库，请执行下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadbl]# useradd mysql   ##创建mysql用户</span><br><span class="line">[root@localhost mariadb]# mkdir data   ##创建data目录 默认有可以不用创建 </span><br><span class="line">注意：data目录可以创建也可以根目录下</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>6.初始化mariadb 并指定用户和数据目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# ./scripts/mysql_install_db --user=mysql --basedir=/usr/local/mariadb/ --datadir=/usr/local/mariadb/data/mariadb</span><br><span class="line">--basedir=/usr/local/mariadb/ 指定了Mariadb的安装路径</span><br></pre></td></tr></table></figure>
+<p>因为这台机器上安装过mysql，为了区分MySQL和Mariadb 这样机器初始化就不会搞错</p>
+<p>检查初始化是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# echo $?</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>7.从模版中复制配置文件和编辑他</p>
+</blockquote>
+<p>在<code>support-files</code>文件中有许多模版配置文件<code>my-small.cnf</code>，<code>my-large.cnf</code>，<code>my-huge.cnf</code>等等 他们大体的配置都是一样，唯一不同点就在于读写数据时使用内存的大小 ，因此根据机器内存配置的情况下 我们这里复制my-small.cnf作为配置文件。<br>为了和mysql的配置文件/etc/my.cnf 分开 我们这里复制到在<code>/usr/local/mariadb/my.cnf</code>不然也放到/etc目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# cp support-files/my-small.cnf /usr/local/mariadb/my.cnf</span><br><span class="line">[root@localhost mariadb]# vim my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>在配置文件下 在[mysqld]中定义下basedir和datadir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datadir = /usr/local/mariadb/data/mariadb</span><br><span class="line">basedir = /usr/local/mariadb</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524223231.jpg" alt=""></p>
+<p>这里还有个参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server-id       = 1 是定义数据库主从的 这里先不管</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>8.从模版中复制启动脚本和编辑他</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# cp support-files/mysql.server /etc/init.d/mariadbd</span><br><span class="line">[root@localhost mariadb]# vim /etc/init.d/mariadbd</span><br></pre></td></tr></table></figure>
+<p>定义下basedir，datadir，conf的路径和启动的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mariadb</span><br><span class="line">datadir=/usr/local/mariadb/data/mariadb</span><br><span class="line">conf=$basedir/my.cnf     ##写绝对路径也可以 conf=/usr/local/mariadb/my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>并找到启动的命令<code>$bindir/mysqld_safe</code>再加上<code>--defaults-file=$conf</code> 来自定义配置文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524224921.jpg" alt=""></p>
+<blockquote>
+<p>9.启动服务</p>
+</blockquote>
+<p>先看看是否有mysql的服务并杀掉他们<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# ps aux |grep mysqld</span><br><span class="line">[root@localhost mariadb]# killall mysqld</span><br></pre></td></tr></table></figure></p>
+<p>再启动mariadbd服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# service mariadbd start</span><br></pre></td></tr></table></figure></p>
+<p>查看服务是否运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# ps aux |grep mariadb </span><br><span class="line">[root@localhost mariadb]# netstat -lnpt</span><br></pre></td></tr></table></figure></p>
+<p>这样已经是安装Mariadb成功了</p>
+<h2 id="11-7-11-8-11-9-Apache（httpd）安装"><a href="#11-7-11-8-11-9-Apache（httpd）安装" class="headerlink" title="11.7/11.8/11.9 Apache（httpd）安装"></a>11.7/11.8/11.9 Apache（httpd）安装</h2><p>Apache是一个基金会的名字，httpd才是我们要安装的软件包，早期它的名字就叫apache 但是从2.0开始就叫httpd 这里我们安装的是2.4版本<br>apr和apr-util是一个通用的函数库，它让httpd可以不关心底层的操作系统平台，可以很方便地移植,但是系统自带的apr和apr-util又对 httpd-2.4版本不匹配，因此我们要自己亲自去下载和编译apr和apr-uti后才去安装httpd</p>
+<p>步骤</p>
+<blockquote>
+<p>1.下载apr apr-util  httpd2.4的编译包到/usr/local/src/目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/apr/apr-1.6.3.tar.gz</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/apr/apr-util-1.6.1.tar.bz2</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/httpd/httpd-2.4.33.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.解压编译包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar zxvf apr-1.6.3.tar.gz</span><br><span class="line">[root@localhost src]# tar jxvf apr-util-1.6.1.tar.bz2</span><br><span class="line">[root@localhost src]# tar zxvf httpd-2.4.33.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h3><p>tar (child): bzip2：无法 exec: 没有那个文件或目录<br>tar (child): Error is not recoverable: exiting now<br>tar: Child returned status 2<br>tar: Error is not recoverable: exiting now<br>原因 缺少bzip2包<br>[root@localhost src]# yum install -y bzip2  ##安装bzip2包</p>
+<blockquote>
+<p>3.安装apr </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd apr-1.6.3  ##进入apr目录下</span><br><span class="line">[root@localhost apr-1.6.3]# ./configure --prefix=/usr/local/apr  ##初始化并指定安装路径</span><br><span class="line">每做完一步都可以echo $?来看看是否正确</span><br></pre></td></tr></table></figure>
+<h3 id="错误2"><a href="#错误2" class="headerlink" title="错误2"></a>错误2</h3><p>checking for gcc… no<br>checking for cc… no<br>checking for cl.exe… no<br>configure: error: in /usr/local/src/apr-1.6.3:<br>configure: error: no acceptable C compiler found in $PATH<br>See `config.log’ for more details<br>原因 缺少gcc包<br>[root@localhost apr-1.6.3]# yum install -y gcc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apr-1.6.3]# make ##编译apr</span><br><span class="line">[root@localhost apr-1.6.3]# make install ##安装apr</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.安装apr-util</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd apr-util-1.6.1 ##进入apr-util目录下</span><br><span class="line">[root@localhost apr-util-1.6.1]# ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr  ##初始化并指定安装路径和指定依赖的apr的路径</span><br><span class="line">[root@localhost apr-util-1.6.1]# make  ##编译apr-util</span><br></pre></td></tr></table></figure>
+<h3 id="错误3"><a href="#错误3" class="headerlink" title="错误3"></a>错误3</h3><p>xml/apr_xml.c:35:19: 致命错误：expat.h：没有那个文件或目录<br>#include &lt;expat.h&gt;<br>原因 缺少 expat-devel包<br>[root@localhost apr-util-1.6.1]# yum install -y expat-devel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apr-util-1.6.1]# make install  ##安装apr-util</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.安装httpd</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd httpd-2.4.33 ##进入httpd目录</span><br><span class="line">[root@localhost httpd-2.4.33]# ./configure \  ##初始化</span><br><span class="line">&gt; --prefix=/usr/local/apache2.4 \</span><br><span class="line">&gt; --with-apr=/usr/local/apr \</span><br><span class="line">&gt; --with-apr-util=/usr/local/apr-util \</span><br><span class="line">&gt; --enable-so \</span><br><span class="line">&gt; --enable-mods-shared=most</span><br><span class="line">--enable-so 是支持扩展动态模块 </span><br><span class="line">--enable-mods-shared=most 是下载大多数的动态模块</span><br></pre></td></tr></table></figure>
+<h3 id="错误4"><a href="#错误4" class="headerlink" title="错误4"></a>错误4</h3><p>configure: error: pcre-config for libpcre not found. PCRE is required and available from <a href="http://pcre.org/" target="_blank" rel="noopener">http://pcre.org/</a><br>原因 缺少pcre-devel包<br>[root@localhost httpd-2.4.33]# yum install -y pcre-devel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost httpd-2.4.33]# make  ##编译</span><br></pre></td></tr></table></figure>
+<h3 id="错误5"><a href="#错误5" class="headerlink" title="错误5"></a>错误5</h3><p>collect2: error: ld returned 1 exit status<br>make[2]: *** [htpasswd] 错误 1<br>make[2]: 离开目录“/usr/local/src/httpd-2.4.33/support”<br>make[1]: *** [all-recursive] 错误 1<br>make[1]: 离开目录“/usr/local/src/httpd-2.4.33/support”<br>make: *** [all-recursive] 错误 1</p>
+<p>原因 apr apr-util 用了最新的1.6版本 用回1.5版本即可<br>[root@localhost httpd-2.4.33]# wget <a href="http://archive.apache.org/dist/apr/apr-1.5.2.tar.gz" target="_blank" rel="noopener">http://archive.apache.org/dist/apr/apr-1.5.2.tar.gz</a><br>[root@localhost httpd-2.4.33]# wget <a href="http://archive.apache.org/dist/apr/apr-util-1.5.2.tar.gz" target="_blank" rel="noopener">http://archive.apache.org/dist/apr/apr-util-1.5.2.tar.gz</a><br>然后重启对apr和apr-util进行编译安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apache2.4]# cd /usr/local/apache2.4/ ##进去apache目录下</span><br></pre></td></tr></table></figure>
+<p>bin apache的命令的目录<br>conf 存放配置文件的目录<br>htdos 网站默认主页存放的目录<br>logs 日志存放的目录<br>modules 模块存放的目录</p>
+<blockquote>
+<p>查看apache模块</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apache2.4]# /usr/local/apache2.4/bin/httpd -M</span><br><span class="line">[root@localhost apache2.4]# /usr/local/apache2.4/bin/apachectl -M</span><br></pre></td></tr></table></figure>
+<p>static是指此模块编译进了httpd里面<br>shared是扩展模块 是一个.so的文件</p>
+<blockquote>
+<p>6.启动apache</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apache2.4]# /usr/local/apache2.4/bin/apachectl start</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.查看是否启动apache</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost apache2.4]# ps aux |grep httpd</span><br><span class="line">[root@localhost apache2.4]# netstat -lnpt</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,109 +280,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/25/LAMP第二节（5月24日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
-  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/24/LAMP第一节（5月23日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LAMP第一节（5月23日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/26/六周第二次课（4月26日）/">六周第二次课（4月26日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/25/六周第一次课（4月25日）/" class="archive-article-date">
-  	<time datetime="2018-04-25T14:52:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/25/六周第一次课（4月25日）/">六周第一次课（4月25日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -304,9 +430,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
