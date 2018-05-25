@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524223231.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180524224921.jpg">
-<meta property="og:updated_time" content="2018-05-24T18:25:51.811Z">
+<meta property="og:updated_time" content="2018-05-25T15:00:06.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第二节（5月24日）">
 <meta name="twitter:description" content="11.6 MariaDB安装11.7/11.8/11.9 Apache安装">
@@ -170,8 +170,7 @@
       
         <p>11.6 MariaDB安装<br>11.7/11.8/11.9 Apache安装<br><a id="more"></a></p>
 <h2 id="11-6-MariaDB安装"><a href="#11-6-MariaDB安装" class="headerlink" title="11.6 MariaDB安装"></a>11.6 MariaDB安装</h2><p>由于MariaDB和MySQL是姐妹的关系 他们的安装方法也是类似的 这里我们也是安装二进制的免编译包来安装 包可以去 r.aminglinux.com 下载</p>
-<p>步骤</p>
-<blockquote>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.我们默认把所有安装的应用软件和包都放在/usr/local/src/目录下 </p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/   ##移动到src目录下 </span><br><span class="line">`</span><br></pre></td></tr></table></figure>
@@ -219,8 +218,7 @@
 <p>查看服务是否运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# ps aux |grep mariadb </span><br><span class="line">[root@localhost mariadb]# netstat -lnpt</span><br></pre></td></tr></table></figure></p>
 <p>这样已经是安装Mariadb成功了</p>
 <h2 id="11-7-11-8-11-9-Apache（httpd）安装"><a href="#11-7-11-8-11-9-Apache（httpd）安装" class="headerlink" title="11.7/11.8/11.9 Apache（httpd）安装"></a>11.7/11.8/11.9 Apache（httpd）安装</h2><p>Apache是一个基金会的名字，httpd才是我们要安装的软件包，早期它的名字就叫apache 但是从2.0开始就叫httpd 这里我们安装的是2.4版本<br>apr和apr-util是一个通用的函数库，它让httpd可以不关心底层的操作系统平台，可以很方便地移植,但是系统自带的apr和apr-util又对 httpd-2.4版本不匹配，因此我们要自己亲自去下载和编译apr和apr-uti后才去安装httpd</p>
-<p>步骤</p>
-<blockquote>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.下载apr apr-util  httpd2.4的编译包到/usr/local/src/目录下</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mariadb]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/apr/apr-1.6.3.tar.gz</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/apr/apr-util-1.6.1.tar.bz2</span><br><span class="line">[root@localhost src]# wget http://mirrors.cnnic.cn/apache/httpd/httpd-2.4.33.tar.gz</span><br></pre></td></tr></table></figure>
@@ -349,6 +347,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/25/LAMP第三节（5月25日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LAMP第三节（5月25日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/24/LAMP第一节（5月23日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -516,6 +523,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
@@ -529,10 +540,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
