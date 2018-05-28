@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526171659.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526174624.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526175314.jpg">
-<meta property="og:updated_time" content="2018-05-26T11:29:34.378Z">
+<meta property="og:updated_time" content="2018-05-28T13:32:09.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第四节（5月28日）">
 <meta name="twitter:description" content="11.14/11.15 Apache和PHP结合11.16/11.17 Apache默认虚拟主机">
@@ -225,7 +225,7 @@
 <p>由于http.conf里面的只能配置一个站点 不能满足生产环境的要求 因此我们要使用虚拟主机的配置文件来管理多个站点<br>在<code>/usr/local/apache2.4/conf/httpd.conf</code> 中找到<code>Virtual hosts并去掉#</code> 来生效虚拟主机配置 这样做httpd.conf里面的ServerName DocumentRoot都会失效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Virtual hosts</span><br><span class="line">Include conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure></p>
 <p>配置虚拟主机配置文件 路径是 <code>/usr/local/apache2.4/conf/extra/httpd-vhosts.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/apache2.4/conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526171659.jpg" alt=""></p>
-<p>每一对<code>&lt;VritualHost&gt;</code>就是一个虚拟主机 排在第一个的是默认虚拟主机<br><code>ServerAdmin</code> 邮箱地址 可以忽略<br><code>DocumentRoot</code> 站点地址 必须有<br><code>ServerName</code> 网站名字就是域名 必须有<br><code>ServerAlias</code> 网站别名<br><code>ErrorLong</code> 错误日志路径<br><code>CustomLog</code> 日志格式路径</p>
+<p>每一对<code>&lt;VritualHost&gt;</code>就是一个虚拟主机 排在第一个的是默认虚拟主机<br><code>ServerAdmin</code> 邮箱地址 可以忽略<br><code>DocumentRoot</code> 站点地址 必须有<br><code>ServerName</code> 网站名字就是域名 必须有<br><code>ServerAlias</code> 网站别名<br><code>ErrorLong</code> 错误日志路径<br><code>CustomLog</code> 访问日志路径和格式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/test1.com&quot;</span><br><span class="line">    ServerName test1.com</span><br><span class="line">    ServerAlias www.test1.com www.example.com</span><br><span class="line">    ErrorLog &quot;logs/test1.com-error_log&quot;</span><br><span class="line">    CustomLog &quot;logs/test1.com-access_log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/test2.com&quot;</span><br><span class="line">    ServerName test2.com</span><br><span class="line">    ServerAlias www.test2.com www.123.com www.abc.com</span><br><span class="line">    ErrorLog &quot;logs/test2.com-error_log&quot;</span><br><span class="line">    CustomLog &quot;logs/test2.com-access_log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 <p>这里我们配置两个虚拟主机一个test1.com 用<code>www.test1.com</code> <code>www.example.com</code>也是访问他的主页 目录在/var/www/test1.com<br>另一个是test2.com  用<code>www.test2.com</code> <code>www.123.com</code> <code>www.abc.com</code>访问他的主页 目录在/var/www/test2.com</p>
 <p>各自创建目录和主页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir -p /var/www/test1.com/ /var/www/test2.com/</span><br><span class="line">[root@localhost ~]# vim /var/www/test1.com/index.php</span><br><span class="line">[root@localhost ~]# vim /var/www/test2.com/index.php</span><br></pre></td></tr></table></figure></p>
@@ -319,6 +319,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/28/LAMP第五节（5月29日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LAMP第五节（5月29日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/25/LAMP第三节（5月25日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -482,15 +491,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
