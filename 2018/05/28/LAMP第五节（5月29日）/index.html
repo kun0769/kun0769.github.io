@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg">
-<meta property="og:updated_time" content="2018-05-28T13:46:28.692Z">
+<meta property="og:updated_time" content="2018-05-29T15:19:30.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第五节（5月29日）">
 <meta name="twitter:description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
@@ -183,7 +183,7 @@
 <p><code>-u</code>用户名:密码 使用用户登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 -utest1:123456 test2.com</span><br></pre></td></tr></table></figure></p>
 <p>上述是针对整个目录认证 也可以针对单个文件认证</p>
 <h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch test.php&gt;</span><br><span class="line">AllowOverride AuthConfig</span><br><span class="line">AuthName &quot;test2.com user auth&quot;</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /var/.htpasswd</span><br><span class="line">require valid-user</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
-<p>这里使用<code>&lt;FilesMatch&gt;</code>来指定某个文件 其实<code>&lt;Directory&gt;`</code><directorymatch><code>都是指定某个目录</code><files><code>&lt;FilesMatch&gt;`都是指定某个文件 唯一不同点在于`&lt;DirectoryMatch&gt;</code><filesmatch><code>可以直接使用正则表达式 而</code><directory><code></code><files><code>使用正则表达式 要再其前加~ 例如</code><files ~"^\.ht"="">` 以.ht开头的文件</files></files></directory></filesmatch></files></directorymatch></p>
+<p>这里使用<code>&lt;FilesMatch&gt;</code>来指定某个文件 其实<code>&lt;Directory&gt;</code> <code>&lt;DirectoryMatch&gt;</code>都是指定某个目录 <code>&lt;Files&gt;</code> <code>&lt;FilesMatch&gt;</code>都是指定某个文件 唯一不同点在于<code>&lt;DirectoryMatch&gt;</code> <code>&lt;FilesMatch&gt;</code>可以直接使用正则表达式 而<code>&lt;Directory&gt;</code> <code>&lt;Files&gt;</code>使用正则表达式 要再其前加<code>~</code> 例如 <code>&lt;Files ~&quot;^\.ht&quot;&gt;</code> 以.ht开头的文件</p>
 <h3 id="加载配置文件-1"><a href="#加载配置文件-1" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
 <h3 id="新建test-php文件"><a href="#新建test-php文件" class="headerlink" title="新建test.php文件"></a>新建test.php文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /var/www/test2.com/test.php</span><br></pre></td></tr></table></figure>
 <h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com</span><br><span class="line">test2</span><br><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com/test.php -I</span><br><span class="line">HTTP/1.1 401 Unauthorized</span><br><span class="line">Date: Sun, 27 May 2018 13:20:51 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">WWW-Authenticate: Basic realm=&quot;test2.com user auth&quot;</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure>
@@ -212,6 +212,10 @@
 <tr>
 <td>302</td>
 <td>临时重定向 网站权重不变</td>
+</tr>
+<tr>
+<td>304</td>
+<td>表示用户访问的文件没变化</td>
 </tr>
 <tr>
 <td>401</td>
@@ -322,6 +326,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/29/LAMP第六节（5月30日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LAMP第六节（5月30日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/26/LAMP第四节（5月28日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -485,11 +498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,11 +534,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
             
             <div class="clearfix"></div>

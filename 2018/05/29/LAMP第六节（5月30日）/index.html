@@ -6,15 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/4 | kun0769的博客</title>
+  <title>LAMP第六节（5月30日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/page/3/index.html">
+  <meta name="description" content="11.22 访问日志不记录静态文件11.23 访问日志切割11.24 静态元素过期时间">
+<meta name="keywords" content="Linux,LAMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LAMP第六节（5月30日）">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/LAMP第六节（5月30日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="11.22 访问日志不记录静态文件11.23 访问日志切割11.24 静态元素过期时间">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528235022.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528233327.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528233512.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528234324.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528234405.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529215640.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529215716.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529230622.jpg">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529230020.jpg">
+<meta property="og:updated_time" content="2018-05-29T15:34:44.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LAMP第六节（5月30日）">
+<meta name="twitter:description" content="11.22 访问日志不记录静态文件11.23 访问日志切割11.24 静态元素过期时间">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528235022.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +155,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LAMP第六节（5月30日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LAMP第六节（5月30日）
+    </h1>
+  
+
+        
+        <a href="/2018/05/29/LAMP第六节（5月30日）/" class="archive-article-date">
+  	<time datetime="2018-05-29T15:17:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>11.22 访问日志不记录静态文件<br>11.23 访问日志切割<br>11.24 静态元素过期时间<br><a id="more"></a></p>
+<h2 id="11-22-访问日志不记录静态文件"><a href="#11-22-访问日志不记录静态文件" class="headerlink" title="11.22 访问日志不记录静态文件"></a>11.22 访问日志不记录静态文件</h2><p>一般在一个网页上都会好几十个图片，样式等等的静态文件。每一个用户访问网站，日志就会记录下所有的请求，其中就包括了静态文件的请求，而这些记录静态文件的日志对于我们来说没意义并且浪费磁盘空间，因此我们会设置访问日志不记录静态文件</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们在test2的<code>&lt;VirtualHost&gt;</code>里加上以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SetEnvIf Request_URI &quot;.*\.gif$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.jpg$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.JPG$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.png$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.bmp$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.swf$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.js$&quot; img</span><br><span class="line">SetEnvIf Request_URI &quot;.*\.css$&quot; img</span><br><span class="line">CustomLog &quot;logs/test2.com-access_log&quot; combined env=!img</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528235022.jpg" alt=""></p>
+<h3 id="加载文件"><a href="#加载文件" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>先在test2的目录下放张test.jpg和test.JPG的图片<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528233327.jpg" alt=""><br>分别用浏览器和curl命令去访问再去看看日志<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528233512.jpg" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528234324.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test2.com]# curl -x192.168.80.101:80 test2.com/test.jpg -I</span><br><span class="line">[root@localhost test2.com]# curl -x192.168.80.101:80 test2.com/test.JPG -I</span><br><span class="line">[root@localhost test2.com]# tail -f /usr/local/apache2.4/logs/test2.com-access_log</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180528234405.jpg" alt=""><br>发现日志并没有记录刚刚的.jpg和.JPG的请求</p>
+<h2 id="11-23-日志切割"><a href="#11-23-日志切割" class="headerlink" title="11.23 日志切割"></a>11.23 日志切割</h2><p>因为每天都在写日志，日志文件会越来越大，总有一天会把磁盘空间占满。我们为了不让这事情发生就会使用日志切割工具来切割日志并用任务计划把时间久远的日志文件删除掉。</p>
+<h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们在test2的<code>CustomLog</code>里设定以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CustomLog &quot;|/usr/local/apache2.4/bin/rotatelogs -l logs/test2.com-access_%Y%m%d.log 86400&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529215640.jpg" alt=""><br><code>|/usr/local/apache2.4/bin/rotatelog</code> 使用apache的rotatelog工具进行日志切割 <code>-l</code>指定使用系统时间切割CST 不指定就是用UTC国际时间 变量<code>%Y%m%d</code>指定年月日 86400指时间段一天（86400秒）来切割</p>
+<h3 id="加载文件-1"><a href="#加载文件-1" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令访问test2.com再看看有没有生成新的日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Tue, 29 May 2018 21:53:56 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">X-Powered-By: PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">[root@localhost ~]# cat /usr/local/apache2.4/logs/test2.com-access_20180530.log</span><br><span class="line">192.168.80.1 - - [30/May/2018:05:53:32 +0800] &quot;GET / HTTP/1.1&quot; 200 5 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36&quot;</span><br><span class="line">192.168.80.101 - - [30/May/2018:05:53:56 +0800] &quot;HEAD HTTP://test2.com/ HTTP/1.1&quot; 200 - &quot;-&quot; &quot;curl/7.29.0&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529215716.jpg" alt=""><br>发现多了一个test2.com-access_20180530.log的文件 每日一个 等时间过久了可以勇士任务计划把几个月前的日志清除</p>
+<h2 id="11-24-静态元素过期时间"><a href="#11-24-静态元素过期时间" class="headerlink" title="11.24 静态元素过期时间"></a>11.24 静态元素过期时间</h2><p>当使用浏览器来访问网站的静态文件时，系统都会自动把静态文件下载到本地的目录下做缓存的。而这些静态文件的的保质期都是由服务器来定义的，既可以帮服务器节省带宽，也可以加快用户的访问网站的时间。</p>
+<h3 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们在test2的<code>&lt;VirtualHost&gt;</code>里加上以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_expires.c&gt;</span><br><span class="line">ExpiresActive on</span><br><span class="line">ExpiresByType image/gif &quot;access plus 1 days&quot;</span><br><span class="line">ExpiresByType image/jpeg &quot;access plus 1 days&quot;</span><br><span class="line">ExpiresByType image/png &quot;access plus 1 days&quot;</span><br><span class="line">ExpiresByType text/css &quot;now plus 2 hours&quot;</span><br><span class="line">ExpiresByType application/x-javescript &quot;now plus 2 hours&quot;</span><br><span class="line">ExpiresByType application/javescript &quot;now plus 2 hours&quot;</span><br><span class="line">ExpiresByType application/x-shockwave-flash &quot;now plus 2 hours&quot;</span><br><span class="line">ExpiresDefault &quot;now plus 0 hours&quot;</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529230622.jpg" alt=""></p>
+<h3 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h3><p>在配置文件httpd.conf里面把expires模块前的#去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/apache2.4/conf/httpd.conf</span><br><span class="line">LoadModule expires_module modules/mod_expires.so ##去掉前面的#</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -M |grep expires</span><br><span class="line">expires_module (shared)</span><br></pre></td></tr></table></figure></p>
+<h3 id="加载文件-2"><a href="#加载文件-2" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180529230020.jpg" alt=""><br>使用curl命令访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com/test.jpg -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Tue, 29 May 2018 22:57:17 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Last-Modified: Mon, 28 May 2018 23:15:15 GMT</span><br><span class="line">ETag: &quot;10883-56d4c4a57cccb&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 67715</span><br><span class="line">Cache-Control: max-age=86400</span><br><span class="line">Expires: Wed, 30 May 2018 22:57:17 GMT</span><br><span class="line">Content-Type: image/jpeg</span><br></pre></td></tr></table></figure></p>
+<p><code>304状态码</code>表示用户访问的文件没变化 <code>Cache-Contro</code>指定静态文件的保质期 86400表示1天 <code>Expires</code>表示过期日期</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/13/四周第三次课（4月13日）/" class="archive-article-date">
-  	<time datetime="2018-04-13T13:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/13/四周第三次课（4月13日）/">四周第三次课（4月13日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,197 +213,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/29/LAMP第六节（5月30日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/12/四周第二次课（4月12日）/" class="archive-article-date">
-  	<time datetime="2018-04-12T12:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/28/LAMP第五节（5月29日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LAMP第五节（5月29日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/12/四周第二次课（4月12日）/">四周第二次课（4月12日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/10/四周第一次课（4月11日）/" class="archive-article-date">
-  	<time datetime="2018-04-10T13:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/10/四周第一次课（4月11日）/">四周第一次课（4月11日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/09/三周第五次课（4月10日）/" class="archive-article-date">
-  	<time datetime="2018-04-09T13:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/09/三周第五次课（4月10日）/">三周第五次课（4月10日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/08/三周第四次课（4月9日）/" class="archive-article-date">
-  	<time datetime="2018-04-08T14:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/三周第四次课（4月9日）/">三周第四次课（4月9日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/04/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/04/">1</a><a class="page-number" href="/archives/2018/04/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2018/04/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/04/page/4/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +363,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
