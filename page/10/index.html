@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>二周第五次课（3月30日） | kun0769的博客</title>
+  <title>kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2.23/2.24/2.25 find命令2.26 文件名后缀">
-<meta name="keywords" content="Linux,文件与目录">
-<meta property="og:type" content="article">
-<meta property="og:title" content="二周第五次课（3月30日）">
-<meta property="og:url" content="http://yoursite.com/2018/03/31/二周第五次课（3月30日）/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="kun0769的博客">
+<meta property="og:url" content="http://yoursite.com/page/10/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="2.23/2.24/2.25 find命令2.26 文件名后缀">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-01T03:38:12.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二周第五次课（3月30日）">
-<meta name="twitter:description" content="2.23/2.24/2.25 find命令2.26 文件名后缀">
+<meta name="twitter:title" content="kun0769的博客">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,105 +140,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-二周第五次课（3月30日）" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      二周第五次课（3月30日）
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/25/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2018/03/31/二周第五次课（3月30日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+        <a href="/2018/03/25/hello-world/" class="archive-article-date">
+  	<time datetime="2018-03-25T12:50:50.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2.23/2.24/2.25 find命令<br>2.26 文件名后缀<br><a id="more"></a></p>
-<h2 id="2-23-2-24-2-25find命令"><a href="#2-23-2-24-2-25find命令" class="headerlink" title="2.23/2.24/2.25find命令"></a>2.23/2.24/2.25find命令</h2><p>系统自带了很多搜索文件或目录的工具 <code>which</code> <code>whereis</code> <code>locate</code> <code>find</code> 等等</p>
-<blockquote>
-<p>which：从环境变量寻找，并给出命令的别名</p>
-</blockquote>
-<p>用法：<code>which 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# which ls</span><br><span class="line">alias ls=&apos;ls --color=auto&apos;</span><br><span class="line">    /usr/bin/ls</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>whereis：从准备好的库找文件，模糊寻找，可能找不全</p>
-</blockquote>
-<p>用法：<code>whereis 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# whereis ls</span><br><span class="line">ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>locate：也是从准备好的库找文件，模糊寻找，可能找不全，并且开始还没安装此命令</p>
-</blockquote>
-<p>用法：<code>locate 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y mlocate     ##安装locate命令</span><br><span class="line">[root@localhost ~]# locate kun1/                    ##库还没更新找不到</span><br><span class="line">locate: 无法执行 stat () `/var/lib/mlocate/mlocate.db&apos;: 没有那个文件或目录</span><br><span class="line">[root@localhost ~]# updatedb                         ##手动生成库</span><br><span class="line">[root@localhost ~]# locate kun1                      ##寻找有kun1的文件或者目录</span><br><span class="line">/home/kun1</span><br><span class="line">/home/kun1/.bash_history</span><br><span class="line">/home/kun1/.bash_logout</span><br><span class="line">/home/kun1/.bash_profile</span><br><span class="line">/home/kun1/.bashrc</span><br><span class="line">/var/spool/mail/kun1</span><br></pre></td></tr></table></figure></p>
-<p>小知识：</p>
-<table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ctrl+l</td>
-<td>清屏</td>
-</tr>
-<tr>
-<td>Ctrl+d</td>
-<td>退出终端，等于“exit”命令</td>
-</tr>
-<tr>
-<td>Ctrl+c</td>
-<td>终止当前命令</td>
-</tr>
-<tr>
-<td>Ctrl+k</td>
-<td>把光标后的命令删除</td>
-</tr>
-<tr>
-<td>Ctrl+u</td>
-<td>把光标前的命令删除</td>
-</tr>
-<tr>
-<td>Ctrl+e</td>
-<td>把光标移动到命令的末端</td>
-</tr>
-<tr>
-<td>Ctrl+a</td>
-<td>把光标移动到命令的首端</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>find： 在指定目录下查找文件</p>
-</blockquote>
-<p>用法：<code>find 路径地址 [-type bcdfsl] [-name “文件名”] [-atime] [-ctime] [-mtime] [-inum] [-exec 命令 {} \;] [-size]</code></p>
-<p><code>-type</code>： 指定查找文件类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /dev/ -type b </span><br><span class="line">/dev/sr0</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /dev/ -type c </span><br><span class="line">/dev/vsock</span><br><span class="line">/dev/vcsa6</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/kun1/ -type d</span><br><span class="line">/tmp/kun1/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/kun1/ -type f</span><br><span class="line">/tmp/kun1/1.txt</span><br><span class="line">/tmp/kun1/ying_1.txt</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find / -type s            </span><br><span class="line">/dev/log</span><br><span class="line">/run/vmware/guestServicePipe</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /lib/ -type l</span><br><span class="line">/lib/debug/usr/.dwz</span><br><span class="line">/lib/debug/bin</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>stat：查看文件具体信息，重要看三个时间</p>
-</blockquote>
-<p>用法：<code>stat 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# stat /tmp/kun1/1.txt</span><br><span class="line">  File: &apos;/tmp/kun1/1.txt&apos;</span><br><span class="line">  Size: 0             Blocks: 0          IO Block: 4096   regular empty file</span><br><span class="line">Device: 803h/2051d    Inode: 16992050    Links: 3</span><br><span class="line">Access: (0700/-rwx------)  Uid: ( 1000/    kun1)   Gid: (    0/    root)</span><br><span class="line">Context: unconfined_u:object_r:user_tmp_t:s0</span><br><span class="line">Access: 2018-03-28 07:31:24.968211404 +0800</span><br><span class="line">Modify: 2018-03-28 07:31:24.968211404 +0800</span><br><span class="line">Change: 2018-03-29 08:21:25.615818264 +0800</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>-mtime：修改文件内容的时间<br>-ctime：修改文件大小，权限，所有者，所属组等的时间<br>-atime：访问文件的时间</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /etc/ -type f -mtime -1   ##从/etc/寻找修改文件内用时间小于1天的文件</span><br><span class="line">/etc/group</span><br><span class="line">/etc/gshadow</span><br><span class="line">/etc/passwd</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/ -type d -mtime +1  ##从/tmp/寻找修改文件内用时间大于1天的文件</span><br><span class="line">/tmp/.XIM-unix</span><br><span class="line">/tmp/.Test-unix</span><br><span class="line">/tmp/.X11-unix</span><br><span class="line">/tmp/.ICE-unix</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/  -mmin -60      ##从/tmp/寻找修改文件内用时间小于60分钟的文件或者目录</span><br><span class="line">/tmp/</span><br><span class="line">/tmp/kun1/1.txt</span><br><span class="line">/tmp/kun1/ying_1.txt</span><br></pre></td></tr></table></figure>
-<p><code>-o</code>：或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/ -type d -o -type f   ##从/tmp/寻找文件或者目录</span><br><span class="line">/tmp/</span><br><span class="line">/tmp/.XIM-unix</span><br><span class="line">/tmp/.Test-unix</span><br><span class="line">/tmp/.X11-unix</span><br><span class="line">/tmp/.ICE-unix</span><br><span class="line">/tmp/.font-unix</span><br><span class="line">/tmp/systemd-private-008707b47757407e9ee02f14e7b108f6-vgauthd.service-0y3ywi</span><br></pre></td></tr></table></figure></p>
-<p> <code>-inum</code>：指定寻找inode号相同的文件，即找硬链接文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -il /</span><br><span class="line">total 20</span><br><span class="line">     120 lrwxrwxrwx.  1 root root    7 Mar  4 20:40 bin -&gt; usr/bin</span><br><span class="line">      64 dr-xr-xr-x.  5 root root 4096 Mar  4 20:47 boot</span><br><span class="line">[root@localhost ~]# find / -inum 64         ##从根文件寻找inode号为64的文件</span><br><span class="line">/</span><br><span class="line">/boot</span><br><span class="line">/sys/devices/system/memory/uevent</span><br><span class="line">/sys/kernel/debug/tracing/trace_stat/function22</span><br></pre></td></tr></table></figure></p>
-<p><code>-exec</code>：把查询出来的文件执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/kun1/ -mmin -60 -exec ls -l &#123;&#125; \;    ##找出/kun1/目录下修改时间内容小于60分钟的文件并且查看他们的详细信息</span><br><span class="line">-rwx------. 3 kun1 root 9 Mar 30 06:38 /tmp/kun1/1.txt</span><br><span class="line">-rwx------. 3 kun1 root 9 Mar 30 06:38 /tmp/kun1/ying_1.txt</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/kun1/ -mmin -60</span><br><span class="line">/tmp/kun1/1.txt</span><br><span class="line">/tmp/kun1/ying_1.txt</span><br><span class="line">[root@localhost ~]# find /tmp/kun1/ -mmin -60 -exec mv &#123;&#125; &#123;&#125;.top \;  ####找出/kun1/目录下修改时间内容小于60分钟的文件并且修改他们的名称</span><br><span class="line">[root@localhost ~]# find /tmp/kun1/ -mmin -60</span><br><span class="line">/tmp/kun1/</span><br><span class="line">/tmp/kun1/1.txt.top</span><br><span class="line">/tmp/kun1/ying_1.txt.top</span><br></pre></td></tr></table></figure>
-<p><code>-size</code>：指定查找文件大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/kun1/ -size -10k   ##从/kun1/下找出小于10K的文件和目录</span><br><span class="line">/tmp/kun1/</span><br><span class="line">/tmp/kun1/1.txt.top.top.aa</span><br><span class="line">/tmp/kun1/ying_1.txt.top.top.aa</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-26文件名后缀"><a href="#2-26文件名后缀" class="headerlink" title="2.26文件名后缀"></a>2.26文件名后缀</h2><p>在Linux系统下 文件 命令都是区分大小写的<br>Linux下面文件名后缀并不能代表他的类型，但人们为了好区分文件类型，习惯把文档文件名称后面加.txt 压缩文件名称后面加.gz </p>
+        <p>这篇是这个博客的第一篇文章，本博客是用来记录学习Linux</p>
 
       
 
@@ -257,11 +176,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">简介</a>
         		</li>
       		
 		</ul>
@@ -270,84 +185,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/25/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/31/二周第五次课（3月30日）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/04/02/三周第一次课（4月2日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          三周第一次课（4月2日）
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/03/31/二周第四次课（3月29日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">二周第四次课（3月29日）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -367,37 +214,14 @@
 
 
 
-  
-  
-  
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
 
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    </nav>
   
-
-  
-
 
 
           </div>
@@ -419,8 +243,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
