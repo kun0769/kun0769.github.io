@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>LNMP第一节（6月6日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/index.html">
+  <meta name="description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
+<meta name="keywords" content="Linux,LNMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LNMP第一节（6月6日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/06/LNMP第一节（6月6日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
+<meta property="og:updated_time" content="2018-06-06T15:02:44.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LNMP第一节（6月6日）">
+<meta name="twitter:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +147,109 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LNMP第一节（6月6日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/06/LNMP第一节（6月6日）/" class="archive-article-date">
-  	<time datetime="2018-06-06T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LNMP第一节（6月6日）/">LNMP第一节（6月6日）</a>
+    <h1 class="article-title" itemprop="name">
+      LNMP第一节（6月6日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/06/LNMP第一节（6月6日）/" class="archive-article-date">
+  	<time datetime="2018-06-06T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>12.1 LNMP架构介绍<br>12.2 MySQL安装<br>12.3/12.4 PHP安装<br>12.5 Nginx介绍<br><a id="more"></a></p>
+<h2 id="12-1-LNMP架构"><a href="#12-1-LNMP架构" class="headerlink" title="12.1 LNMP架构"></a>12.1 LNMP架构</h2><p>LNMP其实是<code>Linux</code>，<code>Nginx</code>，<code>MySQL</code>和<code>PHP</code>的简写。他和LAMP不同的是，提供web服务的是Nginx，其中PHP独立作为一个服务存在于服务器中和数据库打交道，并取名为<code>php-fpm</code>。Nginx处理静态文件时候比Apache更加出色，并且支持用户高并发。因此现在越来越多企业使用LNMP架构来组建。<br>工作流程：当用户使用浏览器来访问服务器 ，Nginx就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等）Nginx就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Nginx就是数据交给php-fpm服务来访问MySQL数据库，并让php-fpm服务把取出来的数据交给Nginx再返回给用户。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg" alt=""></p>
+<h2 id="12-2-MySQL安装"><a href="#12-2-MySQL安装" class="headerlink" title="12.2 MySQL安装"></a>12.2 MySQL安装</h2><p>假如之前安装过MySQL，直接把对应的路径的目录删除即可，我这里在另一台机器上安装。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.进入/src/目录下并下载和解压MySQL的免编译的安装包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</span><br><span class="line">[root@localhost src]# tar -zxvf mysql-5.6.36-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.解压后的目录改名为mysql并放在/usr/local/下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# mv mysql-5.6.36-linux-glibc2.5-x86_64 /usr/local/mysql/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.新建用户mysql和目录/data 并进入该目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost local]# cd mysql/</span><br><span class="line">[root@localhost mysql]# useradd -s /sbin/nologin mysql  ##mysql不能登录系统</span><br><span class="line">[root@localhost mysql]# mkdir /data</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.初始化</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# ./scripts/mysql_install_db --user=mysql --datadir=/data</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.从模版中复制配置文件并定义配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# cp support-files/my-default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<p><code>support-files/my-default.cnf</code>是mysql的模版配置文件<br><code>/etc/my.cnf</code>是mysql的配置文件 系统默认存在</p>
+<p>也可以直接使用系统自带的my.cnf并把<code>log-error</code>和<code>pid-file</code>注释掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# vim /etc/my.cnf</span><br><span class="line">datadir=/data/</span><br><span class="line">socket=/tmp/lmysql.sock</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>6.从模版中复制服务并定义配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# cp support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">[root@localhost mysql]# vim /etc/init.d/mysqld</span><br><span class="line">basedir=/usr/local/mysql</span><br><span class="line">datadir=/data</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.启动服务并添加开机启动</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# /etc/init.d/mysqld start</span><br><span class="line">Starting MySQL.Logging to &apos;/data/localhost.localdomain.err&apos;.</span><br><span class="line">. SUCCESS!</span><br><span class="line">[root@localhost mysql]# chkconfig --add mysqld  ##加入服务列表中</span><br><span class="line">[root@localhost mysql]# chkconfig  mysqld on  ##添加开机启动</span><br><span class="line">[root@localhost mysql]# service mysqld restart  ##加入服务列表后可以使用service命令了</span><br></pre></td></tr></table></figure>
+<h2 id="12-3-12-4-PHP安装"><a href="#12-3-12-4-PHP安装" class="headerlink" title="12.3/12.4 PHP安装"></a>12.3/12.4 PHP安装</h2><p>由于在LNMP架构中，PHP作为一个独立的服务存在，并改名为php-fpm，他和Nginx没关系因此可以在安装玩MySQL后直接安装PHP，这里我安装的是PHP7</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.进入/src/目录下并下载和解压PHP7的安装包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://cn2.php.net/distributions/php-7.1.6.tar.bz2</span><br><span class="line">[root@localhost src]# tar -jxvf php-7.1.6.tar.bz2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.进入PHP目录建立php-fpm用户并初始化</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd php-7.1.6</span><br><span class="line">[root@localhost php-7.1.6]# useradd -s /sbin/nologin php-fpm   ##建立不需要登录的php-fpm用户来启动服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# ./configure --prefix=/usr/local/php-fpm --with-config-file-path=/usr/local/php-fpm/etc --enable-fpm --with-fpm-user=php-fpm --with-fpm-group=php-fpm --with-mysql=/usr/local/mysql --with-mysqli=/usr/local/mysql/bin/mysql_config --with-pdo-mysql=/usr/local/mysql --with-mysql-sock=/tmp/mysql.sock --with-libxml-dir --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-iconv-dir --with-zlib-dir --with-mcrypt --enable-soap --enable-gd-native-ttf --enable-ftp --enable-mbstring --enable-exif --with-pear --with-curl  --with-openssl</span><br></pre></td></tr></table></figure>
+<p><code>--enable-fpm</code>指定php-fpm服务的   </p>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p>configure: error: mcrypt.h not found. Please reinstall libmcrypt.<br>原因：缺少libmcrypt模块 需要重新安装 使用yum安装 可能是版本高的问题 因此手动安装编译此包<br>[root@localhost src]# wget <a href="ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz" target="_blank" rel="noopener">ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz</a><br>[root@localhost src]# tar -zxvf libmcrypt-2.5.7.tar.gz<br>[root@localhost src]# cd libmcrypt-2.5.7<br>[root@localhost libmcrypt-2.5.7]# ./configure<br>[root@localhost libmcrypt-2.5.7]# make<br>[root@localhost libmcrypt-2.5.7]# make install</p>
+<blockquote>
+<p>3.编译和安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# make</span><br><span class="line">[root@localhost php-7.1.6]# make install</span><br></pre></td></tr></table></figure>
+<p>安装完成后可以进入php-fpm比较Apache的php目录多了个sbin和var目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-fpm]# ls</span><br><span class="line">bin  etc  include  lib  php  sbin  var</span><br></pre></td></tr></table></figure></p>
+<p>sbin目录中php-fpm用来启动php-fpm服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-fpm]# ls sbin/</span><br><span class="line">php-fpm</span><br></pre></td></tr></table></figure></p>
+<p>存放日志和PID的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-fpm]# ls var/</span><br><span class="line">log  run</span><br></pre></td></tr></table></figure></p>
+<p><code>/usr/local/php-fpm/sbin/php-fpm -m</code>查看php-fpm模块情况<br><code>/usr/local/php-fpm/sbin/php-fpm -i</code>查看php-fpm详细情况<br><code>/usr/local/php-fpm/sbin/php-fpm -t</code>查看php-fpm语法是否正确</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-fpm]# /usr/local/php-fpm/sbin/php-fpm -t   ##没找到php-fpm.conf配置文件</span><br><span class="line">[07-Jun-2018 05:49:12] ERROR: failed to open configuration file &apos;/usr/local/php-fpm/etc/php-fpm.conf&apos;: No such file or directory (2)</span><br><span class="line">[07-Jun-2018 05:49:12] ERROR: failed to load configuration file &apos;/usr/local/php-fpm/etc/php-fpm.conf&apos;</span><br><span class="line">[07-Jun-2018 05:49:12] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.复制配置文件php.ini到etc目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-fpm]# cd /usr/local/src/php-7.1.6  ##回去php包里</span><br><span class="line">[root@localhost php-7.1.6]# cp php.ini-production /usr/local/php-fpm/etc/php.ini</span><br></pre></td></tr></table></figure>
+<p><code>php.ini-development</code>是开发环境模版  <code>php.ini-production</code>是生产环境模版 二者区别在于日志的地方不同</p>
+<blockquote>
+<p>5.etc目录下配置php-fpm.conf配置文件 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# vim /usr/local/php-fpm/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+<p>etc目录下有个模版文件叫<code>php-fpm.conf.default</code> 这里我是直接新建php-fpm.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-fcgi.sock</span><br><span class="line">listen.mode = 666</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure></p>
+<p>输入以上代码并保存。<code>[www]</code>表示池名 <code>pid</code>指定pid路径 <code>error_log</code>指定错误日志路径 <code>listen</code> 监听的方式使用sock 可以使用tcp方式（127.0.0.1:9000）两者二选一 <code>listen.mode</code>定义sock的权限为666 <code>pm</code>指定进程的数量 </p>
+<blockquote>
+<p>6.添加php-fpm服务并设开机启动</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm </span><br><span class="line">[root@localhost php-7.1.6]# chmod 755 /etc/init.d/php-fpm</span><br><span class="line">[root@localhost php-7.1.6]# chkconfig --add php-fpm</span><br><span class="line">[root@localhost php-7.1.6]# chkconfig php-fpm on</span><br></pre></td></tr></table></figure>
+<p><code>php-7.1.6/sapi/fpm/init.d.php-fpm</code>是php-fpm服务的模版</p>
+<blockquote>
+<p>7.启动php-fpm服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# service php-fpm start</span><br><span class="line">[root@localhost php-7.1.6]# ps aux |grep php  ##查看php是否运行</span><br><span class="line">root      7639  0.0  0.6 124204  6176 ?        Ss   06:17   0:00 php-fpm: master process (/usr/local/php-fpm/etcphp-fpm.conf)</span><br><span class="line">php-fpm   7640  0.0  0.5 124204  5932 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7641  0.0  0.5 124204  5932 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7642  0.0  0.5 124204  5932 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7643  0.0  0.5 124204  5932 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7644  0.0  0.5 124204  5936 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7645  0.0  0.5 124204  5936 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7646  0.0  0.5 124204  5936 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7647  0.0  0.5 124204  5936 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7648  0.0  0.5 124204  5936 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7649  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7650  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7651  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7652  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7653  0.0  0.5 124336  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7654  0.0  0.5 124336  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7655  0.0  0.5 124336  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7656  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7657  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7658  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">php-fpm   7659  0.0  0.5 124204  5940 ?        S    06:17   0:00 php-fpm: pool www</span><br><span class="line">root      7661  0.0  0.0 112720   964 pts/0    R+   06:17   0:00 grep --color=auto php</span><br></pre></td></tr></table></figure>
+<h2 id="12-5-Nginx介绍"><a href="#12-5-Nginx介绍" class="headerlink" title="12.5 Nginx介绍"></a>12.5 Nginx介绍</h2><p>Nginx近几年越来越受到企业的欢迎，许多企业使用Tomcat解析Java时都会使用Nginx来处理静态文件，主要原因是他处理静态文件的速度快。Nginx不尽小巧还可具有web服务、反向代理、负载均衡的功能。<br>Nginx著名分支，淘宝基于Nginx开发的Tengine，使用上和Nginx一致，服务名，配置文件名都一样，和Nginx的最大区别在于Tenging增加了一些定制化模块，在安全限速方面表现突出，另外它支持对js，css合并。<br>Nginx核心+lua相关的组件和模块组成了一个支持lua的高性能web容器openresty</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,191 +265,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/06/LNMP第一节（6月6日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/LAMP第九节（6月4日）/" class="archive-article-date">
-  	<time datetime="2018-06-04T12:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/04/LAMP第九节（6月4日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LAMP第九节（6月4日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/LAMP第九节（6月4日）/">LAMP第九节（6月4日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/01/LAMP第八节（6月1日）/" class="archive-article-date">
-  	<time datetime="2018-06-01T15:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/01/LAMP第八节（6月1日）/">LAMP第八节（6月1日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/30/LAMP第七节（5月31日）/" class="archive-article-date">
-  	<time datetime="2018-05-30T15:14:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/30/LAMP第七节（5月31日）/">LAMP第七节（5月31日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/29/LAMP第六节（5月30日）/" class="archive-article-date">
-  	<time datetime="2018-05-29T15:17:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/LAMP第六节（5月30日）/">LAMP第六节（5月30日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/Linux/page/2/">2</a><a class="page-number" href="/tags/Linux/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/10/">10</a><a class="extend next" rel="next" href="/tags/Linux/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,9 +409,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
