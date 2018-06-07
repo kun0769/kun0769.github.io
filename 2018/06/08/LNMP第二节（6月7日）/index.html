@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>LNMP第二节（6月7日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/4/index.html">
+  <meta name="description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
+<meta name="keywords" content="Linux,LNMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LNMP第二节（6月7日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/08/LNMP第二节（6月7日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607235637.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608002825.png">
+<meta property="og:updated_time" content="2018-06-07T17:39:04.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LNMP第二节（6月7日）">
+<meta name="twitter:description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +149,138 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LNMP第二节（6月7日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LNMP第二节（6月7日）
+    </h1>
+  
+
+        
+        <a href="/2018/06/08/LNMP第二节（6月7日）/" class="archive-article-date">
+  	<time datetime="2018-06-07T17:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>12.6 Nginx安装<br>12.7 默认虚拟主机<br>12.8 Nginx用户认证<br>12.9 Nginx域名重定向<br><a id="more"></a></p>
+<h2 id="12-6-Nginx安装"><a href="#12-6-Nginx安装" class="headerlink" title="12.6 Nginx安装"></a>12.6 Nginx安装</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.进入src目录下载并解压Nginx包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://nginx.org/download/nginx-1.8.0.tar.gz</span><br><span class="line">[root@localhost src]# tar -zxvf nginx-1.8.0.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.进入Nginx包里并初始化</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd nginx-1.8.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# ./configure --prefix=/usr/local/nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.编译和安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# make</span><br><span class="line">[root@localhost nginx-1.8.0]# make install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.在etc/init.d中自定义服务脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
+<p>复制以下代码，也可以去下面网址下载 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/etc_init.d_nginx" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/etc_init.d_nginx</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># chkconfig: - 30 21</span><br><span class="line"># description: http service.</span><br><span class="line"># Source Function Library</span><br><span class="line">. /etc/init.d/functions</span><br><span class="line"># Nginx Settings</span><br><span class="line">NGINX_SBIN=&quot;/usr/local/nginx/sbin/nginx&quot;</span><br><span class="line">NGINX_CONF=&quot;/usr/local/nginx/conf/nginx.conf&quot;</span><br><span class="line">NGINX_PID=&quot;/usr/local/nginx/logs/nginx.pid&quot;</span><br><span class="line">RETVAL=0</span><br><span class="line">prog=&quot;Nginx&quot;</span><br><span class="line">start()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Starting $prog: &quot;</span><br><span class="line">mkdir -p /dev/shm/nginx_temp</span><br><span class="line">daemon $NGINX_SBIN -c $NGINX_CONF</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">stop()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Stopping $prog: &quot;</span><br><span class="line">killproc -p $NGINX_PID $NGINX_SBIN -TERM</span><br><span class="line">rm -rf /dev/shm/nginx_temp</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">reload()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Reloading $prog: &quot;</span><br><span class="line">killproc -p $NGINX_PID $NGINX_SBIN -HUP</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">restart()</span><br><span class="line">&#123;</span><br><span class="line">stop</span><br><span class="line">start</span><br><span class="line">&#125;</span><br><span class="line">configtest()</span><br><span class="line">&#123;</span><br><span class="line">$NGINX_SBIN -c $NGINX_CONF -t</span><br><span class="line">return 0</span><br><span class="line">&#125;</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">start</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">stop</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">reload</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line">restart</span><br><span class="line">;;</span><br><span class="line">configtest)</span><br><span class="line">configtest</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo $&quot;Usage: $0 &#123;start|stop|reload|restart|configtest&#125;&quot;</span><br><span class="line">RETVAL=1</span><br><span class="line">esac</span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>5.修改服务权限并添加为开机启动</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# chmod 755 /etc/init.d/nginx</span><br><span class="line">[root@localhost nginx-1.8.0]# chkconfig --add nginx</span><br><span class="line">[root@localhost nginx-1.8.0]# chkconfig nginx on</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.进入Nginx的配置目录下并自定义配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# cd /usr/local/nginx/conf/</span><br></pre></td></tr></table></figure>
+<p><code>conf/</code>目录下本来自带nginx.conf的配置文件，这里我们要自定义他因此把原本的配置文件改名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# mv /usr/local/nginx/conf/nginx.conf nginx.conf.1  ##改名为nginx.conf.1</span><br><span class="line">[root@localhost conf]# vim nginx.conf</span><br></pre></td></tr></table></figure></p>
+<p>复制以下代码，也可以去下面网址下载 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/nginx.conf" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/nginx.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">user nobody nobody;</span><br><span class="line">worker_processes 2;</span><br><span class="line">error_log /usr/local/nginx/logs/nginx_error.log crit;</span><br><span class="line">pid /usr/local/nginx/logs/nginx.pid;</span><br><span class="line">worker_rlimit_nofile 51200;</span><br><span class="line">events</span><br><span class="line">&#123;</span><br><span class="line">use epoll;</span><br><span class="line">worker_connections 6000;</span><br><span class="line">&#125;</span><br><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">include mime.types;</span><br><span class="line">default_type application/octet-stream;</span><br><span class="line">server_names_hash_bucket_size 3526;</span><br><span class="line">server_names_hash_max_size 4096;</span><br><span class="line">log_format combined_realip &apos;$remote_addr $http_x_forwarded_for [$time_local]&apos;</span><br><span class="line">&apos; $host &quot;$request_uri&quot; $status&apos;</span><br><span class="line">&apos; &quot;$http_referer&quot; &quot;$http_user_agent&quot;&apos;;</span><br><span class="line">sendfile on;</span><br><span class="line">tcp_nopush on;</span><br><span class="line">keepalive_timeout 30;</span><br><span class="line">client_header_timeout 3m;</span><br><span class="line">client_body_timeout 3m;</span><br><span class="line">send_timeout 3m;</span><br><span class="line">connection_pool_size 256;</span><br><span class="line">client_header_buffer_size 1k;</span><br><span class="line">large_client_header_buffers 8 4k;</span><br><span class="line">request_pool_size 4k;</span><br><span class="line">output_buffers 4 32k;</span><br><span class="line">postpone_output 1460;</span><br><span class="line">client_max_body_size 10m;</span><br><span class="line">client_body_buffer_size 256k;</span><br><span class="line">client_body_temp_path /usr/local/nginx/client_body_temp;</span><br><span class="line">proxy_temp_path /usr/local/nginx/proxy_temp;</span><br><span class="line">fastcgi_temp_path /usr/local/nginx/fastcgi_temp;</span><br><span class="line">fastcgi_intercept_errors on;</span><br><span class="line">tcp_nodelay on;</span><br><span class="line">gzip on;</span><br><span class="line">gzip_min_length 1k;</span><br><span class="line">gzip_buffers 4 8k;</span><br><span class="line">gzip_comp_level 5;</span><br><span class="line">gzip_http_version 1.1;</span><br><span class="line">gzip_types text/plain application/x-javascript text/css text/htm</span><br><span class="line">application/xml;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name localhost;</span><br><span class="line">index index.html index.htm index.php;</span><br><span class="line">root /usr/local/nginx/html;</span><br><span class="line">location ~ \.php$</span><br><span class="line">&#123;</span><br><span class="line">include fastcgi_params;</span><br><span class="line">fastcgi_pass unix:/tmp/php-fcgi.sock;</span><br><span class="line">#fastcgi_pass 127.0.0.01:9000;</span><br><span class="line">fastcgi_index index.php;</span><br><span class="line">fastcgi_param SCRIPT_FILENAME /usr/local/nginx/html$fastcgi_script_name;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>user</code>是定义启动进程的用户和组 <code>worker_processes</code>表示启动的子进程数量 <code>worker_rlimit_nofile</code>表示最多打开的文件数量 <code>use epoll</code>使用epoll模式 <code>worker_connections</code>进程最多的连接数  <code>server</code>部分相当于是一个虚拟主机 第一个server是默认的虚拟主机 <code>location ~ \.php$</code>部分 用来解析PHP fastcgi_pass指定PHP服务的监听端口或者sock 也可以使用端口方式<code>fastcgi_pass 127.0.0.01:9000;</code> 主要看php-fpm.conf定义用哪种方式通信的</p>
+<blockquote>
+<p>7.检查语法和启动Nginx服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# service nginx start</span><br><span class="line">Starting nginx (via systemctl):                            [  确定  ]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>8.测试PHP解析</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# vim /usr/local/nginx/html/1.php</span><br><span class="line">&lt;?php</span><br><span class="line">echo &quot;this is test page&quot;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">[root@localhost conf]# curl localhost/1.php</span><br><span class="line">this is test page</span><br></pre></td></tr></table></figure>
+<h2 id="12-7-Nginx默认虚拟主机"><a href="#12-7-Nginx默认虚拟主机" class="headerlink" title="12.7 Nginx默认虚拟主机"></a>12.7 Nginx默认虚拟主机</h2><p>在<code>/usr/local/nginx/conf/nginx.conf</code>配置文件里面<code>server</code>部分是定义虚拟主机，我们也可以让每一个站点(虚拟主机)都有独立的虚拟主机配置文件来方便管理。这里把Server部分删除掉 并加入 <code>include vhost/*.conf;</code> 这个意思是在vhost目录下带.conf的文件是虚拟主机配置文件</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.修改nginx.conf 加上include语句</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>最后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include vhost/*.conf;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png" alt=""></p>
+<blockquote>
+<p>2.在conf目录下创建vhost目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# mkdir /usr/local/nginx/conf/vhost/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.创建虚拟主机配置文件 这里以test1.com为例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# cd vhost/</span><br><span class="line">[root@localhost vhost]# vim test1.com.conf;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.自定义虚拟主机内容</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80 default_server;  </span><br><span class="line">    server_name test1.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>listen</code> 指定监听端口 <code>default_server</code>表示默认虚拟主机 不设置把配置文件第一位的虚拟主机为默认  <code>server_name</code> 域名  <code>index</code> 索引页  <code>root</code> 网站存放的目录</p>
+<blockquote>
+<p>5.添加网站目录和页面</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# mkdir -p /var/www/</span><br><span class="line">[root@localhost vhost]# echo &quot;test1&quot; &gt; /var/www/tes1.com/index.html</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 test1.com</span><br><span class="line">test1</span><br></pre></td></tr></table></figure></p>
+<p>使用浏览器<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607235637.png" alt=""></p>
+<h2 id="12-8-Nginx用户认证"><a href="#12-8-Nginx用户认证" class="headerlink" title="12.8 Nginx用户认证"></a>12.8 Nginx用户认证</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.创建站点的配置文件 以test2.com为例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# vim test2.com.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">	location  /</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>auth_basic</code>定义用户验证名字 <code>auth_basic_user_file</code>指定用户文件路径</p>
+<blockquote>
+<p>2.使用htpasswd工具来创建用户文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# yum install -y httpd</span><br><span class="line">[root@localhost vhost]# htpasswd -c -m /usr/local/nginx/conf/htpasswd test1</span><br></pre></td></tr></table></figure>
+<p><code>-c</code> 创建新文件在/usr/local/nginx/conf/htpasswd <code>-m</code> 使用md5加密</p>
+<blockquote>
+<p>3.创建站点目录和页面</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# mkdir /var/www/test2/</span><br><span class="line">[root@localhost vhost]# echo &quot;test2&quot; &gt; /var/www/test2/index.html</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 test2.com</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body bgcolor=&quot;white&quot;&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;</span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx/1.8.0&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">[root@localhost vhost]# curl -utest1:123 -x 192.168.80.102:80 test2.com</span><br><span class="line">test2</span><br></pre></td></tr></table></figure></p>
+<p>使用浏览器访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608002825.png" alt=""></p>
+<h3 id="针对目录来做用户验证"><a href="#针对目录来做用户验证" class="headerlink" title="针对目录来做用户验证"></a>针对目录来做用户验证</h3><p>在location后加入相应的目录即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">    location  /admin/</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个对admin目录做用户验证</p>
+<h3 id="针对某个文件或者链接做做用户验证"><a href="#针对某个文件或者链接做做用户验证" class="headerlink" title="针对某个文件或者链接做做用户验证"></a>针对某个文件或者链接做做用户验证</h3><p>在location后加入~ 和相应的文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">	location  ~ admin.php</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>~ admin.php</code>是匹配admin.php 也就是指定admin.php</p>
+<h2 id="12-9-Nginx域名重定向"><a href="#12-9-Nginx域名重定向" class="headerlink" title="12.9 Nginx域名重定向"></a>12.9 Nginx域名重定向</h2><p>在Nginx中<code>server_name</code> 后面支持跟多个域名 </p>
+<h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.创建站点的配置文件 以test2.com为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;    server_name test2.com 111.com 222.com www.test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    if ($host != &apos;test2.com&apos; ) </span><br><span class="line">    &#123;</span><br><span class="line">        rewrite  ^/(.*)$  http://test2.com/$1  permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>^/(.*)$</code>表示 <code>http://test2.com/</code>后面的所有部分 <code>permanent</code>表示永久重定向 <code>redirect</code>表示临时重定向</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 www.test2.com -I</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Thu, 07 Jun 2018 16:55:22 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 184</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Location: http://test2.com/</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/10/七周第四次课（5月9日）/" class="archive-article-date">
-  	<time datetime="2018-05-09T16:11:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/10/七周第四次课（5月9日）/">七周第四次课（5月9日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,205 +290,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/08/LNMP第二节（6月7日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/七周第三次课（5月8日）/" class="archive-article-date">
-  	<time datetime="2018-05-08T16:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/06/LNMP第一节（6月6日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LNMP第一节（6月6日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/七周第三次课（5月8日）/">七周第三次课（5月8日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/七周第二次课（5月7日）/">七周第二次课（5月7日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/05/七周第一次课（5月4日）/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/七周第一次课（5月4日）/">七周第一次课（5月4日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/page/3/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><a class="page-number" href="/tags/Linux/page/2/">2</a><a class="page-number" href="/tags/Linux/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/tags/Linux/page/5/">5</a><a class="page-number" href="/tags/Linux/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/10/">10</a><a class="extend next" rel="next" href="/tags/Linux/page/5/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -400,9 +440,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

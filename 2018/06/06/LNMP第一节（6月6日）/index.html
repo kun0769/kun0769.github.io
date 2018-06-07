@@ -17,7 +17,7 @@
 <meta property="og:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
-<meta property="og:updated_time" content="2018-06-06T15:02:44.473Z">
+<meta property="og:updated_time" content="2018-06-07T17:32:11.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第一节（6月6日）">
 <meta name="twitter:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
@@ -230,7 +230,7 @@
 <p>5.etc目录下配置php-fpm.conf配置文件 </p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# vim /usr/local/php-fpm/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
-<p>etc目录下有个模版文件叫<code>php-fpm.conf.default</code> 这里我是直接新建php-fpm.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-fcgi.sock</span><br><span class="line">listen.mode = 666</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure></p>
+<p>etc目录下有个模版文件叫<code>php-fpm.conf.default</code> 这里我是直接新建php-fpm.conf<br>复制以下代码，也可以去下面网址下载  <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/php-fpm.conf" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/php-fpm.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-fcgi.sock</span><br><span class="line">listen.mode = 666</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure></p>
 <p>输入以上代码并保存。<code>[www]</code>表示池名 <code>pid</code>指定pid路径 <code>error_log</code>指定错误日志路径 <code>listen</code> 监听的方式使用sock 可以使用tcp方式（127.0.0.1:9000）两者二选一 <code>listen.mode</code>定义sock的权限为666 <code>pm</code>指定进程的数量 </p>
 <blockquote>
 <p>6.添加php-fpm服务并设开机启动</p>
@@ -328,6 +328,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/06/08/LNMP第二节（6月7日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LNMP第二节（6月7日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/04/LAMP第九节（6月4日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -487,11 +496,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
               <li class="article-tag-list-item">
