@@ -6,57 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一周第四次课（3月22日） | kun0769的博客</title>
+  <title>LNMP第三节（6月8日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.13 单用户模式1.14 救援模式1.15 克隆虚拟机1.16 Linux机器相互登录">
-<meta name="keywords" content="Linux,基础配置">
+  <meta name="description" content="12.10 Nginx访问日志12.11 Nginx日志切割12.12 静态文件不记录日志和过期时间">
+<meta name="keywords" content="Linux,LNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一周第四次课（3月22日）">
-<meta property="og:url" content="http://yoursite.com/2018/03/31/一周第四次课（3月22日）/index.html">
+<meta property="og:title" content="LNMP第三节（6月8日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/08/LNMP第三节（6月8日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="1.13 单用户模式1.14 救援模式1.15 克隆虚拟机1.16 Linux机器相互登录">
+<meta property="og:description" content="12.10 Nginx访问日志12.11 Nginx日志切割12.12 静态文件不记录日志和过期时间">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321212634.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213017.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213255.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213626.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213920.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214046.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214254.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214823.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321215049.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321215859.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321220228.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321220426.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221021.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221250.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221504.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221954.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222227.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222410.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222700.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223722.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223818.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223857.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224427.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224511.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224806.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225030.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225246.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225415.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225442.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230543.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230903.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321231314.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321232926.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234252.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234409.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234452.jpg">
-<meta property="og:updated_time" content="2018-03-31T13:19:24.080Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png">
+<meta property="og:updated_time" content="2018-06-08T15:12:10.158Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一周第四次课（3月22日）">
-<meta name="twitter:description" content="1.13 单用户模式1.14 救援模式1.15 克隆虚拟机1.16 Linux机器相互登录">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321212634.jpg">
+<meta name="twitter:title" content="LNMP第三节（6月8日）">
+<meta name="twitter:description" content="12.10 Nginx访问日志12.11 Nginx日志切割12.12 静态文件不记录日志和过期时间">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -182,60 +148,118 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一周第四次课（3月22日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LNMP第三节（6月8日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一周第四次课（3月22日）
+      LNMP第三节（6月8日）
     </h1>
   
 
         
-        <a href="/2018/03/31/一周第四次课（3月22日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+        <a href="/2018/06/08/LNMP第三节（6月8日）/" class="archive-article-date">
+  	<time datetime="2018-06-08T14:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.13 单用户模式<br>1.14 救援模式<br>1.15 克隆虚拟机<br>1.16 Linux机器相互登录<br><a id="more"></a></p>
-<h2 id="1-13单用户模式"><a href="#1-13单用户模式" class="headerlink" title="1.13单用户模式"></a>1.13单用户模式</h2><p>假若忘记了root密码 Linux有两种办法可以补救 第一种是机器上操作 不能远程连接</p>
-<p>小提示：<code>init 6 reboot shutdown -r</code>重启机器<code>init 0 poweroff</code>关闭机器</p>
-<p>为了满足实验 我们点“虚拟机”–&gt;“电源”–&gt;“重新启动客户机”</p>
-<p>进入到了启动界面 我们选择第一行 按下“e”键<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321212634.jpg" alt=""></p>
-<p>把光标移动到Linux16开头的那行 并把行中的<code>“ro”</code>改为<code>“rw init=/sysroot/bin/sh ”</code>并按下“Ctrl+x”进入单用户模式<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213017.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213255.jpg" alt=""></p>
-<p>由于我们原来的系统在/sysroot/这个目录下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213626.jpg" alt=""></p>
-<p>为了回去原来的系统去改密码 我就使用<code>chroot  /sysroot/</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321213920.jpg" alt=""></p>
-<p><code>passwd root</code>来改密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214046.jpg" alt=""></p>
-<p>这里的小方块是虚拟机显示不出中文来的乱码，我们改为英语就可以了<code>LANG=en</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214254.jpg" alt=""></p>
-<p>输入好密码后 还输入<code>touch /.autorelabel</code>这句命令没输入之前的命令就不生效了 注意<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321214823.jpg" alt=""></p>
-<p>再重启机器 输入刚刚新建的密码就可以了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321215049.jpg" alt=""></p>
-<h2 id="1-14求援模式"><a href="#1-14求援模式" class="headerlink" title="1.14求援模式"></a>1.14求援模式</h2><p>另一种是用光盘进入<br>我们在虚拟机上按“编辑虚拟机设置”点上CD/DVD 勾上“启动时连接”并找到Linux的镜像<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321215859.jpg" alt=""></p>
-<p>右键你的虚拟机名字 “电源”–&gt;“启动时进入BIOS”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321220228.jpg" alt=""></p>
-<p>进入BIOS的BOOT把CD-ROW Drive 排在第一行 F10保存退出<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321220426.jpg" alt=""></p>
-<p>进入以下界面 选择”Troubleshooting”–&gt;”Rescue a CentOS system”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221021.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221250.jpg" alt=""></p>
-<p>之后选1来继续<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221504.jpg" alt=""></p>
-<p><code>chroot /mut/sysimage</code>回去用来的系统<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321221954.jpg" alt=""></p>
-<p>和之前的一样改密码<code>passwd root</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222227.jpg" alt=""></p>
-<p>之后关机出去把CD/DVD的“启动时连接 ”去掉<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222410.jpg" alt=""></p>
-<p>重新进入系统 密码更改成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321222700.jpg" alt=""></p>
-<h2 id="1-15克隆虚拟机"><a href="#1-15克隆虚拟机" class="headerlink" title="1.15克隆虚拟机"></a>1.15克隆虚拟机</h2><p>“虚拟机”–&gt;“管理”–&gt;“克隆”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223722.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223818.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321223857.jpg" alt=""></p>
-<p>进入test2 修改ip地址<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224427.jpg" alt=""></p>
-<p>这里把ip改为192.168.80.101 并并把UUID那行去掉<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224511.jpg" alt=""></p>
-<p>重启网络服务 并测试<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321224806.jpg" alt=""></p>
-<p><code>hostnamectl set-hostname test1/test2</code>改主机名<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225030.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225246.jpg" alt=""></p>
-<p>再用Xshell来分别连接两个主机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225415.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321225442.jpg" alt=""></p>
-<h2 id="1-16Linux机器互相连通"><a href="#1-16Linux机器互相连通" class="headerlink" title="1.16Linux机器互相连通"></a>1.16Linux机器互相连通</h2><p><code>ssh username@ip</code>Linux远程连接命令<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230543.jpg" alt=""></p>
-<p><strong>-p</strong>：指定连接的端口<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321230903.jpg" alt=""></p>
-<p><code>w</code> 查看当前的负载 可以看谁连接自己<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321231314.jpg" alt=""></p>
-<p><code>ssh-keygen</code>Linux用来生成密钥的命令<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321232926.jpg" alt=""></p>
-<p>为了把test1用密钥连接到test2 我们把把公钥复制到test2上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234252.jpg" alt=""></p>
-<p>并临时关闭防火墙<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234409.jpg" alt=""></p>
-<p>登录成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180321234452.jpg" alt=""></p>
+        <p>12.10 Nginx访问日志<br>12.11 Nginx日志切割<br>12.12 静态文件不记录日志和过期时间<br><a id="more"></a></p>
+<h2 id="12-10-Nginx访问日志"><a href="#12-10-Nginx访问日志" class="headerlink" title="12.10 Nginx访问日志"></a>12.10 Nginx访问日志</h2><p>Nginx的访问日志需要在主配置文件nginx.conf里定义日志格式外，还需要在虚拟主机配置文件中增加语句</p>
+<h3 id="主配置文件"><a href="#主配置文件" class="headerlink" title="主配置文件"></a>主配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png" alt=""><br>找到<code>log_format</code>这行就是定义访问日志的格式语句 其中Nginx里<code>;</code>表示语句的结束</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>combined_realip</td>
+<td>日志名字 可以换其他名字</td>
+</tr>
+<tr>
+<td>$remote_addr</td>
+<td>访问的IP（客服端IP）</td>
+</tr>
+<tr>
+<td>$http_x_forwarded_for</td>
+<td>代理服务器IP</td>
+</tr>
+<tr>
+<td>$time_local</td>
+<td>服务器本地时间</td>
+</tr>
+<tr>
+<td>$host</td>
+<td>主机名（域名）</td>
+</tr>
+<tr>
+<td>$request_uri</td>
+<td>访问的URL地址</td>
+</tr>
+<tr>
+<td>$http_referer</td>
+<td>referer</td>
+</tr>
+<tr>
+<td>$http_user_agent</td>
+<td>user_agent </td>
+</tr>
+</tbody>
+</table>
+<h3 id="虚拟主机配置文件"><a href="#虚拟主机配置文件" class="headerlink" title="虚拟主机配置文件"></a>虚拟主机配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/vhost/test2.com.conf</span><br></pre></td></tr></table></figure>
+<p>进入tes2站点的配置文件输入下面语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">access_log /tmp/test2.log combined_realip;</span><br></pre></td></tr></table></figure></p>
+<p><code>/tmp/test2.log</code>日志路径 <code>combined_realip</code>日志格式的名字<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png" alt=""></p>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail /tmp/test2.log</span><br><span class="line">192.168.80.102 - [08/Jun/2018:21:23:37 +0800] test2.com &quot;/&quot; 200 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br><span class="line">192.168.80.102 - [08/Jun/2018:21:24:08 +0800] test2.com &quot;/admin/sfsd&quot; 404 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="12-11-Nginx日志切割"><a href="#12-11-Nginx日志切割" class="headerlink" title="12.11 Nginx日志切割"></a>12.11 Nginx日志切割</h2><p>Nginx没有自带的日志切割工具。我们可以使用自定义的脚本来切割日志，一般自定义的脚本都是放在<code>/usr/local/sbin/</code>目录下</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.编辑自定义的脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/sbin/nginx_log_rotate.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line">d=`date -d &quot;-1 day&quot; +%Y%m%d`</span><br><span class="line">logdir=&quot;/tmp&quot;</span><br><span class="line">nginx_pid=&quot;/usr/local/nginx/logs/nginx.pid&quot;</span><br><span class="line">cd $logdir</span><br><span class="line">for log in `ls *.log`</span><br><span class="line">do</span><br><span class="line">    mv $log $log-$d</span><br><span class="line">done</span><br><span class="line">/bin/kill -HUP `cat $nginx_pid`</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>d=`date -d “-1 day” +%Y%m%d`表示前一天的时间<br>logdir=”/tmp” 访问日志的目录<br>nginx_pid=”/usr/local/nginx/logs/nginx.pid”指定PID<br>/bin/kill -HUP `cat $nginx_pid`相当于是重新加载 由于旧日志已改名字 用于生成原来的日志来记录当天的日志</p>
+</blockquote>
+<blockquote>
+<p>2.把脚本添加到任务计划</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# crontab -e</span><br><span class="line"></span><br><span class="line">0 0 * * * /bin/bash /usr/local/sbin/nginx_log_rotate.sh</span><br></pre></td></tr></table></figure>
+<p>表示每天的0时0分执行日志切割脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl start crond</span><br></pre></td></tr></table></figure></p>
+<p>启动crond服务</p>
+<blockquote>
+<p>直接执行脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# sh -x /usr/local/sbin/nginx_log_rotate.sh</span><br><span class="line">++ date -d &apos;-1 day&apos; +%Y%m%d</span><br><span class="line">+ d=20180607</span><br><span class="line">+ logdir=/tmp</span><br><span class="line">+ nginx_pid=/usr/local/nginx/logs/nginx.pid</span><br><span class="line">+ cd /tmp</span><br><span class="line">++ ls test2.log yum.log</span><br><span class="line">+ for log in &apos;`ls *.log`&apos;</span><br><span class="line">+ mv test2.log test2.log-20180607</span><br><span class="line">+ for log in &apos;`ls *.log`&apos;</span><br><span class="line">+ mv yum.log yum.log-20180607</span><br><span class="line">++ cat /usr/local/nginx/logs/nginx.pid</span><br><span class="line">+ /bin/kill -HUP 1001</span><br></pre></td></tr></table></figure>
+<p><code>-x</code>可视化执行过程</p>
+<blockquote>
+<p>3.由于时间旧了日志增多，使用find命令把日志删除掉</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find /tmp/ -type f -name *.log* mtime +30 |xargs rm</span><br></pre></td></tr></table></figure>
+<p>名字带.log并且mitme大于30天的文件删除掉</p>
+<h2 id="12-12-静态文件不记录日志和过期时间"><a href="#12-12-静态文件不记录日志和过期时间" class="headerlink" title="12.12 静态文件不记录日志和过期时间"></a>12.12 静态文件不记录日志和过期时间</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.以test2站点为例 编辑虚拟主机配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/vhost/test2.com.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com 111.com 222.com www.test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">         &#123;</span><br><span class="line">          expires      7d;</span><br><span class="line">          access_log off;</span><br><span class="line">         &#125;      </span><br><span class="line">    location ~ .*\.(js|css)$</span><br><span class="line">         &#123;</span><br><span class="line">          expires      12h;</span><br><span class="line">          access_log off;</span><br><span class="line">         &#125;</span><br><span class="line">    </span><br><span class="line">     access_log /tmp/test2.log combined_realip;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>expires</code>定义过期时间  <code>access_log</code> off表示不记录日志</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<p>模拟图片和js文件 并使用日志和curl命令查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /var/www/test2/1.png</span><br><span class="line">[root@localhost ~]# vim /var/www/test2/1.js</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.102:80 test2.com/1.png -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Fri, 08 Jun 2018 14:37:28 GMT</span><br><span class="line">Content-Type: image/png</span><br><span class="line">Content-Length: 3</span><br><span class="line">Last-Modified: Fri, 08 Jun 2018 14:36:28 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1a946c-3&quot;</span><br><span class="line">Expires: Fri, 15 Jun 2018 14:37:28 GMT</span><br><span class="line">Cache-Control: max-age=604800</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# curl -x 192.168.80.102:80 test2.com/1.js -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Fri, 08 Jun 2018 14:38:10 GMT</span><br><span class="line">Content-Type: application/javascript</span><br><span class="line">Content-Length: 4</span><br><span class="line">Last-Modified: Fri, 08 Jun 2018 14:36:40 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1a9478-4&quot;</span><br><span class="line">Expires: Sat, 09 Jun 2018 02:38:10 GMT</span><br><span class="line">Cache-Control: max-age=43200</span><br><span class="line">Accept-Ranges: bytes</span><br></pre></td></tr></table></figure>
+<p>查看日志并没有记录刚刚的访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail /tmp/test2.log</span><br><span class="line">192.168.80.102 - [08/Jun/2018:22:39:14 +0800] test2.com &quot;/1.jsasdas&quot; 404 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br><span class="line">192.168.80.102 - [08/Jun/2018:22:39:19 +0800] test2.com &quot;/1.jsasdas&quot; 404 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -253,7 +277,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
         		</li>
       		
 		</ul>
@@ -309,7 +333,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/31/一周第四次课（3月22日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/08/LNMP第三节（6月8日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +347,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/31/一周第五次课（3月23日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          一周第五次课（3月23日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/31/一周第三次课（3月21日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一周第三次课(3月21日)</div>
+    <a href="/2018/06/08/LNMP第二节（6月7日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LNMP第二节（6月7日）</div>
       <i class="icon-circle-right"></i>
     </a>
   

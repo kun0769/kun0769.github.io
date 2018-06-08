@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607235637.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608002825.png">
-<meta property="og:updated_time" content="2018-06-07T17:39:04.266Z">
+<meta property="og:updated_time" content="2018-06-08T14:46:03.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第二节（6月7日）">
 <meta name="twitter:description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
@@ -265,8 +265,9 @@
 <p><code>~ admin.php</code>是匹配admin.php 也就是指定admin.php</p>
 <h2 id="12-9-Nginx域名重定向"><a href="#12-9-Nginx域名重定向" class="headerlink" title="12.9 Nginx域名重定向"></a>12.9 Nginx域名重定向</h2><p>在Nginx中<code>server_name</code> 后面支持跟多个域名 </p>
 <h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.创建站点的配置文件 以test2.com为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;    server_name test2.com 111.com 222.com www.test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    if ($host != &apos;test2.com&apos; ) </span><br><span class="line">    &#123;</span><br><span class="line">        rewrite  ^/(.*)$  http://test2.com/$1  permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.创建站点的配置文件 以test2.com为例</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;    server_name test2.com 111.com 222.com www.test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    if ($host != &apos;test2.com&apos; ) </span><br><span class="line">    &#123;</span><br><span class="line">        rewrite  ^/(.*)$  http://test2.com/$1  permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>^/(.*)$</code>表示 <code>http://test2.com/</code>后面的所有部分 <code>permanent</code>表示永久重定向 <code>redirect</code>表示临时重定向</p>
 <blockquote>
 <p>2.检查语法并加载配置文件</p>
@@ -359,6 +360,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/06/08/LNMP第三节（6月8日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LNMP第三节（6月8日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/06/LNMP第一节（6月6日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -534,6 +544,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
@@ -543,10 +557,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
