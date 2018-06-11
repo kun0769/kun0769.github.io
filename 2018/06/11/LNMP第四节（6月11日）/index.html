@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>LNMP第四节（6月11日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/10/index.html">
+  <meta name="description" content="12.13 Nginx防盗链12.14 Nginx访问控制12.15 Nginx解析php相关配置12.16 Nginx代理">
+<meta name="keywords" content="Linux,LNMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LNMP第四节（6月11日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/11/LNMP第四节（6月11日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="12.13 Nginx防盗链12.14 Nginx访问控制12.15 Nginx解析php相关配置12.16 Nginx代理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png">
+<meta property="og:updated_time" content="2018-06-11T13:07:53.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="LNMP第四节（6月11日）">
+<meta name="twitter:description" content="12.13 Nginx防盗链12.14 Nginx访问控制12.15 Nginx解析php相关配置12.16 Nginx代理">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +150,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LNMP第四节（6月11日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LNMP第四节（6月11日）
+    </h1>
+  
+
+        
+        <a href="/2018/06/11/LNMP第四节（6月11日）/" class="archive-article-date">
+  	<time datetime="2018-06-11T12:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>12.13 Nginx防盗链<br>12.14 Nginx访问控制<br>12.15 Nginx解析php相关配置<br>12.16 Nginx代理<br><a id="more"></a></p>
+<h2 id="12-13-Nginx防盗链"><a href="#12-13-Nginx防盗链" class="headerlink" title="12.13 Nginx防盗链"></a>12.13 Nginx防盗链</h2><p>Nginx防盗链的核心语句是可以嵌套在静态文件不记录日志和过期时间的语句中一起使用的，这样Nginx的配置就更加清晰明了。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/vhost/test2.com.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location ~* ^.+\.(gif|jpg|png|swf|flv|rar|zip|doc|pdf|gz|bz2|jpeg|bmp|xls)$</span><br><span class="line">   &#123;</span><br><span class="line">      expires 7d;</span><br><span class="line">      valid_referers none blocked server_names  *.test2.com ;</span><br><span class="line">      if ($invalid_referer)</span><br><span class="line">           &#123;</span><br><span class="line">           return 403;</span><br><span class="line">           &#125;</span><br><span class="line">      access_log off;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><code>~*</code>表示不区分大小写的匹配 <code>valid_referers none blocked server_names</code> 定义白名单的referer <code>none blocked</code>表示空referer <code>server_names</code>可以忽略不写 <code>invalid_referer</code>表示非白名单<br>Nginx的正则表达式匹配 <img src="" alt=""><a href="https://blog.csdn.net/a519640026/article/details/9138487" target="_blank" rel="noopener">https://blog.csdn.net/a519640026/article/details/9138487</a></p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -e &quot;http://www.baidu.com&quot; -x 192.168.80.102:80 test2.com/1.png -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 03:50:29 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 168</span><br><span class="line">Connection: keep-alive</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# curl -e &quot;http://test2.com&quot; -x 192.168.80.102:80 test2.com/1.png -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 03:51:56 GMT</span><br><span class="line">Content-Type: image/png</span><br><span class="line">Content-Length: 3</span><br><span class="line">Last-Modified: Fri, 08 Jun 2018 14:36:28 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1a946c-3&quot;</span><br><span class="line">Expires: Sat, 16 Jun 2018 03:51:56 GMT</span><br><span class="line">Cache-Control: max-age=604800</span><br><span class="line">Accept-Ranges: bytes</span><br></pre></td></tr></table></figure>
+<p><code>-e</code>指定referer<br>这里referer不是test2.com的都会禁止访问png </p>
+<h2 id="12-14-Nginx访问控制"><a href="#12-14-Nginx访问控制" class="headerlink" title="12.14 Nginx访问控制"></a>12.14 Nginx访问控制</h2><p>为了让公司内部的IP访问指定的目录，其他IP都拒绝掉</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ~ /admin/</span><br><span class="line">       &#123;</span><br><span class="line">       allow 127.0.0.1;</span><br><span class="line">       allow 192.168.80.102;</span><br><span class="line">       deny all;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>Nginx的访问控制和Apache的不同 他的顺序是从上至下匹配，只要匹配到要求就会停止匹配。127.0.0.1匹配到到allow后就会停止匹配</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /var/www/test2/admin/</span><br><span class="line">[root@localhost ~]# echo &quot;1111&quot; &gt; /var/www/test2/admin/1.php</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 test2.com/admin/1.php -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 04:27:49 GMT</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">Content-Length: 5</span><br><span class="line">Last-Modified: Sat, 09 Jun 2018 04:26:55 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1b570f-5&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br></pre></td></tr></table></figure>
+<p>我们新建一块网卡并动态配置IP给他在访问admin目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ens37: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.218.128  netmask 255.255.255.0  broadcast 192.168.218.255</span><br><span class="line">        inet6 fe80::1e59:e2e4:8f43:12e8  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:06:17:15  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 3  bytes 746 (746.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 10  bytes 1308 (1.2 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.218.128:80 test2.com/admin/1.php -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 04:32:33 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 168</span><br><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
+<p>可以发现网卡ens37的IP被拒绝访问admin目录</p>
+<h2 id="对文件或者链接进行访问控制"><a href="#对文件或者链接进行访问控制" class="headerlink" title="对文件或者链接进行访问控制"></a>对文件或者链接进行访问控制</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*(upload|image)/.*\.php$</span><br><span class="line">   &#123;</span><br><span class="line">   deny all;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><code>(upload|image)/</code>表示uplocad或者image目录 这里就是禁止访问该目录下的php文件，以达到禁止解析PHP的目的</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /var/www/test2/upload/ /var/www/test2/image</span><br><span class="line">[root@localhost ~]# echo &quot;111&quot; &gt; /var/www/test2/image/1.php</span><br><span class="line">[root@localhost ~]# echo &quot;111&quot; &gt; /var/www/test2/image/1.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.218.128:80 test2.com/admin/1.php -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 04:45:37 GMT</span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">Content-Length: 5</span><br><span class="line">Last-Modified: Sat, 09 Jun 2018 04:26:55 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1b570f-5&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# curl -x 192.168.218.128:80 test2.com/image/1.php -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 04:45:54 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 168</span><br><span class="line">Connection: keep-alive</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# curl -x 192.168.218.128:80 test2.com/image/1.txt -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 04:48:49 GMT</span><br><span class="line">Content-Type: text/plain</span><br><span class="line">Content-Length: 4</span><br><span class="line">Last-Modified: Sat, 09 Jun 2018 04:48:17 GMT</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;5b1b5c11-4&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br></pre></td></tr></table></figure>
+<p>新网卡IP192.168.218.128访问image目录下的php文件被拒绝了</p>
+<h2 id="对user-agent进行访问控制"><a href="#对user-agent进行访问控制" class="headerlink" title="对user_agent进行访问控制"></a>对user_agent进行访问控制</h2><h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location ~ /</span><br><span class="line">    &#123;</span><br><span class="line">    if ($http_user_agent ~* &apos;chrome&apos;)</span><br><span class="line">            &#123;</span><br><span class="line">            return 403;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>return 403</code>和<code>deny all</code>效果一样 if和()之间有空格 否则报错 这里是禁止Chrome浏览器访问</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>使用ie浏览器访问test2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png" alt=""><br>使用Chrome访问test2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png" alt=""></p>
+<h2 id="12-15-Nginx解析php相关配置"><a href="#12-15-Nginx解析php相关配置" class="headerlink" title="12.15 Nginx解析php相关配置"></a>12.15 Nginx解析php相关配置</h2><h3 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$</span><br><span class="line">    &#123;</span><br><span class="line">    include fastcgi_params;</span><br><span class="line">    fastcgi_pass unix:/tmp/php-fcgi.sock;</span><br><span class="line">    fastcgi_index index.php;</span><br><span class="line">    fastcgi_param SCRIPT_FILENAME /var/www/test2$fastcgi_script_name;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>fastcgi_pass</code>必须和<code>php-fpm.conf</code>的监听方式一致，否则报错502 <code>fastcgi_pass 127.0.0.1:9000;</code> 使用ip端口方式监听 <code>fastcgi_param SCRIPT_FILENAME</code> 中的路径要和<code>root</code>的路径一致 </p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-4"><a href="#测试-4" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /var/www/test2/test.php</span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>成功解析PHP<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png" alt=""></p>
+<blockquote>
+<p>注意事项：出现502页面</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 test2.com/test.php -I</span><br><span class="line">HTTP/1.1 502 Bad Gateway</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 06:36:04 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 172</span><br><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
+<h3 id="1-fastcgi-pass中sock写错"><a href="#1-fastcgi-pass中sock写错" class="headerlink" title="1.fastcgi_pass中sock写错"></a>1.fastcgi_pass中sock写错</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_pass unix:/tmp/php-fcgi1.sock;</span><br></pre></td></tr></table></figure>
+<p>这里<code>/tmp/php-fcgi1.sock</code>是没有的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail /usr/local/nginx/logs/nginx_error.log</span><br><span class="line">2018/06/09 14:36:04 [crit] 1705#0: *40 connect() to unix:/tmp/php-fcgi1.sock failed (2: No such file or directory) while connecting to upstream, client: 127.0.0.1, server: test2.com, request: &quot;HEAD HTTP://test2.com/test.php HTTP/1.1&quot;, upstream: &quot;fastcgi://unix:/tmp/php-fcgi1.sock:&quot;, host: &quot;test2.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>日志显示找到该sock</p>
+<h3 id="2-fastcgi-pass中的监听方式和php-fpm-conf中的监听方式不一致"><a href="#2-fastcgi-pass中的监听方式和php-fpm-conf中的监听方式不一致" class="headerlink" title="2.fastcgi_pass中的监听方式和php-fpm.conf中的监听方式不一致"></a>2.fastcgi_pass中的监听方式和php-fpm.conf中的监听方式不一致</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">;listen = /tmp/php-fcgi.sock</span><br><span class="line">;listen.mode = 666</span><br><span class="line">listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure>
+<p>这里<code>php-fpm.conf</code>监听方式是IP+端口</p>
+<p><code>/usr/local/php-fpm/sbin/php-fpm -t</code> 检查语句<br><code>service php-fpm restart</code> 重启php-fpm服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018/06/09 14:52:48 [crit] 1768#0: *44 connect() to unix:/tmp/php-fcgi.sock failed (2: No such file or directory) while connecting to upstream, client: 127.0.0.1, server: test2.com, request: &quot;HEAD HTTP://test2.com/test.php HTTP/1.1&quot;, upstream: &quot;fastcgi://unix:/tmp/php-fcgi.sock:&quot;, host: &quot;test2.com&quot;</span><br></pre></td></tr></table></figure>
+<p>日志显示没找到该sock</p>
+<h3 id="3-tmp-php-fcgi-sock的权限不够"><a href="#3-tmp-php-fcgi-sock的权限不够" class="headerlink" title="3./tmp/php-fcgi.sock的权限不够"></a>3./tmp/php-fcgi.sock的权限不够</h3><p>由于Nginx的用户是nobody 而php-fcgi.sock的用户是root 因此要想Nginx和php-fcgi.sock通讯，就必须要让php-fcgi.sock的其他用户拥有6的权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-fcgi.sock</span><br><span class="line">;listen.mode = 666</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure>
+<p>这里把sock的权限给注释了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018/06/09 15:08:18 [crit] 1963#0: *54 connect() to unix:/tmp/php-fcgi.sock failed (13: Permission denied) while connecting to upstream, client: 127.0.0.1, server: test2.com, request: &quot;HEAD HTTP://test2.com/test.php HTTP/1.1&quot;, upstream: &quot;fastcgi://unix:/tmp/php-fcgi.sock:&quot;, host: &quot;test2.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>日志显示sock的权限不够 禁止访问</p>
+<h2 id="12-16-Nginx代理"><a href="#12-16-Nginx代理" class="headerlink" title="12.16 Nginx代理"></a>12.16 Nginx代理</h2><p>Nginx可以做代理服务器。代理服务器可以让外网的用户访问到处在内网中的服务器，也可以通过代理服务器来加快访问速度。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png" alt=""></p>
+<h3 id="步骤-5"><a href="#步骤-5" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/vhost/proxy.conf</span><br></pre></td></tr></table></figure>
+<p>新建个proxy.conf的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name ask.apelearn.com;</span><br><span class="line"></span><br><span class="line">    location /</span><br><span class="line">    &#123;</span><br><span class="line">        proxy_pass      http://223.94.95.10/;</span><br><span class="line">        proxy_set_header Host   $host;</span><br><span class="line">        proxy_set_header X-Real-IP      $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>server_name</code>指要访问的web服务器的域名 <code>proxy_pass</code>指要访问的web服务器的IP地址  <code>proxy_set_header Host</code> 代理头的主机名,指server_name</p>
+<blockquote>
+<p>2.检查语法并加载配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="测试-5"><a href="#测试-5" class="headerlink" title="测试"></a>测试</h3><p>使用本地IP来访问ask.apelearn.com 说明代理成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 ask.apelearn.com -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Sat, 09 Jun 2018 07:43:12 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Connection: keep-alive</span><br><span class="line">X-Powered-By: PHP/5.3.3</span><br><span class="line">P3P: CP=&quot;CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR&quot;</span><br><span class="line">Set-Cookie: ape__Session=5dj4jumegivdbfk609hbfedka7; path=/; domain=.apelearn.com</span><br><span class="line">Expires: Thu, 19 Nov 1981 08:52:00 GMT</span><br><span class="line">Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0</span><br><span class="line">Pragma: no-cache</span><br><span class="line">myheader: web1</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第四次课（3月22日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第四次课（3月22日）/">一周第四次课（3月22日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,193 +277,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/11/LNMP第四节（6月11日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/31/一周第三次课（3月21日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/08/LNMP第三节（6月8日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LNMP第三节（6月8日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/31/一周第三次课（3月21日）/">一周第三次课(3月21日)</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/30/一周第二次课（3月20日）/" class="archive-article-date">
-  	<time datetime="2018-03-30T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/一周第二次课（3月20日）/">一周第二次课（3月20日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/一周第一次课（3月19日）/">一周第一次课（3月19日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2018-03-25T12:50:50.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/25/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">简介</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/9/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span>
-    </nav>
-  
 
 
           </div>
@@ -388,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
