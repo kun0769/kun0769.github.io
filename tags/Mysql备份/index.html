@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LAMP第五节（5月29日） | kun0769的博客</title>
+  <title>Tag: Mysql备份 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
-<meta name="keywords" content="Linux,LAMP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LAMP第五节（5月29日）">
-<meta property="og:url" content="http://yoursite.com/2018/05/28/LAMP第五节（5月29日）/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="kun0769的博客">
+<meta property="og:url" content="http://yoursite.com/tags/Mysql备份/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg">
-<meta property="og:updated_time" content="2018-06-01T16:18:19.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LAMP第五节（5月29日）">
-<meta name="twitter:description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
+<meta name="twitter:title" content="kun0769的博客">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -151,253 +140,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LAMP第五节（5月29日）" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      LAMP第五节（5月29日）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/06/20/Mysql-2（6月20日）/" class="archive-article-date">
+  	<time datetime="2018-06-20T15:32:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/06/20/Mysql-2（6月20日）/">Mysql 2（6月20日）</a>
     </h1>
   
 
-        
-        <a href="/2018/05/28/LAMP第五节（5月29日）/" class="archive-article-date">
-  	<time datetime="2018-05-28T13:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>11.18 Apache用户认证<br>11.19/11.20 域名跳转<br>11.21 Apache访问日志<br><a id="more"></a></p>
-<h2 id="11-18-httpd的用户验证"><a href="#11-18-httpd的用户验证" class="headerlink" title="11.18 httpd的用户验证"></a>11.18 httpd的用户验证</h2><p>在生产环境中某些后台的网页往往需要设置用户验证，这样可以保护网页不会因为个人的失误导致数据的丢失，这样可以提高安全性</p>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们这里以test2站点做用户验证 在test2的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test2.conm&gt; </span><br><span class="line">AllowOverride AuthConfig   </span><br><span class="line">AuthName &quot;test2.com user auth&quot;  </span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /var/.htpasswd</span><br><span class="line">require valid-user</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg" alt=""></p>
-<h3 id="建立用户密码文件"><a href="#建立用户密码文件" class="headerlink" title="建立用户密码文件"></a>建立用户密码文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/htpasswd -c -m /var/.htpasswd test1  新建文件和建立用户test1</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/htpasswd  -m /var/.htpasswd test2  建立用户test2</span><br></pre></td></tr></table></figure>
-<p><code>-c</code> 创建新文件 <code>-m</code> 密码加密   </p>
-<h3 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开test2.com<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg" alt=""></p>
-<p>在linux使用curl命令<br><code>-I</code>实现网页的状态码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com -I</span><br><span class="line">HTTP/1.1 401 Unauthorized</span><br><span class="line">Date: Sun, 27 May 2018 12:19:52 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">WWW-Authenticate: Basic realm=&quot;test2.com user auth&quot;</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
-<p><code>-u</code>用户名:密码 使用用户登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 -utest1:123456 test2.com</span><br></pre></td></tr></table></figure></p>
-<p>上述是针对整个目录认证 也可以针对单个文件认证</p>
-<h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch test.php&gt;</span><br><span class="line">AllowOverride AuthConfig</span><br><span class="line">AuthName &quot;test2.com user auth&quot;</span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /var/.htpasswd</span><br><span class="line">require valid-user</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
-<p>这里使用<code>&lt;FilesMatch&gt;</code>来指定某个文件 其实<code>&lt;Directory&gt;</code> <code>&lt;DirectoryMatch&gt;</code>都是指定某个目录 <code>&lt;Files&gt;</code> <code>&lt;FilesMatch&gt;</code>都是指定某个文件 唯一不同点在于<code>&lt;DirectoryMatch&gt;</code> <code>&lt;FilesMatch&gt;</code>可以直接使用正则表达式 而<code>&lt;Directory&gt;</code> <code>&lt;Files&gt;</code>使用正则表达式 要再其前加<code>~</code> 例如 <code>&lt;Files ~&quot;^\.ht&quot;&gt;</code> 以.ht开头的文件</p>
-<h3 id="加载配置文件-1"><a href="#加载配置文件-1" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="新建test-php文件"><a href="#新建test-php文件" class="headerlink" title="新建test.php文件"></a>新建test.php文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /var/www/test2.com/test.php</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com</span><br><span class="line">test2</span><br><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com/test.php -I</span><br><span class="line">HTTP/1.1 401 Unauthorized</span><br><span class="line">Date: Sun, 27 May 2018 13:20:51 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">WWW-Authenticate: Basic realm=&quot;test2.com user auth&quot;</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure>
-<h2 id="11-19-11-20-域名跳转"><a href="#11-19-11-20-域名跳转" class="headerlink" title="11.19/11.20 域名跳转"></a>11.19/11.20 域名跳转</h2><p>有时候两个域名的网页内容一样，在搜索引擎眼里认为两个域名的权重一样，那其中有一个是错的网站。为了让搜索引擎认为这个域名就是同一个网站，就使用域名跳转，使得次域名的权重降低而提升到主域名上，因此就使用域名跳转技术</p>
-<h3 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们这里用test1站点为例 在test1的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; !^test1.com$</span><br><span class="line">RewriteRule ^/(.*)$ http://test1.com/$1 [R=301,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg" alt=""><br><code>!^test1.com$</code> 表示非test1.com <code>^/(.*)$</code>表示域名/后面的部分 <code>$1</code>表示前面的小括号 </p>
-<h3 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h3><p>去<code>/usr/local/apache2.4/conf/httpd.conf</code>下 把<code>rewrite</code>模块的#去掉<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg" alt=""></p>
-<h3 id="加载配置文件-2"><a href="#加载配置文件-2" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开<a href="http://www.example.com跳转到test1.com" target="_blank" rel="noopener">www.example.com跳转到test1.com</a><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg" alt=""><br>在linux使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 www.example.com -I</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Date: Sun, 27 May 2018 23:41:48 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Location: http://test1.com/</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
-<h3 id="网页状态码"><a href="#网页状态码" class="headerlink" title="网页状态码"></a>网页状态码</h3><table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>请求成功</td>
-</tr>
-<tr>
-<td>301</td>
-<td>永久重定向 网站权重会变</td>
-</tr>
-<tr>
-<td>302</td>
-<td>临时重定向 网站权重不变</td>
-</tr>
-<tr>
-<td>304</td>
-<td>表示用户访问的文件没变化</td>
-</tr>
-<tr>
-<td>401</td>
-<td>服务器拒绝验证</td>
-</tr>
-<tr>
-<td>403</td>
-<td>服务器拒绝请求</td>
-</tr>
-<tr>
-<td>404</td>
-<td>没找到文件</td>
-</tr>
-<tr>
-<td>500</td>
-<td>服务器上有语法错误</td>
-</tr>
-</tbody>
-</table>
-<h2 id="11-21-Apache访问日志"><a href="#11-21-Apache访问日志" class="headerlink" title="11.21 Apache访问日志"></a>11.21 Apache访问日志</h2><p>访问日志是记录每一次访问服务器的请求，我们在定义虚拟主机的时候已经定义好访问日志的路径和格式了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CustomLog &quot;logs/test2.com-access_log&quot; common</span><br></pre></td></tr></table></figure></p>
-<p>访问日志是记录在<code>/usr/local/apache2.4/logs/</code>目录下的 <code>common</code>是日志格式的一种</p>
-<p>看看test2.com的访问日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.1 - - [29/May/2018:04:06:56 +0800] &quot;GET / HTTP/1.1&quot; 200 5</span><br><span class="line">192.168.80.1 - - [29/May/2018:04:06:56 +0800] &quot;GET /favicon.ico HTTP/1.1&quot; 404 209</span><br><span class="line">192.168.80.101 - - [29/May/2018:04:07:36 +0800] &quot;HEAD HTTP://test2.com/ HTTP/1.1&quot; 200 -</span><br></pre></td></tr></table></figure></p>
-<p><code>访问的IP</code> <code>登录的用户</code> <code>访问时间</code> <code>记录服务器收到的请求类型</code> <code>访问的域名</code> <code>http版本</code> <code>状态码</code> <code>大小</code></p>
-<p>我们也可以去httpd.conf里面指定 LogFormat更改访问日志的记录格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%&#123;Referer&#125;i\&quot; \&quot;%&#123;User-Agent&#125;i\&quot;&quot; combined</span><br><span class="line">LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common</span><br></pre></td></tr></table></figure></p>
-<p>combined格式中的<code>Referer</code>是告诉服务器 是从哪个页面链接过来的 <code>User-Agent</code>用户代理是告诉服务器用户的使用的操作系统版本 浏览器类型等信息<br>默认都是使用common 这里我们使用combined格式 只要在虚拟主机上的CustomLog 后面改为combined即可<br>这里我把test2的访问日志改为combined<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CustomLog &quot;logs/test2.com-access_log&quot; combined</span><br></pre></td></tr></table></figure></p>
-<h3 id="加载配置"><a href="#加载配置" class="headerlink" title="加载配置"></a>加载配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>在浏览器和用curl命令访问服务器在去看看日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.101 - - [29/May/2018:04:41:59 +0800] &quot;HEAD HTTP://test2.com/ HTTP/1.1&quot; 200 - &quot;-&quot; &quot;curl/7.29.0&quot;</span><br><span class="line">192.168.80.1 - - [29/May/2018:04:42:11 +0800] &quot;GET / HTTP/1.1&quot; 200 5 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36&quot;</span><br></pre></td></tr></table></figure></p>
-<p>第一条可以看出来使用curlml访问的 第二条是用浏览器CHrome访问的</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql备份</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/28/LAMP第五节（5月29日）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/29/LAMP第六节（5月30日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LAMP第六节（5月30日）
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/05/26/LAMP第四节（5月28日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LAMP第四节（5月28日）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
-
+    
 
 
           </div>
@@ -420,9 +220,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
