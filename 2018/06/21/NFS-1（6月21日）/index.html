@@ -6,35 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LAMP第四节（5月28日） | kun0769的博客</title>
+  <title>NFS 1（6月21日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="11.14/11.15 Apache和PHP结合11.16/11.17 Apache默认虚拟主机">
-<meta name="keywords" content="Linux,LAMP">
+  <meta name="description" content="14.1 NFS介绍14.2 NFS服务端安装配置14.3 NFS配置选项">
+<meta name="keywords" content="NFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LAMP第四节（5月28日）">
-<meta property="og:url" content="http://yoursite.com/2018/05/26/LAMP第四节（5月28日）/index.html">
+<meta property="og:title" content="NFS 1（6月21日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/21/NFS-1（6月21日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="11.14/11.15 Apache和PHP结合11.16/11.17 Apache默认虚拟主机">
+<meta property="og:description" content="14.1 NFS介绍14.2 NFS服务端安装配置14.3 NFS配置选项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526101922.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526102350.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526102633.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526103233.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526104157.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526104453.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526112537.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526112825.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526114531.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526165512.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526165630.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526171659.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526174624.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526175314.jpg">
-<meta property="og:updated_time" content="2018-05-28T13:32:09.034Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png">
+<meta property="og:updated_time" content="2018-06-21T15:50:55.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LAMP第四节（5月28日）">
-<meta name="twitter:description" content="11.14/11.15 Apache和PHP结合11.16/11.17 Apache默认虚拟主机">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526101922.jpg">
+<meta name="twitter:title" content="NFS 1（6月21日）">
+<meta name="twitter:description" content="14.1 NFS介绍14.2 NFS服务端安装配置14.3 NFS配置选项">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -160,79 +148,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LAMP第四节（5月28日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-NFS-1（6月21日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LAMP第四节（5月28日）
+      NFS 1（6月21日）
     </h1>
   
 
         
-        <a href="/2018/05/26/LAMP第四节（5月28日）/" class="archive-article-date">
-  	<time datetime="2018-05-26T10:13:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
+        <a href="/2018/06/21/NFS-1（6月21日）/" class="archive-article-date">
+  	<time datetime="2018-06-21T15:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>11.14/11.15 Apache和PHP结合<br>11.16/11.17 Apache默认虚拟主机<br><a id="more"></a></p>
-<h2 id="11-14-11-15-配置Apache支持PHP"><a href="#11-14-11-15-配置Apache支持PHP" class="headerlink" title="11.14/11.15 配置Apache支持PHP"></a>11.14/11.15 配置Apache支持PHP</h2><p>先打开Apache服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl start</span><br><span class="line">AH00558: httpd: Could not reliably determine the server&apos;s fully qualified domain name, using localhost.localdomain. Set the &apos;ServerName&apos; directive globally to suppress this message</span><br></pre></td></tr></table></figure></p>
-<p>这行信息是行警告 不是错误 他说我们并没配置ServerName 因此我要去配置文件把ServerName改下</p>
-<h3 id="1-修改ServerName"><a href="#1-修改ServerName" class="headerlink" title="1.修改ServerName"></a>1.修改ServerName</h3><p>打开Apache的配置文件<code>/usr/local/apache2.4/conf/httpd.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/apache2.4/conf/httpd.conf</span><br><span class="line">ServerName www.example.com:80</span><br></pre></td></tr></table></figure></p>
-<p>找到ServerName那行把#去掉就可以了</p>
-<p>我们测试用win上的浏览器去访问192.168.80.101(虚拟机的ip) 但发现不成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526101922.jpg" alt=""></p>
-<ul>
-<li>思路：<ul>
-<li>1.看看192.168.80.101是否通<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526102350.jpg" alt=""></li>
-<li>2.看看192.168.80.101的80端口是否能通<br>  使用win的Telnet远程连接服务  <code>控制面板</code>—<code>程序与功能</code>—<code>打开或者关闭windows功能</code>—-<code>Telnet客户端</code>(这里只下客户端即可 下服务器端的会打开23端口 有风险)<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526102633.jpg" alt=""></li>
-</ul>
-</li>
-</ul>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526103233.jpg" alt=""><br>发现192.168.80.101的80端口不通 </p>
-<p>因此我们回去虚拟机上设置iptable规则把所有通过80的数据都允许<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# iptables -I INPUT -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
-<p>再回去win用telnet 192.168.80.101 80看看 现在通了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526104157.jpg" alt=""><br>使用Ctrl+] 退出再quit</p>
-<p>现在打开浏览器看看 显示It works！<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526104453.jpg" alt=""></p>
-<h3 id="2-修改Require-all-denied"><a href="#2-修改Require-all-denied" class="headerlink" title="2.修改Require all denied"></a>2.修改Require all denied</h3><p>这里改为granted为了让虚拟主机显示200状态码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">    AllowOverride none</span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p>每当配置文件改完都要检查配置文件是否正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br></pre></td></tr></table></figure></p>
-<p>加载配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-添加-Addtype-application-x-httpd-php-php"><a href="#3-添加-Addtype-application-x-httpd-php-php" class="headerlink" title="3.添加    Addtype application/x-httpd-php .php"></a>3.添加    Addtype application/x-httpd-php .php</h3><p>这行为了让HTTP支持和解析php<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526112537.jpg" alt=""></p>
-<h3 id="4-添加索引页-index-php"><a href="#4-添加索引页-index-php" class="headerlink" title="4.添加索引页 index.php"></a>4.添加索引页 index.php</h3><p>索引页也叫默认页 当你在浏览器中不输人主页就会自动调整到此页<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526112825.jpg" alt=""></p>
-<p>记得每次更改配置文件后都要 <code>apachectl -t</code>和<code>apachectl graceful</code> </p>
-<p>为了查看是否解析php 我们在htdocs目录下新建个test.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/apache2.4/htdocs/test.php</span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p><code>phpinfo()</code>是php的参数可以打印出php的配置 </p>
-<p>再回去浏览器看192.168.80.101/test.php<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526114531.jpg" alt=""></p>
-<p>那么假如php解析不成功就会显示源代码 我们可以先看看</p>
-<blockquote>
-<p>1.modules目录是否有有libphp5.so的库文件</p>
+        <p>14.1 NFS介绍<br>14.2 NFS服务端安装配置<br>14.3 NFS配置选项<br><a id="more"></a></p>
+<h2 id="14-1-NFS介绍"><a href="#14-1-NFS介绍" class="headerlink" title="14.1 NFS介绍"></a>14.1 NFS介绍</h2><p>NFS全称Network File System 中文叫网络文件系统。是用于在网络上实现文件传输，已达到文件资源共享的效果。<br>NFS最早由Sun公司开发，分2,3,4三个大版本，2和3由Sun起草开发，4.0开始Netapp公司参与并主导开发，最新为4.1版本。<br>其中NFS数据传输是基于<code>RPC协议</code>，RPC为Remote Procedure Call的简写。中文叫远程过程调用，它可以让NFS的服务端和客服端实现通讯。<br>假如现在有三台web服务器作负载均衡，要实现让三台web服务器上的存放图片目录保持一致。通常使用的办法是把图片目录拷贝到其他几台服务器上，这样做既浪费带宽也不能保证数据的实时更新，因此使用NFS。当A机器上更新了数据，B和C机器也会马上实时更新。同理，B机器上更新数据，其他两台服务器也可以更新。这样用户访问ABC中一台，数据都是同步的。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png" alt=""></p>
+<p>工作原理：NFS是属于C/S结构的。NFS服务端上既有NFS服务还要RPC服务，而NFS客户端上也有RPC服务。NFS服务端要给NFS客户端提供服务，需要通过RPC服务来支持，RPC服务是由rpcbind（CentOS5以前叫portmap）来提供支持的.默认NFS是监听任何端口。而RPC服务监听111端口来实现TCP/IP的通讯，当两台机器上的RPC服务通讯后 NFS服务就跟RPC说他要监听哪个端口来传输数据 RPC就会告诉客户端上的RPC 而客户端上就会开启那个端口来实现NFS的通讯。<br>总之，<code>NFS需要通过PRC协议来通讯</code>。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png" alt=""></p>
+<h2 id="14-2-NFS服务端安装配置"><a href="#14-2-NFS服务端安装配置" class="headerlink" title="14.2 NFS服务端安装配置"></a>14.2 NFS服务端安装配置</h2><p>这里以192.168.80.102为服务端 192.168.80.100为客户端。NFS的服务端上需要启动NFS和RPC两个服务，而客户端上只需要启动RPC服务即可</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.服务端上安装nfs-utils包和rpcbind包</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/modules/libphp</span><br><span class="line">libphp5.so  libphp7.so</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y nfs-utils</span><br><span class="line">[root@localhost ~]# yum install -y rpcbind</span><br></pre></td></tr></table></figure>
+<p>安装<code>nfs-utils</code>包的时候已经包含安装了<code>rpcbind</code>包了 因此只安装<code>nfs-utils</code>包即可</p>
 <blockquote>
-<p>2.配置文件是否支持libphp5.so库文件</p>
+<p>2.编辑/etc/exports文件</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule php5_module        modules/libphp5.so</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /etc/exports</span><br><span class="line"></span><br><span class="line">/home/nfsdir 192.168.80.0/24(rw,sync,all_squash,anonuid=1000,anongid=1000)</span><br></pre></td></tr></table></figure>
+<p><code>/home/nfsdir</code>表示需要共享的目录 <code>192.168.80.0/24</code>表示指定给那些机器共享目录可以是IP端，括号里面表示挂载选项和设置</p>
 <blockquote>
-<p>3.配置文件是否添加支持解析php文件的参数</p>
+<p>3.新建共享目录和设置目录权限</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Addtype application/x-httpd-php .php</span><br></pre></td></tr></table></figure>
-<h2 id="11-16-11-17-Apache默认虚拟主机"><a href="#11-16-11-17-Apache默认虚拟主机" class="headerlink" title="11.16/11.17 Apache默认虚拟主机"></a>11.16/11.17 Apache默认虚拟主机</h2><p><code>域名（主机名）</code>：由于ip地址很难记住 使用域名来来登录服务器<br><code>虚拟主机</code>：在一台服务器上运行多个站点 每个站点对应一个独立的域名 而每个站点就叫一个虚拟主机<br><code>DNS</code>：域名解析 把域名和IP绑定在一起 相当于是一本世界版的电话簿 Linux上的<code>/etc/hosts</code> 是临时的域名解析 相当于是自家的电话簿 windows上也有hosts 路径是 <code>C:\Windows\System32\drivers\etc\HOSTS</code><br><code>默认虚拟主机</code>：当域名访问到服务器 但服务器没有找到相应的虚拟主机时就会自动跳转到默认虚拟主机</p>
-<p>为了让 <code>www.example.com</code> 可以在windows浏览器解析到 192.168.80.101，到windows下的hosts下做域名解析<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526165512.jpg" alt=""></p>
-<p>现在浏览器上用 <code>www.example.com</code> 可以访问到192.168.80.101了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526165630.jpg" alt=""><br>在Linux机器上使用curl命令来测试 <code>curl -x</code>等于用<code>/etc/hosts</code>来作临时域名解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 www.example.com</span><br><span class="line">&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>由于http.conf里面的只能配置一个站点 不能满足生产环境的要求 因此我们要使用虚拟主机的配置文件来管理多个站点<br>在<code>/usr/local/apache2.4/conf/httpd.conf</code> 中找到<code>Virtual hosts并去掉#</code> 来生效虚拟主机配置 这样做httpd.conf里面的ServerName DocumentRoot都会失效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Virtual hosts</span><br><span class="line">Include conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure></p>
-<p>配置虚拟主机配置文件 路径是 <code>/usr/local/apache2.4/conf/extra/httpd-vhosts.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/apache2.4/conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526171659.jpg" alt=""></p>
-<p>每一对<code>&lt;VritualHost&gt;</code>就是一个虚拟主机 排在第一个的是默认虚拟主机<br><code>ServerAdmin</code> 邮箱地址 可以忽略<br><code>DocumentRoot</code> 站点地址 必须有<br><code>ServerName</code> 网站名字就是域名 必须有<br><code>ServerAlias</code> 网站别名<br><code>ErrorLong</code> 错误日志路径<br><code>CustomLog</code> 访问日志路径和格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/test1.com&quot;</span><br><span class="line">    ServerName test1.com</span><br><span class="line">    ServerAlias www.test1.com www.example.com</span><br><span class="line">    ErrorLog &quot;logs/test1.com-error_log&quot;</span><br><span class="line">    CustomLog &quot;logs/test1.com-access_log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    DocumentRoot &quot;/var/www/test2.com&quot;</span><br><span class="line">    ServerName test2.com</span><br><span class="line">    ServerAlias www.test2.com www.123.com www.abc.com</span><br><span class="line">    ErrorLog &quot;logs/test2.com-error_log&quot;</span><br><span class="line">    CustomLog &quot;logs/test2.com-access_log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<p>这里我们配置两个虚拟主机一个test1.com 用<code>www.test1.com</code> <code>www.example.com</code>也是访问他的主页 目录在/var/www/test1.com<br>另一个是test2.com  用<code>www.test2.com</code> <code>www.123.com</code> <code>www.abc.com</code>访问他的主页 目录在/var/www/test2.com</p>
-<p>各自创建目录和主页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir -p /var/www/test1.com/ /var/www/test2.com/</span><br><span class="line">[root@localhost ~]# vim /var/www/test1.com/index.php</span><br><span class="line">[root@localhost ~]# vim /var/www/test2.com/index.php</span><br></pre></td></tr></table></figure></p>
-<p>检查配置和加载配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在windows机器上用浏览器 先绑定hosts<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526174624.jpg" alt=""></p>
-<p>然后逐个访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180526175314.jpg" alt=""></p>
-<p>在Linux机器上使用curl命令测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test1.com  ##-x 相当于/etc/hosts 把ip和域名解析到一起</span><br><span class="line">test1[root@localhost ~]# curl -x192.168.80.101:80 test2.com</span><br><span class="line">test2[root@localhost ~]# curl -x192.168.80.101:80 test1.com</span><br><span class="line">test1[root@localhost ~]# curl -x192.168.80.101:80 test2.com</span><br><span class="line">test2[root@localhost ~]# curl -x192.168.80.101:80 www.test1.com</span><br><span class="line">test1[root@localhost ~]# curl -x192.168.80.101:80 www.exaample.com</span><br><span class="line">test1[root@localhost ~]# curl -x192.168.80.101:80 www.nihao.com</span><br><span class="line">test1[root@localhost ~]# curl -x192.168.80.101:80 www.123.com</span><br><span class="line">test2[root@localhost ~]# curl -x192.168.80.101:80 www.abc.com</span><br><span class="line">test2[root@localhost ~]# curl -x192.168.80.101:80 www.test2.com</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /home/nfsdir/</span><br><span class="line">[root@localhost ~]# chmod 777 /home/nfsdir/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.启动nfs和rpcbind服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl start rpcbind</span><br><span class="line">[root@localhost ~]# systemctl start nfs</span><br><span class="line">[root@localhost ~]# systemctl enable rpcbind</span><br><span class="line">[root@localhost ~]# systemctl enable nfs</span><br></pre></td></tr></table></figure>
+<h2 id="14-3-NFS配置选项"><a href="#14-3-NFS配置选项" class="headerlink" title="14.3 NFS配置选项"></a>14.3 NFS配置选项</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rw</td>
+<td>读写</td>
+</tr>
+<tr>
+<td>ro</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>同步模式，内存数据实时写入磁盘</td>
+</tr>
+<tr>
+<td>async</td>
+<td>非同步模式</td>
+</tr>
+<tr>
+<td>no_root_squash</td>
+<td>客户端挂载NFS共享目录后，root用户不受限制，权限很大</td>
+</tr>
+<tr>
+<td>root_squash</td>
+<td>与上面选项相对，客户端上的root用户收到限制，被限定成某个普通用户</td>
+</tr>
+<tr>
+<td>all_squash</td>
+<td>客户端上所有用户在使用NFS共享目录时都被限定为一个普通用户</td>
+</tr>
+<tr>
+<td>anonuid/anongid</td>
+<td>和上面几个选项搭配使用，定义被限定用户的uid和gid</td>
+</tr>
+</tbody>
+</table>
+<h2 id="NFS客户端安装配置"><a href="#NFS客户端安装配置" class="headerlink" title="NFS客户端安装配置"></a>NFS客户端安装配置</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.客户端上安装nfs-utils包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# yum install -y nfs-utils</span><br></pre></td></tr></table></figure>
+<p>因为<code>nfs-utils</code>包包含<code>rpcbind</code>包 而客户端只有开启<code>rpcbind</code>服务即可</p>
+<blockquote>
+<p>2.显示NFS服务端共享目录的情况</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# showmount -e 192.168.80.102</span><br><span class="line">clnt_create: RPC: Port mapper failure - Unable to receive: errno 113 (No route to host)</span><br></pre></td></tr></table></figure>
+<p>错误显示是两台机器网络不通，可以判断是两台机器上的防火墙导致的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# systemctl stop firewalld</span><br><span class="line">[root@kun0769 ~]# setenforce 0</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# showmount -e 192.168.80.102</span><br><span class="line">Export list for 192.168.80.102:</span><br><span class="line">/home/nfsdir 192.168.80.0/24</span><br></pre></td></tr></table></figure>
+<p>可以看到192.168.80.102机器上共享目录是/home/nfsdir</p>
+<blockquote>
+<p>3.挂载共享目录到本地</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# mount -t nfs 192.168.80.102:/home/nfsdir /mnt/</span><br></pre></td></tr></table></figure>
+<p><code>-t</code> 指定文件系统格式 </p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在客户端上在共享目录下创建文件 查看文件属组 并在服务端上查看该文件的属组<br>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# touch /mnt/hello.txt</span><br><span class="line">[root@kun0769 ~]# ll /mnt/hello.txt</span><br><span class="line">-rw-r--r--. 1 1000 kun1 0 6月  20 23:13 /mnt/hello.txt</span><br></pre></td></tr></table></figure></p>
+<p>服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /home/nfsdir/hello.txt</span><br><span class="line">-rw-r--r--. 1 mysql mysql 0 6月  20 23:13 /home/nfsdir/hello.txt</span><br></pre></td></tr></table></figure></p>
+<p>可以发型文件是创建时间是一样的 属组的在<code>/etc/exports</code>配置文件设置好了限制为uid1000的普通用户 这个要看本机的uid为1000的是哪位用户 没有只显示1000</p>
 
       
 
@@ -246,11 +265,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NFS</a>
         		</li>
       		
 		</ul>
@@ -306,7 +321,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/26/LAMP第四节（5月28日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/21/NFS-1（6月21日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +335,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/28/LAMP第五节（5月29日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LAMP第五节（5月29日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/25/LAMP第三节（5月25日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LAMP第三节（5月25日）</div>
+    <a href="/2018/06/20/Mysql-2（6月20日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql 2（6月20日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
