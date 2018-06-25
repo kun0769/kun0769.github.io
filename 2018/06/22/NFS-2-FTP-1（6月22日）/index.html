@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>NFS 2 FTP 1（6月22日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+  <meta name="description" content="14.4 exportfs命令14.5 NFS客户端问题15.1 FTP介绍15.2/15.3 使用vsftpd搭建ftp">
+<meta name="keywords" content="FTP,NFS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NFS 2 FTP 1（6月22日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/22/NFS-2-FTP-1（6月22日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="14.4 exportfs命令14.5 NFS客户端问题15.1 FTP介绍15.2/15.3 使用vsftpd搭建ftp">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180622224411.png">
+<meta property="og:updated_time" content="2018-06-25T14:02:49.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="NFS 2 FTP 1（6月22日）">
+<meta name="twitter:description" content="14.4 exportfs命令14.5 NFS客户端问题15.1 FTP介绍15.2/15.3 使用vsftpd搭建ftp">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180622224411.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +147,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-七周第三次课（5月8日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-NFS-2-FTP-1（6月22日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/七周第三次课（5月8日）/">七周第三次课（5月8日）</a>
+    <h1 class="article-title" itemprop="name">
+      NFS 2 FTP 1（6月22日）
     </h1>
   
 
         
-        <a href="/2018/05/09/七周第三次课（5月8日）/" class="archive-article-date">
-  	<time datetime="2018-05-08T16:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
+        <a href="/2018/06/22/NFS-2-FTP-1（6月22日）/" class="archive-article-date">
+  	<time datetime="2018-06-22T15:03:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>10.11 Linux网络相关<br>10.12 firewalld和netfilter<br>10.13 netfilter5表5链介绍<br>10.14 iptables语法<br>
-        
-          <a class="article-more-a" href="/2018/05/09/七周第三次课（5月8日）/#more">more >></a>
-        
+        <p>14.4 exportfs命令<br>14.5 NFS客户端问题<br>15.1 FTP介绍<br>15.2/15.3 使用vsftpd搭建ftp<br><a id="more"></a></p>
+<h2 id="14-4-exportfs命令"><a href="#14-4-exportfs命令" class="headerlink" title="14.4 exportfs命令"></a>14.4 exportfs命令</h2><p><code>exportfs</code>是在安装了<code>nfs-util</code>包时候同时安装的。当服务器由于业务原因需要更改共享目录或者添加共享目录，NFS的服务端就需要先更改配置文件并重启NFS服务，此时NFS的客户端挂载了共享目录由于重启NFS服务而导致进程挂起，最终导致进程错误。因此要重启NFS服务需要提前把所有客户端上的挂载点给卸载。为了简单化此步骤，就可以在服务端上使用exportfs命令来统一把客户端给重新挂载共享目录。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>全部挂载或者全部卸载</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>重新挂载</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>卸载某一个目录</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示共享目录</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在NFS服务端上编辑配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /etc/exports</span><br><span class="line"></span><br><span class="line">/home/nfsdir 192.168.80.0/24(rw,sync,all_squash,anonuid=1000,anongid=1000)</span><br><span class="line">/tmp/ 192.168.80.100(rw,sync,no_root_squash)</span><br></pre></td></tr></table></figure>
+<p>添加多一个共享目录<code>/tmp</code>并指定共享IP<code>192.168.80.100</code>和使用权限 <code>no_root_squash</code>表示客服端上的root没有限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# exportfs -arv</span><br><span class="line">exporting 192.168.80.100:/tmp</span><br><span class="line">exporting 192.168.80.0/24:/home/nfsdir</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在NFS客户端上查看共享目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# showmount -e 192.168.80.102</span><br><span class="line">Export list for 192.168.80.102:</span><br><span class="line">/home/nfsdir 192.168.80.0/24</span><br><span class="line">/tmp         192.168.80.100</span><br></pre></td></tr></table></figure>
+<p>可以发型多了/tmp目录</p>
+<blockquote>
+<p>挂载/tmp并创建测试文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# umount -l /mnt/</span><br><span class="line">[root@kun0769 ~]# mount -t nfs 192.168.80.102:/tmp/ /mnt/</span><br><span class="line">[root@kun0769 ~]# touch /mnt/hello.txt</span><br></pre></td></tr></table></figure>
+<p>在服务端查看测试文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /tmp/</span><br><span class="line">-rw-r--r--. 1 root    root          0 6月  21 22:30 hello.txt</span><br></pre></td></tr></table></figure></p>
+<p>可以看到hello.txt的属组是root用户 说明了客服端上root并没有被限制</p>
+<h2 id="14-5-NFS客户端问题"><a href="#14-5-NFS客户端问题" class="headerlink" title="14.5 NFS客户端问题"></a>14.5 NFS客户端问题</h2><p>在CentOS6系统上并且使用NFS4版本时候，会出现客户端挂载共享目录后，不管是root用户还是普通用户，创建新文件时属主、属组为nobody，即使你设置了权限为no_root_suquash,也是nobody。解决方法有两种：</p>
+<h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><p>在客户端上使用指定NFS3版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# umount -l /mnt/</span><br><span class="line">[root@kun0769 ~]# mount -t nfs -o nfsvers=3 192.168.80.102:/home/nfsdir /mnt/</span><br></pre></td></tr></table></figure></p>
+<p>或者重新挂载并指定版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# mount -t nfs -oremount,nfsvers=3 192.168.80.102:/home/nfsdir /mnt/</span><br></pre></td></tr></table></figure></p>
+<h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><p>在服务端和客户端👆分别编辑<code>/etc/idmapd.conf</code>并更改 <code>#Domain = local.domain.edu</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# vim /etc/idmapd.conf</span><br><span class="line"></span><br><span class="line">Domain = kun.com  ##kun.com这个域名随便定义</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>重启rpcidmapd服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# systemctl restart rpcidmapd</span><br></pre></td></tr></table></figure>
+<h2 id="15-1-FTP介绍"><a href="#15-1-FTP介绍" class="headerlink" title="15.1 FTP介绍"></a>15.1 FTP介绍</h2><p>FTP是File Transfer Protocol（文件传输协议，简称文传协议）的英文简称，用于在Internet上控制文件的双向传输。<br>FTP的主要作用就是让用户连接一个远程计算机（这些计算机上运行着FTP服务器程序），并查看远程计算机中的文件，然后把文件从远程计算机复制到本地计算机，或把本地计算机的文件传送到远程计算机。<br>小公司用的多，大企业不用FTP，因为不安全。一般大企业需要更新网站的版本的时候会使用自动化发布工具，git就是版本管理工具，可以管理网站程序的版本，这样既可以规范网站程序，而且也比较安全。</p>
+<h2 id="15-2-15-3-使用vsftpd搭建ftp服务"><a href="#15-2-15-3-使用vsftpd搭建ftp服务" class="headerlink" title="15.2/15.3 使用vsftpd搭建ftp服务"></a>15.2/15.3 使用vsftpd搭建ftp服务</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.安装vsftpd软件包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y vsftpd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.添加系统用户virftp</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# useradd -s /sbin/nologin virftp</span><br></pre></td></tr></table></figure>
+<p>由于vsftpd是可以让系统的用户使用密码登录的 而且使用的ftp协议登录，这样非常不安全，因此可以先建立系统用户virfttp，让虚拟用户再映射到此用户上来登录ftp服务器，这样即使给了用户名和密码，也是虚拟用户的，并不是原本服务器上的系统用户，也就登录不上服务器了。</p>
+<blockquote>
+<p>3.编译虚拟用户的密码文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /etc/vsftpd/vsftpd_login</span><br></pre></td></tr></table></figure>
+<p><code>/etc/vsftpd/vsftpd_login</code>文件系统默认是没有，自行建立<br>编辑以下内容 其中<code>单行是用户名</code> <code>双行是密码</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kun1</span><br><span class="line">38003800</span><br><span class="line">kun2</span><br><span class="line">38003800</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>4.虚拟用户的密码文件的权限</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chmod 600 /etc/vsftpd/vsftpd_login</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.把虚拟用户的密码文件转为了二进制文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# db_load -T -t hash -f /etc/vsftpd/vsftpd_login /etc/vsftpd/vsftpd_login.db</span><br></pre></td></tr></table></figure>
+<p><code>db_load</code>生成数据库文件 <code>-T</code>允许应用程序能够将文本文件转译载入进数据库 <code>-t</code>指定数据类型 <code>-f</code>指定虚拟用户的密码文件</p>
+<blockquote>
+<p>5.创建并进入虚拟用户的配置文件所有的目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /etc/vsftpd/vsftpd_user_conf</span><br><span class="line">[root@localhost ~]# cd /etc/vsftpd/vsftpd_user_conf/</span><br></pre></td></tr></table></figure>
+<p><code>/etc/vsftpd/vsftpd_user_conf</code>是用来存放虚拟用户的的配置文件的目录，我们会在vsftpd的主配置文件中引用他</p>
+<blockquote>
+<p>6.创建虚拟用户的配置文件</p>
+</blockquote>
+<p>下面是虚拟用户kun1的配置文件 文件名必须和用户一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# vim kun1</span><br></pre></td></tr></table></figure></p>
+<p>编辑以下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">local_root=/home/virftp/kun1</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">anon_upload_enable=NO</span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line">idle_session_timeout=600</span><br><span class="line">data_connection_timeout=120</span><br><span class="line">max_clients=10</span><br></pre></td></tr></table></figure></p>
+<p>继续创建并编辑kun2用户的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# vim kun2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">local_root=/home/virftp/kun2</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">write_enable=YES</span><br><span class="line">local_umask=022</span><br><span class="line">anon_upload_enable=NO</span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line">idle_session_timeout=600</span><br><span class="line">data_connection_timeout=120</span><br><span class="line">max_clients=10</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local_root</td>
+<td>虚拟用户的家目录</td>
+</tr>
+<tr>
+<td>anonymous_enable</td>
+<td>是否允许匿名用户</td>
+</tr>
+<tr>
+<td>write_enable</td>
+<td>是否允许写入权限</td>
+</tr>
+<tr>
+<td>local_umask</td>
+<td>创建文件默认的的umask码</td>
+</tr>
+<tr>
+<td>anon_upload_enable</td>
+<td>是否允许匿名用户上次</td>
+</tr>
+<tr>
+<td>anon_mkdir_write_enable</td>
+<td>是否允许匿名用户创建目录和写入</td>
+</tr>
+<tr>
+<td>idle_session_timeout</td>
+<td>指定空闲时间</td>
+</tr>
+<tr>
+<td>data_connection_timeout</td>
+<td>指定传输数据的时间</td>
+</tr>
+<tr>
+<td>max_clients</td>
+<td>最大的客户端数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>7.创建虚拟用户的家目录和设置属组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# mkdir /home/virftp/kun1</span><br><span class="line">[root@localhost vsftpd_user_conf]# mkdir /home/virftp/kun2</span><br><span class="line">[root@localhost vsftpd_user_conf]# chown -R virftp:virftp /home/virftp/</span><br><span class="line">[root@localhost vsftpd_user_conf]# touch /home/virftp/kun1/test.txt  ##建立测试文件</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>8.定义虚拟用户的密码文件的路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# vim /etc/pam.d/vsftpd</span><br></pre></td></tr></table></figure>
+<p>在上面添加两行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auth sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login</span><br><span class="line">account sufficient /lib64/security/pam_userdb.so db=/etc/vsftpd/vsftpd_loginauth</span><br></pre></td></tr></table></figure></p>
+<p><code>/etc/pam.d/vsftpd</code>是vsftp登录认证的文件 <code>CentOS6 32位</code>指定路径是<code>/lib</code>目录 否则报错</p>
+<blockquote>
+<p>9.设置vsftp主配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
+<p>修改下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line"></span><br><span class="line">anon_upload_enable=NO</span><br><span class="line"></span><br><span class="line">anon_mkdir_write_enable=NO</span><br></pre></td></tr></table></figure></p>
+<p>在文件末尾添加下面配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chroot_local_user=YES</span><br><span class="line">guest_enable=YES</span><br><span class="line">guest_username=virftp</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">user_config_dir=/etc/vsftpd/vsftpd_user_conf</span><br><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure></p>
+<p><code>user_config_dir</code>指定虚拟用户的配置文件路径 <code>virtual_use_local_privs</code>开启虚拟用户 <code>guest_username</code>指定映射的系统用户</p>
+<blockquote>
+<p>10.启动vsftpd服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# systemctl start vsftpd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# netstat -lntp</span><br><span class="line">tcp6       0      0 :::21                   :::*                    LISTEN      3052/vsftpd</span><br></pre></td></tr></table></figure>
+<p><code>ftp</code>监听<code>21</code>端口 <code>ssh</code>监听<code>22</code>端口 <code>telnet</code>监听<code>23</code>端口</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在win上使用filezilla客户端软件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180622224411.png" alt=""></p>
+<p>在Linux上使用lftp软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vsftpd_user_conf]# yum install -y lftp</span><br><span class="line"></span><br><span class="line">[root@localhost vsftpd_user_conf]# lftp kun1@127.0.0.1  ##使用虚拟用户kun1登录</span><br><span class="line">口令:</span><br><span class="line">lftp kun1@127.0.0.1:~&gt; ls       </span><br><span class="line">-rw-r--r--    1 0        0               0 Jun 22 14:11 test.txt 可以看到test.txt的测试目录</span><br></pre></td></tr></table></figure></p>
+<p><code>get</code>下载文件  <code>put</code>上传文件 可以使用<code>?</code>来查询更多命令</p>
+
       
 
       
@@ -178,15 +340,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">FTP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NFS</a>
         		</li>
       		
 		</ul>
@@ -195,16 +353,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/09/七周第三次课（5月8日）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/22/NFS-2-FTP-1（6月22日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/06/25/FTP-2（6月25日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          FTP 2（6月25日）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/21/NFS-1（6月21日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NFS 1（6月21日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,338 +450,37 @@
 
 
 
-
-
-  
-    <article id="post-七周第二次课（5月7日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/七周第二次课（5月7日）/">七周第二次课（5月7日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>10.6 监控io性能<br>10.7 free命令<br>10.8 ps命令<br>10.9 查看网络状态<br>10.10 linux下抓包<br>
-        
-          <a class="article-more-a" href="/2018/05/08/七周第二次课（5月7日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/08/七周第二次课（5月7日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-七周第一次课（5月4日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/05/七周第一次课（5月4日）/">七周第一次课（5月4日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/05/七周第一次课（5月4日）/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>10.1 使用w查看系统负载<br>10.2 vmstat命令<br>10.3 top命令<br>10.4 sar命令<br>10.5 nload命令<br>
-        
-          <a class="article-more-a" href="/2018/05/05/七周第一次课（5月4日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/05/七周第一次课（5月4日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-六周第三次课（4月27日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>9.6/9.7 awk<br>
-        
-          <a class="article-more-a" href="/2018/04/28/六周第三次课（4月27日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/28/六周第三次课（4月27日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-六周第二次课（4月26日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/六周第二次课（4月26日）/">六周第二次课（4月26日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
-  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>9.4/9.5 sed<br>
-        
-          <a class="article-more-a" href="/2018/04/26/六周第二次课（4月26日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/六周第二次课（4月26日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -577,8 +502,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
