@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LNMP第二节（6月7日） | kun0769的博客</title>
+  <title>Tomcat 1（6月26日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
-<meta name="keywords" content="Linux,LNMP">
+  <meta name="description" content="16.1 Tomcat介绍16.2 安装jdk16.3 安装Tomcat">
+<meta name="keywords" content="Tomcat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LNMP第二节（6月7日）">
-<meta property="og:url" content="http://yoursite.com/2018/06/08/LNMP第二节（6月7日）/index.html">
+<meta property="og:title" content="Tomcat 1（6月26日）">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/Tomcat-1（6月26日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
+<meta property="og:description" content="16.1 Tomcat介绍16.2 安装jdk16.3 安装Tomcat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607235637.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608002825.png">
-<meta property="og:updated_time" content="2018-06-08T14:46:03.192Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180625211210.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180625233308.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626191150.png">
+<meta property="og:updated_time" content="2018-06-26T16:02:42.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LNMP第二节（6月7日）">
-<meta name="twitter:description" content="12.6 Nginx安装12.7 默认虚拟主机12.8 Nginx用户认证12.9 Nginx域名重定向">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png">
+<meta name="twitter:title" content="Tomcat 1（6月26日）">
+<meta name="twitter:description" content="16.1 Tomcat介绍16.2 安装jdk16.3 安装Tomcat">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180625211210.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -149,131 +149,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LNMP第二节（6月7日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Tomcat-1（6月26日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LNMP第二节（6月7日）
+      Tomcat 1（6月26日）
     </h1>
   
 
         
-        <a href="/2018/06/08/LNMP第二节（6月7日）/" class="archive-article-date">
-  	<time datetime="2018-06-07T17:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
+        <a href="/2018/06/26/Tomcat-1（6月26日）/" class="archive-article-date">
+  	<time datetime="2018-06-26T15:48:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>12.6 Nginx安装<br>12.7 默认虚拟主机<br>12.8 Nginx用户认证<br>12.9 Nginx域名重定向<br><a id="more"></a></p>
-<h2 id="12-6-Nginx安装"><a href="#12-6-Nginx安装" class="headerlink" title="12.6 Nginx安装"></a>12.6 Nginx安装</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.进入src目录下载并解压Nginx包</p>
+        <p>16.1 Tomcat介绍<br>16.2 安装jdk<br>16.3 安装Tomcat<br><a id="more"></a></p>
+<h2 id="16-1-Tomcat介绍"><a href="#16-1-Tomcat介绍" class="headerlink" title="16.1 Tomcat介绍"></a>16.1 Tomcat介绍</h2><p><code>LAMP</code>,<code>LNMP</code>架构的网站都是使用<code>PHP</code>为网站语言，但是还有其他语言来开发网站的，比如Java。<br><code>Java</code>程序写的网站用<code>tomcat</code>+<code>jdk</code>来运行。其中<code>Tomcat</code>是Apache软件基金会（Apache Software Foundation）的Jakarta项目中的一个核心项目，由Apache、Sun和其他一些公司及个人共同开发而成。<br>然而<code>Tomcat</code>是一个中间件，真正起作用的，解析java脚本的是<code>jdk</code>。<code>jdk</code>（java development kit）是整个java的核心，它包含了java运行环境和一堆java相关的工具以及java基础库。<br>现在最主流的jdk为sun公司发布的jdk，除此之外，其实IBM公司也有发布JDK，CentOS上也可以用yum安装openjdk。<br>因此，使用Java开发的网站是需要安装<code>Tomcat</code>和<code>JDK</code>的。</p>
+<h2 id="16-2-安装jdk"><a href="#16-2-安装jdk" class="headerlink" title="16.2 安装jdk"></a>16.2 安装jdk</h2><p>安装Tomcat前先安装jdk，因为Tomcat安装时候是需要运行jdk中的环境变量的。jdk现在主流版本有<code>1.6</code> <code>1.7</code>和<code>1.8</code> 简称<code>6</code> <code>7</code> <code>8</code> </p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>先去官网上下载jdk</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-7.1.6]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget http://nginx.org/download/nginx-1.8.0.tar.gz</span><br><span class="line">[root@localhost src]# tar -zxvf nginx-1.8.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p><img src="" alt=""><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br><img src="" alt=""><a href="http://pan.baidu.com/s/1o8B3Hyy" target="_blank" rel="noopener">http://pan.baidu.com/s/1o8B3Hyy</a></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180625211210.png" alt=""><br>选择x86的tar.gz下载 </p>
+<p>使用xftp把文件放到<code>/usr/local/src/</code>目录下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180625233308.png" alt=""></p>
 <blockquote>
-<p>2.进入Nginx包里并初始化</p>
+<p>解压和改名并放在/usr/local/jdk1.8中</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# cd nginx-1.8.0</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# ./configure --prefix=/usr/local/nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar -zxvf jdk-8u171-linux-x64.tar.gz</span><br><span class="line">[root@localhost src]# mv jdk1.8.0_171/ /usr/local/jdk1.8</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>3.编译和安装</p>
+<p>编辑环境变量配置文件 添加环境变量并生效</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# make</span><br><span class="line">[root@localhost nginx-1.8.0]# make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在文章最后添加下面环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/usr/local/jdk1.8/</span><br><span class="line">JAVA_BIN=/usr/local/jdk1.8/bin</span><br><span class="line">JRE_HOME=/usr/local/jdk1.8/jre</span><br><span class="line">PATH=$PATH:/usr/local/jdk1.8/bin:/usr/local/jdk1.8/jre/bin</span><br><span class="line">CLASSPATH=/usr/local/jdk1.8/jre/lib:/usr/local/jdk1.8/lib:/usr/local/jdk1.8/jre/lib/charsets.jar</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# source /etc/profile</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>4.在etc/init.d中自定义服务脚本</p>
+<p>查看版本</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-<p>复制以下代码，也可以去下面网址下载 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/etc_init.d_nginx" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/etc_init.d_nginx</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># chkconfig: - 30 21</span><br><span class="line"># description: http service.</span><br><span class="line"># Source Function Library</span><br><span class="line">. /etc/init.d/functions</span><br><span class="line"># Nginx Settings</span><br><span class="line">NGINX_SBIN=&quot;/usr/local/nginx/sbin/nginx&quot;</span><br><span class="line">NGINX_CONF=&quot;/usr/local/nginx/conf/nginx.conf&quot;</span><br><span class="line">NGINX_PID=&quot;/usr/local/nginx/logs/nginx.pid&quot;</span><br><span class="line">RETVAL=0</span><br><span class="line">prog=&quot;Nginx&quot;</span><br><span class="line">start()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Starting $prog: &quot;</span><br><span class="line">mkdir -p /dev/shm/nginx_temp</span><br><span class="line">daemon $NGINX_SBIN -c $NGINX_CONF</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">stop()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Stopping $prog: &quot;</span><br><span class="line">killproc -p $NGINX_PID $NGINX_SBIN -TERM</span><br><span class="line">rm -rf /dev/shm/nginx_temp</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">reload()</span><br><span class="line">&#123;</span><br><span class="line">echo -n $&quot;Reloading $prog: &quot;</span><br><span class="line">killproc -p $NGINX_PID $NGINX_SBIN -HUP</span><br><span class="line">RETVAL=$?</span><br><span class="line">echo</span><br><span class="line">return $RETVAL</span><br><span class="line">&#125;</span><br><span class="line">restart()</span><br><span class="line">&#123;</span><br><span class="line">stop</span><br><span class="line">start</span><br><span class="line">&#125;</span><br><span class="line">configtest()</span><br><span class="line">&#123;</span><br><span class="line">$NGINX_SBIN -c $NGINX_CONF -t</span><br><span class="line">return 0</span><br><span class="line">&#125;</span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">start</span><br><span class="line">;;</span><br><span class="line">stop)</span><br><span class="line">stop</span><br><span class="line">;;</span><br><span class="line">reload)</span><br><span class="line">reload</span><br><span class="line">;;</span><br><span class="line">restart)</span><br><span class="line">restart</span><br><span class="line">;;</span><br><span class="line">configtest)</span><br><span class="line">configtest</span><br><span class="line">;;</span><br><span class="line">*)</span><br><span class="line">echo $&quot;Usage: $0 &#123;start|stop|reload|restart|configtest&#125;&quot;</span><br><span class="line">RETVAL=1</span><br><span class="line">esac</span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# java -version</span><br><span class="line">java version &quot;1.8.0_171&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_171-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)</span><br></pre></td></tr></table></figure>
+<p>显示java version “1.8.0_171”和你安装的版本一致说明安装成功</p>
+<h2 id="16-3-安装Tomcat"><a href="#16-3-安装Tomcat" class="headerlink" title="16.3 安装Tomcat"></a>16.3 安装Tomcat</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.下载包到src目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /usr/local/src/</span><br><span class="line">[root@localhost src]# wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.31/bin/apache-tomcat-8.5.31.tar.gz</span><br></pre></td></tr></table></figure>
+<p>这里使用的是二进制免编译包</p>
 <blockquote>
-<p>5.修改服务权限并添加为开机启动</p>
+<p>2.解压和改名并放在/usr/local/tomcat目录下</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# chmod 755 /etc/init.d/nginx</span><br><span class="line">[root@localhost nginx-1.8.0]# chkconfig --add nginx</span><br><span class="line">[root@localhost nginx-1.8.0]# chkconfig nginx on</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# tar -zxvf apache-tomcat-8.5.31.tar.gz</span><br><span class="line">[root@localhost src]# mv apache-tomcat-8.5.31 /usr/local/tomcat</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>6.进入Nginx的配置目录下并自定义配置文件</p>
+<p>3.启动Tomcat服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost nginx-1.8.0]# cd /usr/local/nginx/conf/</span><br></pre></td></tr></table></figure>
-<p><code>conf/</code>目录下本来自带nginx.conf的配置文件，这里我们要自定义他因此把原本的配置文件改名字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# mv /usr/local/nginx/conf/nginx.conf nginx.conf.1  ##改名为nginx.conf.1</span><br><span class="line">[root@localhost conf]# vim nginx.conf</span><br></pre></td></tr></table></figure></p>
-<p>复制以下代码，也可以去下面网址下载 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/nginx.conf" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D15Z/nginx.conf</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">user nobody nobody;</span><br><span class="line">worker_processes 2;</span><br><span class="line">error_log /usr/local/nginx/logs/nginx_error.log crit;</span><br><span class="line">pid /usr/local/nginx/logs/nginx.pid;</span><br><span class="line">worker_rlimit_nofile 51200;</span><br><span class="line">events</span><br><span class="line">&#123;</span><br><span class="line">use epoll;</span><br><span class="line">worker_connections 6000;</span><br><span class="line">&#125;</span><br><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">include mime.types;</span><br><span class="line">default_type application/octet-stream;</span><br><span class="line">server_names_hash_bucket_size 3526;</span><br><span class="line">server_names_hash_max_size 4096;</span><br><span class="line">log_format combined_realip &apos;$remote_addr $http_x_forwarded_for [$time_local]&apos;</span><br><span class="line">&apos; $host &quot;$request_uri&quot; $status&apos;</span><br><span class="line">&apos; &quot;$http_referer&quot; &quot;$http_user_agent&quot;&apos;;</span><br><span class="line">sendfile on;</span><br><span class="line">tcp_nopush on;</span><br><span class="line">keepalive_timeout 30;</span><br><span class="line">client_header_timeout 3m;</span><br><span class="line">client_body_timeout 3m;</span><br><span class="line">send_timeout 3m;</span><br><span class="line">connection_pool_size 256;</span><br><span class="line">client_header_buffer_size 1k;</span><br><span class="line">large_client_header_buffers 8 4k;</span><br><span class="line">request_pool_size 4k;</span><br><span class="line">output_buffers 4 32k;</span><br><span class="line">postpone_output 1460;</span><br><span class="line">client_max_body_size 10m;</span><br><span class="line">client_body_buffer_size 256k;</span><br><span class="line">client_body_temp_path /usr/local/nginx/client_body_temp;</span><br><span class="line">proxy_temp_path /usr/local/nginx/proxy_temp;</span><br><span class="line">fastcgi_temp_path /usr/local/nginx/fastcgi_temp;</span><br><span class="line">fastcgi_intercept_errors on;</span><br><span class="line">tcp_nodelay on;</span><br><span class="line">gzip on;</span><br><span class="line">gzip_min_length 1k;</span><br><span class="line">gzip_buffers 4 8k;</span><br><span class="line">gzip_comp_level 5;</span><br><span class="line">gzip_http_version 1.1;</span><br><span class="line">gzip_types text/plain application/x-javascript text/css text/htm</span><br><span class="line">application/xml;</span><br><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name localhost;</span><br><span class="line">index index.html index.htm index.php;</span><br><span class="line">root /usr/local/nginx/html;</span><br><span class="line">location ~ \.php$</span><br><span class="line">&#123;</span><br><span class="line">include fastcgi_params;</span><br><span class="line">fastcgi_pass unix:/tmp/php-fcgi.sock;</span><br><span class="line">#fastcgi_pass 127.0.0.01:9000;</span><br><span class="line">fastcgi_index index.php;</span><br><span class="line">fastcgi_param SCRIPT_FILENAME /usr/local/nginx/html$fastcgi_script_name;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>user</code>是定义启动进程的用户和组 <code>worker_processes</code>表示启动的子进程数量 <code>worker_rlimit_nofile</code>表示最多打开的文件数量 <code>use epoll</code>使用epoll模式 <code>worker_connections</code>进程最多的连接数  <code>server</code>部分相当于是一个虚拟主机 第一个server是默认的虚拟主机 <code>location ~ \.php$</code>部分 用来解析PHP fastcgi_pass指定PHP服务的监听端口或者sock 也可以使用端口方式<code>fastcgi_pass 127.0.0.01:9000;</code> 主要看php-fpm.conf定义用哪种方式通信的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# /usr/local/tomcat/bin/startup.sh</span><br><span class="line">Using CATALINA_BASE:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_HOME:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_TMPDIR: /usr/local/tomcat/temp</span><br><span class="line">Using JRE_HOME:        /usr/local/jdk1.8</span><br><span class="line">Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</span><br><span class="line">Tomcat started.</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>7.检查语法和启动Nginx服务</p>
+<p>关闭Tomcat服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# service nginx start</span><br><span class="line">Starting nginx (via systemctl):                            [  确定  ]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# /usr/local/tomcat/bin/shutdown.sh</span><br><span class="line">Using CATALINA_BASE:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_HOME:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_TMPDIR: /usr/local/tomcat/temp</span><br><span class="line">Using JRE_HOME:        /usr/local/jdk1.8</span><br><span class="line">Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>8.测试PHP解析</p>
+<p>4.查看端口和服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# vim /usr/local/nginx/html/1.php</span><br><span class="line">&lt;?php</span><br><span class="line">echo &quot;this is test page&quot;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">[root@localhost conf]# curl localhost/1.php</span><br><span class="line">this is test page</span><br></pre></td></tr></table></figure>
-<h2 id="12-7-Nginx默认虚拟主机"><a href="#12-7-Nginx默认虚拟主机" class="headerlink" title="12.7 Nginx默认虚拟主机"></a>12.7 Nginx默认虚拟主机</h2><p>在<code>/usr/local/nginx/conf/nginx.conf</code>配置文件里面<code>server</code>部分是定义虚拟主机，我们也可以让每一个站点(虚拟主机)都有独立的虚拟主机配置文件来方便管理。这里把Server部分删除掉 并加入 <code>include vhost/*.conf;</code> 这个意思是在vhost目录下带.conf的文件是虚拟主机配置文件</p>
-<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.修改nginx.conf 加上include语句</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-<p>最后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include vhost/*.conf;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607232653.png" alt=""></p>
-<blockquote>
-<p>2.在conf目录下创建vhost目录</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# mkdir /usr/local/nginx/conf/vhost/</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>3.创建虚拟主机配置文件 这里以test1.com为例</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# cd vhost/</span><br><span class="line">[root@localhost vhost]# vim test1.com.conf;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>4.自定义虚拟主机内容</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80 default_server;  </span><br><span class="line">    server_name test1.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <code>listen</code> 指定监听端口 <code>default_server</code>表示默认虚拟主机 不设置把配置文件第一位的虚拟主机为默认  <code>server_name</code> 域名  <code>index</code> 索引页  <code>root</code> 网站存放的目录</p>
-<blockquote>
-<p>5.添加网站目录和页面</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# mkdir -p /var/www/</span><br><span class="line">[root@localhost vhost]# echo &quot;test1&quot; &gt; /var/www/tes1.com/index.html</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>6.检查语法并加载配置文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 test1.com</span><br><span class="line">test1</span><br></pre></td></tr></table></figure></p>
-<p>使用浏览器<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180607235637.png" alt=""></p>
-<h2 id="12-8-Nginx用户认证"><a href="#12-8-Nginx用户认证" class="headerlink" title="12.8 Nginx用户认证"></a>12.8 Nginx用户认证</h2><h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.创建站点的配置文件 以test2.com为例</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# vim test2.com.conf</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">	location  /</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <code>auth_basic</code>定义用户验证名字 <code>auth_basic_user_file</code>指定用户文件路径</p>
-<blockquote>
-<p>2.使用htpasswd工具来创建用户文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# yum install -y httpd</span><br><span class="line">[root@localhost vhost]# htpasswd -c -m /usr/local/nginx/conf/htpasswd test1</span><br></pre></td></tr></table></figure>
-<p><code>-c</code> 创建新文件在/usr/local/nginx/conf/htpasswd <code>-m</code> 使用md5加密</p>
-<blockquote>
-<p>3.创建站点目录和页面</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# mkdir /var/www/test2/</span><br><span class="line">[root@localhost vhost]# echo &quot;test2&quot; &gt; /var/www/test2/index.html</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>4.检查语法并加载配置文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 test2.com</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body bgcolor=&quot;white&quot;&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;</span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx/1.8.0&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">[root@localhost vhost]# curl -utest1:123 -x 192.168.80.102:80 test2.com</span><br><span class="line">test2</span><br></pre></td></tr></table></figure></p>
-<p>使用浏览器访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608002825.png" alt=""></p>
-<h3 id="针对目录来做用户验证"><a href="#针对目录来做用户验证" class="headerlink" title="针对目录来做用户验证"></a>针对目录来做用户验证</h3><p>在location后加入相应的目录即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">    location  /admin/</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这个对admin目录做用户验证</p>
-<h3 id="针对某个文件或者链接做做用户验证"><a href="#针对某个文件或者链接做做用户验证" class="headerlink" title="针对某个文件或者链接做做用户验证"></a>针对某个文件或者链接做做用户验证</h3><p>在location后加入~ 和相应的文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    </span><br><span class="line">	location  ~ admin.php</span><br><span class="line">    	&#123;</span><br><span class="line">        auth_basic              &quot;Auth&quot;;</span><br><span class="line">        auth_basic_user_file   /usr/local/nginx/conf/htpasswd;</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>~ admin.php</code>是匹配admin.php 也就是指定admin.php</p>
-<h2 id="12-9-Nginx域名重定向"><a href="#12-9-Nginx域名重定向" class="headerlink" title="12.9 Nginx域名重定向"></a>12.9 Nginx域名重定向</h2><p>在Nginx中<code>server_name</code> 后面支持跟多个域名 </p>
-<h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.创建站点的配置文件 以test2.com为例</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;    server_name test2.com 111.com 222.com www.test2.com;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line">    root /var/www/test2;</span><br><span class="line">    if ($host != &apos;test2.com&apos; ) </span><br><span class="line">    &#123;</span><br><span class="line">        rewrite  ^/(.*)$  http://test2.com/$1  permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>^/(.*)$</code>表示 <code>http://test2.com/</code>后面的所有部分 <code>permanent</code>表示永久重定向 <code>redirect</code>表示临时重定向</p>
-<blockquote>
-<p>2.检查语法并加载配置文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# curl -x 192.168.80.102:80 www.test2.com -I</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: nginx/1.8.0</span><br><span class="line">Date: Thu, 07 Jun 2018 16:55:22 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 184</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Location: http://test2.com/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# ps aux |grep java</span><br><span class="line">root      2231 16.9  8.1 2296208 82024 pts/0   Sl   23:49   0:03 /usr/local/jdk1.8/bin/java -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/usr/local/tomcat -Dcatalina.home=/usr/local/tomcat -Djava.io.tmpdir=/usr/local/tomcat/temp org.apache.catalina.startup.Bootstrap start</span><br><span class="line">root      2275  0.0  0.0 112720   964 pts/0    R+   23:49   0:00 grep --color=auto java</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# netstat -lntp |grep java</span><br><span class="line">tcp6       0      0 :::8080                 :::*                    LISTEN      2231/java           </span><br><span class="line">tcp6       0      0 127.0.0.1:8005          :::*                    LISTEN      2231/java           </span><br><span class="line">tcp6       0      0 :::8009                 :::*                    LISTEN      2231/java</span><br></pre></td></tr></table></figure>
+<p>其中Tomcat会监听三个端口：<br><code>8080</code>是提供web服务的端口<br><code>8005</code>是管理端口，启动较慢<br><code>8009</code>是第三方服务调用的端口，比如httpd和Tomcat结合时会用到 </p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问192.168.80.102:8080<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626191150.png" alt=""></p>
 
       
 
@@ -287,11 +230,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
         		</li>
       		
 		</ul>
@@ -347,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/08/LNMP第二节（6月7日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/26/Tomcat-1（6月26日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -361,18 +300,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/08/LNMP第三节（6月8日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LNMP第三节（6月8日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/06/LNMP第一节（6月6日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LNMP第一节（6月6日）</div>
+    <a href="/2018/06/25/FTP-2（6月25日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">FTP 2（6月25日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
