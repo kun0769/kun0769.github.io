@@ -9,7 +9,7 @@
   <title>Mysql主从（6月28日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="17.1 MySQL主从介绍17.2 准备工作17.3 配置主17.4 配置从17.5 测试主从同步">
-<meta name="keywords" content="Mysql,Mysql主从">
+<meta name="keywords" content="Mysql,Mysql备份,Mysql主从">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql主从（6月28日）">
 <meta property="og:url" content="http://yoursite.com/2018/06/29/Mysql主从（6月28日）/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="17.1 MySQL主从介绍17.2 准备工作17.3 配置主17.4 配置从17.5 测试主从同步">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180627224453.png">
-<meta property="og:updated_time" content="2018-06-28T16:34:23.447Z">
+<meta property="og:updated_time" content="2018-06-29T15:39:31.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql主从（6月28日）">
 <meta name="twitter:description" content="17.1 MySQL主从介绍17.2 准备工作17.3 配置主17.4 配置从17.5 测试主从同步">
@@ -382,6 +382,10 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql备份</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
         		</li>
       		
@@ -451,6 +455,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/06/29/XtraBackup备份MySQL不锁库做主从/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          XtraBackup备份MySQL不锁库做主从
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/27/Tomcat-2（6月27日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -602,15 +615,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,19 +639,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,6 +668,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
