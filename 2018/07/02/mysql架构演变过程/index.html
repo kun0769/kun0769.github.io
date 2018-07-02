@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="Mysql扩展知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-02T14:18:13.341Z">
+<meta property="og:updated_time" content="2018-07-02T14:26:42.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql架构演变过程">
 <meta name="twitter:description" content="Mysql扩展知识">
@@ -170,7 +170,7 @@
 <li>一个网站从开始最小的访问量到几千万时，数据库MySQL架构的演变过程如下<ol>
 <li>网站访问量日pv量级在1w以下。一般<code>单台机器跑web和db</code></li>
 <li>网站访问量日pv达到几万。把<code>web业务和db分开</code>，并搭建<code>缓存层</code> <code>（redis/memcache）</code>。</li>
-<li>网站访问量日pv达到几十万 ，就使用<code>mysql主从，一主多从</code>。为了保证架构的健壮和数据完整，主只能是一个，从可以是多个。  并使用<code>mysql-proxy</code>, 来实现读写分离，让前端的web数据写入哪个库。</li>
+<li>网站访问量日pv达到几十万 ，就使用<code>mysql主从，一主多从</code>。为了保证架构的健壮和数据完整，主只能是一个，从可以是多个。  并使用<code>mysql-proxy</code>, 来实现<code>读写分离</code>，让前端的web数据写入哪个库。</li>
 <li>网站访问量日pv到几百万。一主多从此时会造成数据的延迟，因此会使用<code>环形主从</code>，即 把mysql原来的一主多从变为一主一从，然后从作为其他从的主，而前面的主只负责网站业务的写入，而后面的从不负责网站任何业务，只负责给其他从同步bin-log。</li>
 <li>网站访问量日pv到1千万的时候， 这一步要做的就是<code>分库分表</code>， 比如，我们可以把业务分模块，把用户相关的单独分离出来，把权限、积分等也可以分离出来单独跑一个库，然后再做主从，也就是所谓的分库。当然也可以换一个纬度，把访问量或者写入量大的表单独分离出来，跑在一台服务器上，也可以把一个表分成多个小表。</li>
 </ol>
@@ -424,15 +424,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,11 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,7 +472,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
