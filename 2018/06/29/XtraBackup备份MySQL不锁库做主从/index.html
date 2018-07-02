@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="Mysql扩展知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-29T15:50:18.538Z">
+<meta property="og:updated_time" content="2018-07-02T14:13:10.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XtraBackup备份MySQL不锁库做主从">
 <meta name="twitter:description" content="Mysql扩展知识">
@@ -248,6 +248,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">               Slave_IO_State: Waiting for master to send event</span><br><span class="line">                  Master_Host: 192.168.80.104</span><br><span class="line">                  Master_User: repl</span><br><span class="line">                  Master_Port: 3306</span><br><span class="line">                Connect_Retry: 60</span><br><span class="line">              Master_Log_File: bak.000001</span><br><span class="line">          Read_Master_Log_Pos: 120</span><br><span class="line">               Relay_Log_File: localhost-relay-bin.000002</span><br><span class="line">                Relay_Log_Pos: 277</span><br><span class="line">        Relay_Master_Log_File: bak.000001</span><br><span class="line">             Slave_IO_Running: Yes</span><br><span class="line">            Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
 <p>使用XtraBackup备份数据来做主从成功了</p>
+<p>参考文章 <img src="" alt=""><a href="http://seanlook.com/2015/12/14/mysql-replicas/" target="_blank" rel="noopener">http://seanlook.com/2015/12/14/mysql-replicas/</a></p>
 
       
 
@@ -338,6 +339,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/02/mysql架构演变过程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql架构演变过程
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/29/Mysql主从（6月28日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -525,6 +535,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
@@ -542,10 +556,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,30 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>LAMP第八节（6月1日） | kun0769的博客</title>
+  <title>mysql架构演变过程 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="11.28 限定某个目录禁止解析php11.29 限制user_agent11.30/11.31 php相关配置">
-<meta name="keywords" content="Linux,LAMP">
+  <meta name="description" content="Mysql扩展知识">
+<meta name="keywords" content="Mysql,Mysql主从">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LAMP第八节（6月1日）">
-<meta property="og:url" content="http://yoursite.com/2018/06/01/LAMP第八节（6月1日）/index.html">
+<meta property="og:title" content="mysql架构演变过程">
+<meta property="og:url" content="http://yoursite.com/2018/07/02/mysql架构演变过程/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="11.28 限定某个目录禁止解析php11.29 限制user_agent11.30/11.31 php相关配置">
+<meta property="og:description" content="Mysql扩展知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180531222525.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180531224042.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601203701.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601203943.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601204010.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601220747.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601222932.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601224213.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601235130.jpg">
-<meta property="og:updated_time" content="2018-06-01T16:23:00.354Z">
+<meta property="og:updated_time" content="2018-07-02T14:18:13.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LAMP第八节（6月1日）">
-<meta name="twitter:description" content="11.28 限定某个目录禁止解析php11.29 限制user_agent11.30/11.31 php相关配置">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180531222525.jpg">
+<meta name="twitter:title" content="mysql架构演变过程">
+<meta name="twitter:description" content="Mysql扩展知识">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -155,95 +145,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LAMP第八节（6月1日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mysql架构演变过程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LAMP第八节（6月1日）
+      mysql架构演变过程
     </h1>
   
 
         
-        <a href="/2018/06/01/LAMP第八节（6月1日）/" class="archive-article-date">
-  	<time datetime="2018-06-01T15:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
+        <a href="/2018/07/02/mysql架构演变过程/" class="archive-article-date">
+  	<time datetime="2018-07-02T14:09:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>11.28 限定某个目录禁止解析php<br>11.29 限制user_agent<br>11.30/11.31 php相关配置<br><a id="more"></a></p>
-<h2 id="11-28-限定某个目录禁止解析php"><a href="#11-28-限定某个目录禁止解析php" class="headerlink" title="11.28 限定某个目录禁止解析php"></a>11.28 限定某个目录禁止解析php</h2><p>一般网站上用来存放静态文件的目录都是用来禁止解析PHP的，重要因为是为了防止某些别有用心的人用来上传php文件来获取服务器的信息</p>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们在test1的站点上新建个upload目录用来存放静态文件并在test1的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /var/www/test1.com/upload/</span><br><span class="line">[root@localhost ~]# vim /var/www/test1.com/upload/1.php</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test1.com/upload&gt;</span><br><span class="line">php_admin_flag engine off</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="加载文件"><a href="#加载文件" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>用浏览器访问 由于不能解析php只能下载当前php文件来了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180531222525.jpg" alt=""></p>
-<p>用curl命令访问 显示源代码就说明不能解析了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test1.com/upload/1.php</span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p>我们也可以为了不让其他人来访问upload目录的php，可以加上访问控制</p>
-<h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test1.com/upload&gt;</span><br><span class="line">php_admin_flag engine off</span><br><span class="line">&lt;FilesMatch &quot;(.*)\.php(.*)&quot;&gt;  ##带.php内用的文件名做访问控制 </span><br><span class="line">Order Allow,Deny</span><br><span class="line">Deny from all</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="加载文件-1"><a href="#加载文件-1" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>浏览器禁止访问1.php<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180531224042.jpg" alt=""></p>
-<p>curl命令显示403<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test1.com/upload/1.php -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Thu, 31 May 2018 22:41:37 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
-<h2 id="11-29-限制user-agent"><a href="#11-29-限制user-agent" class="headerlink" title="11.29 限制user_agent"></a>11.29 限制user_agent</h2><p>User-Agent用户代理是告诉服务器用户的使用的操作系统版本 浏览器类型等信息<br>有时候某些别有用心的人会使用cc攻击（使用大量肉鸡同时访问服务器）来访问你的服务器，这些cc攻击有个特征就是他们的user_agent都是一致的，并且访问的时间十分频繁。那么我就可以限制uer_agent来阻断他们的请求</p>
-<h3 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h3><p>在test1的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;HTTP_USER_AGENT&#125; .*curl.* [NC,OR]</span><br><span class="line">RewriteCond %&#123;HTTP_USER_AGENT&#125; .*baidu.com.* [NC,OR]</span><br><span class="line">RewriteCond %&#123;HTTP_USER_AGENT&#125; .*chrome.* [NC]</span><br><span class="line">RewriteRule .* - [F]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601203701.jpg" alt=""><br><code>NC</code>表示不区分大小写 <code>OR</code>表示或者 <code>F</code>表示禁止 由于是限制user agent 因此要把日志格式改为<code>combined</code></p>
-<h3 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h3><p>由于使用到了rewerite模块 因此去<code>/usr/local/apache2.4/conf/httpd.conf</code>下 把rewrite模块的#去掉<br><img src="" alt=""></p>
-<h3 id="加载文件-2"><a href="#加载文件-2" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用Chrome浏览器访问test1站点<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601203943.jpg" alt=""></p>
-<p>使用IE浏览器再访问test1站点<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601204010.jpg" alt=""></p>
-<p>使用curl命令访问test1站点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl  -x 192.168.80.101:80 test1.com -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Fri, 01 Jun 2018 20:41:07 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# curl  -A&quot;safsda&quot; -x 192.168.80.101:80 test1.com -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Fri, 01 Jun 2018 20:41:25 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">X-Powered-By: PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br></pre></td></tr></table></figure></p>
-<p><code>-A</code>指定user agent</p>
-<h2 id="11-30-11-31-PHP相关配置"><a href="#11-30-11-31-PHP相关配置" class="headerlink" title="11.30/11.31 PHP相关配置"></a>11.30/11.31 PHP相关配置</h2><h3 id="查看PHP配置文件的路径"><a href="#查看PHP配置文件的路径" class="headerlink" title="查看PHP配置文件的路径"></a>查看PHP配置文件的路径</h3><blockquote>
-<p>1.查看PHP的详细详细</p>
-</blockquote>
-<p><code>/usr/local/php/bin/php -i</code>并找到<code>loaded configuration file</code>那行文字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php/bin/php -i|grep -i &quot;loaded configuration file&quot;</span><br></pre></td></tr></table></figure></p>
-<p>但是这样找PHP的配置文件有时候并不一定准确</p>
-<blockquote>
-<p>2.使用phpinfo函数的页面在浏览器访问</p>
-</blockquote>
-<p>新建一个php页面 并输入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<p>并使用浏览器打开刚刚建立的PHP页面并找到loaded configuration file那行文字<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601220747.jpg" alt=""><br> 这里可以看到PHP配置文件所在的路径在<code>/usr/local/php/etc/php.ini</code>，这行默认是空的，因此可以将解压后PHP包里面复制模版配置文件到指定的配置文件目录下<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost php-5.6.32]# cp php.ini-development /usr/local/php/etc/php.ini</span><br></pre></td></tr></table></figure></p>
-<p><code>php.ini-development</code> 适合开发环境下使用<br><code>php.ini-production</code> 适合在生产环境下使用<br>PHP默认的配置文件叫php.ini</p>
-<blockquote>
-<p>定义时间</p>
-</blockquote>
-<p>php.ini不定义时间会出现警告信息比较麻烦</p>
-<h3 id="配置文件-3"><a href="#配置文件-3" class="headerlink" title="配置文件"></a>配置文件</h3><p>在php.ini中找到<code>date.timezone</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.timezone = Asia/Shanghai</span><br></pre></td></tr></table></figure></p>
-<h3 id="加载配置"><a href="#加载配置" class="headerlink" title="加载配置"></a>加载配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>禁止某些函数</p>
-</blockquote>
-<p>PHP中有些比较危险的参数要禁止掉以防被人利用</p>
-<h3 id="配置文件-4"><a href="#配置文件-4" class="headerlink" title="配置文件"></a>配置文件</h3><p>在php.ini中找到 <code>disable_functions</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disable_functions=eval,assert,popen,passthru,escapeshellarg,escapeshellcmd,passthru,exec,system,chroot,scandir,chgrp,chown,escapeshellcmd,escapeshellarg,shell_exec,proc_get_status,ini_alter,ini_restore,dl,pfsockopen,openlog,syslog,readlink,symlink,leak,popepassthru,stream_socket_server,popen,proc_open,proc_close,phpinfo</span><br></pre></td></tr></table></figure></p>
-<p>一般在生产环境中也会禁掉phpinfo函数来以保安全</p>
-<h3 id="加载配置-1"><a href="#加载配置-1" class="headerlink" title="加载配置"></a>加载配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器来访问刚刚phpinfo函数的页面，由于安全原因被禁止使用该函数<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601222932.jpg" alt=""></p>
-<blockquote>
-<p>屏蔽错误信息</p>
-</blockquote>
-<p>为了不让别人看到错误信息 因此我们可以扎到<code>display_errors=On</code>改为<code>display_errors=Off</code></p>
-<h3 id="配置文件-5"><a href="#配置文件-5" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display_errors = Off</span><br></pre></td></tr></table></figure>
-<h3 id="加载配置-2"><a href="#加载配置-2" class="headerlink" title="加载配置"></a>加载配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-4"><a href="#测试-4" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器来访问刚刚phpinfo函数的页面，直接变为空白页<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601224213.jpg" alt=""></p>
-<blockquote>
-<p>记录错误日志</p>
-</blockquote>
-<h3 id="配置文件-6"><a href="#配置文件-6" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">log_errors = On   ##定义启动错误日志，默认启动</span><br><span class="line"></span><br><span class="line">error_log = /tmp/php_errors.log  ##定义PHP错误日志的路径</span><br><span class="line"></span><br><span class="line">error_reporting = E_ALL &amp; ~E_NOTICE    ##定义错误日志记录的内容 E_ALL &amp; ~E_NOTICE指除了notice其他都记录</span><br></pre></td></tr></table></figure>
-<h3 id="加载配置-3"><a href="#加载配置-3" class="headerlink" title="加载配置"></a>加载配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-5"><a href="#测试-5" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail /tmp/php_errors.log</span><br><span class="line">[02-Jun-2018 07:01:10 Asia/Shanghai] PHP Warning:  phpinfo() has been disabled for security reasons in /var/www/test1.com/test.php on line 2</span><br></pre></td></tr></table></figure>
-<p>错误日志无法生成原因<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ll /tmp/php_errors.log</span><br><span class="line">-rw-r--r--. 1 daemon daemon 141 6月   2 07:01 /tmp/php_errors.log</span><br></pre></td></tr></table></figure></p>
-<p>由于PHP的错误日志的所有者是daemon因此必须要在错误日志所在的目录下给<code>daemon</code>读写执行的权限。最稳妥的方法是建立一个权限是777的目录</p>
-<blockquote>
-<p>目录中权限限制</p>
-</blockquote>
-<p>一个服务器上跑了多个站点，每个站点有相应的目录。假如某个站点被入侵了。为了不让其他站点被渗透，就使用了open_basedir来指定权限活动范围只在某个目录下</p>
-<h3 id="配置文件-7"><a href="#配置文件-7" class="headerlink" title="配置文件"></a>配置文件</h3><p>在php.ini找到<code>open_basedir</code> 并写路径 默认网站的临时文件都在tmp目录下，因此除了网站的目录还有tmp目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open_basedir =/var/www/test1.com:/tmp</span><br></pre></td></tr></table></figure></p>
-<p>假如我们使用同一个目录来存放多个站点，那在php.ini中配置open_basedir不太合适，他是针对所有站点的，因此我们可以回去Apache的虚拟主机配置文件来设置<br>在每个<code>&lt;VirtualHost&gt;</code>中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php_admin_value open_basedir &quot;/var/www/test1.com:/tmp/&quot;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180601235130.jpg" alt=""><br>php_admin_value可以定义php.ini里面的参数</p>
-<h3 id="加载文件-3"><a href="#加载文件-3" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
+        <p>Mysql扩展知识<br><a id="more"></a></p>
+<ul>
+<li>一个网站从开始最小的访问量到几千万时，数据库MySQL架构的演变过程如下<ol>
+<li>网站访问量日pv量级在1w以下。一般<code>单台机器跑web和db</code></li>
+<li>网站访问量日pv达到几万。把<code>web业务和db分开</code>，并搭建<code>缓存层</code> <code>（redis/memcache）</code>。</li>
+<li>网站访问量日pv达到几十万 ，就使用<code>mysql主从，一主多从</code>。为了保证架构的健壮和数据完整，主只能是一个，从可以是多个。  并使用<code>mysql-proxy</code>, 来实现读写分离，让前端的web数据写入哪个库。</li>
+<li>网站访问量日pv到几百万。一主多从此时会造成数据的延迟，因此会使用<code>环形主从</code>，即 把mysql原来的一主多从变为一主一从，然后从作为其他从的主，而前面的主只负责网站业务的写入，而后面的从不负责网站任何业务，只负责给其他从同步bin-log。</li>
+<li>网站访问量日pv到1千万的时候， 这一步要做的就是<code>分库分表</code>， 比如，我们可以把业务分模块，把用户相关的单独分离出来，把权限、积分等也可以分离出来单独跑一个库，然后再做主从，也就是所谓的分库。当然也可以换一个纬度，把访问量或者写入量大的表单独分离出来，跑在一台服务器上，也可以把一个表分成多个小表。</li>
+</ol>
+</li>
+</ul>
+<p><code>pv</code>: 页面浏览量。来自浏览器的一次html内容请求会被看作一个PV。</p>
+<p>参考文章 <img src="" alt=""><a href="http://ask.apelearn.com/question/8025" target="_blank" rel="noopener">http://ask.apelearn.com/question/8025</a></p>
+
       
 
       
@@ -256,11 +191,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
         		</li>
       		
 		</ul>
@@ -316,7 +251,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/01/LAMP第八节（6月1日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/02/mysql架构演变过程/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -330,18 +265,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/04/LAMP第九节（6月4日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LAMP第九节（6月4日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/30/LAMP第七节（5月31日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LAMP第七节（5月31日）</div>
+    <a href="/2018/06/29/XtraBackup备份MySQL不锁库做主从/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XtraBackup备份MySQL不锁库做主从</div>
       <i class="icon-circle-right"></i>
     </a>
   
