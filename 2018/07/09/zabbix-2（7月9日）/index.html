@@ -6,15 +6,55 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>zabbix 2（7月9日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/11/index.html">
+  <meta name="description" content="19.7 主动模式和被动模式19.8 添加监控主机19.9 添加自定义模板19.10 处理图形中的乱码19.11 自动发现">
+<meta name="keywords" content="zabbix,监控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zabbix 2（7月9日）">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/zabbix-2（7月9日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="19.7 主动模式和被动模式19.8 添加监控主机19.9 添加自定义模板19.10 处理图形中的乱码19.11 自动发现">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114017.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114057.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114139.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114507.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114648.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114932.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115038.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115509.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115629.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115744.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115814.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115908.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707120143.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707120212.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707122537.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707123249.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707123932.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124042.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124146.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124311.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124949.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707125406.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707130150.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707233511.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707233826.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707235906.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708000603.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708001232.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708001456.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708191322.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708191712.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708192154.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708205133.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708205717.png">
+<meta property="og:updated_time" content="2018-07-09T16:07:31.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="zabbix 2（7月9日）">
+<meta name="twitter:description" content="19.7 主动模式和被动模式19.8 添加监控主机19.9 添加自定义模板19.10 处理图形中的乱码19.11 自动发现">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114017.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,68 +180,273 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zabbix-2（7月9日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/26/一周第一次课（3月19日）/">一周第一次课（3月19日）</a>
+    <h1 class="article-title" itemprop="name">
+      zabbix 2（7月9日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/09/zabbix-2（7月9日）/" class="archive-article-date">
+  	<time datetime="2018-07-09T15:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>19.7 主动模式和被动模式<br>19.8 添加监控主机<br>19.9 添加自定义模板<br>19.10 处理图形中的乱码<br>19.11 自动发现<br><a id="more"></a></p>
+<h2 id="19-7-主动模式和被动模式"><a href="#19-7-主动模式和被动模式" class="headerlink" title="19.7 主动模式和被动模式"></a>19.7 主动模式和被动模式</h2><p>这里主动或者被动是相对<code>客户端</code>来讲的<br><code>被动模式</code>，客户端被动地接受连接，并把监控信息传递给服务端，服务端会主动连接客户端获取监控项目数据。<br><code>主动模式</code>，客户端会主动把监控数据汇报给服务端，服务端只负责接收即可。</p>
+<ul>
+<li>通常下面两种情况使用主动模式更加合适<ul>
+<li>当客户端数量非常多时，建议使用主动模式，这样可以降低服务端的压力。</li>
+<li>服务端有公网ip，客户端只有内网ip，但却能连外网（通过iptable的nat表实现），这种场景适合主动模式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="19-8-添加监控主机"><a href="#19-8-添加监控主机" class="headerlink" title="19.8 添加监控主机"></a>19.8 添加监控主机</h2><p>选择<code>配置</code><br><code>主机群组</code> 客户端机器的组 一般先添加组再到组里添加主机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114017.png" alt=""></p>
+<p><code>模版</code> 预设的监控项目的集合<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114057.png" alt=""></p>
+<p><code>主机</code> 就是要添加的客户端<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114139.png" alt=""><br>图上的zabbix server是服务端安装的<code>zabbix agent</code> 我们在服务端并没有启动</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.添加主机群组</p>
+</blockquote>
+<p><code>主机群组</code> —- <code>添加主机群组</code> —-添加<code>组名</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114507.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114648.png" alt=""></p>
+<blockquote>
+<p>2.添加主机</p>
+</blockquote>
+<p><code>主机</code> —- <code>创建主机</code> —- 主机<code>名称</code>和<code>可见名称</code> —- 选择<code>群组</code> —- 添加<code>agent的IP地址</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707114932.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115038.png" alt=""><br><code>主机名称</code>和<code>可见名称</code>填写的主机名要和<code>zabbix_agent</code>的配置文件<code>Hostname</code>一致 ip填写客户端的ip地址</p>
+<p>添加成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115509.png" alt=""></p>
+<p><code>应用集</code> 监控项目的集合，即把监控项目分在多个组里<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115629.png" alt=""></p>
+<p><code>监控项</code> 所有的监控的项目<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115744.png" alt=""></p>
+<p><code>触发器</code> 针对某个监控项目而设定的告警规则<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115814.png" alt=""></p>
+<p><code>图形</code> 把历史数据做出图表显示<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707115908.png" alt=""></p>
+<p><code>自动发现规则</code> 自动发现客户端系统的网卡流量 文件系统 磁盘 分区使用情况等<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707120143.png" alt=""></p>
+<p><code>web场景</code> 监控具体的网站的信息 （网页的状态码错误告警等）<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707120212.png" alt=""></p>
+<h2 id="19-9-添加自定义模板"><a href="#19-9-添加自定义模板" class="headerlink" title="19.9 添加自定义模板"></a>19.9 添加自定义模板</h2><p>当添加一些需要监控特定监控项目的客户端时，为了方便管理和提升效率 都是使用自定义模版</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.添加自定义模版</p>
+</blockquote>
+<p><code>模版</code> —- <code>创建模版</code> —- 添加 <code>模版名字</code>和<code>可见的名称</code> —- 选择<code>template</code>—- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707122537.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707123249.png" alt=""></p>
+<blockquote>
+<p>2.添加监控项目到自定义模版中</p>
+</blockquote>
+<p>选择其他模版（这里用 <code>Template OS Linux</code>）中的某个项目 —- <code>复制</code> —- 选择template 的 test<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707123932.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124042.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124146.png" alt=""></p>
+<p>test模版已经添加我们自己需要监控的项目<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124311.png" alt=""></p>
+<p>同理可以使触发器 图形 应用集 添加主机需要的项目 但只有<code>自动发现</code>是不能通过此方法来添加的</p>
+<h3 id="添加自动发现规制到自定义模版"><a href="#添加自动发现规制到自定义模版" class="headerlink" title="添加自动发现规制到自定义模版"></a>添加自动发现规制到自定义模版</h3><h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><blockquote>
+<p>1.添加链接模版</p>
+</blockquote>
+<p>选择 <code>test</code> —- <code>链接模版</code> —- 选择链接的模版 —- <code>添加</code> —- <code>更新</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707124949.png" alt=""></p>
+<blockquote>
+<p>2.取消模版链接</p>
+</blockquote>
+<p>选择<code>test</code> —- <code>链接的模版</code> —- <code>取消链接</code> —- <code>更新</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707125406.png" alt=""><br><code>取消链接并清理</code>会同时把模版中的监控项目一并清理</p>
+<blockquote>
+<p>3.删除不用监控的项目 </p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707130150.png" alt=""></p>
+<blockquote>
+<p>4.把自定义模板添加到主机上</p>
+</blockquote>
+<p><code>主机</code> —- 选<code>kun03</code> —- <code>模版</code> —- <code>链接指示器</code> —- 选<code>test</code> — <code>添加</code> —- <code>更新</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707233511.png" alt=""></p>
+<h2 id="19-10-处理图形中的乱码"><a href="#19-10-处理图形中的乱码" class="headerlink" title="19.10 处理图形中的乱码"></a>19.10 处理图形中的乱码</h2><p>我们发现自定义主机中图形出现了乱码，这是因为zabbix中的没有中文字库，因此我们可以让win上的中文字库拷贝到zabbix server的字库上即可<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707233826.png" alt=""></p>
+<h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><p>在zabbix server上</p>
+<blockquote>
+<p>1.编辑定义字库的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# vim /usr/share/zabbix/include/defines.inc.php</span><br></pre></td></tr></table></figure>
+<p>找到 ZBX_FONTPATH<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">define(&apos;ZBX_FONTPATH&apos;,                          realpath(&apos;fonts&apos;)); // where to search for font (GD &gt; 2.0.18)</span><br><span class="line">define(&apos;ZBX_GRAPH_FONT_NAME&apos;,           &apos;graphfont&apos;); // font file name</span><br></pre></td></tr></table></figure></p>
+<p>第一行是定义字库目录的路径 路径是相对路径 绝对路径是 <code>/usr/share/zabbix/fonts/</code>下<br>第二行是定义字库的名字为<code>graphfont</code></p>
+<blockquote>
+<p>2.找到字库的路径</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cd /usr/share/zabbix/fonts/</span><br><span class="line">[root@kun05 fonts]# ll graphfont.ttf</span><br><span class="line">lrwxrwxrwx 1 root root 33 7月   7 07:01 graphfont.ttf -&gt; /etc/alternatives/zabbix-web-font</span><br><span class="line">[root@kun05 fonts]# ll /etc/alternatives/zabbix-web-font</span><br><span class="line">lrwxrwxrwx 1 root root 38 7月   7 07:01 /etc/alternatives/zabbix-web-font -&gt; /usr/share/fonts/dejavu/DejaVuSans.ttf</span><br></pre></td></tr></table></figure>
+<p>发现<code>graphfon</code>t是<code>软连接文件</code> 起真正的字库是在 <code>/usr/share/fonts/dejavu/DejaVuSans.ttf</code><br>因此我们可以把win上的中文字库拷贝到<code>/usr/share/zabbix/fonts/</code>下并让默认字库<code>graphfont</code>软连接到中文字库</p>
+<blockquote>
+<p>3.使用xftp拷贝字库</p>
+</blockquote>
+<p>win的字库在<code>C:\Windows\Fonts</code>这里下载了一个msyh.ttf字库<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707235906.png" alt=""></p>
+<blockquote>
+<p>4.把下载的字库改为默认字库名的软连接文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 fonts]# ls</span><br><span class="line">graphfont.ttf  msyh.ttf</span><br><span class="line"></span><br><span class="line">[root@kun05 fonts]# mv graphfont.ttf graphfont.ttf.bak ##把用来的字库改名</span><br><span class="line">[root@kun05 fonts]# ln -s msyh.ttf graphfont.ttf  ##改为默认字库名的软连接文件</span><br><span class="line"></span><br><span class="line">[root@kun05 fonts]# ll graphfont.ttf</span><br><span class="line">lrwxrwxrwx 1 root root 8 7月   8 08:02 graphfont.ttf -&gt; msyh.ttf ##默认字库指向到中文字库</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.回去监控中心查看图形</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708000603.png" alt=""></p>
+<h3 id="添加自定义图形"><a href="#添加自定义图形" class="headerlink" title="添加自定义图形"></a>添加自定义图形</h3><p><code>图形</code> —- <code>创建图形</code> —- <code>名称</code> —- 添加<code>监控项</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708001232.png" alt=""></p>
+<p>添加自定义图形成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708001456.png" alt=""></p>
+<p>##19.11 自动发现</p>
+<p>为了让自动发现的规制形成图形 我们可以把发现的时间缩短</p>
+<h3 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.更改数据更新时间</p>
+</blockquote>
+<p>这里选择网卡的自动发现 —- <code>数据更新间隔</code> 60s —- <code>更新</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708191322.png" alt=""></p>
+<blockquote>
+<p>2.重启zabbix server服务和zabbix agent服务</p>
+</blockquote>
+<p>在kun05上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# systemctl restart zabbix-server</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>在kun03上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# systemctl restart zabbix-agent</span><br></pre></td></tr></table></figure></p>
+<p>现在图线就会有自动发现的图线可以选择了 图线出现后可以把数据更新间隔改回600s，减少机器的压力<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708191712.png" alt=""></p>
+<p><code>检测中</code> —- <code>图形</code> —- <code>Network traffic on ens33</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708192154.png" alt=""></p>
+<h3 id="定义图形细节"><a href="#定义图形细节" class="headerlink" title="定义图形细节"></a>定义图形细节</h3><p>因为我们的自定义的主机是链接自定义模版的 因此需要在自定义模版中修改</p>
+<p><code>模版</code> —-选择test模版 —- <code>自动发现</code> —- <code>Network interface discovery</code> —- <code>图形原型</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708205133.png" alt=""></p>
+<p>更改成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180708205717.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/09/zabbix-2（7月9日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/07/07/zabbix-1（7月6日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">zabbix 1（7月6日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/page/10/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/9/">9</a><a class="page-number" href="/tags/Linux/page/10/">10</a><span class="page-number current">11</span>
-    </nav>
   
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -224,9 +469,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
