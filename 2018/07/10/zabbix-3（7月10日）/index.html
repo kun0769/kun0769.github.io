@@ -6,15 +6,50 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | kun0769的博客</title>
+  <title>zabbix 3（7月10日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/3/index.html">
+  <meta name="description" content="19.12 添加自定义监控项目19.13/19.14 配置邮件告警19.15 测试告警19.16 不发邮件的问题处理">
+<meta name="keywords" content="zabbix,监控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zabbix 3（7月10日）">
+<meta property="og:url" content="http://yoursite.com/2018/07/10/zabbix-3（7月10日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="19.12 添加自定义监控项目19.13/19.14 配置邮件告警19.15 测试告警19.16 不发邮件的问题处理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709211758.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212052.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212445.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212530.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212951.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709213132.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709213216.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710201601.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710201613.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710202905.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710203509.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710205238.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211510.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211638.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710210018.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211845.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211904.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710212254.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710212832.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214017.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214705.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214950.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710215848.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710215838.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710220207.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710220333.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223102.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223226.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223348.png">
+<meta property="og:updated_time" content="2018-07-10T15:26:21.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="zabbix 3（7月10日）">
+<meta name="twitter:description" content="19.12 添加自定义监控项目19.13/19.14 配置邮件告警19.15 测试告警19.16 不发邮件的问题处理">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709211758.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,228 +175,266 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zabbix-3（7月10日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zabbix 3（7月10日）
+    </h1>
+  
+
+        
+        <a href="/2018/07/10/zabbix-3（7月10日）/" class="archive-article-date">
+  	<time datetime="2018-07-10T14:55:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>19.12 添加自定义监控项目<br>19.13/19.14 配置邮件告警<br>19.15 测试告警<br>19.16 不发邮件的问题处理<br><a id="more"></a></p>
+<h2 id="19-12-添加自定义监控项目"><a href="#19-12-添加自定义监控项目" class="headerlink" title="19.12 添加自定义监控项目"></a>19.12 添加自定义监控项目</h2><p>自定义监控项目一般都是在版本里面设置的，但如果遇到业务上的需求，则要在客户端上写脚本来获得具体的数字并通过监控项目来形成图标。<br>这里以“监控某台web的80端口连接数，并出图”为例子</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>在kun03上</p>
+<blockquote>
+<p>1.在客户端上编辑脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /usr/local/sbin/estab.sh</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ant |grep &apos;:80&apos; |grep -c &apos;ESTABLISHED&apos;</span><br></pre></td></tr></table></figure></p>
+<p><code>netstat -ant</code> 查看所有tcp协议的网络连接情况 <code>grep -c</code> 统计行数</p>
+<blockquote>
+<p>2.更改脚本权限</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# chmod 755 /usr/local/sbin/estab.sh</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.编辑客户端的zabbix agent的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /etc/zabbix/zabbix_agentd.conf</span><br></pre></td></tr></table></figure>
+<p>找到下面参数并修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnsafeUserParameters=1</span><br></pre></td></tr></table></figure></p>
+<p><code>UnsafeUserParameters=1</code> 表示开启自定义脚本 0则关闭<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UserParameter=estab.count[*],/usr/local/sbin/estab.sh</span><br></pre></td></tr></table></figure></p>
+<p><code>estab.count</code>表示脚本的键值名字 <code>[*]</code>表示脚本需要的参数，多个用<code>,</code>分开 <code>*</code>表示没有参数</p>
+<blockquote>
+<p>4.重启zabbix agent服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# systemctl restart zabbix-agent</span><br></pre></td></tr></table></figure>
+<p>在kun05上</p>
+<blockquote>
+<p>5.在服务端上使用zabbix get来测试是否有数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# zabbix_get -s 192.168.80.102 -p 10050 -k &apos;estab.count&apos;</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p><code>zabbix_get</code>是zabbix server命令行工具 <code>-s</code> 指定客户端IP地址 <code>-p</code>指定客户端端口 不写默认指定10050 <code>-k</code>指定键值</p>
+<blockquote>
+<p>6.去监控中心来增加自定义监控项目</p>
+</blockquote>
+<p><code>配置</code> —- <code>主机</code> —- <code>监控项</code> —- <code>创建监控项</code> —- 填写上<code>名称</code>和<code>键值</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709211758.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212052.png" alt=""></p>
+<blockquote>
+<p>7.创建对应的图表</p>
+</blockquote>
+<p><code>主机</code> —- <code>图形</code> —- <code>创建图形</code> —- 填上<code>名称</code> —- 选择对应的<code>监控项</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212445.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212530.png" alt=""></p>
+<blockquote>
+<p>8.创建对应的触发器</p>
+</blockquote>
+<p><code>主机</code> —- <code>触发器</code> —- <code>创建触发器</code> —- 填上<code>名称</code>和<code>严重性</code> —- <code>添加</code>表达式 —- 选择对应的<code>监控项</code> —- 填上对应的<code>功能</code>和<code>N值</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709212951.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709213132.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180709213216.png" alt=""></p>
+<h2 id="19-13-19-14-配置邮件告警"><a href="#19-13-19-14-配置邮件告警" class="headerlink" title="19.13/19.14 配置邮件告警"></a>19.13/19.14 配置邮件告警</h2><p>我们在<code>zabbix server</code>上写发邮件脚本 并在监控中心上设置，这里使用的是163邮箱来做发告警信息 </p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.登录163邮箱 并设置 POP3、IMAP、SMTP服务</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710201601.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710201613.png" alt=""></p>
+<blockquote>
+<p>2.到监控中心自定义告警</p>
+</blockquote>
+<p><code>管理</code> —- <code>报警媒介类型</code> —- <code>创建媒体类型</code> —- <code>名称</code> —- <code>类型</code> <code>脚本</code> —- <code>脚本名称</code> —- <code>参数</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710202905.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710203509.png" alt=""><br><code>{ALERT.SENDTO}</code> 接受邮件的地址<br><code>{ALERT.SUBJECT}</code> 主题<br><code>{ALERT.MESSAGE}</code> 邮件内容</p>
+<blockquote>
+<p>3.编辑脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# vim /usr/lib/zabbix/alertscripts/mail.py</span><br></pre></td></tr></table></figure>
+<p>输入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">#-*- coding: UTF-8 -*-</span><br><span class="line">import os,sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(&apos;utf8&apos;)</span><br><span class="line">import getopt</span><br><span class="line">import smtplib</span><br><span class="line">from email.MIMEText import MIMEText</span><br><span class="line">from email.MIMEMultipart import MIMEMultipart</span><br><span class="line">from  subprocess import *</span><br><span class="line"></span><br><span class="line">def sendqqmail(username,password,mailfrom,mailto,subject,content):</span><br><span class="line">    gserver = &apos;smtp.163.com&apos;</span><br><span class="line">    gport = 25</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        msg = MIMEText(unicode(content).encode(&apos;utf-8&apos;))</span><br><span class="line">        msg[&apos;from&apos;] = mailfrom</span><br><span class="line">        msg[&apos;to&apos;] = mailto</span><br><span class="line">        msg[&apos;Reply-To&apos;] = mailfrom</span><br><span class="line">        msg[&apos;Subject&apos;] = subject</span><br><span class="line"></span><br><span class="line">        smtp = smtplib.SMTP(gserver, gport)</span><br><span class="line">        smtp.set_debuglevel(0)</span><br><span class="line">        smtp.ehlo()</span><br><span class="line">        smtp.login(username,password)</span><br><span class="line"></span><br><span class="line">        smtp.sendmail(mailfrom, mailto, msg.as_string())</span><br><span class="line">        smtp.close()</span><br><span class="line">    except Exception,err:</span><br><span class="line">        print &quot;Send mail failed. Error: %s&quot; % err</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    to=sys.argv[1]</span><br><span class="line">    subject=sys.argv[2]</span><br><span class="line">    content=sys.argv[3]</span><br><span class="line">##定义QQ邮箱的账号和密码，你需要修改成你自己的账号和密码（请不要把真实的用户名和密码放到网上公开，否则你会死的很惨）</span><br><span class="line">    sendqqmail(&apos;1234567@qq.com&apos;,&apos;aaaaaaaaaa&apos;,&apos;1234567@qq.com&apos;,to,subject,content)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">#####脚本使用说明######</span><br><span class="line">#1. 首先定义好脚本中的邮箱账号和密码</span><br><span class="line">#2. 脚本执行命令为：python mail.py 目标邮箱 &quot;邮件主题&quot; &quot;邮件内容&quot;</span><br></pre></td></tr></table></figure></p>
+<p>修改邮箱和密码 内容在 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D22Z/mail.py" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/aminglinux-book/git/blob/master/D22Z/mail.py</a><br>其中<code>/usr/lib/zabbix/alertscripts/</code>是zabbix server指定告警脚本的存放路径</p>
+<blockquote>
+<p>4.更改脚本权限</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# chmod 755 /usr/lib/zabbix/alertscripts/mail.py</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用命令来试试mial.py是否发邮件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# python /usr/lib/zabbix/alertscripts/mail.py coco445566@163.com &quot;test&quot; &quot;aaaa&quot;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710205238.png" alt=""></p>
+<blockquote>
+<p>5.在监控中心处创建发送告警邮件的用户</p>
+</blockquote>
+<p>先创建组，在创建用户</p>
+<p><code>管理</code> —- <code>用户群组</code> —- <code>创建用户群组</code> —- <code>别名</code> —- <code>权限</code> —- <code>读写</code> —- 选择 <code>所有</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211510.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211638.png" alt=""></p>
+<p><code>管理</code> —- <code>用户</code> —- <code>创建用户</code> —- <code>别名</code> —- <code>群组</code> —- <code>密码</code> —- <code>报警媒介</code> —- 添加 <code>收件人</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710210018.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211845.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710211904.png" alt=""></p>
+<blockquote>
+<p>6.设置动作</p>
+</blockquote>
+<p><code>配置</code> —- <code>动作</code> —- <code>创建动作</code> —- <code>名称</code> —- <code>条件</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710212254.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710212832.png" alt=""><br><code>维护状态 非在 维护</code> 是指定在维护时候不再发送邮件 </p>
+<p><code>操作</code> —- <code>消息内容</code> —- <code>发送到用户群组</code> —-  <code>发送到用户</code> —-  <code>仅送到</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214017.png" alt=""></p>
+<p>消息内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HOST:&#123;HOST.NAME&#125; &#123;HOST.IP&#125;</span><br><span class="line">TIME:&#123;EVENT.DATE&#125;  &#123;EVENT.TIME&#125;</span><br><span class="line">LEVEL:&#123;TRIGGER.SEVERITY&#125;</span><br><span class="line">NAME:&#123;TRIGGER.NAME&#125;</span><br><span class="line">messages:&#123;ITEM.NAME&#125;:&#123;ITEM.VALUE&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>恢复操作</code> —- <code>消息内容</code> —- <code>发送到用户群组</code> —- <code>发送到用户</code> —- <code>仅送到</code> —- <code>添加</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214705.png" alt=""></p>
+<p>设置成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710214950.png" alt=""></p>
+<h2 id="19-15-测试告警"><a href="#19-15-测试告警" class="headerlink" title="19.15 测试告警"></a>19.15 测试告警</h2><p>这里我们创建自定义的触发器来触发告警来测试是否有发邮件 我们以1分钟内系统负载小于1就告警有例子</p>
+<p><code>配置</code> —- <code>主机</code> —- <code>触发器</code> —- <code>创建触发器</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710215848.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710215838.png" alt=""></p>
+<p>等一会就发现了问题了动作并写完成，再去163邮箱看看<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710220207.png" alt=""></p>
+<p>发送成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710220333.png" alt=""></p>
+<p>在把1分钟内系统负载改为大于1<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223102.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223226.png" alt=""></p>
+<p>也发送成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180710223348.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/29/Mysql主从（6月28日）/" class="archive-article-date">
-  	<time datetime="2018-06-28T16:13:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/29/Mysql主从（6月28日）/">Mysql主从（6月28日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql备份</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/10/zabbix-3（7月10日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/27/Tomcat-2（6月27日）/" class="archive-article-date">
-  	<time datetime="2018-06-27T15:43:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/09/zabbix-2（7月9日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">zabbix 2（7月9日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/27/Tomcat-2（6月27日）/">Tomcat 2（6月27日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/26/Tomcat-1（6月26日）/" class="archive-article-date">
-  	<time datetime="2018-06-26T15:48:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/Tomcat-1（6月26日）/">Tomcat 1（6月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/FTP-2（6月25日）/" class="archive-article-date">
-  	<time datetime="2018-06-25T14:02:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/FTP-2（6月25日）/">FTP 2（6月25日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">FTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/22/NFS-2-FTP-1（6月22日）/" class="archive-article-date">
-  	<time datetime="2018-06-22T15:03:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/22/NFS-2-FTP-1（6月22日）/">NFS 2 FTP 1（6月22日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">FTP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/14/">14</a><a class="extend next" rel="next" href="/archives/2018/page/4/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -384,8 +457,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
