@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="20.5 shell脚本中的逻辑判断20.6 文件目录属性判断20.7 if特殊用法20.8/20.9 case判断">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T17:54:10.143Z">
+<meta property="og:updated_time" content="2018-07-13T13:29:04.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell编程 2（7月12日）">
 <meta name="twitter:description" content="20.5 shell脚本中的逻辑判断20.6 文件目录属性判断20.7 if特殊用法20.8/20.9 case判断">
@@ -316,10 +316,7 @@
 </ul>
 <h2 id="20-8-20-9-case判断"><a href="#20-8-20-9-case判断" class="headerlink" title="20.8/20.9 case判断"></a>20.8/20.9 case判断</h2><h3 id="语法格式-1"><a href="#语法格式-1" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case  变量名 in </span><br><span class="line">                     value1)</span><br><span class="line">                          command</span><br><span class="line">                          ;;</span><br><span class="line">                     value2)</span><br><span class="line">                          command</span><br><span class="line">                          ;;</span><br><span class="line">                      *)</span><br><span class="line">                        commond</span><br><span class="line">                            ;;</span><br><span class="line">                      esac</span><br></pre></td></tr></table></figure>
 <p>在case程序中，可以在条件中使用<code>|</code>，表示<code>或</code>的意思， 比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2|3) </span><br><span class="line">    command</span><br><span class="line">    ;;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>判断学生的成绩脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shell]# vim case1.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">read -p &quot;Please input number: &quot; n</span><br><span class="line">#让用户输入数字</span><br><span class="line">if [ -z &quot;$n&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;Please input number: &quot;</span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line">#判断用户是否没填数字</span><br><span class="line">n1=`echo $n|sed &apos;s/[0-9]//g&apos;`</span><br><span class="line">if [ ! -z &quot;$n1&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;Please input number: &quot;</span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line">#判断用户是否填纯数字</span><br><span class="line">if [ $n -lt 60 ]</span><br><span class="line">then</span><br><span class="line">        tag=1</span><br><span class="line">elif [ $n -ge 60 ] &amp;&amp; [ $n -lt 80 ]</span><br><span class="line">then</span><br><span class="line">        tag=2</span><br><span class="line">elif [ $n -ge 80 ] &amp;&amp; [ $n -lt 90 ]</span><br><span class="line">then</span><br><span class="line">        tag=3</span><br><span class="line">elif [ $n -ge 90 ] &amp;&amp; [ $n -le 100 ]</span><br><span class="line">then</span><br><span class="line">        tag=4</span><br><span class="line">else</span><br><span class="line">        tag=0</span><br><span class="line">fi</span><br><span class="line">#给分数赋值给tag</span><br><span class="line">case $tag in</span><br><span class="line">        1)</span><br><span class="line">        echo &quot;bu ji he&quot;</span><br><span class="line">        ;;</span><br><span class="line">        2)</span><br><span class="line">        echo &quot;liang hao&quot;</span><br><span class="line">        ;;</span><br><span class="line">        3)</span><br><span class="line">        echo &quot;you xiu&quot;</span><br><span class="line">        ;;</span><br><span class="line">        4)</span><br><span class="line">        echo &quot;fei chang bang&quot;</span><br><span class="line">        ;;</span><br><span class="line">        *)</span><br><span class="line">        echo &quot;The number range is 0-100&quot;</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br><span class="line">#对tag进行判断</span><br></pre></td></tr></table></figure>
+<h3 id="判断学生的成绩脚本"><a href="#判断学生的成绩脚本" class="headerlink" title="判断学生的成绩脚本"></a>判断学生的成绩脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shell]# vim case1.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">read -p &quot;Please input number: &quot; n</span><br><span class="line">#让用户输入数字</span><br><span class="line">if [ -z &quot;$n&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;Please input number: &quot;</span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line">#判断用户是否没填数字</span><br><span class="line">n1=`echo $n|sed &apos;s/[0-9]//g&apos;`</span><br><span class="line">if [ ! -z &quot;$n1&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;Please input number: &quot;</span><br><span class="line">        exit 1</span><br><span class="line">fi</span><br><span class="line">#判断用户是否填纯数字</span><br><span class="line">if [ $n -lt 60 ]</span><br><span class="line">then</span><br><span class="line">        tag=1</span><br><span class="line">elif [ $n -ge 60 ] &amp;&amp; [ $n -lt 80 ]</span><br><span class="line">then</span><br><span class="line">        tag=2</span><br><span class="line">elif [ $n -ge 80 ] &amp;&amp; [ $n -lt 90 ]</span><br><span class="line">then</span><br><span class="line">        tag=3</span><br><span class="line">elif [ $n -ge 90 ] &amp;&amp; [ $n -le 100 ]</span><br><span class="line">then</span><br><span class="line">        tag=4</span><br><span class="line">else</span><br><span class="line">        tag=0</span><br><span class="line">fi</span><br><span class="line">#给分数赋值给tag</span><br><span class="line">case $tag in</span><br><span class="line">        1)</span><br><span class="line">        echo &quot;bu ji he&quot;</span><br><span class="line">        ;;</span><br><span class="line">        2)</span><br><span class="line">        echo &quot;liang hao&quot;</span><br><span class="line">        ;;</span><br><span class="line">        3)</span><br><span class="line">        echo &quot;you xiu&quot;</span><br><span class="line">        ;;</span><br><span class="line">        4)</span><br><span class="line">        echo &quot;fei chang bang&quot;</span><br><span class="line">        ;;</span><br><span class="line">        *)</span><br><span class="line">        echo &quot;The number range is 0-100&quot;</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br><span class="line">#对tag进行判断</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shell]# sh -x case1.sh</span><br><span class="line">+ read -p &apos;Please input number: &apos; n</span><br><span class="line">Please input number: asdfsad</span><br><span class="line">+ &apos;[&apos; -z asdfsad &apos;]&apos;</span><br><span class="line">++ echo asdfsad</span><br><span class="line">++ sed &apos;s/[0-9]//g&apos;</span><br><span class="line">+ n1=asdfsad</span><br><span class="line">+ &apos;[&apos; &apos;!&apos; -z asdfsad &apos;]&apos;</span><br><span class="line">+ echo &apos;Please input number: &apos;</span><br><span class="line">Please input number:</span><br><span class="line">+ exit 1</span><br><span class="line"></span><br><span class="line">[root@kun05 shell]# sh -x case1.sh</span><br><span class="line">+ read -p &apos;Please input number: &apos; n</span><br><span class="line">Please input number: 89</span><br><span class="line">+ &apos;[&apos; -z 89 &apos;]&apos;</span><br><span class="line">++ echo 89</span><br><span class="line">++ sed &apos;s/[0-9]//g&apos;</span><br><span class="line">+ n1=</span><br><span class="line">+ &apos;[&apos; &apos;!&apos; -z &apos;&apos; &apos;]&apos;</span><br><span class="line">+ &apos;[&apos; 89 -lt 60 &apos;]&apos;</span><br><span class="line">+ &apos;[&apos; 89 -ge 60 &apos;]&apos;</span><br><span class="line">+ &apos;[&apos; 89 -lt 80 &apos;]&apos;</span><br><span class="line">+ &apos;[&apos; 89 -ge 80 &apos;]&apos;</span><br><span class="line">+ &apos;[&apos; 89 -lt 90 &apos;]&apos;</span><br><span class="line">+ tag=3</span><br><span class="line">+ case $tag in</span><br><span class="line">+ echo &apos;you xiu&apos;</span><br><span class="line">you xiu</span><br></pre></td></tr></table></figure>
       
 
@@ -402,6 +399,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/13/shell编程-3（7月13日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          shell编程 3（7月13日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/11/shell编程-1（7月11日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -553,15 +559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,10 +595,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -605,7 +607,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,15 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,15 +651,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
