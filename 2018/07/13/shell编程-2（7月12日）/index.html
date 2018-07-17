@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="20.5 shell脚本中的逻辑判断20.6 文件目录属性判断20.7 if特殊用法20.8/20.9 case判断">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-13T13:29:04.614Z">
+<meta property="og:updated_time" content="2018-07-17T14:15:17.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell编程 2（7月12日）">
 <meta name="twitter:description" content="20.5 shell脚本中的逻辑判断20.6 文件目录属性判断20.7 if特殊用法20.8/20.9 case判断">
@@ -307,7 +307,7 @@
 <ul>
 <li><p>使用命令来做判断条件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shell]# if grep -wq &apos;root&apos; /etc/passwd;then echo root exist;fi</span><br><span class="line">root exist</span><br></pre></td></tr></table></figure>
-<p><code>grep -w &#39;root&#39;</code>只搜索root此单词 <code>-p</code> 不在屏幕打印出来  </p>
+<p><code>grep -w &#39;root&#39;</code>只搜索root此单词 <code>-q</code> 不在屏幕打印出来  </p>
 </li>
 <li>使用! 在参数前 表示取反 [ ! -e file ] 表示文件不存在</li>
 <li>中括号中不能使用&lt;,&gt;,==,!=,&gt;=,&lt;=这样的符号</li>
@@ -643,15 +643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +656,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">

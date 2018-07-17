@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | kun0769的博客</title>
+  <title>告警系统 1（7月17日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这篇是这个博客的第一篇文章，本博客是用来记录学习Linux">
-<meta name="keywords" content="简介">
+  <meta name="description" content="20.20 告警系统主脚本20.21 告警系统配置文件20.22 告警系统监控项目">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/03/25/hello-world/index.html">
+<meta property="og:title" content="告警系统 1（7月17日）">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/告警系统-1（7月17日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="这篇是这个博客的第一篇文章，本博客是用来记录学习Linux">
+<meta property="og:description" content="20.20 告警系统主脚本20.21 告警系统配置文件20.22 告警系统监控项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-30T15:01:54.326Z">
+<meta property="og:updated_time" content="2018-07-17T16:10:26.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="这篇是这个博客的第一篇文章，本博客是用来记录学习Linux">
+<meta name="twitter:title" content="告警系统 1（7月17日）">
+<meta name="twitter:description" content="20.20 告警系统主脚本20.21 告警系统配置文件20.22 告警系统监控项目">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,28 +145,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-告警系统-1（7月17日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      告警系统 1（7月17日）
     </h1>
   
 
         
-        <a href="/2018/03/25/hello-world/" class="archive-article-date">
-  	<time datetime="2018-03-25T12:50:50.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
+        <a href="/2018/07/18/告警系统-1（7月17日）/" class="archive-article-date">
+  	<time datetime="2018-07-17T16:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这篇是这个博客的第一篇文章，本博客是用来记录学习Linux</p>
-
+        <p>20.20 告警系统主脚本<br>20.21 告警系统配置文件<br>20.22 告警系统监控项目<br><a id="more"></a></p>
+<h2 id="20-20-告警系统主脚本"><a href="#20-20-告警系统主脚本" class="headerlink" title="20.20 告警系统主脚本"></a>20.20 告警系统主脚本</h2><blockquote>
+<p>根据程序的架构创建对应的目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cd /usr/local/sbin/</span><br><span class="line">[root@kun05 sbin]# cd mon/</span><br><span class="line">[root@kun05 mon]# mkdir bin conf shares mail log</span><br></pre></td></tr></table></figure>
+<p><code>/usr/local/sbin/</code> 生成环境中脚本存放的目录，方便查找脚本</p>
+<blockquote>
+<p>进人bin目录并创建主脚本main.sh</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 mon]# cd bin/</span><br><span class="line">[root@kun05 bin]# vim main.sh</span><br></pre></td></tr></table></figure>
+<p>添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#export 表示该变量会应用到所有的子脚本中（主脚本所调用的脚本）</span><br><span class="line">#发送邮件的开关</span><br><span class="line">export send=1</span><br><span class="line">#发送邮件机器的ip地址</span><br><span class="line">export addr=`/usr/sbin/ifconfig |grep -A1 &quot;ens33&quot; |tail -1 |awk &apos;&#123;print $2&#125;&apos;`</span><br><span class="line">#当前所在的路径</span><br><span class="line">dir=`pwd`</span><br><span class="line">#找出当前路径的最后一个目录</span><br><span class="line">last_dir=echo $dir |awk -F &apos;/&apos; &apos;&#123;print $NF&#125;&apos;</span><br><span class="line">#下面的判断目的是，保证执行脚本的时候，我们在bin目录里，不然监控脚本、邮件和日志很有可能找不到</span><br><span class="line">#因为他们使用的是相对路径</span><br><span class="line">if [ $last_dir == &quot;bin&quot; ] || [ $last_dir == &quot;bin/&quot; ]</span><br><span class="line">then</span><br><span class="line">#定义配置文件路径</span><br><span class="line">        conf_file=&quot;../conf/mon.conf&quot;</span><br><span class="line">else</span><br><span class="line">        echo &quot;Please cd bin dir&quot;</span><br><span class="line">        exit</span><br><span class="line">fi</span><br><span class="line">#定义正确和错误日志的路径</span><br><span class="line">exec 1&gt;&gt;../log/mon.log 2&gt;&gt;../log/err.log</span><br><span class="line">#把下面内容输入到日志里</span><br><span class="line">echo &quot;`date +&quot;%F %T&quot;` load average&quot;</span><br><span class="line">#调用load.sh脚本来监控系统负载</span><br><span class="line">/bin/bash ../shares/load.sh</span><br><span class="line">#先检查配置文件中是否需要监控502</span><br><span class="line">if grep -q &apos;to_mon_502=1&apos; $conf_file</span><br><span class="line">then</span><br><span class="line">#定义网站的访问日志路径</span><br><span class="line">    export log=`grep &apos;logfile=&apos; $conf_file |awk -F &apos;=&apos; &apos;&#123;print $2&#125;&apos; |sed &apos;s/ //g&apos;`</span><br><span class="line">#调用502脚本</span><br><span class="line">    /bin/bash  ../shares/502.sh</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<h2 id="20-21-告警系统配置文件"><a href="#20-21-告警系统配置文件" class="headerlink" title="20.21 告警系统配置文件"></a>20.21 告警系统配置文件</h2><p>配置文件就是定义监控脚本的开关和相应的日志的路径 主脚本会去过滤配置文件 当监控的服务为1就会执行相应的子脚本</p>
+<blockquote>
+<p>进人conf目录并创建配置文件mon.conf</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 bin]# cd ..</span><br><span class="line">[root@kun05 mon]# cd conf</span><br><span class="line">[root@kun05 conf]# vim mon.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">##to config options if to monitor</span><br><span class="line">## 定义mysql的服务器地址、端口以及user、password</span><br><span class="line">to_mon_cdb=0   ##0 or 1, default 0,0 not monitor, 1 monitor</span><br><span class="line">db_ip=10.20.3.13</span><br><span class="line">db_port=3315</span><br><span class="line">db_user=username</span><br><span class="line">db_pass=passwd</span><br><span class="line">## httpd   如果是1则监控，为0不监控</span><br><span class="line">to_mon_httpd=0</span><br><span class="line">## php 如果是1则监控，为0不监控</span><br><span class="line">to_mon_php_socket=0</span><br><span class="line">## http_code_502  需要定义访问日志的路径</span><br><span class="line">to_mon_502=1</span><br><span class="line">logfile=/data/log/xxx.xxx.com/access.log</span><br><span class="line">## request_count   定义日志路径以及域名</span><br><span class="line">to_mon_request_count=0</span><br><span class="line">req_log=/data/log/www.discuz.net/access.log</span><br><span class="line">domainname=www.discuz.net</span><br></pre></td></tr></table></figure></p>
+<p>配置文件中是任何定义的 主要看子脚本中需要什么资源 </p>
+<h2 id="20-22-告警系统监控项目"><a href="#20-22-告警系统监控项目" class="headerlink" title="20.22 告警系统监控项目"></a>20.22 告警系统监控项目</h2><blockquote>
+<p>进人shares目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 conf]# cd ..</span><br><span class="line">[root@kun05 mon]# cd shares/</span><br></pre></td></tr></table></figure>
+<h3 id="创建load-sh-监控系统负载脚本"><a href="#创建load-sh-监控系统负载脚本" class="headerlink" title="创建load.sh 监控系统负载脚本"></a>创建load.sh 监控系统负载脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shares]# vim load.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">#当前系统负载值</span><br><span class="line">load=`w |head -1 |awk -F &apos;load average: &apos; &apos;&#123;print $2&#125;&apos; |cut -d . -f 1`</span><br><span class="line">#判断主脚本是开启发送邮件和当前系统负载是否大于10</span><br><span class="line">if [ $load -ge 10 ] &amp;&amp; [ $send -eq &quot;1&quot; ]</span><br><span class="line">then</span><br><span class="line">#显示当前时间和负载值的文件 用于发送邮件的内容</span><br><span class="line">        echo &quot;$addr `date +%T` load is $load&quot; &gt;../log/load.tmp</span><br><span class="line">#发送邮件</span><br><span class="line">        /bin/bash ../mail/mail.sh $addr\_load $load ../log/load.tmp</span><br><span class="line">fi</span><br><span class="line">#把下面内容添加到主脚本中定义的日志中</span><br><span class="line">echo &quot;`date +%T` load is $load&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="创建502-sh-监控502脚本"><a href="#创建502-sh-监控502脚本" class="headerlink" title="创建502.sh 监控502脚本"></a>创建502.sh 监控502脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shares]# vim 502.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">#定义一分钟前的时间</span><br><span class="line">d=`date -d &quot;-1 min&quot; +%H:%M`</span><br><span class="line">#定义一分钟前访问日志中出现502的行数</span><br><span class="line">c_502=`grep $d $log |grep &apos;502&apos; |wc -l`</span><br><span class="line">if [ $c_502 -ge 10 ] &amp;&amp; [ $send == 1 ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;$addr $d 502 count is $c_502&quot; &gt;../log/502.tmp</span><br><span class="line">        /bin/bash ../mail/mail.sh $addr\_502 $c_502 ../log/502.tmp</span><br><span class="line">fi</span><br><span class="line">echo &quot;`date +%T`502 is $c_502&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="创建disk-sh-监控磁盘使用率脚本"><a href="#创建disk-sh-监控磁盘使用率脚本" class="headerlink" title="创建disk.sh 监控磁盘使用率脚本"></a>创建disk.sh 监控磁盘使用率脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 shares]# vim disk.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">rm -f ../log/disk.tmp</span><br><span class="line">#[ %]+ 表示1个或者多个空格和%作为分隔符</span><br><span class="line">for r in `df -h |awk -F &apos;[ %]+&apos; &apos;&#123;print $5&#125;&apos;|grep -v 已用`</span><br><span class="line">do</span><br><span class="line">    if [ $r -ge 90 ] &amp;&amp; [ $send == &quot;1&quot; ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;$addr `date +%T` disk useage is $r&quot; &gt;&gt;../log/disk.tmp</span><br><span class="line">fi</span><br><span class="line">if [ -f ../log/disk.tmp ]</span><br><span class="line">then</span><br><span class="line">    df -h &gt;&gt; ../log/disk.tmp</span><br><span class="line">    /bin/bash ../mail/mail.sh $addr\_disk $r ../log/disk.tmp</span><br><span class="line">    echo &quot;`date +%T` disk useage is nook&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;`date +%T` disk useage is ok&quot;</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
       
 
       
@@ -179,7 +202,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">简介</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
         		</li>
       		
 		</ul>
@@ -235,7 +258,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/25/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/18/告警系统-1（7月17日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -249,15 +272,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/26/一周第一次课（3月19日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          一周第一次课（3月19日）
-        
-      </div>
-    </a>
   
+    <a href="/2018/07/16/shell编程-4（7月16日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell编程 4（7月16日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
