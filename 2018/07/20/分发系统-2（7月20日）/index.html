@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>分发系统 2（7月20日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/14/index.html">
+  <meta name="description" content="20.31 expect脚本同步文件20.32 expect脚本指定host和要同步的文件20.33 构建文件分发系统20.34 批量远程执行命令">
+<meta name="keywords" content="shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分发系统 2（7月20日）">
+<meta property="og:url" content="http://yoursite.com/2018/07/20/分发系统-2（7月20日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="20.31 expect脚本同步文件20.32 expect脚本指定host和要同步的文件20.33 构建文件分发系统20.34 批量远程执行命令">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-20T15:54:10.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="分发系统 2（7月20日）">
+<meta name="twitter:description" content="20.31 expect脚本同步文件20.32 expect脚本指定host和要同步的文件20.33 构建文件分发系统20.34 批量远程执行命令">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +145,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-三周第二次课（4月3日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-分发系统-2（7月20日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/三周第二次课（4月3日）/">三周第二次课（4月3日）</a>
+    <h1 class="article-title" itemprop="name">
+      分发系统 2（7月20日）
     </h1>
   
 
         
-        <a href="/2018/04/02/三周第二次课（4月3日）/" class="archive-article-date">
-  	<time datetime="2018-04-02T15:51:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+        <a href="/2018/07/20/分发系统-2（7月20日）/" class="archive-article-date">
+  	<time datetime="2018-07-20T15:47:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>3.4 usermod命令<br>3.5 用户密码管理<br>3.6 mkpasswd命令<br>
-        
-          <a class="article-more-a" href="/2018/04/02/三周第二次课（4月3日）/#more">more >></a>
-        
+        <p>20.31 expect脚本同步文件<br>20.32 expect脚本指定host和要同步的文件<br>20.33 构建文件分发系统<br>20.34 批量远程执行命令<br><a id="more"></a></p>
+<h2 id="20-31-expect脚本同步文件"><a href="#20-31-expect脚本同步文件" class="headerlink" title="20.31 expect脚本同步文件"></a>20.31 expect脚本同步文件</h2><h3 id="实例4-自动同步文件"><a href="#实例4-自动同步文件" class="headerlink" title="实例4.自动同步文件"></a>实例4.自动同步文件</h3><blockquote>
+<p>编辑脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect4.exp</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">spawn rsync -av root@192.168.80.102:/tmp/test.aa /tmp/</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p>添加执行权限并执行脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect4.exp</span><br><span class="line">[root@kun05 sbin]# ./expect4.exp</span><br><span class="line">spawn rsync -av root@192.168.80.102:/tmp/test.aa /tmp/</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">receiving incremental file list</span><br><span class="line">test.aa</span><br><span class="line"></span><br><span class="line">sent 43 bytes  received 97 bytes  280.00 bytes/sec</span><br><span class="line">total size is 4  speedup is 0.03</span><br><span class="line"></span><br><span class="line">[root@kun05 sbin]# ll /tmp/test.aa</span><br><span class="line">-rw-r--r-- 1 root root 4 7月  19 22:50 /tmp/test.aa</span><br></pre></td></tr></table></figure>
+<p>已经把192.168.80.102的test.aa文件自动同步过来本机了</p>
+<h2 id="20-32-expect脚本指定host和要同步的文件"><a href="#20-32-expect脚本指定host和要同步的文件" class="headerlink" title="20.32 expect脚本指定host和要同步的文件"></a>20.32 expect脚本指定host和要同步的文件</h2><h3 id="实例5-指定host和同步单个文件"><a href="#实例5-指定host和同步单个文件" class="headerlink" title="实例5.指定host和同步单个文件"></a>实例5.指定host和同步单个文件</h3><blockquote>
+<p>编辑脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect5.exp</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set file [lindex $argv 1]</span><br><span class="line">spawn rsync -av $file root@$host:$file</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p>添加执行权限并执行脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect5.exp</span><br><span class="line">[root@kun05 sbin]# ./expect5.exp 192.168.80.102 /tmp/test</span><br><span class="line">spawn rsync -av /tmp/test root@192.168.80.102:/tmp/test</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">sending incremental file list</span><br><span class="line">test</span><br><span class="line"></span><br><span class="line">sent 85 bytes  received 35 bytes  240.00 bytes/sec</span><br><span class="line">total size is 0  speedup is 0.00</span><br></pre></td></tr></table></figure>
+<h2 id="20-33-构建文件分发系统"><a href="#20-33-构建文件分发系统" class="headerlink" title="20.33 构建文件分发系统"></a>20.33 构建文件分发系统</h2><p>分发系统中首先用<code>expect编写远程同步脚本</code> 并指定<code>文件列表</code>和<code>目标IP列表</code> 然后使用<code>shell脚本</code>调用expect来同步文件。<br>这里每台机器必须使用同样的密码才可以同步，也可以让机器之前使用<code>密钥</code>登录。还有让每台机器都安装上<code>rsync</code><br>其核心命令为<code>rsync -av --files-from=list.txt  /  root@host:/</code></p>
+<blockquote>
+<p>1.编辑expect脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim rsync.exp</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set file [lindex $argv 1]</span><br><span class="line">#--file-from指定文件列表路径 -R表示同步时目标会级联创建目录</span><br><span class="line">spawn rsync -avR --files-from=$file / root@$host:/</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send $passwd\r&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.创建ip.list 同步机器的IP列表</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim /tmp/ip.list</span><br><span class="line"></span><br><span class="line">192.168.80.102</span><br><span class="line">192.168.80.103</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.创建file.list 需要同步文件的列表</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim /tmp/file.list</span><br><span class="line"></span><br><span class="line">/tmp/test</span><br><span class="line">/tmp/test.aa</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.创建 rsync.sh 脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim rsync.sh</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `cat /tmp/ip.list`</span><br><span class="line">do</span><br><span class="line">        ./rsync.exp $i /tmp/file.list</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p>添加执行权限并执行脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x rsync.exp</span><br><span class="line">[root@kun05 sbin]# sh +x rsync.sh</span><br><span class="line">spawn rsync -avR --files-from=/tmp/file.list / root@192.168.80.102:/</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">building file list ... done</span><br><span class="line">tmp/</span><br><span class="line">tmp/test</span><br><span class="line">tmp/test.aa</span><br><span class="line"></span><br><span class="line">sent 185 bytes  received 57 bytes  161.33 bytes/sec</span><br><span class="line">total size is 11  speedup is 0.05</span><br><span class="line">spawn rsync -avR --files-from=/tmp/file.list / root@192.168.80.103:/</span><br><span class="line">root@192.168.80.103&apos;s password:</span><br><span class="line">building file list ... done</span><br><span class="line">tmp/</span><br><span class="line">tmp/test</span><br><span class="line">tmp/test.aa</span><br><span class="line"></span><br><span class="line">sent 185 bytes  received 57 bytes  484.00 bytes/sec</span><br><span class="line">total size is 11  speedup is 0.05</span><br></pre></td></tr></table></figure>
+<h2 id="20-34-批量远程执行命令"><a href="#20-34-批量远程执行命令" class="headerlink" title="20.34 批量远程执行命令"></a>20.34 批量远程执行命令</h2><p>当同步完代码后有可能需要批量地重启服务，因此还需要批量远程执行命令，类似于自动化。<br>这里是用expect编写执行命令的脚本并用shell脚本来批量调用它。</p>
+<blockquote>
+<p>1.编辑expect脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim exe.exp</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set host [lindex $argv 0]</span><br><span class="line">set cmd [lindex $argv 1]</span><br><span class="line">spawn ssh root@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.编写shell脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim exe.sh</span><br></pre></td></tr></table></figure>
+<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `cat /tmp/ip.list`</span><br><span class="line">do</span><br><span class="line">        echo $i</span><br><span class="line">        ./exe.exp $i &quot;service nginx restart&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p>添加执行权限并执行脚本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x exe.exp</span><br><span class="line">[root@kun05 sbin]# sh exe.sh</span><br><span class="line">192.168.80.102</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Fri Jul 20 23:40:28 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# service nginx restart</span><br><span class="line">Restarting nginx (via systemctl):                          [  确定  ]</span><br><span class="line">192.168.80.103</span><br><span class="line">spawn ssh root@192.168.80.103</span><br><span class="line">root@192.168.80.103&apos;s password:</span><br><span class="line">Last login: Fri Jul 20 23:38:46 2018 from 192.168.80.104</span><br><span class="line">[root@kun04 ~]# service nginx restart</span><br><span class="line">Restarting nginx (via systemctl):                          [  确定  ]</span><br></pre></td></tr></table></figure>
+<p>这里kun03和kun04机器都执行了<code>service nginx restart</code>命令</p>
+
       
 
       
@@ -178,11 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
         		</li>
       		
 		</ul>
@@ -191,16 +246,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/02/三周第二次课（4月3日）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/20/分发系统-2（7月20日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/19/分发系统-1（7月19日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分发系统 1（7月19日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,338 +334,37 @@
 
 
 
-
-
-  
-    <article id="post-三周第一次课（4月2日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/三周第一次课（4月2日）/">三周第一次课（4月2日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/02/三周第一次课（4月2日）/" class="archive-article-date">
-  	<time datetime="2018-04-01T16:27:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2.27linux和windows互传文件<br>3.1 用户配置文件和密码配置文件<br>3.2 用户组管理<br>3.3 用户管理<br>
-        
-          <a class="article-more-a" href="/2018/04/02/三周第一次课（4月2日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/02/三周第一次课（4月2日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-二周第五次课（3月30日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/二周第五次课（3月30日）/">二周第五次课（3月30日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/二周第五次课（3月30日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2.23/2.24/2.25 find命令<br>2.26 文件名后缀<br>
-        
-          <a class="article-more-a" href="/2018/03/31/二周第五次课（3月30日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/二周第五次课（3月30日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-二周第四次课（3月29日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/二周第四次课（3月29日）/">二周第四次课（3月29日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/二周第四次课（3月29日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2.18 特殊权限set_uid<br>2.19 特殊权限set_gid<br>2.20 特殊权限stick_bit<br>2.21 软链接文件<br>2.22 硬连接文件<br>
-        
-          <a class="article-more-a" href="/2018/03/31/二周第四次课（3月29日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/二周第四次课（3月29日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-二周第三次课（3月28日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/二周第三次课（3月28日）/">二周第三次课（3月28日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/二周第三次课（3月28日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T14:18:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2.14 文件和目录权限chmod<br>2.15 更改所有者和所属组chown<br>2.16 umask<br>2.17 隐藏权限lsattr chattr<br>
-        
-          <a class="article-more-a" href="/2018/03/31/二周第三次课（3月28日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/二周第三次课（3月28日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -573,8 +386,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

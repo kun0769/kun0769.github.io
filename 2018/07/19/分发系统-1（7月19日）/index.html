@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-19T15:57:51.337Z">
+<meta property="og:updated_time" content="2018-07-20T15:55:09.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分发系统 1（7月19日）">
 <meta name="twitter:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
@@ -215,6 +215,9 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect3.exp</span><br><span class="line">[root@kun05 sbin]# ./expect3.exp root 192.168.80.102 &quot;ls;w&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 22:52:09 2018 from 192.168.80.1</span><br><span class="line">[root@kun03 ~]# ls;w</span><br><span class="line">anaconda-ks.cfg  ip_forwarx~  ip_forwarz~  logs     temp</span><br><span class="line">ip_forward~      ip_forwary~  log          sim.pid  zabbix-release-3.4-2.el7.noarch.rpm</span><br><span class="line">23:45:34 up  2:02,  2 users,  load average: 0.01, 0.03, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    192.168.80.1     22:52    7:58   0.01s  0.01s -bash</span><br><span class="line">root     pts/1    192.168.80.104   23:45    0.00s  0.00s  0.00s w</span><br></pre></td></tr></table></figure>
 <p>当要输入参数里面有多个命令是需要用<code>&quot;&quot;</code>双引号括起来并使用<code>;</code>分号分开</p>
+<p>可以在命令行的后面增加<code>set timeout</code> 来指定命令的超时时间 <code>-1</code>为永远<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user [lindex $argv 0]</span><br><span class="line">set host [lindex $argv 1]</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set cmd [lindex $argv 2]</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">set timeout -1</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>输入vmstat命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# [root@kun05 sbin]# ./expect3.exp &quot;root&quot; 192.168.80.102 &quot;vmstat 1&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Fri Jul 20 21:42:43 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# vmstat 1</span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line">r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line">2  0      0 167852   2108 168580    0    0    35     3   85  113  0  0 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   91  113  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0  104  119  0  0 100  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   79   96  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   89  106  0  0 100  0  0</span><br></pre></td></tr></table></figure></p>
+<p>现在是不断地执行vmstat命令</p>
 
       
 
@@ -297,6 +300,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/20/分发系统-2（7月20日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          分发系统 2（7月20日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/19/告警系统-2（7月18日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -448,10 +460,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -477,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,6 +557,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
