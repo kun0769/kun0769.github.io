@@ -6,42 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一周第一次课（3月19日） | kun0769的博客</title>
+  <title>shell习题 4 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.1 学习之初1.2 约定1.3 认识Linux1.4 安装虚拟机1.5 安装centos7">
-<meta name="keywords" content="Linux,基础配置">
+  <meta name="description" content="设计一个脚本，监控远程的一台机器（IP为192.168.80.2）的存活状态，当发型宕机时发一份邮件给自己">
+<meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一周第一次课（3月19日）">
-<meta property="og:url" content="http://yoursite.com/2018/03/26/一周第一次课（3月19日）/index.html">
+<meta property="og:title" content="shell习题 4">
+<meta property="og:url" content="http://yoursite.com/2018/07/29/shell-习题-4/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="1.1 学习之初1.2 约定1.3 认识Linux1.4 安装虚拟机1.5 安装centos7">
+<meta property="og:description" content="设计一个脚本，监控远程的一台机器（IP为192.168.80.2）的存活状态，当发型宕机时发一份邮件给自己">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/360%E6%88%AA%E5%9B%BE20180318202331172.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/360%E6%88%AA%E5%9B%BE20180318202311606.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202658.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202709.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202849.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203051.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203110.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203402.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203553.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203608.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203628.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205410.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205526.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205711.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211014.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211303.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211415.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211659.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211754.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318212059.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318212901.jpg">
-<meta property="og:updated_time" content="2018-03-31T13:19:54.505Z">
+<meta property="og:updated_time" content="2018-07-29T12:51:56.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一周第一次课（3月19日）">
-<meta name="twitter:description" content="1.1 学习之初1.2 约定1.3 认识Linux1.4 安装虚拟机1.5 安装centos7">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/360%E6%88%AA%E5%9B%BE20180318202331172.jpg">
+<meta name="twitter:title" content="shell习题 4">
+<meta name="twitter:description" content="设计一个脚本，监控远程的一台机器（IP为192.168.80.2）的存活状态，当发型宕机时发一份邮件给自己">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -167,58 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一周第一次课（3月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题-4" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一周第一次课（3月19日）
+      shell习题 4
     </h1>
   
 
         
-        <a href="/2018/03/26/一周第一次课（3月19日）/" class="archive-article-date">
-  	<time datetime="2018-03-26T15:54:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
+        <a href="/2018/07/29/shell-习题-4/" class="archive-article-date">
+  	<time datetime="2018-07-29T12:48:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.1 学习之初<br>1.2 约定<br>1.3 认识Linux<br>1.4 安装虚拟机<br>1.5 安装centos7<br><a id="more"></a><br> 1.1-1.2</p>
-<p>  学习就需要定个目标才有动力<br>目标：<strong>今年8月8K 今年8月8K 今年8月8K</strong></p>
-<h2 id="1-4安装虚拟机"><a href="#1-4安装虚拟机" class="headerlink" title="1.4安装虚拟机"></a>1.4安装虚拟机</h2><p>1.先去下面网址下载虚拟机和centos7的镜像<br>  <a href="http://r.aminglinux.com" target="_blank" rel="noopener">r.aminglinux.com</a><br>  <img src="http://p6c0nmg4x.bkt.clouddn.com/360%E6%88%AA%E5%9B%BE20180318202331172.jpg" alt=""><br>  <img src="http://p6c0nmg4x.bkt.clouddn.com/360%E6%88%AA%E5%9B%BE20180318202311606.jpg" alt=""></p>
-<p>2.点下一步来安装虚拟机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202658.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202709.jpg" alt=""></p>
-<p>3创建新的虚拟机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318202849.jpg" alt=""></p>
-<p>  点击“典型”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203051.jpg" alt=""></p>
-<p>  点稍后安装镜像<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203110.jpg" alt=""></p>
-<p>  由于我要安装Centos7 所以点Linux Centos64位<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203402.jpg" alt=""></p>
-<p>  我这里为这个虚拟机起名为“kun111”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203553.jpg" alt=""></p>
-<p>  配置为20G硬盘和1G内存<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203608.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318203628.jpg" alt=""></p>
-<h2 id="1-5安装centos7"><a href="#1-5安装centos7" class="headerlink" title="1.5安装centos7"></a>1.5安装centos7</h2><p>1.编辑虚拟机设置<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205410.jpg" alt=""></p>
-<p>2.点击光驱来选择开始下载的centos7系统的镜像<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205526.jpg" alt=""></p>
-<p>3.这里网络模式选择NAT模式</p>
-<blockquote>
-<p>NAT：物理机和虚拟机分别再不同的网段 只有物理机内上网，虚拟机就不会因为物理机的网络环境变化而上不了网<br>桥接：物理机和虚拟机在同一个网段<br>仅主机：物理机和虚拟机之间可以通讯 相当于一根网线连接</p>
-</blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318205711.jpg" alt=""></p>
-<p>4.开启虚拟机 这里选install Centos 7<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211014.jpg" alt=""></p>
-<p>5.选择语言 这里我选中文点继续<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211303.jpg" alt=""></p>
-<p>6.选择安装位置来划分区<br>  软件最小安装 就是安装命令行模式 没有图像界面<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211415.jpg" alt=""></p>
-<p>7.选择我要配置分区来自己分，选标准分区</p>
-<blockquote>
-<p>LVM:把分区虚拟化 用来以后的扩容分区使用</p>
-</blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211659.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318211754.jpg" alt=""></p>
-<p>8.点“+”来配置分区 注意以下规则</p>
-<blockquote>
-<p>boot：加载分区 只分200M<br>swap：交换分区 当内存不够把硬盘分点位置来临时放东西  内存&lt;或=4G 就分内存的2倍 内存&gt;4G 只分8G<br>/ ：根目录 剩下全给它即可</p>
-</blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318212059.jpg" alt=""></p>
-<p>9.设置root登录密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180318212901.jpg" alt=""><br>完成后点重启即可</p>
-
+        <p>设计一个脚本，监控远程的一台机器（IP为192.168.80.2）的存活状态，当发型宕机时发一份邮件给自己<br><a id="more"></a></p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>对于监控类型脚本，大概思路为设定一个标准值，通过手段来获得要监控的属性值，通过比较属性值和标准值来判断是否来发邮件或者执行命令。<br><code>ping -c192.168.80.2</code> 得到的结果中<code>0% packet loss</code>表示丢包率 一般<code>20%</code>就代表发过去的包好多收不到，有很大机会是远程机器宕机了。 </p>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">ip=192.168.80.2</span><br><span class="line">mail=aaa@163.com</span><br><span class="line">while :</span><br><span class="line">do</span><br><span class="line">        #&apos;received, |%&apos;表示以received, 也可以以%为分隔符 2&gt;/dev/null表示把错误输出给黑洞 为了减少错误信息</span><br><span class="line">        n=`ping -c10 $ip 2&gt;/dev/null|grep &apos;packet loss&apos;|awk -F &apos;received, |%&apos; &apos;&#123;print $2&#125;&apos;`</span><br><span class="line">        #考虑关键值是否给与赋值的情况</span><br><span class="line">        if [ -z &quot;$n&quot; ]</span><br><span class="line">        then</span><br><span class="line">                echo &quot;There is something wrong in the script.&quot;</span><br><span class="line">                exit</span><br><span class="line">        fi</span><br><span class="line">        if [ $n -ge 20 ]</span><br><span class="line">        then</span><br><span class="line">                python /usr/local/sbin/mail.py $mail &quot;$ip is down&quot; &quot;$ip id down&quot;</span><br><span class="line">        fi</span><br><span class="line">        sleep 30</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
       
 
       
@@ -231,11 +180,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -291,7 +236,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/26/一周第一次课（3月19日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/29/shell-习题-4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +250,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/30/一周第二次课（3月20日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          一周第二次课（3月20日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2018/07/23/shell-习题-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题 3</div>
       <i class="icon-circle-right"></i>
     </a>
   
