@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>分发系统 1（7月19日） | kun0769的博客</title>
+  <title>shell 习题 5 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
-<meta name="keywords" content="shell">
+  <meta name="description" content="找到/123目录下的所有后缀名为.txt的文件">
+<meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分发系统 1（7月19日）">
-<meta property="og:url" content="http://yoursite.com/2018/07/19/分发系统-1（7月19日）/index.html">
+<meta property="og:title" content="shell 习题 5">
+<meta property="og:url" content="http://yoursite.com/2018/07/29/shell-习题-5/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
+<meta property="og:description" content="找到/123目录下的所有后缀名为.txt的文件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-20T15:55:09.697Z">
+<meta property="og:updated_time" content="2018-07-29T14:01:59.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分发系统 1（7月19日）">
-<meta name="twitter:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
+<meta name="twitter:title" content="shell 习题 5">
+<meta name="twitter:description" content="找到/123目录下的所有后缀名为.txt的文件">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,80 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-分发系统-1（7月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题-5" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      分发系统 1（7月19日）
+      shell 习题 5
     </h1>
   
 
         
-        <a href="/2018/07/19/分发系统-1（7月19日）/" class="archive-article-date">
-  	<time datetime="2018-07-19T15:50:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
+        <a href="/2018/07/29/shell-习题-5/" class="archive-article-date">
+  	<time datetime="2018-07-29T14:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>20.27 分发系统介绍<br>20.28 expect脚本远程登录<br>20.29 expect脚本远程执行命令<br>20.30 expect脚本传递参数<br><a id="more"></a></p>
-<h2 id="20-27-分发系统介绍"><a href="#20-27-分发系统介绍" class="headerlink" title="20.27 分发系统介绍"></a>20.27 分发系统介绍</h2><p>公司的网站本来已经建好了，当公司的业务越来l越大时候就会需要实时更新代码，由于后端服务器有很多台来跑web服务。此时为了快速更新代码就可以使用分发系统。其中开源的上线代码的软件有很多，git等等。这里我们使用shell来编写一个分发系统来上线代码。核心使用expect脚本语言，它可以实现远程执行命令，远程传输数据等操作。</p>
-<ul>
-<li>准备工作<br>  1.准备1台模版机器，里面是包含有最新的代码<br>  2.每台分发机器的IP地址和密码<br>  3.分发系统脚本<br>由于分发系统的核心是使用expect，因此先实践几个例子来熟悉expect的语法命令</li>
-</ul>
-<h2 id="20-28-expect脚本远程登录"><a href="#20-28-expect脚本远程登录" class="headerlink" title="20.28 expect脚本远程登录"></a>20.28 expect脚本远程登录</h2><h3 id="实例1-自动远程登录"><a href="#实例1-自动远程登录" class="headerlink" title="实例1.自动远程登录"></a>实例1.自动远程登录</h3><p>expect脚本机器 kun05 192.168.80.104<br>被远程的机器 kun03 192.168.80.102</p>
-<blockquote>
-<p>1.安装expect语言</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# yum install -y expect</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cd /usr/local/sbin/</span><br><span class="line">[root@kun05 sbin]# vim expect1.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">#定义变量</span><br><span class="line">set host &quot;192.168.80.102&quot;</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">#执行命令</span><br><span class="line">spawn ssh root@$host</span><br><span class="line">#与远程机器交互 截取特定信息 发送变量</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123; send &quot;yes\r&quot;;exp_continue &#125;</span><br><span class="line">&quot;password:&quot; &#123; send &quot;$passwd\r&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure></p>
-<p><code>set</code> 定义变量<br><code>spawn</code> 执行命令<br><code>expect</code> 使用expect语句进行交互<br><code>\r</code>表示回车<br><code>exp_contunue</code>表示继续<br><code>interact</code>表示继续交互<br><code>expect eof</code>表示停留远程机器上一会儿再退出</p>
-<p>为了让远程登录时候出现提示，可以清空<code>/root/.ssh/known_hosts</code>目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# &gt; /root/.ssh/known_hosts</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>1.添加执行权限</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect1.exp</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# ./expect1.exp</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">The authenticity of host &apos;192.168.80.102 (192.168.80.102)&apos; can&apos;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:4QK/8Tn8lZAitB2+3wJMBuONgHExXkOAzZpYPndYoPQ.</span><br><span class="line">ECDSA key fingerprint is MD5:89:d5:7c:90:ff:d2:c6:1a:6e:f8:58:48:29:78:9a:f3.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line">Warning: Permanently added &apos;192.168.80.102&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 21:52:22 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]#</span><br></pre></td></tr></table></figure>
-<p>已经成功登录kun03机器上</p>
-<h2 id="20-29-expect脚本远程执行命令"><a href="#20-29-expect脚本远程执行命令" class="headerlink" title="20.29 expect脚本远程执行命令"></a>20.29 expect脚本远程执行命令</h2><h3 id="实例2-自动远程登录，并执行命令并退出"><a href="#实例2-自动远程登录，并执行命令并退出" class="headerlink" title="实例2.自动远程登录，并执行命令并退出"></a>实例2.自动远程登录，并执行命令并退出</h3><blockquote>
-<p>编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect2.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user &quot;root&quot;</span><br><span class="line">set host &quot;192.168.80.102&quot;</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;;exp_continue&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;touch /tmp/test.aa\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;echo 111 &gt;/tmp/test.aa\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>添加执行权限并执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect2.exp</span><br><span class="line">[root@kun05 sbin]# ./expect2.exp</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 22:48:29 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# touch /tmp/test.aa</span><br><span class="line">[root@kun03 ~]# echo 111 &gt;/tmp/test.aa</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>进入kun03机器看看</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# ll /tmp/test.aa</span><br><span class="line">-rw-r--r-- 1 root root 4 7月  19 22:50 /tmp/test.aa</span><br><span class="line">[root@kun03 ~]# cat  /tmp/test.aa</span><br><span class="line">111</span><br></pre></td></tr></table></figure>
-<h2 id="20-28-expect脚本传递参数"><a href="#20-28-expect脚本传递参数" class="headerlink" title="20.28 expect脚本传递参数"></a>20.28 expect脚本传递参数</h2><h3 id="实例3-远程传递参数"><a href="#实例3-远程传递参数" class="headerlink" title="实例3.远程传递参数"></a>实例3.远程传递参数</h3><blockquote>
-<p>编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect3.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user [lindex $argv 0]</span><br><span class="line">set host [lindex $argv 1]</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set cmd [lindex $argv 2]</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<p><code>[lindex $argv 0]</code>表示要输入的第一个参数 如此类推</p>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>添加执行权限并执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect3.exp</span><br><span class="line">[root@kun05 sbin]# ./expect3.exp root 192.168.80.102 &quot;ls;w&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 22:52:09 2018 from 192.168.80.1</span><br><span class="line">[root@kun03 ~]# ls;w</span><br><span class="line">anaconda-ks.cfg  ip_forwarx~  ip_forwarz~  logs     temp</span><br><span class="line">ip_forward~      ip_forwary~  log          sim.pid  zabbix-release-3.4-2.el7.noarch.rpm</span><br><span class="line">23:45:34 up  2:02,  2 users,  load average: 0.01, 0.03, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    192.168.80.1     22:52    7:58   0.01s  0.01s -bash</span><br><span class="line">root     pts/1    192.168.80.104   23:45    0.00s  0.00s  0.00s w</span><br></pre></td></tr></table></figure>
-<p>当要输入参数里面有多个命令是需要用<code>&quot;&quot;</code>双引号括起来并使用<code>;</code>分号分开</p>
-<p>可以在命令行的后面增加<code>set timeout</code> 来指定命令的超时时间 <code>-1</code>为永远<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user [lindex $argv 0]</span><br><span class="line">set host [lindex $argv 1]</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set cmd [lindex $argv 2]</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">set timeout -1</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>输入vmstat命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# [root@kun05 sbin]# ./expect3.exp &quot;root&quot; 192.168.80.102 &quot;vmstat 1&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Fri Jul 20 21:42:43 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# vmstat 1</span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line">r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line">2  0      0 167852   2108 168580    0    0    35     3   85  113  0  0 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   91  113  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0  104  119  0  0 100  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   79   96  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   89  106  0  0 100  0  0</span><br></pre></td></tr></table></figure></p>
-<p>现在是不断地执行vmstat命令</p>
-
+        <p>找到/123目录下的所有后缀名为.txt的文件<br><a id="more"></a><br>1.批量修改.txt为.txt.bak<br>2.把所有的.bak文件打包压缩为 123.txt.bak<br>3.批量还原文件的名字，即把增加的.bak再删除掉</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p><code>find</code>命令可以寻找文件 <code>|xargs</code>可以把找出来的文件执行某个命令<br><code>tar zcvf</code>打包并压缩 当寻找的文件为多个可以把他们放进目录中再进行打包处理</p>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line">find /123/ -type f -name &quot;*.txt&quot; &gt;/tmp/file.list</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        mv $i $i.bak</span><br><span class="line">done</span><br><span class="line">d=`date +%F:%T`</span><br><span class="line">mkdir /tmp/123_$d</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        cp $i.bak /tmp/123_$d</span><br><span class="line">done</span><br><span class="line">cd /tmp</span><br><span class="line">tar zcf 123.tar.gz 123_$d</span><br><span class="line">#由于上面的for只对cat出内容操作 因此本来文件内容没有变化 还是.txt结尾的 下面内容可以不用执行</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        mv $i.bak $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
       
 
       
@@ -231,7 +180,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -287,7 +236,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/19/分发系统-1（7月19日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/29/shell-习题-5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +250,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/20/分发系统-2（7月20日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          分发系统 2（7月20日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/19/告警系统-2（7月18日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">告警系统 2（7月18日）</div>
+    <a href="/2018/07/29/shell-习题-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell习题 4</div>
       <i class="icon-circle-right"></i>
     </a>
   
