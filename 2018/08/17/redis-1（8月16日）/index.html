@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.9 redis介绍21.10 redis安装21.11 redis持久化21.12 redis数据类型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-17T13:50:23.269Z">
+<meta property="og:updated_time" content="2018-08-17T13:58:14.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis 1（8月16日）">
 <meta name="twitter:description" content="21.9 redis介绍21.10 redis安装21.11 redis持久化21.12 redis数据类型">
@@ -166,7 +166,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>21.9 redis介绍<br>21.10 redis安装<br>21.11 redis持久化<br>21.12 redis数据类型<br><a id="more"></a></p>
-<h2 id="21-9-redis介绍"><a href="#21-9-redis介绍" class="headerlink" title="21.9 redis介绍"></a>21.9 redis介绍</h2><p>Redis和Memcached类似，也属于<code>k-v数据存储</code><br>Redis官网<img src="" alt="">redis.io<br>支持更多value类型，除了和<code>string</code>外，还支持<code>hash</code>、<code>lists（链表）</code>、<code>sets（集合）</code>和<code>sorted sets（有序集合）</code><br>Redis是可以把数据存储在磁盘上的并且使用了两种文件格式：<code>全量数据(RDB)</code>和<code>增量请求(aof)</code>。一般叫做redis持久化<br><code>全量数据</code>格式是把内存中的数据写入磁盘，便于下次读取文件进行加载。<br><code>增量请求文件</code>则是把内存中的数据序列化为操作请求，用于读取文件进行replay得到数据，这种类似于mysql binlog。随时间而越来越大，其中有些内容是没有用的。<br>Redis的存储分为内存存储、磁盘存储和log文件三部分。内存存储和memcached一样，磁盘存储指RDB，log文件指aof。</p>
+<h2 id="21-9-redis介绍"><a href="#21-9-redis介绍" class="headerlink" title="21.9 redis介绍"></a>21.9 redis介绍</h2><p>Redis和Memcached类似，也属于<code>k-v数据存储</code><br>Redis官网 <img src="" alt=""><a href="https://redis.io" target="_blank" rel="noopener">https://redis.io</a><br>支持更多value类型，除了和<code>string</code>外，还支持<code>hash</code>、<code>lists（链表）</code>、<code>sets（集合）</code>和<code>sorted sets（有序集合）</code><br>Redis是可以把数据存储在磁盘上的并且使用了两种文件格式：<code>全量数据(RDB)</code>和<code>增量请求(aof)</code>。一般叫做redis持久化<br><code>全量数据</code>格式是把内存中的数据写入磁盘，便于下次读取文件进行加载。<br><code>增量请求文件</code>则是把内存中的数据序列化为操作请求，用于读取文件进行replay得到数据，这种类似于mysql binlog。随时间而越来越大，其中有些内容是没有用的。<br>Redis的存储分为内存存储、磁盘存储和log文件三部分。内存存储和memcached一样，磁盘存储指RDB，log文件指aof。</p>
 <h2 id="21-10-redis安装"><a href="#21-10-redis安装" class="headerlink" title="21.10 redis安装"></a>21.10 redis安装</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.去官网下载最新版redis包并解压</p>
 </blockquote>
@@ -203,7 +203,7 @@
 <ul>
 <li><p>RDB，简而言之，就是在不同的时间点，将redis存储的数据生成快照并存储到磁盘等介质上。</p>
 <p>redis.conf上有定义RDB的触发时间来持久化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">save 900 1 #表示每15分钟且至少有1个key改变，就触发一次持久化 </span><br><span class="line">save 300 10 #表示每5分钟且至少有10个key改变，就触发一次持久化</span><br><span class="line"></span><br><span class="line">save 60 10000 #表示每60秒至少有10000个key改变，就触发一次持久</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">save 900 1 #表示每15分钟且至少有1个key改变，就触发一次持久化 </span><br><span class="line">save 300 10 #表示每5分钟且至少有10个key改变，就触发一次持久化</span><br><span class="line"></span><br><span class="line">save 60 10000 #表示每60秒至少有10000个key改变，就触发一次持久</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>AOF，则是换了一个角度来实现持久化，那就是将redis执行过的所有写指令记录下来，在下次redis重新启动时，只要把这些写指令从前到后再重复执行一遍，就可以实现数据恢复了。</p>
 <p>redis.conf定义的关于aof的参数</p>
@@ -214,7 +214,7 @@
 </ul>
 <p>其实RDB和AOF两种方式也可以同时使用，在这种情况下，如果redis重启的话，则会优先采用AOF方式来进行数据恢复，这是因为AOF方式的数据恢复完整度更高。</p>
 <p>如果你没有数据持久化的需求，也完全可以关闭RDB和AOF方式，这样的话，redis将变成一个纯内存数据库，就像memcache一样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save “”  #这样可以禁用rdb持久化，并把其他save注释掉</span><br></pre></td></tr></table></figure></p>
-<h2 id="21-12-redis数据类型"><a href="#21-12-redis数据类型" class="headerlink" title="21.12 redis数据类型"></a>21.12 redis数据类型</h2><p><code>string</code>为最简单的类型，与Memcached一样的类型，<code>一个key对应一个value</code>，其支持的操作与Memcached的操作类似，它的功能更丰富。设置可以存二进制的对象。</p>
+<h2 id="21-12-redis数据类型"><a href="#21-12-redis数据类型" class="headerlink" title="21.12 redis数据类型"></a>21.12 redis数据类型</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p><code>string</code>为最简单的类型，与Memcached一样的类型，<code>一个key对应一个value</code>，其支持的操作与Memcached的操作类似，它的功能更丰富。设置可以存二进制的对象。</p>
 <blockquote>
 <p>进入redis</p>
 </blockquote>
@@ -227,7 +227,7 @@
 <p>添加，获得多个string类型数据</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; mset k1 a k2 b k3 c</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; mget k1 k2 k3 key1</span><br><span class="line">1) &quot;a&quot;</span><br><span class="line">2) &quot;b&quot;</span><br><span class="line">3) &quot;c&quot;</span><br><span class="line">4) &quot;111&quot;</span><br></pre></td></tr></table></figure>
-<p><code>list 链表结构</code>，主要功能是push、pop、获取一个范围的所有值等等。操作中key理解为链表的名字。<br> 使用 list 结构，我们可以轻松地实现最新消息排行等功能（比如新浪微博的 TimeLine ）。list 的另一个应用就是消息队列，可以利用 list 的 push操作，将任务存在 list 中，然后工作线程再用pop操作将任务取出进行执行。</p>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><code>list 链表结构</code>，主要功能是push、pop、获取一个范围的所有值等等。操作中key理解为链表的名字。<br> 使用 list 结构，我们可以轻松地实现最新消息排行等功能（比如新浪微博的 TimeLine ）。list 的另一个应用就是消息队列，可以利用 list 的 push操作，将任务存在 list 中，然后工作线程再用pop操作将任务取出进行执行。</p>
 <blockquote>
 <p>在链表中推进新数据</p>
 </blockquote>
@@ -240,7 +240,7 @@
 <p>在链表中拉出数据</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPOP list1</span><br><span class="line">&quot;123&quot;</span><br><span class="line">127.0.0.1:6379&gt; LRANGE list1 0 -1</span><br><span class="line">1) &quot;abc&quot;</span><br><span class="line">2) &quot;kun1&quot;</span><br></pre></td></tr></table></figure>
-<p><code>set 集合</code>，和我们数学中的集合概念相似，对集合的操作有添加删除元素，有对多个集合求交并差等操作。操作中key理解为集合的名字。比如在微博应用中，可以将一个用户所有的关注人存在一个集合中，将其所有粉丝存在一个集合。因为 Redis 非常人性化的为集合提供了求交集、并集、差集等操作，那么就可以非常方便的实现如共同关注、共同喜好、二度好友等功能，对上面的所有集合操作，你还可以使用不同的命令选择将结果返回给客户端还是存集到一个新的集合中。</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p><code>set 集合</code>，和我们数学中的集合概念相似，对集合的操作有添加删除元素，有对多个集合求交并差等操作。操作中key理解为集合的名字。比如在微博应用中，可以将一个用户所有的关注人存在一个集合中，将其所有粉丝存在一个集合。因为 Redis 非常人性化的为集合提供了求交集、并集、差集等操作，那么就可以非常方便的实现如共同关注、共同喜好、二度好友等功能，对上面的所有集合操作，你还可以使用不同的命令选择将结果返回给客户端还是存集到一个新的集合中。</p>
 <blockquote>
 <p>添加元素给集合</p>
 </blockquote>
@@ -265,7 +265,7 @@
 <p>删除元素</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SREM set2 1</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; SMEMBERS set2</span><br><span class="line">1) &quot;2&quot;</span><br><span class="line">2) &quot;c&quot;</span><br><span class="line">3) &quot;a&quot;</span><br></pre></td></tr></table></figure>
-<p><code>sorted set 有序集合</code>，它比set多了一个权重参数score，使得集合中的元素能够按 score 进行有序排列，比如一个存储全班同学成绩的集合，其集合 value 可以是同学的学号，而 score 就可以是其考试得分，这样在数据插入集合的时候，就已经进行了天然的排序。</p>
+<h3 id="Sorted-Set"><a href="#Sorted-Set" class="headerlink" title="Sorted Set"></a>Sorted Set</h3><p><code>sorted set 有序集合</code>，它比set多了一个权重参数score，使得集合中的元素能够按 score 进行有序排列，比如一个存储全班同学成绩的集合，其集合 value 可以是同学的学号，而 score 就可以是其考试得分，这样在数据插入集合的时候，就已经进行了天然的排序。</p>
 <blockquote>
 <p>添加带权重的元素进集合</p>
 </blockquote>
@@ -278,7 +278,7 @@
 <p>倒序</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZREVRANGE sset1 0 -1</span><br><span class="line">1) &quot;kun3&quot;</span><br><span class="line">2) &quot;kun2&quot;</span><br><span class="line">3) &quot;kun1&quot;</span><br></pre></td></tr></table></figure>
-<p><code>hash 哈希表</code>，类似于多个k-v组成的表。在 Memcached 中，我们经常将一些结构化的信息打包成 hashmap，在客户端序列化后存储为一个字符串的值（一般是 JSON 格式），比如用户的昵称、年龄、性别、积分等。</p>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p><code>hash 哈希表</code>，类似于多个k-v组成的表。在 Memcached 中，我们经常将一些结构化的信息打包成 hashmap，在客户端序列化后存储为一个字符串的值（一般是 JSON 格式），比如用户的昵称、年龄、性别、积分等。</p>
 <blockquote>
 <p>添加哈希数据</p>
 </blockquote>
@@ -288,7 +288,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HGET hash1 name</span><br><span class="line">&quot;kun1&quot;</span><br><span class="line">127.0.0.1:6379&gt; HGET hash1 age</span><br><span class="line">&quot;30&quot;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>查看这个哈希表 </p>
+<p>查看整个哈希表 </p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HGETALL hash1</span><br><span class="line">1) &quot;name&quot;</span><br><span class="line">2) &quot;kun1&quot;</span><br><span class="line">3) &quot;age&quot;</span><br><span class="line">4) &quot;30&quot;</span><br><span class="line">5) &quot;job&quot;</span><br><span class="line">6) &quot;it&quot;</span><br></pre></td></tr></table></figure>
       
@@ -372,6 +372,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/19/redis-2（8月17日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          redis 2（8月17日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/15/memcache-2（8月15日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -543,6 +552,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
@@ -559,15 +572,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,23 +632,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高可用</a>
               </li>
              
               <li class="article-tag-list-item">
