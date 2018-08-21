@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.13/21.14/21.15 redis常用操作21.16 redis操作键值21.17 redis安全设置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-19T15:07:53.617Z">
+<meta property="og:updated_time" content="2018-08-19T15:10:34.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis 2（8月17日）">
 <meta name="twitter:description" content="21.13/21.14/21.15 redis常用操作21.16 redis操作键值21.17 redis安全设置">
@@ -166,7 +166,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>21.13/21.14/21.15 redis常用操作<br>21.16 redis操作键值<br>21.17 redis安全设置<br><a id="more"></a></p>
-<h2 id="21-13-21-14-21-15-redis常用操作"><a href="#21-13-21-14-21-15-redis常用操作" class="headerlink" title="21.13/21.14/21.15 redis常用操作"></a>21.13/21.14/21.15 redis常用操作</h2><h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><blockquote>
+<h2 id="21-13-21-14-21-15-redis常用操作"><a href="#21-13-21-14-21-15-redis常用操作" class="headerlink" title="21.13/21.14/21.15 redis常用操作"></a>21.13/21.14/21.15 redis常用操作</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><blockquote>
 <p>创建一个新的k-v</p>
 </blockquote>
 <p>格式：<code>set 键名 值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set key1 aaa</span><br><span class="line">OK</span><br></pre></td></tr></table></figure></p>
@@ -174,7 +174,7 @@
 <p>获得k-v</p>
 </blockquote>
 <p>格式：<code>get 键名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET key1</span><br><span class="line">&quot;aaa&quot;</span><br></pre></td></tr></table></figure></p>
-<p>注意：假如已经存在的键名再次创建会值会覆盖掉用来的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET key1 bbb</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GET key1</span><br><span class="line">&quot;bbb&quot;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>注意：假如已经存在的键名再次创建会值会覆盖掉用来的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET key1 bbb</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; GET key1</span><br><span class="line">&quot;bbb&quot;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>检测k-v是否存在，没有即创建k-v</p>
 </blockquote>
@@ -193,7 +193,7 @@
 <p>连续获得多个k-v</p>
 </blockquote>
 <p>格式：<code>mget 键名1 键名2 ...</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MGET key1 key2 key3</span><br><span class="line">1) &quot;ccc&quot;</span><br><span class="line">2) &quot;ad&quot;</span><br><span class="line">3) &quot;dd&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><blockquote>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><blockquote>
 <p>从上到下插入值</p>
 </blockquote>
 <p>格式：<code>lpush 链名 值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LPUSH list1 aaa  ##返回3表示该值是该链中的第三个元素，在最上面</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure></p>
@@ -233,7 +233,7 @@
 <p>查看链中共有多少个值</p>
 </blockquote>
 <p>格式：<code>llen 键名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; LLEN list1</span><br><span class="line">(integer) 4</span><br></pre></td></tr></table></figure></p>
-<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><blockquote>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><blockquote>
 <p>添加元素给集合</p>
 </blockquote>
 <p>格式：<code>sadd 集合名 元素值 ...</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SADD set1 aaa</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure></p>
@@ -281,7 +281,7 @@
 <p>判断元素是否属于某个集合</p>
 </blockquote>
 <p>格式：<code>sismember 集合名 判断的元素</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SMEMBERS set1</span><br><span class="line">1) &quot;bbb&quot;</span><br><span class="line">2) &quot;aaa&quot;</span><br><span class="line">3) &quot;ccc&quot;</span><br><span class="line">127.0.0.1:6379&gt; SISMEMBER set1 111  ##0表示不属于 1表示属于该集合</span><br><span class="line">(integer) 0</span><br><span class="line">127.0.0.1:6379&gt; SISMEMBER set1 ccc</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure></p>
-<h3 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted set"></a>sorted set</h3><blockquote>
+<h3 id="Sorted-Set"><a href="#Sorted-Set" class="headerlink" title="Sorted Set"></a>Sorted Set</h3><blockquote>
 <p>添加带权重的元素给集合</p>
 </blockquote>
 <p>格式：<code>zadd 集合名 权重1 元素1 ...</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZADD zset1 11 kun1 22 kun2 33 kun3</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure></p>
@@ -325,7 +325,7 @@
 <p>删除某个索引范围的元素值</p>
 </blockquote>
 <p>格式：<code>zremrangebyrank 集合名 初始下标 最后下标</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; ZRANGE zset1 0 -1  </span><br><span class="line">1) &quot;kun4&quot;</span><br><span class="line">2) &quot;kun3&quot;</span><br><span class="line">127.0.0.1:6379&gt; ZREMRANGEBYRANK zset1 0 2  ##删除索引第一个到第三个的元素</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure></p>
-<h3 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h3><blockquote>
+<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><blockquote>
 <p>添加哈希数据</p>
 </blockquote>
 <p>格式：<code>hset 哈希表名 键名 值</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; HSET hash2 name kun</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; HSET hash2 age 30</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; HSET hash2 job it</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure></p>
@@ -551,6 +551,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/08/21/redis-3（8月20日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          redis 3（8月20日）
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/08/17/redis-1（8月16日）/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">redis 1（8月16日）</div>
@@ -701,15 +710,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,11 +746,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,10 +778,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
@@ -781,11 +786,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">

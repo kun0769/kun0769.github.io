@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>redis 3（8月20日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/18/index.html">
+  <meta name="description" content="21.18 redis慢查询日志21.19 php安装redis扩展21.20 redis存储session21.21 redis主从配置">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis 3（8月20日）">
+<meta property="og:url" content="http://yoursite.com/2018/08/21/redis-3（8月20日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="21.18 redis慢查询日志21.19 php安装redis扩展21.20 redis存储session21.21 redis主从配置">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-21T13:25:02.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="redis 3（8月20日）">
+<meta name="twitter:description" content="21.18 redis慢查询日志21.19 php安装redis扩展21.20 redis存储session21.21 redis主从配置">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +145,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-二周第一次课（3月26日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-redis-3（8月20日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/二周第一次课（3月26日）/">二周第一次课（3月26日）</a>
+    <h1 class="article-title" itemprop="name">
+      redis 3（8月20日）
     </h1>
   
 
         
-        <a href="/2018/03/31/二周第一次课（3月26日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T13:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+        <a href="/2018/08/21/redis-3（8月20日）/" class="archive-article-date">
+  	<time datetime="2018-08-21T13:19:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2.6 相对和绝对路径<br>2.7 cd命令<br>2.8 创建和删除目录mkdir/rmdir<br>2.9 rm命令<br>
-        
-          <a class="article-more-a" href="/2018/03/31/二周第一次课（3月26日）/#more">more >></a>
-        
+        <p>21.18 redis慢查询日志<br>21.19 php安装redis扩展<br>21.20 redis存储session<br>21.21 redis主从配置<br><a id="more"></a></p>
+<h2 id="21-18-redis慢查询日志"><a href="#21-18-redis慢查询日志" class="headerlink" title="21.18 redis慢查询日志"></a>21.18 redis慢查询日志</h2><p>reids和MySQL一样也有慢查询日志，并在配置文件下定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /etc/redis.conf</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slowlog-log-slower-than 10000 ##单位ms，表示慢于10000ms则记录日志，10000ms等于0.01s</span><br><span class="line"></span><br><span class="line">slowlog-max-len 128  ## 定义日志长度，表示最多存128条日志</span><br></pre></td></tr></table></figure>
+<p>由于redis的数据是内在于内存中，因此只能通过命令行的查看慢查询日志</p>
+<blockquote>
+<p>列出所有的慢查询日志</p>
+</blockquote>
+<p>格式：<code>slowlog get</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# redis-cli</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SLOWLOG get</span><br><span class="line">1) 1) (integer) 2  </span><br><span class="line">   2) (integer) 1534796516</span><br><span class="line">   3) (integer) 105</span><br><span class="line">   4) 1) &quot;KEYS&quot;</span><br><span class="line">      2) &quot;k3&quot;</span><br><span class="line">   5) &quot;127.0.0.1:50496&quot;</span><br><span class="line">   6) &quot;&quot;</span><br><span class="line">2) 1) (integer) 1</span><br><span class="line">   2) (integer) 1534796511</span><br><span class="line">   3) (integer) 37</span><br><span class="line">   4) 1) &quot;KEYS&quot;</span><br><span class="line">      2) &quot;*&quot;</span><br><span class="line">   5) &quot;127.0.0.1:50496&quot;</span><br><span class="line">   6) &quot;&quot;</span><br><span class="line">3) 1) (integer) 0</span><br><span class="line">   2) (integer) 1534796505</span><br><span class="line">   3) (integer) 301</span><br><span class="line">   4) 1) &quot;COMMAND&quot;</span><br><span class="line">   5) &quot;127.0.0.1:50496&quot;</span><br><span class="line">   6) &quot;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>这里有3条命令 第一条是登录 第二条是keys * 第三条是keys k3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SLOWLOG get 2  ##2表示显示最新的两条慢查询日志</span><br><span class="line">1) 1) (integer) 3</span><br><span class="line">   2) (integer) 1534796526</span><br><span class="line">   3) (integer) 35</span><br><span class="line">   4) 1) &quot;SLOWLOG&quot;</span><br><span class="line">      2) &quot;get&quot;</span><br><span class="line">   5) &quot;127.0.0.1:50496&quot;</span><br><span class="line">   6) &quot;&quot;</span><br><span class="line">2) 1) (integer) 2</span><br><span class="line">   2) (integer) 1534796516</span><br><span class="line">   3) (integer) 105</span><br><span class="line">   4) 1) &quot;KEYS&quot;</span><br><span class="line">      2) &quot;k3&quot;</span><br><span class="line">   5) &quot;127.0.0.1:50496&quot;</span><br><span class="line">   6) &quot;&quot;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>列出当前慢日志的条数</p>
+</blockquote>
+<p>格式：<code>slowlog len</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SLOWLOG len  ##当前有5条慢日志</span><br><span class="line">(integer) 5</span><br></pre></td></tr></table></figure></p>
+<h2 id="21-19-php安装redis扩展模块"><a href="#21-19-php安装redis扩展模块" class="headerlink" title="21.19 php安装redis扩展模块"></a>21.19 php安装redis扩展模块</h2><p>与memcache一样，redis要和php打交道就需要下载redis的模块</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.进入src目录并下载解压redis</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# cd /usr/local/src/</span><br><span class="line">[root@kun03 src]# wget https://coding.net/u/aminglinux/p/yuanke_centos7/git/raw/master/21NOSQL/phpredis.zip</span><br><span class="line">[root@kun03 src]# unzip phpredis.zip</span><br></pre></td></tr></table></figure>
+<p>也可以去官方网站下载redis模块<img src="" alt=""><a href="https://codeload.github.com/phpredis/phpredis/zip/develop" target="_blank" rel="noopener">https://codeload.github.com/phpredis/phpredis/zip/develop</a></p>
+<blockquote>
+<p>2.进入phpredis-develo目录里并生成configure</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 src]# cd phpredis-develop/</span><br><span class="line">[root@kun03 phpredis-develop]# /usr/local/php-fpm/bin/phpize</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:         20160303</span><br><span class="line">Zend Module Api No:      20160303</span><br><span class="line">Zend Extension Api No:   320160303</span><br><span class="line">Cannot find autoconf. Please check your autoconf installation and the</span><br><span class="line">$PHP_AUTOCONF environment variable. Then, rerun this script.</span><br></pre></td></tr></table></figure>
+<p>和安装memcache一样这里少了autoconf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 phpredis-develop]# yum install -y autoconf</span><br><span class="line">[root@kun03 phpredis-develop]# /usr/local/php-fpm/bin/phpize</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:         20160303</span><br><span class="line">Zend Module Api No:      20160303</span><br><span class="line">Zend Extension Api No:   320160303</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.初始化</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 phpredis-develop]# ./configure --with-php-config=/usr/local/php-fpm/bin/php-config</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.编译 安装</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 phpredis-develop]# make </span><br><span class="line">[root@kun03 phpredis-develop]# make install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.加载扩张模块</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 phpredis-develop]# vim /usr/local/php-fpm/etc/php.ini</span><br><span class="line"></span><br><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.重启php-fpm服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 phpredis-develop]# service php-fpm restart</span><br><span class="line">Gracefully shutting down php-fpm . done</span><br><span class="line">Starting php-fpm  done</span><br></pre></td></tr></table></figure>
+<h2 id="21-20-PHP中使用redis-–-存储session"><a href="#21-20-PHP中使用redis-–-存储session" class="headerlink" title="21.20 PHP中使用redis – 存储session"></a>21.20 PHP中使用redis – 存储session</h2><p>redis和memcache一样 存储session也有三种办法</p>
+<h3 id="1-编辑php-ini文件"><a href="#1-编辑php-ini文件" class="headerlink" title="1.编辑php.ini文件"></a>1.编辑php.ini文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 redis-4.0.11]# vim /usr/local/php-fpm/etc/php.ini</span><br><span class="line"></span><br><span class="line">session.save_handler = &quot;redis&quot;</span><br><span class="line">session.save_path = &quot;tcp://127.0.0.1:6379&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="2-编辑httpd-cong相应的配置文件"><a href="#2-编辑httpd-cong相应的配置文件" class="headerlink" title="2.编辑httpd.cong相应的配置文件"></a>2.编辑httpd.cong相应的配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /usr/local/apache2.4/conf/extra/httpd-vhosts.conf</span><br><span class="line"></span><br><span class="line">php_value session.save_handler &quot;redis&quot;    </span><br><span class="line">php_value session.save_path &quot;tcp://127.0.0.1:6379&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="3-编辑php相应的pool"><a href="#3-编辑php相应的pool" class="headerlink" title="3.编辑php相应的pool"></a>3.编辑php相应的pool</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /usr/local/php-fpm/etc/php-fpm.d/test1.conf</span><br><span class="line"></span><br><span class="line">php_value[session.save_handler] = redis</span><br><span class="line">php_value[session.save_path] = &quot; tcp://127.0.0.1:6379 &quot;</span><br></pre></td></tr></table></figure>
+<p>注意：<code>由于我定义了监听了127.0.0.1 因此这里tcp的ip地址也有写127.0.0.1 否则失败</code></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>下载一个php测试页面看redis是否存储了session<br>代码内容在<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# wget http://study.lishiming.net/.mem_se.txt</span><br><span class="line">[root@kun03 ~]# cp .mem_se.txt /var/www/test1/index.html</span><br></pre></td></tr></table></figure></p>
+<p>访问几次测试页面 最后的为键名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# curl localhost</span><br><span class="line">1534809166&lt;br&gt;&lt;br&gt;1534809166&lt;br&gt;&lt;br&gt;m748s8primu6pu3b62pn4ejc35</span><br></pre></td></tr></table></figure></p>
+<p>进入redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# redis-cli</span><br><span class="line">127.0.0.1:6379&gt; KEYS *</span><br><span class="line">1) &quot;k2&quot;</span><br><span class="line">2) &quot;set2&quot;</span><br><span class="line">3) &quot;list1&quot;</span><br><span class="line">4) &quot;sset1&quot;</span><br><span class="line">5) &quot;hash2&quot;</span><br><span class="line">6) &quot;key1&quot;</span><br><span class="line">7) &quot;PHPREDIS_SESSION:m748s8primu6pu3b62pn4ejc35&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; get PHPREDIS_SESSION:m748s8primu6pu3b62pn4ejc35</span><br><span class="line">&quot;TEST|i:1534809166;TEST3|i:1534809166;&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="21-21-redis主从配置"><a href="#21-21-redis主从配置" class="headerlink" title="21.21 redis主从配置"></a>21.21 redis主从配置</h2><p>这里我们在同一台服务器上配置Redis主从，主继续使用6379端口，从使用6380端口，Redis主从只需要配置从机器上配置文件。当建立了Redis主从后 Redis数据就自动同步，不需要提前同步数据。</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>拷贝配置文件并改名Redis2</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# cp /etc/redis.conf /etc/redis2.conf</span><br></pre></td></tr></table></figure>
+<p>修改redis2配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /etc/redis2.conf</span><br></pre></td></tr></table></figure></p>
+<p>修改下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">port 6380</span><br><span class="line"></span><br><span class="line">pidfile /var/run/redis_6380.pid</span><br><span class="line"></span><br><span class="line">dir /data/redis2</span><br><span class="line"></span><br><span class="line">logfile &quot;/var/log/redis2.log&quot;</span><br></pre></td></tr></table></figure></p>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof 127.0.0.1 6379   ##slaveof 主IP 端口</span><br></pre></td></tr></table></figure></p>
+<p>如果主上设置了密码 从需要添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maseterauth 38003800  ## maseterauth 主的密码</span><br></pre></td></tr></table></figure></p>
+<p>默认设置从是只读的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slave-read-only yes</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>创建从的数据目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# mkdir /data/redis2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动Redis服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# redis-server /etc/redis.conf</span><br><span class="line">[root@kun03 ~]# redis-server /etc/redis2.conf</span><br></pre></td></tr></table></figure>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>在主上添加数据 回去从上看是否同步数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# redis-cli</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; set test1 hello</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; KEYS *</span><br><span class="line">1) &quot;test1&quot;</span><br><span class="line"></span><br><span class="line">[root@kun03 ~]# redis-cli -h 127.0.0.1 -p 6380</span><br><span class="line">127.0.0.1:6380&gt; KEYS *</span><br><span class="line">1) &quot;test1&quot;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -178,11 +245,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -191,16 +254,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/二周第一次课（3月26日）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/21/redis-3（8月20日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/19/redis-2（8月17日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis 2（8月17日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,338 +342,37 @@
 
 
 
-
-
-  
-    <article id="post-一周第五次课（3月23日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/一周第五次课（3月23日）/">一周第五次课（3月23日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/一周第五次课（3月23日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T12:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2.1/2.2 系统目录结构<br>2.3 ls命令<br>2.4 文件类型<br>2.5 alias命令<br>
-        
-          <a class="article-more-a" href="/2018/03/31/一周第五次课（3月23日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/一周第五次课（3月23日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-一周第四次课（3月22日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/一周第四次课（3月22日）/">一周第四次课（3月22日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/一周第四次课（3月22日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:46:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.13 单用户模式<br>1.14 救援模式<br>1.15 克隆虚拟机<br>1.16 Linux机器相互登录<br>
-        
-          <a class="article-more-a" href="/2018/03/31/一周第四次课（3月22日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/一周第四次课（3月22日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-一周第三次课（3月21日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/31/一周第三次课（3月21日）/">一周第三次课(3月21日)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/31/一周第三次课（3月21日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T11:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.9 使用PuTTY远程连接Linux<br>1.10 使用xshell连接Linux<br>1.11 PuTTY密钥认证<br>1.12 xshell密钥认证<br>
-        
-          <a class="article-more-a" href="/2018/03/31/一周第三次课（3月21日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/一周第三次课（3月21日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-一周第二次课（3月20日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/一周第二次课（3月20日）/">一周第二次课（3月20日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/30/一周第二次课（3月20日）/" class="archive-article-date">
-  	<time datetime="2018-03-30T15:26:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.6/1.7 配置IP<br>1.8 网络问题排查<br>
-        
-          <a class="article-more-a" href="/2018/03/30/一周第二次课（3月20日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/30/一周第二次课（3月20日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -573,8 +394,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
