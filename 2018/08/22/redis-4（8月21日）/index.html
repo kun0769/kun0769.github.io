@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>shell 习题 3 | kun0769的博客</title>
+  <title>redis 4（8月21日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写一个脚本计算出Linux系统所有的进程占用内存大小的和">
-<meta name="keywords" content="shell 习题">
+  <meta name="description" content="21.22 redis集群介绍21.23/21.24 redis集群搭建配置21.25 redis集群操作">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell 习题 3">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/shell-习题-3/index.html">
+<meta property="og:title" content="redis 4（8月21日）">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/redis-4（8月21日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="写一个脚本计算出Linux系统所有的进程占用内存大小的和">
+<meta property="og:description" content="21.22 redis集群介绍21.23/21.24 redis集群搭建配置21.25 redis集群操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-23T15:44:34.421Z">
+<meta property="og:updated_time" content="2018-08-22T13:14:24.208Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell 习题 3">
-<meta name="twitter:description" content="写一个脚本计算出Linux系统所有的进程占用内存大小的和">
+<meta name="twitter:title" content="redis 4（8月21日）">
+<meta name="twitter:description" content="21.22 redis集群介绍21.23/21.24 redis集群搭建配置21.25 redis集群操作">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,37 +145,130 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-shell-习题-3" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis-4（8月21日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      shell 习题 3
+      redis 4（8月21日）
     </h1>
   
 
         
-        <a href="/2018/07/23/shell-习题-3/" class="archive-article-date">
-  	<time datetime="2018-07-23T15:42:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+        <a href="/2018/08/22/redis-4（8月21日）/" class="archive-article-date">
+  	<time datetime="2018-08-22T13:05:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写一个脚本计算出Linux系统所有的进程占用内存大小的和<br><a id="more"></a></p>
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>在<code>ps aux</code> 中的<code>RSS</code>列表示该进程占用物理内存的大小 </p>
-<p><code>for</code>循环可以把RSS的值加起来</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><pre><code>#!/bin/bash
-sum=0
-for i in `ps aux |awk &apos;{print $6}&apos; |grep -v RSS`
-do
-        sum=$[$sum+$i]
-done
-echo $sum
-</code></pre>
+        <p>21.22 redis集群介绍<br>21.23/21.24 redis集群搭建配置<br>21.25 redis集群操作<br><a id="more"></a></p>
+<h2 id="21-22-redis集群介绍"><a href="#21-22-redis集群介绍" class="headerlink" title="21.22 redis集群介绍"></a>21.22 redis集群介绍</h2><p>redis集群是分布式的，写入的数据并不在同一台机器上，因此每台机器上的<code>数据并不一致</code>。<br>Redis集群上的所有节点都是<code>一主一从</code>（可以是多个从），其中从不提供服务，仅作为备用。<br><code>不支持</code>同时处理多个键（如<code>mset/mget</code>），因为redis需要把键均匀分布在各个节点上，并发量很高的情况下同时创建键值会降低性能并导致不可预测的行为。<br>支持在线增加、删除节点。客户端可以连任何一个主节点进行读写。</p>
+<h2 id="21-23-21-24-redis集群搭建配置"><a href="#21-23-21-24-redis集群搭建配置" class="headerlink" title="21.23/21.24 redis集群搭建配置"></a>21.23/21.24 redis集群搭建配置</h2><p>场景设置：<br>两台机器，分别开启三个Redis服务(端口)<br>kun03 192.168.80.102<br>kun04 192.168.80.103<br>kun03机器上三个端口7000,7002,7004，全部为主<br>kun04机器上三个端口7001,7003,7005，全部为从<br>两台机器上都要编译安装redis,然后编辑并复制3个不同的redis.conf，分别设置不同的端口号、dir等参数，还需要增加cluster相关参数，然后分别启动6个redis服务<br>具体redis配置文件大家到<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/tree/master/21NOSQL下载" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/tree/master/21NOSQL下载</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>在kun03机器上</p>
+<blockquote>
+<p>编辑7000 7002 7004的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /etc/redis_7000.conf</span><br><span class="line"></span><br><span class="line">port 7000</span><br><span class="line">bind 192.168.80.102</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7000.pid</span><br><span class="line">dir /data/redis_data/7000</span><br><span class="line">cluster-enabled yes  ##表示开启集群</span><br><span class="line">cluster-config-file nodes_7000.conf  ##集群的配置文件 会自动生成</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /etc/redis_7002.conf</span><br><span class="line"></span><br><span class="line">port 7002</span><br><span class="line">bind 192.168.80.102</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7002.pid</span><br><span class="line">dir /data/redis_data/7002</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes_7002.conf</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# vim /etc/redis_7004.conf</span><br><span class="line"></span><br><span class="line">port 7004</span><br><span class="line">bind 192.168.80.102</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7004.pid</span><br><span class="line">dir /data/redis_data/7004</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes_7004.conf</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建对应的数据目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# mkdir /data/redis_data</span><br><span class="line">[root@kun03 ~]# mkdir /data/redis_data/&#123;7000,7002,7004&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动Redis服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# redis-server /etc/redis_7000.conf</span><br><span class="line">[root@kun03 ~]# redis-server /etc/redis_7002.conf</span><br><span class="line">[root@kun03 ~]# redis-server /etc/redis_7004.conf</span><br></pre></td></tr></table></figure>
+<p>在kun04机器上</p>
+<blockquote>
+<p>编辑7001 7003 7005的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# vim /etc/redis_7001.conf</span><br><span class="line"></span><br><span class="line">port 7001</span><br><span class="line">bind 192.168.80.103</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7001.pid</span><br><span class="line">dir /data/redis_data/7001</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes_7001.conf</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# vim /etc/redis_7003.conf</span><br><span class="line"></span><br><span class="line">port 7003</span><br><span class="line">bind 192.168.80.103</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7003.pid</span><br><span class="line">dir /data/redis_data/7003</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes_7003.conf</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# vim /etc/redis_7005.conf</span><br><span class="line"></span><br><span class="line">port 7005</span><br><span class="line">bind 192.168.80.103</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_7005.pid</span><br><span class="line">dir /data/redis_data/7005</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes_7005.conf</span><br><span class="line">cluster-node-timeout 10100</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建对应的数据目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# mkdir /data/redis_data/</span><br><span class="line">[root@kun04 ~]# mkdir /data/redis_data/&#123;7001,7003,7005&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动Redis服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# redis-server /etc/redis_7001.conf</span><br><span class="line">[root@kun04 ~]# redis-server /etc/redis_7003.conf</span><br><span class="line">[root@kun04 ~]# redis-server /etc/redis_7005.conf</span><br></pre></td></tr></table></figure>
+<p>现在任意一台机器上安装Ruby2.2 由于yum上的Ruby只有2.0版本，而redis cluster支持ruby2.2的。因此需要安装ruby。这里是把ruby的源码包制作成rpm包来安装ruby的 ，也可以直接编译安装源码包来安装ruby。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>下载对应的包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# yum -y groupinstall &quot;Development Tools&quot;</span><br><span class="line"></span><br><span class="line">[root@kun03 ~]# yum -y install gdbm-devel libdb4-devel libffi-devel libyaml libyaml-devel ncurses-devel openssl-devel readline-devel tcl-deve</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>进入root目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# cd /root/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# mkdir -p rpmbuild/&#123;BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>下载源码包和spec文件到rpmbuild/SOURCES目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz -P rpmbuild/SOURCES  </span><br><span class="line"></span><br><span class="line">[root@kun03 ~]# wget https://raw.githubusercontent.com/tjinjin/automate-ruby-rpm/master/ruby22x.spec -P rpmbuild/SPECS</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>制作ruby的rpm包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# rpmbuild -bb rpmbuild/SPECS/ruby22x.spec</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>yum安装本地rpm包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# yum -y localinstall rpmbuild/RPMS/x86_64/ruby-2.2.3-1.el7.centos.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>下载redis-trib.rb并拷贝到bin目录下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]#  gem install redis</span><br><span class="line"></span><br><span class="line">[root@kun03 ~]# cp /usr/local/src/redis-4.0.11/src/redis-trib.rb /usr/bin/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用redis-trib.rb命令建立集群</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# redis-trib.rb create --replicas 1 192.168.80.102:7000 192.168.80.102:7002 192.168.80.102:7004 192.168.80.103:7001 192.168.80.103:7003 192.168.80.103:7005</span><br><span class="line"></span><br><span class="line">[OK] All nodes agree about slots configuration.</span><br><span class="line">&gt;&gt;&gt; Check for open slots...</span><br><span class="line">&gt;&gt;&gt; Check slots coverage...</span><br><span class="line">[OK] All 16384 slots covered.</span><br></pre></td></tr></table></figure>
+<p>看到两个OK表示已经集群创建成功</p>
+<h2 id="21-25-redis集群操作"><a href="#21-25-redis集群操作" class="headerlink" title="21.25 redis集群操作"></a>21.25 redis集群操作</h2><p>可以连接任意一个节点来操作Redis集群</p>
+<blockquote>
+<p>登录集群</p>
+</blockquote>
+<p>格式：<code>redis-cli -c -h IP -p 端口</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 x86_64]# redis-cli -c -h 192.168.80.102 -p 7000</span><br></pre></td></tr></table></figure></p>
+<p><code>-h</code> 指定IP<br><code>-c</code> 使用集群方式登录<br><code>-p</code> 指定端口</p>
+<blockquote>
+<p>查看集群状态</p>
+</blockquote>
+<p>格式：<code>redis-trib.rb check 任意节点IP:端口</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 x86_64]# redis-trib.rb check 192.168.80.102:7000</span><br><span class="line">&gt;&gt;&gt; Performing Cluster Check (using node 192.168.80.102:7000)</span><br><span class="line">M: 2042a7a6231ea5b6eb42ca3a5bf02abb419126a0 192.168.80.102:7000</span><br><span class="line">   slots:0-5460 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">M: 41866d20d5f0d736b05abaea15d0e08b6bcd9350 192.168.80.103:7001</span><br><span class="line">   slots:5461-10922 (5462 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: 48f4abd0547a0c794c6905c2bd0a314f212b0042 192.168.80.103:7005</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates 2042a7a6231ea5b6eb42ca3a5bf02abb419126a0</span><br><span class="line">M: c66658b3eea43e01d49367a7f610055a6ec0d5bd 192.168.80.102:7002</span><br><span class="line">   slots:10923-16383 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: 90c82e347f19415b3692c2cab5a671566573bbd9 192.168.80.102:7004</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates 41866d20d5f0d736b05abaea15d0e08b6bcd9350</span><br><span class="line">S: 28d00e5717a7eb28dc461c002e733dba94ac9a5e 192.168.80.103:7003</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates c66658b3eea43e01d49367a7f610055a6ec0d5bd</span><br><span class="line">[OK] All nodes agree about slots configuration.</span><br><span class="line">&gt;&gt;&gt; Check for open slots...</span><br><span class="line">&gt;&gt;&gt; Check slots coverage...</span><br><span class="line">[OK] All 16384 slots covered.</span><br></pre></td></tr></table></figure></p>
+<p>前面命令都是进入集群后操作的</p>
+<blockquote>
+<p>列出节点</p>
+</blockquote>
+<p>格式：<code>cluster ndes</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.102:7000&gt; CLUSTER NODES</span><br><span class="line">41866d20d5f0d736b05abaea15d0e08b6bcd9350 192.168.80.103:7001@17001 master - 0 1534940719663 4 connected 5461-10922</span><br><span class="line">48f4abd0547a0c794c6905c2bd0a314f212b0042 192.168.80.103:7005@17005 slave 2042a7a6231ea5b6eb42ca3a5bf02abb419126a0 0 1534940715632 6 connected</span><br><span class="line">c66658b3eea43e01d49367a7f610055a6ec0d5bd 192.168.80.102:7002@17002 master - 0 1534940718150 2 connected 10923-16383</span><br><span class="line">90c82e347f19415b3692c2cab5a671566573bbd9 192.168.80.102:7004@17004 slave 41866d20d5f0d736b05abaea15d0e08b6bcd9350 0 1534940717645 4 connected</span><br><span class="line">2042a7a6231ea5b6eb42ca3a5bf02abb419126a0 192.168.80.102:7000@17000 myself,master - 0 1534940715000 1 connected 0-5460</span><br><span class="line">28d00e5717a7eb28dc461c002e733dba94ac9a5e 192.168.80.103:7003@17003 slave c66658b3eea43e01d49367a7f610055a6ec0d5bd 0 1534940718655 5 connected</span><br></pre></td></tr></table></figure></p>
+<p><code>7005 slave 2042a7a6231ea5b6eb42ca3a5bf02abb419126a0</code> 2042a7a6231ea5b6eb42ca3a5bf02abb419126a0 表示7000的nodeIP，因此7005是7000的从</p>
+<blockquote>
+<p>查看集群信息</p>
+</blockquote>
+<p>格式：<code>cluster info</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.102:7000&gt; CLUSTER INFO</span><br><span class="line">cluster_state:ok</span><br><span class="line">cluster_slots_assigned:16384</span><br><span class="line">cluster_slots_ok:16384</span><br><span class="line">cluster_slots_pfail:0</span><br><span class="line">cluster_slots_fail:0</span><br><span class="line">cluster_known_nodes:6</span><br><span class="line">cluster_size:3</span><br><span class="line">cluster_current_epoch:6</span><br><span class="line">cluster_my_epoch:1</span><br><span class="line">cluster_stats_messages_ping_sent:1920</span><br><span class="line">cluster_stats_messages_pong_sent:1271</span><br><span class="line">cluster_stats_messages_fail_sent:4</span><br><span class="line">cluster_stats_messages_sent:3195</span><br><span class="line">cluster_stats_messages_ping_received:1271</span><br><span class="line">cluster_stats_messages_pong_received:1372</span><br><span class="line">cluster_stats_messages_fail_received:1</span><br><span class="line">cluster_stats_messages_received:2644</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>添加新节点 </p>
+</blockquote>
+<p>格式：<code>cluster meet 节点IP 端口</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.102:7000&gt; CLUSTER MEET 192.168.80.102 7006</span><br><span class="line">OK</span><br><span class="line">192.168.80.102:7000&gt; CLUSTER MEET 192.168.80.103 7007</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">192.168.80.102:7000&gt; CLUSTER NODES  ##新添加的节点默认都是master</span><br><span class="line">8b9e3db578088c156fc9733185423880e415a0da 192.168.80.103:7007@17007 master - 0 1534941780821 7 connected</span><br><span class="line">bd436acd42955038a96b2bab9df2dcb70f347439 192.168.80.102:7006@17006 master - 0 1534941781000 0 connected</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>把当前节点设置为指定节点的从</p>
+</blockquote>
+<p>格式：<code>cluster replicater 主节点的node_id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 x86_64]# redis-cli -c -h 192.168.80.103 -p 7007  ##进入7007的节点</span><br><span class="line">192.168.80.103:7007&gt; CLUSTER REPLICATE bd436acd42955038a96b2bab9df2dcb70f347439</span><br><span class="line">OK  ##指定为7006的node_id的从</span><br><span class="line"></span><br><span class="line">192.168.80.103:7007&gt; CLUSTER NODES</span><br><span class="line">8b9e3db578088c156fc9733185423880e415a0da 192.168.80.103:7007@17007 myself,slave bd436acd42955038a96b2bab9df2dcb70f347439 0 1534941891000 7 connected</span><br><span class="line">bd436acd42955038a96b2bab9df2dcb70f347439 192.168.80.102:7006@17006 master - 0 1534941893533 0 connected</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>移除节点</p>
+</blockquote>
+<p>格式：<code>cluster forget 移除节点node_id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.103:7007&gt; CLUSTER FORGET bd436acd42955038a96b2bab9df2dcb70f347439  </span><br><span class="line">(error) ERR Can&apos;t forget my master!   ##不能移除为主的节点，可以把该节点设置为其他几点的从后再移除</span><br><span class="line"></span><br><span class="line">192.168.80.103:7007&gt; CLUSTER FORGET 8b9e3db578088c156fc9733185423880e415a0da</span><br><span class="line">(error) ERR I tried hard but I can&apos;t forget myself...  ##不能移除当前节点 ，可以登录其他节点再来移除</span><br><span class="line"></span><br><span class="line">[root@kun03 x86_64]# redis-cli -c -h 192.168.80.102 -p 7000   ##登录7000节点来移除7007节点</span><br><span class="line">192.168.80.102:7000&gt; CLUSTER FORGET 8b9e3db578088c156fc9733185423880e415a0da</span><br><span class="line">OK</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>保存集群配置</p>
+</blockquote>
+<p>格式：<code>cluster saveconfig</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.102:7000&gt; CLUSTER SAVECONFIG</span><br><span class="line">OK   ##默认保存到某个节点的数据目录下.config文件中</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -188,7 +281,7 @@ echo $sum
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -244,7 +337,7 @@ echo $sum
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/shell-习题-3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/22/redis-4（8月21日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,18 +351,9 @@ echo $sum
   
 <nav id="article-nav">
   
-    <a href="/2018/07/29/shell-习题-4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          shell习题 4
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/23/shell-习题-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">shell 习题 2</div>
+    <a href="/2018/08/21/redis-3（8月20日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis 3（8月20日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
