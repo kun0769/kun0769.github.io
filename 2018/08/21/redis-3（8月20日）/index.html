@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.18 redis慢查询日志21.19 php安装redis扩展21.20 redis存储session21.21 redis主从配置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T13:25:02.295Z">
+<meta property="og:updated_time" content="2018-08-23T13:53:25.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis 3（8月20日）">
 <meta name="twitter:description" content="21.18 redis慢查询日志21.19 php安装redis扩展21.20 redis存储session21.21 redis主从配置">
@@ -208,7 +208,7 @@
 <h2 id="21-20-PHP中使用redis-–-存储session"><a href="#21-20-PHP中使用redis-–-存储session" class="headerlink" title="21.20 PHP中使用redis – 存储session"></a>21.20 PHP中使用redis – 存储session</h2><p>redis和memcache一样 存储session也有三种办法</p>
 <h3 id="1-编辑php-ini文件"><a href="#1-编辑php-ini文件" class="headerlink" title="1.编辑php.ini文件"></a>1.编辑php.ini文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 redis-4.0.11]# vim /usr/local/php-fpm/etc/php.ini</span><br><span class="line"></span><br><span class="line">session.save_handler = &quot;redis&quot;</span><br><span class="line">session.save_path = &quot;tcp://127.0.0.1:6379&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="2-编辑httpd-cong相应的配置文件"><a href="#2-编辑httpd-cong相应的配置文件" class="headerlink" title="2.编辑httpd.cong相应的配置文件"></a>2.编辑httpd.cong相应的配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /usr/local/apache2.4/conf/extra/httpd-vhosts.conf</span><br><span class="line"></span><br><span class="line">php_value session.save_handler &quot;redis&quot;    </span><br><span class="line">php_value session.save_path &quot;tcp://127.0.0.1:6379&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="3-编辑php相应的pool"><a href="#3-编辑php相应的pool" class="headerlink" title="3.编辑php相应的pool"></a>3.编辑php相应的pool</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /usr/local/php-fpm/etc/php-fpm.d/test1.conf</span><br><span class="line"></span><br><span class="line">php_value[session.save_handler] = redis</span><br><span class="line">php_value[session.save_path] = &quot; tcp://127.0.0.1:6379 &quot;</span><br></pre></td></tr></table></figure>
+<h3 id="3-编辑php相应的pool"><a href="#3-编辑php相应的pool" class="headerlink" title="3.编辑php相应的pool"></a>3.编辑php相应的pool</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /usr/local/php-fpm/etc/php-fpm.d/test1.conf</span><br><span class="line"></span><br><span class="line">php_value[session.save_handler] = redis</span><br><span class="line">php_value[session.save_path] = &quot;tcp://127.0.0.1:6379&quot;</span><br></pre></td></tr></table></figure>
 <p>注意：<code>由于我定义了监听了127.0.0.1 因此这里tcp的ip地址也有写127.0.0.1 否则失败</code></p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>下载一个php测试页面看redis是否存储了session<br>代码内容在<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# wget http://study.lishiming.net/.mem_se.txt</span><br><span class="line">[root@kun03 ~]# cp .mem_se.txt /var/www/test1/index.html</span><br></pre></td></tr></table></figure></p>
 <p>访问几次测试页面 最后的为键名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# curl localhost</span><br><span class="line">1534809166&lt;br&gt;&lt;br&gt;1534809166&lt;br&gt;&lt;br&gt;m748s8primu6pu3b62pn4ejc35</span><br></pre></td></tr></table></figure></p>
@@ -502,15 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,7 +518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,7 +554,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,7 +562,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,10 +571,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +586,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高可用</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
