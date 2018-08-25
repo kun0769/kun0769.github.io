@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.33 mongodb副本集介绍21.34 mongodb副本集搭建21.35 mongodb副本集测试">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-25T09:27:43.394Z">
+<meta property="og:updated_time" content="2018-08-25T09:32:54.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb 3（8月24日）">
 <meta name="twitter:description" content="21.33 mongodb副本集介绍21.34 mongodb副本集搭建21.35 mongodb副本集测试">
@@ -167,7 +167,7 @@
       
         <p>21.33 mongodb副本集介绍<br>21.34 mongodb副本集搭建<br>21.35 mongodb副本集测试<br><a id="more"></a></p>
 <h2 id="21-33-mongodb副本集介绍"><a href="#21-33-mongodb副本集介绍" class="headerlink" title="21.33 mongodb副本集介绍"></a>21.33 mongodb副本集介绍</h2><p>mongodb早期版本是使用master-slave，一主一从和MySQL类似，但slave在此架构中为只读，当主库宕机后，从库不能自动切换为主。<br>目前已经淘汰master-slave模式，改为<code>副本集</code>，这种模式下有一个主(primary)，和多个从(secondary)，只读。支持给它们设置权重，当主宕掉后，权重最高的从切换为主。在此架构中还可以建立一个<code>仲裁(arbiter)</code>的角色，它只负责裁决，而不存储数据。主要让它来判断谁来替代主，防止脑裂。<br>在此架构中读写数据都是在主上，要想实现负载均衡的目的需要手动指定读库的目标server。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>mongodb副本集类似于MySQL主从，MySQL主从主宕机后要手动配置，mongodb副本集主宕机后从会自动顶上。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>mongodb副本集类似于MySQL主从，MySQL主从主宕机后要手动配置，mongodb副本集主宕机后从会自动顶上。</code></p>
 <h2 id="21-34-MongoDB副本集搭建"><a href="#21-34-MongoDB副本集搭建" class="headerlink" title="21.34 MongoDB副本集搭建"></a>21.34 MongoDB副本集搭建</h2><p>主：kun02 192.168.80.101  primary<br>从：kun03 192.168.80.102  secondary<br>从：kun04 192.168.80.103  secondary</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.三台机器安装好MongoDB并编辑配置文件</p>
@@ -205,8 +205,9 @@
 </blockquote>
 <p>添加下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kun:PRIMARY&gt; cfg = rs.conf()</span><br><span class="line"></span><br><span class="line">kun:PRIMARY&gt; cfg.members[0].priority = 3  </span><br><span class="line"></span><br><span class="line">kun:PRIMARY&gt; cfg.members[1].priority = 2</span><br><span class="line"></span><br><span class="line">kun:PRIMARY&gt; cfg.members[2].priority = 1</span><br><span class="line"></span><br><span class="line">kun:PRIMARY&gt; rs.reconfig(cfg)  ##初始化数据</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>查看权重<br>格式：<code>rs.conf()</code><br>现在kun02权重是3，kun02权重是2，kun04权重是1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">kun:PRIMARY&gt; cfg</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;kun&quot;,</span><br><span class="line">    &quot;version&quot; : 2,</span><br><span class="line">    &quot;protocolVersion&quot; : NumberLong(1),</span><br><span class="line">    &quot;writeConcernMajorityJournalDefault&quot; : true,</span><br><span class="line">    &quot;members&quot; : [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 0,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.101:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 3,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 1,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.102:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 2,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 2,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.103:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 1,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure></p>
+<p>查看权重</p>
 </blockquote>
+<p>格式：<code>rs.conf()</code><br>现在kun02权重是3，kun02权重是2，kun04权重是1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">kun:PRIMARY&gt; cfg</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;kun&quot;,</span><br><span class="line">    &quot;version&quot; : 2,</span><br><span class="line">    &quot;protocolVersion&quot; : NumberLong(1),</span><br><span class="line">    &quot;writeConcernMajorityJournalDefault&quot; : true,</span><br><span class="line">    &quot;members&quot; : [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 0,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.101:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 3,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 1,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.102:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 2,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 2,</span><br><span class="line">            &quot;host&quot; : &quot;192.168.80.103:27017&quot;,</span><br><span class="line">            &quot;arbiterOnly&quot; : false,</span><br><span class="line">            &quot;buildIndexes&quot; : true,</span><br><span class="line">            &quot;hidden&quot; : false,</span><br><span class="line">            &quot;priority&quot; : 1,</span><br><span class="line">            &quot;tags&quot; : &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;slaveDelay&quot; : NumberLong(0),</span><br><span class="line">            &quot;votes&quot; : 1</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure></p>
 <p>模拟主kun02宕机看看主是否切换到kun03上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# iptables -I INPUT -p tcp --dport 27017 -j DROP</span><br></pre></td></tr></table></figure></p>
 <p>回去kun03上发现变为了主<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kun:PRIMARY&gt;</span><br></pre></td></tr></table></figure></p>
 
@@ -442,15 +443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,11 +463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,11 +515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,10 +532,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,6 +544,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,10 +564,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
