@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>shell 习题 1 | kun0769的博客</title>
+  <title>mongodb 4（8月27日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）">
-<meta name="keywords" content="shell 习题">
+  <meta name="description" content="21.36 mongodb分片介绍21.37/21.38/21.39 mongodb分片搭建21.40 mongodb分片测试21.41 mongodb备份恢复">
+<meta name="keywords" content="mongodb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell 习题 1">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/shell-习题-1/index.html">
+<meta property="og:title" content="mongodb 4（8月27日）">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/mongodb-4（8月27日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）">
+<meta property="og:description" content="21.36 mongodb分片介绍21.37/21.38/21.39 mongodb分片搭建21.40 mongodb分片测试21.41 mongodb备份恢复">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-23T15:40:33.627Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
+<meta property="og:updated_time" content="2018-08-27T14:18:32.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell 习题 1">
-<meta name="twitter:description" content="请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）">
+<meta name="twitter:title" content="mongodb 4（8月27日）">
+<meta name="twitter:description" content="21.36 mongodb分片介绍21.37/21.38/21.39 mongodb分片搭建21.40 mongodb分片测试21.41 mongodb备份恢复">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,30 +147,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-shell-习题-1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mongodb-4（8月27日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      shell 习题 1
+      mongodb 4（8月27日）
     </h1>
   
 
         
-        <a href="/2018/07/23/shell-习题-1/" class="archive-article-date">
-  	<time datetime="2018-07-23T14:33:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+        <a href="/2018/08/27/mongodb-4（8月27日）/" class="archive-article-date">
+  	<time datetime="2018-08-27T14:02:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）<br><a id="more"></a></p>
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p><code>date +%F</code> 显示日期以xxxx-xx-xx</p>
-<p><code>dh -h</code> 显示磁盘使用情况</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!bin/bash</span><br><span class="line">day=`date +%F`</span><br><span class="line">logfile=$day.log</span><br><span class="line">df -h &gt; $logfile</span><br></pre></td></tr></table></figure>
+        <p>21.36 mongodb分片介绍<br>21.37/21.38/21.39 mongodb分片搭建<br>21.40 mongodb分片测试<br>21.41 mongodb备份恢复<br><a id="more"></a></p>
+<h2 id="21-36-MongoDB分片介绍"><a href="#21-36-MongoDB分片介绍" class="headerlink" title="21.36 MongoDB分片介绍"></a>21.36 MongoDB分片介绍</h2><p>分片就是将数据库进行拆分，将大型集合分隔到不同服务器上。比如，本来100G的数据，可以分割成10份存储到10台服务器上，这样每台机器只有10G的数据。<br>通过一个mongos的进程（路由）实现分片后的数据存储与访问，也就是说mongos是整个分片架构的核心，对客户端而言是不知道是否有分片的，客户端只需要把读写操作转达给mongos即可。<br>虽然分片会把数据分隔到很多台服务器上，但是每一个节点都是需要有一个备用角色的，这样能保证数据的高可用。<br>当系统需要更多空间或者资源的时候，分片可以让我们按需方便扩展，只需要把mongodb服务的机器加入到分片集群中即可。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png" alt=""></p>
+<p><code>mongos</code>: 数据库集群请求的入口，所有的请求都通过mongos进行协调，不需要在应用程序添加一个路由选择器，mongos自己就是一个请求分发中心，它负责把对应的数据请求请求转发到对应的shard服务器上。在生产环境通常有多mongos作为请求的入口，防止其中一个挂掉所有的mongodb请求都没有办法操作。<br><code>config server</code>: 配置服务器，存储所有数据库元信息（路由、分片）的配置。mongos本身没有物理存储分片服务器和数据路由信息，只是缓存在内存里，配置服务器则实际存储这些数据。mongos第一次启动或者关掉重启就会从 config server 加载配置信息，以后如果配置服务器信息变化会通知到所有的 mongos 更新自己的状态，这样 mongos 就能继续准确路由。在生产环境通常有多个 config server 配置服务器，因为它存储了分片路由的元数据，防止数据丢失！<br><code>shard</code>: 存储了一个集合部分数据的MongoDB实例，每个分片是单独的mongodb服务或者副本集，在生产环境中，所有的分片都应该是副本集。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>分片就是把数据进行拆分，分片的下级就是副本集。分片中三个成员，mongos请求入口，把请求分发给shard上。config server存储配置数据。shard存储MongoDB实例的数据。为了安全三者都应该作副本集。</code></p>
+<h2 id="21-37-21-38-21-39-mongodb分片搭建"><a href="#21-37-21-38-21-39-mongodb分片搭建" class="headerlink" title="21.37/21.38/21.39 mongodb分片搭建"></a>21.37/21.38/21.39 mongodb分片搭建</h2><h3 id="服务器规划"><a href="#服务器规划" class="headerlink" title="服务器规划"></a>服务器规划</h3><p>三台机器kun02(192.168.80.101) kun03(192.168.80.102) kun04(192.168.80.103)<br>kun02搭建：mongos、config server、副本集1主节点、副本集2仲裁、副本集3从节点<br>kun03搭建：mongos、config server、副本集1从节点、副本集2主节点、副本集3仲裁<br>kun04搭建：mongos、config server、副本集1仲裁、副本集2从节点、副本集3主节点<br>端口分配：mongos 20000、config 21000、副本集1 27001、副本集2 27002、副本集3 27003<br>三台机器全部关闭firewalld服务和selinux，或者增加对应端口的规则</p>
+<blockquote>
+<p>三台机器上各自创建下面目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mkdir -p /data/mongodb/mongos/log</span><br><span class="line">[root@kun02 ~]# mkdir -p /data/mongodb/config/&#123;data,log&#125;</span><br><span class="line">[root@kun02 ~]# mkdir -p /data/mongodb/shard1/&#123;data,log&#125;</span><br><span class="line">[root@kun02 ~]# mkdir -p /data/mongodb/shard2/&#123;data,log&#125;</span><br><span class="line">[root@kun02 ~]# mkdir -p /data/mongodb/shard3/&#123;data,log&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置config-server"><a href="#配置config-server" class="headerlink" title="配置config server"></a>配置config server</h3><p>三台机器上都做下面操作</p>
+<blockquote>
+<p>1.创建monogd目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mkdir /etc/mongod/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建config.conf配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /etc/mongod/config.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pidfilepath = /var/run/mongodb/configsrv.pid</span><br><span class="line">dbpath = /data/mongodb/config/data</span><br><span class="line">logpath = /data/mongodb/config/log/congigsrv.log</span><br><span class="line">logappend = true</span><br><span class="line">bind_ip = 192.168.80.101 ##0.0.0.0可以监听全网ip,不完全</span><br><span class="line">port = 21000</span><br><span class="line">fork = true</span><br><span class="line">configsvr = true #declare this is a config db of a cluster;</span><br><span class="line">replSet=configs #副本集名称</span><br><span class="line">maxConns=20000 #设置最大连接数</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.启动config server服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongod -f /etc/mongod/config.conf</span><br><span class="line"></span><br><span class="line">[root@kun02 ~]# netstat -lntp |grep mongo  ##查看是否监听21000</span><br><span class="line">tcp        0      0 192.168.80.101:21000    0.0.0.0:*               LISTEN      1427/mongod</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.在任意一台机器上登录mongodb的21000端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongo --host 192.168.80.101 --port 21000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.建立config server的副本集</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; config = &#123; _id: &quot;configs&quot;, members: [ &#123;_id : 0, host : &quot;192.168.80.101:21000&quot;&#125;,&#123;_id : 1, host : &quot;192.168.80.102:21000&quot;&#125;,&#123;_id : 2, host : &quot;192.168.80.103:21000&quot;&#125;] &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.初始化数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; rs.initiate(config)</span><br></pre></td></tr></table></figure>
+<h3 id="配置三个节点shard"><a href="#配置三个节点shard" class="headerlink" title="配置三个节点shard"></a>配置三个节点shard</h3><p>三台机器上都做下面操作</p>
+<blockquote>
+<p>1.分别创建shard1.conf shard2.conf shard3.conf 配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /etc/mongod/shard1.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pidfilepath = /var/run/mongodb/shard1.pid</span><br><span class="line">dbpath = /data/mongodb/shard1/data</span><br><span class="line">logpath = /data/mongodb/shard1/log/shard1.log</span><br><span class="line">logappend = true</span><br><span class="line">bind_ip = 192.168.80.101</span><br><span class="line">port = 27001</span><br><span class="line">fork = true</span><br><span class="line">replSet=shard1 #副本集名称</span><br><span class="line">shardsvr = true #declare this is a shard db of a cluster;</span><br><span class="line">maxConns=20000 #设置最大连接数</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /etc/mongod/shard2.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pidfilepath = /var/run/mongodb/shard2.pid</span><br><span class="line">dbpath = /data/mongodb/shard2/data</span><br><span class="line">logpath = /data/mongodb/shard2/log/shard2.log</span><br><span class="line">logappend = true</span><br><span class="line">bind_ip = 192.168.80.101</span><br><span class="line">port = 27002</span><br><span class="line">fork = true</span><br><span class="line">replSet=shard2 #副本集名称</span><br><span class="line">shardsvr = true #declare this is a shard db of a cluster;</span><br><span class="line">maxConns=20000 #设置最大连接数</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /etc/mongod/shard3.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pidfilepath = /var/run/mongodb/shard3.pid</span><br><span class="line">dbpath = /data/mongodb/shard3/data</span><br><span class="line">logpath = /data/mongodb/shard3/log/shard3.log</span><br><span class="line">logappend = true</span><br><span class="line">bind_ip = 192.168.80.101</span><br><span class="line">port = 27003</span><br><span class="line">fork = true</span><br><span class="line">replSet=shard3 #副本集名称</span><br><span class="line">shardsvr = true #declare this is a shard db of a cluster;</span><br><span class="line">maxConns=20000 #设置最大连接数</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.启动shard1服务</p>
+</blockquote>
+<p>三台机器上都要操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongod -f /etc/mongod/shard1.conf</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.在kun02上登录登录mongodb</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongo --host 192.168.80.101 --port 27001</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.建立shard1的副本集</p>
+</blockquote>
+<p>kun02为主节点 kun03为从节点 kun04为仲裁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line"></span><br><span class="line">&gt; config = &#123; _id: &quot;shard1&quot;, members: [ &#123;_id : 0, host : &quot;192.168.80.101:27001&quot;&#125;, &#123;_id: 1,host : &quot;192.168.80.102:27001&quot;&#125;,&#123;_id : 2, host : &quot;192.168.80.103:27001&quot;,arbiterOnly:true&#125;] &#125;</span><br><span class="line"></span><br><span class="line">&gt; rs.initiate(config)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>5.启动shard2服务</p>
+</blockquote>
+<p>三台机器上都要操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongod -f /etc/mongod/shard2.conf</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>6.在kun03上登录登录mongodb</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# mongo --host 192.168.80.102 --port 27002</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.建立shard2的副本集</p>
+</blockquote>
+<p>kun02为仲裁 kun03为主节点 kun04为从节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line"></span><br><span class="line">&gt; config = &#123; _id: &quot;shard2&quot;, members: [ &#123;_id : 0, host : &quot;192.168.80.101:27002&quot; ,arbiterOnly:true&#125;,&#123;_id : 1, host : &quot;192.168.80.102:27002&quot;&#125;,&#123;_id : 2, host : &quot;192.168.80.103:27002&quot;&#125;] &#125;</span><br><span class="line"></span><br><span class="line">&gt;rs.initiate(config)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>8.启动shard3服务</p>
+</blockquote>
+<p>三台机器上都要操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongod -f /etc/mongod/shard3.conf</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>9.在kun04上登录登录mongodb</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 ~]# mongo --host 192.168.80.103 --port 27003</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>10.建立shard3的副本集</p>
+</blockquote>
+<p>kun02为从节点 kun03为仲裁 kun04为主节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;use admin</span><br><span class="line"></span><br><span class="line">&gt; config = &#123; _id: &quot;shard3&quot;, members: [ &#123;_id : 0, host : &quot;192.168.80.101:27003&quot;&#125;,  &#123;_id : 1, host : &quot;192.168.80.102:27003&quot;, arbiterOnly:true&#125;, &#123;_id : 2, host : &quot;192.168.80.103:27003&quot;&#125;] &#125;</span><br><span class="line"></span><br><span class="line">&gt; rs.initiate(config)</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置mongos"><a href="#配置mongos" class="headerlink" title="配置mongos"></a>配置mongos</h3><p>三台机器上都做下面操作</p>
+<blockquote>
+<p>1.创建mongos.conf配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mongod/mongos.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pidfilepath = /var/run/mongodb/mongos.pid</span><br><span class="line">logpath = /data/mongodb/mongos/log/mongos.log</span><br><span class="line">logappend = true</span><br><span class="line">bind_ip = 192.168.80.101</span><br><span class="line">port = 20000</span><br><span class="line">fork = true</span><br><span class="line">configdb = configs/192.168.80.101:21000,192.168.80.102:21000,192.168.80.103:21000 #监听的配置服务器,只能有1&gt;个或&gt;者3个，configs为配置服务器的副本集名字</span><br><span class="line">maxConns=20000 #设置最大连接数</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.启动mongos服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongos -f /etc/mongod/mongos.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.在任意一台机器上登录mongodb的20000端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongo --host 192.168.80.101 --port 20000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.串联所有分片和路由</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.addShard(&quot;shard1/192.168.80.101:27001,192.168.80.102:27001,192.168.80.103:27001&quot;)</span><br><span class="line"></span><br><span class="line">mongos&gt; sh.addShard(&quot;shard2/192.168.80.101:27002,192.168.80.102:27002,192.168.80.103:27002&quot;)</span><br><span class="line"></span><br><span class="line">mongos&gt; sh.addShard(&quot;shard3/192.168.80.101:27003,192.168.80.102:27003,192.168.80.103:27003&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看分片状态</p>
+</blockquote>
+<p>格式：<code>sh.status()</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.status()</span><br><span class="line">--- Sharding Status ---</span><br><span class="line">  sharding version: &#123;</span><br><span class="line">      &quot;_id&quot; : 1,</span><br><span class="line">      &quot;minCompatibleVersion&quot; : 5,</span><br><span class="line">      &quot;currentVersion&quot; : 6,</span><br><span class="line">      &quot;clusterId&quot; : ObjectId(&quot;5b82b1cd6b7dc181df5c330a&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">  shards:</span><br><span class="line">        &#123;  &quot;_id&quot; : &quot;shard1&quot;,  &quot;host&quot; : &quot;shard1/192.168.80.101:27001,192.168.80.102:27001&quot;,  &quot;state&quot; : 1 &#125;</span><br><span class="line">        &#123;  &quot;_id&quot; : &quot;shard2&quot;,  &quot;host&quot; : &quot;shard2/192.168.80.102:27002,192.168.80.103:27002&quot;,  &quot;state&quot; : 1 &#125;</span><br><span class="line">        &#123;  &quot;_id&quot; : &quot;shard3&quot;,  &quot;host&quot; : &quot;shard3/192.168.80.101:27003,192.168.80.103:27003&quot;,  &quot;state&quot; : 1 &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="21-40-mongodb分片测试"><a href="#21-40-mongodb分片测试" class="headerlink" title="21.40 mongodb分片测试"></a>21.40 mongodb分片测试</h2><p>建立数据在分片中，看看是否平均分配至各个节点（分片）中</p>
+<blockquote>
+<p>登录任何一台20000端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongo --host 192.168.80.101 --port 20000</span><br><span class="line"></span><br><span class="line">mongos&gt; use admin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>指定要分片的数据库</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.enableSharding(&quot;testdb&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>指定数据库里需要分片的集合和片键</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.shardCollection(&quot;testdb.table1&quot;,&#123;&quot;id&quot;:1&#125; )</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>插入数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; use  testdb</span><br><span class="line"></span><br><span class="line">mongos&gt;  for (var i = 1; i &lt;= 10000; i++) db.table1.save(&#123;id:i,&quot;test1&quot;:&quot;testval1&quot;&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>再查看多个数据库和数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.enableSharding(&quot;test2&quot;)</span><br><span class="line">mongos&gt; sh.shardCollection(&quot;test2.test2&quot;,&#123;&quot;id&quot;:1&#125; )</span><br><span class="line">mongos&gt; sh.enableSharding(&quot;test3&quot;)</span><br><span class="line">mongos&gt; sh.shardCollection(&quot;test3.test3&quot;,&#123;&quot;id&quot;:1&#125; )</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看分片情况</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos&gt; sh.status()</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.table1.stats() ##查看tablesz状态</span><br></pre></td></tr></table></figure></p>
+<h2 id="21-41-mongodb备份恢复"><a href="#21-41-mongodb备份恢复" class="headerlink" title="21.41 mongodb备份恢复"></a>21.41 mongodb备份恢复</h2><blockquote>
+<p>备份指定库</p>
+</blockquote>
+<p>格式：<code>mongodump --host IP地址 --port 端口 -d 指定备份的库 -o 备份到的目录</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongodump --host 192.168.80.101 --port 20000 -d testdb -o /tmp/mongodbbak</span><br></pre></td></tr></table></figure></p>
+<p>其中备份后的目录中会生成要备份指定库的目录，库的目录中会有该库中集合的数据，每个集合都会有两个文件，其中bson文件是真正的数据。json文件是可以查看的数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /tmp/mongodbbak/</span><br><span class="line">testdb</span><br><span class="line">[root@kun02 ~]# ls /tmp/mongodbbak/testdb/</span><br><span class="line">table1.bson  table1.metadata.json</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>备份所有库</p>
+</blockquote>
+<p>格式：<code>mongodump --host IP地址 --port 端口 -o 备份到的目录</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongodump --host 192.168.80.101 --port 20000 -o /tmp/mongodbbak1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>备份指定集合</p>
+</blockquote>
+<p>格式：<code>mongodump --host IP地址 --port 端口 -d 指定备份的库 -c 指定备份的库 -o 备份到的目录</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongodump --host 192.168.80.101 --port 20000 -d testdb -c table1 -o /tmp/mongodbbak3</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>备份指定集合为json文件</p>
+</blockquote>
+<p>格式：<code>mongoexport --host IP地址 --port 端口 -d 指定备份的库 -c 指定备份的库 -o 备份为的json文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongoexport --host 192.168.80.101 --port 20000 -d testdb -c table1 -o /tmp/table.json</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>恢复所有库</p>
+</blockquote>
+<p>格式：<code>mongorestore --host IP地址 --port 端口 [--drop] 备份好的目录</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongorestore --host 192.168.80.101 --port 20000 /tmp/mongodbbak1/</span><br></pre></td></tr></table></figure></p>
+<p><code>--drop</code>可选，意思是当恢复之前先把之前的数据删除，不建议使用</p>
+<blockquote>
+<p>恢复指定库</p>
+</blockquote>
+<p>格式：<code>mongorestore --host IP地址 --port 端口 -d 指定恢复的库 备份好的库目录</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongorestore --host 192.168.80.101 --port 20000 -d testdb /tmp/mongodbbak1/testdb/</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>恢复指定集合</p>
+</blockquote>
+<p>格式：<code>mongorestore --host IP地址 --port 端口 -d 指定恢复的库 -c 指定恢复的集合 备份好的目录中的bson文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongorestore --host 192.168.80.101 --port 20000 -d testdb -c table1 /tmp/mongodbbak1/testdb/table1.bson</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>使用json文件来恢复集合</p>
+</blockquote>
+<p>格式：<code>mongoimport --host IP地址 --port 端口 -d 指定恢复的库 -c 指定恢复的集合 --file 指定备份好的json文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mongoimport --host 192.168.80.101 --port 20000 -d testdb -c table1 --file /tmp/table.json</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -181,7 +343,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
         		</li>
       		
 		</ul>
@@ -237,7 +399,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/shell-习题-1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/27/mongodb-4（8月27日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,18 +413,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/23/shell-习题-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          shell 习题 2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/20/分发系统-2（7月20日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">分发系统 2（7月20日）</div>
+    <a href="/2018/08/25/mongodb-3（8月24日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mongodb 3（8月24日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
