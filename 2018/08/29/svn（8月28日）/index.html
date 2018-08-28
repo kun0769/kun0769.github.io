@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180828235343.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180828235411.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180828235846.png">
-<meta property="og:updated_time" content="2018-08-28T16:23:07.770Z">
+<meta property="og:updated_time" content="2018-08-28T16:25:29.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="svn（8月28日）">
 <meta name="twitter:description" content="22.1 代码管理平台介绍22.2 安装svn22.3 客户端上使用svn（linux）22.4 客户端上使用svn（windows）">
@@ -175,7 +175,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>22.1 代码管理平台介绍<br>22.2 安装svn<br>22.3 客户端上使用svn（linux）<br>22.4 客户端上使用svn（windows）<br><a id="more"></a></p>
-<h2 id="22-1-代码管理平台介绍"><a href="#22-1-代码管理平台介绍" class="headerlink" title="22.1 代码管理平台介绍"></a>22.1 代码管理平台介绍</h2><p>代码管理平台也叫版本控制，记录若干文件内容变化，以便将来查阅特定版本修订情况。<br>版本管理工具发展简史，cvs —- svn —- git  参考<img src="" alt=""><a href="http://luckypoem14.github.io/test/2012/04/24/scm-history/" target="_blank" rel="noopener">http://luckypoem14.github.io/test/2012/04/24/scm-history/</a><br>svn全称subversion，是一个开源版本控制系统，始于2000年。git是linux创始人linus发起的，2005年发布，最初目的是更好管理linux内核代码。<br>git和svn不同在于git不需要依赖服务端就可以工作，即git是分布式的。关于git和svn的比较大家参考<img src="" alt=""><a href="http://blog.lishiming.net/?p=305" target="_blank" rel="noopener">http://blog.lishiming.net/?p=305</a><br>github是基于git的在线web页面代码托管平台，可以选择付费服务。<br>gitlab可以认为是一个开源的github，两者没有直接关系。<br>总结<br><code>代码管理平台也叫版本控制，svn是基于c/s架构 客户端需要把新代码上传到服务端。git是分布式的，每个客户端都是独立的版本管理中心，代码可以存放在本机上，也可以上传到服务端上来汇总所有的更新。 github是在线的基于git的平台。gitlab与github一样，只是它是开源的。公司多用它来作私人仓库。</code></p>
+<h2 id="22-1-代码管理平台介绍"><a href="#22-1-代码管理平台介绍" class="headerlink" title="22.1 代码管理平台介绍"></a>22.1 代码管理平台介绍</h2><p>代码管理平台也叫<code>版本控制</code>，记录若干文件内容变化，以便将来查阅特定版本修订情况。<br>版本管理工具发展简史，cvs —- svn —- git  参考<img src="" alt=""><a href="http://luckypoem14.github.io/test/2012/04/24/scm-history/" target="_blank" rel="noopener">http://luckypoem14.github.io/test/2012/04/24/scm-history/</a><br><code>svn</code>全称<code>subversion</code>，是一个开源版本控制系统，始于2000年。<code>git</code>是linux创始人linus发起的，2005年发布，最初目的是更好管理linux内核代码。<br>git和svn不同在于git不需要依赖服务端就可以工作，即git是分布式的。关于git和svn的比较大家参考<img src="" alt=""><a href="http://blog.lishiming.net/?p=305" target="_blank" rel="noopener">http://blog.lishiming.net/?p=305</a><br><code>github</code>是基于git的在线web页面代码托管平台，可以选择付费服务。<br><code>gitlab</code>可以认为是一个开源的github，两者没有直接关系。<br>总结<br><code>代码管理平台也叫版本控制，svn是基于c/s架构 客户端需要把新代码上传到服务端。git是分布式的，每个客户端都是独立的版本管理中心，代码可以存放在本机上，也可以上传到服务端上来汇总所有的更新。 github是在线的基于git的平台。gitlab与github一样，只是它是开源的。公司多用它来作私人仓库。</code></p>
 <h2 id="22-2-安装svn"><a href="#22-2-安装svn" class="headerlink" title="22.2 安装svn"></a>22.2 安装svn</h2><p>由于svn是基于c/s架构的，这里先安装服务端</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.使用yum安装svn</p>
@@ -243,10 +243,7 @@
 <p>3.提交上传数据</p>
 </blockquote>
 <p>格式：<code>svn commit -m “备注内容”</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 myproject]# svn commit -m &quot;add passwd&quot;</span><br><span class="line">正在增加       passwd</span><br><span class="line">传输文件数据.</span><br><span class="line">提交后的版本为 1。</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>更新最新版本的数据到本地</p>
-</blockquote>
-<p>格式：<code>svn up</code>或者 <code>svn update</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 myproject]# svn up</span><br><span class="line">正在升级 &apos;.&apos;:</span><br><span class="line">U    passwd</span><br><span class="line">更新到版本 2。</span><br></pre></td></tr></table></figure></p>
+<h3 id="更新最新版本的数据到本地"><a href="#更新最新版本的数据到本地" class="headerlink" title="更新最新版本的数据到本地"></a>更新最新版本的数据到本地</h3><p>格式：<code>svn up</code>或者 <code>svn update</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 myproject]# svn up</span><br><span class="line">正在升级 &apos;.&apos;:</span><br><span class="line">U    passwd</span><br><span class="line">更新到版本 2。</span><br></pre></td></tr></table></figure></p>
 <h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><blockquote>
 <p>1.删除本地数据并打标记</p>
 </blockquote>
@@ -501,15 +498,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,15 +518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,7 +526,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +542,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +570,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,15 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
             
             <div class="clearfix"></div>
