@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | kun0769的博客</title>
+  <title>git 1（8月29日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/page/5/index.html">
+  <meta name="description" content="22.5/22.6 单机上使用git22.7 建立远程仓库22.8 克隆远程仓库">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 1（8月29日）">
+<meta property="og:url" content="http://yoursite.com/2018/08/29/git-1（8月29日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="22.5/22.6 单机上使用git22.7 建立远程仓库22.8 克隆远程仓库">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png">
+<meta property="og:updated_time" content="2018-08-29T15:55:12.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="git 1（8月29日）">
+<meta name="twitter:description" content="22.5/22.6 单机上使用git22.7 建立远程仓库22.8 克隆远程仓库">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,240 +156,261 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git-1（8月29日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git 1（8月29日）
+    </h1>
+  
+
+        
+        <a href="/2018/08/29/git-1（8月29日）/" class="archive-article-date">
+  	<time datetime="2018-08-29T15:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>22.5/22.6 单机上使用git<br>22.7 建立远程仓库<br>22.8 克隆远程仓库<br><a id="more"></a></p>
+<h2 id="22-5-22-6-单机上使用git"><a href="#22-5-22-6-单机上使用git" class="headerlink" title="22.5/22.6 单机上使用git"></a>22.5/22.6 单机上使用git</h2><p>git和svn不同在于它是分布式的，可以单机使用，代码可以存储在本机的代码管理平台上</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.使用yum安装git</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# yum install -y git</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.建立版本仓库 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# mkdir /data/gitroot</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.初始化仓库</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# git init /data/gitroot/</span><br><span class="line">初始化空的 Git 版本库于 /data/gitroot/.git/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.添加邮件和用户名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git config --global user.email &quot;aaa@123.com&quot;</span><br><span class="line">[root@kun02 gitroot]# git config --global user.name &quot;kun&quot;</span><br></pre></td></tr></table></figure>
+<p>刚刚定义的邮件和用户名存放在<code>/root/.gitconfig</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# cat /root/.gitconfig</span><br><span class="line">[user]</span><br><span class="line">    email = aaa@123.com</span><br><span class="line">    name = kun</span><br></pre></td></tr></table></figure></p>
+<p>和svn一样初始化仓库后可以查看多了好多配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /data/gitroot/.git/</span><br><span class="line">branches  config  description  HEAD  hooks  info  objects  refs</span><br></pre></td></tr></table></figure></p>
+<p>现在我们在仓库里面新建文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# cd /data/gitroot/</span><br><span class="line">[root@kun02 gitroot]# echo &quot;hello world&quot; &gt; 1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>把文件打上添加标签</p>
+</blockquote>
+<p>格式：<code>git add 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git add 1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>提交文件</p>
+</blockquote>
+<p>格式：<code>git commit -m &quot;备注内容&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git commit -m &quot;add 1.txt&quot;</span><br><span class="line">[master（根提交） de58fc6] add 1.txt</span><br><span class="line">1 file changed, 1 insertion(+)</span><br><span class="line">create mode 100644 1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看当前仓库的状态</p>
+</blockquote>
+<p>格式：<code>git status</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git status</span><br><span class="line"># 位于分支 master</span><br><span class="line">无文件要提交，干净的工作区</span><br></pre></td></tr></table></figure></p>
+<p>当仓库中存在没有添加add标签时会报下面信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git status</span><br><span class="line"># 位于分支 master</span><br><span class="line"># 尚未暂存以备提交的变更：</span><br><span class="line">#   （使用 &quot;git add &lt;file&gt;...&quot; 更新要提交的内容）</span><br><span class="line">#   （使用 &quot;git checkout -- &lt;file&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line">#</span><br><span class="line">#    修改：      1.txt</span><br><span class="line">#</span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure></p>
+<p>当仓库中存在没有提交时候就会报下面信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git status</span><br><span class="line"># 位于分支 master</span><br><span class="line"># 要提交的变更：</span><br><span class="line">#   （使用 &quot;git reset HEAD &lt;file&gt;...&quot; 撤出暂存区）</span><br><span class="line">#</span><br><span class="line">#    修改：      1.txt</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看文件的变更</p>
+</blockquote>
+<p>格式：<code>git diff 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git diff 1.txt</span><br><span class="line">diff --git a/1.txt b/1.txt</span><br><span class="line">index c60a9ae..21f27d1 100644</span><br><span class="line">--- a/1.txt</span><br><span class="line">+++ b/1.txt</span><br><span class="line">@@ -1,3 +1,4 @@</span><br><span class="line">hello world</span><br><span class="line">111111</span><br><span class="line">22222222</span><br><span class="line">+33333333</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看所有提交的记录</p>
+</blockquote>
+<p>格式：<code>git log</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git log</span><br><span class="line">commit e345d2076a79eb3378a65079e40d797991700bed</span><br><span class="line">Author: kun &lt;aaa@123.com&gt;</span><br><span class="line">Date:   Thu Aug 30 05:11:29 2018 +0800</span><br><span class="line"></span><br><span class="line">    ch 1.txt 3</span><br><span class="line"></span><br><span class="line">commit f2cd7bde934e8766e2c586dd1dcb164f2a25840b</span><br><span class="line">Author: kun &lt;aaa@123.com&gt;</span><br><span class="line">Date:   Thu Aug 30 05:07:20 2018 +0800</span><br><span class="line"></span><br><span class="line">    ch 1.txt 2</span><br><span class="line"></span><br><span class="line">commit efa71b5e407880a18a447686642dce222e3b4cbe</span><br><span class="line">Author: kun &lt;aaa@123.com&gt;</span><br><span class="line">Date:   Thu Aug 30 05:04:13 2018 +0800</span><br><span class="line"></span><br><span class="line">    ch 1.txt 1</span><br><span class="line"></span><br><span class="line">commit de58fc669c4ec619c13830cc999708462d1923aa</span><br><span class="line">Author: kun &lt;aaa@123.com&gt;</span><br><span class="line">Date:   Thu Aug 30 05:00:22 2018 +0800</span><br><span class="line"></span><br><span class="line">    add 1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>单行显示所有提交的记录</p>
+</blockquote>
+<p>格式：<code>git log --pretty=oneline</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git log --pretty=oneline</span><br><span class="line">e345d2076a79eb3378a65079e40d797991700bed ch 1.txt 3</span><br><span class="line">f2cd7bde934e8766e2c586dd1dcb164f2a25840b ch 1.txt 2</span><br><span class="line">efa71b5e407880a18a447686642dce222e3b4cbe ch 1.txt 1</span><br><span class="line">de58fc669c4ec619c13830cc999708462d1923aa add 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>第一列表示版本的<code>IP号</code>，用于版本的回滚 第二列表示<code>版本的备注</code> 版本越下越早</p>
+<blockquote>
+<p>回滚到某个版本</p>
+</blockquote>
+<p>格式：<code>git reset --hard 版本IP号</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git reset --hard f2cd7bd</span><br><span class="line">HEAD 现在位于 f2cd7bd ch 1.txt 2</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>去掉add标签</p>
+</blockquote>
+<p>格式：<code>git reset HEAD 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git reset HEAD 1.txt</span><br><span class="line">重置后撤出暂存区的变更：</span><br><span class="line">M    1.txt</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看历史版本记录</p>
+</blockquote>
+<p>格式：<code>git reflog</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git reflog</span><br><span class="line">f2cd7bd HEAD@&#123;0&#125;: reset: moving to f2cd7bd</span><br><span class="line">e345d20 HEAD@&#123;1&#125;: commit: ch 1.txt 3</span><br><span class="line">f2cd7bd HEAD@&#123;2&#125;: commit: ch 1.txt 2</span><br><span class="line">efa71b5 HEAD@&#123;3&#125;: commit: ch 1.txt 1</span><br><span class="line">de58fc6 HEAD@&#123;4&#125;: commit (initial): add 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>当你回滚了前一个版本后 后悔了要回去之前的最新的版本可以使用查看历史版本记录来查看最新的版本的IP头<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git reset --hard e345d20</span><br><span class="line">HEAD 现在位于 e345d20 ch 1.txt 3</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>从本地仓库中拉取文件</p>
+</blockquote>
+<p>格式：<code>git checkout -- 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# rm -rf 1.txt</span><br><span class="line">[root@kun02 gitroot]# git checkout -- 1.txt</span><br></pre></td></tr></table></figure></p>
+<p>当文件给删除或者更改了想使用回仓库中最新的版本可以使用git checkout来拉取回文件</p>
+<blockquote>
+<p>删除文件并提交</p>
+</blockquote>
+<p>格式：<code>git rm 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git rm 1.txt</span><br><span class="line">rm &apos;1.txt&apos;</span><br><span class="line">[root@kun02 gitroot]# git commit -m &quot;rm 1.txt&quot;</span><br><span class="line">[master add7b06] rm 1.txt</span><br><span class="line">1 file changed, 4 deletions(-)</span><br><span class="line">delete mode 100644 1.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="git-rm-与rm区别"><a href="#git-rm-与rm区别" class="headerlink" title="git rm 与rm区别"></a>git rm 与rm区别</h3><p>用 <code>git rm</code> 来删除文件，同时还会将这个<code>删除操作记录下来</code>；该记录用于commit来提交。<br>用 <code>rm</code> 来删除文件，仅仅是<code>删除了物理文件</code>，没有将其从 git 的记录中剔除。 需要在执行<code>commit</code>的时候，多加一个<code>-a</code>参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# rm -rf 1.txt</span><br><span class="line">[root@kun02 gitroot]# git commit -am &quot;rm 1.txt&quot;</span><br></pre></td></tr></table></figure></p>
+<p>##22.7 建立远程仓库</p>
+<p>更改使用的命令都是在本机上的，要想使用远程仓库来托管代码，可以去github的官网上注册帐号并建立仓库<br>官网 <img src="" alt=""><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> </p>
+<p>注册了帐号后可以新建仓库，点右上角 —-<code>new repository</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png" alt=""></p>
+<p>填写其他仓库信息<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png" alt=""></p>
+<p>添加密钥<br><code>点击头像</code> —-<code>Setting</code>—- <code>SSH and GPG keys</code> —- <code>New SSH key</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png" alt=""></p>
+<p>然后把本机上使用ssh-keygen的来生成公钥并保存到github上,用于本机连接github时验证通讯<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png" alt=""></p>
+<p>根据创建完仓库的提示输入命令并提交到GitHub仓库上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 tmp]# mkdir test</span><br><span class="line">[root@kun02 tmp]# cd test/</span><br><span class="line">[root@kun02 test]# echo &quot;# test&quot; &gt; README.md</span><br><span class="line">[root@kun02 test]# git init</span><br><span class="line">[root@kun02 test]# git add README.md</span><br><span class="line">[root@kun02 test]# git commit -m &quot;first commit&quot;</span><br><span class="line">[root@kun02 test]# git remote add origin git@github.com:kun0769/test.git   ##把本地仓库推送到远程仓库上</span><br><span class="line">[root@kun02 test]# git push -u origin master  ##推送当前分支到远程上</span><br></pre></td></tr></table></figure>
+<p>此时，远程仓库上就会有刚刚创建的README.md的文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png" alt=""></p>
+<blockquote>
+<p>把本机文件推送到远程上</p>
+</blockquote>
+<p>格式：<code>git push</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# echo &quot;hello world&quot; &gt; 1.txt</span><br><span class="line">[root@kun02 test]# git add 1.txt</span><br><span class="line">[root@kun02 test]# git commit -m &quot;test&quot;</span><br><span class="line">[root@kun02 test]# git push</span><br></pre></td></tr></table></figure></p>
+<p>第一次推送文件使用<code>git push -u origin master</code> </p>
+<p>此时回去远程仓库可以发现多了1.txt<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png" alt=""></p>
+<h2 id="22-8-克隆远程仓库"><a href="#22-8-克隆远程仓库" class="headerlink" title="22.8 克隆远程仓库"></a>22.8 克隆远程仓库</h2><p>克隆远程仓库可以把整个远程仓库克隆到本机上。使用<code>git clone</code>类似于svn的 <code>svn checkout</code>，先到远程仓库上点击<code>Clone or download</code>复制远程仓库地址<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png" alt=""></p>
+<blockquote>
+<p>在本机上克隆远程仓库</p>
+</blockquote>
+<p>格式：<code>git clone 远程仓库地址</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# git clone git@github.com:kun0769/test.git</span><br></pre></td></tr></table></figure></p>
+<p>到远程仓库上编辑代码文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png" alt=""></p>
+<p>本机如果先更新为远程仓库的最新版本，可以拉取到本机<br>格式：<code>git pull</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git pull</span><br><span class="line"></span><br><span class="line">[root@kun02 test]# cat 1.txt</span><br><span class="line">hello world</span><br><span class="line">fsdf</span><br><span class="line">adadd</span><br><span class="line">fdsf</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/七周第三次课（5月8日）/" class="archive-article-date">
-  	<time datetime="2018-05-08T16:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/七周第三次课（5月8日）/">七周第三次课（5月8日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/29/git-1（8月29日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/29/svn（8月28日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">svn（8月28日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/七周第二次课（5月7日）/">七周第二次课（5月7日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/05/七周第一次课（5月4日）/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/七周第一次课（5月4日）/">七周第一次课（5月4日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
-  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/26/六周第二次课（4月26日）/">六周第二次课（4月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/Linux/page/4/">&laquo; Prev</a><a class="page-number" href="/tags/Linux/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/3/">3</a><a class="page-number" href="/tags/Linux/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/tags/Linux/page/6/">6</a><a class="page-number" href="/tags/Linux/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Linux/page/11/">11</a><a class="extend next" rel="next" href="/tags/Linux/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -396,9 +433,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
