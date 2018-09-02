@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831134943.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135614.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135639.png">
-<meta property="og:updated_time" content="2018-08-31T13:06:28.726Z">
+<meta property="og:updated_time" content="2018-08-31T13:11:08.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 2（8月30日）">
 <meta name="twitter:description" content="22.9 分支管理22.10 远程分支管理22.11 标签管理22.12 git别名">
@@ -194,8 +194,14 @@
 <p>格式：<code>git merge 要合并的分支名</code><br>合并分支前提是先切换到目标分支（旧分支）上 ，在把合并的分支（新编辑分支）合并到目标分支上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git checkout master</span><br><span class="line">切换到分支 &apos;master&apos;</span><br><span class="line">[root@kun02 gitroot]# git merge test   ##把test分支合并到master分支上</span><br><span class="line">[root@kun02 gitroot]# ls</span><br><span class="line">1.txt  2.txt</span><br></pre></td></tr></table></figure></p>
 <p>合并分支只是合并内容，分支本身不会消失。</p>
 <h3 id="分支冲突"><a href="#分支冲突" class="headerlink" title="分支冲突"></a>分支冲突</h3><p>如果master分支和test分支都对2.txt进行了编辑，当合并时会提示冲突，需要先解决冲突才可以继续合并。<br>解决冲突的方法是在master分支下，编辑2.txt，改为test分支里面2.txt的内容。然后提交2.txt，再合并test分支。<br> 但是这样有一个问题，万一master分支更改的内容是我们想要的呢？ 可以编辑2.txt内容，改为想要的，然后提交。切换到test分支，然后合并master分支到test分支即可（倒着合并）。合并分支有一个原则，那就是要把最新的分支合并到旧的分支。也就是说merge后面跟的分支名字一定是最新的分支。</p>
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>格式：<code>git branch -d 要删除的分支</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git branch -d test</span><br></pre></td></tr></table></figure></p>
-<h2 id="强制删除分支"><a href="#强制删除分支" class="headerlink" title="强制删除分支"></a>强制删除分支</h2><p>当分支没有合并，删除之前会提示，那就不合并，可以强制删除<br>格式：<code>git branch -D 要删除的分支</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git branch -D test</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>删除分支</p>
+</blockquote>
+<p>格式：<code>git branch -d 要删除的分支</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git branch -d test</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>强制删除分支</p>
+</blockquote>
+<p>当分支没有合并，删除之前会提示，那就不合并，可以强制删除<br>格式：<code>git branch -D 要删除的分支</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git branch -D test</span><br></pre></td></tr></table></figure></p>
 <h3 id="分支的原则"><a href="#分支的原则" class="headerlink" title="分支的原则"></a>分支的原则</h3><ul>
 <li>对于分支的应用，建议大家以这样的原则来：<ul>
 <li>master分支是非常重要的，线上发布代码用这个分支，平时我们开发代码不要在这个分支上。</li>
@@ -221,14 +227,17 @@
 </blockquote>
 <p>格式：<code>git push origin 本地分支名</code></p>
 <ul>
-<li>对于推送分支有两种情况：<ul>
-<li>当本地分支和远程分支一致时，git push会把所有本地分支的变更一同推送到远程，如果想只推送一个分支，使用<code>git push origin branch-name</code></li>
+<li><p>对于推送分支有两种情况：</p>
+<ul>
+<li><p>当本地分支和远程分支一致时，git push会把所有本地分支的变更一同推送到远程，如果想只推送一个分支，使用<code>git push origin branch-name</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push origin dev  ##几个分支都有更改，只指定推送dev分支到远程上</span><br><span class="line">Counting objects: 5, done.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 318 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">   83a8cc2..2c3ba25  dev -&gt; dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当本地分支比远程分支多，git push只推送本地和远程一致的分支，想要把多出来的本地分支推送到远程时，使用<code>git push origin branch-name</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push origin dev2  ##远程上没有dev2 这里推送本地dev2上去</span><br><span class="line">Counting objects: 4, done.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 249 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 1), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (1/1), completed with 1 local object.</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">* [new branch]      dev2 -&gt; dev2</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push origin dev  ##几个分支都有更改，只指定推送dev分支到远程上</span><br><span class="line">Counting objects: 5, done.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 318 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">   83a8cc2..2c3ba25  dev -&gt; dev</span><br></pre></td></tr></table></figure>
-<pre><code>- 当本地分支比远程分支多，git push只推送本地和远程一致的分支，想要把多出来的本地分支推送到远程时，使用`git push origin branch-name`  
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push origin dev2  ##远程上没有dev2 这里推送本地dev2上去</span><br><span class="line">Counting objects: 4, done.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 249 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 1), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (1/1), completed with 1 local object.</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">* [new branch]      dev2 -&gt; dev2</span><br></pre></td></tr></table></figure>
 <p>远程机器上多了dev2分支<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830234427.png" alt=""></p>
 <h2 id="22-11-标签管理"><a href="#22-11-标签管理" class="headerlink" title="22.11 标签管理"></a>22.11 标签管理</h2><p><code>标签</code>类似于<code>快照</code>功能，可以给版本库打一个标签，记录某个时刻库的状态。也可以随时恢复到该状态。一般打标签都是给master打标签。</p>
 <blockquote>
@@ -370,6 +379,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/02/gitlab（8月31日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          gitlab（8月31日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/29/git-1（8月29日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -557,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,11 +595,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,15 +619,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +631,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
