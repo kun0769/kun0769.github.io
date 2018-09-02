@@ -16,10 +16,24 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="22.13 搭建git服务器22.14/22.15 安装gitlab22.16 使用gitlab22.17 gitlab备份和恢复">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-02T04:27:25.620Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901143034.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901143220.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901204043.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902133822.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134354.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134545.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134920.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135037.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135221.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135418.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135640.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140342.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140515.png">
+<meta property="og:updated_time" content="2018-09-02T06:54:17.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitlab（8月31日）">
 <meta name="twitter:description" content="22.13 搭建git服务器22.14/22.15 安装gitlab22.16 使用gitlab22.17 gitlab备份和恢复">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901143034.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,8 +179,115 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>22.13 搭建git服务器<br>22.14/22.15 安装gitlab<br>22.16 使用gitlab<br>22.17 gitlab备份和恢复</p>
-
+        <p>22.13 搭建git服务器<br>22.14/22.15 安装gitlab<br>22.16 使用gitlab<br>22.17 gitlab备份和恢复<br><a id="more"></a></p>
+<h2 id="22-13-搭建git服务器"><a href="#22-13-搭建git服务器" class="headerlink" title="22.13 搭建git服务器"></a>22.13 搭建git服务器</h2><p>github毕竟是公开的，而私有仓库又得花钱买。所以我们可以想办法搭建一个私有的，只自己公司使用的。可以使用Gitlab，也可以自己搭建一个命令行的git服务器。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>在服务端上</p>
+<blockquote>
+<p>1.yum安装git</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# yum install -y git</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建git用户</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# useradd -s /usr/bin/git-shell git</span><br></pre></td></tr></table></figure>
+<p>设置<code>/usr/bin/git-shell</code>,目的是为了不让git用户远程登陆</p>
+<blockquote>
+<p>3.进入git用户目录中创建存放公钥的目录和文件并设置权限</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# cd /home/git/</span><br><span class="line">[root@kun03 git]# mkdir .ssh</span><br><span class="line">[root@kun03 git]# touch .ssh/authorized_keys</span><br><span class="line">[root@kun03 git]# chmod -R 600 .ssh/authorized_keys</span><br><span class="line">[root@kun03 git]# chown -R git:git .ssh/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.把客户端的公钥存放在服务端的/authorized_keys上</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ssh git@192.168.80.102  ##远程登录服务端，显示不允许登录，但实际上已经可以和服务端通讯</span><br><span class="line">fatal: Interactive git shell is not enabled.</span><br><span class="line">hint: ~/git-shell-commands should exist and have read and execute access.</span><br><span class="line">Connection to 192.168.80.102 closed.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.创建存储git的仓库</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 git]# mkdir /data/gitroot</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.在该仓库下创建裸仓库</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 gitroot]# git init --bare sample.git  ##创建裸仓库sample 仓库一般用.git结尾</span><br><span class="line">初始化空的 Git 版本库于 /data/gitroot/sample.git/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.更改裸仓库的属组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 gitroot]# chown -R git:git  sample.git/</span><br></pre></td></tr></table></figure>
+<p>在客户端上<br>平时git服务器是不需要开发人员登录修改代码的，它仅仅是充当着一个服务器的角色，就像github一样，平时操作都是在我们自己的pc上做的</p>
+<blockquote>
+<p>1.克隆服务端的仓库到本地</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# git clone git@192.168.80.102:/data/gitroot/sample.git</span><br><span class="line">正克隆到 &apos;sample&apos;...</span><br><span class="line">warning: 您似乎克隆了一个空版本库。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.新建文件并推送到远程服务端</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 sample]# echo &quot;aaa&quot; &gt; 1.txt</span><br><span class="line">[root@kun02 sample]# git add 1.txt</span><br><span class="line">[root@kun02 sample]# git commit -m &quot;add 1.txt&quot;</span><br><span class="line">[root@kun02 sample]# git push origin master  ##指定默认托送master分支</span><br></pre></td></tr></table></figure>
+<h2 id="22-14-22-15-安装gitlab"><a href="#22-14-22-15-安装gitlab" class="headerlink" title="22.14/22.15 安装gitlab"></a>22.14/22.15 安装gitlab</h2><p>一般公司都是使用gitlab来托管代码的。官网  <img src="" alt=""><a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>我们可以把代码托管在他的平台上，也可以在服务器上使用gitlab搭建自己平台<br>官网要求服务器内存不少于4G<br>官网安装方法 <img src="" alt=""><a href="https://about.gitlab.com/installation/#centos-7" target="_blank" rel="noopener">https://about.gitlab.com/installation/#centos-7</a><br>国内镜像安装方法 <img src="" alt=""><a href="https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/" target="_blank" rel="noopener">https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/</a></p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><p>使用国内镜像安装</p>
+<blockquote>
+<p>1.创建gitlab-ce.repo</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# vim /etc/yum.repos.d/gitlab-ce.repo</span><br></pre></td></tr></table></figure>
+<p>添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[gitlab-ce]</span><br><span class="line">name=Gitlab CE Repository</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.安装makecache和gitlab-ce</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# yum makecache</span><br><span class="line">[root@kun09 ~]# yum install -y gitlab-ce</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.自动加载配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>gitlab服务操作</p>
+</blockquote>
+<p>格式：<code>gitlab-ctl stop/restart/start/status</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# gitlab-ctl status</span><br><span class="line">run: alertmanager: (pid 31211) 39s; run: log: (pid 23701) 3848s</span><br><span class="line">run: gitaly: (pid 31219) 39s; run: log: (pid 23647) 3851s</span><br><span class="line">run: gitlab-monitor: (pid 31229) 39s; run: log: (pid 23666) 3850s</span><br><span class="line">run: gitlab-workhorse: (pid 31232) 38s; run: log: (pid 23628) 3851s</span><br><span class="line">run: logrotate: (pid 31238) 38s; run: log: (pid 23670) 3850s</span><br><span class="line">run: nginx: (pid 31244) 37s; run: log: (pid 23627) 3851s</span><br><span class="line">run: node-exporter: (pid 31248) 37s; run: log: (pid 23646) 3851s</span><br><span class="line">run: postgres-exporter: (pid 31255) 36s; run: log: (pid 23714) 3848s</span><br><span class="line">run: postgresql: (pid 31260) 36s; run: log: (pid 23608) 3852s</span><br><span class="line">run: prometheus: (pid 31270) 35s; run: log: (pid 23680) 3850s</span><br><span class="line">run: redis: (pid 31275) 35s; run: log: (pid 23609) 3852s</span><br><span class="line">run: redis-exporter: (pid 31280) 34s; run: log: (pid 23665) 3850s</span><br><span class="line">run: sidekiq: (pid 31282) 34s; run: log: (pid 23607) 3852s</span><br><span class="line">run: unicorn: (pid 31290) 34s; run: log: (pid 23606) 3852s</span><br></pre></td></tr></table></figure></p>
+<p>浏览器上访问192.168.80.108来访问gitlab,管理员用户root ,第一次登录需要我们填写密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901143034.png" alt=""></p>
+<p>输入root 新密码后就可以进入gitlab页面<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901143220.png" alt=""></p>
+<p>gitlab命令 <img src="" alt=""><a href="https://www.cnyunwei.cc/archives/1204" target="_blank" rel="noopener">https://www.cnyunwei.cc/archives/1204</a></p>
+<h2 id="22-16-使用gitlab"><a href="#22-16-使用gitlab" class="headerlink" title="22.16 使用gitlab"></a>22.16 使用gitlab</h2><p>一般公司都是使用域名来登录gitlab，可以使用带公网ip的Nginx来代理内网的gitlab服务器。因为安装gitlab的时候就已经自动安装了Nginx，Nginx的配置路径在<code>/var/opt/gitlab/nginx/conf/</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# ls /var/opt/gitlab/nginx/conf/</span><br><span class="line">gitlab-http.conf  nginx.conf  nginx-status.conf</span><br></pre></td></tr></table></figure></p>
+<p><code>nginx.conf</code>是主配置文件 <code>gitlab-http.conf</code>是gitlab的配置文件，可以更改监听端口和域名</p>
+<blockquote>
+<p>添加密钥</p>
+</blockquote>
+<p><code>点击头像</code> —- <code>Settings</code> —- <code>SSH Kyes</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901204043.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902133822.png" alt=""></p>
+<blockquote>
+<p>添加组</p>
+</blockquote>
+<p><code>点击小扳手</code> —- <code>New group</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134354.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134545.png" alt=""></p>
+<blockquote>
+<p>添加用户</p>
+</blockquote>
+<p><code>点击小扳手</code> —- <code>New user</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134920.png" alt=""> </p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135037.png" alt=""><br>这里会有连接给你输入的邮箱，但邮箱暂时不能使用 等创建完用户后点击 <code>Edit</code> 来修改密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135221.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135418.png" alt=""></p>
+<p>当新用户第一次登录时候会提示要你重新修改密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135640.png" alt=""></p>
+<blockquote>
+<p>添加仓库</p>
+</blockquote>
+<p><code>点击小扳手</code> —- <code>New project</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140342.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140515.png" alt=""></p>
+<h2 id="22-17-gitlab备份和恢复"><a href="#22-17-gitlab备份和恢复" class="headerlink" title="22.17 gitlab备份和恢复"></a>22.17 gitlab备份和恢复</h2><p>gitlab的备份是在线备份的，不需要停止服务。gitlab的备份是不能跨版本的，例如9的备份数据不能恢复到10版本上。</p>
+<blockquote>
+<p>gitlab备份</p>
+</blockquote>
+<p>格式：<code>gitlab-rake gitlab:backup:create</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gitlab-rake gitlab:backup:create</span><br></pre></td></tr></table></figure></p>
+<p>备份的文件默认在<code>/var/opt/gitlab/backups/</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /var/opt/gitlab/backups/</span><br><span class="line">1535869554_2018_09_02_11.2.3_gitlab_backup.tar</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>gitlab恢复</p>
+</blockquote>
+<p>格式：<code>gitlab-rake gitlab:backup:restore BACKUP=备份数据的前缀（日期版本）</code></p>
+<blockquote>
+<p>1.停止unicorn服务和sidekiq服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gitlab-ctl stop unicorn</span><br><span class="line">[root@localhost ~]# gitlab-ctl stop sidekiq</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.恢复数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gitlab-rake gitlab:backup:restore BACKUP=1535869554_2018_09_02_11.2.3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.重启gitlab</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gitlab-ctl start</span><br></pre></td></tr></table></figure>
       
 
       
@@ -399,15 +520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,15 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,11 +568,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,10 +585,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,6 +604,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
@@ -499,7 +620,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +629,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,10 +653,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
