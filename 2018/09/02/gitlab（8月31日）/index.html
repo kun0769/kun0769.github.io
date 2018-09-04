@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135640.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140342.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140515.png">
-<meta property="og:updated_time" content="2018-09-02T06:54:17.894Z">
+<meta property="og:updated_time" content="2018-09-02T06:57:16.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitlab（8月31日）">
 <meta name="twitter:description" content="22.13 搭建git服务器22.14/22.15 安装gitlab22.16 使用gitlab22.17 gitlab备份和恢复">
@@ -244,27 +244,15 @@
 <p>gitlab命令 <img src="" alt=""><a href="https://www.cnyunwei.cc/archives/1204" target="_blank" rel="noopener">https://www.cnyunwei.cc/archives/1204</a></p>
 <h2 id="22-16-使用gitlab"><a href="#22-16-使用gitlab" class="headerlink" title="22.16 使用gitlab"></a>22.16 使用gitlab</h2><p>一般公司都是使用域名来登录gitlab，可以使用带公网ip的Nginx来代理内网的gitlab服务器。因为安装gitlab的时候就已经自动安装了Nginx，Nginx的配置路径在<code>/var/opt/gitlab/nginx/conf/</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun09 ~]# ls /var/opt/gitlab/nginx/conf/</span><br><span class="line">gitlab-http.conf  nginx.conf  nginx-status.conf</span><br></pre></td></tr></table></figure></p>
 <p><code>nginx.conf</code>是主配置文件 <code>gitlab-http.conf</code>是gitlab的配置文件，可以更改监听端口和域名</p>
-<blockquote>
-<p>添加密钥</p>
-</blockquote>
-<p><code>点击头像</code> —- <code>Settings</code> —- <code>SSH Kyes</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901204043.png" alt=""></p>
+<h3 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h3><p><code>点击头像</code> —- <code>Settings</code> —- <code>SSH Kyes</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180901204043.png" alt=""></p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902133822.png" alt=""></p>
-<blockquote>
-<p>添加组</p>
-</blockquote>
-<p><code>点击小扳手</code> —- <code>New group</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134354.png" alt=""></p>
+<h3 id="添加组"><a href="#添加组" class="headerlink" title="添加组"></a>添加组</h3><p><code>点击小扳手</code> —- <code>New group</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134354.png" alt=""></p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134545.png" alt=""></p>
-<blockquote>
-<p>添加用户</p>
-</blockquote>
-<p><code>点击小扳手</code> —- <code>New user</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134920.png" alt=""> </p>
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><p><code>点击小扳手</code> —- <code>New user</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902134920.png" alt=""> </p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135037.png" alt=""><br>这里会有连接给你输入的邮箱，但邮箱暂时不能使用 等创建完用户后点击 <code>Edit</code> 来修改密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135221.png" alt=""></p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135418.png" alt=""></p>
 <p>当新用户第一次登录时候会提示要你重新修改密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902135640.png" alt=""></p>
-<blockquote>
-<p>添加仓库</p>
-</blockquote>
-<p><code>点击小扳手</code> —- <code>New project</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140342.png" alt=""></p>
+<h3 id="添加仓库"><a href="#添加仓库" class="headerlink" title="添加仓库"></a>添加仓库</h3><p><code>点击小扳手</code> —- <code>New project</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140342.png" alt=""></p>
 <p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180902140515.png" alt=""></p>
 <h2 id="22-17-gitlab备份和恢复"><a href="#22-17-gitlab备份和恢复" class="headerlink" title="22.17 gitlab备份和恢复"></a>22.17 gitlab备份和恢复</h2><p>gitlab的备份是在线备份的，不需要停止服务。gitlab的备份是不能跨版本的，例如9的备份数据不能恢复到10版本上。</p>
 <blockquote>
@@ -369,6 +357,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/04/jailkit-自建堡垒机（9月4日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jailkit 自建堡垒机（9月4日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/31/git-2（8月30日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -520,15 +517,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,19 +553,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,6 +585,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -596,11 +601,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +613,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,7 +625,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,10 +634,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,6 +654,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
