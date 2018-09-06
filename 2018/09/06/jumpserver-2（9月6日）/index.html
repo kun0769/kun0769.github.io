@@ -6,15 +6,43 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: jailkit | kun0769的博客</title>
+  <title>jumpserver 2（9月6日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/jailkit/index.html">
+  <meta name="description" content="23.9 创建jumpserver普通用户23.10 添加机器23.11 添加系统用户并授权23.12 添加授权规则23.13 客户端登录jumpserver">
+<meta name="keywords" content="堡垒机,jumpserver">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jumpserver 2（9月6日）">
+<meta property="og:url" content="http://yoursite.com/2018/09/06/jumpserver-2（9月6日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="23.9 创建jumpserver普通用户23.10 添加机器23.11 添加系统用户并授权23.12 添加授权规则23.13 客户端登录jumpserver">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906204826.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906204944.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906205041.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906205501.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906210249.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906212837.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906212945.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906213110.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906213213.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906214022.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906220718.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221331.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221604.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221633.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906225820.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906230137.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233201.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233541.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233736.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233759.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906234008.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906234417.png">
+<meta property="og:updated_time" content="2018-09-06T16:05:47.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="jumpserver 2（9月6日）">
+<meta name="twitter:description" content="23.9 创建jumpserver普通用户23.10 添加机器23.11 添加系统用户并授权23.12 添加授权规则23.13 客户端登录jumpserver">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906204826.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +168,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jumpserver-2（9月6日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/04/jailkit-自建堡垒机（9月4日）/" class="archive-article-date">
-  	<time datetime="2018-09-04T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/04/jailkit-自建堡垒机（9月4日）/">jailkit 自建堡垒机（9月4日）</a>
+    <h1 class="article-title" itemprop="name">
+      jumpserver 2（9月6日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/06/jumpserver-2（9月6日）/" class="archive-article-date">
+  	<time datetime="2018-09-06T15:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>23.9 创建jumpserver普通用户<br>23.10 添加机器<br>23.11 添加系统用户并授权<br>23.12 添加授权规则<br>23.13 客户端登录jumpserver<br><a id="more"></a></p>
+<h2 id="23-9-创建jumpserver普通用户"><a href="#23-9-创建jumpserver普通用户" class="headerlink" title="23.9 创建jumpserver普通用户"></a>23.9 创建jumpserver普通用户</h2><p><code>jumpserver用户</code>是用来登录jumpserver的，该用户会在跳板机的服务器上自动自动创建</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.先创建对应的组</p>
+</blockquote>
+<p><code>用户管理</code> —- <code>查看用户组</code> —- <code>添加用户组</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906204826.png" alt=""></p>
+<blockquote>
+<p>2.再创建用户</p>
+</blockquote>
+<p><code>用户管理</code> —- <code>查看用户</code> —- <code>添加用户</code> —- <code>用户名</code> —- <code>Email</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906204944.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906205041.png" alt=""></p>
+<p>添加成功后就会发送密码和密钥的密码到你的邮箱里面<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906205501.png" alt=""></p>
+<p>当用户发送邮件失败没法得到密码和密钥秘密，管理员可以帮他们生成<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906210249.png" alt=""></p>
+<p>修改密码可以点击<code>编辑</code><br>得到新的密钥密码可以让用户先点击<code>下载</code>来下载第一次的的密钥，然后管理用户在点击该客户的<code>Nokey GenOne</code>来生成新的密钥密码</p>
+<h2 id="23-10-添加机器"><a href="#23-10-添加机器" class="headerlink" title="23.10 添加机器"></a>23.10 添加机器</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.添加资产组</p>
+</blockquote>
+<p><code>资产管理</code> —- <code>查看资产组</code> —- <code>添加主机组</code> —- <code>主机组名</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906212837.png" alt=""></p>
+<blockquote>
+<p>2.添加资产</p>
+</blockquote>
+<p><code>资产管理</code> —- <code>查看资产</code> —- <code>添加资产</code> —- <code>主机名</code> —-  <code>主机IP</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906212945.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906213110.png" alt=""></p>
+<p>再点击查看资产可以看到刚刚添加的主机名 但其他信息并没有更新，由于信息是由管理用户来抓取的，因此我们需要让管理用户拥有root的权限<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906213213.png" alt=""></p>
+<p>在kun01机器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# visudo</span><br><span class="line"></span><br><span class="line">jump    ALL=(ALL)       NOPASSWD: ALL</span><br></pre></td></tr></table></figure></p>
+<p>再回去jumpserver查看资产点击更新可以发型信息出来了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906214022.png" alt=""></p>
+<h2 id="23-11-添加系统用户并授权"><a href="#23-11-添加系统用户并授权" class="headerlink" title="23.11 添加系统用户并授权"></a>23.11 添加系统用户并授权</h2><p><code>系统用户</code>就是通过跳板机登录到客户机的用户</p>
+<p><code>授权管理</code> —- <code>系统用户</code> —- <code>添加系统用户</code> —- <code>用户名称</code> —- <code>用户密码</code> —- <code>用户密钥（私钥）</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906220718.png" alt=""></p>
+<p>在跳板机上kun02上生成zhangsan用户对应的密钥 并记录下私钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ssh-keygen -f zhangsan</span><br><span class="line">[root@kun02 ~]# cat zhangsan</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221331.png" alt=""></p>
+<p>点击<code>推送</code> 可以让zhangsan用户自动在客户机上生成该用户并记录下对应的公钥，该动作是由管理用户来完成的。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221604.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906221633.png" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在客户机kun01上 可以查看到有zhangsan用户和对应的公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# id zhangsan</span><br><span class="line">uid=1000(zhangsan) gid=1000(zhangsan) 组=1000(zhangsan)</span><br><span class="line"></span><br><span class="line">[root@kun01 home]# cat /home/zhangsan/.ssh/authorized_keys</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCz6Ns+a9g5q2OG6GJuSwXiwZ6HSZbrqTWABsVpJxKoQJVrFCumpiw0J9e+Qv7YzQdiw0hu0jpwkfZIHiEmhsW7nOeEt6G5Hvxuk3B/fCU+owDrcGuK3u49D0f/hw8DoF16c4JJzHdBOL+jf4BSasusFBRolo+e2gG573XQbR9ooKzldyI76IxiSxHuHxQKtHujwIJnbSQ9C2eX5NGFFVbQBRrxusIDgFV6gi7T8o0a4x5qXZTPb0kDKBRCm6AyNhIm994wA8I9MdRnXw26ur0DLO1Vvyw+x3LTlPmMvvHKthEnw2AEM0U+E29UAzmx0b1OboJeNrFGLHrZqbYKMxnd jumpserver@kun02</span><br></pre></td></tr></table></figure></p>
+<h2 id="23-12-添加授权规则"><a href="#23-12-添加授权规则" class="headerlink" title="23.12 添加授权规则"></a>23.12 添加授权规则</h2><p><code>授权规则</code>可以让jumpserver用户关联客户机上的系统用户</p>
+<p><code>授权管理</code> —- <code>授权规则</code> —- <code>添加规则</code> —- <code>授权名称</code> —- <code>用户</code> —- <code>系统用户</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906225820.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906230137.png" alt=""></p>
+<h2 id="23-13-客户端登录jumpserver"><a href="#23-13-客户端登录jumpserver" class="headerlink" title="23.13 客户端登录jumpserver"></a>23.13 客户端登录jumpserver</h2><p>我们在jumpserver上创建了jumpserver用户，可以使用jumpserver用户使用Xshell来登录跳板机去管理其对应的客户机</p>
+<p>先让jumpserver用户下载对应的密钥到本机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233201.png" alt=""></p>
+<p>使用Xshell创建新回话登录跳板机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233541.png" alt=""></p>
+<p>选择密钥登录并输入邮件中的密钥密码<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233736.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906233759.png" alt=""></p>
+<p>jumpserver用户成功登录到跳板机<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906234008.png" alt=""></p>
+<p>按照步骤操作<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180906234417.png" alt=""></p>
+<p>调出欢迎页面可以按<code>Ctrl+d</code> </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,25 +249,134 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jailkit</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jumpserver</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/06/jumpserver-2（9月6日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/09/05/jumpserver-1（9月5日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jumpserver 1（9月5日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-    
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -220,9 +399,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

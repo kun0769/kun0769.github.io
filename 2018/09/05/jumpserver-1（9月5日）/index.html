@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180905224901.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180905225030.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180905231339.png">
-<meta property="og:updated_time" content="2018-09-05T16:04:24.220Z">
+<meta property="og:updated_time" content="2018-09-05T16:06:22.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jumpserver 1（9月5日）">
 <meta name="twitter:description" content="23.5 jumpserver介绍23.6 安装jumpserver23.7 登录jumpserver23.8 创建管理用户">
@@ -193,10 +193,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 jumpserver]# cd install/</span><br><span class="line">[root@kun02 install]# python install.py</span><br></pre></td></tr></table></figure>
 <h3 id="问题1-平台不支持"><a href="#问题1-平台不支持" class="headerlink" title="问题1 平台不支持"></a>问题1 平台不支持</h3><p>[root@kun02 install]# python install.py<br>请务必先查看wiki <a href="https://github.com/jumpserver/jumpserver/wiki" target="_blank" rel="noopener">https://github.com/jumpserver/jumpserver/wiki</a><br>支持的平台: CentOS, RedHat, Fedora, Debian, Ubuntu, Amazon Linux, 暂不支持其他平台安装.</p>
 <p>解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 install]# vim install.py</span><br></pre></td></tr></table></figure></p>
-<p>把if self.dist == “centos”改为if self.dist == “centos linux”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if self.dist == &quot;centos linux&quot; or self.dist == &quot;redhat&quot; or self.dist == &quot;fedora&quot; or self.dist == &quot;amazon linux ami&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>  Could not find a version that satisfies the requirement pycrypto==2.4.1 (from -r requirements.txt (line 3)) (from versions: )<br>No matching distribution found for pycrypto==2.4.1 (from -r requirements.txt (line 3))<br>You are using pip version 8.1.2, however version 18.0 is available.<br>You should consider upgrading via the ‘pip install –upgrade pip’ command.<br>安装JumpServer 依赖的python库失败！</p>
+<p>把<code>if self.dist == &quot;centos&quot;</code>改为<code>if self.dist == &quot;centos linux&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if self.dist == &quot;centos linux&quot; or self.dist == &quot;redhat&quot; or self.dist == &quot;fedora&quot; or self.dist == &quot;amazon linux ami&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="问题2-python库失败"><a href="#问题2-python库失败" class="headerlink" title="问题2 python库失败"></a>问题2 python库失败</h3><p>  Could not find a version that satisfies the requirement pycrypto==2.4.1 (from -r requirements.txt (line 3)) (from versions: )<br>No matching distribution found for pycrypto==2.4.1 (from -r requirements.txt (line 3))<br>You are using pip version 8.1.2, however version 18.0 is available.<br>You should consider upgrading via the ‘pip install –upgrade pip’ command.<br>安装JumpServer 依赖的python库失败！</p>
 <p>解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure></p>
-<h3 id="问题2-django连接不了数据库"><a href="#问题2-django连接不了数据库" class="headerlink" title="问题2 django连接不了数据库"></a>问题2 django连接不了数据库</h3><p>django.db.utils.OperationalError: (1366, “Incorrect string value: ‘\xE6\x9C\xBA\xE6\x88\xBF’ for column ‘name’ at row 1”)</p>
+<h3 id="问题3-django连接不了数据库"><a href="#问题3-django连接不了数据库" class="headerlink" title="问题3 django连接不了数据库"></a>问题3 django连接不了数据库</h3><p>django.db.utils.OperationalError: (1366, “Incorrect string value: ‘\xE6\x9C\xBA\xE6\x88\xBF’ for column ‘name’ at row 1”)</p>
 <p>解决<br>django连接的数据库编码字符集要求utf8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 install]# vim /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
 <p>添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">character_set_server=utf8</span><br><span class="line"></span><br><span class="line">init_connect=&apos;SET NAMES utf8&apos;</span><br></pre></td></tr></table></figure></p>
 <p>重启服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 install]# service mysqld restat</span><br></pre></td></tr></table></figure></p>
@@ -317,6 +317,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/06/jumpserver-2（9月6日）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jumpserver 2（9月6日）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/04/jailkit-自建堡垒机（9月4日）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -468,15 +477,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,10 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -516,11 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +553,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
@@ -560,15 +573,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
