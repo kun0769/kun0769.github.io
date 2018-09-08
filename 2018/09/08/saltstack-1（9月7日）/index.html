@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="24.1 自动化运维介绍24.2 saltstack安装24.3 启动saltstack服务24.4 saltstack配置认证">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-08T03:00:44.761Z">
+<meta property="og:updated_time" content="2018-09-08T03:07:53.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="saltstack 1（9月7日）">
 <meta name="twitter:description" content="24.1 自动化运维介绍24.2 saltstack安装24.3 启动saltstack服务24.4 saltstack配置认证">
@@ -177,7 +177,8 @@
 </li>
 </ul>
 <p>自动化运维就是要解决上面所有问题<br><code>Puppet</code> 官网 <img src="" alt=""><a href="http://www.puppetlabs.com" target="_blank" rel="noopener">www.puppetlabs.com</a><br>基于rubby开发，c/s架构，支持多平台，可管理配置文件、用户、cron任务、软件包、系统服务等。 分为社区版（免费）和企业版（收费），企业版支持图形化配置。</p>
-<p><code>Saltstack</code> 官网 <img src="" alt=""><a href="https://saltstack.com,文档" target="_blank" rel="noopener">https://saltstack.com,文档</a> docs.saltstack.com<br>基于python开发，c/s架构，支持多平台，比puppet轻量，在远程执行命令时非常快捷，配置和使用比puppet容易，能实现puppet几乎所有的功能。<br><code>Ansible</code> 官网 <img src="" alt=""><a href="http://www.ansible.com" target="_blank" rel="noopener">www.ansible.com</a><br>更加简洁的自动化运维工具，不需要在客户端上安装agent，基于python开发。可以实现批量操作系统配置、批量程序的部署、批量运行命令。</p>
+<p><code>Saltstack</code> 官网 <img src="" alt=""><a href="https://saltstack.com" target="_blank" rel="noopener">https://saltstack.com</a> 文档 <img src="" alt="">docs.saltstack.com<br>基于python开发，c/s架构，支持多平台，比puppet轻量，在远程执行命令时非常快捷，配置和使用比puppet容易，能实现puppet几乎所有的功能。</p>
+<p><code>Ansible</code> 官网 <img src="" alt=""><a href="http://www.ansible.com" target="_blank" rel="noopener">www.ansible.com</a><br>更加简洁的自动化运维工具，不需要在客户端上安装agent，基于python开发。可以实现批量操作系统配置、批量程序的部署、批量运行命令。</p>
 <h2 id="24-2-saltstack安装"><a href="#24-2-saltstack安装" class="headerlink" title="24.2 saltstack安装"></a>24.2 saltstack安装</h2><p>saltstack介绍文档 <img src="" alt=""><a href="https://docs.saltstack.com/en/latest/topics/index.html" target="_blank" rel="noopener">https://docs.saltstack.com/en/latest/topics/index.html</a><br>saltstack最新yum源 <img src="" alt=""><a href="https://repo.saltstack.com/#rhel" target="_blank" rel="noopener">https://repo.saltstack.com/#rhel</a><br>可以使用<code>salt-ssh</code>远程执行，类似ansible，也支持<code>c/s模式</code>。</p>
 <p>192.168.80.101 kun01 既做服务端 也做客户端<br>192.168.80.102 kun02 做客户端</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
@@ -214,7 +215,7 @@
 <li><p>saltstack认证过程</p>
 <ul>
 <li><p>master端和minion端通信需要建立一个安全通道，传输过程需要加密，所以得配置认证，也是通过密钥对来加密解密的<br>minion在第一次启动时会在<code>/etc/salt/pki/minion/</code>下生成minion.pem和minion.pub，其中.pub为公钥，它会把公钥传输给master</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /etc/salt/pki/minion/</span><br><span class="line"></span><br><span class="line">minion.pem  minion.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /etc/salt/pki/minion/</span><br><span class="line">minion.pem  minion.pub</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>master第一次启动时也会在<code>/etc/salt/pki/master</code>下生成密钥对，当master接收到minion传过来的公钥后，通过salt-key工具接受这个公钥，一旦接受后就会在<code>/etc/salt/pki/master/minions/</code>目录里存放刚刚接受的公钥，同时客户端也会接受master传过去的公钥，把它放在<code>/etc/salt/pki/minion</code>目录下，并命名为<code>minion_master.pub</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# ls /etc/salt/pki/master/</span><br><span class="line">master.pem  master.pub  minions  minions_autosign  minions_denied  minions_pre  minions_rejected</span><br></pre></td></tr></table></figure>
@@ -507,10 +508,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -519,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,6 +533,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +556,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,15 +584,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">软件包</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,10 +613,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
             
             <div class="clearfix"></div>
