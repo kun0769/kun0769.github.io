@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/9 | kun0769的博客</title>
+  <title>saltstack 3（9月11日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/09/page/2/index.html">
+  <meta name="description" content="24.10 配置管理目录24.11 配置管理远程命令24.12 配置管理计划任务24.13 其他命令24.14 salt-ssh使用">
+<meta name="keywords" content="saltstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="saltstack 3（9月11日）">
+<meta property="og:url" content="http://yoursite.com/2018/09/11/saltstack-3（9月11日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="24.10 配置管理目录24.11 配置管理远程命令24.12 配置管理计划任务24.13 其他命令24.14 salt-ssh使用">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-11T13:17:59.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="saltstack 3（9月11日）">
+<meta name="twitter:description" content="24.10 配置管理目录24.11 配置管理远程命令24.12 配置管理计划任务24.13 其他命令24.14 salt-ssh使用">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,106 +145,297 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-saltstack-3（9月11日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/04/jailkit-自建堡垒机（9月4日）/" class="archive-article-date">
-  	<time datetime="2018-09-04T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/04/jailkit-自建堡垒机（9月4日）/">jailkit 自建堡垒机（9月4日）</a>
+    <h1 class="article-title" itemprop="name">
+      saltstack 3（9月11日）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/11/saltstack-3（9月11日）/" class="archive-article-date">
+  	<time datetime="2018-09-11T13:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>24.10 配置管理目录<br>24.11 配置管理远程命令<br>24.12 配置管理计划任务<br>24.13 其他命令<br>24.14 salt-ssh使用<br><a id="more"></a></p>
+<h2 id="24-10-配置管理目录"><a href="#24-10-配置管理目录" class="headerlink" title="24.10 配置管理目录"></a>24.10 配置管理目录</h2><p>用saltstack把目录分发到客户机上执行</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.创建子和主配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# cd /srv/salt/</span><br><span class="line"></span><br><span class="line">[root@kun01 salt]# vim top.sls</span><br><span class="line"></span><br><span class="line">base:</span><br><span class="line">  &apos;*&apos;:</span><br><span class="line">    - dir</span><br><span class="line"></span><br><span class="line">[root@kun01 salt]# vim dir.sls</span><br><span class="line"></span><br><span class="line">file_dir:</span><br><span class="line">  file.recurse:</span><br><span class="line">    - name: /tmp/testdir</span><br><span class="line">    - source: salt://test/123</span><br><span class="line">    - user: root</span><br><span class="line">    - file_mode: 640</span><br><span class="line">    - dir_mode: 750</span><br><span class="line">    - mkdir: True</span><br><span class="line">    - clean: True</span><br></pre></td></tr></table></figure>
+<p><code>clean</code>加上它之后，源删除文件或目录，目标也会跟着删除，否则不会删除</p>
+<blockquote>
+<p>2.创建对应目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 salt]# mkdir test/123</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.分发目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 salt]# salt &apos;kun02&apos; state.highstate</span><br><span class="line">kun02:</span><br><span class="line">----------</span><br><span class="line">          ID: file_dir</span><br><span class="line">    Function: file.recurse</span><br><span class="line">        Name: /tmp/testdir</span><br></pre></td></tr></table></figure>
+<p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ll -ad /tmp/testdir/</span><br><span class="line">drwxr-x--- 2 root root 6 9月   9 11:25 /tmp/testdir/</span><br></pre></td></tr></table></figure></p>
+<p>在123目录下才创建个空目录和文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 salt]# mkdir test/123/11</span><br><span class="line">[root@kun01 salt]# touch test/123/11.txt</span><br><span class="line">[root@kun01 salt]# ls test/123/</span><br><span class="line">11  11.txt</span><br><span class="line">[root@kun01 salt]# salt &apos;kun02&apos; state.highstate</span><br></pre></td></tr></table></figure></p>
+<p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /tmp/testdir/ </span><br><span class="line">11.txt</span><br><span class="line">``</span><br><span class="line">`saltstack`只分发了文件 空目录是不会分发的</span><br><span class="line"></span><br><span class="line">在11目录上创建文件再分发</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 salt]# touch test/123/11/1.txt<br>[root@kun01 salt]# salt ‘kun02’ state.highstate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在kun02上</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun02 ~]# ls /tmp/testdir/  ##有11目录<br>11  11.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">因此 `source对应的目录里有空目录的话，客户端上不会创建该目录`</span><br><span class="line"></span><br><span class="line">## 24.11 配置管理远程命令</span><br><span class="line"></span><br><span class="line">用saltstack把shell脚本分发到客户机上执行</span><br><span class="line"></span><br><span class="line">### 步骤</span><br><span class="line"></span><br><span class="line">&gt;1.创建子和主配置文件</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 salt]# vim top.sls</p>
+<p>base:<br>  ‘*’:</p>
+<pre><code>- shell
+</code></pre><p>[root@kun01 salt]# vim shell.sls</p>
+<p>shell_test:<br>  cmd.script:</p>
+<pre><code>- source: salt://test/1.sh
+- user: root
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;2.创建对应脚本</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 salt]# vim test/1.sh</p>
+<p>#!/bin/bash<br>touch /tmp/1122.txt<br>if [ ! -d /tmp/1122 ]<br>then<br>        mkdir /tmp/1122<br>fi<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;3.分发脚本</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 salt]# salt ‘kun02’ state.highstate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在kun02上</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun02 ~]# ls /tmp/<br>1122<br>1122.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 24.12 配置管理计划任务</span><br><span class="line"></span><br><span class="line">用saltstack把计划任务分发到客户机上执行</span><br><span class="line"></span><br><span class="line">### 步骤</span><br><span class="line"></span><br><span class="line">&gt;1.创建子和主配置文件</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 salt]# vim top.sls</p>
+<p>base:<br>  ‘*’:</p>
+<pre><code>- cron
+</code></pre><p>[root@kun01 salt]# vim cron.sls</p>
+<p>cron_test:<br>  cron.present:</p>
+<pre><code>- name: /bin/bash /tmp/111.txt
+- user: root
+- minute: &apos;*&apos;
+- hour: 20
+- daymonth: &apos;*&apos;
+- month: &apos;*&apos;
+- dayweek: &apos;*&apos;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`*`需要用单引号引起来。当然我们还可以使用`file.managed`模块来管理cron，因为系统的cron都是以配置文件的形式存在的。</span><br><span class="line"></span><br><span class="line">&gt;2.分发任务计划</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 salt]# salt ‘kun02’ state.highstate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在kun02上</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun02 ~]# crontab -l</p>
+<h1 id="Lines-below-here-are-managed-by-Salt-do-not-edit"><a href="#Lines-below-here-are-managed-by-Salt-do-not-edit" class="headerlink" title="Lines below here are managed by Salt, do not edit"></a>Lines below here are managed by Salt, do not edit</h1><h1 id="SALT-CRON-IDENTIFIER-bin-bash-tmp-111-txt"><a href="#SALT-CRON-IDENTIFIER-bin-bash-tmp-111-txt" class="headerlink" title="SALT_CRON_IDENTIFIER:/bin/bash /tmp/111.txt"></a>SALT_CRON_IDENTIFIER:/bin/bash /tmp/111.txt</h1><ul>
+<li>20 <em> </em> * /bin/bash /tmp/111.txt<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">提示# Lines below here are managed by Salt, do not edit 不能改动他们 否则就没法删除或者修改这个cron了</span><br><span class="line"></span><br><span class="line">&gt;3.修改子配置文件删除任务计划</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[root@kun01 salt]# vim cron.sls</p>
+<p>cron_test:<br>  cron.absent:</p>
+<pre><code>- name: /bin/bash /tmp/111.txt
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;4.删除任务计划</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 salt]# salt ‘kun02’ state.highstate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在kun02上</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun02 ~]# crontab -l</p>
+<h1 id="Lines-below-here-are-managed-by-Salt-do-not-edit-1"><a href="#Lines-below-here-are-managed-by-Salt-do-not-edit-1" class="headerlink" title="Lines below here are managed by Salt, do not edit"></a>Lines below here are managed by Salt, do not edit</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 24.13 其他命令</span><br><span class="line"></span><br><span class="line">&gt;显示存活的minion</span><br><span class="line"></span><br><span class="line">格式：`salt-run manage.up`</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 salt]# salt-run manage.up</p>
+<ul>
+<li>kun01</li>
+<li>kun02<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;拷贝master上的文件到客户端</span><br><span class="line"></span><br><span class="line">格式：`salt &apos;主机名&apos; cp.get_file salt://原文件 目标文件`</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[root@kun01 salt]# salt ‘*’ cp.get_file salt://test/1.txt  /tmp/123.txt<br>kun02:<br>    /tmp/123.txt<br>kun01:<br>    /tmp/123.txt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;拷贝目录到客户端</span><br><span class="line"></span><br><span class="line">格式：`salt &apos;主机名&apos; cp.get_dir salt://原目录 目标目录`</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 salt]# salt ‘*’ cp.get_dir salt://test/123 /tmp/<br>kun01:</p>
+<pre><code>- /tmp//123/11.txt
+- /tmp//123/11/1.txt
+</code></pre><p>kun02:</p>
+<pre><code>- /tmp//123/11.txt
+- /tmp//123/11/1.txt
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;分发并执行脚本</span><br><span class="line"></span><br><span class="line">格式：`salt &apos;主机名&apos; cmd.script salt://原脚本路径`</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 salt]# salt ‘*’ cmd.script salt://test/1.sh</p>
+<h2 id="kun02"><a href="#kun02" class="headerlink" title="kun02:"></a>kun02:</h2><pre><code>pid:
+    2493
+retcode:
+    0
+stderr:
+stdout:
+</code></pre><h2 id="kun01"><a href="#kun01" class="headerlink" title="kun01:"></a>kun01:</h2><pre><code>pid:
+    7470
+retcode:
+    0
+stderr:
+stdout:
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 24.14 salt-ssh使用</span><br><span class="line"></span><br><span class="line">salt-ssh不需要对客户端做认证，客户端也不用安装salt-minion</span><br><span class="line"></span><br><span class="line">### 步骤</span><br><span class="line"></span><br><span class="line">&gt;1.安装saltstack yum源和salt-ssh包</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 ~]# yum install -y <a href="http://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm" target="_blank" rel="noopener">http://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm</a><br>[root@kun01 ~]# yum install -y salt-ssh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;2.修改配置文件</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 ~]# vim /etc/salt/roster<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加下面参数</span><br></pre></td></tr></table></figure></p>
+<p>kun01:<br>  host: 192.168.80.101<br>  user: root<br>  passwd: 38003800<br>kun02:<br>  host: 192.168.80.102<br>  user: root<br>  passwd: 38003800<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;3.使用salt-ssh执行命令</span><br><span class="line"></span><br><span class="line">格式：`salt-ssh [--key-deploy] &apos;主机名&apos; -r &apos;命令&apos;`</span><br></pre></td></tr></table></figure></p>
+<p>[root@kun01 ~]# salt-ssh –key-deploy ‘*’ -r ‘hostname’</p>
+<h2 id="kun02-1"><a href="#kun02-1" class="headerlink" title="kun02:"></a>kun02:</h2><pre><code>retcode:
+    254
+stderr:
+stdout:
+    The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:
+    The authenticity of host &apos;192.168.80.102 (192.168.80.102)&apos; can&apos;t be established.
+    ECDSA key fingerprint is SHA256:2dycAKJ+5BsHwXALskxaqtyNdNwRCFReWhmwJ2peUu0.
+    ECDSA key fingerprint is MD5:00:30:54:23:97:64:c3:1d:ee:65:a0:99:0f:f9:28:5c.
+    Are you sure you want to continue connecting (yes/no)?
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里需要先ssh登录机器确认 `--key-deploy`是第一次执行把公钥放到客户机上</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 ~]# salt-ssh –key-deploy ‘*’ -r ‘hostname’</p>
+<h2 id="kun02-2"><a href="#kun02-2" class="headerlink" title="kun02:"></a>kun02:</h2><pre><code>retcode:
+    0
+stderr:
+stdout:
+    kun02
+</code></pre><h2 id="kun01-1"><a href="#kun01-1" class="headerlink" title="kun01:"></a>kun01:</h2><pre><code>retcode:
+    0
+stderr:
+stdout:
+    kun01
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">之后可以把配置文件中密码行给删除</span><br></pre></td></tr></table></figure>
+<p>[root@kun01 ~]# vim /etc/salt/roster</p>
+<p>kun01:<br>  host: 192.168.80.101<br>  user: root<br>kun02:<br>  host: 192.168.80.102<br>  user: root</p>
+<p>[root@kun01 ~]# salt-ssh ‘*’ -r ‘w’</p>
+<h2 id="kun02-3"><a href="#kun02-3" class="headerlink" title="kun02:"></a>kun02:</h2><pre><code>retcode:
+    0
+stderr:
+stdout:
+     15:16:49 up  4:08,  1 user,  load average: 0.00, 0.01, 0.05
+    USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+    root     pts/0    192.168.80.1     11:18    2:55m  0.04s  0.04s -bash
+</code></pre><h2 id="kun01-2"><a href="#kun01-2" class="headerlink" title="kun01:"></a>kun01:</h2><pre><code>retcode:
+    0
+stderr:
+stdout:
+     15:16:49 up  4:08,  1 user,  load average: 0.32, 0.16, 0.08
+    USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+    root     pts/0    192.168.80.1     11:18    1.00s  0.71s  0.01s /usr/bin/python /usr/bin/salt-ssh * -r w
+</code></pre><p><code>`</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">堡垒机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jailkit</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">saltstack</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/11/saltstack-3（9月11日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/02/gitlab（8月31日）/" class="archive-article-date">
-  	<time datetime="2018-09-02T03:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/10/saltstack-2（9月10日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">saltstack 2（9月10日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/02/gitlab（8月31日）/">gitlab（8月31日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gitlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/09/">&laquo; Prev</a><a class="page-number" href="/archives/2018/09/">1</a><span class="page-number current">2</span>
-    </nav>
   
+
+  
+
+  
+
 
 
           </div>
@@ -262,8 +458,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
