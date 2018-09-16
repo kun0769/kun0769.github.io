@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="24.21 ansible安装包和管理服务24.22 使用ansible playbook24.23 playbook里的变量24.24 playbook里的循环24.25 playbook里的条件判断24.26 playbook中的handlers">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-13T14:15:33.236Z">
+<meta property="og:updated_time" content="2018-09-16T09:08:11.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible 2（9月13日）">
 <meta name="twitter:description" content="24.21 ansible安装包和管理服务24.22 使用ansible playbook24.23 playbook里的变量24.24 playbook里的循环24.25 playbook里的条件判断24.26 playbook中的handlers">
@@ -201,7 +201,7 @@
 <p>格式：<code>ansible-playbook yml名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# ansible-playbook test.yml</span><br></pre></td></tr></table></figure></p>
 <p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls -l /tmp/kun.txt</span><br><span class="line">-rw------- 1 root root 4 9月  12 21:22 /tmp/kun.txt</span><br></pre></td></tr></table></figure></p>
 <h2 id="24-23-playbook里的变量"><a href="#24-23-playbook里的变量" class="headerlink" title="24.23 playbook里的变量"></a>24.23 playbook里的变量</h2><p>创建一个远程创建用户的playbook<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# vim create_user.yml</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">- name: create_user</span><br><span class="line">  hosts: 192.168.80.102</span><br><span class="line">  user: root</span><br><span class="line">  gather_facts: false</span><br><span class="line">  vars:</span><br><span class="line">    - user: &quot;kun1&quot;</span><br><span class="line">  tasks:</span><br><span class="line">    - name: create user</span><br><span class="line">      user: name=&quot;&#123;&#123; user &#125;&#125;&quot;</span><br></pre></td></tr></table></figure></p>
-<p><code>name</code>参数对该playbook实现的功能做一个概述，后面执行过程中，会打印 name变量的值 ，可以省略；<br><code>gather_facts</code>参数指定了在以下任务部分执行前，是否先执行setup模块获取主机相关信息，这在后面的task会使用到setup获取的信息时用到；<br><code>vars</code>参数，指定了变量，这里指变量名是user，其值为test ，需要注意的是，变量值一定要用引号引住；<br>最后一个user指调用user模块，name是user模块里的一个参数，而增加的用户名字调用了上面user变量的值。引用变量用<code></code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# ansible-playbook create_user.yml</span><br><span class="line"></span><br><span class="line">PLAY [create_user] **********************************************************************************************</span><br><span class="line"></span><br><span class="line">TASK [create user] **********************************************************************************************</span><br><span class="line">changed: [192.168.80.102]</span><br><span class="line"></span><br><span class="line">PLAY RECAP ******************************************************************************************************</span><br><span class="line">192.168.80.102             : ok=1    changed=1    unreachable=0    failed=0</span><br></pre></td></tr></table></figure></p>
+<p><code>name</code>参数对该playbook实现的功能做一个概述，后面执行过程中，会打印 name变量的值 ，可以省略；<br><code>gather_facts</code>参数指定了在以下任务部分执行前，是否先执行setup模块获取主机相关信息，这在后面的task会使用到setup获取的信息时用到；<br><code>vars</code>参数，指定了变量，这里指变量名是user，其值为test ，需要注意的是，变量值一定要用引号引住；<br>最后一个user指调用user模块，name是user模块里的一个参数，而增加的用户名字调用了上面user变量的值。引用变量用 &#123;&#123;变量名&#125;&#125;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# ansible-playbook create_user.yml</span><br><span class="line"></span><br><span class="line">PLAY [create_user] **********************************************************************************************</span><br><span class="line"></span><br><span class="line">TASK [create user] **********************************************************************************************</span><br><span class="line">changed: [192.168.80.102]</span><br><span class="line"></span><br><span class="line">PLAY RECAP ******************************************************************************************************</span><br><span class="line">192.168.80.102             : ok=1    changed=1    unreachable=0    failed=0</span><br></pre></td></tr></table></figure></p>
 <p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# id kun1</span><br><span class="line">uid=1003(kun1) gid=1003(kun1) 组=1003(kun1)</span><br></pre></td></tr></table></figure></p>
 <h2 id="24-24-playbook循环"><a href="#24-24-playbook循环" class="headerlink" title="24.24 playbook循环"></a>24.24 playbook循环</h2><p>创建一个更改文件权限的playbook<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# vim while.yml</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">- name: change mode for file</span><br><span class="line">  hosts: 192.168.80.102</span><br><span class="line">  user: root</span><br><span class="line">  gather_facts: false</span><br><span class="line">  tasks:</span><br><span class="line">    - name: change mode for file</span><br><span class="line">      file: path=/tmp/&#123;&#123; item &#125;&#125; state=touch mode=600</span><br><span class="line">      with_items:</span><br><span class="line">        - 1.txt</span><br><span class="line">        - 2.txt</span><br><span class="line">        - 3.txt</span><br></pre></td></tr></table></figure></p>
 <p><code>with_items</code>指定循环的对象 <code>state=touch</code>为了创建文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ansible]# ansible-playbook while.yml</span><br><span class="line"></span><br><span class="line">PLAY [change mode for file] *************************************************************************************</span><br><span class="line"></span><br><span class="line">TASK [change mode for file] *************************************************************************************</span><br><span class="line">changed: [192.168.80.102] =&gt; (item=1.txt)</span><br><span class="line">changed: [192.168.80.102] =&gt; (item=2.txt)</span><br><span class="line">changed: [192.168.80.102] =&gt; (item=3.txt)</span><br><span class="line"></span><br><span class="line">PLAY RECAP ******************************************************************************************************</span><br><span class="line">192.168.80.102             : ok=1    changed=1    unreachable=0    failed=0</span><br></pre></td></tr></table></figure></p>
@@ -490,11 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,19 +510,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,6 +546,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
@@ -558,7 +562,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,10 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,7 +594,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +606,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
