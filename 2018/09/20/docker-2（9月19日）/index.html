@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 用户与组 | kun0769的博客</title>
+  <title>docker 2（9月19日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/tags/用户与组/index.html">
+  <meta name="description" content="25.5 通过模板创建镜像25.6 容器管理25.7 仓库管理25.8 数据管理">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 2（9月19日）">
+<meta property="og:url" content="http://yoursite.com/2018/09/20/docker-2（9月19日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="25.5 通过模板创建镜像25.6 容器管理25.7 仓库管理25.8 数据管理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T14:11:30.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="docker 2（9月19日）">
+<meta name="twitter:description" content="25.5 通过模板创建镜像25.6 容器管理25.7 仓库管理25.8 数据管理">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,148 +145,296 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-docker-2（9月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker 2（9月19日）
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/docker-2（9月19日）/" class="archive-article-date">
+  	<time datetime="2018-09-20T13:58:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>25.5 通过模板创建镜像<br>25.6 容器管理<br>25.7 仓库管理<br>25.8 数据管理<br><a id="more"></a></p>
+<h2 id="25-5-通过模板创建镜像"><a href="#25-5-通过模板创建镜像" class="headerlink" title="25.5 通过模板创建镜像"></a>25.5 通过模板创建镜像</h2><p>先通过下面网址去下载模板文件，再上传到服务器里<img src="" alt=""><a href="http://openvz.org/Download/templates/precreated" target="_blank" rel="noopener">http://openvz.org/Download/templates/precreated</a></p>
+<blockquote>
+<p>把模板导入为镜像</p>
+</blockquote>
+<p>格式：<code>cat 模板镜像文件 | docker import - 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# cat centos-6-x86-minimal.tar.gz | docker import - centos6</span><br></pre></td></tr></table></figure></p>
+<p>模板镜像文件一般为压缩包文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE</span><br><span class="line">centos6             latest              6566ecb04304        About a minute ago   512MB</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>可以发现多了一个centos6的镜像</p>
+<blockquote>
+<p>把镜像导出为文件 </p>
+</blockquote>
+<p>格式：<code>docker save -o 导出的文件名 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker save -o centos_net.tar centos_net  ##把镜像centos_net导出为centos_net.tar文件</span><br><span class="line">导出的文件一般用于备份</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过文件来恢复镜像</p>
+</blockquote>
+<p>格式：<code>docker load &lt; 文件名</code>  或者 <code>docker load --input 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker load &lt; centos_net.tar </span><br><span class="line"></span><br><span class="line">[root@kun01 src]# docker load --input centos_net.tar</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>把本地镜像上传到官网</p>
+</blockquote>
+<p>格式：<code>docker push 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker push centos_net ## 前提是需要先注册一个用户</span><br></pre></td></tr></table></figure></p>
+<h2 id="25-6-容器管理"><a href="#25-6-容器管理" class="headerlink" title="25.6 容器管理"></a>25.6 容器管理</h2><blockquote>
+<p>通过镜像创建容器</p>
+</blockquote>
+<p>格式：<code>docker create -it 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker create -it centos_net bash</span><br><span class="line"></span><br><span class="line">[root@kun01 src]# docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">3fe3d103b8b0        centos_net          &quot;bash&quot;              2 minutes ago       Created</span><br></pre></td></tr></table></figure></p>
+<p>可以发现centos_net启动为容器，当容器并没有启动</p>
+<blockquote>
+<p>启动/关闭/重启容器</p>
+</blockquote>
+<p>格式：<code>docker start/stop/restart 容器id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker start 3fe3d10</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>创建并启动容器</p>
+</blockquote>
+<p>格式：<code>docker run -it 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker run -it centos bash  </span><br><span class="line">[root@55880ea82e93 /]#    ##自动进入容器里面来</span><br></pre></td></tr></table></figure></p>
+<p>这样进入了一个虚拟终端里面，我们可以运行一些命令，使用命令<code>exit</code>或者<code>ctrl d</code> 退出该bash，当退出后这个容器也会停止  <code>-d</code> 后台运行而不进入容器</p>
+<blockquote>
+<p>自定义容器名字</p>
+</blockquote>
+<p>格式：<code>docker run -itd --name 自定义容器名 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker run -itd --name centos6_1 centos6 bash</span><br><span class="line">容器名字是centos6_1</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">7f07c79b1233        centos6             &quot;bash&quot;              57 seconds ago      Up 57 seconds                           centos6_1</span><br></pre></td></tr></table></figure>
+<p><code>NAMES</code>就是表示自定义容器的名字，启动容器直接认输自定义容器的名字也可以启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker exec -it centos6_1 bash  ##进入centos6_1容器里</span><br><span class="line">[root@7f07c79b1233 /]#</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>获取到容器的运行历史信息</p>
+</blockquote>
+<p>格式：<code>docker logs 容器id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker run -itd  centos6 bash -c &quot;echo 123&quot;  ##创建启动容器并执行命令</span><br><span class="line"></span><br><span class="line">[root@kun01 src]# docker logs 037b63ca6  </span><br><span class="line">123</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>进入启动的容器里面</p>
+</blockquote>
+<p>格式：<code>docker exec -it 容器id bash</code> 或者 <code>docker attach  容器id</code></p>
+<p>区别：<code>docker attach 退出终端，容器也会退出。docker exec 退出终端，容器还在运行</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker exec -it centos6_1 bash</span><br><span class="line"></span><br><span class="line">[root@kun01 src]# docker attach centos6_1 ##不需要家-it bash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>删除容器</p>
+</blockquote>
+<p>格式：<code>docker rm [-f] 容器id</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker rm cdc6436e6</span><br></pre></td></tr></table></figure></p>
+<p><code>-f</code> 把正在运行的容器删除掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker rm -f 7f07c7</span><br><span class="line">7f07c7</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>把容器导出为文件 </p>
+</blockquote>
+<p>格式：<code>docker export 容器id &gt; 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker export centos6_1 &gt; file.tar</span><br></pre></td></tr></table></figure></p>
+<p>一般把容器导出为文件用于迁移到其他机器上，再到另台机器上把文件导入镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# cat file.tar | docker import - centos6_1</span><br></pre></td></tr></table></figure></p>
+<h2 id="25-7-仓库管理"><a href="#25-7-仓库管理" class="headerlink" title="25.7 仓库管理"></a>25.7 仓库管理</h2><p>通过<code>registry</code>镜像来创建<code>私有仓库</code>，那么自定义的镜像就可以不需要上传到官网的公共仓库上了</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.下载registry镜像</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker pull registry</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.启动registry镜像为容器</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker run -d -p 5000:5000 registry</span><br></pre></td></tr></table></figure>
+<p><code>-p</code>会把容器的端口映射到宿主机上，<code>:左边为宿主机监听端口</code>，<code>:右边为容器监听端口</code></p>
+<blockquote>
+<p>3.让上传的镜像打上固定格式标签</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker tag centos6 192.168.80.101:5000/centos6</span><br></pre></td></tr></table></figure>
+<p>标签名固定格式 <code>IP地址:端口/标签名</code> 用于上传私有仓库</p>
+<blockquote>
+<ol>
+<li>把标记的镜像给推送到私有仓库</li>
+</ol>
+</blockquote>
+<p>格式：<code>docker push ip地址:端口/镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker push 192.168.80.101:5000/centos6</span><br><span class="line">The push refers to a repository [192.168.80.101:5000/centos6]</span><br><span class="line">Get https://192.168.80.101:5000/v2/: http: server gave HTTP response to HTTPS client</span><br></pre></td></tr></table></figure></p>
+<p>由于默认是使用https://形式上传文件 因此出错</p>
+<blockquote>
+<p>5.修改配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# vim /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;insecure-registries&quot;:[&quot;192.168.80.101:5000&quot;] &#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置文件里面指定添加此参数，需要把之前的加速器地址注释掉</p>
+<blockquote>
+<p>6.重启docker服务和启动registry容器并再次上传</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# systemctl restart docker</span><br><span class="line">[root@kun01 src]# docker ps -a</span><br><span class="line">[root@kun01 src]# docker start 4d93e496  ##启动registry</span><br><span class="line">[root@kun01 src]# docker push 192.168.80.101:5000/centos6</span><br></pre></td></tr></table></figure>
+<p>小提示： docker重启时所有的容器都自动启动<br><code>systemctl restart docker  &amp;&amp;  docker start  $(docker ps -a -q)</code></p>
+<blockquote>
+<p>查看私有仓库</p>
+</blockquote>
+<p>格式：<code>curl IP地址:端口/v2/_catalog</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# curl 192.168.80.101:5000/v2/_catalog</span><br><span class="line">&#123;&quot;repositories&quot;:[&quot;centos6&quot;]&#125;            ##私有库存里面有centos6镜像</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>下载私有库存中镜像</p>
+</blockquote>
+<p>格式：<code>docker pull ip地址:端口/镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker push 192.168.80.101:5000/centos6</span><br></pre></td></tr></table></figure></p>
+<p>前提客户机上安装docker和registry镜像和配置了daemon.json</p>
+<h2 id="25-8-数据管理"><a href="#25-8-数据管理" class="headerlink" title="25.8 数据管理"></a>25.8 数据管理</h2><p>我们需要多个容器之间相互共享数据，类似于linux里面的NFS，所以就可以搭建一个专门的数据卷容器，相当于把容器中的目录给共享除了，然后其他容器直接挂载该数据卷。</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.建立数据卷容器</p>
+</blockquote>
+<p>格式：<code>docker run -itd -v 容器的目录 --name 容器别名 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# docker run -itd -v /data/ --name testvol centos6_1 bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-v</code> 后面指定共享容器目录 <code>--name</code> 指定容器的别名 </p>
+<p>centos6_1镜像启动为容器，名字叫testvol<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">6ebb513ead13        centos6_1           &quot;bash&quot;              2 minutes ago       Up 2 minutes                            testvol</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.其他容器挂载该数据卷容器</p>
+</blockquote>
+<p>格式：<code>docker run -itd --volumes-from 容器别名 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# docker run -itd --volumes-from testvol centos6 bash</span><br></pre></td></tr></table></figure></p>
+<p>当容器关闭删除时产生的数据会丢失掉，因此可以把本地目录挂载到容器里来保持数据，此时此容器也称数据卷容器，其他容器可以挂载它来同步数据并保持到本地目录中</p>
+<h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.挂载本地的目录到容器里</p>
+</blockquote>
+<p>格式：<code>docker run -itd -v 本地目录:容器的目录 镜像名 bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run -itd -v /tmp/:/tmp centos6_1 bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-v</code> 用来指定挂载目录，<code>:前面的/data/为宿主机本地目录</code>，<code>:后面的/data/为容器里的目录</code>，会在容器中自动创建</p>
+<blockquote>
+<p>2.其他容器挂载该数据卷容器</p>
+</blockquote>
+<p>由于没有定义–name 因此容器别名由系统随机定义 可以发现为boring_shockley<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">ce916b75047d        centos6_1           &quot;bash&quot;              2 hours ago         Up 2 hours                              boring_shockley</span><br><span class="line"></span><br><span class="line">[root@kun01 tmp]# docker run -itd --volumes-from boring_shockley  centos6 bash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>进入刚刚运行的容器创建目录 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# docker exec -it 82e96c2ed9 bash</span><br><span class="line">[root@82e96c2ed990 /]# cd /tmp/  ##进入tmp目录再创建aaa目录</span><br><span class="line">[root@82e96c2ed990 tmp]# mkdir aaa</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>回到本地tmp目录下发现有刚刚创建的目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 tmp]# ls</span><br><span class="line">aaa</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/04/三周第三次课（4月4日）/" class="archive-article-date">
-  	<time datetime="2018-04-04T07:52:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/04/三周第三次课（4月4日）/">三周第三次课（4月4日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/20/docker-2（9月19日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/02/三周第二次课（4月3日）/" class="archive-article-date">
-  	<time datetime="2018-04-02T15:51:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/18/docker-1（9月18日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker 1（9月18日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/02/三周第二次课（4月3日）/">三周第二次课（4月3日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/02/三周第一次课（4月2日）/" class="archive-article-date">
-  	<time datetime="2018-04-01T16:27:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/02/三周第一次课（4月2日）/">三周第一次课（4月2日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">用户与组</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -304,9 +457,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
