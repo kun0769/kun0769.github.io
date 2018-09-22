@@ -6,33 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>三周第五次课（4月10日） | kun0769的博客</title>
+  <title>docker 3（9月20日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
-<meta name="keywords" content="Linux,磁盘管理">
+  <meta name="description" content="25.9 数据卷备份恢复25.10 docker网络模式25.11 opration not permitted25.12 配置桥接网络">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三周第五次课（4月10日）">
-<meta property="og:url" content="http://yoursite.com/2018/04/09/三周第五次课（4月10日）/index.html">
+<meta property="og:title" content="docker 3（9月20日）">
+<meta property="og:url" content="http://yoursite.com/2018/09/22/docker-3（9月20日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
+<meta property="og:description" content="25.9 数据卷备份恢复25.10 docker网络模式25.11 opration not permitted25.12 配置桥接网络">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408143648.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408144437.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408150108.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142719.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142757.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151236.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151707.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152701.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152934.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408162210.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408163100.jpg">
-<meta property="og:updated_time" content="2018-04-11T12:29:15.295Z">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png">
+<meta property="og:updated_time" content="2018-09-22T13:36:13.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三周第五次课（4月10日）">
-<meta name="twitter:description" content="4.5/4.6 磁盘格式化4.7/4.8 磁盘挂载4.9 手动增加swap空间">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg">
+<meta name="twitter:title" content="docker 3（9月20日）">
+<meta name="twitter:description" content="25.9 数据卷备份恢复25.10 docker网络模式25.11 opration not permitted25.12 配置桥接网络">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -158,148 +148,121 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-三周第五次课（4月10日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-docker-3（9月20日）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      三周第五次课（4月10日）
+      docker 3（9月20日）
     </h1>
   
 
         
-        <a href="/2018/04/09/三周第五次课（4月10日）/" class="archive-article-date">
-  	<time datetime="2018-04-09T13:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
+        <a href="/2018/09/22/docker-3（9月20日）/" class="archive-article-date">
+  	<time datetime="2018-09-22T13:27:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>4.5/4.6 磁盘格式化<br>4.7/4.8 磁盘挂载<br>4.9 手动增加swap空间<br><a id="more"></a></p>
-<h2 id="4-5-4-6磁盘格式化"><a href="#4-5-4-6磁盘格式化" class="headerlink" title="4.5/4.6磁盘格式化"></a>4.5/4.6磁盘格式化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/filesystems  ##系统支持的文件系统</span><br><span class="line">xfs</span><br><span class="line">ext4</span><br><span class="line">ext3</span><br><span class="line">ext2</span><br><span class="line">nodev proc</span><br><span class="line">nodev devpts</span><br><span class="line">iso9660</span><br><span class="line">vfat</span><br><span class="line">hfs</span><br><span class="line">hfsplus</span><br><span class="line">*</span><br></pre></td></tr></table></figure>
+        <p>25.9 数据卷备份恢复<br>25.10 docker网络模式<br>25.11 opration not permitted<br>25.12 配置桥接网络<br><a id="more"></a></p>
+<h2 id="25-9-数据卷备份恢复"><a href="#25-9-数据卷备份恢复" class="headerlink" title="25.9 数据卷备份恢复"></a>25.9 数据卷备份恢复</h2><blockquote>
+<p>开始建立数据卷容器时候并没有映射宿主机的目录，用已下方法备份</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run -itd -v /data/ --name testvol1 centos6_1 bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>mke2fs：格式化磁盘</p>
+<p>宿主机创建备份目录</p>
 </blockquote>
-<p>用法：<code>mke2fs [-t ext2/ext3/ext4][-b][-m][-i] [磁盘名字]</code><br><code>-t</code>：指定格式化的文件系统 不指定参数默认是ext2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142358.jpg" alt=""><br><code>-b</code>：指定单个块的大小 默认是4096<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408143648.jpg" alt=""><br><code>-m</code>：指定预留给root空间大小<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408144437.jpg" alt=""><br><code>-i</code>：指定单个inode的大小 单位为字节 默认为一个inode号又4个块组成 ，1个块为4K 即16K/inode<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408150108.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# mkdir -p /data/backup</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>mkfs.ext2 mkfs.ext3 mkfs.ext4 mkfs.xfs :指定特定文件系统来格式化磁盘</p>
+<p>新开容器挂载数据卷容器并映射本地备份目录和执行压缩命令</p>
 </blockquote>
-<p>用法：<code>mkfs.ext2 mkfs.ext3 mkfs.ext4 mkfs.xfs [磁盘名字]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142719.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408142757.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run --volumes-from testvol1 -v /data/backup/:/backup centos6_1 tar cvf /backup/data.tar /data/</span><br></pre></td></tr></table></figure>
+<p><code>--volumes-from testvol1</code> 指定挂载数据卷testvol1<br><code>-v /data/backup/:/backup</code> 容器中/backup映射到本地机/data/backup/<br><code>tar cvf /backup/data.tar /data/</code> 把容器中的/data目录拷贝到容器中的/backup/中，也就是本地机的/data/backup/</p>
+<p>思路图<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png" alt=""></p>
+<h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><p>思路： 和备份思路一样，先新建一个数据卷容器，再建一个新的容器并挂载该数据卷容器，然后再把tar包解包。</p>
 <blockquote>
-<p>blkid：查看磁盘分区的uuid 文件系统等信息</p>
+<p>新建数据卷容器</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# blkid            ##可以查格式化完且没挂载的分区</span><br><span class="line">/dev/sda1: UUID=&quot;a8b3f01d-79b0-4e7a-9691-03218394ea7e&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sda2: UUID=&quot;9d673f9c-d501-4277-8b3c-c9eb16fec3d3&quot; TYPE=&quot;swap&quot;</span><br><span class="line">/dev/sda3: UUID=&quot;fe113fa8-c81a-4b9a-91f4-d322ba96adfb&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sdb1: UUID=&quot;03fb6c05-e7e0-41e9-becc-9d8b0795bd98&quot; TYPE=&quot;ext4&quot;</span><br><span class="line">/dev/sdb5: UUID=&quot;1d718345-e5c1-4ec2-9f0d-93c743aab472&quot; TYPE=&quot;ext4&quot;</span><br><span class="line">/dev/sdb6: UUID=&quot;db5d043c-bcd7-49fe-8441-96f12ef39ec2&quot; TYPE=&quot;xfs&quot;</span><br><span class="line">/dev/sdc2: PARTLABEL=&quot;extented&quot; PARTUUID=&quot;d49fb012-aa38-4735-9db5-9bcd5b464307&quot;</span><br></pre></td></tr></table></figure>
-<p>即使磁盘没有分区也是可以格式化 但是挂载前提是必须格式化<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151236.jpg" alt=""></p>
-<h2 id="4-7-4-8磁盘挂载"><a href="#4-7-4-8磁盘挂载" class="headerlink" title="4.7/4.8磁盘挂载"></a>4.7/4.8磁盘挂载</h2><blockquote>
-<p>mount：挂载磁盘到目录下</p>
-</blockquote>
-<p>用法：<code>mount [-o] [磁盘名字] [挂载点]</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount /dev/sdb /mnt/  ##把sdb挂载到mnt目录下</span><br><span class="line">[root@localhost ~]# df -h</span><br><span class="line">文件系统        容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/sda3        18G 1013M   17G    6% /</span><br><span class="line">devtmpfs        483M     0  483M    0% /dev</span><br><span class="line">tmpfs           493M     0  493M    0% /dev/shm</span><br><span class="line">tmpfs           493M  6.8M  486M    2% /run</span><br><span class="line">tmpfs           493M     0  493M    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1       197M   97M  100M   50% /boot</span><br><span class="line">tmpfs            99M     0   99M    0% /run/user/0</span><br><span class="line">/dev/sdb        5.0G   33M  5.0G    1% /mnt</span><br></pre></td></tr></table></figure></p>
-<p><code>-o</code>：对挂载内容(文件目录)设置参数</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>意思</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>defaults</td>
-<td>默认 包括rw suid exec auto nouser async</td>
-</tr>
-<tr>
-<td>rw/ro</td>
-<td>读写/只读数据</td>
-</tr>
-<tr>
-<td>suid/nosuid</td>
-<td>可设置suid权限/不可设置suid权限</td>
-</tr>
-<tr>
-<td>exec/noexec</td>
-<td>可执行/不可执行</td>
-</tr>
-<tr>
-<td>auto/noauto</td>
-<td>自动/不自动挂载</td>
-</tr>
-<tr>
-<td>user/nouser</td>
-<td>允许普通用户挂载/不允许普通用户挂载</td>
-</tr>
-<tr>
-<td>async/sync</td>
-<td>不同步数据/同步数据到硬盘</td>
-</tr>
-<tr>
-<td>remount</td>
-<td>重新挂载</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount -o ro,nouser /dev/sdb /mnt/</span><br><span class="line">[root@localhost ~]# mount -o rw,remount /dev/sdb /mnt/</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408151707.jpg" alt=""><br>直接mount可以查看挂载到系统的分区的文件系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]#docker run -itd -v /data/ --name testvol2 centos bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>umount：卸载磁盘</p>
+<p>挂载数据卷新建容器，并解包</p>
 </blockquote>
-<p>用法：<code>umount [-l] [磁盘名字/挂载点]</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152701.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408152934.jpg" alt=""></p>
-<p><code>-l</code>：强制卸载磁盘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mnt]# umount -l /mnt/   ##身在mnt目录下也可以卸载挂载点</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]#docker run --volumes-from testvol2  -v /data/backup/:/backup centos tar xf /backup/data.tar</span><br></pre></td></tr></table></figure>
+<h2 id="25-10-25-11-Docker网络模式-opration-not-permitted问题"><a href="#25-10-25-11-Docker网络模式-opration-not-permitted问题" class="headerlink" title="25.10/25.11 Docker网络模式/opration not permitted问题"></a>25.10/25.11 Docker网络模式/opration not permitted问题</h2><ul>
+<li><p>Docker中有4种网络模式</p>
+<ul>
+<li><code>host模式</code>：docker使用的网络实际上和宿主机一样，在容器内看到的网卡ip是宿主机ip。使用docker run时使用<code>--net=host</code>指定</li>
+<li><code>container模式</code>：多个容器使用共同的网络，看到的ip是一样的。使用<code>--net=container:container_id/container_name</code></li>
+<li><code>none模式</code>：这种模式下，不会配置任何网络。使用<code>--net=none</code>指定</li>
+<li><code>bridge模式</code>：这种模式会为每个容器分配一个独立的Network Namespace。类似于vmware的nat网络模式。同一个宿主机上的所有容器会在同一个网段下，相互之间是可以通信的。使用<code>--net=bridge</code>指定默认模式，不用指定默认就是这种网络模式。</li>
+</ul>
+</li>
+</ul>
+<h3 id="外部访问容器"><a href="#外部访问容器" class="headerlink" title="外部访问容器"></a>外部访问容器</h3><p>思路：<br>首先使用centos镜像新建一个容器，然后在该容器中安装httpd服务，并启动。<br>再把该容器导成一个新的镜像（centos-nginx)，然后再使用新镜像创建容器，并指定端口映射。<br>再通过其他机器来访问本地的映射端口来访问容器</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.创建容器并安装软件，这里已nginx为实例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run -itd centos_net bash  ##启动容器</span><br><span class="line">[root@kun01 ~]# docker exec -it 9eeb7d5e669 bash  ##进入容器</span><br><span class="line">[root@9eeb7d5e6697 /]# yum install -y epel-release</span><br><span class="line">[root@9eeb7d5e6697 /]# yum install -y nginx  ##安装nginx</span><br><span class="line">[root@9eeb7d5e6697 /]# systemctl start nginx</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>/etc/fstab配置文件</p>
+<p>2.把安装了Nginx的容器转换为镜像</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi /etc/fstab  ##/etc/fstab是启动系统时挂载分区的配置文件</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408162210.jpg" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>列数</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第一列</td>
-<td>分区对应的uuid号 </td>
-</tr>
-<tr>
-<td>第二列</td>
-<td>挂载点</td>
-</tr>
-<tr>
-<td>第三列</td>
-<td>文件系统</td>
-</tr>
-<tr>
-<td>第四列</td>
-<td>挂载内容的参数</td>
-</tr>
-<tr>
-<td>第五列</td>
-<td>是否备份 0不备份 1备份</td>
-</tr>
-<tr>
-<td>第六列</td>
-<td>是否自检 0不自检 1自检 优先度最高 2自检</td>
-</tr>
-</tbody>
-</table>
-<p>只要你想刚刚格式化完的分区在系统启动是自动挂载可以在/etc/fstab下面添加<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180408163100.jpg" alt=""></p>
-<h2 id="4-9手动添加swap空间"><a href="#4-9手动添加swap空间" class="headerlink" title="4.9手动添加swap空间"></a>4.9手动添加swap空间</h2><blockquote>
-<p>1.添加一个大小为100M文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# dd if=/dev/zero of=/tmp/new_swap bs=1M count=100  ##dd指定大小的块来拷贝文件 if源地址 of输出地址 bs块大小 </span><br><span class="line">记录了100+0 的读入</span><br><span class="line">记录了100+0 的写出</span><br><span class="line">104857600字节(105 MB)已复制，1.04578 秒，100 MB/秒</span><br><span class="line">[root@localhost ~]# du -sh /tmp/new_swap</span><br><span class="line">100M    /tmp/new_swap</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker commit -m &quot;install nginx&quot; -a &quot;kun&quot; 9eeb7d5 centos_nginx</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>2.格式化为swap文件系统</p>
+<p>3.把镜像启动为容器并映射宿主机的端口</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkswap -f /tmp/new_swap      ##mkswap创建swap文件系统  </span><br><span class="line">正在设置交换空间版本 1，大小 = 102396 KiB</span><br><span class="line">无标签，UUID=edd3b7f9-b031-4701-ae91-7ef06cb87e04</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run -itd -p 8888:80 centos_nginx bash</span><br></pre></td></tr></table></figure>
+<p><code>-p</code> 指定端口映射 <code>:左边是宿主机端口</code>，<code>:右边是容器端口</code></p>
 <blockquote>
-<p>3.挂载swap空间</p>
+<p>4.进入容器启动服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# swapon</span><br><span class="line">NAME      TYPE      SIZE USED PRIO</span><br><span class="line">/dev/sda2 partition   2G   0B   -1</span><br><span class="line">[root@localhost ~]# swapon /tmp/new_swap     ##swapon挂载swap空间</span><br><span class="line">swapon: /tmp/new_swap：不安全的权限 0644，建议使用 0600。</span><br><span class="line">[root@localhost ~]# swapon</span><br><span class="line">NAME          TYPE      SIZE USED PRIO</span><br><span class="line">/dev/sda2     partition   2G   0B   -1</span><br><span class="line">/tmp/new_swap file      100M   0B   -2</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1008152      118636      643848        6864      245668      714792</span><br><span class="line">Swap:       2199544           0     2199544</span><br><span class="line">[root@localhost ~]# swapoff /tmp/new_swap   ##swapoff卸载swap空间</span><br><span class="line">[root@localhost ~]# free</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        1008152      118460      643988        6864      245704      714968</span><br><span class="line">Swap:       2097148           0     2097148</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker exec -it 316962b bash ##进入新的容器</span><br><span class="line">[root@316962b00ea1 /]# systemctl start nginx</span><br><span class="line">Failed to get D-Bus connection: Operation not permitted</span><br></pre></td></tr></table></figure>
+<h3 id="问题-dbus-daemon没有启动"><a href="#问题-dbus-daemon没有启动" class="headerlink" title="问题  dbus-daemon没有启动"></a>问题  dbus-daemon没有启动</h3><p>Failed to get D-Bus connection: Operation not permitted</p>
+<p>解决 启动容器是添加启动dbus-daemon参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@316962b00ea1 /]# exit</span><br><span class="line">[root@kun01 ~]# docker rm -f 316962b00  ##退出并删除正在运行的容器再带上参数运行</span><br><span class="line">[root@kun01 ~]# docker run -itd --privileged -e &quot;container=docker&quot; -p 8888:80 centos_nginx /usr/sbin/init </span><br><span class="line">[root@kun01 ~]# docker exec -it b810dc9653 bash  ##进入添加参数后的容器</span><br><span class="line">[root@b810dc96534f /]# systemctl start nginx</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问宿主机的8888端口<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png" alt=""></p>
+<h2 id="25-12-配置桥接网络"><a href="#25-12-配置桥接网络" class="headerlink" title="25.12 配置桥接网络"></a>25.12 配置桥接网络</h2><p>为了使本地网络中的机器和Docker容器更方便的通信，我们经常会有将Docker容器配置到和主机同一网段的需求。只要将Docker容器和宿主机的网卡桥接起来，再给Docker容器配上IP就可以了。</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+<p>1.把宿主机的网卡拷贝一份为br0网卡</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# cd /etc/sysconfig/network-scripts/</span><br><span class="line">[root@kun01 network-scripts]# cp ifcfg-ens33 ifcfg-br0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.修改ens33和br0网卡配置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 network-scripts]# vim ifcfg-ens33</span><br></pre></td></tr></table></figure>
+<p>ens33增加BRIDGE=br0，删除IPADDR,NETMASK,GATEWAY,DNS1,UUID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#UUID=853ab223-b6fa-419a-8fbe-f1476d83f2ca</span><br><span class="line">#IPADDR=192.168.80.101</span><br><span class="line">#NETMASK=255.255.255.0</span><br><span class="line">#GATEWAY=192.168.80.2</span><br><span class="line">#DNS1=119.29.29.29</span><br><span class="line">BRIDGE=br0</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 network-scripts]# vim ifcfg-br0</span><br></pre></td></tr></table></figure>
+<p>br0修改TYPE为Bridge DEVICE改为br0 NAME改为br0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Bridge</span><br><span class="line">DEVICE=br0</span><br><span class="line">NAME=br0</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.重启网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 network-scripts]# systemctl restart network</span><br></pre></td></tr></table></figure>
+<p>br0有IP地址 ens33没有IP地址为正确配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 network-scripts]# ifconfig</span><br><span class="line">br0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.80.101  netmask 255.255.255.0  broadcast 192.168.80.255</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        ether 00:0c:29:71:e0:91  txqueuelen 1000  (Ethernet)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>4.下载pipework </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 network-scripts]# cd</span><br><span class="line">[root@kun01 ~]# git clone https://github.com/jpetazzo/pipework</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.把pipework拷贝到环境变量中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# git clone https://github.com/jpetazzo/pipework.git</span><br><span class="line">[root@kun01 ~]# cd pipework/</span><br><span class="line">[root@kun01 pipework]# cp pipework /usr/local/bin/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.运行一个不配置任何网络的容器</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 pipework]# docker run -itd --net=none centos_net bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>7.为刚刚容器重新设置新网段</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 pipework]# pipework br0 019a92112 192.168.80.66/24@192.168.80.2</span><br></pre></td></tr></table></figure>
+<p><code>@前表示要设置的新IP和宿主机的IP同网段</code> <code>@后表示网关</code></p>
+<blockquote>
+<p>8.进入容器里面看看网络</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 pipework]# docker exec -it 019a92112 bash</span><br><span class="line">[root@019a92112feb /]# ifconfig</span><br><span class="line">eth1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.80.66  netmask 255.255.255.0  broadcast 192.168.80.255</span><br></pre></td></tr></table></figure>
+<p>看到刚刚的IP地址出现证明设置正确</p>
+
       
 
       
@@ -312,11 +275,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">磁盘管理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -372,7 +331,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/09/三周第五次课（4月10日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/22/docker-3（9月20日）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -386,18 +345,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/10/四周第一次课（4月11日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          四周第一次课（4月11日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/08/三周第四次课（4月9日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">三周第四次课（4月9日）</div>
+    <a href="/2018/09/20/docker-2（9月19日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker 2（9月19日）</div>
       <i class="icon-circle-right"></i>
     </a>
   
