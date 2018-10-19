@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/7 | kun0769的博客</title>
+  <title>ELK 2（10月19日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/07/page/5/index.html">
+  <meta name="description" content="27.6 安装kibana27.7 安装logstash27.8 配置logstash27.9 kibana上查看日志27.10 收集nginx日志27.11 使用beats采集日志">
+<meta name="keywords" content="ELK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK 2（10月19日）">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/ELK-2（10月19日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="27.6 安装kibana27.7 安装logstash27.8 配置logstash27.9 kibana上查看日志27.10 收集nginx日志27.11 使用beats采集日志">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png">
+<meta property="og:updated_time" content="2018-10-19T05:44:26.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="ELK 2（10月19日）">
+<meta name="twitter:description" content="27.6 安装kibana27.7 安装logstash27.8 配置logstash27.9 kibana上查看日志27.10 收集nginx日志27.11 使用beats采集日志">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,152 +156,330 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ELK-2（10月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ELK 2（10月19日）
+    </h1>
+  
+
+        
+        <a href="/2018/10/19/ELK-2（10月19日）/" class="archive-article-date">
+  	<time datetime="2018-10-19T05:07:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>27.6 安装kibana<br>27.7 安装logstash<br>27.8 配置logstash<br>27.9 kibana上查看日志<br>27.10 收集nginx日志<br>27.11 使用beats采集日志<br><a id="more"></a></p>
+<h2 id="27-6-安装kibana"><a href="#27-6-安装kibana" class="headerlink" title="27.6 安装kibana"></a>27.6 安装kibana</h2><blockquote>
+<p>kun02上安装kibana</p>
+</blockquote>
+<p>和安装elasticsearch一样都是可以通过安装yum源或者直接安装rpm包<br>参考官方文档 <img src="" alt=""><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# yum install -y kibana</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# wget https://artifacts.elastic.co/downloads/kibana/kibana-6.4.2-x86_64.rpm</span><br><span class="line">[root@kun02 src]# rpm -ivh kibana-6.4.2-x86_64.rpm</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>配置kibana</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# vim /etc/kibana/kibana.yml</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server.port: 5601</span><br><span class="line">server.host: 192.168.80.102 </span><br><span class="line">elasticsearch.url: &quot;http://192.168.80.102:9200&quot;  ##定义主节点IP端口</span><br><span class="line">logging.dest: /var/log/kibana.log  ##定义kabana的日志，不定义默认输入到/var/log/messages</span><br></pre></td></tr></table></figure></p>
+<p><code>/etc/kibana/kibana.yml</code>是kibana的配置文件 <code>kibana</code>默认监听<code>5601</code>端口</p>
+<blockquote>
+<p>启动kibana</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# systemctl start kibana</span><br></pre></td></tr></table></figure>
+<h3 id="问题-目录权限不够-不能写入-var-log"><a href="#问题-目录权限不够-不能写入-var-log" class="headerlink" title="问题 目录权限不够 不能写入/var/log"></a>问题 目录权限不够 不能写入/var/log</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Oct 14 18:00:07 kun02 kibana: Error: EACCES: permission denied, open &apos;/var/log/kibana.log&apos;</span><br><span class="line">Oct 14 18:00:07 kun02 systemd: kibana.service: main process exited, code=exited, status=1/FAILURE</span><br></pre></td></tr></table></figure>
+<p>解决 更改目录权限或者更改路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# chmod 757 /var/log/</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看是否监听端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 src]# netstat -lntp |grep node</span><br><span class="line">tcp        0      0 192.168.80.102:5601     0.0.0.0:*               LISTEN      4327/node</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在浏览器上打开kibana</p>
+</blockquote>
+<p>输入192.168.80.102:5601<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png" alt=""></p>
+<h2 id="27-7-安装logstash"><a href="#27-7-安装logstash" class="headerlink" title="27.7 安装logstash"></a>27.7 安装logstash</h2><blockquote>
+<p>在kun03上安装logstash</p>
+</blockquote>
+<p>和安装elasticsearch一样都是可以通过安装yum源或者直接安装rpm包<br>参考官方文档 <img src="" alt=""><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# yum install -y logstash</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# wget https://artifacts.elastic.co/downloads/logstash/logstash-6.4.2.rpm</span><br><span class="line">[root@kun03 src]# rpm -ivh logstash-6.4.2.rpm</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>创建收集系统日志的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 src]# vim /etc/logstash/conf.d/syslog.conf</span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">  syslog &#123;</span><br><span class="line">    type =&gt; &quot;system-syslog&quot;</span><br><span class="line">host =&gt; &quot;192.168.80.103&quot;</span><br><span class="line">port =&gt; &quot;514&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">stdout &#123;</span><br><span class="line">codec =&gt; &quot;rubydebug&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义的收集日志配置文件路径是<code>/etc/logstash/conf.d/</code> 配置文件以<code>.conf</code>结尾<br><code>type =&gt; &quot;system-syslog&quot;</code> 指定类型是系统日志<br><code>port =&gt; 514</code> 指定输入到本机的端口<br><code>codec =&gt; rubydebug</code> 指定输入到当前终端上</p>
+<blockquote>
+<p>检查自定义文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 src]# cd /usr/share/logstash/bin/</span><br><span class="line">[root@kun03 bin]# ./logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/syslog.conf --config.test_and_exit</span><br><span class="line">Configuration OK  ##表示配置文件没错</span><br></pre></td></tr></table></figure>
+<p><code>elasticsearch</code> <code>kibana</code> <code>logstash</code> <code>filebeat</code>的执行文件，插件都是在<code>/usr/share/</code>对应的目录下,日志在<code>/var/log/</code>对应的目录下,配置文件在<code>/etc/</code>对应目录下<br><code>--path.settings</code> 指定/logstash主配置文件目录<br><code>-f</code> 指定自定义的配置文件<br><code>--config.test_and_exit</code> 检查并退出 不带此行就启动服务了logstash服务并前台输出 <code>systemctl start logstash</code>表示启动服务并后台执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# ./logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/syslog.conf  ##启动启动logstash服务并在此终端输入信息</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在另一个终端上设置信息输入的端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# vim /etc/rsyslog.conf</span><br></pre></td></tr></table></figure>
+<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.* @@192.168.80.103:514   ##日志表示所有信息内容输入到本机的10514端口中</span><br></pre></td></tr></table></figure></p>
+<p><code>/etc/rsyslog.conf</code> 是系统日志的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# systemctl restart rsyslog</span><br></pre></td></tr></table></figure></p>
+<h3 id="问题-没有日志输出"><a href="#问题-没有日志输出" class="headerlink" title="问题  没有日志输出"></a>问题  没有日志输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An unexpected error occurred! &#123;:error=&gt;#&lt;ArgumentError: Path &quot;/var/lib/logstash/queue&quot; must be a writable directory.</span><br></pre></td></tr></table></figure>
+<p>解决 更改用户为logstash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# chown -R logstash /var/log/logstash /var/lib/logstash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看是否监听514端口和9600端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# netstat -lntp |grep 514</span><br><span class="line">tcp6       0      0 :::514                :::*                    LISTEN      1834/java</span><br><span class="line">[root@kun03 ~]# netstat -lntp |grep 9600</span><br><span class="line">tcp6       0      0 127.0.0.1:9600          :::*                    LISTEN      1833/java</span><br></pre></td></tr></table></figure>
+<p><code>9600</code>端口是<code>logstash</code>服务监听的端口</p>
+<h2 id="27-8-配置logstash"><a href="#27-8-配置logstash" class="headerlink" title="27.8 配置logstash"></a>27.8 配置logstash</h2><p>由于刚刚配置的收集日志配置文件只能在当前终端输出，并不能输出给es来让kibana成图。因此还需要更改配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# vim /etc/logstash/conf.d/syslog.conf</span><br></pre></td></tr></table></figure></p>
+<p>更改为下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  syslog &#123;</span><br><span class="line">    type =&gt; &quot;system-syslog&quot;</span><br><span class="line">host =&gt; &quot;192.168.80.103&quot;</span><br><span class="line">port =&gt; &quot;514&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;192.168.80.102:9200&quot;]</span><br><span class="line">    index =&gt; &quot;system-syslog-%&#123;+YYYY.MM&#125;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>type =&gt; &quot;system-syslog&quot;</code> 自定义名字<br><code>hosts =&gt; [&quot;192.168.80.102:9200&quot;]</code> 输入到主节点kun02上<br><code>index =&gt; &quot;system-syslog-%{+YYYY.MM}&quot;</code> 定义输入的格式是system-syslog-年年年年.月月的索引</p>
+<blockquote>
+<p>启动logstash服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# systemctl start logstash</span><br></pre></td></tr></table></figure>
+<h3 id="问题-启动不了514端口"><a href="#问题-启动不了514端口" class="headerlink" title="问题 启动不了514端口"></a>问题 启动不了514端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Oct 17 23:59:11 kun03 logstash: [2018-10-17T23:59:11,146][WARN ][logstash.inputs.syslog   ] syslog listener died &#123;:protocol=&gt;:tcp, :address=&gt;&quot;192.168.80.103:514&quot;, :exception=&gt;#&lt;SocketError: initialize: name or service not known&gt;, :backtrace=&gt;[&quot;org/jruby/ext/socket/RubyTCPServer.java:135:in `initialize&apos;&quot;, &quot;org/jruby/RubyIO.java:875:in `new&apos;&quot;, &quot;/usr/share/logstash/vendor/bundle/jruby/2.3.0/gems/logstash-input-syslog-3.4.1/lib/logstash/inputs/syslog.rb:167:in `tcp_listener&apos;&quot;, &quot;/usr/share/logstash/vendor/bundle/jruby/2.3.0/gems/logstash-input-syslog-3.4.1/lib/logstash/inputs/syslog.rb:130:in `server&apos;&quot;, &quot;/usr/share/logstash/vendor/bundle/jruby/2.3.0/gems/logstash-input-syslog-3.4.1/lib/logstash/inputs/syslog.rb:114:in `block in run&apos;&quot;]&#125;</span><br></pre></td></tr></table></figure>
+<p>解决 更改logstash.service里面属主为root<br>参考文章 <img src="" alt=""><a href="https://blog.csdn.net/bing0924/article/details/82858207" target="_blank" rel="noopener">https://blog.csdn.net/bing0924/article/details/82858207</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/systemd/system/logstash.service</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line">[root@kun03 ~]# systemctl daemon-reload</span><br><span class="line">[root@kun03 ~]# systemctl restart logstash</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看是否启动端口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# netstat -lntp</span><br><span class="line">tcp6       0      0 :::514                :::*                    LISTEN      2059/java           </span><br><span class="line">tcp6       0      0 127.0.0.1:9600          :::*                    LISTEN      2059/java</span><br></pre></td></tr></table></figure>
+<p><code>/var/log/logstash/logstash-plain.log</code> 是logstash的日志路径 ，启动不了端口可以查看此日志文件</p>
+<h2 id="27-9-kibana上查看日志"><a href="#27-9-kibana上查看日志" class="headerlink" title="27.9 kibana上查看日志"></a>27.9 kibana上查看日志</h2><p>查看文章 <img src="" alt=""><a href="https://zhaoyanblog.com/archives/732.html" target="_blank" rel="noopener">https://zhaoyanblog.com/archives/732.html</a> </p>
+<blockquote>
+<p>获取索引信息</p>
+</blockquote>
+<p>格式：<code>curl &#39;IP地址:9200/_cat/indices?v&#39;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl &apos;192.168.80.102:9200/_cat/indices?v&apos;</span><br><span class="line">health status index                      uuid                   pri rep docs.count docs.deleted store.size pri.store.size</span><br><span class="line">green  open   system-syslog-2018.10      YPPbyuQORcSRvKZ3eCGzsA   5   1         13            0    195.1kb</span><br><span class="line">```       </span><br><span class="line">发现有索引说明logstash和elasticsearch正常通讯了 `v`表示表头</span><br><span class="line"></span><br><span class="line">&gt;获指定索引详细信息</span><br><span class="line"></span><br><span class="line">格式：`curl -XGET &apos;IP地址:9200/索引名?pretty&apos;`</span><br><span class="line">``` </span><br><span class="line">[root@kun02 ~]# curl -XGET &apos;192.168.80.102:9200/system-syslog-2018.10?pretty&apos;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>删除指定索引</p>
+</blockquote>
+<p>格式：<code>curl -XDELETE &#39;IP地址:9200/索引名&#39;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl -XDELETE &apos;192.168.80.102:9200/kibana_sample_data_flights&apos;</span><br><span class="line">&#123;&quot;acknowledged&quot;:true&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在浏览器访问kibana</p>
+</blockquote>
+<p>点击<code>Managerment</code>，把刚刚查看到的索引填上 可以填<code>system-syslog-*</code> 来表示所有<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png" alt=""></p>
+<p>回去Discover 已经发现有数据了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png" alt=""></p>
+<h2 id="27-10-收集nginx日志"><a href="#27-10-收集nginx日志" class="headerlink" title="27.10 收集nginx日志"></a>27.10 收集nginx日志</h2><p>使用logstash收集Nginx的访问日志</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>在kun03上</p>
+<blockquote>
+<p>1.安装Nginx并创建虚拟主机配置文件和定义访问日志的输入格式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# yum install -y nginx</span><br><span class="line">[root@kun03 bin]# vim /etc/nginx/conf.d/elk.conf</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">            listen 80;</span><br><span class="line">            server_name elk.test.com;</span><br><span class="line"></span><br><span class="line">            location / &#123;</span><br><span class="line">                proxy_pass      http://192.168.80.102:5601;</span><br><span class="line">                proxy_set_header Host   $host;</span><br><span class="line">                proxy_set_header X-Real-IP      $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">            &#125;</span><br><span class="line">            access_log  /var/log/elk_access.log main2;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>此配置是本机80端口（elk.test.com）代理到192.168.80.102:5601上<br><code>access_log</code>  定义访问日志路径和格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>在http里面添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format main2 &apos;$http_host $remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$upstream_addr&quot; $request_time&apos;;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png" alt=""></p>
+<blockquote>
+<p>2.检查并启动Nginx服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# nginx -t</span><br><span class="line">[root@kun03 bin]# systemctl start nginx</span><br></pre></td></tr></table></figure>
+<h3 id="问题-Nginx-无法读取PID"><a href="#问题-Nginx-无法读取PID" class="headerlink" title="问题 Nginx 无法读取PID"></a>问题 Nginx 无法读取PID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Oct 18 15:20:14 kun03 systemd: Failed to read PID from file /run/nginx.pid: Invalid argument</span><br></pre></td></tr></table></figure>
+<p>解决 参考文档 <img src="" alt=""><a href="http://jiasule.v2ex.com/t/300986" target="_blank" rel="noopener">http://jiasule.v2ex.com/t/300986</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# mkdir -p /etc/systemd/system/nginx.service.d</span><br><span class="line">[root@kun03 bin]# printf &quot;[Service]\nExecStartPost=/bin/sleep 0.1\n&quot; &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line">[root@kun03 bin]# systemctl daemon-reload</span><br><span class="line">[root@kun03 bin]# systemctl restart nginx</span><br></pre></td></tr></table></figure></p>
+<p>在hosts上绑定域名还IP并使用浏览器访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.103 elk.test.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png" alt=""></p>
+<p>查看是否产生访问日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# tail /var/log/elk_access.log</span><br><span class="line">elk.test.com 192.168.80.1 - - [18/Oct/2018:16:30:41 +0800] &quot;GET /bundles/428687c29242d0d2f3d7ac7e09942921.svg HTTP/1.1&quot; 304 0 &quot;http://elk.test.com/app/kibana&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&quot; &quot;192.168.80.102:5601&quot; 0.013</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.创建收集Nginx访问日志的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# vim /etc/logstash/conf.d/nginx.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">  file &#123;</span><br><span class="line">    path =&gt; &quot;/var/log/elk_access.log&quot;</span><br><span class="line">    start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    type =&gt; &quot;nginx&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">filter &#123;</span><br><span class="line">    grok &#123;</span><br><span class="line">        match =&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;IPORHOST:http_host&#125; %&#123;IPORHOST:clientip&#125; - %&#123;USERNAME:remote_user&#125; \[%&#123;HTTPDATE:timestamp&#125;\] \&quot;(?:%&#123;WORD:http_verb&#125; %&#123;NOTSPACE:http_request&#125;(?: HTTP/%&#123;NUMBER:http_version&#125;)?|%&#123;DATA:raw_http_request&#125;)\&quot; %&#123;NUMBER:response&#125; (?:%&#123;NUMBER:bytes_read&#125;|-) %&#123;QS:referrer&#125; %&#123;QS:agent&#125; %&#123;QS:xforwardedfor&#125; %&#123;NUMBER:request_time:float&#125;&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    geoip &#123;</span><br><span class="line">        source =&gt; &quot;clientip&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123; codec =&gt; rubydebug &#125;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">        hosts =&gt; [&quot;192.168.80.103:9200&quot;]</span><br><span class="line">  index =&gt; &quot;nginx-test-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>path</code> 指定收集的来源文件路径 这里指Nginx的访问日志路径<br><code>start_position</code> 从文章的哪里开始收集 <code>beginning</code>表示开头<br><code>type</code> 自定义名字<br><code>filter</code> 搜索的日志过滤为指定格式</p>
+<blockquote>
+<p>4.检查配置文件并启动logstash服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# ./logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/nginx.conf --config.test_and_exit</span><br><span class="line">[root@kun03 bin]# systemctl start logstash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.查看索引并在kibana上查看</p>
+</blockquote>
+<p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl &apos;192.168.80.102:9200/_cat/indices?v&apos;</span><br><span class="line">health status index                 uuid                   pri rep docs.count docs.deleted store.size pri.store.size</span><br><span class="line">green  open   nginx-test-2018.10.18 dkGUAduQSoOnWoEMXsCu-A   5   1        147            0    401.8kb        200.9kb</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>6.在kibana上添加索引</p>
+</blockquote>
+<p><code>Managerment</code> —- <code>Index Patterns</code> —- <code>Create Index Pattern</code> —-  输入 <code>nginx-test-*</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png" alt=""></p>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png" alt=""></p>
+<h2 id="27-11-使用beats采集日志"><a href="#27-11-使用beats采集日志" class="headerlink" title="27.11 使用beats采集日志"></a>27.11 使用beats采集日志</h2><p>Beats是个轻量的数据采集器，它的家族成员有多个，其中filebeat是用来收集数据的。还可以来自定义beats<br>官网 <img src="" alt=""><a href="https://www.elastic.co/cn/products/beats" target="_blank" rel="noopener">https://www.elastic.co/cn/products/beats</a><br>成员下载地址 <img src="" alt=""><a href="https://www.elastic.co/cn/downloads/beats" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/beats</a></p>
+<p>Beats成员<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png" alt=""></p>
+<h3 id="在kun04上安装filebeat来收集日志，并在屏幕上显示"><a href="#在kun04上安装filebeat来收集日志，并在屏幕上显示" class="headerlink" title="在kun04上安装filebeat来收集日志，并在屏幕上显示"></a>在kun04上安装filebeat来收集日志，并在屏幕上显示</h3><blockquote>
+<p>1.下载并安装filebeat</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 src]# wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.4.2-x86_64.rpm</span><br><span class="line">[root@kun04 src]# rpm -ivh filebeat-6.4.2-x86_64.rpm</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.编辑filebeat配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 src]# vim /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
+<p>在<code>filebeat.inputs:</code> 修改下面参数 表示来源的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- type: log</span><br><span class="line">  enabled: true</span><br><span class="line">    - /var/log/messages</span><br></pre></td></tr></table></figure></p>
+<p>注意：每行开头都要上行后空两格<br>找到<code>output.elasticsearch:</code> 注释掉 并添加下面参数 表示当前终端输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output.console:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.在当前屏幕显示数据</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 src]# /usr/share/filebeat/bin/filebeat -c /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
+<p><code>-c</code> 指定filebeat配置文件</p>
+<h3 id="让filebeat把数据输出到elastic上并启动为服务"><a href="#让filebeat把数据输出到elastic上并启动为服务" class="headerlink" title="让filebeat把数据输出到elastic上并启动为服务"></a>让filebeat把数据输出到elastic上并启动为服务</h3><blockquote>
+<p>1.配置filebeat配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 src]# vim /etc/filebeat/filebeat.yml</span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/messages</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;192.168.80.102:9200&quot;]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.启动filebeat服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun04 src]# systemctl start filebeat</span><br></pre></td></tr></table></figure>
+<p>filebeat的日志路径是<code>/var/log/filebeat/filebeat</code></p>
+<blockquote>
+<p>3.在kun02上查看索引 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl &apos;192.168.80.102:9200/_cat/indices?v&apos;</span><br><span class="line">health status index                     uuid                   pri rep docs.count docs.deleted store.size pri.store.size</span><br><span class="line">green  open   filebeat-6.4.2-2018.10.19 xZHltcWtRQqB3a2QI599RQ   3   1       5796            0      1.6mb        861.9kb</span><br></pre></td></tr></table></figure>
+<p>注意：filebeat配置文件中是不需要添加索引参数 会自动生成索引</p>
+<blockquote>
+<p>4.在kibana上添加filebeat索引</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png" alt=""></p>
+<h2 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h2><h3 id="x-pack-收费，免费"><a href="#x-pack-收费，免费" class="headerlink" title="x-pack 收费，免费"></a>x-pack 收费，免费</h3><p><img src="" alt=""><a href="http://www.jianshu.com/p/a49d93212eca" target="_blank" rel="noopener">http://www.jianshu.com/p/a49d93212eca</a><br><img src="" alt=""><a href="https://www.elastic.co/subscriptions" target="_blank" rel="noopener">https://www.elastic.co/subscriptions</a></p>
+<h3 id="Elastic-stack演进"><a href="#Elastic-stack演进" class="headerlink" title="Elastic stack演进"></a>Elastic stack演进</h3><p><img src="" alt=""><a href="http://70data.net/1505.html" target="_blank" rel="noopener">http://70data.net/1505.html</a></p>
+<h3 id="基于kafka和elasticsearch，linkedin构建实时日志分析系统"><a href="#基于kafka和elasticsearch，linkedin构建实时日志分析系统" class="headerlink" title="基于kafka和elasticsearch，linkedin构建实时日志分析系统"></a>基于kafka和elasticsearch，linkedin构建实时日志分析系统</h3><p><img src="" alt=""><a href="http://t.cn/RYffDoE" target="_blank" rel="noopener">http://t.cn/RYffDoE</a>  </p>
+<h3 id="使用redis"><a href="#使用redis" class="headerlink" title="使用redis"></a>使用redis</h3><p><img src="" alt=""><a href="http://blog.lishiming.net/?p=463" target="_blank" rel="noopener">http://blog.lishiming.net/?p=463</a></p>
+<h3 id="ELK-Filebeat-Kafka-ZooKeeper-构建海量日志分析平台"><a href="#ELK-Filebeat-Kafka-ZooKeeper-构建海量日志分析平台" class="headerlink" title="ELK+Filebeat+Kafka+ZooKeeper 构建海量日志分析平台"></a>ELK+Filebeat+Kafka+ZooKeeper 构建海量日志分析平台</h3><p><img src="" alt=""><a href="https://www.cnblogs.com/delgyd/p/elk.html" target="_blank" rel="noopener">https://www.cnblogs.com/delgyd/p/elk.html</a><br><img src="" alt=""><a href="http://www.jianshu.com/p/d65aed756587" target="_blank" rel="noopener">http://www.jianshu.com/p/d65aed756587</a></p>
+<h3 id="logstash配置详细说明"><a href="#logstash配置详细说明" class="headerlink" title="logstash配置详细说明"></a>logstash配置详细说明</h3><p><img src="" alt=""><a href="https://blog.csdn.net/chenleiking/article/details/73563930" target="_blank" rel="noopener">https://blog.csdn.net/chenleiking/article/details/73563930</a><br><img src="" alt=""><a href="https://www.cnblogs.com/yincheng/p/logstash.html" target="_blank" rel="noopener">https://www.cnblogs.com/yincheng/p/logstash.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/Mysql双主架构/" class="archive-article-date">
-  	<time datetime="2018-07-02T14:34:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/Mysql双主架构/">Mysql双主架构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ELK</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/19/ELK-2（10月19日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/mysql主从数据库不同步/" class="archive-article-date">
-  	<time datetime="2018-07-02T14:21:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/14/ELK-1（10月14日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ELK 1（10月14日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/mysql主从数据库不同步/">mysql主从数据库不同步</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/mysql架构演变过程/" class="archive-article-date">
-  	<time datetime="2018-07-02T14:09:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/mysql架构演变过程/">mysql架构演变过程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql主从</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/07/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/2018/07/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/07/page/3/">3</a><a class="page-number" href="/archives/2018/07/page/4/">4</a><span class="page-number current">5</span>
-    </nav>
   
+
+  
+
 
 
           </div>
@@ -308,8 +502,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
