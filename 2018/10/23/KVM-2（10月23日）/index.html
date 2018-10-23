@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | kun0769的博客</title>
+  <title>KVM 2（10月23日） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/16/index.html">
+  <meta name="description" content="28.6 配置网卡28.7 创建虚拟机安装CentOS728.8 虚拟机管理28.9 克隆虚拟机28.10 快照管理">
+<meta name="keywords" content="KVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KVM 2（10月23日）">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/KVM-2（10月23日）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="28.6 配置网卡28.7 创建虚拟机安装CentOS728.8 虚拟机管理28.9 克隆虚拟机28.10 快照管理">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181022211623.png">
+<meta property="og:updated_time" content="2018-10-23T07:51:55.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="KVM 2（10月23日）">
+<meta name="twitter:description" content="28.6 配置网卡28.7 创建虚拟机安装CentOS728.8 虚拟机管理28.9 克隆虚拟机28.10 快照管理">
+<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181022211623.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,236 +147,378 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-KVM-2（10月23日）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      KVM 2（10月23日）
+    </h1>
+  
+
+        
+        <a href="/2018/10/23/KVM-2（10月23日）/" class="archive-article-date">
+  	<time datetime="2018-10-23T07:32:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>28.6 配置网卡<br>28.7 创建虚拟机安装CentOS7<br>28.8 虚拟机管理<br>28.9 克隆虚拟机<br>28.10 快照管理<br><a id="more"></a></p>
+<h2 id="28-6-配置网卡"><a href="#28-6-配置网卡" class="headerlink" title="28.6 配置网卡"></a>28.6 配置网卡</h2><ul>
+<li>网络模式分两种：<ul>
+<li><code>桥接</code>：让虚拟机和物理机同一网段的IP，相当于虚拟机和物理机串联在一起</li>
+<li><code>NAT</code>：物理机相当于是路由器让虚拟机连接他，他们网段不一样，相当于虚拟机和物理机并联在一起<br>这里是桥接模式，其中会建立一块桥接网卡作为中介，来联系虚拟机和物理机</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>1.创建桥接网卡</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# cd /etc/sysconfig/network-scripts/</span><br><span class="line">[root@kun02 network-scripts]# cp ifcfg-ens33 ifcfg-br0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改br0和ens33参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# vim ifcfg-br0</span><br><span class="line"></span><br><span class="line">TYPE=Bridge</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=br0</span><br><span class="line">DEVICE=br0</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.80.102</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.80.2</span><br><span class="line">DNS1=119.29.29.29</span><br><span class="line"></span><br><span class="line">[root@kun02 network-scripts]# vim ifcfg-ens33</span><br><span class="line"></span><br><span class="line">TYPE=Ethernet</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">NAME=ens33</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=yes</span><br><span class="line">#IPADDR=192.168.80.102</span><br><span class="line">#NETMASK=255.255.255.0</span><br><span class="line">#GATEWAY=192.168.80.2</span><br><span class="line">#DNS1=119.29.29.29</span><br><span class="line">BRIDGE=br0</span><br></pre></td></tr></table></figure>
+<p><code>BRIDGE=br0</code> 表示ens33指定到br0上</p>
+<blockquote>
+<p>2.重启网卡</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# systemctl restart network</span><br></pre></td></tr></table></figure>
+<p>br0上已经获取IP地址，ens33没有地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# ifconfig</span><br><span class="line">br0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.80.102  netmask 255.255.255.0  broadcast 192.168.80.255</span><br><span class="line">        inet6 fe80::2c4f:d9ff:febf:c3a1  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:8e:31:e8  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 17  bytes 1150 (1.1 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 18  bytes 1576 (1.5 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        ether 00:0c:29:8e:31:e8  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 4437  bytes 2411669 (2.2 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 2661  bytes 285910 (279.2 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>3.启动libvirtd服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# systemctl start libvirtd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# ps aux |grep libvirt</span><br><span class="line">root     16556  1.5  0.7 634628 14408 ?        Ssl  20:42   0:00 /usr/sbin/libvirtd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.查看桥接网卡</p>
+</blockquote>
+<p>格式：<code>brctl show</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 network-scripts]# brctl show</span><br><span class="line">bridge name    bridge id        STP enabled    interfaces</span><br><span class="line">br0        8000.000c298e31e8    no        ens33</span><br><span class="line">virbr0        8000.525400e96738    yes        virbr0-nic</span><br></pre></td></tr></table></figure></p>
+<p><code>br0是我们刚刚建立模式的网卡，模式是桥接，virbr0是KVM默认桥接网卡，模式是NAT模式。当新添加的网卡网络模式看他指定哪个模式的网卡</code>。</p>
+<h2 id="28-7-创建虚拟机安装CentOS7"><a href="#28-7-创建虚拟机安装CentOS7" class="headerlink" title="28.7 创建虚拟机安装CentOS7"></a>28.7 创建虚拟机安装CentOS7</h2><blockquote>
+<p>1.把iso镜像先上传到服务器</p>
+</blockquote>
+<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181022211623.png" alt=""></p>
+<blockquote>
+<p>2.命令行安装Centos</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 kvm_data]# virt-install --name=centos7 --memory=512,maxmemory=1024 --vcpus=1,maxvcpus=2 --os-type=linux --os-variant=rhel7 --location=/kvm_data/CentOS-7-x86_64-DVD-1708.iso --disk path=/kvm_data/centos7.img,size=10 --bridge=br0 --graphics=none --console=pty,target_type=serial  --extra-args=&quot;console=tty0 console=ttyS0&quot;</span><br></pre></td></tr></table></figure>
+<p><code>--name</code> 定义虚拟机的名字<br><code>--memory</code> 定义内存大小 <code>maxmemory</code> 指定最大的内存大小<br><code>--vcpus</code> 定义CPU个数 <code>maxvcpus</code> 指定最多CPU个数<br><code>--os-type</code> 操作系统类型<br><code>--os-variant</code> 系统版本<br><code>--location</code> 指定iso镜像路径 也可以指定网络上镜像<br><code>--disk path</code> 指定虚拟机硬盘的路径<br><code>--bridge</code> 指定网络模式<br><code>--graphics</code> 定义是否开启图像<br><code>--console=pty,target_type=serial  --extra-args=&quot;console=tty0 console=ttyS0&quot;</code> 定义终端的属性</p>
+<p><code>Ctrl +]</code> 离开当前终端</p>
+<blockquote>
+<p>3.设置centos属性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Installation</span><br><span class="line"></span><br><span class="line">1) [x] Language settings                 2) [!] Time settings</span><br><span class="line">        (English (United States))                (Timezone is not set.)</span><br><span class="line">3) [!] Installation source               4) [!] Software selection</span><br><span class="line">        (Processing...)                          (Processing...)</span><br><span class="line">5) [!] Installation Destination          6) [x] Kdump</span><br><span class="line">        (No disks selected)                      (Kdump is enabled)</span><br><span class="line">7) [ ] Network configuration             8) [!] Root password</span><br><span class="line">        (Not connected)                          (Password is not set.)</span><br><span class="line">9) [!] User creation</span><br><span class="line">        (No user will be created)</span><br><span class="line">  Please make your choice from above [&apos;q&apos; to quit | &apos;b&apos; to begin installation |</span><br><span class="line">  &apos;r&apos; to refresh]:</span><br></pre></td></tr></table></figure>
+<p>1.设置语言 2.设置时间 3.安装源 4.选择的软件 5.安装的目标 6.Kdump 7.网络模式 8.系统密码 9.创建普通用户<br>选择对应的数字来设置他们 <code>x</code> 表示已经设置好的 <code>！</code>表示未设置 <code>c</code> 表示确定 <code>b</code> 表示开始安装</p>
+<p>设置语言 选择  <code>Chinese</code> —  <code>Simplified Chinese (China)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Language settings</span><br><span class="line"></span><br><span class="line">Available languages</span><br><span class="line">1)  Afrikaans             25)  Hindi                 48)  Oriya</span><br><span class="line">2)  Amharic               26)  Croatian              49)  Punjabi</span><br><span class="line">3)  Arabic                27)  Hungarian             50)  Polish</span><br><span class="line">4)  Assamese              28)  Interlingua           51)  Portuguese</span><br><span class="line">5)  Asturian              29)  Indonesian            52)  Romanian</span><br><span class="line">6)  Belarusian            30)  Icelandic             53)  Russian</span><br><span class="line">7)  Bulgarian             31)  Italian               54)  Sinhala</span><br><span class="line">8)  Bengali               32)  Japanese              55)  Slovak</span><br><span class="line">9)  Bosnian               33)  Georgian              56)  Slovenian</span><br><span class="line">10)  Catalan               34)  Kazakh                57)  Albanian</span><br><span class="line">11)  Czech                 35)  Kannada               58)  Serbian</span><br><span class="line">12)  Welsh                 36)  Korean                59)  Swedish</span><br><span class="line">13)  Danish                37)  Lithuanian            60)  Tamil</span><br><span class="line">14)  German                38)  Latvian               61)  Telugu</span><br><span class="line">15)  Greek                 39)  Maithili              62)  Tajik</span><br><span class="line">16)  English               40)  Macedonian            63)  Thai</span><br><span class="line">17)  Spanish               41)  Malayalam             64)  Turkish</span><br><span class="line">18)  Estonian              42)  Marathi               65)  Ukrainian</span><br><span class="line">19)  Basque                43)  Malay                 66)  Urdu</span><br><span class="line">20)  Persian               44)  Norwegian Bokmål      67)  Vietnamese</span><br><span class="line">21)  Finnish               45)  Nepali                68)  Chinese</span><br><span class="line">22)  French                46)  Dutch                 69)  Zulu</span><br><span class="line">Press ENTER to continue</span><br><span class="line">23)  Galician              47)  Northern Sotho</span><br><span class="line">24)  Gujarati</span><br><span class="line">Please select language support to install.</span><br><span class="line">[b to return to language list, c to continue, q to quit]: 68</span><br><span class="line">================================================================================</span><br><span class="line">================================================================================</span><br><span class="line">Language settings</span><br><span class="line"></span><br><span class="line">Available locales</span><br><span class="line">1)  Simplified Chinese     3)  Traditional Chinese    4)  Simplified Chinese</span><br><span class="line">     (China)                    (Hong Kong)                (Singapore)</span><br><span class="line">2)  Traditional Chinese</span><br><span class="line">     (Republic of China)</span><br><span class="line">Please select language support to install.</span><br><span class="line">[b to return to language list, c to continue, q to quit]: 1</span><br></pre></td></tr></table></figure></p>
+<p>设置时间 选择  <code>Set timezone</code> —- <code>Asia</code> —-  <code>Shanghai</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">Time settings</span><br><span class="line"></span><br><span class="line">Timezone: not set</span><br><span class="line"></span><br><span class="line">NTP servers:not configured</span><br><span class="line"></span><br><span class="line">1)  Set timezone</span><br><span class="line">2)  Configure NTP servers</span><br><span class="line">  Please make your choice from above [&apos;q&apos; to quit | &apos;c&apos; to continue |</span><br><span class="line">  &apos;r&apos; to refresh]: 1</span><br><span class="line">================================================================================</span><br><span class="line">================================================================================</span><br><span class="line">Timezone settings</span><br><span class="line"></span><br><span class="line">Available regions</span><br><span class="line">1)  Europe                 6)  Pacific               10)  Arctic</span><br><span class="line">2)  Asia                   7)  Australia             11)  US</span><br><span class="line">3)  America                8)  Atlantic              12)  Etc</span><br><span class="line">4)  Africa                 9)  Indian</span><br><span class="line">5)  Antarctica</span><br><span class="line">1)  Aden                  29)  Hong_Kong             56)  Pontianak</span><br><span class="line">2)  Almaty                30)  Hovd                  57)  Pyongyang</span><br><span class="line">3)  Amman                 31)  Irkutsk               58)  Qatar</span><br><span class="line">4)  Anadyr                32)  Jakarta               59)  Qyzylorda</span><br><span class="line">5)  Aqtau                 33)  Jayapura              60)  Riyadh</span><br><span class="line">6)  Aqtobe                34)  Jerusalem             61)  Sakhalin</span><br><span class="line">7)  Ashgabat              35)  Kabul                 62)  Samarkand</span><br><span class="line">8)  Atyrau                36)  Kamchatka             63)  Seoul</span><br><span class="line">9)  Baghdad               37)  Karachi               64)  Shanghai</span><br><span class="line">10)  Bahrain               38)  Kathmandu             65)  Singapore</span><br><span class="line">11)  Baku                  39)  Khandyga              66)  Srednekolymsk</span><br><span class="line">12)  Bangkok               40)  Kolkata               67)  Taipei</span><br><span class="line">13)  Barnaul               41)  Krasnoyarsk           68)  Tashkent</span><br><span class="line">14)  Beirut                42)  Kuala_Lumpur          69)  Tbilisi</span><br><span class="line">15)  Bishkek               43)  Kuching               70)  Tehran</span><br><span class="line">16)  Brunei                44)  Kuwait                71)  Thimphu</span><br><span class="line">17)  Chita                 45)  Macau                 72)  Tokyo</span><br><span class="line">18)  Choibalsan            46)  Magadan               73)  Tomsk</span><br><span class="line">19)  Colombo               47)  Makassar              74)  Ulaanbaatar</span><br><span class="line">20)  Damascus              48)  Manila                75)  Urumqi</span><br><span class="line">21)  Dhaka                 49)  Muscat                76)  Ust-Nera</span><br><span class="line">22)  Dili                  50)  Nicosia               77)  Vientiane</span><br><span class="line">Press ENTER to continue</span><br><span class="line">23)  Dubai                 51)  Novokuznetsk          78)  Vladivostok</span><br><span class="line">24)  Dushanbe              52)  Novosibirsk           79)  Yakutsk</span><br><span class="line">25)  Famagusta             53)  Omsk                  80)  Yangon</span><br><span class="line">26)  Gaza                  54)  Oral                  81)  Yekaterinburg</span><br><span class="line">27)  Hebron                55)  Phnom_Penh            82)  Yerevan</span><br><span class="line">28)  Ho_Chi_Minh</span><br><span class="line">Please select the timezone.</span><br><span class="line">Use numbers or type names directly [b to region list, q to quit]: 64</span><br></pre></td></tr></table></figure></p>
+<p>设置虚拟硬盘的路径 选择<code>10 GiB (vda)</code> —- <code>Use All Space</code> —- <code>Standard Partition</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Probing storage...</span><br><span class="line">Installation Destination</span><br><span class="line"></span><br><span class="line">[x] 1) : 10 GiB (vda)</span><br><span class="line"></span><br><span class="line">1 disk selected; 10 GiB capacity; 10 GiB free ...</span><br><span class="line"></span><br><span class="line">  Please make your choice from above [&apos;q&apos; to quit | &apos;c&apos; to continue |</span><br><span class="line">  &apos;r&apos; to refresh]: c</span><br><span class="line">================================================================================</span><br><span class="line">================================================================================</span><br><span class="line">Probing storage...</span><br><span class="line">Installation Destination</span><br><span class="line"></span><br><span class="line">[ ] 1) Replace Existing Linux system(s)</span><br><span class="line"></span><br><span class="line">[x] 2) Use All Space</span><br><span class="line"></span><br><span class="line">[ ] 3) Use Free Space</span><br><span class="line"></span><br><span class="line">Installation requires partitioning of your hard drive. Select what space to use</span><br><span class="line">for the install target.</span><br><span class="line"></span><br><span class="line">  Please make your choice from above [&apos;q&apos; to quit | &apos;c&apos; to continue |</span><br><span class="line">  &apos;r&apos; to refresh]: c</span><br><span class="line">================================================================================</span><br><span class="line">================================================================================</span><br><span class="line">Partition Scheme Options</span><br><span class="line"></span><br><span class="line">[x] 1) Standard Partition</span><br><span class="line"></span><br><span class="line">[ ] 2) Btrfs</span><br><span class="line"></span><br><span class="line">[ ] 3) LVM</span><br><span class="line"></span><br><span class="line">[ ] 4) LVM Thin Provisioning</span><br><span class="line"></span><br><span class="line">Select a partition scheme configuration.</span><br><span class="line"></span><br><span class="line">  Please make your choice from above [&apos;q&apos; to quit | &apos;c&apos; to continue |</span><br><span class="line">  &apos;r&apos; to refresh]: c</span><br><span class="line">Generating updated storage configuration</span><br><span class="line">Checking storage configuration...</span><br></pre></td></tr></table></figure></p>
+<p>设置系统密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Please select new root password. You will have to type it twice.</span><br><span class="line"></span><br><span class="line">Password:</span><br><span class="line">Password (confirm):</span><br><span class="line"></span><br><span class="line">        Use of this product is subject to the license agreement found at /usr/share/centos-release/EULA</span><br><span class="line"></span><br><span class="line">        Installation complete.  Press return to quit</span><br></pre></td></tr></table></figure></p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>出现上行文字表面系统已经安装好了，可以按Enter重启系统，但会让物理机系统一并重启，这里按<code>Ctrl + ]</code> 退出终端来管理虚拟机</p>
+<h2 id="28-8-虚拟机管理"><a href="#28-8-虚拟机管理" class="headerlink" title="28.8 虚拟机管理"></a>28.8 虚拟机管理</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>virsh list</td>
+<td>查看虚拟机列表，只能看到运行的虚拟机</td>
+</tr>
+<tr>
+<td>virsh list --all</td>
+<td>查看虚拟机列表，包括未运行的虚拟机</td>
+</tr>
+<tr>
+<td>virsh console 虚拟机名字</td>
+<td>进入指定虚拟机</td>
+</tr>
+<tr>
+<td>virsh shutdown 虚拟机名字</td>
+<td>关闭虚拟机</td>
+</tr>
+<tr>
+<td>virsh start 虚拟机名字</td>
+<td>开启虚拟机</td>
+</tr>
+<tr>
+<td>virsh destroy 虚拟机名字</td>
+<td>类似stop，这个是强制停止</td>
+</tr>
+<tr>
+<td>virsh undefine 虚拟机名字</td>
+<td>彻底销毁虚拟机，会删除虚拟机配置文件（/etc/libvirt/qemu/ ），virsh list --all就看不到了</td>
+</tr>
+<tr>
+<td>virsh autostart 虚拟机名字</td>
+<td>宿主机开机该虚拟机也开机</td>
+</tr>
+<tr>
+<td>virsh autostart --disable 虚拟机名字</td>
+<td>解除开机启动</td>
+</tr>
+<tr>
+<td>virsh suspend 虚拟机名字</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>virsh resume 虚拟机名字</td>
+<td>恢复</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>查看虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh list --all</span><br><span class="line">Id    名称                         状态</span><br><span class="line">----------------------------------------------------</span><br><span class="line">1     centos7                        running</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关闭虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh shutdown centos7</span><br><span class="line">域 centos7 被关闭</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh start centos7</span><br><span class="line">域 centos7 已开始</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>进入虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh console centos7</span><br><span class="line">连接到域 centos7</span><br><span class="line">换码符为 ^]</span><br><span class="line">这里还需要按Enter才能进入虚拟机</span><br></pre></td></tr></table></figure>
+<p>新建的虚拟机并没有和物理机相同网段的ip地址，按<code>dhclient</code>获取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# dhclient</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看虚拟机的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /etc/libvirt/qemu/</span><br><span class="line">centos7.xml  networks</span><br></pre></td></tr></table></figure>
+<h3 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h3><p>要把虚拟机彻底删除掉需要把配置文件和虚拟机的磁盘路径文件一起删除</p>
+<blockquote>
+<p>物理机启动虚拟机自动启动</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh autostart centos7</span><br><span class="line">域 centos7标记为自动开始</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>取消物理机启动虚拟机自动启动</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh autostart --disable centos7</span><br><span class="line">域 centos7取消标记为自动开始</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>挂起虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh suspend centos7</span><br><span class="line">域 centos7 被挂起</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>恢复虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh resume centos7</span><br><span class="line">域 centos7 被重新恢复</span><br></pre></td></tr></table></figure>
+<h2 id="28-9-克隆虚拟机"><a href="#28-9-克隆虚拟机" class="headerlink" title="28.9 克隆虚拟机"></a>28.9 克隆虚拟机</h2><p>格式：<code>virt-clone --original虚拟机名 --name 新虚拟机名 --file 指定新的虚拟磁盘路径</code></p>
+<blockquote>
+<p>1.先把虚拟机关闭</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh shutdown centos7</span><br><span class="line">域 centos7 被关闭</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.克隆虚拟机</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virt-clone --original centos7 --name centos7-1 --file /kvm_data/centos7-1.img</span><br></pre></td></tr></table></figure>
+<p><code>--original</code> 指定克隆源虚拟机<br><code>--name</code> 指定克隆后的虚拟机名字<br><code>--file</code> 指定目标虚拟机的虚拟磁盘文件</p>
+<h2 id="28-10-快照管理"><a href="#28-10-快照管理" class="headerlink" title="28.10 快照管理"></a>28.10 快照管理</h2><p>快照就是给虚拟机的某个状态做标签，可以让虚拟机回去当时的状态</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>virsh snapshot-create 虚拟机名</td>
+<td>给指定的虚拟机创建快照</td>
+</tr>
+<tr>
+<td>virsh snapshot-list 虚拟机名</td>
+<td>列出指定的虚拟机所有快照</td>
+</tr>
+<tr>
+<td>virsh snapshot-current 虚拟机名</td>
+<td>查看指定的虚拟机当前快照版本</td>
+</tr>
+<tr>
+<td>virsh snapshot-revert 虚拟机名 快照tag</td>
+<td>恢复指定快照</td>
+</tr>
+<tr>
+<td>virsh snapshot-delete 虚拟机名 快照tag</td>
+<td>删除指定快照</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>给虚拟机centos7做快照</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh snapshot-create centos7</span><br><span class="line">已生成域快照 1540277111</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看虚拟机centos7对应的虚拟磁盘信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# qemu-img info /kvm_data/centos7.img</span><br><span class="line">image: /kvm_data/centos7.img</span><br><span class="line">file format: qcow2</span><br><span class="line">virtual size: 10G (10737418240 bytes)</span><br><span class="line">disk size: 1.2G</span><br><span class="line">cluster_size: 65536</span><br><span class="line">Snapshot list:</span><br><span class="line">ID        TAG                 VM SIZE                DATE       VM CLOCK</span><br><span class="line">1         1540277111                0 2018-10-23 14:45:11   00:00:00.000</span><br><span class="line">Format specific information:</span><br><span class="line">    compat: 1.1</span><br><span class="line">    lazy refcounts: true</span><br></pre></td></tr></table></figure>
+<p>信息中可以看到快照列表,虚拟磁盘格式分两种：<code>raw格式的虚拟磁盘不支持做快照，qcow2支持快照</code></p>
+<blockquote>
+<p>列出虚拟机centos7的所有快照</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh snapshot-list centos7</span><br><span class="line">名称               生成时间              状态</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">1540277111           2018-10-23 14:45:11 +0800 shutoff</span><br><span class="line"></span><br><span class="line">列出虚拟机centos7的当前快照的版本</span><br><span class="line">[root@kun02 ~]# virsh snapshot-current centos7</span><br><span class="line">&lt;domainsnapshot&gt;</span><br><span class="line">  &lt;name&gt;1540277111&lt;/name&gt;</span><br><span class="line">  &lt;state&gt;shutoff&lt;/state&gt;</span><br><span class="line">  &lt;creationTime&gt;1540277111&lt;/creationTime&gt;</span><br><span class="line">  &lt;memory snapshot=&apos;no&apos;/&gt;</span><br><span class="line">  &lt;disks&gt;</span><br><span class="line">    &lt;disk name=&apos;vda&apos; snapshot=&apos;internal&apos;/&gt;</span><br><span class="line">    &lt;disk name=&apos;hda&apos; snapshot=&apos;no&apos;/&gt;</span><br><span class="line">  &lt;/disks&gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;creationTime&gt;1540277111&lt;/creationTime&gt;</code>是当前最新快照的tag</p>
+<blockquote>
+<p>查看快照的配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# ls /var/lib/libvirt/qemu/snapshot/centos7/</span><br><span class="line">1540277111.xml</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>快照的配置文件路径是<code>/var/lib/libvirt/qemu/snapshot/</code>虚拟机名字</p>
+<blockquote>
+<p>虚拟机centos7恢复到指定快照</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh snapshot-revert centos7 1540277111</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>虚拟机centos7删除指定快照</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# virsh snapshot-delete centos7 1540277111</span><br><span class="line">已删除域快照 1540277111</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/11/LNMP第四节（6月11日）/" class="archive-article-date">
-  	<time datetime="2018-06-11T12:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/11/LNMP第四节（6月11日）/">LNMP第四节（6月11日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KVM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/23/KVM-2（10月23日）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/08/LNMP第三节（6月8日）/" class="archive-article-date">
-  	<time datetime="2018-06-08T14:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/20/KVM-1（10月20日）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">KVM 1（10月20日）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/LNMP第三节（6月8日）/">LNMP第三节（6月8日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/08/LNMP第二节（6月7日）/" class="archive-article-date">
-  	<time datetime="2018-06-07T17:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/LNMP第二节（6月7日）/">LNMP第二节（6月7日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/06/LNMP第一节（6月6日）/" class="archive-article-date">
-  	<time datetime="2018-06-06T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LNMP第一节（6月6日）/">LNMP第一节（6月6日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/LAMP第九节（6月4日）/" class="archive-article-date">
-  	<time datetime="2018-06-04T12:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/LAMP第九节（6月4日）/">LAMP第九节（6月4日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/15/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/14/">14</a><a class="page-number" href="/archives/2018/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/archives/2018/page/17/">17</a><a class="page-number" href="/archives/2018/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/25/">25</a><a class="extend next" rel="next" href="/archives/2018/page/17/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +541,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
