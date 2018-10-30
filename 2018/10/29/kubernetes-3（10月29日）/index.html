@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png">
 <meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027133401.png">
-<meta property="og:updated_time" content="2018-10-29T04:15:00.836Z">
+<meta property="og:updated_time" content="2018-10-30T15:23:11.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 3（10月29日）">
 <meta name="twitter:description" content="29.5 搭建kubernetes集群（ansible-playbook）29.6 kubernetes集群备份和恢复">
@@ -185,23 +185,44 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/ansible/example/hosts.m-masters.example /etc/ansible/hosts   ##拷贝模板</span><br><span class="line"></span><br><span class="line">vim /etc/ansible/hosts</span><br><span class="line"></span><br><span class="line">[deploy]</span><br><span class="line">192.168.80.101 NTP_ENABLED=no</span><br><span class="line"></span><br><span class="line">[etcd]</span><br><span class="line">192.168.80.101 NODE_NAME=etcd1</span><br><span class="line">192.168.80.102 NODE_NAME=etcd2</span><br><span class="line">192.168.80.103 NODE_NAME=etcd3</span><br><span class="line"></span><br><span class="line">[kube-master]</span><br><span class="line">192.168.80.101</span><br><span class="line">192.168.80.104</span><br><span class="line"></span><br><span class="line">[lb]</span><br><span class="line">192.168.80.101 LB_IF=&quot;ens33&quot; LB_ROLE=master   #注意根据实际使用网卡设置</span><br><span class="line">192.168.80.104 LB_IF=&quot;ens33&quot; LB_ROLE=backup</span><br><span class="line"></span><br><span class="line">[kube-node]</span><br><span class="line">192.168.80.102</span><br><span class="line">192.168.80.103</span><br><span class="line"></span><br><span class="line">K8S_VER=&quot;v1.12&quot;   ##版本</span><br><span class="line"></span><br><span class="line">MASTER_IP=&quot;192.168.80.66&quot;   ##指VIP</span><br></pre></td></tr></table></figure>
 <h3 id="分步骤安装"><a href="#分步骤安装" class="headerlink" title="分步骤安装"></a>分步骤安装</h3><p>1）创建证书和安装准备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/ansible/</span><br><span class="line">ansible-playbook 01.prepare.yml</span><br></pre></td></tr></table></figure></p>
 <p>2）安装etcd集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 02.etcd.yml</span><br></pre></td></tr></table></figure></p>
-<p>检查etcd节点健康状况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash   ##刚刚拷贝的执行文件还没生效</span><br><span class="line">for ip in 101 102 103; do   ETCDCTL_API=3 etcdctl   --endpoints=https://192.168.80.$&#123;ip&#125;:2379    --cacert=/etc/kubernetes/ssl/ca.pem   --cert=/etc/etcd/ssl/etcd.pem   --key=/etc/etcd/ssl/etcd-key.pem   endpoint health; done</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>检查etcd节点健康状况：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash   ##刚刚拷贝的执行文件还没生效</span><br><span class="line">for ip in 101 102 103; do   ETCDCTL_API=3 etcdctl   --endpoints=https://192.168.80.$&#123;ip&#125;:2379    --cacert=/etc/kubernetes/ssl/ca.pem   --cert=/etc/etcd/ssl/etcd.pem   --key=/etc/etcd/ssl/etcd-key.pem   endpoint health; done</span><br></pre></td></tr></table></figure>
 <p>3）安装docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 03.docker.yml</span><br></pre></td></tr></table></figure></p>
 <p>4）安装master节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 04.kube-master.yml</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题-连接不上vip"><a href="#问题-连接不上vip" class="headerlink" title="问题  连接不上vip"></a>问题  连接不上vip</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: [192.168.80.101 -&gt; 192.168.80.101]: FAILED! =&gt; &#123;&quot;attempts&quot;: 5, &quot;changed&quot;: true, &quot;cmd&quot;: [&quot;/opt/kube/bin/kubectl&quot;, &quot;get&quot;, &quot;node&quot;], &quot;delta&quot;: &quot;0:00:15.187609&quot;, &quot;end&quot;: &quot;2018-10-27 18:49:05.111291&quot;, &quot;msg&quot;: &quot;non-zero return code&quot;, &quot;rc&quot;: 1, &quot;start&quot;: &quot;2018-10-27 18:48:49.923682&quot;, &quot;stderr&quot;: &quot;Unable to connect to the server: dial tcp 192.168.80.66:8443: connect: no route to host&quot;, &quot;stderr_lines&quot;: [&quot;Unable to connect to the server: dial tcp 192.168.80.66:8443: connect: no route to host&quot;], &quot;stdout&quot;: &quot;&quot;, &quot;stdout_lines&quot;: []&#125;</span><br></pre></td></tr></table></figure>
 <p>解决 由于配置文件中的网卡写错导致节点上keepalived服务没起来</p>
 <p>更改host文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ansible/hosts</span><br><span class="line">把LB_IF=&quot;eth33&quot;改为LB_IF=&quot;ens33&quot;</span><br></pre></td></tr></table></figure></p>
 <p>并在每个节点上修改keepalived配置并启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/keepalived/keepalived.conf</span><br><span class="line">interface eth33改为interface ens33</span><br><span class="line">systemctl start keepalived</span><br></pre></td></tr></table></figure></p>
-<p>查看集群状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get cs</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看集群状态</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get cs</span><br></pre></td></tr></table></figure>
 <p>5）安装node节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 05.kube-node.yml</span><br></pre></td></tr></table></figure></p>
-<p>查看node节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get no</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看node节点 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get no</span><br></pre></td></tr></table></figure>
 <p>6）部署集群网络<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 06.network.yml</span><br></pre></td></tr></table></figure></p>
-<p>查看kube-system namespace上的pod，从中可以看到flannel相关的pod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -n kube-system</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看kube-system namespace上的pod，从中可以看到flannel相关的pod</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -n kube-system</span><br></pre></td></tr></table></figure>
 <p>7）安装集群插件(dns, dashboard)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 07.cluster-addon.yml</span><br></pre></td></tr></table></figure></p>
-<p>查看kube-system namespace下的服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get svc -n kube-system</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看kube-system namespace下的服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get svc -n kube-system</span><br></pre></td></tr></table></figure>
 <p>一步安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook 90.setup.yml</span><br></pre></td></tr></table></figure></p>
-<p>查看集群信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl cluster-info</span><br></pre></td></tr></table></figure></p>
-<p>查看node/pod使用资源情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl top node </span><br><span class="line">kubectl top pod --all-namespaces</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>查看集群信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl cluster-info</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看node/pod使用资源情况</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl top node </span><br><span class="line">kubectl top pod --all-namespaces</span><br></pre></td></tr></table></figure>
 <h3 id="测试DNS"><a href="#测试DNS" class="headerlink" title="测试DNS"></a>测试DNS</h3><p>a）创建nginx service<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run nginx --image=nginx --expose --port=80</span><br></pre></td></tr></table></figure></p>
 <p>b）创建busybox 测试pod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">kubectl run busybox --rm -it --image=busybox /bin/sh //进入到busybox内部</span><br><span class="line">nslookup nginx.default.svc.cluster.local //结果如下</span><br><span class="line">Server: 10.68.0.2</span><br><span class="line">Address: 10.68.0.2:53</span><br><span class="line">Name: nginx.default.svc.cluster.local</span><br><span class="line">Address: 10.68.9.156</span><br></pre></td></tr></table></figure></p>
 <h3 id="增加node节点"><a href="#增加node节点" class="headerlink" title="增加node节点"></a>增加node节点</h3><p>1）deploy节点免密码登录node<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id 新node ip</span><br></pre></td></tr></table></figure></p>
@@ -227,9 +248,14 @@
 <p>b）重建集群<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/ansible</span><br><span class="line">ansible-playbook 01.prepare.yml</span><br><span class="line">ansible-playbook 02.etcd.yml</span><br><span class="line">ansible-playbook 03.docker.yml</span><br><span class="line">ansible-playbook 04.kube-master.yml</span><br><span class="line">ansible-playbook 05.kube-node.yml</span><br></pre></td></tr></table></figure></p>
 <p>c）恢复etcd数据<br>停止服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible etcd -m service -a &apos;name=etcd state=stopped&apos;</span><br></pre></td></tr></table></figure></p>
 <p>清空文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible etcd -m file -a &apos;name=/var/lib/etcd/member/ state=absent&apos;</span><br></pre></td></tr></table></figure></p>
-<p>登录所有的etcd节点，参照本etcd节点<code>/etc/systemd/system/etcd.service</code>的服务文件，替换变量后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /backup/k8s/</span><br><span class="line">ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \</span><br><span class="line">--name etcd1 \</span><br><span class="line">--initialcluster</span><br><span class="line">etcd1=https://192.168.111.128:2380,etcd2=https://192.168.111.129:2380,etcd3=https://192.168.111.130:2380</span><br><span class="line">\</span><br><span class="line">--initial-cluster-token etcd-cluster-0 \</span><br><span class="line">--initial-advertise-peer-urls https://192.168.111.128:2380</span><br></pre></td></tr></table></figure></p>
-<p><code>etcd1</code> <code>https://192.168.111.128:2380</code> 要根据节点来修改</p>
-<p>执行上面的步骤后，会生成.etcd目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r etcd1.etcd/member /var/lib/etcd/</span><br><span class="line">systemctl restart etcd</span><br></pre></td></tr></table></figure></p>
+<p>登录所有的etcd节点，参照本etcd节点<code>cat /etc/systemd/system/etcd.service</code>的服务文件，替换如下中变量后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av /backup/ 192.168.80.102:/backup/</span><br><span class="line">rsync -av /backup/ 192.168.80.103:/backup/</span><br></pre></td></tr></table></figure></p>
+<p>在kun01上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /backup/k8s/</span><br><span class="line"></span><br><span class="line">ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \</span><br><span class="line">--name etcd1 \</span><br><span class="line">--initial-cluster etcd1=https://192.168.80.101:2380,etcd2=https://192.168.80.102:2380,etcd3=https://192.168.80.103:2380 \</span><br><span class="line">--initial-cluster-token etcd-cluster-0 \</span><br><span class="line">--initial-advertise-peer-urls https://192.168.80.101:2380</span><br></pre></td></tr></table></figure></p>
+<p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /backup/k8s/</span><br><span class="line"></span><br><span class="line">ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \</span><br><span class="line">--name etcd2 \</span><br><span class="line">--initial-cluster etcd1=https://192.168.80.101:2380,etcd2=https://192.168.80.102:2380,etcd3=https://192.168.80.103:2380 \</span><br><span class="line">--initial-cluster-token etcd-cluster-0 \</span><br><span class="line">--initial-advertise-peer-urls https://192.168.80.102:2380</span><br></pre></td></tr></table></figure></p>
+<p>在kun03上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /backup/k8s/</span><br><span class="line"></span><br><span class="line">ETCDCTL_API=3 etcdctl snapshot restore snapshot.db \</span><br><span class="line">--name etcd3 \</span><br><span class="line">--initial-cluster etcd1=https://192.168.80.101:2380,etcd2=https://192.168.80.102:2380,etcd3=https://192.168.80.103:2380 \</span><br><span class="line">--initial-cluster-token etcd-cluster-0 \</span><br><span class="line">--initial-advertise-peer-urls https://192.168.80.103:2380</span><br></pre></td></tr></table></figure></p>
+<p>执行上面的步骤后，<code>/backup/k8s/</code>里会生成<code>etcd{1,2,3}.etcd</code>目录并拷贝到<code>/var/lib/etcd/</code>下</p>
+<p>在kun01上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r etcd1.etcd/member /var/lib/etcd/</span><br><span class="line">systemctl restart etcd</span><br></pre></td></tr></table></figure></p>
+<p>在kun02上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r etcd2.etcd/member /var/lib/etcd/</span><br><span class="line">systemctl restart etcd</span><br></pre></td></tr></table></figure></p>
+<p>在kun03上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r etcd3.etcd/member /var/lib/etcd/</span><br><span class="line">systemctl restart etcd</span><br></pre></td></tr></table></figure></p>
 <p>d）在deploy节点重建网络<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook /etc/ansible/tools/change_k8s_network.yml</span><br></pre></td></tr></table></figure></p>
 <h2 id="不想手动恢复，可以用ansible自动恢复"><a href="#不想手动恢复，可以用ansible自动恢复" class="headerlink" title="不想手动恢复，可以用ansible自动恢复"></a>不想手动恢复，可以用ansible自动恢复</h2><h3 id="需要一键备份"><a href="#需要一键备份" class="headerlink" title="需要一键备份"></a>需要一键备份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook /etc/ansible/23.backup.yml</span><br></pre></td></tr></table></figure>
 <p>检查<code>/etc/ansible/roles/cluster-backup/files</code>目录下是否有文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tree /etc/ansible/roles/cluster-backup/files/ //如下</span><br><span class="line">├── ca # 集群CA 相关备份</span><br><span class="line">│ ├── ca-config.json</span><br><span class="line">│ ├── ca.csr</span><br><span class="line">│ ├── ca-csr.json</span><br><span class="line">│ ├── ca-key.pem</span><br><span class="line">│ └── ca.pem</span><br><span class="line">├── hosts # ansible hosts备份</span><br><span class="line">│ ├── hosts # 最近的备份</span><br><span class="line">│ └── hosts-201807231642</span><br><span class="line">├── readme.md</span><br><span class="line">└── snapshot # etcd 数据备份</span><br><span class="line">├── snapshot-201807231642.db</span><br><span class="line">└── snapshot.db # 最近的备份</span><br></pre></td></tr></table></figure></p>
@@ -509,15 +535,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,6 +559,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -545,15 +575,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,23 +599,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +619,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,11 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +639,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">软件包</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">软件包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,7 +655,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,6 +664,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
