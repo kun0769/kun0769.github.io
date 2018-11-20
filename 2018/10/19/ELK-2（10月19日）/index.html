@@ -16,21 +16,21 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="27.6 安装kibana27.7 安装logstash27.8 配置logstash27.9 kibana上查看日志27.10 收集nginx日志27.11 使用beats采集日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png">
-<meta property="og:updated_time" content="2018-10-19T05:44:26.457Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:03.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK 2（10月19日）">
 <meta name="twitter:description" content="27.6 安装kibana27.7 安装logstash27.8 配置logstash27.9 kibana上查看日志27.10 收集nginx日志27.11 使用beats采集日志">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -201,7 +201,7 @@
 <blockquote>
 <p>在浏览器上打开kibana</p>
 </blockquote>
-<p>输入192.168.80.102:5601<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png" alt=""></p>
+<p>输入192.168.80.102:5601<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181014181257.png" alt=""></p>
 <h2 id="27-7-安装logstash"><a href="#27-7-安装logstash" class="headerlink" title="27.7 安装logstash"></a>27.7 安装logstash</h2><blockquote>
 <p>在kun03上安装logstash</p>
 </blockquote>
@@ -258,8 +258,8 @@
 <blockquote>
 <p>在浏览器访问kibana</p>
 </blockquote>
-<p>点击<code>Managerment</code>，把刚刚查看到的索引填上 可以填<code>system-syslog-*</code> 来表示所有<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png" alt=""></p>
-<p>回去Discover 已经发现有数据了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png" alt=""></p>
+<p>点击<code>Managerment</code>，把刚刚查看到的索引填上 可以填<code>system-syslog-*</code> 来表示所有<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018002156.png" alt=""></p>
+<p>回去Discover 已经发现有数据了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018114057.png" alt=""></p>
 <h2 id="27-10-收集nginx日志"><a href="#27-10-收集nginx日志" class="headerlink" title="27.10 收集nginx日志"></a>27.10 收集nginx日志</h2><p>使用logstash收集Nginx的访问日志</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>在kun03上</p>
 <blockquote>
@@ -269,7 +269,7 @@
 <p>此配置是本机80端口（elk.test.com）代理到192.168.80.102:5601上<br><code>access_log</code>  定义访问日志路径和格式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
 <p>在http里面添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format main2 &apos;$http_host $remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$upstream_addr&quot; $request_time&apos;;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018145229.png" alt=""></p>
 <blockquote>
 <p>2.检查并启动Nginx服务</p>
 </blockquote>
@@ -277,7 +277,7 @@
 <h3 id="问题-Nginx-无法读取PID"><a href="#问题-Nginx-无法读取PID" class="headerlink" title="问题 Nginx 无法读取PID"></a>问题 Nginx 无法读取PID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Oct 18 15:20:14 kun03 systemd: Failed to read PID from file /run/nginx.pid: Invalid argument</span><br></pre></td></tr></table></figure>
 <p>解决 参考文档 <img src="" alt=""><a href="http://jiasule.v2ex.com/t/300986" target="_blank" rel="noopener">http://jiasule.v2ex.com/t/300986</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# mkdir -p /etc/systemd/system/nginx.service.d</span><br><span class="line">[root@kun03 bin]# printf &quot;[Service]\nExecStartPost=/bin/sleep 0.1\n&quot; &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line">[root@kun03 bin]# systemctl daemon-reload</span><br><span class="line">[root@kun03 bin]# systemctl restart nginx</span><br></pre></td></tr></table></figure></p>
 <p>在hosts上绑定域名还IP并使用浏览器访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.103 elk.test.com</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018155415.png" alt=""></p>
 <p>查看是否产生访问日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 bin]# tail /var/log/elk_access.log</span><br><span class="line">elk.test.com 192.168.80.1 - - [18/Oct/2018:16:30:41 +0800] &quot;GET /bundles/428687c29242d0d2f3d7ac7e09942921.svg HTTP/1.1&quot; 304 0 &quot;http://elk.test.com/app/kibana&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&quot; &quot;192.168.80.102:5601&quot; 0.013</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>3.创建收集Nginx访问日志的配置文件</p>
@@ -295,11 +295,11 @@
 <blockquote>
 <p>6.在kibana上添加索引</p>
 </blockquote>
-<p><code>Managerment</code> —- <code>Index Patterns</code> —- <code>Create Index Pattern</code> —-  输入 <code>nginx-test-*</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png" alt=""></p>
+<p><code>Managerment</code> —- <code>Index Patterns</code> —- <code>Create Index Pattern</code> —-  输入 <code>nginx-test-*</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165035.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165059.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181018165751.png" alt=""></p>
 <h2 id="27-11-使用beats采集日志"><a href="#27-11-使用beats采集日志" class="headerlink" title="27.11 使用beats采集日志"></a>27.11 使用beats采集日志</h2><p>Beats是个轻量的数据采集器，它的家族成员有多个，其中filebeat是用来收集数据的。还可以来自定义beats<br>官网 <img src="" alt=""><a href="https://www.elastic.co/cn/products/beats" target="_blank" rel="noopener">https://www.elastic.co/cn/products/beats</a><br>成员下载地址 <img src="" alt=""><a href="https://www.elastic.co/cn/downloads/beats" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/beats</a></p>
-<p>Beats成员<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png" alt=""></p>
+<p>Beats成员<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019110026.png" alt=""></p>
 <h3 id="在kun04上安装filebeat来收集日志，并在屏幕上显示"><a href="#在kun04上安装filebeat来收集日志，并在屏幕上显示" class="headerlink" title="在kun04上安装filebeat来收集日志，并在屏幕上显示"></a>在kun04上安装filebeat来收集日志，并在屏幕上显示</h3><blockquote>
 <p>1.下载并安装filebeat</p>
 </blockquote>
@@ -332,7 +332,7 @@
 <blockquote>
 <p>4.在kibana上添加filebeat索引</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019115504.png" alt=""></p>
 <h2 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h2><h3 id="x-pack-收费，免费"><a href="#x-pack-收费，免费" class="headerlink" title="x-pack 收费，免费"></a>x-pack 收费，免费</h3><p><img src="" alt=""><a href="http://www.jianshu.com/p/a49d93212eca" target="_blank" rel="noopener">http://www.jianshu.com/p/a49d93212eca</a><br><img src="" alt=""><a href="https://www.elastic.co/subscriptions" target="_blank" rel="noopener">https://www.elastic.co/subscriptions</a></p>
 <h3 id="Elastic-stack演进"><a href="#Elastic-stack演进" class="headerlink" title="Elastic stack演进"></a>Elastic stack演进</h3><p><img src="" alt=""><a href="http://70data.net/1505.html" target="_blank" rel="noopener">http://70data.net/1505.html</a></p>
 <h3 id="基于kafka和elasticsearch，linkedin构建实时日志分析系统"><a href="#基于kafka和elasticsearch，linkedin构建实时日志分析系统" class="headerlink" title="基于kafka和elasticsearch，linkedin构建实时日志分析系统"></a>基于kafka和elasticsearch，linkedin构建实时日志分析系统</h3><p><img src="" alt=""><a href="http://t.cn/RYffDoE" target="_blank" rel="noopener">http://t.cn/RYffDoE</a>  </p>
@@ -585,11 +585,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,7 +645,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,11 +657,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,11 +709,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,11 +725,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,6 +738,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,10 +754,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

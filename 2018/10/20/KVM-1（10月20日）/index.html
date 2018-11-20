@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="28.1 虚拟化介绍28.2 常见虚拟化软件28.3 虚拟化架构28.4 KVM介绍28.5 Centos7上安装KVM">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020110911.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114447.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114551.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114748.png">
-<meta property="og:updated_time" content="2018-10-20T04:49:11.782Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020110911.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114447.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114551.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114748.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:56.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KVM 1（10月20日）">
 <meta name="twitter:description" content="28.1 虚拟化介绍28.2 常见虚拟化软件28.3 虚拟化架构28.4 KVM介绍28.5 Centos7上安装KVM">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -188,15 +188,15 @@
 <li><code>KVM</code> 开源 基于linux内核模块（不需要改Linux内核）</li>
 </ul>
 <p>参考文章 <img src="" alt=""><a href="http://developer.huawei.com/ict/forum/thread-23385-1-1.html" target="_blank" rel="noopener">http://developer.huawei.com/ict/forum/thread-23385-1-1.html</a></p>
-<h2 id="28-3-虚拟化架构"><a href="#28-3-虚拟化架构" class="headerlink" title="28.3 虚拟化架构"></a>28.3 虚拟化架构</h2><p><code>类型I</code>：虚拟机直接运行在系统硬件上，创建硬件全仿真实例，被称为“裸机”,也称为裸金属架构。<br><code>类型II</code>：虚拟机运行在传统操作系统上，同样创建的是硬件全仿真实例，被称为“托管”hypervisor。也称为宿主架构。<br>还有一种<code>容器虚拟化</code>（docker）：容器指虚拟机里面没有操作系统，只有应用。容器运行在真实操作系统上，创建一个独立的虚拟化实例（应用），指向底层托管操作系统，被称为“操作系统虚拟化。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png" alt=""></p>
+<h2 id="28-3-虚拟化架构"><a href="#28-3-虚拟化架构" class="headerlink" title="28.3 虚拟化架构"></a>28.3 虚拟化架构</h2><p><code>类型I</code>：虚拟机直接运行在系统硬件上，创建硬件全仿真实例，被称为“裸机”,也称为裸金属架构。<br><code>类型II</code>：虚拟机运行在传统操作系统上，同样创建的是硬件全仿真实例，被称为“托管”hypervisor。也称为宿主架构。<br>还有一种<code>容器虚拟化</code>（docker）：容器指虚拟机里面没有操作系统，只有应用。容器运行在真实操作系统上，创建一个独立的虚拟化实例（应用），指向底层托管操作系统，被称为“操作系统虚拟化。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181019222751.png" alt=""></p>
 <p>现在有4种虚拟化技术是当前最为成熟而且应用最为广泛的，分别是：VMWARE的ESX、微软的Hyper-V、开源的XEN和KVM。其中<code>VMWARE的ESX</code>，<code>Hyper-V</code>和<code>XEN</code>都是属于<code>类型I</code>。<code>KVM</code>是属于<code>类型II</code>。</p>
 <p>参考文章  <img src="" alt=""><a href="http://developer.huawei.com/ict/forum/thread-23385-1-1.html" target="_blank" rel="noopener">http://developer.huawei.com/ict/forum/thread-23385-1-1.html</a></p>
 <h2 id="28-4-KVM介绍"><a href="#28-4-KVM介绍" class="headerlink" title="28.4 KVM介绍"></a>28.4 KVM介绍</h2><p>KVM是以色列初创公司Qumranet开发，2008年9月RedHat公司收购了Qumranet<br>KVM是完全开源的，RedHat基于KVM的虚拟化解决方案叫做RHEV<br>KVM是Linux内核的一个模块，它把Linux内核变成了一个Hypervisor<br>KVM在Linux操作系统里面以进程的形式出现，由标准的Linux调度程序进行调度，这使得KVM能够使用Linux内核的已有功能<br>只有一个KVM内核模块还不能实现虚拟化的全部功能，就好比操作系统只有内核还不能成为一个完整的操作系统一样<br>QEMU是一个开源的虚拟化软件，纯软件，可以虚拟化所以的硬件，但性能不强<br>KVM基于QEMU开发了一个能够运行在用户空间的工具QEMU-KVM<br>磁盘、网络设备等都是通过QEMU-KVM这个工具模拟出来的<br>KVM和QEMU-KVM通信是通过/dev/kvm实现的<br>libvirt是用来管理KVM虚拟机的API，其命令为virsh</p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020110911.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020110911.png" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>KVM模块可以让Linux内核变为Hypervisor。QEMU-KVM可以虚拟硬件，KVM和QEMU-KVM通讯是通过/dev/kvm完成的。管理KVM是通过libvirt来操作的，命令是virsh</code>。</p>
-<h2 id="28-5-Centos7上安装KVM"><a href="#28-5-Centos7上安装KVM" class="headerlink" title="28.5 Centos7上安装KVM"></a>28.5 Centos7上安装KVM</h2><p>在VMware上设置内存2G<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114447.png" alt=""></p>
-<p>处理器2核，虚拟化引擎两个虚拟化相关的选项打上对勾<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114551.png" alt=""></p>
-<p>增加一个20G的虚拟磁盘，用于挂载存放虚拟机系统<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181020114748.png" alt=""></p>
+<h2 id="28-5-Centos7上安装KVM"><a href="#28-5-Centos7上安装KVM" class="headerlink" title="28.5 Centos7上安装KVM"></a>28.5 Centos7上安装KVM</h2><p>在VMware上设置内存2G<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114447.png" alt=""></p>
+<p>处理器2核，虚拟化引擎两个虚拟化相关的选项打上对勾<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114551.png" alt=""></p>
+<p>增加一个20G的虚拟磁盘，用于挂载存放虚拟机系统<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181020114748.png" alt=""></p>
 <blockquote>
 <p>检查cpu个数</p>
 </blockquote>
@@ -464,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +524,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,11 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +617,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,10 +633,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

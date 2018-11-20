@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="25.1 docker简介25.2 安装docker25.3 镜像管理25.4 通过容器创建镜像">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png">
-<meta property="og:updated_time" content="2018-10-29T14:57:46.819Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:46.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 1（9月18日）">
 <meta name="twitter:description" content="25.1 docker简介25.2 安装docker25.3 镜像管理25.4 通过容器创建镜像">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -170,7 +170,7 @@
       
         <p>25.1 docker简介<br>25.2 安装docker<br>25.3 镜像管理<br>25.4 通过容器创建镜像<br><a id="more"></a></p>
 <h2 id="25-1-Docker简介"><a href="#25-1-Docker简介" class="headerlink" title="25.1 Docker简介"></a>25.1 Docker简介</h2><p>Docker是一种容器技术，它可以快速部署环境。<br>其官网 <img src="" alt=""><a href="http://www.docker.com" target="_blank" rel="noopener">www.docker.com</a>   github <img src="" alt=""><a href="https://github.com/docker/docker.github.io" target="_blank" rel="noopener">https://github.com/docker/docker.github.io</a><br>Docker是开源的容器引擎，可以让开发者打包应用以及依赖的库，然后发布到任何流行的linux发行版上，移植很方便。<br>它由go语言编写，基于apache2.0协议发布。基于linux kernel，要想在win下运行需要借助一个vm（虚拟机）来实现<br>自2013年开始，近些年发展迅猛，docker从1.13x开始，版本分为社区版ce和企业版ee，并且基于年月的时间线形式，当前最新稳定版为17.09 参考 <img src="" alt=""><a href="http://blog.csdn.net/chenhaifeng2016/article/details/68062414" target="_blank" rel="noopener">http://blog.csdn.net/chenhaifeng2016/article/details/68062414</a></p>
-<h3 id="Docker和传统的虚拟化比较"><a href="#Docker和传统的虚拟化比较" class="headerlink" title="Docker和传统的虚拟化比较"></a>Docker和传统的虚拟化比较</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png" alt=""></p>
+<h3 id="Docker和传统的虚拟化比较"><a href="#Docker和传统的虚拟化比较" class="headerlink" title="Docker和传统的虚拟化比较"></a>Docker和传统的虚拟化比较</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png" alt=""></p>
 <p>传统虚拟化和docker都是建立在有硬件支持的物理机上的操作系统上。传统虚拟化在操作系统上建立Hypervisor来驱动虚拟化。docker 上的docker engine 也Hypervisor类似，也是用来驱动虚拟化的。不同的是<code>docker是不需要安装客户虚拟机来安装应用或者服务</code>。</p>
 <ul>
 <li>Docker的优势<ul>
@@ -182,7 +182,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png" alt=""></p>
 <h3 id="Docker核心概念"><a href="#Docker核心概念" class="headerlink" title="Docker核心概念"></a>Docker核心概念</h3><p><code>镜像</code>，是一个只读的模板，类似于安装系统用到的那个iso文件，我们通过镜像来完成各种应用的部署。<br><code>容器</code>，镜像类似于操作系统，而容器类似于虚拟机本身。它可以被启动、开始、停止、删除等操作，每个容器都是相互隔离的。<br><code>仓库</code>，存放镜像的一个场所，仓库分为公开仓库和私有仓库。 最大的公开仓库是Docker hub <img src="" alt="">hub.docker.com 国内公开仓库 <img src="" alt="">dockerpool.com</p>
 <h2 id="25-2-安装Docker"><a href="#25-2-安装Docker" class="headerlink" title="25.2 安装Docker"></a>25.2 安装Docker</h2><p>安装docker有两种方法</p>
 <blockquote>
@@ -495,11 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +555,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +567,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +619,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,11 +635,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,6 +648,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,10 +664,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

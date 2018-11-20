@@ -16,21 +16,21 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="22.5/22.6 单机上使用git22.7 建立远程仓库22.8 克隆远程仓库">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png">
-<meta property="og:updated_time" content="2018-08-29T15:57:49.347Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:05.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 1（8月29日）">
 <meta name="twitter:description" content="22.5/22.6 单机上使用git22.7 建立远程仓库22.8 克隆远程仓库">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -248,26 +248,26 @@
 <p>格式：<code>git rm 文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# git rm 1.txt</span><br><span class="line">rm &apos;1.txt&apos;</span><br><span class="line">[root@kun02 gitroot]# git commit -m &quot;rm 1.txt&quot;</span><br><span class="line">[master add7b06] rm 1.txt</span><br><span class="line">1 file changed, 4 deletions(-)</span><br><span class="line">delete mode 100644 1.txt</span><br></pre></td></tr></table></figure></p>
 <h3 id="git-rm-与rm区别"><a href="#git-rm-与rm区别" class="headerlink" title="git rm 与rm区别"></a>git rm 与rm区别</h3><p>用 <code>git rm</code> 来删除文件，同时还会将这个<code>删除操作记录下来</code>；该记录用于commit来提交。<br>用 <code>rm</code> 来删除文件，仅仅是<code>删除了物理文件</code>，没有将其从 git 的记录中剔除。 需要在执行<code>commit</code>的时候，多加一个<code>-a</code>参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 gitroot]# rm -rf 1.txt</span><br><span class="line">[root@kun02 gitroot]# git commit -am &quot;rm 1.txt&quot;</span><br></pre></td></tr></table></figure></p>
 <h2 id="22-7-建立远程仓库"><a href="#22-7-建立远程仓库" class="headerlink" title="22.7 建立远程仓库"></a>22.7 建立远程仓库</h2><p>更改使用的命令都是在本机上的，要想使用远程仓库来托管代码，可以去github的官网上注册帐号并建立仓库<br>官网 <img src="" alt=""><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> </p>
-<p>注册了帐号后可以新建仓库，点右上角 —-<code>new repository</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png" alt=""></p>
-<p>填写其他仓库信息<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png" alt=""></p>
-<p>添加密钥<br><code>点击头像</code> —-<code>Setting</code>—- <code>SSH and GPG keys</code> —- <code>New SSH key</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png" alt=""></p>
-<p>然后把本机上使用ssh-keygen的来生成公钥并保存到github上,用于本机连接github时验证通讯<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png" alt=""></p>
-<p>根据创建完仓库的提示输入命令并提交到GitHub仓库上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png" alt=""></p>
+<p>注册了帐号后可以新建仓库，点右上角 —-<code>new repository</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829221940.png" alt=""></p>
+<p>填写其他仓库信息<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222402.png" alt=""></p>
+<p>添加密钥<br><code>点击头像</code> —-<code>Setting</code>—- <code>SSH and GPG keys</code> —- <code>New SSH key</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222653.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829222856.png" alt=""></p>
+<p>然后把本机上使用ssh-keygen的来生成公钥并保存到github上,用于本机连接github时验证通讯<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829223437.png" alt=""></p>
+<p>根据创建完仓库的提示输入命令并提交到GitHub仓库上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829223811.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 tmp]# mkdir test</span><br><span class="line">[root@kun02 tmp]# cd test/</span><br><span class="line">[root@kun02 test]# echo &quot;# test&quot; &gt; README.md</span><br><span class="line">[root@kun02 test]# git init</span><br><span class="line">[root@kun02 test]# git add README.md</span><br><span class="line">[root@kun02 test]# git commit -m &quot;first commit&quot;</span><br><span class="line">[root@kun02 test]# git remote add origin git@github.com:kun0769/test.git   ##把本地仓库推送到远程仓库上</span><br><span class="line">[root@kun02 test]# git push -u origin master  ##推送当前分支到远程上</span><br></pre></td></tr></table></figure>
-<p>此时，远程仓库上就会有刚刚创建的README.md的文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png" alt=""></p>
+<p>此时，远程仓库上就会有刚刚创建的README.md的文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829225350.png" alt=""></p>
 <blockquote>
 <p>把本机文件推送到远程上</p>
 </blockquote>
 <p>格式：<code>git push</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# echo &quot;hello world&quot; &gt; 1.txt</span><br><span class="line">[root@kun02 test]# git add 1.txt</span><br><span class="line">[root@kun02 test]# git commit -m &quot;test&quot;</span><br><span class="line">[root@kun02 test]# git push</span><br></pre></td></tr></table></figure></p>
 <p>第一次推送文件使用<code>git push -u origin master</code> </p>
-<p>此时回去远程仓库可以发现多了1.txt<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png" alt=""></p>
-<h2 id="22-8-克隆远程仓库"><a href="#22-8-克隆远程仓库" class="headerlink" title="22.8 克隆远程仓库"></a>22.8 克隆远程仓库</h2><p>克隆远程仓库可以把整个远程仓库克隆到本机上。使用<code>git clone</code>类似于svn的 <code>svn checkout</code>，先到远程仓库上点击<code>Clone or download</code>复制远程仓库地址<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png" alt=""></p>
+<p>此时回去远程仓库可以发现多了1.txt<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829230150.png" alt=""></p>
+<h2 id="22-8-克隆远程仓库"><a href="#22-8-克隆远程仓库" class="headerlink" title="22.8 克隆远程仓库"></a>22.8 克隆远程仓库</h2><p>克隆远程仓库可以把整个远程仓库克隆到本机上。使用<code>git clone</code>类似于svn的 <code>svn checkout</code>，先到远程仓库上点击<code>Clone or download</code>复制远程仓库地址<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829231928.png" alt=""></p>
 <blockquote>
 <p>在本机上克隆远程仓库</p>
 </blockquote>
 <p>格式：<code>git clone 远程仓库地址</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# git clone git@github.com:kun0769/test.git</span><br></pre></td></tr></table></figure></p>
-<p>到远程仓库上编辑代码文件<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png" alt=""></p>
+<p>到远程仓库上编辑代码文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180829232305.png" alt=""></p>
 <p>本机如果先更新为远程仓库的最新版本，可以拉取到本机<br>格式：<code>git pull</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git pull</span><br><span class="line"></span><br><span class="line">[root@kun02 test]# cat 1.txt</span><br><span class="line">hello world</span><br><span class="line">fsdf</span><br><span class="line">adadd</span><br><span class="line">fdsf</span><br></pre></td></tr></table></figure></p>
 
       
@@ -515,11 +515,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,7 +575,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,11 +587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,11 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,11 +655,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,6 +668,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,10 +684,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

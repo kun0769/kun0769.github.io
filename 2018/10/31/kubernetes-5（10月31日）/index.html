@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="29.9 kubernetes中使用NFS创建pv_pvc29.10 在kubernetes中部署LNMP并运行Discuz">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031205623.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031205827.png">
-<meta property="og:updated_time" content="2018-10-31T14:37:16.686Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031205623.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031205827.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:55.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 5（10月31日）">
 <meta name="twitter:description" content="29.9 kubernetes中使用NFS创建pv_pvc29.10 在kubernetes中部署LNMP并运行Discuz">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -190,7 +190,7 @@
 <p>4）重建httpd-pod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f pvpod.yaml</span><br></pre></td></tr></table></figure></p>
 <p>5）curl访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod httpd-pvpod -o wide  ##查看pod在那个节点上</span><br><span class="line">NAME          READY   STATUS    RESTARTS   AGE     IP           NODE             NOMINATED NODE</span><br><span class="line">httpd-pvpod   1/1     Running   0          2m50s   172.20.1.4   192.168.80.103   &lt;none&gt;</span><br><span class="line"></span><br><span class="line">httpd-pvpod在192.168.80.103节点上 虚拟ip是 172.20.1.4</span><br><span class="line"></span><br><span class="line">curl 172.20.1.4/1.html</span><br></pre></td></tr></table></figure></p>
 <h2 id="29-10-在kubernetes中部署LNMP并运行Discuz"><a href="#29-10-在kubernetes中部署LNMP并运行Discuz" class="headerlink" title="29.10 在kubernetes中部署LNMP并运行Discuz"></a>29.10 在kubernetes中部署LNMP并运行Discuz</h2><p>本实验在k8s集群中部署lnmp环境，再跑discuz<br>步骤思路是下载mysql,Nginx+php-fpm镜像再通过更改好的镜像，上传到harbor<br>k8s通过harbor下载镜像来跑MySQL和Nginx的pod,他们两个pod通过nfs的pvc把数据挂载到nfs的目录上<br>，本实验在已经搭建harbor基础上 跳转<a href="http://kun0769.top/2018/10/29/kubernetes-4%EF%BC%8810%E6%9C%8830%E6%97%A5%EF%BC%89/" target="_blank" rel="noopener">kubernetes 4</a> </p>
-<p>思路拓扑图<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png" alt=""></p>
+<p>思路拓扑图<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031151649.png" alt=""></p>
 <p>文档整理 <img src="" alt=""><a href="https://coding.net/u/aminglinux/p/k8s_discuz/git/tree/master" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/k8s_discuz/git/tree/master</a></p>
 <h3 id="下载MySQL、PHP以及Nginx镜像"><a href="#下载MySQL、PHP以及Nginx镜像" class="headerlink" title="下载MySQL、PHP以及Nginx镜像"></a>下载MySQL、PHP以及Nginx镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line">docker pull richarvey/nginx-php-fpm</span><br></pre></td></tr></table></figure>
 <h3 id="用dockerfile重建nginx-php-fpm镜像（更改自定义的Nginx配置文件）"><a href="#用dockerfile重建nginx-php-fpm镜像（更改自定义的Nginx配置文件）" class="headerlink" title="用dockerfile重建nginx-php-fpm镜像（更改自定义的Nginx配置文件）"></a>用dockerfile重建nginx-php-fpm镜像（更改自定义的Nginx配置文件）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://git.coding.net/aminglinux/k8s_discuz.git   ##此项目有对应的dockfile和pod配置文件</span><br><span class="line">cd k8s_discuz/dz_web_dockerfile/</span><br></pre></td></tr></table></figure>
@@ -217,8 +217,8 @@
 <p>3）设置Nginx代理<br>虚拟IP只能在节点上访问 浏览器访问可以通过IP:port访问，可是不太方便，所以一般都会通过代理虚拟IP来访问web服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nginx</span><br><span class="line">vim /etc/nginx/nginx.conf</span><br><span class="line">##删除原来server 添加下面参数</span><br><span class="line">    server &#123;</span><br><span class="line">          listen 80;</span><br><span class="line">          server_name dz.yuankeedu.com;</span><br><span class="line"></span><br><span class="line">          location / &#123;</span><br><span class="line">              proxy_pass      http://10.68.94.21:80;</span><br><span class="line">              proxy_set_header Host   $host;</span><br><span class="line">              proxy_set_header X-Real-IP      $remote_addr;</span><br><span class="line">              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">              &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure></p>
 <p>绑定hosts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.80.101 dz.yuankeedu.com</span><br></pre></td></tr></table></figure></p>
 <p>浏览器输入<code>http://dz.yuankeedu.com/install/</code></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031205623.png" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181031205827.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031205623.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181031205827.png" alt=""></p>
 
       
 
@@ -465,11 +465,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,7 +525,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +537,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,11 +605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,6 +618,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,10 +634,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

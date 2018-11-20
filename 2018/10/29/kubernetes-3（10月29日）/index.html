@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="29.5 搭建kubernetes集群（ansible-playbook）29.6 kubernetes集群备份和恢复">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027133401.png">
-<meta property="og:updated_time" content="2018-10-30T15:23:11.686Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181027133401.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:54.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 3（10月29日）">
 <meta name="twitter:description" content="29.5 搭建kubernetes集群（ansible-playbook）29.6 kubernetes集群备份和恢复">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -172,7 +172,7 @@
 <h2 id="29-5-搭建kubernetes集群（ansible-playbook）"><a href="#29-5-搭建kubernetes集群（ansible-playbook）" class="headerlink" title="29.5 搭建kubernetes集群（ansible-playbook）"></a>29.5 搭建kubernetes集群（ansible-playbook）</h2><p>使用ansible以二进制方式安装kubernetes集群<br>具体问题 安装步骤等 本文档参考 <img src="" alt=""><a href="https://github.com/gjmzj/kubeasz" target="_blank" rel="noopener">https://github.com/gjmzj/kubeasz</a><br>扩展： 使用kubeadm部署集群 <img src="" alt=""><a href="https://blog.frognew.com/2018/08/kubeadm-install-kubernetes-1.11.html" target="_blank" rel="noopener">https://blog.frognew.com/2018/08/kubeadm-install-kubernetes-1.11.html</a><br>kubernetes官方github地址 <img src="" alt=""><a href="https://github.com/kubernetes/kubernetes/releases" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes/releases</a></p>
 <p>软硬件限制：<br>1）四台机器 cpu和内存 master：至少1核2g，推荐2c4g；node：至少1核2g<br>2）linux系统 内核版本至少3.10，推荐CentOS7/RHEL7<br>3）docker 至少1.9版本，推荐1.12+<br>4）etcd 至少2.0版本，推荐3.0+</p>
 <p>高可用集群所需节点规划：<br>部署节点——x1 : 运行这份 ansible 脚本的节点<br>etcd节点——x3 : 注意etcd集群必须是1,3,5,7…奇数个节点<br>master节点—-x2 : 根据实际集群规模可以增加节点数，需要额外规划一个master VIP(虚地址)<br>lb节点——–x2 : 负载均衡节点两个，安装 haproxy+keepalived<br>node节点——x2 : 真正应用负载的节点，根据需要提升机器配置和增加节点数</p>
-<p>机器规划图：<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png" alt=""></p>
+<p>机器规划图：<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181027114723.png" alt=""></p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>四台机器，全部执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release </span><br><span class="line">yum update -y</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">setenforce 0</span><br></pre></td></tr></table></figure></p>
 <p>在kun01上<br>1) 安装ansible<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y ansible</span><br></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y python-pip git</span><br><span class="line">pip install pip --upgrade -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com</span><br><span class="line">pip install --no-cache-dir ansible -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host</span><br><span class="line">mirrors.aliyun.com</span><br></pre></td></tr></table></figure></p>
@@ -180,7 +180,7 @@
 <p>解决 手动下载python-httplib2 rpm包安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh python-httplib2-0.9.2-1.el7.noarch.rpm</span><br></pre></td></tr></table></figure></p>
 <p>2) 生成密钥并发送给其他机器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  ##生成密钥</span><br><span class="line">for ip in 101 102 103 104; do ssh-copy-id 192.168.80.$ip; done</span><br><span class="line">ssh-copy-id 将本机的公钥复制到远程机器</span><br></pre></td></tr></table></figure></p>
 <p>3) 下载kubeasz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/gjmzj/kubeasz.git</span><br><span class="line">mv kubeasz/* /etc/ansible/</span><br><span class="line">kubeasz目录里面包含所有安装的playbook</span><br></pre></td></tr></table></figure></p>
-<p>4) 下载二进制文件并解压<br>百度云盘地址 <img src="" alt=""><a href="https://pan.baidu.com/s/1c4RFaA#list/path=%2F" target="_blank" rel="noopener">https://pan.baidu.com/s/1c4RFaA#list/path=%2F</a><br>tar包里面都是k8s docker的可执行文件<br>这里下载1-12的tar包并拷贝到kun01上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181027133401.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf k8s.1-12-1.tar.gz</span><br><span class="line">mv bin/* /etc/ansible/bin/</span><br></pre></td></tr></table></figure></p>
+<p>4) 下载二进制文件并解压<br>百度云盘地址 <img src="" alt=""><a href="https://pan.baidu.com/s/1c4RFaA#list/path=%2F" target="_blank" rel="noopener">https://pan.baidu.com/s/1c4RFaA#list/path=%2F</a><br>tar包里面都是k8s docker的可执行文件<br>这里下载1-12的tar包并拷贝到kun01上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181027133401.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf k8s.1-12-1.tar.gz</span><br><span class="line">mv bin/* /etc/ansible/bin/</span><br></pre></td></tr></table></figure></p>
 <p>5.配置集群的参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/ansible/example/hosts.m-masters.example /etc/ansible/hosts   ##拷贝模板</span><br><span class="line"></span><br><span class="line">vim /etc/ansible/hosts</span><br><span class="line"></span><br><span class="line">[deploy]</span><br><span class="line">192.168.80.101 NTP_ENABLED=no</span><br><span class="line"></span><br><span class="line">[etcd]</span><br><span class="line">192.168.80.101 NODE_NAME=etcd1</span><br><span class="line">192.168.80.102 NODE_NAME=etcd2</span><br><span class="line">192.168.80.103 NODE_NAME=etcd3</span><br><span class="line"></span><br><span class="line">[kube-master]</span><br><span class="line">192.168.80.101</span><br><span class="line">192.168.80.104</span><br><span class="line"></span><br><span class="line">[lb]</span><br><span class="line">192.168.80.101 LB_IF=&quot;ens33&quot; LB_ROLE=master   #注意根据实际使用网卡设置</span><br><span class="line">192.168.80.104 LB_IF=&quot;ens33&quot; LB_ROLE=backup</span><br><span class="line"></span><br><span class="line">[kube-node]</span><br><span class="line">192.168.80.102</span><br><span class="line">192.168.80.103</span><br><span class="line"></span><br><span class="line">K8S_VER=&quot;v1.12&quot;   ##版本</span><br><span class="line"></span><br><span class="line">MASTER_IP=&quot;192.168.80.66&quot;   ##指VIP</span><br></pre></td></tr></table></figure>
 <h3 id="分步骤安装"><a href="#分步骤安装" class="headerlink" title="分步骤安装"></a>分步骤安装</h3><p>1）创建证书和安装准备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/ansible/</span><br><span class="line">ansible-playbook 01.prepare.yml</span><br></pre></td></tr></table></figure></p>
@@ -507,11 +507,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,7 +567,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +579,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,11 +631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,11 +647,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,6 +660,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,10 +676,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

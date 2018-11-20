@@ -16,31 +16,31 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="10.15 iptables filter表案例10.16/10.17/10.18 iptables nat表应用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211223.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211555.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211626.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214522.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214624.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214732.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214909.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509215037.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509220930.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509221353.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509221915.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509223906.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509224959.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230258.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230322.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230347.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234844.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234325.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234924.jpg">
-<meta property="og:updated_time" content="2018-05-09T16:33:19.982Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211223.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211555.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211626.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214522.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214624.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214732.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214909.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509215037.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509220930.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509221353.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509221915.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509223906.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509224959.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230258.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230322.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230347.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234844.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234325.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234924.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:16:31.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="七周第四次课（5月9日）">
 <meta name="twitter:description" content="10.15 iptables filter表案例10.16/10.17/10.18 iptables nat表应用">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -193,30 +193,30 @@
 <p>先在/usr/local/sbin/目录下建立叫iptables.sh的文件，然后编辑它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# vim /usr/local/sbin/iptabls.sh</span><br></pre></td></tr></table></figure></p>
 <p>在文件下面编辑下面命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash   ##告诉系统这是个shell脚本</span><br><span class="line">a=&quot;/usr/sbin/iptables&quot;  ##把iptables命令的绝对路径赋值给变量a 以便使用命令</span><br><span class="line">$a -F  ##清空规则</span><br><span class="line">$a -P INPUT DROP  ##把INPUT默认规则改为DROP</span><br><span class="line">$a -P OUTPUT ACCEPT  ##把OUTPUT默认规则改为ACCEPT</span><br><span class="line">$a -P FORWARD ACCEPT  ##把FORWARD默认规则改为ACCEPT</span><br><span class="line">$a -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT  ##允许ESTABLISHED RELATED状态的包进入 以便通讯更加顺畅</span><br><span class="line">$a -A INPUT -s 192.168.80.0/24 -p tcp --dport 22 -j ACCEPT  ## 只允许192.168.80.0/24的网段访问22端口 用于远程连接</span><br><span class="line">$a -A INPUT -p tcp --dport 80 -j ACCEPT  ##允许访问80端口</span><br><span class="line">$a -A INPUT -p tcp --dport 21 -j ACCEPT  ##允许访问21端口</span><br></pre></td></tr></table></figure></p>
 <p>运行iptables脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# sh /usr/local/sbin/iptabls.sh</span><br></pre></td></tr></table></figure></p>
-<p>在看看规则<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg" alt=""></p>
+<p>在看看规则<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509210145.jpg" alt=""></p>
 <p>不允许外网ping本机 但本机可以ping外网<br>先把刚刚的规则还原<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# systemctl restart iptables  ##重新启动服务 加载配置文件的规则</span><br></pre></td></tr></table></figure></p>
-<p>现在用win来ping192.168.80.100是可以ping通的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211223.jpg" alt=""></p>
+<p>现在用win来ping192.168.80.100是可以ping通的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211223.jpg" alt=""></p>
 <p>然后增加拒绝外网ping本机的规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables -I INPUT -p icmp --icmp-type 8 -j DROP</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211555.jpg" alt=""></p>
-<p>而本机是可以ping通外网的<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509211626.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211555.jpg" alt=""></p>
+<p>而本机是可以ping通外网的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509211626.jpg" alt=""></p>
 <h2 id="10-16-10-17-10-18-nat表的应用"><a href="#10-16-10-17-10-18-nat表的应用" class="headerlink" title="10.16/10.17/10.18 nat表的应用"></a>10.16/10.17/10.18 nat表的应用</h2><blockquote>
 <p>1 test1机器两块网卡ens33(192.168.80.100)、ens37(1.1.1.1)，ens33可以上外网，ens37仅仅是内部网络，test2机器只有ens37（1.1.1.2），要求test2和test1机器ens37可以通信互联。</p>
 </blockquote>
-<p>test1机器上添加一块网卡<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214522.jpg" alt=""></p>
-<p>设置内网 这里名字为“内网”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214624.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214732.jpg" alt=""></p>
-<p>test2机器上先把用来的网卡开机断开<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509214909.jpg" alt=""></p>
-<p>再添加一块网卡并加入“内网”<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509215037.jpg" alt=""></p>
+<p>test1机器上添加一块网卡<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214522.jpg" alt=""></p>
+<p>设置内网 这里名字为“内网”<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214624.jpg" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214732.jpg" alt=""></p>
+<p>test2机器上先把用来的网卡开机断开<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509214909.jpg" alt=""></p>
+<p>再添加一块网卡并加入“内网”<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509215037.jpg" alt=""></p>
 <p>在test1机器上 查看新添加的网卡 并临时为它添加ip地址 1.1.1.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# ifconfig -a</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509220930.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509220930.jpg" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# ifconfig ens37 1.1.1.1/24  ##指定ens37的ip地址为1.1.1.1</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509221353.jpg" alt=""></p>
-<p>在test2机器同样为新添加的网卡添加1.1.1.2ip地址<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509221915.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509221353.jpg" alt=""></p>
+<p>在test2机器同样为新添加的网卡添加1.1.1.2ip地址<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509221915.jpg" alt=""></p>
 <p>在test1机器上开启路由转发 <code>/proc/sys/ent/ipv4/ip_forward</code>是系统路由转发的配置文件 1是开启 0为关闭<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# echo &quot;1&quot; &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure></p>
 <p>然后在POSTROUTING链上添加一条伪装1.1.1.0网段到ens33网卡的规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables -t nat -A POSTROUTING -s 1.1.1.0/24 -o ens33 -j MASQUERADE ##内网数据流向ens33网卡</span><br></pre></td></tr></table></figure></p>
 <p>再到test2机器上把1.1.1.1添加为网卡 这样就可以同过test1机器作为路由器来ping外网<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route add default gw 1.1.1.1 临时添加网关</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509223906.jpg" alt=""></p>
-<p>成功ping同test1的ens33网卡<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509224959.jpg" alt=""></p>
-<p>然后临时设置一下DNS 在<code>/etc/resolv.comf</code>下<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230258.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230322.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509230347.jpg" alt=""><br>test2成功连接外网</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509223906.jpg" alt=""></p>
+<p>成功ping同test1的ens33网卡<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509224959.jpg" alt=""></p>
+<p>然后临时设置一下DNS 在<code>/etc/resolv.comf</code>下<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230258.jpg" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230322.jpg" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509230347.jpg" alt=""><br>test2成功连接外网</p>
 <blockquote>
 <p>2：window机器只能和test1通信，让window机器可以直接连通test2机器的22端口 这里使用了端口映射把test1机器的1122端口映射到test2的80端口这样就可以让window机器通过远程连接去连通test2机器了</p>
 </blockquote>
@@ -224,10 +224,10 @@
 <p>把刚刚写的规则清空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables -t nat -F</span><br></pre></td></tr></table></figure></p>
 <p>在PREROUTING链上增加一条把192.168.80.100:1122映射到1.1.1.2:22规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables -t nat -A PREROUTING -p tcp -d 192.168.80.100 --dport 1122 -j DNAT --to 1.1.1.2:22</span><br></pre></td></tr></table></figure></p>
 <p>在POSTROUTING链上增加一条把1.1.1.2转到192.168.80.100规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun0769 ~]# iptables -t nat -A POSTROUTING -p tcp -s 1.1.1.2  -j SNAT --to 192.168.80.100</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234844.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234844.jpg" alt=""></p>
 <p>再到test2上设置网关为1.1.1.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route add default 1.1.1.1</span><br></pre></td></tr></table></figure></p>
-<p>我们在window上使用XShell来远程连接192.168.80.100:1122<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234325.jpg" alt=""></p>
-<p>连接test2成功了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180509234924.jpg" alt=""></p>
+<p>我们在window上使用XShell来远程连接192.168.80.100:1122<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234325.jpg" alt=""></p>
+<p>连接test2成功了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180509234924.jpg" alt=""></p>
 
       
 
@@ -482,11 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,7 +542,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,11 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,6 +635,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,10 +651,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

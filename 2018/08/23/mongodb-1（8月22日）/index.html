@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.26 mongodb介绍21.27 mongodb安装21.28 连接mongodb21.29 mongodb用户管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822220432.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822220506.png">
-<meta property="og:updated_time" content="2018-08-23T13:57:43.672Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822220432.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822220506.png">
+<meta property="og:updated_time" content="2018-11-20T06:24:38.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb 1（8月22日）">
 <meta name="twitter:description" content="21.26 mongodb介绍21.27 mongodb安装21.28 连接mongodb21.29 mongodb用户管理">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
       
         <p>21.26 mongodb介绍<br>21.27 mongodb安装<br>21.28 连接mongodb<br>21.29 mongodb用户管理<br><a id="more"></a></p>
 <h2 id="21-26-mongodb介绍"><a href="#21-26-mongodb介绍" class="headerlink" title="21.26 mongodb介绍"></a>21.26 mongodb介绍</h2><p>之前讲的<code>memcached</code> <code>redis</code>都是属于<code>k-v</code>类型的数据库，而<code>mongodb</code>是<code>文档型</code>数据库。<code>一个json就是一个文档</code>。json类似与一个k-v value里面有多多个数组（k-v对）。关于json <img src="" alt=""><a href="http://www.w3school.com.cn/json/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/json/index.asp</a><br>mongodb官网 <img src="" alt=""><a href="http://www.mongodb.com" target="_blank" rel="noopener">www.mongodb.com</a> 当前最新版4.0。它是由C++编写，基于分布式的，属于NoSQL的一种。<br>在NoSQL中是最像关系型数据库的。<br>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON对象。字段值可以包含其他文档，数组及文档数组。因为基于分布式，所以MongoDB很容易扩展。</p>
-<p>MongoDB和关系型数据库对比<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822220432.png" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180822220506.png" alt=""></p>
+<p>MongoDB和关系型数据库对比<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822215615.png" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822220432.png" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180822220506.png" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>可以看出MongoDB中的<code>集合</code>相当于MySQL中的<code>表</code>。<code>文档</code>相当于MySQL中的<code>行</code>。文档里面的<code>k-y（域）</code>相当于MySQL中的<code>列（字段）</code></p>
 <h2 id="21-27-MongoDB安装"><a href="#21-27-MongoDB安装" class="headerlink" title="21.27 MongoDB安装"></a>21.27 MongoDB安装</h2><p>epel自带的mongodb版本为2.6，我们需要安装4.0版本<br>可以参考官方安装文档来下载最新版的MongoDB <img src="" alt=""><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
 <blockquote>
@@ -562,11 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,7 +622,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,11 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +686,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +702,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,6 +715,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,10 +731,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

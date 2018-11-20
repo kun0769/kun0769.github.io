@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="14.1 NFS介绍14.2 NFS服务端安装配置14.3 NFS配置选项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png">
-<meta property="og:updated_time" content="2018-06-21T15:50:55.720Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png">
+<meta property="og:updated_time" content="2018-11-20T06:23:46.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NFS 1（6月21日）">
 <meta name="twitter:description" content="14.1 NFS介绍14.2 NFS服务端安装配置14.3 NFS配置选项">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -169,8 +169,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>14.1 NFS介绍<br>14.2 NFS服务端安装配置<br>14.3 NFS配置选项<br><a id="more"></a></p>
-<h2 id="14-1-NFS介绍"><a href="#14-1-NFS介绍" class="headerlink" title="14.1 NFS介绍"></a>14.1 NFS介绍</h2><p>NFS全称Network File System 中文叫网络文件系统。是用于在网络上实现文件传输，已达到文件资源共享的效果。<br>NFS最早由Sun公司开发，分2,3,4三个大版本，2和3由Sun起草开发，4.0开始Netapp公司参与并主导开发，最新为4.1版本。<br>其中NFS数据传输是基于<code>RPC协议</code>，RPC为Remote Procedure Call的简写。中文叫远程过程调用，它可以让NFS的服务端和客服端实现通讯。<br>假如现在有三台web服务器作负载均衡，要实现让三台web服务器上的存放图片目录保持一致。通常使用的办法是把图片目录拷贝到其他几台服务器上，这样做既浪费带宽也不能保证数据的实时更新，因此使用NFS。当A机器上更新了数据，B和C机器也会马上实时更新。同理，B机器上更新数据，其他两台服务器也可以更新。这样用户访问ABC中一台，数据都是同步的。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png" alt=""></p>
-<p>工作原理：NFS是属于C/S结构的。NFS服务端上既有NFS服务还要RPC服务，而NFS客户端上也有RPC服务。NFS服务端要给NFS客户端提供服务，需要通过RPC服务来支持，RPC服务是由rpcbind（CentOS5以前叫portmap）来提供支持的.默认NFS是监听任何端口。而RPC服务监听111端口来实现TCP/IP的通讯，当两台机器上的RPC服务通讯后 NFS服务就跟RPC说他要监听哪个端口来传输数据 RPC就会告诉客户端上的RPC 而客户端上就会开启那个端口来实现NFS的通讯。<br>总之，<code>NFS需要通过PRC协议来通讯</code>。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png" alt=""></p>
+<h2 id="14-1-NFS介绍"><a href="#14-1-NFS介绍" class="headerlink" title="14.1 NFS介绍"></a>14.1 NFS介绍</h2><p>NFS全称Network File System 中文叫网络文件系统。是用于在网络上实现文件传输，已达到文件资源共享的效果。<br>NFS最早由Sun公司开发，分2,3,4三个大版本，2和3由Sun起草开发，4.0开始Netapp公司参与并主导开发，最新为4.1版本。<br>其中NFS数据传输是基于<code>RPC协议</code>，RPC为Remote Procedure Call的简写。中文叫远程过程调用，它可以让NFS的服务端和客服端实现通讯。<br>假如现在有三台web服务器作负载均衡，要实现让三台web服务器上的存放图片目录保持一致。通常使用的办法是把图片目录拷贝到其他几台服务器上，这样做既浪费带宽也不能保证数据的实时更新，因此使用NFS。当A机器上更新了数据，B和C机器也会马上实时更新。同理，B机器上更新数据，其他两台服务器也可以更新。这样用户访问ABC中一台，数据都是同步的。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180620205255.png" alt=""></p>
+<p>工作原理：NFS是属于C/S结构的。NFS服务端上既有NFS服务还要RPC服务，而NFS客户端上也有RPC服务。NFS服务端要给NFS客户端提供服务，需要通过RPC服务来支持，RPC服务是由rpcbind（CentOS5以前叫portmap）来提供支持的.默认NFS是监听任何端口。而RPC服务监听111端口来实现TCP/IP的通讯，当两台机器上的RPC服务通讯后 NFS服务就跟RPC说他要监听哪个端口来传输数据 RPC就会告诉客户端上的RPC 而客户端上就会开启那个端口来实现NFS的通讯。<br>总之，<code>NFS需要通过PRC协议来通讯</code>。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180620211024.png" alt=""></p>
 <h2 id="14-2-NFS服务端安装配置"><a href="#14-2-NFS服务端安装配置" class="headerlink" title="14.2 NFS服务端安装配置"></a>14.2 NFS服务端安装配置</h2><p>这里以192.168.80.102为服务端 192.168.80.100为客户端。NFS的服务端上需要启动NFS和RPC两个服务，而客户端上只需要启动RPC服务即可</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.服务端上安装nfs-utils包和rpcbind包</p>
@@ -498,11 +498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,7 +558,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,11 +570,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,11 +638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,6 +651,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,10 +667,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

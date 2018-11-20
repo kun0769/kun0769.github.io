@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="29.7/29.8 harbor部署/ 在kubernetes中使用harbor">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029203355.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029203635.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029210230.png">
-<meta property="og:updated_time" content="2018-10-30T15:17:28.987Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029203355.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029203635.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029210230.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:55.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 4（10月30日）">
 <meta name="twitter:description" content="29.7/29.8 harbor部署/ 在kubernetes中使用harbor">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -173,7 +173,7 @@
         <p>29.7/29.8 harbor部署/ 在kubernetes中使用harbor<br><a id="more"></a></p>
 <h2 id="29-7-29-8-harbor部署-在kubernetes中使用harbor"><a href="#29-7-29-8-harbor部署-在kubernetes中使用harbor" class="headerlink" title="29.7/29.8 harbor部署/ 在kubernetes中使用harbor"></a>29.7/29.8 harbor部署/ 在kubernetes中使用harbor</h2><p>Harbor是由VMWare中国团队开源的容器镜像仓库。事实上，Habor是在Docker Registry（用于私人仓库）上进行了相应的企业级扩展，从而获 得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制 ，水平扩展，同步，AD/LDAP集成以及 审计日志等。kubernetes使用harbor让k8s创建pod时指定拉取从harbor里镜像。</p>
 <h3 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h3><p>1） 下载最新的docker-compose二进制文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.22.0-rc1/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose</span><br><span class="line">chmod +x /usr/bin/docker-compose</span><br></pre></td></tr></table></figure></p>
-<p>2）下载harbor离线安装包并解压<br>github地址 <img src="" alt=""><a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener">https://github.com/goharbor/harbor/releases</a><br>选择最新的v1.6.1下载<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf harbor-offline-installer-v1.6.1.tgz</span><br></pre></td></tr></table></figure></p>
+<p>2）下载harbor离线安装包并解压<br>github地址 <img src="" alt=""><a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener">https://github.com/goharbor/harbor/releases</a><br>选择最新的v1.6.1下载<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029175520.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf harbor-offline-installer-v1.6.1.tgz</span><br></pre></td></tr></table></figure></p>
 <p>3）准备ca证书（建议大家购买一个便宜的域名，并去申请一个免费的ssl证书）<br>如果不想购买域名，那就自己手动生成ca证书吧，可以参考这个文档<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/nginx/git/blob/master/ssl/key.md" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/nginx/git/blob/master/ssl/key.md</a>  免费ssl证书 <img src="" alt=""><a href="https://freessl.org/" target="_blank" rel="noopener">https://freessl.org/</a></p>
 <p>这里提供一个harbor.yuankeedu.com的证书 ，后只要设置下hosts即可<br>链接：<img src="" alt=""><a href="https://pan.baidu.com/s/1FWNWKaGmo9jUql9cgo-1PQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1FWNWKaGmo9jUql9cgo-1PQ</a>  提取码：e4oh</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf harbor.yuankeedu.com.key.tar.gz</span><br><span class="line">mkdir -p /data/cert  ##创建ca证书的目录</span><br><span class="line">mv cert/server.* /data/cert/</span><br></pre></td></tr></table></figure>
@@ -181,12 +181,12 @@
 <p>编辑配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim harbor.cfg</span><br><span class="line"></span><br><span class="line">hostname = harbor.yuankeedu.com   ##填写域名</span><br><span class="line"></span><br><span class="line">ui_url_protocol = https</span><br><span class="line"></span><br><span class="line">ssl_cert = /data/cert/server.crt   ##指定ca证书路径</span><br><span class="line">ssl_cert_key = /data/cert/server.key</span><br><span class="line"></span><br><span class="line">harbor_admin_password = 38003800  ##指定登录harbor密码</span><br><span class="line"></span><br><span class="line">sh install.sh //自动安装完成</span><br></pre></td></tr></table></figure></p>
 <p>当安装完成后haibor会默认下载多个容器 可以使用<code>docker-compose down</code> 关闭容器 <code>docker-compose up -d</code> 后台启动容器</p>
 <p>5）访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hosts 绑定域名https://harbor.yuankeedu.com 使用浏览器访问</span><br><span class="line">admin 默认密码为 38003800</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029203355.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029203355.png" alt=""></p>
 <p>6） 创建私人项目</p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029203635.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029203635.png" alt=""></p>
 <p>7） 拉取公共镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull busybox</span><br><span class="line">docker tag busybox harbor.yuankeedu.com/kun/busybox:lastet  ##镜像打标签 格式为域名/项目/镜像名</span><br></pre></td></tr></table></figure></p>
 <p>8） 把镜像推送到harbor<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login https://harbor.yuankeedu.com  ##登录harbor服务器</span><br><span class="line">docker push harbor.yuankeedu.com/kun/busybox  ##上传镜像</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029210230.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181029210230.png" alt=""></p>
 <h3 id="问题-连接不到域名"><a href="#问题-连接不到域名" class="headerlink" title="问题 连接不到域名"></a>问题 连接不到域名</h3><p>Error response from daemon: Get <a href="https://harbor.yuankeedu.com/v1/users/" target="_blank" rel="noopener">https://harbor.yuankeedu.com/v1/users/</a>: dial tcp 192.168.111.131:443: getsockopt: connection refused</p>
 <p>解决 服务器上绑定域名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"></span><br><span class="line">192.168.80.105 harbor.yuankeedu.com</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题-x509"><a href="#问题-x509" class="headerlink" title="问题 x509"></a>问题 x509</h3><p>Error response from daemon: Get <a href="https://harbor.yuankeedu.com/v1/users/" target="_blank" rel="noopener">https://harbor.yuankeedu.com/v1/users/</a>: x509: certificate signed by unknown authority</p>
@@ -455,11 +455,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,7 +515,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +579,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +595,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,6 +608,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,10 +624,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,19 +16,19 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="11.25 配置防盗链11.26 访问控制Directory11.27 访问控制FilesMatch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530210830.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530210912.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530222610.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530222723.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530230809.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530225614.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530225716.jpg">
-<meta property="og:updated_time" content="2018-05-30T15:28:55.778Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530210830.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530210912.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530222610.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530222723.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530230809.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530225614.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530225716.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:25:56.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第七节（5月31日）">
 <meta name="twitter:description" content="11.25 配置防盗链11.26 访问控制Directory11.27 访问控制FilesMatch">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -177,23 +177,23 @@
         <p>11.25 配置防盗链<br>11.26 访问控制Directory<br>11.27 访问控制FilesMatch<br><a id="more"></a></p>
 <h2 id="11-25-配置防盗链"><a href="#11-25-配置防盗链" class="headerlink" title="11.25 配置防盗链"></a>11.25 配置防盗链</h2><p>假如其他网站引用本站点的图片，每当有人访问他的网站的图片时候，就会请求到我们的服务器上，但是这些请求对于我们来说毫无意义，并且浪费带宽。因此我们要为网站上的静态文件做防盗链。</p>
 <h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>在test2的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test2.com&gt;</span><br><span class="line">    SetEnvIfNoCase Referer &quot;test2.com&quot; local_ref</span><br><span class="line">    SetEnvIfNoCase Referer &quot;www.test2.com&quot; local_ref</span><br><span class="line">    SetenvIfNoCase Referer &quot;^$&quot; local_ref</span><br><span class="line">    &lt;FilesMatch &quot;\.(txt|doc|mp3|zip|rar|jpg|gif|png|JPG)&quot;&gt;</span><br><span class="line">        Order Allow,Deny</span><br><span class="line">        Allow from env=local_ref</span><br><span class="line">    &lt;/FilesMatch&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg" alt=""><br><code>Order Allow,Deny</code> 先执行允许的条件后再执行禁止的条件 <code>^$</code>表示空referer</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530213025.jpg" alt=""><br><code>Order Allow,Deny</code> 先执行允许的条件后再执行禁止的条件 <code>^$</code>表示空referer</p>
 <h3 id="加载文件"><a href="#加载文件" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>用浏览器在论坛发贴 并超链接服务器的图片<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530210830.jpg" alt=""></p>
-<p>当访问这个链接后出现禁止访问就说明防盗链成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530210912.jpg" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>用浏览器在论坛发贴 并超链接服务器的图片<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530210830.jpg" alt=""></p>
+<p>当访问这个链接后出现禁止访问就说明防盗链成功<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530210912.jpg" alt=""></p>
 <p>在linux上curl命令来测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -e &quot;http://www.g.cn&quot; -x192.168.80.101:80 test2.com/test.jpg -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Wed, 30 May 2018 21:15:46 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">[root@localhost ~]# curl -e &quot;http://www.test2.com&quot; -x192.168.80.101:80 test2.com/test.jpg -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Wed, 30 May 2018 21:16:24 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Last-Modified: Mon, 28 May 2018 23:15:15 GMT</span><br><span class="line">ETag: &quot;10883-56d4c4a57cccb&quot;</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 67715</span><br><span class="line">Cache-Control: max-age=86400</span><br><span class="line">Expires: Thu, 31 May 2018 21:16:24 GMT</span><br><span class="line">Content-Type: image/jpeg</span><br></pre></td></tr></table></figure></p>
 <p><code>-e</code>指定referer 开头必须是http://</p>
 <h2 id="11-26-访问控制Directory"><a href="#11-26-访问控制Directory" class="headerlink" title="11.26 访问控制Directory"></a>11.26 访问控制Directory</h2><p>公司后台的网站即使设置了用户访问，但也有泄露密码的风险。为了进一步的加强安全，我们可以为后台的网站设置固定某些IP才可以访问。</p>
 <h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><p>在test2的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test2.com/admin/&gt;</span><br><span class="line">	Order Deny,Allow</span><br><span class="line">	Deny from all</span><br><span class="line">	Allow from 127.0.0.1   </span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530222610.jpg" alt=""><br><code>Order Deny,Allow</code> 所有的访问都会先执行禁止的条件后再执行允许的条件 例如127.0.0.1的访问都会先deny掉再allow回来</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530222610.jpg" alt=""><br><code>Order Deny,Allow</code> 所有的访问都会先执行禁止的条件后再执行允许的条件 例如127.0.0.1的访问都会先deny掉再allow回来</p>
 <h3 id="加载文件-1"><a href="#加载文件-1" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>在浏览器上访问test2.com/admin下的1.php被拒绝了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530222723.jpg" alt=""></p>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>在浏览器上访问test2.com/admin下的1.php被拒绝了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530222723.jpg" alt=""></p>
 <p>用curl命令 127.0.0.1可以访问admin目录里面的1.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 test2.com/admin/1.php -I</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Wed, 30 May 2018 22:30:48 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">X-Powered-By: PHP/5.6.32</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Expires: Wed, 30 May 2018 22:30:48 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com/admin/1.php -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Wed, 30 May 2018 22:31:30 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
 <h2 id="11-27-访问控制FilesMatch"><a href="#11-27-访问控制FilesMatch" class="headerlink" title="11.27 访问控制FilesMatch"></a>11.27 访问控制FilesMatch</h2><p>也可以针对每个文件或者链接来控制</p>
 <h3 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h3><p>在test2的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test2.com&gt;</span><br><span class="line">	&lt;FilesMatch &quot;1.php(.*)&quot;&gt;</span><br><span class="line">		Order Deny,Allow</span><br><span class="line">		Deny from all</span><br><span class="line">		Allow from 127.0.0.1</span><br><span class="line">	&lt;/FilesMatch&gt;</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530230809.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530230809.jpg" alt=""></p>
 <h3 id="加载文件-2"><a href="#加载文件-2" class="headerlink" title="加载文件"></a>加载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器去访问test2.com/admin/111没找到文件说明可以访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530225614.jpg" alt=""><br>访问1.php开头的文件都是显示禁止访问了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180530225716.jpg" alt=""><br>用curl命令 只有127.0.0.1才可以访问到1.php开头的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 test2.com/admin/1.phpsdfsd -I</span><br><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Wed, 30 May 2018 23:05:31 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com/admin/1.phpsdfsd -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Wed, 30 May 2018 23:05:44 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器去访问test2.com/admin/111没找到文件说明可以访问<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530225614.jpg" alt=""><br>访问1.php开头的文件都是显示禁止访问了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180530225716.jpg" alt=""><br>用curl命令 只有127.0.0.1才可以访问到1.php开头的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 test2.com/admin/1.phpsdfsd -I</span><br><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">Date: Wed, 30 May 2018 23:05:31 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com/admin/1.phpsdfsd -I</span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Wed, 30 May 2018 23:05:44 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -444,11 +444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +504,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,11 +568,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +584,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,6 +597,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,10 +613,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

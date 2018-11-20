@@ -16,21 +16,21 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="3.7 su命令3.8 sudo命令3.9 限制root远程登录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404134910.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404140321.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404141343.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404142450.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404142626.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404144315.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151324.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151823.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404150609.jpg">
-<meta property="og:updated_time" content="2018-04-04T08:20:34.135Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404134910.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404140321.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404141343.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404142450.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404142626.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404144315.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404151324.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404151823.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404150609.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:15:33.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三周第三次课（4月4日）">
 <meta name="twitter:description" content="3.7 su命令3.8 sudo命令3.9 限制root远程登录">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -203,23 +203,23 @@
 <p>visudo：编辑sudo的配置文件来授权sudoer</p>
 </blockquote>
 <p>由于我们想在kun1用户下来临时执行root的某些命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# visudo</span><br></pre></td></tr></table></figure></p>
-<p>找到下面这行<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg" alt=""><br>这里第一个ALL表示主机 第二个ALL表示主机上的用户 第三个ALL表示命令</p>
-<p>加上<code>kun1       ALL=(ALL)      /usr/bin/ls, /usr/bin/cat</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404134910.jpg" alt=""></p>
+<p>找到下面这行<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404133505.jpg" alt=""><br>这里第一个ALL表示主机 第二个ALL表示主机上的用户 第三个ALL表示命令</p>
+<p>加上<code>kun1       ALL=(ALL)      /usr/bin/ls, /usr/bin/cat</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404134910.jpg" alt=""></p>
 <blockquote>
 <p>sudo：临时让用户以另一身份来执行指定命令 登录输入原用户的密码</p>
 </blockquote>
 <p>用法：<code>sudo 命令</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun1   </span><br><span class="line">上一次登录：三 4月  4 20:26:00 CST 2018pts/0 上</span><br><span class="line">[kun1@localhost ~]$ ls /root    ##kun1用户权限不够ls不了root</span><br><span class="line">ls: 无法打开目录/root: 权限不够</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[kun1@localhost ~]$ sudo ls /root        ##第一次登录会提示并输入当前用户的密码</span><br><span class="line">我们信任您已经从系统管理员那里了解了日常注意事项。</span><br><span class="line">总结起来无外乎这三点：</span><br><span class="line">    #1) 尊重别人的隐私。</span><br><span class="line">    #2) 输入前要先考虑(后果和风险)。</span><br><span class="line">    #3) 权力越大，责任越大。</span><br><span class="line">[sudo] kun1 的密码：</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br><span class="line">[kun1@localhost ~]$ sudo cat /root/1.txt     ##第二次使用就不需要输入密码</span><br><span class="line">sadfsdfs</span><br></pre></td></tr></table></figure>
-<p>我们想让kun2用户使用sudo时候不输人密码 那么在visudo设置如下<br><code>kun2       ALL=(ALL)     NOPASSWD: /usr/bin/ls, /usr/bin/cat</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404140321.jpg" alt=""></p>
+<p>我们想让kun2用户使用sudo时候不输人密码 那么在visudo设置如下<br><code>kun2       ALL=(ALL)     NOPASSWD: /usr/bin/ls, /usr/bin/cat</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404140321.jpg" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun2</span><br><span class="line">上一次登录：四 3月 29 07:45:10 CST 2018pts/0 上</span><br><span class="line">[kun2@localhost ~]$ sudo ls /root/        ##kun2执行sudo ls时候不用输人密码</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br></pre></td></tr></table></figure>
-<p>visudo还有其他用法<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404141343.jpg" alt=""><br>这里我们为命令做别名（别名名称要使用大写）<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404142450.jpg" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404142626.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun2</span><br><span class="line">上一次登录：三 4月  4 22:04:27 CST 2018pts/0 上</span><br><span class="line">[kun2@localhost ~]$ sudo ls /root/</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br></pre></td></tr></table></figure></p>
+<p>visudo还有其他用法<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404141343.jpg" alt=""><br>这里我们为命令做别名（别名名称要使用大写）<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404142450.jpg" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404142626.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun2</span><br><span class="line">上一次登录：三 4月  4 22:04:27 CST 2018pts/0 上</span><br><span class="line">[kun2@localhost ~]$ sudo ls /root/</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br></pre></td></tr></table></figure></p>
 <p>也可以为以组来配置visudo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail -5 /etc/passwd   ##kun1和kun2 都是在1001组里面 1001是kun2组</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash  </span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404144315.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun1   </span><br><span class="line">上一次登录：三 4月  4 21:53:24 CST 2018pts/0 上</span><br><span class="line">[kun1@localhost ~]$ sudo ls /root</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404144315.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su - kun1   </span><br><span class="line">上一次登录：三 4月  4 21:53:24 CST 2018pts/0 上</span><br><span class="line">[kun1@localhost ~]$ sudo ls /root</span><br><span class="line">1.txt  anaconda-ks.cfg    学习计划.txt</span><br></pre></td></tr></table></figure></p>
 <h2 id="限制root远程登录"><a href="#限制root远程登录" class="headerlink" title="限制root远程登录"></a>限制root远程登录</h2><p>为了安全 一般会禁止root远程登录 使用普通用户登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi /etc/ssh/sshd_config  ##进入ssh的配置文件</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151324.jpg" alt=""><br>把PermitRootLogin 改为no<br>然后重启远程登录服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl restart sshd.service</span><br></pre></td></tr></table></figure></p>
-<p>再去远程登录看看<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404151823.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404151324.jpg" alt=""><br>把PermitRootLogin 改为no<br>然后重启远程登录服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl restart sshd.service</span><br></pre></td></tr></table></figure></p>
+<p>再去远程登录看看<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404151823.jpg" alt=""></p>
 <p>这里我们不知道root的登录密码,又想让普通用户去登录root 可以用sudo su 来实现<br>先在配置配置文件设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# visudo</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180404150609.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[kun1@localhost ~]$ sudo su -   ##成功登录root用户</span><br><span class="line">上一次登录：三 4月  4 21:41:17 CST 2018从 192.168.80.1pts/1 上</span><br><span class="line">[root@localhost ~]# whoami</span><br><span class="line">root</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180404150609.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[kun1@localhost ~]$ sudo su -   ##成功登录root用户</span><br><span class="line">上一次登录：三 4月  4 21:41:17 CST 2018从 192.168.80.1pts/1 上</span><br><span class="line">[root@localhost ~]# whoami</span><br><span class="line">root</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -470,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,11 +542,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,11 +594,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,11 +610,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,6 +623,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,10 +639,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

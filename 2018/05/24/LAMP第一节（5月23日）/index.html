@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="11.1 LAMP架构介绍11.2 MySQL、MariaDB介绍11.3/11.4/11.5 MySQL安装">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg">
-<meta property="og:updated_time" content="2018-05-23T16:39:19.458Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:25:59.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第一节（5月23日）">
 <meta name="twitter:description" content="11.1 LAMP架构介绍11.2 MySQL、MariaDB介绍11.3/11.4/11.5 MySQL安装">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -174,8 +174,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>11.1 LAMP架构介绍<br>11.2 MySQL、MariaDB介绍<br>11.3/11.4/11.5 MySQL安装<br><a id="more"></a></p>
-<h2 id="11-1-LAMP架构"><a href="#11-1-LAMP架构" class="headerlink" title="11.1 LAMP架构"></a>11.1 LAMP架构</h2><p>LAMP其实是<code>Linux</code>，<code>Apache</code>，<code>MySQL</code>和<code>PHP</code>的简写。<br>Linux是一个操作系统。<br>Apache是个提供web服务的软件，可以叫作httpd。<br>MySQL是个关系型数据库，一般用来存储数据。<br>PHP是个脚本语言，多用于服务器上用来编写网页。<br>其中Apache，MySQL和PHP可以安装在同一台服务器上，也可以让MySQL单独在一台机器上 Apache和PHP在另外一台机器上（PHP和 Apache必须在同一台机器上）通过网络来通信<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg" alt=""></p>
-<p>工作流程：当用户使用浏览器来访问服务器 ，Apache就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等） Apache就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Apache就是调用PHP来访问MySQL数据库，其中PHP只作为Apache的模块来和MySQL打交道，而Apache自己是不会去访问数据库的。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg" alt=""></p>
+<h2 id="11-1-LAMP架构"><a href="#11-1-LAMP架构" class="headerlink" title="11.1 LAMP架构"></a>11.1 LAMP架构</h2><p>LAMP其实是<code>Linux</code>，<code>Apache</code>，<code>MySQL</code>和<code>PHP</code>的简写。<br>Linux是一个操作系统。<br>Apache是个提供web服务的软件，可以叫作httpd。<br>MySQL是个关系型数据库，一般用来存储数据。<br>PHP是个脚本语言，多用于服务器上用来编写网页。<br>其中Apache，MySQL和PHP可以安装在同一台服务器上，也可以让MySQL单独在一台机器上 Apache和PHP在另外一台机器上（PHP和 Apache必须在同一台机器上）通过网络来通信<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523204353.jpg" alt=""></p>
+<p>工作流程：当用户使用浏览器来访问服务器 ，Apache就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等） Apache就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Apache就是调用PHP来访问MySQL数据库，其中PHP只作为Apache的模块来和MySQL打交道，而Apache自己是不会去访问数据库的。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523204652.jpg" alt=""></p>
 <h2 id="11-2-MySQL和Mariadb介绍"><a href="#11-2-MySQL和Mariadb介绍" class="headerlink" title="11.2 MySQL和Mariadb介绍"></a>11.2 MySQL和Mariadb介绍</h2><p>MySQL是一个关系型数据库，由mysql ab公司开发，mysql在2008年被sun公司收购，2009年sun公司被oracle公司收购。因此以后MySQL有可能要收钱了<br> MySQL最新版本是5.7GA/8.0DMR，其中MySQL5.6变化比较大，5.7性能上有很大提升。<br>Mariadb是MySQL的一个分支，最新版本10.2，他是由MySQL原作者创作的，他是款开源软件，其中Mariadb5.5版本对应MySQL的5.5，10.0对应MySQL5.6。</p>
 <p>版本号常识</p>
 <table>
@@ -221,7 +221,7 @@
 <blockquote>
 <p>uname -a ：查看系统的位数</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg" alt=""><br>x86_64对应的是64位系统，i686 i586对应的是32位系统，因此我们下载5.6的64位即可</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523214638.jpg" alt=""><br>x86_64对应的是64位系统，i686 i586对应的是32位系统，因此我们下载5.6的64位即可</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.我们默认把所有安装的应用软件和包都放在/usr/local/src/目录下 </p>
 </blockquote>
@@ -238,7 +238,7 @@
 <p>4.把解压的包的目录放在/etc/local/下并改名为mysql目录</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost src]# mv mysql-5.6.36-linux-glibc2.5-x86_64 /usr/local/mysql/</span><br></pre></td></tr></table></figure>
-<p>可以用ls看看是否如下 和下面不一样有可能是路径搞错了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg" alt=""></p>
+<p>可以用ls看看是否如下 和下面不一样有可能是路径搞错了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523222635.jpg" alt=""></p>
 <blockquote>
 <p>5.进入mysql目录下 并建立mysql用户和创建data目录（默认已经在mysql目录下）</p>
 </blockquote>
@@ -250,8 +250,8 @@
 <p><code>./scripts/mysql_install_db</code> 初始化mysql<br><code>--user</code> 指定运行软件的用户<br><code>--datadir</code> 指定数据的目录路径 最后是绝对路径</p>
 <p>错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FATAL ERROR: please install the following Perl modules before executing ./scripts/mysql_install_db:</span><br><span class="line">Data::Dumper</span><br></pre></td></tr></table></figure></p>
 <p>我们遇到错误可以使用两种思路：<br>1.模糊搜索 这里少模块就是少哪个包 关键字Dumper perl<br><code>yum list |grep perl |grep -i dumper</code><br>2.利用搜索引擎 谷歌 百度等</p>
-<p>这里是<code>./scripts/mysql_install_db</code>是Perl脚本编写的 缺少了Perl的Dumper模块<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg" alt=""><br>之后一个个安装在初始化试试 这里少了perl-Data-Dumper包</p>
-<p>初始化完成成功后可以观察是否有两个OK<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg" alt=""></p>
+<p>这里是<code>./scripts/mysql_install_db</code>是Perl脚本编写的 缺少了Perl的Dumper模块<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523225121.jpg" alt=""><br>之后一个个安装在初始化试试 这里少了perl-Data-Dumper包</p>
+<p>初始化完成成功后可以观察是否有两个OK<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523225436.jpg" alt=""></p>
 <p>也可以使用echo $? 是否为0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# echo $?</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>7.从模版中复制配置文件和启动脚本</p>
@@ -266,7 +266,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# vim /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
 <p>定义下basedir和datadir的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mysql/</span><br><span class="line">datadir=/usr/local/mysql/data/mysql/</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# chkconfig --add mysqld  ##添加服务</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180523234123.jpg" alt=""></p>
 <p>也可以使用service命令启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# service mysqld start   ##启动服务</span><br></pre></td></tr></table></figure></p>
 <p>查看服务是否运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# ps aux |grep mysqld  ##查看mysqld进程是否启动</span><br><span class="line">[root@localhost mysql]# netstat -ltnp  ##查看3306端口是否监听</span><br></pre></td></tr></table></figure></p>
 <p>都有说明mysql安装成功了</p>
@@ -522,11 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,7 +582,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,11 +594,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,11 +646,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,11 +662,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,6 +675,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,10 +691,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

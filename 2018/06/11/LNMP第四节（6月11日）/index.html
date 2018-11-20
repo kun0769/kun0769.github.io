@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="12.13 Nginx防盗链12.14 Nginx访问控制12.15 Nginx解析php相关配置12.16 Nginx代理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png">
-<meta property="og:updated_time" content="2018-06-11T13:07:53.152Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:03.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第四节（6月11日）">
 <meta name="twitter:description" content="12.13 Nginx防盗链12.14 Nginx访问控制12.15 Nginx解析php相关配置12.16 Nginx代理">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -220,7 +220,7 @@
 <p>2.检查语法并加载配置文件</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>使用ie浏览器访问test2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png" alt=""><br>使用Chrome访问test2<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png" alt=""></p>
+<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>使用ie浏览器访问test2<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609133211.png" alt=""><br>使用Chrome访问test2<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609133234.png" alt=""></p>
 <h2 id="12-15-Nginx解析php相关配置"><a href="#12-15-Nginx解析php相关配置" class="headerlink" title="12.15 Nginx解析php相关配置"></a>12.15 Nginx解析php相关配置</h2><h3 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.配置文件</p>
 </blockquote>
@@ -231,7 +231,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
 <h3 id="测试-4"><a href="#测试-4" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /var/www/test2/test.php</span><br><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>成功解析PHP<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png" alt=""></p>
+<p>成功解析PHP<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609142929.png" alt=""></p>
 <blockquote>
 <p>注意事项：出现502页面</p>
 </blockquote>
@@ -248,7 +248,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">pid = /usr/local/php-fpm/var/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php-fpm/var/log/php-fpm.log</span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-fcgi.sock</span><br><span class="line">;listen.mode = 666</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">user = php-fpm</span><br><span class="line">group = php-fpm</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = 50</span><br><span class="line">pm.start_servers = 20</span><br><span class="line">pm.min_spare_servers = 5</span><br><span class="line">pm.max_spare_servers = 35</span><br><span class="line">pm.max_requests = 500</span><br><span class="line">rlimit_files = 1024</span><br></pre></td></tr></table></figure>
 <p>这里把sock的权限给注释了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018/06/09 15:08:18 [crit] 1963#0: *54 connect() to unix:/tmp/php-fcgi.sock failed (13: Permission denied) while connecting to upstream, client: 127.0.0.1, server: test2.com, request: &quot;HEAD HTTP://test2.com/test.php HTTP/1.1&quot;, upstream: &quot;fastcgi://unix:/tmp/php-fcgi.sock:&quot;, host: &quot;test2.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>日志显示sock的权限不够 禁止访问</p>
-<h2 id="12-16-Nginx代理"><a href="#12-16-Nginx代理" class="headerlink" title="12.16 Nginx代理"></a>12.16 Nginx代理</h2><p>Nginx可以做代理服务器。代理服务器可以让外网的用户访问到处在内网中的服务器，也可以通过代理服务器来加快访问速度。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png" alt=""></p>
+<h2 id="12-16-Nginx代理"><a href="#12-16-Nginx代理" class="headerlink" title="12.16 Nginx代理"></a>12.16 Nginx代理</h2><p>Nginx可以做代理服务器。代理服务器可以让外网的用户访问到处在内网中的服务器，也可以通过代理服务器来加快访问速度。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609152856.png" alt=""></p>
 <h3 id="步骤-5"><a href="#步骤-5" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.配置文件</p>
 </blockquote>
@@ -510,11 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +570,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,11 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +650,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,6 +663,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,10 +679,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="12.10 Nginx访问日志12.11 Nginx日志切割12.12 静态文件不记录日志和过期时间">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png">
-<meta property="og:updated_time" content="2018-06-08T15:12:10.158Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:02.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第三节（6月8日）">
 <meta name="twitter:description" content="12.10 Nginx访问日志12.11 Nginx日志切割12.12 静态文件不记录日志和过期时间">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
         <p>12.10 Nginx访问日志<br>12.11 Nginx日志切割<br>12.12 静态文件不记录日志和过期时间<br><a id="more"></a></p>
 <h2 id="12-10-Nginx访问日志"><a href="#12-10-Nginx访问日志" class="headerlink" title="12.10 Nginx访问日志"></a>12.10 Nginx访问日志</h2><p>Nginx的访问日志需要在主配置文件nginx.conf里定义日志格式外，还需要在虚拟主机配置文件中增加语句</p>
 <h3 id="主配置文件"><a href="#主配置文件" class="headerlink" title="主配置文件"></a>主配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png" alt=""><br>找到<code>log_format</code>这行就是定义访问日志的格式语句 其中Nginx里<code>;</code>表示语句的结束</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180608210823.png" alt=""><br>找到<code>log_format</code>这行就是定义访问日志的格式语句 其中Nginx里<code>;</code>表示语句的结束</p>
 <table>
 <thead>
 <tr>
@@ -216,7 +216,7 @@
 </table>
 <h3 id="虚拟主机配置文件"><a href="#虚拟主机配置文件" class="headerlink" title="虚拟主机配置文件"></a>虚拟主机配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/nginx/conf/vhost/test2.com.conf</span><br></pre></td></tr></table></figure>
 <p>进入tes2站点的配置文件输入下面语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">access_log /tmp/test2.log combined_realip;</span><br></pre></td></tr></table></figure></p>
-<p><code>/tmp/test2.log</code>日志路径 <code>combined_realip</code>日志格式的名字<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png" alt=""></p>
+<p><code>/tmp/test2.log</code>日志路径 <code>combined_realip</code>日志格式的名字<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180608212118.png" alt=""></p>
 <h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost ~]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
 <h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail /tmp/test2.log</span><br><span class="line">192.168.80.102 - [08/Jun/2018:21:23:37 +0800] test2.com &quot;/&quot; 200 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br><span class="line">192.168.80.102 - [08/Jun/2018:21:24:08 +0800] test2.com &quot;/admin/sfsd&quot; 404 &quot;-&quot; &quot;curl/7.29.0&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="12-11-Nginx日志切割"><a href="#12-11-Nginx日志切割" class="headerlink" title="12.11 Nginx日志切割"></a>12.11 Nginx日志切割</h2><p>Nginx没有自带的日志切割工具。我们可以使用自定义的脚本来切割日志，一般自定义的脚本都是放在<code>/usr/local/sbin/</code>目录下</p>
@@ -510,11 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,7 +570,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,11 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +650,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,6 +663,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,10 +679,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

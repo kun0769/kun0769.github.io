@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="27.1 ELK介绍27.2 ELK安装准备工作27.3 安装es27.4 配置es27.5 curl查看es">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181012231308.png">
-<meta property="og:updated_time" content="2018-10-14T06:47:31.566Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181012231308.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:02.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK 1（10月14日）">
 <meta name="twitter:description" content="27.1 ELK介绍27.2 ELK安装准备工作27.3 安装es27.4 配置es27.5 curl查看es">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -170,8 +170,8 @@
       
         <p>27.1 ELK介绍<br>27.2 ELK安装准备工作<br>27.3 安装es<br>27.4 配置es<br>27.5 curl查看es<br><a id="more"></a></p>
 <h2 id="27-1-ELK介绍"><a href="#27-1-ELK介绍" class="headerlink" title="27.1 ELK介绍"></a>27.1 ELK介绍</h2><p><code>ELK</code>是<code>ElasticSearch</code>，<code>Logstash</code>和<code>Kibana</code>的合称。5.0版本之前叫<code>ELK Stack</code>，之后加入<code>Beats</code> ，改名为<code>Elastic Stack</code>。<br>它可以帮助企业管理多台服务器上的多种日志。<br>官网<img src="" alt=""><a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">https://www.elastic.co/cn/</a>   中文指南<img src="" alt=""><a href="https://www.gitbook.com/book/chenryn/elk-stack-guide-cn/details" target="_blank" rel="noopener">https://www.gitbook.com/book/chenryn/elk-stack-guide-cn/details</a><br><code>ElasticSearch</code>是一个<code>搜索引擎</code>，用来搜索、分析、存储日志。它是分布式的，也就是说可以横向扩容，可以自动发现，索引自动分片，总之很强大。文档<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html</a><br><code>Logstash</code>用来<code>采集日志</code>，把日志解析为json格式交给ElasticSearch。<br><code>Kibana</code>是一个<code>数据可视化</code>组件，把处理后的结果通过web界面展示。<br><code>Beats</code>在这里是一个<code>轻量级日志采集器</code>，其实Beats家族有5个成员<br>早期的ELK架构中使用Logstash收集、解析日志，但是Logstash对内存、cpu、io等资源消耗比较高。相比 Logstash，Beats所占系统的CPU和内存几乎可以忽略不计，但是它不能定义输入日志的格式。<br><code>x-pack</code>对Elastic Stack提供了安全、警报、监控、报表、图表于一身的扩展包，是收费的。现在归纳到Elastic Stack里。</p>
-<h3 id="ELK架构"><a href="#ELK架构" class="headerlink" title="ELK架构"></a>ELK架构</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png" alt=""></p>
-<h2 id="27-2-ELK安装准备工作"><a href="#27-2-ELK安装准备工作" class="headerlink" title="27.2 ELK安装准备工作"></a>27.2 ELK安装准备工作</h2><p>这里准备三台机器kun02 kun03和kun04，分别都安装elasticsearch，并让kun02做主 ，其他两台为从，形成一个集群。并在kun02上安装Kibana，在kun03上安装logstash来收集本机的日志数据。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181012231308.png" alt=""></p>
+<h3 id="ELK架构"><a href="#ELK架构" class="headerlink" title="ELK架构"></a>ELK架构</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181012222940.png" alt=""></p>
+<h2 id="27-2-ELK安装准备工作"><a href="#27-2-ELK安装准备工作" class="headerlink" title="27.2 ELK安装准备工作"></a>27.2 ELK安装准备工作</h2><p>这里准备三台机器kun02 kun03和kun04，分别都安装elasticsearch，并让kun02做主 ，其他两台为从，形成一个集群。并在kun02上安装Kibana，在kun03上安装logstash来收集本机的日志数据。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181012231308.png" alt=""></p>
 <h2 id="27-3-安装es"><a href="#27-3-安装es" class="headerlink" title="27.3 安装es"></a>27.3 安装es</h2><p>安装es有两种方法，一是创建repo源再yum 了一种是直接下载rpm包<br>参考官方文档 <img src="" alt=""><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html</a></p>
 <blockquote>
 <p>先安装jdk</p>
@@ -479,11 +479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,7 +539,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +619,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,6 +632,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,10 +648,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

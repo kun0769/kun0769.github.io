@@ -16,19 +16,19 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="18.6 负载均衡集群介绍18.7 LVS介绍18.8 LVS调度算法18.9/18.10 LVS NAT模式搭建">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704210823.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704211308.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704221905.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704222217.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704222745.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704235006.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704235109.png">
-<meta property="og:updated_time" content="2018-07-04T16:27:45.518Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704210823.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704211308.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704221905.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704222217.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704222745.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704235006.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704235109.png">
+<meta property="og:updated_time" content="2018-11-20T06:18:01.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="负载均衡集群 1（7月4日）">
 <meta name="twitter:description" content="18.6 负载均衡集群介绍18.7 LVS介绍18.8 LVS调度算法18.9/18.10 LVS NAT模式搭建">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -177,9 +177,9 @@
         <p>18.6 负载均衡集群介绍<br>18.7 LVS介绍<br>18.8 LVS调度算法<br>18.9/18.10 LVS NAT模式搭建<br><a id="more"></a></p>
 <h2 id="18-6-负载均衡集群介绍"><a href="#18-6-负载均衡集群介绍" class="headerlink" title="18.6 负载均衡集群介绍"></a>18.6 负载均衡集群介绍</h2><p>负载均衡主流开源软件<code>LVS</code>、<code>keepalived</code>、<code>haproxy</code>、<code>nginx</code>等。<br>其中LVS属于<code>4层</code>（网络OSI 7层模型），nginx属于<code>7层</code>，haproxy既可以认为是4层，也可以当做7层使用。<br>其实keepalived的负载均衡功能其实就是lvs，lvs这种4层的负载均衡是可以分发除80外的其他端口通信的，比如MySQL的，而nginx仅仅支持http，https，mail，haproxy也支持MySQL这种。但是nginx可以实现根据目录来区分后端的服务器等更为灵活的功能。<br>相比较来说，LVS这种4层的更稳定，能承受更多的请求，而nginx这种7层的更加灵活，能实现更多的个性化需求。</p>
 <h2 id="18-7-LVS介绍"><a href="#18-7-LVS介绍" class="headerlink" title="18.7 LVS介绍"></a>18.7 LVS介绍</h2><p><code>LVS</code>是由国人章文嵩开发的。其流行度不亚于apache的httpd，是基于TCP/IP做的路由和转发，稳定性和效率很高。<br>LVS最新版本基于Linux内核2.6，有好多年不更新了。<br>LVS有三种常见的模式：<code>NAT</code>、<code>DR</code>、<code>IP Tunnel</code><br>LVS架构中有一个核心角色叫做<code>分发器</code>（Load balance），它用来分发用户的请求，还有诸多处理用户请求的服务器（Real Server，简称<code>rs</code>）</p>
-<h3 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h3><p>这种模式借助iptables的nat表来实现<br>用户的请求到分发器后，通过预设的iptables规则，把请求的数据包转发到后端的rs上去<br>rs需要设定网关为分发器的内网ip<br>用户请求的数据包和返回给用户的数据包全部经过分发器，所以分发器成为瓶颈，一般请求量在10台以下。<br>在nat模式中，只需要分发器有公网ip即可，所以比较节省公网ip资源。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png" alt=""></p>
-<h3 id="IP-Tunnel模式"><a href="#IP-Tunnel模式" class="headerlink" title="IP Tunnel模式"></a>IP Tunnel模式</h3><p>这种模式，需要有一个公共的IP配置在分发器和所有rs上，我们把它叫做vip<br>客户端请求的目标IP为vip，分发器接收到请求数据包后，会对数据包做一个加工，会把目标IP改为rs的IP，这样数据包就到了rs上<br>rs接收数据包后，会还原原始数据包，这样目标IP又变回为vip，因为所有rs上配置了这个vip，此时它会认为用户请求的就是它自己。<br>这个模式下的rs都会独立的公网IP来回复用户的请求，可以减少分发器的压力。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704210823.png" alt=""></p>
-<h3 id="DR模式"><a href="#DR模式" class="headerlink" title="DR模式"></a>DR模式</h3><p>这种模式，也需要有一个公共的IP配置在分发器和所有rs上，也就是vip<br>和IP Tunnel不同的是，它会把数据包的MAC地址修改为rs的MAC地址<br>rs接收数据包后，会还原原始数据包，这样目标IP为vip，因为所有rs上配置了这个vip，所以它会认为是它自己。<br>此模式下rs配置公网IP来返回用户请求。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704211308.png" alt=""></p>
+<h3 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h3><p>这种模式借助iptables的nat表来实现<br>用户的请求到分发器后，通过预设的iptables规则，把请求的数据包转发到后端的rs上去<br>rs需要设定网关为分发器的内网ip<br>用户请求的数据包和返回给用户的数据包全部经过分发器，所以分发器成为瓶颈，一般请求量在10台以下。<br>在nat模式中，只需要分发器有公网ip即可，所以比较节省公网ip资源。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704210040.png" alt=""></p>
+<h3 id="IP-Tunnel模式"><a href="#IP-Tunnel模式" class="headerlink" title="IP Tunnel模式"></a>IP Tunnel模式</h3><p>这种模式，需要有一个公共的IP配置在分发器和所有rs上，我们把它叫做vip<br>客户端请求的目标IP为vip，分发器接收到请求数据包后，会对数据包做一个加工，会把目标IP改为rs的IP，这样数据包就到了rs上<br>rs接收数据包后，会还原原始数据包，这样目标IP又变回为vip，因为所有rs上配置了这个vip，此时它会认为用户请求的就是它自己。<br>这个模式下的rs都会独立的公网IP来回复用户的请求，可以减少分发器的压力。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704210823.png" alt=""></p>
+<h3 id="DR模式"><a href="#DR模式" class="headerlink" title="DR模式"></a>DR模式</h3><p>这种模式，也需要有一个公共的IP配置在分发器和所有rs上，也就是vip<br>和IP Tunnel不同的是，它会把数据包的MAC地址修改为rs的MAC地址<br>rs接收数据包后，会还原原始数据包，这样目标IP为vip，因为所有rs上配置了这个vip，所以它会认为是它自己。<br>此模式下rs配置公网IP来返回用户请求。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704211308.png" alt=""></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>综上所述，<code>nat模式</code>就是做<code>iptables路由转发</code> <code>IP Tunnel模式</code>实际上是<code>更改目标IP</code> <code>DR模式</code>是<code>更改目标MAC地址</code></p>
 <h2 id="18-8-LVS调度算法"><a href="#18-8-LVS调度算法" class="headerlink" title="18.8 LVS调度算法"></a>18.8 LVS调度算法</h2><table>
 <thead>
@@ -233,15 +233,15 @@
 </tbody>
 </table>
 <h2 id="18-9-18-10-LVS-NAT模式搭建"><a href="#18-9-18-10-LVS-NAT模式搭建" class="headerlink" title="18.9/18.10 LVS NAT模式搭建"></a>18.9/18.10 LVS NAT模式搭建</h2><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>准备三台机器 一台作分发器，两台作rs<br>分发器：kun03 内网：192.168.80.102 外网：192.168.218.128<br>rs1：kun05 内网：192.168.80.104 网关：192.168.80.102<br>rs2：kun06 内网：192.168.80.105 网关：192.168.80.102</p>
-<p>kun03上添加外网网卡 选择<code>仅主机模式</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704221905.png" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704222217.png" alt=""></p>
+<p>kun03上添加外网网卡 选择<code>仅主机模式</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704221905.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704222217.png" alt=""></p>
 <blockquote>
 <p>编辑外网网卡配置</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# cd /etc/sysconfig/network-scripts/</span><br><span class="line">[root@kun03 network-scripts]# cp ifcfg-ens33 ifcfg-ens37</span><br><span class="line">[root@kun03 network-scripts]# vim !$</span><br><span class="line">vim ifcfg-ens37</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens37</span><br><span class="line">#UUID=75aabb45-9fbe-45d6-800e-fa2d04f72e13</span><br><span class="line">DEVICE=ens37</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=192.168.218.128</span><br><span class="line">#GATEWAY=192.168.80.2</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DNS1=119.29.29.29</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 network-scripts]# ifdown ens37 &amp;&amp; ifup ens37</span><br><span class="line">成功断开设备 &apos;ens37&apos;。</span><br><span class="line">连接已成功激活（D-Bus 活动路径：/org/freedesktop/NetworkManager/ActiveConnection/3）</span><br></pre></td></tr></table></figure>
-<p>可以ping通<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704222745.png" alt=""></p>
+<p>可以ping通<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704222745.png" alt=""></p>
 <p>kun05和kun06上设置网关为192.168.80.102<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br><span class="line"></span><br><span class="line">GATEWAY=192.168.80.102</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# systemctl restart network</span><br><span class="line"></span><br><span class="line">[root@kun05 ~]# route -n   ##查看网关</span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">0.0.0.0         192.168.80.102  0.0.0.0         UG    100    0        0 ens33</span><br><span class="line">192.168.80.0    0.0.0.0         255.255.255.0   U     100    0        0 ens33</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -272,7 +272,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun06 ~]# &gt; /usr/share/nginx/html/index.html</span><br><span class="line">[root@kun06 ~]# vim !$</span><br><span class="line"></span><br><span class="line">kun06</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun06 ~]# service nginx start  ##启动Nginx</span><br></pre></td></tr></table></figure>
 <p>在分发器上使用curl命令访问公网ip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# curl 192.168.218.128</span><br><span class="line">kun06</span><br><span class="line">[root@kun03 ~]# curl 192.168.218.128</span><br><span class="line">kun05</span><br><span class="line">[root@kun03 ~]# curl 192.168.218.128</span><br><span class="line">kun06</span><br><span class="line">[root@kun03 ~]# curl 192.168.218.128</span><br><span class="line">kun05</span><br></pre></td></tr></table></figure></p>
-<p>使用浏览器访问<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704235006.png" alt=""><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180704235109.png" alt=""></p>
+<p>使用浏览器访问<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704235006.png" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180704235109.png" alt=""></p>
 <blockquote>
 <p>ipvsadm -ln 可以查看ipvsadm分发数据的情况</p>
 </blockquote>
@@ -533,11 +533,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +593,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,11 +605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,11 +657,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,11 +673,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,6 +686,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,10 +702,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

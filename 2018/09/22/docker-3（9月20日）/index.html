@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="25.9 数据卷备份恢复25.10 docker网络模式25.11 opration not permitted25.12 配置桥接网络">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png">
-<meta property="og:updated_time" content="2018-09-22T13:36:13.708Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:45.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 3（9月20日）">
 <meta name="twitter:description" content="25.9 数据卷备份恢复25.10 docker网络模式25.11 opration not permitted25.12 配置桥接网络">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -182,7 +182,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run --volumes-from testvol1 -v /data/backup/:/backup centos6_1 tar cvf /backup/data.tar /data/</span><br></pre></td></tr></table></figure>
 <p><code>--volumes-from testvol1</code> 指定挂载数据卷testvol1<br><code>-v /data/backup/:/backup</code> 容器中/backup映射到本地机/data/backup/<br><code>tar cvf /backup/data.tar /data/</code> 把容器中的/data目录拷贝到容器中的/backup/中，也就是本地机的/data/backup/</p>
-<p>思路图<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png" alt=""></p>
+<p>思路图<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180921214654.png" alt=""></p>
 <h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><p>思路： 和备份思路一样，先新建一个数据卷容器，再建一个新的容器并挂载该数据卷容器，然后再把tar包解包。</p>
 <blockquote>
 <p>新建数据卷容器</p>
@@ -222,7 +222,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker exec -it 316962b bash ##进入新的容器</span><br><span class="line">[root@316962b00ea1 /]# systemctl start nginx</span><br><span class="line">Failed to get D-Bus connection: Operation not permitted</span><br></pre></td></tr></table></figure>
 <h3 id="问题-dbus-daemon没有启动"><a href="#问题-dbus-daemon没有启动" class="headerlink" title="问题  dbus-daemon没有启动"></a>问题  dbus-daemon没有启动</h3><p>Failed to get D-Bus connection: Operation not permitted</p>
 <p>解决 启动容器是添加启动dbus-daemon参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@316962b00ea1 /]# exit</span><br><span class="line">[root@kun01 ~]# docker rm -f 316962b00  ##退出并删除正在运行的容器再带上参数运行</span><br><span class="line">[root@kun01 ~]# docker run -itd --privileged -e &quot;container=docker&quot; -p 8888:80 centos_nginx /usr/sbin/init </span><br><span class="line">[root@kun01 ~]# docker exec -it b810dc9653 bash  ##进入添加参数后的容器</span><br><span class="line">[root@b810dc96534f /]# systemctl start nginx</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问宿主机的8888端口<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问宿主机的8888端口<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180921230552.png" alt=""></p>
 <h2 id="25-12-配置桥接网络"><a href="#25-12-配置桥接网络" class="headerlink" title="25.12 配置桥接网络"></a>25.12 配置桥接网络</h2><p>为了使本地网络中的机器和Docker容器更方便的通信，我们经常会有将Docker容器配置到和主机同一网段的需求。只要将Docker容器和宿主机的网卡桥接起来，再给Docker容器配上IP就可以了。</p>
 <h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.把宿主机的网卡拷贝一份为br0网卡</p>
@@ -508,11 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,7 +568,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,11 +580,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +648,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,6 +661,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,10 +677,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

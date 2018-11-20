@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="29.1 认识kubernetes29.2 从一个例子开始">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025142041.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025215557.png">
-<meta property="og:updated_time" content="2018-10-26T08:39:16.633Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025142041.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025215557.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:53.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes 1（10月25日）">
 <meta name="twitter:description" content="29.1 认识kubernetes29.2 从一个例子开始">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -172,8 +172,8 @@
         <p>29.1 认识kubernetes<br>29.2 从一个例子开始<br><a id="more"></a></p>
 <h2 id="29-1-认识kubernetes"><a href="#29-1-认识kubernetes" class="headerlink" title="29.1 认识kubernetes"></a>29.1 认识kubernetes</h2><p><code>kubernetes</code>是一个<code>管理容器的框架</code>。kubernetes是一个开源系统，用于自动化容器化应用程序的部署，扩展和管理。 它也简称为k8s 官网 <img src="" alt=""><a href="https://kubernetes.io/zh/" target="_blank" rel="noopener">https://kubernetes.io/zh/</a></p>
 <p>kubernetes中几个概念<br><code>container</code> 容器 提供一个让应用运行的环境。<br><code>pod</code> 在kubernetes中的一个运行单位，里面包含任意数量的容器。通常是两个。其中有一个叫Pause的容器，它作用网络栈和挂载卷。让用一个pod中的容器通讯更加高效。<br><code>replication controller</code>（RC）提供一个管理任意数量pod的方法。它可以复制任意数量的pod模板。让kubernetes可以对pod进行扩容 升级<br><code>service</code> 它是所有pod的整合成的服务环境 是kubernetes核心，其使用label标签来管理pods。<br><code>node</code> 节点 可以是一台物理机，云主机，虚拟机也可以。通常一个node可以运行多个pod。从集群上看kubernetes分一个master节点和多个node节点。 <code>master</code>上运行着<code>kubeapiserver</code>、<code>kube-controller-manager</code>、<code>kube-scheduler</code>，它们实现了资源管理、pod调度、弹性伸缩、安全控制、系统监 控、纠错等功能。Node是工作节点，运行应用程序，提供服务。<code>Node</code>上的最小单元是pod，Node上运行着kubernetesd的 <code>kubelet</code>、<code>kube-proxy</code>服务进程，它们负责pod的创建、启动、监控、重启、销毁，以及实现负载均衡。</p>
-<p>逻辑上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png" alt=""></p>
-<p>物理上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025142041.png" alt=""></p>
+<p>逻辑上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025141751.png" alt=""></p>
+<p>物理上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025142041.png" alt=""></p>
 <p>参考视频 <img src="" alt=""><a href="https://www.bilibili.com/video/av10087636?from=search&amp;seid=17893188254197971495" target="_blank" rel="noopener">https://www.bilibili.com/video/av10087636?from=search&amp;seid=17893188254197971495</a></p>
 <h2 id="29-2-从一个例子开始"><a href="#29-2-从一个例子开始" class="headerlink" title="29.2 从一个例子开始"></a>29.2 从一个例子开始</h2><ul>
 <li>pod扩容和升级需要一个关键的东西，Replication controller（RC），RC需要包含3个关键信息： <ul>
@@ -246,7 +246,7 @@
 <p>12.使用curl和浏览器测试</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# iptables -P FORWARD ACCEPT</span><br><span class="line"></span><br><span class="line">[root@kun05 ~]# curl http://192.168.80.105:30001 -I</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181025215557.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181025215557.png" alt=""></p>
 
       
 
@@ -493,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +553,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,11 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,11 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +633,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,6 +646,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,10 +662,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

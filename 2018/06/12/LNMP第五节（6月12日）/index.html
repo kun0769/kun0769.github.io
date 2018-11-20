@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="12.17 Nginx负载均衡12.18 ssl原理12.19 生成ssl密钥对12.20 Nginx配置ssl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180610101427.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180610121543.png">
-<meta property="og:updated_time" content="2018-06-12T11:57:32.979Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180610101427.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180610121543.png">
+<meta property="og:updated_time" content="2018-11-20T06:26:04.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第五节（6月12日）">
 <meta name="twitter:description" content="12.17 Nginx负载均衡12.18 ssl原理12.19 生成ssl密钥对12.20 Nginx配置ssl">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -182,7 +182,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 127.0.0.1:80 www.qq.com</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png" alt=""><br>成功的代理到qq的站点上</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180609211729.png" alt=""><br>成功的代理到qq的站点上</p>
 <h2 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h2><blockquote>
 <p>dig：查看某个站点的域名解析</p>
 </blockquote>
@@ -202,7 +202,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180610101427.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180610101427.png" alt=""></p>
 <h2 id="12-19-生产ssl密钥对"><a href="#12-19-生产ssl密钥对" class="headerlink" title="12.19 生产ssl密钥对"></a>12.19 生产ssl密钥对</h2><p>由于没钱，这里我们就自己给自己颁发证书。</p>
 <h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.进入/usr/local/ngnix/conf/目录下并下载openssl工具（生成公钥，私钥 ，csr文件）</p>
@@ -268,7 +268,7 @@
 <p>6.检查语法并加载配置文件</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -t</span><br><span class="line">[root@localhost vhost]# /usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问，由于证书是个人颁发的，不被浏览器认可<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180610121543.png" alt=""><br>使用curl命令访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# curl -x 127.0.0.1:443 https://test3.com</span><br><span class="line">curl: (56) Received HTTP code 400 from proxy after CONNECT</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问，由于证书是个人颁发的，不被浏览器认可<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180610121543.png" alt=""><br>使用curl命令访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# curl -x 127.0.0.1:443 https://test3.com</span><br><span class="line">curl: (56) Received HTTP code 400 from proxy after CONNECT</span><br></pre></td></tr></table></figure></p>
 <p>这个格式是错误的</p>
 <p>先<code>/etc/hosts</code> 添加域名解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 test3.com</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# curl https://test3.com</span><br><span class="line">curl: (60) Peer&apos;s certificate issuer has been marked as not trusted by the user.</span><br><span class="line">More details here: http://curl.haxx.se/docs/sslcerts.html</span><br><span class="line"></span><br><span class="line">curl performs SSL certificate verification by default, using a &quot;bundle&quot;</span><br><span class="line">of Certificate Authority (CA) public keys (CA certs). If the default</span><br><span class="line">bundle file isn&apos;t adequate, you can specify an alternate file</span><br><span class="line">using the --cacert option.</span><br><span class="line">If this HTTPS server uses a certificate signed by a CA represented in</span><br><span class="line">the bundle, the certificate verification probably failed due to a</span><br><span class="line">problem with the certificate (it might be expired, or the name might</span><br><span class="line">not match the domain name in the URL).</span><br><span class="line">If you&apos;d like to turn off curl&apos;s verification of the certificate, use</span><br><span class="line">the -k (or --insecure) option.</span><br></pre></td></tr></table></figure>
@@ -523,11 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,7 +583,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +595,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,11 +647,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,11 +663,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,6 +676,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,10 +692,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

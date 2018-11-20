@@ -16,23 +16,23 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="19.1 Linux监控平台介绍19.2 zabbix监控介绍19.3/19.4/19.6 安装zabbix19.5 忘记Admin密码如何做">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706224208.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706224301.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000122.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000200.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000733.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001001.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001043.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001121.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001319.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001822.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707002059.png">
-<meta property="og:updated_time" content="2018-07-06T17:39:20.880Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706224208.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706224301.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000122.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000200.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000733.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001001.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001043.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001121.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001319.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001822.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707002059.png">
+<meta property="og:updated_time" content="2018-11-20T06:19:39.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix 1（7月6日）">
 <meta name="twitter:description" content="19.1 Linux监控平台介绍19.2 zabbix监控介绍19.3/19.4/19.6 安装zabbix19.5 忘记Admin密码如何做">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -195,10 +195,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="zabbix工作流程"><a href="#zabbix工作流程" class="headerlink" title="zabbix工作流程"></a>zabbix工作流程</h3><p>使用web页面来添加监控主机到监控中心，然后再对其配置监控项目。被监控的服务器和监控中心通讯了，监控中心就会采集数据并存入到数据库中。监控中心就会对采集的数据值进行判断是否超多告警的规则，并进行告警。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png" alt=""></p>
+<h3 id="zabbix工作流程"><a href="#zabbix工作流程" class="headerlink" title="zabbix工作流程"></a>zabbix工作流程</h3><p>使用web页面来添加监控主机到监控中心，然后再对其配置监控项目。被监控的服务器和监控中心通讯了，监控中心就会采集数据并存入到数据库中。监控中心就会对采集的数据值进行判断是否超多告警的规则，并进行告警。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706212738.png" alt=""></p>
 <h2 id="19-3-19-4-安装zabbix"><a href="#19-3-19-4-安装zabbix" class="headerlink" title="19.3/19.4 安装zabbix"></a>19.3/19.4 安装zabbix</h2><p>准备两台机器，一台服务端 一台客户端<br>服务端：kun05 192.168.80.104<br>客户端：kun03 192.168.80.102</p>
 <h3 id="配置服务端"><a href="#配置服务端" class="headerlink" title="配置服务端"></a>配置服务端</h3><p>由于epel中的zabbix版本比较久，因此我们自己去官网上下载好zabbix的仓库 并安装他们<br>官网下载地址 <img src="" alt=""><a href="http://www.zabbix.com/download" target="_blank" rel="noopener">www.zabbix.com/download</a> </p>
-<p>找到对应的版本<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706224208.png" alt=""><br>根据官方的提示来复制下面的路径到服务端上<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180706224301.png" alt=""></p>
+<p>找到对应的版本<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706224208.png" alt=""><br>根据官方的提示来复制下面的路径到服务端上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180706224301.png" alt=""></p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>1.下载官方给出的epel源包并安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# wget https://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm</span><br><span class="line">[root@kun05 ~]# rpm -ivh zabbix-release-3.4-2.el7.noarch.rpm</span><br></pre></td></tr></table></figure></p>
 <p>在<code>/etc/yum.repos.d/</code>中就会多了个仓库<code>zabbix.repo</code> 该仓库可以指定下载对应的zabbix版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cat /etc/yum.repos.d/zabbix.repo</span><br><span class="line">[zabbix]</span><br><span class="line">name=Zabbix Official Repository - $basearch</span><br><span class="line">baseurl=http://repo.zabbix.com/zabbix/3.4/rhel/7/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591</span><br><span class="line"></span><br><span class="line">[zabbix-non-supported]</span><br><span class="line">name=Zabbix Official Repository non-supported - $basearch</span><br><span class="line">baseurl=http://repo.zabbix.com/non-supported/rhel/7/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX</span><br><span class="line">gpgcheck=1</span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -253,17 +253,17 @@
 <blockquote>
 <p>11.配置web界面</p>
 </blockquote>
-<p>浏览器上输入<code>192.168.80.104/zabbix</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000122.png" alt=""></p>
-<p>这里是PHP缺少了配置<code>timezone</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000200.png" alt=""></p>
+<p>浏览器上输入<code>192.168.80.104/zabbix</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000122.png" alt=""></p>
+<p>这里是PHP缺少了配置<code>timezone</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000200.png" alt=""></p>
 <p>回去服务端找到<code>/etc/php.ini</code>并配置timezone<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 zabbix]# vim /etc/php.ini</span><br><span class="line"></span><br><span class="line">date.timezone =Asia/Shanghai</span><br></pre></td></tr></table></figure></p>
 <p>重启httpd服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 zabbix]# systemctl restart httpd</span><br></pre></td></tr></table></figure></p>
-<p>再回去继续下一步<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707000733.png" alt=""></p>
-<p>填好数据库相关的用户 库 密码等信息<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001001.png" alt=""></p>
-<p>填写zabbix server名字<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001043.png" alt=""></p>
-<p>添加成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001121.png" alt=""></p>
-<p>填写用户名和密码 默认用户名<code>Admin</code> 密码<code>zabbix</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001319.png" alt=""></p>
-<p>更改为自己的密码和语言 选择 <code>Administration</code> —  <code>Users</code>  —  <code>Admin</code> 用户 —<code>Change password</code>和<code>Langueage</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707001822.png" alt=""></p>
-<p>修改成功<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180707002059.png" alt=""></p>
+<p>再回去继续下一步<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707000733.png" alt=""></p>
+<p>填好数据库相关的用户 库 密码等信息<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001001.png" alt=""></p>
+<p>填写zabbix server名字<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001043.png" alt=""></p>
+<p>添加成功<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001121.png" alt=""></p>
+<p>填写用户名和密码 默认用户名<code>Admin</code> 密码<code>zabbix</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001319.png" alt=""></p>
+<p>更改为自己的密码和语言 选择 <code>Administration</code> —  <code>Users</code>  —  <code>Admin</code> 用户 —<code>Change password</code>和<code>Langueage</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707001822.png" alt=""></p>
+<p>修改成功<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180707002059.png" alt=""></p>
 <h2 id="19-5-忘记zabbix-Admin密码"><a href="#19-5-忘记zabbix-Admin密码" class="headerlink" title="19.5 忘记zabbix Admin密码"></a>19.5 忘记zabbix Admin密码</h2><p>由于zabbix server的用户的数据是存放在MySQL中 因此只要修改MySQL的中zabbix用户的密码即可</p>
 <h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.进入MySQL中的zabbix库中查看到users表</p>
@@ -547,11 +547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +607,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +619,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,11 +671,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,11 +687,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,6 +700,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,10 +716,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

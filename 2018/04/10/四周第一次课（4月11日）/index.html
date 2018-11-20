@@ -16,33 +16,33 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="4.10/4.11/4.12 lvm讲解4.13 磁盘故障小案例">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/8441efa8cc954589878d3b5696c2090e.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409223550.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409225258.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409224710.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409230937.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409232418.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409233739.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410000253.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410001249.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410002202.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410003911.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195354.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410005240.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410010312.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410194627.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410194928.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195037.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195153.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195625.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410212438.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410213059.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410213204.jpg">
-<meta property="og:updated_time" content="2018-04-10T14:35:11.702Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/8441efa8cc954589878d3b5696c2090e.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409223550.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409225258.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409224710.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409230937.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409232418.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409233739.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410000253.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410001249.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410002202.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410003911.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195354.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410005240.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410010312.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410194627.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410194928.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195037.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195153.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195625.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410212438.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410213059.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410213204.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:14:25.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="四周第一次课（4月11日）">
 <meta name="twitter:description" content="4.10/4.11/4.12 lvm讲解4.13 磁盘故障小案例">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/8441efa8cc954589878d3b5696c2090e.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/8441efa8cc954589878d3b5696c2090e.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -189,7 +189,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>4.10/4.11/4.12 lvm讲解<br>4.13 磁盘故障小案例<br><a id="more"></a></p>
-<h2 id="4-10-4-11-4-12-LVM"><a href="#4-10-4-11-4-12-LVM" class="headerlink" title="4.10/4.11/4.12 LVM"></a>4.10/4.11/4.12 LVM</h2><p>LVM是 Logical Volume Manager （逻辑卷管理）的简写，是Linux下一种管理磁盘分区的方法，便于扩容或者缩容。原理是把不同磁盘的分区看作物理卷（pv）之后再合成卷组（vg），然后再从卷组中分出不同的逻辑卷（lv）来作分区<br><img src="http://p6c0nmg4x.bkt.clouddn.com/8441efa8cc954589878d3b5696c2090e.jpg" alt=""></p>
+<h2 id="4-10-4-11-4-12-LVM"><a href="#4-10-4-11-4-12-LVM" class="headerlink" title="4.10/4.11/4.12 LVM"></a>4.10/4.11/4.12 LVM</h2><p>LVM是 Logical Volume Manager （逻辑卷管理）的简写，是Linux下一种管理磁盘分区的方法，便于扩容或者缩容。原理是把不同磁盘的分区看作物理卷（pv）之后再合成卷组（vg），然后再从卷组中分出不同的逻辑卷（lv）来作分区<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/8441efa8cc954589878d3b5696c2090e.jpg" alt=""></p>
 <blockquote>
 <p>思路</p>
 </blockquote>
@@ -205,20 +205,20 @@
 <blockquote>
 <p>实例</p>
 </blockquote>
-<p>我这里有两个磁盘sdb和sdc 分别各有两个1G分区<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409223550.jpg" alt=""></p>
-<h3 id="1-把分区转为物理卷"><a href="#1-把分区转为物理卷" class="headerlink" title="1.把分区转为物理卷"></a>1.把分区转为物理卷</h3><p>使用fdisk 选t并按8e改为LVM类型<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409225258.jpg" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409224710.jpg" alt=""></p>
+<p>我这里有两个磁盘sdb和sdc 分别各有两个1G分区<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409223550.jpg" alt=""></p>
+<h3 id="1-把分区转为物理卷"><a href="#1-把分区转为物理卷" class="headerlink" title="1.把分区转为物理卷"></a>1.把分区转为物理卷</h3><p>使用fdisk 选t并按8e改为LVM类型<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409225258.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409224710.jpg" alt=""></p>
 <blockquote>
 <p>pvcreate：创建物理卷</p>
 </blockquote>
 <p>用法：<code>pvcreate 分区名字</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pvcreate /dev/sdb1</span><br><span class="line">-bash: pvcreate: 未找到命令        ##由于没安装lvm所以没找到命令</span><br></pre></td></tr></table></figure></p>
 <p>先安装LVM 但是我们只知道命令 却不知道包名可以使用以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum provides /*/pvcreate  ##通过命令来搜索包名</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409230937.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y lvm2   ##安装lvm工具</span><br><span class="line">[root@localhost ~]# pvcreate /dev/sdb1  ##把sdb1分区改为物理卷</span><br><span class="line">WARNING: ext2 signature detected on /dev/sdb1 at offset 1080. Wipe it? [y/n]: y</span><br><span class="line">  Wiping ext2 signature on /dev/sdb1.</span><br><span class="line">  Physical volume &quot;/dev/sdb1&quot; successfully created.</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409230937.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y lvm2   ##安装lvm工具</span><br><span class="line">[root@localhost ~]# pvcreate /dev/sdb1  ##把sdb1分区改为物理卷</span><br><span class="line">WARNING: ext2 signature detected on /dev/sdb1 at offset 1080. Wipe it? [y/n]: y</span><br><span class="line">  Wiping ext2 signature on /dev/sdb1.</span><br><span class="line">  Physical volume &quot;/dev/sdb1&quot; successfully created.</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pvcreate /dev/sdb2   ##把其他的分区都改为物理卷</span><br><span class="line">  Physical volume &quot;/dev/sdb2&quot; successfully created.</span><br><span class="line">[root@localhost ~]# pvcreate /dev/sdc1</span><br><span class="line">  Physical volume &quot;/dev/sdc1&quot; successfully created.</span><br><span class="line">[root@localhost ~]# pvcreate /dev/sdc2</span><br><span class="line">  Physical volume &quot;/dev/sdc2&quot; successfully created.</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>pvdisplay/pvs：列出所有物理卷</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409232418.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pvs  ## 列出当前物理卷</span><br><span class="line">  PV         VG Fmt  Attr PSize PFree</span><br><span class="line">  /dev/sdb1     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdb2     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdc1     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdc2     lvm2 ---  1.00g 1.00g</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409232418.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pvs  ## 列出当前物理卷</span><br><span class="line">  PV         VG Fmt  Attr PSize PFree</span><br><span class="line">  /dev/sdb1     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdb2     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdc1     lvm2 ---  1.00g 1.00g</span><br><span class="line">  /dev/sdc2     lvm2 ---  1.00g 1.00g</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>pvremove：删除物理卷</p>
 </blockquote>
@@ -230,7 +230,7 @@
 <blockquote>
 <p>vgdisplay/vgs：查看当前卷组</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180409233739.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vgs   ## 列出当前卷组</span><br><span class="line">  VG  #PV #LV #SN Attr   VSize  VFree</span><br><span class="line">  vg1   3   0   0 wz--n- &lt;2.99g &lt;2.99g</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180409233739.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vgs   ## 列出当前卷组</span><br><span class="line">  VG  #PV #LV #SN Attr   VSize  VFree</span><br><span class="line">  vg1   3   0   0 wz--n- &lt;2.99g &lt;2.99g</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>vgremove：删除卷组</p>
 </blockquote>
@@ -242,13 +242,13 @@
 <blockquote>
 <p>lvdisplay/lvs：查看当前的逻辑卷</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410000253.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# lvs  ## 列出当前逻辑卷</span><br><span class="line">  LV   VG  Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span><br><span class="line">  lv1  vg1 -wi-a----- 100.00m</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410000253.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# lvs  ## 列出当前逻辑卷</span><br><span class="line">  LV   VG  Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span><br><span class="line">  lv1  vg1 -wi-a----- 100.00m</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>lvremove：删除逻辑卷</p>
 </blockquote>
 <p>用法：<code>lvremove 逻辑卷路径</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# lvremove /dev/vg1/lv1</span><br><span class="line">Do you really want to remove active logical volume vg1/lv1? [y/n]: y</span><br><span class="line">  Logical volume &quot;lv1&quot; successfully removed</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-格式化并挂载逻辑卷"><a href="#4-格式化并挂载逻辑卷" class="headerlink" title="4.格式化并挂载逻辑卷"></a>4.格式化并挂载逻辑卷</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410001249.jpg" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410002202.jpg" alt=""></p>
+<h3 id="4-格式化并挂载逻辑卷"><a href="#4-格式化并挂载逻辑卷" class="headerlink" title="4.格式化并挂载逻辑卷"></a>4.格式化并挂载逻辑卷</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410001249.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410002202.jpg" alt=""></p>
 <h2 id="扩容逻辑卷"><a href="#扩容逻辑卷" class="headerlink" title="扩容逻辑卷"></a>扩容逻辑卷</h2><h3 id="1-重新设置卷的大小"><a href="#1-重新设置卷的大小" class="headerlink" title="1.重新设置卷的大小"></a>1.重新设置卷的大小</h3><blockquote>
 <p>lvresize： 调整逻辑卷的空间大小，可以增大空间和缩小空间</p>
 </blockquote>
@@ -256,26 +256,26 @@
 <h3 id="2-检查磁盘错误"><a href="#2-检查磁盘错误" class="headerlink" title="2.检查磁盘错误"></a>2.检查磁盘错误</h3><blockquote>
 <p>e2fsck：检查系统工具</p>
 </blockquote>
-<p>用法：<code>e2fsck [-f] 逻辑卷路径</code><br><code>-f</code>：强制检查<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410003911.jpg" alt=""></p>
+<p>用法：<code>e2fsck [-f] 逻辑卷路径</code><br><code>-f</code>：强制检查<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410003911.jpg" alt=""></p>
 <h3 id="3-更新逻辑卷信息"><a href="#3-更新逻辑卷信息" class="headerlink" title="3.更新逻辑卷信息"></a>3.更新逻辑卷信息</h3><blockquote>
 <p>resize2fs：更新ext文件系统的信息</p>
 </blockquote>
-<p>用法：<code>resize2fs 逻辑卷路径</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195354.jpg" alt=""></p>
-<p>如果是xfs文件系统 这里使用 xfs_growfs 命令<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410005240.jpg" alt=""></p>
+<p>用法：<code>resize2fs 逻辑卷路径</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195354.jpg" alt=""></p>
+<p>如果是xfs文件系统 这里使用 xfs_growfs 命令<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410005240.jpg" alt=""></p>
 <blockquote>
 <p>xfs_growfs：更新xfs文件系统信息，只能针对扩展空间</p>
 </blockquote>
-<p>用法：<code>xfs_growfs 逻辑卷路径</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410010312.jpg" alt=""></p>
+<p>用法：<code>xfs_growfs 逻辑卷路径</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410010312.jpg" alt=""></p>
 <h2 id="缩容逻辑卷（不支持xfs）"><a href="#缩容逻辑卷（不支持xfs）" class="headerlink" title="缩容逻辑卷（不支持xfs）"></a>缩容逻辑卷（不支持xfs）</h2><h3 id="1-先卸载挂载点"><a href="#1-先卸载挂载点" class="headerlink" title="1.先卸载挂载点"></a>1.先卸载挂载点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# umount /mnt</span><br></pre></td></tr></table></figure>
-<h3 id="2-检查磁盘错误-1"><a href="#2-检查磁盘错误-1" class="headerlink" title="2.检查磁盘错误"></a>2.检查磁盘错误</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410194627.jpg" alt=""></p>
-<h3 id="3-更新逻辑卷信息-1"><a href="#3-更新逻辑卷信息-1" class="headerlink" title="3.更新逻辑卷信息"></a>3.更新逻辑卷信息</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410194928.jpg" alt=""></p>
-<h3 id="4-重新设置卷的大小"><a href="#4-重新设置卷的大小" class="headerlink" title="4.重新设置卷的大小"></a>4.重新设置卷的大小</h3><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195037.jpg" alt=""></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195153.jpg" alt=""></p>
+<h3 id="2-检查磁盘错误-1"><a href="#2-检查磁盘错误-1" class="headerlink" title="2.检查磁盘错误"></a>2.检查磁盘错误</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410194627.jpg" alt=""></p>
+<h3 id="3-更新逻辑卷信息-1"><a href="#3-更新逻辑卷信息-1" class="headerlink" title="3.更新逻辑卷信息"></a>3.更新逻辑卷信息</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410194928.jpg" alt=""></p>
+<h3 id="4-重新设置卷的大小"><a href="#4-重新设置卷的大小" class="headerlink" title="4.重新设置卷的大小"></a>4.重新设置卷的大小</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195037.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195153.jpg" alt=""></p>
 <h2 id="扩容卷组"><a href="#扩容卷组" class="headerlink" title="扩容卷组"></a>扩容卷组</h2><blockquote>
 <p>vgextend：扩张卷组</p>
 </blockquote>
-<p>用法：<code>vgextend 组名 物理卷路径</code><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410195625.jpg" alt=""></p>
-<h2 id="4-13磁盘故障小案例"><a href="#4-13磁盘故障小案例" class="headerlink" title="4.13磁盘故障小案例"></a>4.13磁盘故障小案例</h2><p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410212438.jpg" alt=""><br>假如出现“welcome to emergency mode”的字眼 说明有可能系统不能够正常挂载导致的，一般都是配置文件/etc/fstab 有问题<br>那么我们输入root密码直接进入系统，把/etc/fstab 有问题的行删除掉就可以了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410213059.jpg" alt=""><br>正常登录系统<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180410213204.jpg" alt=""></p>
+<p>用法：<code>vgextend 组名 物理卷路径</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410195625.jpg" alt=""></p>
+<h2 id="4-13磁盘故障小案例"><a href="#4-13磁盘故障小案例" class="headerlink" title="4.13磁盘故障小案例"></a>4.13磁盘故障小案例</h2><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410212438.jpg" alt=""><br>假如出现“welcome to emergency mode”的字眼 说明有可能系统不能够正常挂载导致的，一般都是配置文件/etc/fstab 有问题<br>那么我们输入root密码直接进入系统，把/etc/fstab 有问题的行删除掉就可以了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410213059.jpg" alt=""><br>正常登录系统<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180410213204.jpg" alt=""></p>
 
       
 
@@ -526,11 +526,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,7 +586,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,11 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +650,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,11 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,6 +679,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,10 +695,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

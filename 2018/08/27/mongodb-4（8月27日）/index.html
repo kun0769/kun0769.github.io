@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="21.36 mongodb分片介绍21.37/21.38/21.39 mongodb分片搭建21.40 mongodb分片测试21.41 mongodb备份恢复">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
-<meta property="og:updated_time" content="2018-08-27T14:18:32.447Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
+<meta property="og:updated_time" content="2018-11-20T06:24:39.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb 4（8月27日）">
 <meta name="twitter:description" content="21.36 mongodb分片介绍21.37/21.38/21.39 mongodb分片搭建21.40 mongodb分片测试21.41 mongodb备份恢复">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>21.36 mongodb分片介绍<br>21.37/21.38/21.39 mongodb分片搭建<br>21.40 mongodb分片测试<br>21.41 mongodb备份恢复<br><a id="more"></a></p>
-<h2 id="21-36-MongoDB分片介绍"><a href="#21-36-MongoDB分片介绍" class="headerlink" title="21.36 MongoDB分片介绍"></a>21.36 MongoDB分片介绍</h2><p>分片就是将数据库进行拆分，将大型集合分隔到不同服务器上。比如，本来100G的数据，可以分割成10份存储到10台服务器上，这样每台机器只有10G的数据。<br>通过一个mongos的进程（路由）实现分片后的数据存储与访问，也就是说mongos是整个分片架构的核心，对客户端而言是不知道是否有分片的，客户端只需要把读写操作转达给mongos即可。<br>虽然分片会把数据分隔到很多台服务器上，但是每一个节点都是需要有一个备用角色的，这样能保证数据的高可用。<br>当系统需要更多空间或者资源的时候，分片可以让我们按需方便扩展，只需要把mongodb服务的机器加入到分片集群中即可。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png" alt=""></p>
+<h2 id="21-36-MongoDB分片介绍"><a href="#21-36-MongoDB分片介绍" class="headerlink" title="21.36 MongoDB分片介绍"></a>21.36 MongoDB分片介绍</h2><p>分片就是将数据库进行拆分，将大型集合分隔到不同服务器上。比如，本来100G的数据，可以分割成10份存储到10台服务器上，这样每台机器只有10G的数据。<br>通过一个mongos的进程（路由）实现分片后的数据存储与访问，也就是说mongos是整个分片架构的核心，对客户端而言是不知道是否有分片的，客户端只需要把读写操作转达给mongos即可。<br>虽然分片会把数据分隔到很多台服务器上，但是每一个节点都是需要有一个备用角色的，这样能保证数据的高可用。<br>当系统需要更多空间或者资源的时候，分片可以让我们按需方便扩展，只需要把mongodb服务的机器加入到分片集群中即可。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180826113358.png" alt=""></p>
 <p><code>mongos</code>: 数据库集群请求的入口，所有的请求都通过mongos进行协调，不需要在应用程序添加一个路由选择器，mongos自己就是一个请求分发中心，它负责把对应的数据请求请求转发到对应的shard服务器上。在生产环境通常有多mongos作为请求的入口，防止其中一个挂掉所有的mongodb请求都没有办法操作。<br><code>config server</code>: 配置服务器，存储所有数据库元信息（路由、分片）的配置。mongos本身没有物理存储分片服务器和数据路由信息，只是缓存在内存里，配置服务器则实际存储这些数据。mongos第一次启动或者关掉重启就会从 config server 加载配置信息，以后如果配置服务器信息变化会通知到所有的 mongos 更新自己的状态，这样 mongos 就能继续准确路由。在生产环境通常有多个 config server 配置服务器，因为它存储了分片路由的元数据，防止数据丢失！<br><code>shard</code>: 存储了一个集合部分数据的MongoDB实例，每个分片是单独的mongodb服务或者副本集，在生产环境中，所有的分片都应该是副本集。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>分片就是把数据进行拆分，分片的下级就是副本集。分片中三个成员，mongos请求入口，把请求分发给shard上。config server存储配置数据。shard存储MongoDB实例的数据。为了安全三者都应该作副本集。</code></p>
 <h2 id="21-37-21-38-21-39-mongodb分片搭建"><a href="#21-37-21-38-21-39-mongodb分片搭建" class="headerlink" title="21.37/21.38/21.39 mongodb分片搭建"></a>21.37/21.38/21.39 mongodb分片搭建</h2><h3 id="服务器规划"><a href="#服务器规划" class="headerlink" title="服务器规划"></a>服务器规划</h3><p>三台机器kun02(192.168.80.101) kun03(192.168.80.102) kun04(192.168.80.103)<br>kun02搭建：mongos、config server、副本集1主节点、副本集2仲裁、副本集3从节点<br>kun03搭建：mongos、config server、副本集1从节点、副本集2主节点、副本集3仲裁<br>kun04搭建：mongos、config server、副本集1仲裁、副本集2从节点、副本集3主节点<br>端口分配：mongos 20000、config 21000、副本集1 27001、副本集2 27002、副本集3 27003<br>三台机器全部关闭firewalld服务和selinux，或者增加对应端口的规则</p>
@@ -576,11 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,7 +636,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,11 +648,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +700,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,11 +716,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,6 +729,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,10 +745,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

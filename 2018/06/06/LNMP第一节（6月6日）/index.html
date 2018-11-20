@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
-<meta property="og:updated_time" content="2018-06-07T17:32:11.236Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:26:05.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LNMP第一节（6月6日）">
 <meta name="twitter:description" content="12.1 LNMP架构介绍12.2 MySQL安装12.3/12.4 PHP安装12.5 Nginx介绍">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>12.1 LNMP架构介绍<br>12.2 MySQL安装<br>12.3/12.4 PHP安装<br>12.5 Nginx介绍<br><a id="more"></a></p>
-<h2 id="12-1-LNMP架构"><a href="#12-1-LNMP架构" class="headerlink" title="12.1 LNMP架构"></a>12.1 LNMP架构</h2><p>LNMP其实是<code>Linux</code>，<code>Nginx</code>，<code>MySQL</code>和<code>PHP</code>的简写。他和LAMP不同的是，提供web服务的是Nginx，其中PHP独立作为一个服务存在于服务器中和数据库打交道，并取名为<code>php-fpm</code>。Nginx处理静态文件时候比Apache更加出色，并且支持用户高并发。因此现在越来越多企业使用LNMP架构来组建。<br>工作流程：当用户使用浏览器来访问服务器 ，Nginx就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等）Nginx就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Nginx就是数据交给php-fpm服务来访问MySQL数据库，并让php-fpm服务把取出来的数据交给Nginx再返回给用户。<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg" alt=""></p>
+<h2 id="12-1-LNMP架构"><a href="#12-1-LNMP架构" class="headerlink" title="12.1 LNMP架构"></a>12.1 LNMP架构</h2><p>LNMP其实是<code>Linux</code>，<code>Nginx</code>，<code>MySQL</code>和<code>PHP</code>的简写。他和LAMP不同的是，提供web服务的是Nginx，其中PHP独立作为一个服务存在于服务器中和数据库打交道，并取名为<code>php-fpm</code>。Nginx处理静态文件时候比Apache更加出色，并且支持用户高并发。因此现在越来越多企业使用LNMP架构来组建。<br>工作流程：当用户使用浏览器来访问服务器 ，Nginx就会判断用户需要什么数据，假如用户要访问的是静态数据（ 图片，js，css等）Nginx就会去存放静态文件的目录下把相应的数据反馈给用户，那用户要访问动态的数据  Nginx就是数据交给php-fpm服务来访问MySQL数据库，并让php-fpm服务把取出来的数据交给Nginx再返回给用户。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180605223642.jpg" alt=""></p>
 <h2 id="12-2-MySQL安装"><a href="#12-2-MySQL安装" class="headerlink" title="12.2 MySQL安装"></a>12.2 MySQL安装</h2><p>假如之前安装过MySQL，直接把对应的路径的目录删除即可，我这里在另一台机器上安装。</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.进入/src/目录下并下载和解压MySQL的免编译的安装包</p>
@@ -492,11 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,7 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,11 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,11 +616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,6 +645,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,10 +661,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

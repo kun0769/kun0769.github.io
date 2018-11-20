@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="22.9 分支管理22.10 远程分支管理22.11 标签管理22.12 git别名">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830224644.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830234427.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831134943.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135614.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135639.png">
-<meta property="og:updated_time" content="2018-08-31T13:11:08.178Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830224644.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830234427.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831134943.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831135614.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831135639.png">
+<meta property="og:updated_time" content="2018-11-20T06:29:05.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 2（8月30日）">
 <meta name="twitter:description" content="22.9 分支管理22.10 远程分支管理22.11 标签管理22.12 git别名">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -210,9 +210,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830222222.png" alt=""></p>
 <p>例如dev分支合并bob分支的命令是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev   //先切换到dev分支</span><br><span class="line">git merge bob</span><br></pre></td></tr></table></figure></p>
-<h2 id="22-10-远程分支管理"><a href="#22-10-远程分支管理" class="headerlink" title="22.10 远程分支管理"></a>22.10 远程分支管理</h2><p>在远程仓库点Branch:master来创建新的分支<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830224644.png" alt=""></p>
+<h2 id="22-10-远程分支管理"><a href="#22-10-远程分支管理" class="headerlink" title="22.10 远程分支管理"></a>22.10 远程分支管理</h2><p>在远程仓库点Branch:master来创建新的分支<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830224644.png" alt=""></p>
 <p>但到了本地要克隆仓库时 默认只把master分支克隆下来，如果想把所有分支都克隆下来，需要手动创建，在本地创建和远程分支对应的分支</p>
 <blockquote>
 <p>克隆远程分支到本机</p>
@@ -238,7 +238,7 @@
 </ul>
 </li>
 </ul>
-<p>远程机器上多了dev2分支<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180830234427.png" alt=""></p>
+<p>远程机器上多了dev2分支<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180830234427.png" alt=""></p>
 <h2 id="22-11-标签管理"><a href="#22-11-标签管理" class="headerlink" title="22.11 标签管理"></a>22.11 标签管理</h2><p><code>标签</code>类似于<code>快照</code>功能，可以给版本库打一个标签，记录某个时刻库的状态。也可以随时恢复到该状态。一般打标签都是给master打标签。</p>
 <blockquote>
 <p>新建标签</p>
@@ -271,17 +271,17 @@
 <p>推送指定标签到远程</p>
 </blockquote>
 <p>格式：<code>git push origin 标签名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push origin v1.0</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">* [new tag]         v1.0 -&gt; v1.0</span><br></pre></td></tr></table></figure></p>
-<p>可以发现远程仓库上已经有了更改推送的标签<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831134943.png" alt=""></p>
+<p>可以发现远程仓库上已经有了更改推送的标签<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831134943.png" alt=""></p>
 <blockquote>
 <p>推送所有标签到远程</p>
 </blockquote>
 <p>格式：<code>git push --tag origin</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git push --tag origin</span><br><span class="line">Counting objects: 1, done.</span><br><span class="line">Writing objects: 100% (1/1), 146 bytes | 0 bytes/s, done.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">* [new tag]         v0.1 -&gt; v0.1</span><br><span class="line">* [new tag]         v0.9 -&gt; v0.9</span><br></pre></td></tr></table></figure></p>
-<p>远程仓库也更新了其他标签<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135614.png" alt=""></p>
+<p>远程仓库也更新了其他标签<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831135614.png" alt=""></p>
 <blockquote>
 <p>删除远程的标签</p>
 </blockquote>
 <p>格式：<code>git push origin :refs/tags/标签名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 test]# git tag -d v0.1  ##删除本地标签</span><br><span class="line">已删除 tag &apos;v0.1&apos;（曾为 f6f2e61）</span><br><span class="line">[root@kun02 test]# git push origin :refs/tags/v0.1</span><br><span class="line">To git@github.com:kun0769/test.git</span><br><span class="line">- [deleted]         v0.1</span><br></pre></td></tr></table></figure></p>
-<p>远程仓库上已经没有了v0.1的标签了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180831135639.png" alt=""></p>
+<p>远程仓库上已经没有了v0.1的标签了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180831135639.png" alt=""></p>
 <h2 id="22-12-git别名"><a href="#22-12-git别名" class="headerlink" title="22.12 git别名"></a>22.12 git别名</h2><p>git上可以用别名来提高我们的工作效率</p>
 <blockquote>
 <p>创建别名</p>
@@ -543,11 +543,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,7 +603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,11 +615,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,11 +667,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,11 +683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,6 +696,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,10 +712,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

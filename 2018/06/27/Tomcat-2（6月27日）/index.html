@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="16.4 配置Tomcat监听80端口16.5/16.6/16.7 配置Tomcat虚拟主机16.8 Tomcat日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233453.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233644.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233742.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180627203826.png">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180627204117.png">
-<meta property="og:updated_time" content="2018-06-27T16:10:23.530Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233453.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233644.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233742.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180627203826.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180627204117.png">
+<meta property="og:updated_time" content="2018-11-20T06:19:51.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 2（6月27日）">
 <meta name="twitter:description" content="16.4 配置Tomcat监听80端口16.5/16.6/16.7 配置Tomcat虚拟主机16.8 Tomcat日志">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -186,7 +186,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/tomcat/bin/shutdown.sh</span><br><span class="line">Using CATALINA_BASE:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_HOME:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_TMPDIR: /usr/local/tomcat/temp</span><br><span class="line">Using JRE_HOME:        /usr/local/jdk1.8</span><br><span class="line">Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</span><br><span class="line">[root@localhost ~]# /usr/local/tomcat/bin/startup.sh</span><br><span class="line">Using CATALINA_BASE:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_HOME:   /usr/local/tomcat</span><br><span class="line">Using CATALINA_TMPDIR: /usr/local/tomcat/temp</span><br><span class="line">Using JRE_HOME:        /usr/local/jdk1.8</span><br><span class="line">Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</span><br></pre></td></tr></table></figure>
 <p>在看看监听端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# netstat -lntp |grep java</span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      2032/java           </span><br><span class="line">tcp6       0      0 127.0.0.1:8005          :::*                    LISTEN      2032/java           </span><br><span class="line">tcp6       0      0 :::8009                 :::*                    LISTEN      2032/java</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问192.168.80.102<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png" alt=""><br>因为这里是测试环境因此才停了Nginx服务 一般生产环境都会让Nginx来代理Tomcat的</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问192.168.80.102<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626212100.png" alt=""><br>因为这里是测试环境因此才停了Nginx服务 一般生产环境都会让Nginx来代理Tomcat的</p>
 <h2 id="16-5-16-6-16-7-配置Tomcat的虚拟主机"><a href="#16-5-16-6-16-7-配置Tomcat的虚拟主机" class="headerlink" title="16.5/16.6/16.7 配置Tomcat的虚拟主机"></a>16.5/16.6/16.7 配置Tomcat的虚拟主机</h2><p>和之前的Apache Nginx一样，Tomcat都是支持虚拟主机的（同一台服务器上单个IP来访问多个域名） ，Tomcat的配置文件是<code>/usr/local/tomcat/conf/server.xml</code></p>
 <p>先配置配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /usr/local/tomcat/conf/server.xml</span><br></pre></td></tr></table></figure></p>
 <p>找到Host的那段配置，其中<code>&lt;Host&gt;&lt;/Host&gt;</code>之间的就是一个虚拟主机<br><code>name</code>表示域名<br><code>appBase</code>表示应用项目目录   一般Java的应用通常是一个<code>war</code>的压缩包，只需要将<code>war</code>的压缩包放到<code>appBase</code>目录下面即可。说白了就是个存放Java程序压缩包的目录 Java程序可以是图片，.jsp网页等等<br><code>unpackWARs</code>表示是否自动解压appBase目录下的war包<br><code>docBase</code>表示网站存放的目录 一般都会存放Java的程序 图片，.jsp网页等。如果不定义docBase默认都会Java程序会存放在appBase定义的<code>ROOT</code>目录下</p>
@@ -217,8 +217,8 @@
 <blockquote>
 <p>5.使用浏览器访问192.168.80.102:8080/zrlog/ 填好数据库和用户</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233453.png" alt=""><br>再填好网站信息<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233644.png" alt=""></p>
-<p>再访问192.168.80.102:8080/zrlog/ 就已经完成搭建博客了<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180626233742.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233453.png" alt=""><br>再填好网站信息<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233644.png" alt=""></p>
+<p>再访问192.168.80.102:8080/zrlog/ 就已经完成搭建博客了<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180626233742.png" alt=""></p>
 <p>当我们访问博客的时候 要输入<code>192.168.80.102:8080/zrlog/</code>才可以访问，十分麻烦。我们刚刚在Tomcat的配置文件中定义了一个新的虚拟主机，其实可以让网站的程序放在定义好的docBase目录下就可以直接输入域名就可以访问网站了。</p>
 <h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
 <p>1.打开Tomcat配置文件配置新的虚拟主机</p>
@@ -237,8 +237,8 @@
 <p>4.重启Tomcat服务</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/tomcat/bin/shutdown.sh</span><br><span class="line">[root@localhost ~]# /usr/local/tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问<br>先在HOSTS上写好域名解析<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180627203826.png" alt=""></p>
-<p>在到浏览器访问<code>www.test3.cn:8080</code>,把端口改为80可以不需要输入8080<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180627204117.png" alt=""></p>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>使用浏览器访问<br>先在HOSTS上写好域名解析<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180627203826.png" alt=""></p>
+<p>在到浏览器访问<code>www.test3.cn:8080</code>,把端口改为80可以不需要输入8080<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180627204117.png" alt=""></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>appBase</code>目录是存放<code>war</code>包的目录 可以自动解压<code>war</code> 它的路径是<code>/usr/local/tomcat/webapps</code> 一般在新建的虚拟主机下的appBase下应该有<code>ROOT</code>目录用来存放网站的程序，前提是没有定义<code>docBase</code>目录<br><code>docBase</code>目录存放网站程序的目录</p>
 <h2 id="16-8-Tomcat日志"><a href="#16-8-Tomcat日志" class="headerlink" title="16.8 Tomcat日志"></a>16.8 Tomcat日志</h2><p>Tomcat的日志都存放在<code>/usr/local/tomcat/logs/</code>目录下，分为四类日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls /usr/local/tomcat/logs/</span><br><span class="line">catalina.2018-06-25.log      host-manager.2018-06-27.log          localhost_access_log.2018-06-27.txt</span><br><span class="line">catalina.2018-06-26.log      localhost.2018-06-25.log             manager.2018-06-25.log</span><br><span class="line">catalina.2018-06-27.log      localhost.2018-06-26.log             manager.2018-06-26.log</span><br><span class="line">catalina.out                 localhost.2018-06-27.log             manager.2018-06-27.log</span><br></pre></td></tr></table></figure></p>
 <p>1.<code>catalina</code>开头的日志是Tomcat的综合日志，记录Tomcat的所有信息 <code>catalina.out</code>是总日志 而 <code>catalina.日期.log</code>是当日的综合日志，每日自动长生。<br>2.<code>host-manager</code>和<code>manager</code>为管理相关的日志，其中<code>host-manager</code>为虚拟主机的管理日志 他们也会每天生成新的<br>3.<code>localhost</code>和<code>localhost_access</code>为虚拟主机相关日志，其中带<code>access</code>字样的日志为访问日志，<code>不带access</code>字样的为默认虚拟主机的错误日志。 访问日志默认不会生成，需要在server.xml中<code>&lt;Valve&gt;</code>配置一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;</span><br><span class="line">       prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;</span><br><span class="line">       pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
@@ -489,11 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,7 +549,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +613,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +629,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,6 +642,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,10 +658,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

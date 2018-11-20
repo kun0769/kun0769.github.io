@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg">
-<meta property="og:updated_time" content="2018-06-01T16:18:19.058Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:25:58.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LAMP第五节（5月29日）">
 <meta name="twitter:description" content="11.18 Apache用户认证11.19/11.20 域名跳转11.21 Apache访问日志">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -174,11 +174,11 @@
         <p>11.18 Apache用户认证<br>11.19/11.20 域名跳转<br>11.21 Apache访问日志<br><a id="more"></a></p>
 <h2 id="11-18-httpd的用户验证"><a href="#11-18-httpd的用户验证" class="headerlink" title="11.18 httpd的用户验证"></a>11.18 httpd的用户验证</h2><p>在生产环境中某些后台的网页往往需要设置用户验证，这样可以保护网页不会因为个人的失误导致数据的丢失，这样可以提高安全性</p>
 <h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们这里以test2站点做用户验证 在test2的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www/test2.conm&gt; </span><br><span class="line">AllowOverride AuthConfig   </span><br><span class="line">AuthName &quot;test2.com user auth&quot;  </span><br><span class="line">AuthType Basic</span><br><span class="line">AuthUserFile /var/.htpasswd</span><br><span class="line">require valid-user</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527122759.jpg" alt=""></p>
 <h3 id="建立用户密码文件"><a href="#建立用户密码文件" class="headerlink" title="建立用户密码文件"></a>建立用户密码文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/htpasswd -c -m /var/.htpasswd test1  新建文件和建立用户test1</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/htpasswd  -m /var/.htpasswd test2  建立用户test2</span><br></pre></td></tr></table></figure>
 <p><code>-c</code> 创建新文件 <code>-m</code> 密码加密   </p>
 <h3 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开test2.com<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开test2.com<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527121836.jpg" alt=""></p>
 <p>在linux使用curl命令<br><code>-I</code>实现网页的状态码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 test2.com -I</span><br><span class="line">HTTP/1.1 401 Unauthorized</span><br><span class="line">Date: Sun, 27 May 2018 12:19:52 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">WWW-Authenticate: Basic realm=&quot;test2.com user auth&quot;</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
 <p><code>-u</code>用户名:密码 使用用户登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x 192.168.80.101:80 -utest1:123456 test2.com</span><br></pre></td></tr></table></figure></p>
 <p>上述是针对整个目录认证 也可以针对单个文件认证</p>
@@ -189,10 +189,10 @@
 <h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com</span><br><span class="line">test2</span><br><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 test2.com/test.php -I</span><br><span class="line">HTTP/1.1 401 Unauthorized</span><br><span class="line">Date: Sun, 27 May 2018 13:20:51 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">WWW-Authenticate: Basic realm=&quot;test2.com user auth&quot;</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure>
 <h2 id="11-19-11-20-域名跳转"><a href="#11-19-11-20-域名跳转" class="headerlink" title="11.19/11.20 域名跳转"></a>11.19/11.20 域名跳转</h2><p>有时候两个域名的网页内容一样，在搜索引擎眼里认为两个域名的权重一样，那其中有一个是错的网站。为了让搜索引擎认为这个域名就是同一个网站，就使用域名跳转，使得次域名的权重降低而提升到主域名上，因此就使用域名跳转技术</p>
 <h3 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h3><p>我们这里用test1站点为例 在test1的<code>&lt;VirtualHost&gt;</code>里面加上以上配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine on</span><br><span class="line">RewriteCond %&#123;HTTP_HOST&#125; !^test1.com$</span><br><span class="line">RewriteRule ^/(.*)$ http://test1.com/$1 [R=301,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg" alt=""><br><code>!^test1.com$</code> 表示非test1.com <code>^/(.*)$</code>表示域名/后面的部分 <code>$1</code>表示前面的小括号 </p>
-<h3 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h3><p>去<code>/usr/local/apache2.4/conf/httpd.conf</code>下 把<code>rewrite</code>模块的#去掉<br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527232532.jpg" alt=""><br><code>!^test1.com$</code> 表示非test1.com <code>^/(.*)$</code>表示域名/后面的部分 <code>$1</code>表示前面的小括号 </p>
+<h3 id="加载模块"><a href="#加载模块" class="headerlink" title="加载模块"></a>加载模块</h3><p>去<code>/usr/local/apache2.4/conf/httpd.conf</code>下 把<code>rewrite</code>模块的#去掉<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527222357.jpg" alt=""></p>
 <h3 id="加载配置文件-2"><a href="#加载配置文件-2" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl -t</span><br><span class="line">Syntax OK</span><br><span class="line">[root@localhost ~]# /usr/local/apache2.4/bin/apachectl graceful</span><br></pre></td></tr></table></figure>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开<a href="http://www.example.com跳转到test1.com" target="_blank" rel="noopener">www.example.com跳转到test1.com</a><br><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg" alt=""><br>在linux使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 www.example.com -I</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Date: Sun, 27 May 2018 23:41:48 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Location: http://test1.com/</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>在windows使用浏览器打开<a href="http://www.example.com跳转到test1.com" target="_blank" rel="noopener">www.example.com跳转到test1.com</a><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180527234030.jpg" alt=""><br>在linux使用curl命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# curl -x192.168.80.101:80 www.example.com -I</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Date: Sun, 27 May 2018 23:41:48 GMT</span><br><span class="line">Server: Apache/2.4.33 (Unix) PHP/5.6.32</span><br><span class="line">Location: http://test1.com/</span><br><span class="line">Content-Type: text/html; charset=iso-8859-1</span><br></pre></td></tr></table></figure></p>
 <h3 id="网页状态码"><a href="#网页状态码" class="headerlink" title="网页状态码"></a>网页状态码</h3><table>
 <thead>
 <tr>
@@ -494,11 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,7 +554,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,11 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,11 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,11 +634,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,6 +647,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,10 +663,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">

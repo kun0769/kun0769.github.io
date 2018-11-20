@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="9.1 正则介绍_grep上9.2 grep中9.3 grep下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
-<meta property="og:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg">
-<meta property="og:updated_time" content="2018-04-25T15:08:30.323Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg">
+<meta property="og:updated_time" content="2018-11-20T06:17:08.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="六周第一次课（4月25日）">
 <meta name="twitter:description" content="9.1 正则介绍_grep上9.2 grep中9.3 grep下">
-<meta name="twitter:image" content="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -236,7 +236,7 @@
 <p><code>-i</code>：不区分大小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -i &apos;root&apos; 1.txt    ##不区分关键词大小写来过滤带root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p><code>-v</code>：取反查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -v &apos;sbin&apos; 1.txt  ##过滤出不带有sbin行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">kun1:x:8888:1001::/home/kun1/:/bin/bash</span><br><span class="line">kun2:x:1001:1001::/home/kun2:/bin/bash</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
 <p><code>-r</code>：遍历所有子目录来过滤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -r &apos;sbin&apos; /etc/  ##遍历etc目录下的所有文件和目录来过滤出带有sbin的行</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180425212249.jpg" alt=""></p>
 <p><code>-An（n为数字）</code>：过滤出符合要求的行和下面n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nA2 &apos;root&apos; 1.txt   ##过滤出带root的行和下面2行</span><br><span class="line">1:root:x:0:0:root:/root:/bin/bash</span><br><span class="line">2-bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">3-daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p><code>-Bn（n为数字）</code>：过滤出符合要求的行和上面n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nB2 &apos;ROOT&apos; 1.txt   ##过滤出带ROOT的行和上面2行</span><br><span class="line">8-halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">9-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">10:operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
 <p><code>-Cn（n为数字）</code>：过滤出符合要求的行和上下面各n行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep -nC2 &apos;ROOT&apos; 1.txt    ##过滤出带ROOT的行和上面下面各2行</span><br><span class="line">8-halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">9-mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">10:operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br><span class="line">11-games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">12-ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
@@ -269,7 +269,7 @@
 <blockquote>
 <p>grep  ‘.*‘ 1.txt   过滤出任意字符  .*表示任意字符</p>
 </blockquote>
-<p><img src="http://p6c0nmg4x.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180425221633.jpg" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# grep  &apos;roo.*bash&apos; 1.txt  ##过滤出roo和bash之前任意字符的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>grep ‘o{2}‘ 1.txt   过滤出o出现2次的行 {2}表示出现2次 grep中需要转义</p>
@@ -541,11 +541,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +601,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +613,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,11 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,11 +681,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,6 +694,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">正则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,10 +710,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
