@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Python 基础语法 2（数字 字符串 元祖 列表 字典） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8 字典">
+  <meta name="description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8/1.9 字典">
 <meta name="keywords" content="Python,基础语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 基础语法 2（数字 字符串 元祖 列表 字典）">
 <meta property="og:url" content="http://yoursite.com/2018/11/15/Python-基础语法-2（数字-字符串-元祖-列表-字典）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8 字典">
+<meta property="og:description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8/1.9 字典">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T08:44:03.110Z">
+<meta property="og:updated_time" content="2018-11-21T14:27:42.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 基础语法 2（数字 字符串 元祖 列表 字典）">
-<meta name="twitter:description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8 字典">
+<meta name="twitter:description" content="1.5 Python的数值和字符串1.6 元组1.7 列表1.8/1.9 字典">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.5 Python的数值和字符串<br>1.6 元组<br>1.7 列表<br>1.8 字典<br><a id="more"></a></p>
+        <p>1.5 Python的数值和字符串<br>1.6 元组<br>1.7 列表<br>1.8/1.9 字典<br><a id="more"></a></p>
 <h2 id="1-5-Python的数值和字符串"><a href="#1-5-Python的数值和字符串" class="headerlink" title="1.5 Python的数值和字符串"></a>1.5 Python的数值和字符串</h2><p>Python数据类型包括<br>1）数字<br>2）字符串<br>3）列表<br>4）元组<br>5）字典</p>
 <h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><table>
 <thead>
@@ -341,7 +341,7 @@
 </tbody>
 </table>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [1]: list1=[&apos;tom&apos;,16]</span><br><span class="line"></span><br><span class="line">In [2]: list2=[&apos;mary&apos;,20]</span><br><span class="line"></span><br><span class="line">In [4]: zip(list1,list2)</span><br><span class="line">Out[4]: [(&apos;tom&apos;, &apos;mary&apos;), (16, 20)]</span><br></pre></td></tr></table></figure>
-<h2 id="1-8-字典"><a href="#1-8-字典" class="headerlink" title="1.8 字典"></a>1.8 字典</h2><p>字典是python中的唯一的映射类型。类似哈希表（<code>key-value</code>）<br>字典对象是可变的，但是字典的键必须使用不可变对象（字符串，元祖，数字），一个字典中可以使用不同类型的键值。定义字典使用<code>{}</code>定义,key和value用<code>:</code>分开。</p>
+<h2 id="1-8-1-9-字典"><a href="#1-8-1-9-字典" class="headerlink" title="1.8/1.9 字典"></a>1.8/1.9 字典</h2><p>字典是python中的唯一的映射类型。类似哈希表（<code>key-value</code>）<br>字典对象是可变的，但是字典的键必须使用不可变对象（字符串，元祖，数字），一个字典中可以使用不同类型的键值。定义字典使用<code>{}</code>定义,key和value用<code>:</code>分开。</p>
 <h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><p><code>dic = {}</code> 创建空字典<br><code>dic1 = dict()</code> 使用dict函数创建空字典<br><code>dict(([&#39;a&#39;,1],[&#39;b&#39;,2]))</code>   <code>dict(a=1, b=2)</code> 使用dict函数创建字典<br><code>dic2 = {&#39;a&#39;:1,(&#39;a&#39;,):2}</code> 创建多个key-value的字典</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [7]: dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [8]: type(dic)</span><br><span class="line">Out[8]: dict</span><br><span class="line"></span><br><span class="line">In [12]: dic2 = &#123;&apos;a&apos;:1,(&apos;a&apos;,):2&#125;</span><br><span class="line"></span><br><span class="line">In [13]: type(dic2)</span><br><span class="line">Out[13]: dict</span><br><span class="line"></span><br><span class="line">In [70]: dict(a=1,b=2)  ##使用dict函数查看字典</span><br><span class="line">Out[70]: &#123;&apos;a&apos;: 1, &apos;b&apos;: 2&#125;</span><br><span class="line"></span><br><span class="line">In [71]: dict(([&apos;a&apos;,1],[&apos;b&apos;,2]))  ##使用dict函数查看字典</span><br><span class="line">Out[71]: &#123;&apos;a&apos;: 1, &apos;b&apos;: 2&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="字典的访问"><a href="#字典的访问" class="headerlink" title="字典的访问"></a>字典的访问</h3><p>字典中key是唯一的，访问对应的key就可以返回value<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [30]: dic[&apos;a&apos;]  ##类似索引，[]里面是key</span><br><span class="line">Out[30]: 1</span><br><span class="line"></span><br><span class="line">In [31]: dic[&apos;a&apos;]=2  ##把key是&apos;a&apos;对应的value改为2</span><br><span class="line"></span><br><span class="line">In [32]: dic</span><br><span class="line">Out[32]: &#123;&apos;a&apos;: 2, (&apos;a&apos;,): 2&#125;</span><br></pre></td></tr></table></figure></p>
@@ -517,11 +517,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/20/Python-练习-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/20/Python 11-20练习/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python 练习-1
+          Python 11-20练习
         
       </div>
     </a>
@@ -676,11 +676,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,10 +697,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,6 +724,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
@@ -740,14 +744,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -756,7 +752,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,15 +796,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,15 +840,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
