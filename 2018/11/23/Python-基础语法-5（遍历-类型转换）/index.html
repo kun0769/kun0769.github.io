@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | kun0769的博客</title>
+  <title>Python 基础语法 5（遍历 类型转换） | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/17/index.html">
+  <meta name="description" content="2.6 使用for循环遍历文件2.7 使用while循环遍历文件2.8 统计系统剩余的内存2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)">
+<meta name="keywords" content="Python,基础语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 基础语法 5（遍历 类型转换）">
+<meta property="og:url" content="http://yoursite.com/2018/11/23/Python-基础语法-5（遍历-类型转换）/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="2.6 使用for循环遍历文件2.7 使用while循环遍历文件2.8 统计系统剩余的内存2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181115125644.png">
+<meta property="og:updated_time" content="2018-11-23T15:17:11.894Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="Python 基础语法 5（遍历 类型转换）">
+<meta name="twitter:description" content="2.6 使用for循环遍历文件2.7 使用while循环遍历文件2.8 统计系统剩余的内存2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181115125644.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,224 +147,384 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Python-基础语法-5（遍历-类型转换）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python 基础语法 5（遍历 类型转换）
+    </h1>
+  
+
+        
+        <a href="/2018/11/23/Python-基础语法-5（遍历-类型转换）/" class="archive-article-date">
+  	<time datetime="2018-11-23T15:03:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2.6 使用for循环遍历文件<br>2.7 使用while循环遍历文件<br>2.8 统计系统剩余的内存<br>2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)<br><a id="more"></a></p>
+<h2 id="2-6-使用for循环遍历文件"><a href="#2-6-使用for循环遍历文件" class="headerlink" title="2.6 使用for循环遍历文件"></a>2.6 使用for循环遍历文件</h2><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open(name[, mode[, buffering]])</td>
+<td>打开文件并返回对象 mode表示打开的模式 默认是r buffering指定缓存</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以读方式打开</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以写方式打开 文件不存在会创建 存在会覆盖文件内容</td>
+</tr>
+<tr>
+<td>a</td>
+<td>以追加模式 文件不存在会创建 存在会在文件内容后追加</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写模式打开</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>以读写模式打开 (参见 w )</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>以读写模式打开 (参见 a )</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制读模式打开</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制写模式打开 (参见 w )</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制追加模式打开 (参见 a )</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制读写模式打开 (参见 r+ )</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制读写模式打开 (参见 w+ )</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制读写模式打开 (参见 a+)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>文件对象的方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close()</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td>write(str)</td>
+<td>向文件中写人字符串</td>
+</tr>
+<tr>
+<td>read([size])</td>
+<td>读取整个文件内容 返回字符串 可以使用size指定读的字符个数 </td>
+</tr>
+<tr>
+<td>readline([size])</td>
+<td>读取一行的文件内容 返回字符串 可以使用size指定读的字符个数</td>
+</tr>
+<tr>
+<td>readlines([size])</td>
+<td>读取多行的文件内容 返回列表  以使用size指定读的字符个数</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>读取一行的文件内容</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [2]: f = open(&apos;/tmp/test.txt&apos;)  ##打开文件并赋值文件对象给变量f</span><br><span class="line"></span><br><span class="line">In [3]: type(f)</span><br><span class="line">Out[3]: file</span><br><span class="line">In [7]: f.close()  ##关闭文件 f变量没有赋值</span><br></pre></td></tr></table></figure>
+<h3 id="write"><a href="#write" class="headerlink" title="write()"></a>write()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cat /tmp/test.txt  ##现在test.txt内容</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">In [11]: f= open(&apos;/tmp/test.txt&apos;,&apos;w&apos;)  ##以w模式打开文件 覆盖了原来文件内容</span><br><span class="line">In [12]: f.write(&apos;123\n&apos;)  ##写入&apos;123\n&apos;</span><br><span class="line">In [13]: f.close()</span><br><span class="line">cat /tmp/test.txt  ##文件内容只有123</span><br><span class="line">123</span><br><span class="line"></span><br><span class="line">In [14]: f= open(&apos;/tmp/test.txt&apos;,&apos;a&apos;)</span><br><span class="line">In [15]: f.write(&apos;456\n&apos;)</span><br><span class="line">In [16]: f.close()</span><br><span class="line"></span><br><span class="line">cat /tmp/test.txt  ##在文件内容后面追加了456</span><br><span class="line">123</span><br><span class="line">456</span><br></pre></td></tr></table></figure>
+<h3 id="read"><a href="#read" class="headerlink" title="read()"></a>read()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [17]: f=open(&apos;/tmp/test.txt&apos;)</span><br><span class="line">In [19]: f.read()   ##读取整个文件内存</span><br><span class="line">Out[19]: &apos;123\n456\n&apos;</span><br><span class="line"></span><br><span class="line">In [20]: f.read()  ##已经到文件尾部 无法再读取了</span><br><span class="line">Out[20]: &apos;&apos;</span><br><span class="line"></span><br><span class="line">In [23]: f.read(2)  ##两个字符为间距读取文件内容</span><br><span class="line">Out[23]: &apos;12&apos;</span><br><span class="line">In [24]: f.read(2)</span><br><span class="line">Out[24]: &apos;3\n&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [31]: f.readline()  ##一行一行的读取文件内容</span><br><span class="line">Out[31]: &apos;123\n&apos;</span><br><span class="line"></span><br><span class="line">In [32]: f.readline()</span><br><span class="line">Out[32]: &apos;456\n&apos;</span><br><span class="line"></span><br><span class="line">In [33]: f.readline()</span><br><span class="line">Out[33]: &apos;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [36]: f.readlines()  ##读取多行文件内存并返回列表</span><br><span class="line">Out[36]: [&apos;123\n&apos;, &apos;456\n&apos;]</span><br><span class="line"></span><br><span class="line">.next()</span><br><span class="line">In [42]: f.next()</span><br><span class="line">Out[42]: &apos;123\n&apos;</span><br><span class="line"></span><br><span class="line">In [43]: f.next()</span><br><span class="line">Out[43]: &apos;456\n&apos;</span><br></pre></td></tr></table></figure>
+<p>for循环脚本形式读取文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"></span><br><span class="line">f=open(&apos;/tmp/test.txt&apos;)</span><br><span class="line">for i in f:   ##遍历文件对象  for循环其实就是执行多次f.next(),直到文件结尾</span><br><span class="line">    print i,</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-7-使用while循环遍历文件"><a href="#2-7-使用while循环遍历文件" class="headerlink" title="2.7 使用while循环遍历文件"></a>2.7 使用while循环遍历文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"></span><br><span class="line">f=open(&apos;/tmp/test.txt&apos;)  </span><br><span class="line">while True:  ##因为是True 所以开始循环 </span><br><span class="line">    i=f.readline() ##一行一行读取文件内容</span><br><span class="line">    if not i:    ##  not &apos;&apos;等于True 到&apos;&apos;就会跳出循环</span><br><span class="line">        break</span><br><span class="line">    print i,</span><br></pre></td></tr></table></figure>
+<p>打开文件可以使用<code>with</code>关键字 这样最后可以不需要使用close()文件</p>
+<h3 id="语法形式"><a href="#语法形式" class="headerlink" title="语法形式"></a>语法形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(文件) as 变量:</span><br><span class="line">    代码块</span><br></pre></td></tr></table></figure>
+<h3 id="脚本形式"><a href="#脚本形式" class="headerlink" title="脚本形式"></a>脚本形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"></span><br><span class="line">with open(&apos;/tmp/test.txt&apos;) as f:</span><br><span class="line">    while True:</span><br><span class="line">        i=f.readline()</span><br><span class="line">        if not i:</span><br><span class="line">            break</span><br><span class="line">        print i,</span><br></pre></td></tr></table></figure>
+<h2 id="2-8-统计系统剩余的内存"><a href="#2-8-统计系统剩余的内存" class="headerlink" title="2.8 统计系统剩余的内存"></a>2.8 统计系统剩余的内存</h2><table>
+<thead>
+<tr>
+<th>字符串的方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S.startswith(prefix[, start[, end]])</td>
+<td>判断字符串开头是否是为prefix，并返回bool值</td>
+</tr>
+<tr>
+<td>S.split([sep [,maxsplit]])</td>
+<td>分割字符串并返回列表  sep指定分隔符（默认是空格或tab） maxsplit分割次数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="S-startswith-prefix-start-end"><a href="#S-startswith-prefix-start-end" class="headerlink" title="S.startswith(prefix[, start[, end]])"></a>S.startswith(prefix[, start[, end]])</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [1]: s=&apos;abc&apos;</span><br><span class="line"></span><br><span class="line">In [7]: s.startswith(&apos;a&apos;)  ##判断变量s是否是&apos;a&apos;开头</span><br><span class="line">Out[7]: True</span><br><span class="line"></span><br><span class="line">In [8]: s.startswith(&apos;b&apos;)</span><br><span class="line">Out[8]: False</span><br><span class="line"></span><br><span class="line">In [9]: s.startswith(&apos;b&apos;,1)  ##判断下标1是否是&apos;b&apos;</span><br><span class="line">Out[9]: True</span><br></pre></td></tr></table></figure>
+<h3 id="S-split-sep-maxsplit"><a href="#S-split-sep-maxsplit" class="headerlink" title="S.split([sep [,maxsplit]])"></a>S.split([sep [,maxsplit]])</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [10]: s1=&apos;abc dfe   123&apos;</span><br><span class="line"></span><br><span class="line">In [12]: s1.split()</span><br><span class="line">Out[12]: [&apos;abc&apos;, &apos;dfe&apos;, &apos;123&apos;]</span><br><span class="line"></span><br><span class="line">In [13]: s1.split(&apos;2&apos;)  ##指定2为分隔符</span><br><span class="line">Out[13]: [&apos;abc dfe   1&apos;, &apos;3&apos;]</span><br><span class="line"></span><br><span class="line">In [14]: s1.split(&apos;2&apos;)[1]  ##取列表的下标为1的值</span><br><span class="line">Out[14]: &apos;3&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>统计系统剩余的内存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># coding:utf-8</span><br><span class="line"></span><br><span class="line">with open(&apos;/proc/meminfo&apos;) as fd:</span><br><span class="line">    for i in fd:</span><br><span class="line">        if i.startswith(&apos;MemTotal&apos;): ##判断开头是否是memtotal</span><br><span class="line">            total = i.split()[1]     ##分割字符串后返回列表 把列表中的下标1的值给变量tatal</span><br><span class="line">        if i.startswith(&apos;MemFree&apos;):</span><br><span class="line">            free = i.split()[1]</span><br><span class="line">    print &apos;内存总共%.2fM&apos; %(int(total)/1024.0)  ## %.2f把浮点格式化为两位小数点字符串</span><br><span class="line">    print &apos;内存还剩%.2fM&apos; %(int(free)/1024.0)   ## free为字符串 int(free)为整型 int(free)/1024.0为浮点型</span><br><span class="line">    print &apos;内存可用的百分比为%.2f%%&apos; %(float(free)/float(total)*100) ##%%输入一个%</span><br></pre></td></tr></table></figure>
+<h2 id="2-9-3-0-数据类型转换-计算mac地址-数据类型转换-列表与字典相互转换"><a href="#2-9-3-0-数据类型转换-计算mac地址-数据类型转换-列表与字典相互转换" class="headerlink" title="2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)"></a>2.9/3.0 数据类型转换(计算mac地址)/ 数据类型转换(列表与字典相互转换)</h2><table>
+<thead>
+<tr>
+<th>内置函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int()</td>
+<td>转换为十进制的整型 </td>
+</tr>
+<tr>
+<td>hex()</td>
+<td>十进制转换为十六进制 返回字符串</td>
+</tr>
+<tr>
+<td>str()</td>
+<td>转换为字符串 返回字符串</td>
+</tr>
+<tr>
+<td>list()</td>
+<td>转换为列表</td>
+</tr>
+<tr>
+<td>tuple()</td>
+<td>转换为元祖</td>
+</tr>
+<tr>
+<td>dict()</td>
+<td>转换为字典</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>字符串的方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S.join(iterable)</td>
+<td>把迭代的数（ 元组、列表、字典、字符串）转换为字符串 S表示分隔符 一般用’’表示不分开</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>字典的方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D.items()</td>
+<td>字典转列表 列表中每个元素都是元祖</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181115125644.png" alt=""></p>
+<h3 id="int"><a href="#int" class="headerlink" title="int()"></a>int()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [32]: int(&apos;123&apos;)</span><br><span class="line">Out[32]: 123</span><br><span class="line"></span><br><span class="line">In [30]: int(&apos;a&apos;,16)  ##‘a’是十六进制的</span><br><span class="line">Out[30]: 10</span><br></pre></td></tr></table></figure>
+<h3 id="hex"><a href="#hex" class="headerlink" title="hex()"></a>hex()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [35]: hex(10)</span><br><span class="line">Out[35]: &apos;0xa&apos;  ##十六进制中 0xa就是a</span><br></pre></td></tr></table></figure>
+<h3 id="str"><a href="#str" class="headerlink" title="str()"></a>str()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [38]: str(123)</span><br><span class="line">Out[38]: &apos;123&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="list"><a href="#list" class="headerlink" title="list()"></a>list()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [5]: s=&apos;abc&apos;</span><br><span class="line"></span><br><span class="line">In [6]: list(s)</span><br><span class="line">Out[6]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]  ##字符串转列表</span><br></pre></td></tr></table></figure>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple()"></a>tuple()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [21]: tuple(s)</span><br><span class="line">Out[21]: (&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)  ##字符串转元祖</span><br></pre></td></tr></table></figure>
+<p>列表与元组互相转换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [33]: l</span><br><span class="line">Out[33]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line"></span><br><span class="line">In [34]: tuple(l)</span><br><span class="line">Out[34]: (&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)  ##列表转元祖</span><br><span class="line"></span><br><span class="line">In [35]: t</span><br><span class="line">Out[35]: (&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)</span><br><span class="line"></span><br><span class="line">In [36]: list(t)</span><br><span class="line">Out[36]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]  ##元祖转列表</span><br></pre></td></tr></table></figure></p>
+<h3 id="S-join-iterable"><a href="#S-join-iterable" class="headerlink" title="S.join(iterable)"></a>S.join(iterable)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [16]: l</span><br><span class="line">Out[16]: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line"></span><br><span class="line">In [17]: &apos;&apos;.join(l)   ##列表转字符串 &apos;&apos;表示字符间没分隔符</span><br><span class="line">Out[17]: &apos;abc&apos;  </span><br><span class="line"></span><br><span class="line">In [18]: &apos;.&apos;.join(l)   ##字符间用.作为分隔符</span><br><span class="line">Out[18]: &apos;a.b.c&apos;</span><br><span class="line"></span><br><span class="line">In [24]: t</span><br><span class="line">Out[24]: (&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)</span><br><span class="line"></span><br><span class="line">In [25]: &apos;&apos;.join(t)   ##元祖换字符串</span><br><span class="line">Out[25]: &apos;abc&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="dict"><a href="#dict" class="headerlink" title="dict()"></a>dict()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [48]: l1</span><br><span class="line">Out[48]: [(&apos;a&apos;, 1), (&apos;b&apos;, 2)]</span><br><span class="line"></span><br><span class="line">In [49]: dict(l1)   ##列表转字典</span><br><span class="line">Out[49]: &#123;&apos;a&apos;: 1, &apos;b&apos;: 2&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-items"><a href="#D-items" class="headerlink" title="D.items()"></a>D.items()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [40]: d=&#123;&apos;a&apos;:1,&apos;b&apos;:2&#125;</span><br><span class="line"></span><br><span class="line">In [41]: d.items()   ##字典转列表</span><br><span class="line">Out[41]: [(&apos;a&apos;, 1), (&apos;b&apos;, 2)]</span><br></pre></td></tr></table></figure>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><p>计算当前mac地址的下一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># coding:utf-8</span><br><span class="line"></span><br><span class="line">macadd = &apos;00:0C:29:D1:6F:E9&apos;</span><br><span class="line">last_add = macadd[-2:]</span><br><span class="line">first_add = macadd[:-3]</span><br><span class="line">plus_1 = hex(int(last_add,16)+1)</span><br><span class="line">## 最后两位字符串先转十进制 +1后再转十六进制</span><br><span class="line">plus_2 = plus_1[2:].upper()</span><br><span class="line">## 去掉0x和变为大写</span><br><span class="line">if len(plus_2) == 1:</span><br><span class="line">##转十六进制时 结果是01或者0a 输出格式为0x1或者0xa,没有0  判断最后两位长度是否只有1位来补0</span><br><span class="line">    plus_2 =&apos;0&apos;+ plus_2</span><br><span class="line">    print first_add + &apos;:&apos; + plus_2</span><br><span class="line">else:</span><br><span class="line">    print first_add + &apos;:&apos; + plus_2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python mac.py</span><br><span class="line">00:0C:29:D1:6F:EA</span><br><span class="line">python mac.py</span><br><span class="line">00:0C:29:D1:6F:02</span><br><span class="line">python mac.py</span><br><span class="line">00:0C:29:D1:6F:0C</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/26/Tomcat-1（6月26日）/" class="archive-article-date">
-  	<time datetime="2018-06-26T15:48:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/Tomcat-1（6月26日）/">Tomcat 1（6月26日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/FTP-2（6月25日）/" class="archive-article-date">
-  	<time datetime="2018-06-25T14:02:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/FTP-2（6月25日）/">FTP 2（6月25日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">FTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/22/NFS-2-FTP-1（6月22日）/" class="archive-article-date">
-  	<time datetime="2018-06-22T15:03:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/22/NFS-2-FTP-1（6月22日）/">NFS 2 FTP 1（6月22日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">FTP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/23/Python-基础语法-5（遍历-类型转换）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/21/NFS-1（6月21日）/" class="archive-article-date">
-  	<time datetime="2018-06-21T15:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/Python-基础语法-4（for-while）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python 基础语法 4（for while）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/21/NFS-1（6月21日）/">NFS 1（6月21日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NFS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/20/Mysql-2（6月20日）/" class="archive-article-date">
-  	<time datetime="2018-06-20T15:32:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/20/Mysql-2（6月20日）/">Mysql 2（6月20日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mysql备份</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/16/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/15/">15</a><a class="page-number" href="/archives/2018/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/archives/2018/page/18/">18</a><a class="page-number" href="/archives/2018/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/28/">28</a><a class="extend next" rel="next" href="/archives/2018/page/18/">Next &raquo;</a>
-    </nav>
   
+
+  
+
 
 
           </div>
@@ -380,8 +547,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
