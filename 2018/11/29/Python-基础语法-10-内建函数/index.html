@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="2.0/2.1/2.2/2.3/2.4 内建函数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-29T15:00:55.705Z">
+<meta property="og:updated_time" content="2018-11-29T15:23:21.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 基础语法 10 内建函数">
 <meta name="twitter:description" content="2.0/2.1/2.2/2.3/2.4 内建函数">
@@ -242,7 +242,64 @@
 <h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp()"></a>cmp()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [30]: cmp(1, 10)</span><br><span class="line">Out[30]: -1</span><br><span class="line"></span><br><span class="line">In [31]: cmp(&apos;a&apos;, 10)  ##字符串比较先按照字符逐个比较 相同时再比较长度</span><br><span class="line">Out[31]: 1</span><br></pre></td></tr></table></figure>
 <h3 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [35]: range(11)  ##0-10的序列</span><br><span class="line">Out[35]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line"></span><br><span class="line">In [36]: range(10,0,-1)  ##10-1的序列 -1表示向左</span><br><span class="line">Out[36]: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
 <h3 id="xrange"><a href="#xrange" class="headerlink" title="xrange()"></a>xrange()</h3><p>通常使用xrange更多，节省内存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [19]: xrange(10)</span><br><span class="line">Out[19]: xrange(10)</span><br><span class="line"></span><br><span class="line">In [21]: for i in xrange(10):print i,</span><br><span class="line">0 1 2 3 4 5 6 7 8 9</span><br></pre></td></tr></table></figure></p>
-<p>类型转换内置函数 | 作用<br>int() | 转换为整型<br>long() | 转换为长整型<br>float() | 转换为浮点型<br>complex() | 转换为复数型<br>str() | 转换为字符串<br>list() | 转换为列表<br>tuple() | 转换为元祖<br>hex() | 数字转换为十六进制 返回字符串<br>oct() | 数字转换为八进制 返回字符串<br>eval() | 执行一个字符串表达式，并返回表达式的值。<br>chr() | 输入0-255 并返回对应的ascii码<br>ord() | 和chr()相反 输入单个字符返回对应的数值</p>
+<table>
+<thead>
+<tr>
+<th>类型转换内置函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int()</td>
+<td>转换为整型 </td>
+</tr>
+<tr>
+<td>long()</td>
+<td>转换为长整型</td>
+</tr>
+<tr>
+<td>float()</td>
+<td>转换为浮点型</td>
+</tr>
+<tr>
+<td>complex()</td>
+<td>转换为复数型</td>
+</tr>
+<tr>
+<td>str()</td>
+<td>转换为字符串</td>
+</tr>
+<tr>
+<td>list()</td>
+<td>转换为列表</td>
+</tr>
+<tr>
+<td>tuple()</td>
+<td>转换为元祖</td>
+</tr>
+<tr>
+<td>hex()</td>
+<td>数字转换为十六进制 返回字符串</td>
+</tr>
+<tr>
+<td>oct()</td>
+<td>数字转换为八进制 返回字符串</td>
+</tr>
+<tr>
+<td>eval()</td>
+<td>执行一个字符串表达式，并返回表达式的值。</td>
+</tr>
+<tr>
+<td>chr()</td>
+<td>输入0-255 并返回对应的ascii码</td>
+</tr>
+<tr>
+<td>ord()</td>
+<td>和chr()相反 输入单个字符返回对应的数值</td>
+</tr>
+</tbody>
+</table>
 <h3 id="int"><a href="#int" class="headerlink" title="int()"></a>int()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [53]: int(&apos;1212&apos;)</span><br><span class="line">Out[53]: 1212</span><br><span class="line"></span><br><span class="line">In [54]: int(121.2)</span><br><span class="line">Out[54]: 121</span><br></pre></td></tr></table></figure>
 <h3 id="long"><a href="#long" class="headerlink" title="long()"></a>long()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [56]: long(&apos;1212&apos;)</span><br><span class="line">Out[56]: 1212L</span><br><span class="line"></span><br><span class="line">In [57]: long(121.2)</span><br><span class="line">Out[57]: 121L</span><br></pre></td></tr></table></figure>
 <h3 id="float"><a href="#float" class="headerlink" title="float()"></a>float()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [58]: float(&apos;1212&apos;)</span><br><span class="line">Out[58]: 1212.0</span><br><span class="line"></span><br><span class="line">In [59]: float(1212)</span><br><span class="line">Out[59]: 1212.0</span><br></pre></td></tr></table></figure>
@@ -255,7 +312,88 @@
 <h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [92]: eval(hex(10))  ##把字符串&apos;0xa&apos;转化为值10</span><br><span class="line">Out[92]: 10</span><br><span class="line"></span><br><span class="line">In [97]: eval(&quot;[&apos;a&apos;,1]&quot;)</span><br><span class="line">Out[97]: [&apos;a&apos;, 1]</span><br></pre></td></tr></table></figure>
 <h3 id="chr"><a href="#chr" class="headerlink" title="chr()"></a>chr()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [105]: chr(65)</span><br><span class="line">Out[105]: &apos;A&apos;</span><br><span class="line"></span><br><span class="line">In [106]: chr(97)</span><br><span class="line">Out[106]: &apos;a&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="ord"><a href="#ord" class="headerlink" title="ord()"></a>ord()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [108]: ord(&apos;a&apos;)</span><br><span class="line">Out[108]: 97</span><br><span class="line"></span><br><span class="line">In [109]: ord(&apos;A&apos;)</span><br><span class="line">Out[109]: 65</span><br></pre></td></tr></table></figure>
-<p>字符串的方法 | 作用<br>S.capitalize() | 首字母大写<br>S.replace(old, new[, count]) | 新的字符串替换旧的 count指替换的次数<br>S.split([sep [,maxsplit]]) | 切割字符串 返回列表 默认空格是切割符  sep指定切割符 maxsplit切割次数<br>S.join(iterable) | 用S连接可迭代对象 返回字符串 一般把元祖和列表合为字符串<br>S.isupper() | 判断是否全大写 返回布尔值<br>S.islower() | 判断是否全大写 返回布尔值<br>S.isalnum() | 判断字符串是否由字母和数字组成  返回布尔值<br>S.isalpha() | 判断字符串是否由字母组成  返回布尔值<br>S.isdigit() | 判断字符串是否由数字组成  返回布尔值<br>S.isspace() | 判断字符串是否由纯空格组成  返回布尔值<br>S.title() | 判断字符串只有首字母大写   返回布尔值<br>S.center(width[, fillchar]) | 居中 width表示总长度 fillchar表示填充物<br>S.count(sub[, start[, end]]) | 统计指定字符串次数 sub指定字符串 start end搜索范围 指定下标<br>S.strip([chars]) | 去除两边空格<br>S.lstrip([chars]) | 去除左边空格<br>S.rstrip([chars]) | 去除右边空格<br>S.startswith(prefix[, start[, end]]) | 判断字符串是否以指定的字符串开头  返回布尔值<br>S.endswith(suffix[, start[, end]]) | 判断字符串是否以指定的字符串结尾  返回布尔值</p>
+<table>
+<thead>
+<tr>
+<th>字符串的方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S.capitalize()</td>
+<td>首字母大写</td>
+</tr>
+<tr>
+<td>S.replace(old, new[, count])</td>
+<td>新的字符串替换旧的 count指替换的次数</td>
+</tr>
+<tr>
+<td>S.split([sep [,maxsplit]])</td>
+<td>切割字符串 返回列表 默认空格是切割符  sep指定切割符 maxsplit切割次数</td>
+</tr>
+<tr>
+<td>S.join(iterable)</td>
+<td>用S连接可迭代对象 返回字符串 一般把元祖和列表合为字符串</td>
+</tr>
+<tr>
+<td>S.isupper()</td>
+<td>判断是否全大写 返回布尔值</td>
+</tr>
+<tr>
+<td>S.islower()</td>
+<td>判断是否全大写 返回布尔值</td>
+</tr>
+<tr>
+<td>S.isalnum()</td>
+<td>判断字符串是否由字母和数字组成  返回布尔值</td>
+</tr>
+<tr>
+<td>S.isalpha()</td>
+<td>判断字符串是否由字母组成  返回布尔值</td>
+</tr>
+<tr>
+<td>S.isdigit()</td>
+<td>判断字符串是否由数字组成  返回布尔值</td>
+</tr>
+<tr>
+<td>S.isspace()</td>
+<td>判断字符串是否由纯空格组成  返回布尔值</td>
+</tr>
+<tr>
+<td>S.title()</td>
+<td>判断字符串只有首字母大写   返回布尔值</td>
+</tr>
+<tr>
+<td>S.center(width[, fillchar])</td>
+<td>居中 width表示总长度 fillchar表示填充物</td>
+</tr>
+<tr>
+<td>S.count(sub[, start[, end]])</td>
+<td>统计指定字符串次数 sub指定字符串 start end搜索范围 指定下标 </td>
+</tr>
+<tr>
+<td>S.strip([chars])</td>
+<td>去除两边空格</td>
+</tr>
+<tr>
+<td>S.lstrip([chars])</td>
+<td>去除左边空格</td>
+</tr>
+<tr>
+<td>S.rstrip([chars])</td>
+<td>去除右边空格</td>
+</tr>
+<tr>
+<td>S.startswith(prefix[, start[, end]])</td>
+<td>判断字符串是否以指定的字符串开头  返回布尔值</td>
+</tr>
+<tr>
+<td>S.endswith(suffix[, start[, end]])</td>
+<td>判断字符串是否以指定的字符串结尾  返回布尔值</td>
+</tr>
+</tbody>
+</table>
 <h3 id="S-capitalize"><a href="#S-capitalize" class="headerlink" title="S.capitalize()"></a>S.capitalize()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [126]: s = &apos;hello&apos;</span><br><span class="line"></span><br><span class="line">In [127]: s.capitalize()  ##首字母大写</span><br><span class="line">Out[127]: &apos;Hello&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="S-replace"><a href="#S-replace" class="headerlink" title="S.replace()"></a>S.replace()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [130]: s.replace(&apos;l&apos;,&apos;L&apos;)  ##L替换l</span><br><span class="line">Out[130]: &apos;heLLo&apos;</span><br><span class="line"></span><br><span class="line">In [132]: s.replace(&apos;l&apos;,&apos;L&apos;,1)  ##只替换一次</span><br><span class="line">Out[132]: &apos;heLlo&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="S-split"><a href="#S-split" class="headerlink" title="S.split()"></a>S.split()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [134]: s = &apos;aasdf aa b&apos;</span><br><span class="line"></span><br><span class="line">In [135]: s.split()   ##默认是空格为切割符</span><br><span class="line">Out[135]: [&apos;aasdf&apos;, &apos;aa&apos;, &apos;b&apos;]  </span><br><span class="line"></span><br><span class="line">In [136]: ip = &apos;192.168.80.101&apos;</span><br><span class="line"></span><br><span class="line">In [137]: ip.split(&apos;.&apos;)  ##指定.来切割</span><br><span class="line">Out[137]: [&apos;192&apos;, &apos;168&apos;, &apos;80&apos;, &apos;101&apos;]</span><br><span class="line"></span><br><span class="line">In [138]: ip.split(&apos;.&apos;,1)  ##切割一次</span><br><span class="line">Out[138]: [&apos;192&apos;, &apos;168.80.101&apos;]</span><br></pre></td></tr></table></figure>
@@ -272,7 +410,44 @@
 <h3 id="S-startswith-S-endswith"><a href="#S-startswith-S-endswith" class="headerlink" title="S.startswith() / S.endswith()"></a>S.startswith() / S.endswith()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [89]: s = &apos;asdfsdfsd&apos;</span><br><span class="line"></span><br><span class="line">In [90]: s.startswith(&apos;a&apos;)  ##是否以&apos;a&apos;开头</span><br><span class="line">Out[90]: True</span><br><span class="line"></span><br><span class="line">In [91]: s.startswith(&apos;as&apos;) ##是否以&apos;as&apos;开头</span><br><span class="line">Out[91]: True</span><br><span class="line"></span><br><span class="line">In [92]: s.endswith(&apos;d&apos;)  ##是否以&apos;d&apos;结尾</span><br><span class="line">Out[92]: True</span><br></pre></td></tr></table></figure>
 <h3 id="S-center"><a href="#S-center" class="headerlink" title="S.center()"></a>S.center()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [62]: s.center(9, &apos;*&apos;)  ##居中 字符串总长度是9 用*填充</span><br><span class="line">Out[62]: &apos;***ABC***&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="S-count"><a href="#S-count" class="headerlink" title="S.count()"></a>S.count()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [64]: s = &apos;abcea&apos;</span><br><span class="line"></span><br><span class="line">In [65]: s.count(&apos;a&apos;)  ##统计&apos;a&apos;的次数</span><br><span class="line">Out[65]: 2</span><br></pre></td></tr></table></figure>
-<p>序列处理函数 | 作用<br>len() | 求长度<br>max() | 求最大值<br>min() | 求最小值<br>zip(seq1 [, seq2 […]]) | 合并序列 序列中的元素一一对应<br>filter(function or None, sequence) | 通过函数过滤序列 None不过滤<br>map(function, sequence[, sequence, …]) | 各序列传参到函数中处理 参数和序列数量要一致<br>reduce(function, sequence[, initial]) | 遍历把序列sequence的元素并通过函数function（只能带两个参数）进行处理</p>
+<table>
+<thead>
+<tr>
+<th>序列处理函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len()</td>
+<td>求长度</td>
+</tr>
+<tr>
+<td>max()</td>
+<td>求最大值</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>求最小值</td>
+</tr>
+<tr>
+<td>zip(seq1 [, seq2 […]])</td>
+<td>合并序列 序列中的元素一一对应</td>
+</tr>
+<tr>
+<td>filter(function or None, sequence)</td>
+<td>通过函数过滤序列 None不过滤</td>
+</tr>
+<tr>
+<td>map(function, sequence[, sequence, …])</td>
+<td>各序列传参到函数中处理 参数和序列数量要一致</td>
+</tr>
+<tr>
+<td>reduce(function, sequence[, initial])</td>
+<td>遍历把序列sequence的元素并通过函数function（只能带两个参数）进行处理</td>
+</tr>
+</tbody>
+</table>
 <h3 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [174]: l1 = [1,2,3]</span><br><span class="line"></span><br><span class="line">In [176]: l2 = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</span><br><span class="line"></span><br><span class="line">In [177]: l3 = [&apos;I&apos;,&apos;II&apos;]</span><br><span class="line"></span><br><span class="line">In [178]: zip(l1,l2,l3)  ##默认向最小的序列看起</span><br><span class="line">Out[178]: [(1, &apos;a&apos;, &apos;I&apos;), (2, &apos;b&apos;, &apos;II&apos;)]</span><br><span class="line"></span><br><span class="line">In [179]: zip(l1,l2)   ##下标相同的组成一组</span><br><span class="line">Out[179]: [(1, &apos;a&apos;), (2, &apos;b&apos;), (3, &apos;c&apos;)]</span><br></pre></td></tr></table></figure>
 <h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [170]: def f(x):  ##判断偶数的函数</span><br><span class="line">     ...:     if x % 2 == 0:  </span><br><span class="line">     ...:         return 1</span><br><span class="line">     ...:     </span><br><span class="line"></span><br><span class="line">In [171]: filter(f, range(11)) ##通过函数过滤range(11)</span><br><span class="line">Out[171]: [0, 2, 4, 6, 8, 10]</span><br><span class="line"></span><br><span class="line">In [190]: filter(lambda x : x % 2 == 0 ,range(11) )  ##使用匿名函数</span><br><span class="line">Out[190]: [0, 2, 4, 6, 8, 10]</span><br></pre></td></tr></table></figure>
 <h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [186]: def f(x,y):  函数中有两个参数</span><br><span class="line">     ...:     return x + y</span><br><span class="line">     ...:</span><br><span class="line"></span><br><span class="line">In [187]: l1=[1,2]</span><br><span class="line"></span><br><span class="line">In [188]: l2=[2,3]</span><br><span class="line"></span><br><span class="line">In [189]: map(f,l1,l2)  ##从两个序列中各自传参给函数处理</span><br><span class="line">Out[189]: [3, 5]</span><br><span class="line"></span><br><span class="line">In [193]: map(lambda x,y : x + y , range(4),range(4))  ##使用匿名函数 </span><br><span class="line">Out[193]: [0, 2, 4, 6]</span><br></pre></td></tr></table></figure>
@@ -569,11 +744,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,10 +757,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,6 +769,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
