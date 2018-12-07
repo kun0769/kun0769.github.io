@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>PyCharm 快捷键 | kun0769的博客</title>
+  <title>Python 基础语法 使用装饰器来装饰生成器 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PyCharm 快捷键">
-<meta name="keywords" content="PyCharm">
+  <meta name="description" content="使用装饰器来装饰生成器">
+<meta name="keywords" content="Python,基础语法,生成器,装饰器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PyCharm 快捷键">
-<meta property="og:url" content="http://yoursite.com/2018/11/30/PyCharm-快捷键/index.html">
+<meta property="og:title" content="Python 基础语法 使用装饰器来装饰生成器">
+<meta property="og:url" content="http://yoursite.com/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="PyCharm 快捷键">
+<meta property="og:description" content="使用装饰器来装饰生成器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-30T10:49:56.557Z">
+<meta property="og:updated_time" content="2018-12-07T12:59:48.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PyCharm 快捷键">
-<meta name="twitter:description" content="PyCharm 快捷键">
+<meta name="twitter:title" content="Python 基础语法 使用装饰器来装饰生成器">
+<meta name="twitter:description" content="使用装饰器来装饰生成器">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,97 +145,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PyCharm-快捷键" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python-基础语法-使用装饰器来装饰生成器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      PyCharm 快捷键
+      Python 基础语法 使用装饰器来装饰生成器
     </h1>
   
 
         
-        <a href="/2018/11/30/PyCharm-快捷键/" class="archive-article-date">
-  	<time datetime="2018-11-30T10:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+        <a href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/" class="archive-article-date">
+  	<time datetime="2018-12-07T12:56:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>PyCharm 快捷键<br><a id="more"></a></p>
-<table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ctrl+a</td>
-<td>全选</td>
-</tr>
-<tr>
-<td>Ctrl+c</td>
-<td>复制光标那行 复制光标选择的内容</td>
-</tr>
-<tr>
-<td>Ctrl+d</td>
-<td>复制并粘贴光标那行</td>
-</tr>
-<tr>
-<td>Ctrl+v</td>
-<td>粘贴</td>
-</tr>
-<tr>
-<td>Ctrl+z</td>
-<td>撤销</td>
-</tr>
-<tr>
-<td>Ctrl+f /Ctrl+shitf+f</td>
-<td>查找功能</td>
-</tr>
-<tr>
-<td>Ctrl+n /Ctrl+shitf+n</td>
-<td>查找该项目(目录)的文件</td>
-</tr>
-<tr>
-<td>Ctrl+鼠标左键</td>
-<td>查看函数帮助文档 </td>
-</tr>
-<tr>
-<td>Ctrl+/ 注释</td>
-<td>取消注释</td>
-</tr>
-<tr>
-<td>Alt +回车</td>
-<td>自动导入模块</td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>缩进</td>
-</tr>
-<tr>
-<td>Shift+Tab</td>
-<td>回退缩进</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>跳进方法</td>
-</tr>
-<tr>
-<td>F8</td>
-<td>下一步</td>
-</tr>
-<tr>
-<td>F9</td>
-<td>执行到下一个断点</td>
-</tr>
-</tbody>
-</table>
+        <p>使用装饰器来装饰生成器<br><a id="more"></a></p>
+<h2 id="使用装饰器来装饰生成器"><a href="#使用装饰器来装饰生成器" class="headerlink" title="使用装饰器来装饰生成器"></a>使用装饰器来装饰生成器</h2><p>由于生成器要使用next方法才会进入里面执行，假如生成器多每次都要使用next方法进入十分繁琐，因此可以把next方法放在装饰器里来装饰生成器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    x=[]</span><br><span class="line">    while True:</span><br><span class="line">        n =yield x</span><br><span class="line">        x.append(n)</span><br><span class="line">        print(x)</span><br><span class="line"></span><br><span class="line">a = foo()</span><br><span class="line">a.__next__()</span><br><span class="line">q = 1</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    if q == 6:</span><br><span class="line">        break</span><br><span class="line">    a.send(q)</span><br><span class="line">    q+=1</span><br></pre></td></tr></table></figure></p>
+<p>next方法放进装饰器里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def zhuang(fun):</span><br><span class="line">    def wrapper():</span><br><span class="line">        k = fun()</span><br><span class="line">        next(k)</span><br><span class="line">        return k</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@zhuang  ##foo =zhaung(foo)</span><br><span class="line">def foo():</span><br><span class="line">    x=[]</span><br><span class="line">    while True:</span><br><span class="line">        n =yield x</span><br><span class="line">        x.append(n)</span><br><span class="line">        print(x)</span><br><span class="line"></span><br><span class="line">a = foo()</span><br><span class="line">foo()</span><br><span class="line">q = 1</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    if q == 6:</span><br><span class="line">        break</span><br><span class="line">    a.send(q)</span><br><span class="line">    q+=1</span><br></pre></td></tr></table></figure></p>
+<p>使用生成器和装饰器实现grep命令搜寻Python并打印出该文件路径的功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">def init(func):                                              ##实现next方法进入生成器</span><br><span class="line">    def wrapper(*args,**kwargs):</span><br><span class="line">        res=func(*args,**kwargs)</span><br><span class="line">        next(res)</span><br><span class="line">        return res</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@init</span><br><span class="line">def search(target):                                       ##得到路径下的各个文件的绝对路径</span><br><span class="line">    while True:</span><br><span class="line">        search_path=yield</span><br><span class="line">        g=os.walk(search_path)                    ##os.walk(路径) 得三个值 1）路径本身 2）空列表 3）路径下的各个文件</span><br><span class="line">        for par_dir,_,files in g:</span><br><span class="line">            #par_dir 目录的路径</span><br><span class="line">            #files 文件名字列表</span><br><span class="line">            for file in files:                               ##遍历各个文件的列表</span><br><span class="line">                file_abs_path=r&apos;%s\%s&apos; %(par_dir,file)  </span><br><span class="line">                # print(file_abs_path)</span><br><span class="line">                target.send(file_abs_path)          ##把路径的值传给生成器4opener()</span><br><span class="line">                #E:\python\讲课\实战一期\串讲\基础\12.5\lib\1.txt</span><br><span class="line">                #E:\python\讲课\实战一期\串讲\基础\12.5\lib\dsfds</span><br><span class="line">                #E:\python\讲课\实战一期\串讲\基础\12.5\lib\have_python</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@init</span><br><span class="line">def opener(target):                                        ##打开各个文件</span><br><span class="line">    while True:</span><br><span class="line">        file_abs_path=yield</span><br><span class="line">        # print(&apos;opener func==&gt;&apos;,file_abs_path)</span><br><span class="line">        with open(file_abs_path,encoding=&apos;utf-8&apos;) as f:</span><br><span class="line">            target.send((file_abs_path,f))             ##值是元祖 (文件路径,文件句柄)</span><br><span class="line"></span><br><span class="line">@init</span><br><span class="line">def cat(target):                                                ##遍历各个文件内容</span><br><span class="line">    while True:</span><br><span class="line">        file_abs_path,f=yield  #(file_abs_path,f)</span><br><span class="line">        for line in f:</span><br><span class="line">            tag=target.send((file_abs_path,line))</span><br><span class="line">            if tag:</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@init</span><br><span class="line">def grep(target,pattern):                             ##判断文件内容是否有python</span><br><span class="line">    #pattern= python</span><br><span class="line">    tag=False</span><br><span class="line">    while True:</span><br><span class="line">        file_abs_path,line=yield tag</span><br><span class="line">        tag=False</span><br><span class="line">        if pattern in line:</span><br><span class="line">            tag=True</span><br><span class="line">            target.send(file_abs_path)</span><br><span class="line"></span><br><span class="line">@init                                                            ##打印出有内容有Python的路径</span><br><span class="line">def printer():</span><br><span class="line">    while True:</span><br><span class="line">        file_abs_path=yield</span><br><span class="line">        print(file_abs_path)</span><br><span class="line"></span><br><span class="line">    #生成器5</span><br><span class="line">        #生成器4</span><br><span class="line">                #生成器3</span><br><span class="line">                    #生成器2</span><br><span class="line">                          #生成器1</span><br><span class="line">g=search(opener(cat(grep(printer(),&apos;python&apos;))))</span><br><span class="line">print(g)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x=r&apos;E:\python\讲课\实战一期\串讲\基础\bak\lib&apos;</span><br><span class="line">g.send(x)</span><br></pre></td></tr></table></figure></p>
+<p>流程：<br>1）装饰器@init作用就是next方法 进入生成器内部 进入生成器1printer() 遇到yield跳出来 继续走装饰器@init并执行装饰器2grep(printer(),’python’ 遇到yield跳出来 …直到最外层执行生成器5 search() 遇到yield又跳出来并赋值给g</p>
+<p>2）g通过send传值进入生成器5search()的yield中继续执行得到文件的绝对路径 给生成器4opener() 打开各个文件 传值给生成器3cat() 遍历各个文件内容 传值给生成器2grep()判断文件内容是否有python 传值给生成器1printer()打印出该路径 继续重复 1）2）</p>
+<p>printer –&gt; grep –&gt; cat –&gt; opener –&gt; search–&gt; opener –&gt; cat –&gt; grep –&gt; printer –&gt;grep….</p>
+<p>使用os.walk方法得文件的绝对路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">d = r&apos;E:\12.5\12.5\lib&apos;</span><br><span class="line"></span><br><span class="line">g = os.walk(d)</span><br><span class="line">for a,b,c in g:           #a是路径 c是路径下的各个文件的列表</span><br><span class="line">    for files in c:         #遍历列表得各个文件 并打印出各个文件的绝对路径</span><br><span class="line">        print(r&apos;%s\%s&apos; %(a,files))</span><br><span class="line"></span><br><span class="line">E:\12.5\12.5\lib\1.txt</span><br><span class="line">E:\12.5\12.5\lib\dsfds</span><br><span class="line">E:\12.5\12.5\lib\have_python</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -249,7 +186,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyCharm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生成器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
         		</li>
       		
 		</ul>
@@ -305,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/30/PyCharm-快捷键/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +268,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/01/Python-基础语法-装饰器/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python 基础语法 装饰器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/29/Python-基础语法-10-内建函数/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python 基础语法 10 内建函数</div>
+    <a href="/2018/12/07/Python-基础语法-（可迭代对象-迭代器-生成器）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python 基础语法（可迭代对象 迭代器 生成器）</div>
       <i class="icon-circle-right"></i>
     </a>
   
