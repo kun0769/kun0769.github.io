@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | kun0769的博客</title>
+  <title>sql 4 复杂查询 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/25/index.html">
+  <meta name="description" content="sql 4 复杂查询">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql 4 复杂查询">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/sql-4-复杂查询/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="sql 4 复杂查询">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image1.png">
+<meta property="og:updated_time" content="2019-03-31T06:00:09.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="sql 4 复杂查询">
+<meta name="twitter:description" content="sql 4 复杂查询">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image1.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,240 +147,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-sql-4-复杂查询" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sql 4 复杂查询
+    </h1>
+  
+
+        
+        <a href="/2019/03/31/sql-4-复杂查询/" class="archive-article-date">
+  	<time datetime="2019-03-31T05:49:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>sql 4 复杂查询<br><a id="more"></a></p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>从sql角度说，视图和表相同。两者区别在于表中保存的是真实的数据，<code>视图中保存的是select语句</code>（视图本身不存数据）。视图类似于临时存储数据的表。</p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><p>1）节省空间 视图中只保存select语句的代码，通过select来查询真实数据显示出来。<br>2）不用重新书写select语句 </p>
+<p>一般把经常使用的select语句做成视图。原表数据更新，视图也会更新。</p>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><p>格式：<code>create view 视图名(视图列名1, ... )  as &lt;select语句&gt;;</code><br>注意：select语句列的排序顺序要和视图中列的排序顺序要一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create view t2_view (shobin_bunrui, count_shobin) </span><br><span class="line">as </span><br><span class="line">select shobin_bunrui, count(*) from t2 group by shobin_bunrui;</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看视图"><a href="#查看视图" class="headerlink" title="查看视图"></a>查看视图</h3><p>格式：<code>select &lt;视图列名,...&gt; from &lt;视图名&gt;;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select * from  t2_view;</span><br><span class="line"></span><br><span class="line">shobin_bunrui | count_shobin</span><br><span class="line">---------------+--------------</span><br><span class="line">衣服          |            1</span><br><span class="line">办公用品      |            1</span><br><span class="line">厨房用具      |            3</span><br></pre></td></tr></table></figure></p>
+<h3 id="视图限制"><a href="#视图限制" class="headerlink" title="视图限制"></a>视图限制</h3><p>1）定义视图时不能使用order by子句<br>2）对视图进行更新规范 1.select语句未使用distinct 2.from子句只有一张表 3.未使用group by子句 4.未使用having子句</p>
+<h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><p>格式：<code>drop view 视图名;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop view t2_view;</span><br></pre></td></tr></table></figure>
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p>子查询就是一次性的视图，它在select语句执行完后就会消失。</p>
+<p>子查询是把定义视图的select语句放在其from子句中。as后是子查询名。先执行内层select语句再执行外层select语句。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from (select shobin_bunrui,  count(hanbai_tabka) from t2 group by shobin_bunrui) as v2_view;</span><br></pre></td></tr></table></figure></p>
+<p>也可以多层子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from ( select * from (select shobin_bunrui,  count(hanbai_tabka) from t2 group by shobin_bunrui) as v2_view1 where count = 3) as v2_view2;</span><br></pre></td></tr></table></figure></p>
+<h3 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h3><p>标量是单一的意思。标量子查询就是必须而且只能<code>返回1行1列的结果</code>。<br>注意：标量子查询不能返回多行数据，返回多汗数据只是普通子查询，不能用在 = 或者 &lt;&gt;当中。</p>
+<p>如果想“查询出销售单价高于平均销售单价的商品”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select shohin_mei, shobin_bunrui, hanbai_tabka </span><br><span class="line">from t2 </span><br><span class="line">where hanbai_tabka &gt; avg (hanbai_tabk);</span><br></pre></td></tr></table></figure></p>
+<p>但是聚合函数是不能写再where子句中的，而单独查询平均销售单价的sql语句是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(hanbai_tabka) from t2;</span><br></pre></td></tr></table></figure></p>
+<p>此时单独查询平均销售单价的sql语句就是标量子查询了，此时用标量子查询来代替avg (hanbai_tabk)的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select shohin_mei, shobin_bunrui, hanbai_tabka </span><br><span class="line">from t2 </span><br><span class="line">where hanbai_tabka &gt; (select avg(hanbai_tabka) from t2);</span><br><span class="line"></span><br><span class="line">shohin_mei | shobin_bunrui | hanbai_tabka</span><br><span class="line">------------+---------------+--------------</span><br><span class="line">T恤        | 衣服          |         2000</span><br><span class="line">菜刀       | 厨房用具      |         2990</span><br></pre></td></tr></table></figure></p>
+<p>能够使用常数或者列名的地方，无论是select子句，where子句，group by子句，having子句和order by子句，都是可以使用标量子查询的。</p>
+<p>在select子句中使用标量子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select shohin_mei, shobin_bunrui, hanbai_tabka, ( select avg(hanbai_tabka) from t2 ) as ava_product </span><br><span class="line">from t2 ;</span><br><span class="line"></span><br><span class="line">shohin_mei | shobin_bunrui | hanbai_tabka |      ava_product</span><br><span class="line">------------+---------------+--------------+-----------------------</span><br><span class="line">打孔器     | 办公用品      |          500 | 1198.0000000000000000</span><br><span class="line">T恤        | 衣服          |         2000 | 1198.0000000000000000</span><br><span class="line">叉子       | 厨房用具      |          500 | 1198.0000000000000000</span><br><span class="line">擦菜板     | 厨房用具      |            0 | 1198.0000000000000000</span><br><span class="line">菜刀       | 厨房用具      |         2990 | 1198.0000000000000000</span><br></pre></td></tr></table></figure></p>
+<p>在having子句中使用标量子查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select shobin_bunrui,avg(hanbai_tabka) </span><br><span class="line">from t2 </span><br><span class="line">group by shobin_bunrui </span><br><span class="line">having avg(hanbai_tabka) &gt; (select avg(hanbai_tabka) from t2);</span><br><span class="line"></span><br><span class="line">shobin_bunrui |          avg</span><br><span class="line">---------------+-----------------------</span><br><span class="line">衣服          | 2000.0000000000000000</span><br></pre></td></tr></table></figure></p>
+<h3 id="关联子查询"><a href="#关联子查询" class="headerlink" title="关联子查询"></a>关联子查询</h3><p>使用关联子查询，需要在表对应的列名之前加上表的别名，以“<code>&lt;表名&gt;.&lt;列名&gt;</code>”形式。</p>
+<p>如果想“查询出各商品种类中高于该商品种类的平均销售单价的商品”<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image1.png" alt=""><br>在同为厨房用具的商品,厨房用具类的平均销售单价是(500+0+2990)/3=1163 ，符合要求的是菜刀。</p>
+<p>每种商品种类的平均值语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select avg(hanbai_tabka) from t2 group by shobin_bunrui;</span><br><span class="line"></span><br><span class="line">          avg</span><br><span class="line">-----------------------</span><br><span class="line">2000.0000000000000000</span><br><span class="line">  500.0000000000000000</span><br><span class="line">1163.3333333333333333</span><br></pre></td></tr></table></figure></p>
+<p>由于该查询得三个值，在where语句中只能使用标量子查询，因此下面语句会报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select shohin_mei, shobin_bunrui, hanbai_tabka from t2 where hanbai_tabka &gt; (select avg(hanbai_tabka) from t2 group by shobin_bunrui);</span><br></pre></td></tr></table></figure></p>
+<p>再此语句中使用关联子查询便得到结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select shohin_mei, shobin_bunrui, hanbai_tabka </span><br><span class="line">from t2 as P1</span><br><span class="line">where hanbai_tabka &gt; (select avg(hanbai_tabka) from t2 as P2 where P1.shobin_bunrui = P2.shobin_bunrui group by shobin_bunrui);</span><br><span class="line"></span><br><span class="line">shohin_mei | shobin_bunrui | hanbai_tabka</span><br><span class="line">------------+---------------+--------------</span><br><span class="line">菜刀       | 厨房用具      |         2990</span><br></pre></td></tr></table></figure></p>
+<p>在这里起到关键作用的语句是<code>where P1.shobin_bunrui = P2.shobin_bunrui</code> 意思是在同类商品中对各类商品的销售单价和平均单价进行比较，由于是使用同一个表t2,为了区分使用关联名称P1 P2 ,而关联子查询使用形式为<code>&lt;表名&gt;.&lt;列名&gt;</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/七周第三次课（5月8日）/" class="archive-article-date">
-  	<time datetime="2018-05-08T16:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/七周第三次课（5月8日）/">七周第三次课（5月8日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">防火墙</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/31/sql-4-复杂查询/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/08/七周第二次课（5月7日）/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/31/sql-3-数据更新/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql 3 数据更新</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/七周第二次课（5月7日）/">七周第二次课（5月7日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/05/七周第一次课（5月4日）/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/七周第一次课（5月4日）/">七周第一次课（5月4日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">日常运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/28/六周第三次课（4月27日）/" class="archive-article-date">
-  	<time datetime="2018-04-27T16:36:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/28/六周第三次课（4月27日）/">六周第三次课（4月27日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/26/六周第二次课（4月26日）/" class="archive-article-date">
-  	<time datetime="2018-04-26T15:23:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/26/六周第二次课（4月26日）/">六周第二次课（4月26日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/page/24/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/23/">23</a><a class="page-number" href="/archives/2018/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/archives/2018/page/26/">26</a><a class="page-number" href="/archives/2018/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/31/">31</a><a class="extend next" rel="next" href="/archives/2018/page/26/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -396,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
