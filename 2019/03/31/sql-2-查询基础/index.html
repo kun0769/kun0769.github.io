@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>分发系统 1（7月19日） | kun0769的博客</title>
+  <title>sql 2 查询基础 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
-<meta name="keywords" content="shell">
+  <meta name="description" content="sql 2 查询基础">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分发系统 1（7月19日）">
-<meta property="og:url" content="http://yoursite.com/2018/07/19/分发系统-1（7月19日）/index.html">
+<meta property="og:title" content="sql 2 查询基础">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/sql-2-查询基础/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
+<meta property="og:description" content="sql 2 查询基础">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-20T15:55:09.697Z">
+<meta property="og:updated_time" content="2019-03-31T04:42:51.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分发系统 1（7月19日）">
-<meta name="twitter:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
+<meta name="twitter:title" content="sql 2 查询基础">
+<meta name="twitter:description" content="sql 2 查询基础">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,79 +145,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-分发系统-1（7月19日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql-2-查询基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      分发系统 1（7月19日）
+      sql 2 查询基础
     </h1>
   
 
         
-        <a href="/2018/07/19/分发系统-1（7月19日）/" class="archive-article-date">
-  	<time datetime="2018-07-19T15:50:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
+        <a href="/2019/03/31/sql-2-查询基础/" class="archive-article-date">
+  	<time datetime="2019-03-31T04:15:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>20.27 分发系统介绍<br>20.28 expect脚本远程登录<br>20.29 expect脚本远程执行命令<br>20.30 expect脚本传递参数<br><a id="more"></a></p>
-<h2 id="20-27-分发系统介绍"><a href="#20-27-分发系统介绍" class="headerlink" title="20.27 分发系统介绍"></a>20.27 分发系统介绍</h2><p>公司的网站本来已经建好了，当公司的业务越来l越大时候就会需要实时更新代码，由于后端服务器有很多台来跑web服务。此时为了快速更新代码就可以使用分发系统。其中开源的上线代码的软件有很多，git等等。这里我们使用shell来编写一个分发系统来上线代码。核心使用expect脚本语言，它可以实现远程执行命令，远程传输数据等操作。</p>
-<ul>
-<li>准备工作<br>  1.准备1台模版机器，里面是包含有最新的代码<br>  2.每台分发机器的IP地址和密码<br>  3.分发系统脚本<br>由于分发系统的核心是使用expect，因此先实践几个例子来熟悉expect的语法命令</li>
-</ul>
-<h2 id="20-28-expect脚本远程登录"><a href="#20-28-expect脚本远程登录" class="headerlink" title="20.28 expect脚本远程登录"></a>20.28 expect脚本远程登录</h2><h3 id="实例1-自动远程登录"><a href="#实例1-自动远程登录" class="headerlink" title="实例1.自动远程登录"></a>实例1.自动远程登录</h3><p>expect脚本机器 kun05 192.168.80.104<br>被远程的机器 kun03 192.168.80.102</p>
-<blockquote>
-<p>1.安装expect语言</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# yum install -y expect</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cd /usr/local/sbin/</span><br><span class="line">[root@kun05 sbin]# vim expect1.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">#定义变量</span><br><span class="line">set host &quot;192.168.80.102&quot;</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">#执行命令</span><br><span class="line">spawn ssh root@$host</span><br><span class="line">#与远程机器交互 截取特定信息 发送变量</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123; send &quot;yes\r&quot;;exp_continue &#125;</span><br><span class="line">&quot;password:&quot; &#123; send &quot;$passwd\r&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure></p>
-<p><code>set</code> 定义变量<br><code>spawn</code> 执行命令<br><code>expect</code> 使用expect语句进行交互<br><code>\r</code>表示回车<br><code>exp_contunue</code>表示继续<br><code>interact</code>表示继续交互<br><code>expect eof</code>表示停留远程机器上一会儿再退出</p>
-<p>为了让远程登录时候出现提示，可以清空<code>/root/.ssh/known_hosts</code>目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# &gt; /root/.ssh/known_hosts</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>1.添加执行权限</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect1.exp</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# ./expect1.exp</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">The authenticity of host &apos;192.168.80.102 (192.168.80.102)&apos; can&apos;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:4QK/8Tn8lZAitB2+3wJMBuONgHExXkOAzZpYPndYoPQ.</span><br><span class="line">ECDSA key fingerprint is MD5:89:d5:7c:90:ff:d2:c6:1a:6e:f8:58:48:29:78:9a:f3.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line">Warning: Permanently added &apos;192.168.80.102&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 21:52:22 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]#</span><br></pre></td></tr></table></figure>
-<p>已经成功登录kun03机器上</p>
-<h2 id="20-29-expect脚本远程执行命令"><a href="#20-29-expect脚本远程执行命令" class="headerlink" title="20.29 expect脚本远程执行命令"></a>20.29 expect脚本远程执行命令</h2><h3 id="实例2-自动远程登录，并执行命令并退出"><a href="#实例2-自动远程登录，并执行命令并退出" class="headerlink" title="实例2.自动远程登录，并执行命令并退出"></a>实例2.自动远程登录，并执行命令并退出</h3><blockquote>
-<p>编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect2.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user &quot;root&quot;</span><br><span class="line">set host &quot;192.168.80.102&quot;</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;;exp_continue&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;touch /tmp/test.aa\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;echo 111 &gt;/tmp/test.aa\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>添加执行权限并执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect2.exp</span><br><span class="line">[root@kun05 sbin]# ./expect2.exp</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 22:48:29 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# touch /tmp/test.aa</span><br><span class="line">[root@kun03 ~]# echo 111 &gt;/tmp/test.aa</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>进入kun03机器看看</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# ll /tmp/test.aa</span><br><span class="line">-rw-r--r-- 1 root root 4 7月  19 22:50 /tmp/test.aa</span><br><span class="line">[root@kun03 ~]# cat  /tmp/test.aa</span><br><span class="line">111</span><br></pre></td></tr></table></figure>
-<h2 id="20-28-expect脚本传递参数"><a href="#20-28-expect脚本传递参数" class="headerlink" title="20.28 expect脚本传递参数"></a>20.28 expect脚本传递参数</h2><h3 id="实例3-远程传递参数"><a href="#实例3-远程传递参数" class="headerlink" title="实例3.远程传递参数"></a>实例3.远程传递参数</h3><blockquote>
-<p>编辑脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# vim expect3.exp</span><br></pre></td></tr></table></figure>
-<p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user [lindex $argv 0]</span><br><span class="line">set host [lindex $argv 1]</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set cmd [lindex $argv 2]</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<p><code>[lindex $argv 0]</code>表示要输入的第一个参数 如此类推</p>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><blockquote>
-<p>添加执行权限并执行脚本</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 sbin]# chmod a+x expect3.exp</span><br><span class="line">[root@kun05 sbin]# ./expect3.exp root 192.168.80.102 &quot;ls;w&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Thu Jul 19 22:52:09 2018 from 192.168.80.1</span><br><span class="line">[root@kun03 ~]# ls;w</span><br><span class="line">anaconda-ks.cfg  ip_forwarx~  ip_forwarz~  logs     temp</span><br><span class="line">ip_forward~      ip_forwary~  log          sim.pid  zabbix-release-3.4-2.el7.noarch.rpm</span><br><span class="line">23:45:34 up  2:02,  2 users,  load average: 0.01, 0.03, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     pts/0    192.168.80.1     22:52    7:58   0.01s  0.01s -bash</span><br><span class="line">root     pts/1    192.168.80.104   23:45    0.00s  0.00s  0.00s w</span><br></pre></td></tr></table></figure>
-<p>当要输入参数里面有多个命令是需要用<code>&quot;&quot;</code>双引号括起来并使用<code>;</code>分号分开</p>
-<p>可以在命令行的后面增加<code>set timeout</code> 来指定命令的超时时间 <code>-1</code>为永远<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set user [lindex $argv 0]</span><br><span class="line">set host [lindex $argv 1]</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">set cmd [lindex $argv 2]</span><br><span class="line">spawn ssh $user@$host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123;send &quot;yes\r&quot;&#125;</span><br><span class="line">&quot;password:&quot; &#123;send &quot;$passwd\r&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;$cmd\r&quot;</span><br><span class="line">set timeout -1</span><br><span class="line">expect &quot;]*&quot;</span><br><span class="line">send &quot;exit\r&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h3><p>输入vmstat命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun03 ~]# [root@kun05 sbin]# ./expect3.exp &quot;root&quot; 192.168.80.102 &quot;vmstat 1&quot;</span><br><span class="line">spawn ssh root@192.168.80.102</span><br><span class="line">root@192.168.80.102&apos;s password:</span><br><span class="line">Last login: Fri Jul 20 21:42:43 2018 from 192.168.80.104</span><br><span class="line">[root@kun03 ~]# vmstat 1</span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line">r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line">2  0      0 167852   2108 168580    0    0    35     3   85  113  0  0 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   91  113  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0  104  119  0  0 100  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   79   96  0  1 99  0  0</span><br><span class="line">0  0      0 167480   2108 168592    0    0     0     0   89  106  0  0 100  0  0</span><br></pre></td></tr></table></figure></p>
-<p>现在是不断地执行vmstat命令</p>
+        <p>sql 2 查询基础<br><a id="more"></a></p>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="列的查询"><a href="#列的查询" class="headerlink" title="列的查询"></a>列的查询</h3><p>通过select语句查询并选取数据的过程为匹配查询或查询（Query）<br>格式：<code>select &lt;列名&gt;, ... from &lt;表名&gt;;</code><br>注意：<code>select</code>子句指定从表中查询列的名称（列多个用逗号分隔），<code>from</code>子句指定数据表的名称 </p>
+<p>从表t1查询列t1_id, t1_title和t1_day<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select t1_id, t1_title, t1_day from t1;</span><br></pre></td></tr></table></figure></p>
+<h3 id="查询表中所有列"><a href="#查询表中所有列" class="headerlink" title="查询表中所有列"></a>查询表中所有列</h3><p>格式：<code>select * from &lt;表名&gt;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">select * from t1;</span><br><span class="line"></span><br><span class="line">t1_id | t1_name | t1_title | t1_jin | t1_chu |   t1_day</span><br><span class="line">-------+---------+----------+--------+--------+------------</span><br><span class="line">3     | 运动衫  | 衣服     |   5000 |   2333 |</span><br><span class="line">1     | 衬衫    | 衣服     |   1000 |    500 | 2019-09-20</span><br><span class="line">2     | 打孔器  | 办公用品 |    500 |    320 | 2019-09-11</span><br><span class="line">4     | 菜刀    | 厨房用品 |     66 |     12 | 2019-09-20</span><br><span class="line">5     | 高压锅  | 厨房用品 |   2222 |    111 | 2019-01-12</span><br><span class="line">6     | 叉子    | 厨房用品 |    555 |      1 | 2019-09-20</span><br><span class="line">7     | 圆珠笔  | 办公用品 |  77777 |        | 2019-03-01</span><br></pre></td></tr></table></figure>
+<h3 id="为列设定别名"><a href="#为列设定别名" class="headerlink" title="为列设定别名"></a>为列设定别名</h3><p>sql语句中使用as为列设定别名，原列名并没改变<br>格式：<code>select &lt;列名&gt; as 别名, ... from &lt;表名&gt;;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t1_id as id,t1_name as name, t1_title as title from t1;</span><br><span class="line"></span><br><span class="line">id | name | title</span><br><span class="line">----+------+-------</span><br></pre></td></tr></table></figure>
+<p>别名可以使用汉字，用双引号括起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t1_id as &quot;编号&quot;, t1_name as &quot;名字&quot;, t1_title as &quot;题目&quot; from t1;</span><br><span class="line"></span><br><span class="line">编号 | 名字 | 题目</span><br><span class="line">------+------+------</span><br></pre></td></tr></table></figure></p>
+<h3 id="常数的查询"><a href="#常数的查询" class="headerlink" title="常数的查询"></a>常数的查询</h3><p>select语句不仅可以写列，也可以写<code>常数（整数，字符串，日期）</code></p>
+<p>查询t1表中列aaa是商品 列bbb是38 列ccc是2019-02-01 和t1_id t1_title出来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select  &quot;商品&quot; as  aaa, 38 as bbb, &quot;2019-02-01&quot; as ccc, t1_id, t1_title from t1;</span><br></pre></td></tr></table></figure></p>
+<h3 id="从结果中删除重复的行"><a href="#从结果中删除重复的行" class="headerlink" title="从结果中删除重复的行"></a>从结果中删除重复的行</h3><p>格式：<code>select distinct &lt;列名&gt;... from &lt;表名&gt;;</code><br>注意：null也会一类数据，去重只保留一行</p>
+<p>去t1_name列中重复的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select distinct t1_title from t1; </span><br><span class="line"></span><br><span class="line">t1_title</span><br><span class="line">----------</span><br><span class="line">衣服</span><br><span class="line">办公用品</span><br><span class="line">厨房用品</span><br></pre></td></tr></table></figure></p>
+<p>distinct去重多列时，两字段必须完全相同才会去重。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select distinct t1_title,t1_day from t1; </span><br><span class="line"></span><br><span class="line">t1_title |   t1_day</span><br><span class="line">----------+------------</span><br><span class="line">办公用品 | 2019-03-01</span><br><span class="line">衣服     | 2019-09-20</span><br><span class="line">衣服     |</span><br><span class="line">厨房用品 | 2019-01-12</span><br><span class="line">办公用品 | 2019-09-11</span><br><span class="line">厨房用品 | 2019-09-20</span><br></pre></td></tr></table></figure></p>
+<p>可使用<code>group by</code>子句去重 参考文章 <img src="" alt=""><a href="https://www.jianshu.com/p/7d26008f97f4" target="_blank" rel="noopener">https://www.jianshu.com/p/7d26008f97f4</a> </p>
+<h3 id="根据where语句来选择记录"><a href="#根据where语句来选择记录" class="headerlink" title="根据where语句来选择记录"></a>根据where语句来选择记录</h3><p>select语句可以通过where子句来指定查询的条件<br>格式：<code>select &lt;列名&gt;, ... from &lt;表名&gt; where &lt;条件表达式&gt;;</code></p>
+<p>查询t1_title值为衣服且列为t1_title和t1_name的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select t1_title, t1_name from t1 where t1_title=&apos;衣服&apos;; </span><br><span class="line"></span><br><span class="line">t1_title | t1_name</span><br><span class="line">----------+---------</span><br><span class="line">衣服     | 运动衫</span><br><span class="line">衣服     | 衬衫</span><br></pre></td></tr></table></figure></p>
+<h3 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h3><p>1）先选取符合条件的行<br>2）在选取对应的列</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>注释对sql执行没有任何影响，可以使用汉语和英语，在sql任何行中都可以插入</p>
+<h4 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h4><p>格式：<code>-- 内容</code></p>
+<h4 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h4><p>格式： <code>/* 内容 */</code></p>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>加减乘除 <code>+ - * /</code><br>注意：表达式中可用括号提高优先度，所有包含null运算结果都为null</p>
+<p>查询出列t1_chu的值的两倍并用t1_chu x2显示出来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">select t1_name,t1_chu * 2 as &quot;t1_chu x2&quot; from t1;</span><br><span class="line"></span><br><span class="line">t1_name | t1_chu x2</span><br><span class="line">---------+-----------</span><br><span class="line">运动衫  |      4666</span><br><span class="line">衬衫    |      1000</span><br><span class="line">打孔器  |       640</span><br><span class="line">菜刀    |        24</span><br><span class="line">高压锅  |       222</span><br><span class="line">叉子    |         2</span><br><span class="line">圆珠笔  |</span><br></pre></td></tr></table></figure></p>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p>比较运算符可以对字符，数字和日期等数据类型的列和值进行比较</p>
+<table>
+<thead>
+<tr>
+<th>含义</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td>=</td>
+</tr>
+<tr>
+<td>不等于</td>
+<td>&lt;&gt;</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td>&lt;=</td>
+</tr>
+<tr>
+<td>为空</td>
+<td>is null</td>
+</tr>
+<tr>
+<td>不为空</td>
+<td>is not null</td>
+</tr>
+</tbody>
+</table>
+<p>注意：不等于规范使用<code>&lt;&gt;</code> 个别DBMS使用<code>!=</code> ，字符串比较大小先比较第一位再比较第二位</p>
+<p>查询出t1_jin是500的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_name,t1_title from t1 where t1_jin = 500;</span><br><span class="line"></span><br><span class="line">t1_name | t1_title</span><br><span class="line">---------+----------</span><br><span class="line">打孔器  | 办公用品</span><br></pre></td></tr></table></figure></p>
+<p>查询出t1_jin不是500的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select t1_name,t1_title from t1 where t1_jin &lt;&gt; 500;</span><br><span class="line"></span><br><span class="line">t1_name | t1_title</span><br><span class="line">---------+----------</span><br><span class="line">运动衫  | 衣服</span><br><span class="line">衬衫    | 衣服</span><br><span class="line">菜刀    | 厨房用品</span><br><span class="line">高压锅  | 厨房用品</span><br><span class="line">叉子    | 厨房用品</span><br><span class="line">圆珠笔  | 办公用品</span><br></pre></td></tr></table></figure></p>
+<p>查询出日期2019-05-01之前的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select t1_name,t1_day from t1 where t1_day &lt; &apos;2019-05-01&apos;;</span><br><span class="line"></span><br><span class="line">t1_name |   t1_day</span><br><span class="line">---------+------------</span><br><span class="line">高压锅  | 2019-01-12</span><br><span class="line">圆珠笔  | 2019-03-01</span><br></pre></td></tr></table></figure></p>
+<p>查询出t1_jin比t1_chu大于等于500的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_jin, t1_chu from t1 where t1_jin - t1_chu &gt;= 500;</span><br><span class="line"></span><br><span class="line">t1_name | t1_jin | t1_chu</span><br><span class="line">---------+--------+--------</span><br><span class="line">运动衫  |   5000 |   2333</span><br><span class="line">衬衫    |   1000 |    500</span><br><span class="line">高压锅  |   2222 |    111</span><br><span class="line">叉子    |    555 |      1</span><br></pre></td></tr></table></figure></p>
+<p>查询t1_chu为空的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_chu from t1 where t1_chu is null;</span><br><span class="line"></span><br><span class="line">t1_name | t1_chu</span><br><span class="line">---------+--------</span><br><span class="line">圆珠笔  |</span><br></pre></td></tr></table></figure></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><code>not</code> 非 <code>and</code> 与 <code>or</code> 或</p>
+<p>查询t1_chu非大于等于500（小于500）的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_chu from t1 where not t1_chu &gt;=500;</span><br><span class="line"></span><br><span class="line">t1_name | t1_chu</span><br><span class="line">---------+--------</span><br><span class="line">打孔器  |    320</span><br><span class="line">菜刀    |     12</span><br><span class="line">高压锅  |    111</span><br><span class="line">叉子    |      1</span><br></pre></td></tr></table></figure></p>
+<p>查询出t1_title是厨房用品和t1_chu大于200的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_title, t1_chu from t1 where t1_title=&apos;厨房用品&apos; and t1_chu &gt;100;</span><br><span class="line"></span><br><span class="line">t1_name | t1_title | t1_chu</span><br><span class="line">---------+----------+--------</span><br><span class="line">高压锅  | 厨房用品 |    111</span><br></pre></td></tr></table></figure></p>
+<p>查询出t1_title是厨房用品或者t1_chu大于200的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_title, t1_chu from t1 where t1_title=&apos;厨房用品&apos; or t1_chu &gt;100;</span><br><span class="line"></span><br><span class="line">t1_name | t1_title | t1_chu</span><br><span class="line">---------+----------+--------</span><br><span class="line">运动衫  | 衣服     |   2333</span><br><span class="line">衬衫    | 衣服     |    500</span><br><span class="line">打孔器  | 办公用品 |    320</span><br><span class="line">菜刀    | 厨房用品 |     12</span><br><span class="line">高压锅  | 厨房用品 |    111</span><br><span class="line">叉子    | 厨房用品 |      1</span><br></pre></td></tr></table></figure></p>
+<p>查询出是办公用品 并且 日期是2019-09-20或者2019-09-11的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_name, t1_title, t1_day from t1 where t1_title =&apos;办公用品&apos; and (t1_day =&apos;2019-09-20&apos; or t1_day =&apos;2019-09-11&apos;);</span><br><span class="line"></span><br><span class="line">t1_name | t1_title |   t1_day</span><br><span class="line">---------+----------+------------</span><br><span class="line">打孔器  | 办公用品 | 2019-09-11</span><br></pre></td></tr></table></figure></p>
+<h2 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h2><p><code>聚合</code>：把多行汇聚成一行</p>
+<table>
+<thead>
+<tr>
+<th>聚合函数</th>
+<th>对表中的数据进行某种操作或者计算时使用的函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>计算表中记录数（行数）</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>计算表中数值列的数据合计值</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>计算表中数值列的数据平均值</td>
+</tr>
+<tr>
+<td>max</td>
+<td>求出表中任意列中数据的最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>求出表中任意列中数据的最小值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="count-计算总行数（包括null行）"><a href="#count-计算总行数（包括null行）" class="headerlink" title="count(*) 计算总行数（包括null行）"></a>count(*) 计算总行数（包括null行）</h3><p>查询t1中总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from t1;  #*表示所有列</span><br><span class="line"></span><br><span class="line">count</span><br><span class="line">-------</span><br><span class="line">     7</span><br></pre></td></tr></table></figure></p>
+<h3 id="count-列名-计算某列的非空的行数（不包括null行）"><a href="#count-列名-计算某列的非空的行数（不包括null行）" class="headerlink" title="count(列名) 计算某列的非空的行数（不包括null行）"></a>count(列名) 计算某列的非空的行数（不包括null行）</h3><p>查询t1_day列中非空的总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select count(t1_day) from t1;</span><br><span class="line"></span><br><span class="line">count</span><br><span class="line">-------</span><br><span class="line">     6</span><br></pre></td></tr></table></figure></p>
+<h3 id="sum-列名-计算某列的合计（只适用用数字类型，不包括null行）"><a href="#sum-列名-计算某列的合计（只适用用数字类型，不包括null行）" class="headerlink" title="sum(列名) 计算某列的合计（只适用用数字类型，不包括null行）"></a>sum(列名) 计算某列的合计（只适用用数字类型，不包括null行）</h3><p>计算t1_jin和t1_chu的合计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select sum(t1_jin), sum(t1_chu) from t1;</span><br><span class="line"></span><br><span class="line">  sum  | sum</span><br><span class="line">-------+------</span><br><span class="line">87120 | 3277</span><br></pre></td></tr></table></figure></p>
+<h3 id="avg-列名-计算某列的平均值（只适用用数字类型，不包括null行）"><a href="#avg-列名-计算某列的平均值（只适用用数字类型，不包括null行）" class="headerlink" title="avg(列名) 计算某列的平均值（只适用用数字类型，不包括null行）"></a>avg(列名) 计算某列的平均值（只适用用数字类型，不包括null行）</h3><p>计算t1_jin和t1_chu的平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select avg(t1_jin), avg(t1_chu) from t1;</span><br><span class="line"></span><br><span class="line">        avg         |         avg</span><br><span class="line">--------------------+----------------------</span><br><span class="line">12445.714285714286 | 546.1666666666666667</span><br></pre></td></tr></table></figure></p>
+<h3 id="max-列名-计算某列的最大值（适合任何类型）"><a href="#max-列名-计算某列的最大值（适合任何类型）" class="headerlink" title="max(列名) 计算某列的最大值（适合任何类型）"></a>max(列名) 计算某列的最大值（适合任何类型）</h3><h3 id="min-列名-计算某列的最小值（适合任何类型）"><a href="#min-列名-计算某列的最小值（适合任何类型）" class="headerlink" title="min(列名) 计算某列的最小值（适合任何类型）"></a>min(列名) 计算某列的最小值（适合任何类型）</h3><p>计算t1_jin的最大值和最小值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select max(t1_jin), min(t1_jin) from t1;</span><br><span class="line"></span><br><span class="line">  max  | min</span><br><span class="line">-------+-----</span><br><span class="line">77777 |  66</span><br></pre></td></tr></table></figure></p>
+<p>先去重再使用聚合函数计算<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select count(distinct t1_title) from t1;</span><br><span class="line"></span><br><span class="line">count</span><br><span class="line">-------</span><br><span class="line">     3</span><br></pre></td></tr></table></figure></p>
+<h3 id="对表进行分组"><a href="#对表进行分组" class="headerlink" title="对表进行分组"></a>对表进行分组</h3><p>group by子句可以让列把一样的值分为一组，还可以结合聚合函数一起使用。group by 指定的列称为<code>聚合键</code><br>格式：<code>select &lt;列名1&gt;, ... from &lt;表名&gt; group by &lt;列名1&gt;, ...;</code></p>
+<p>按照日期分组并统计次数（null值也会统计）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select t1_day, count(*) from t1 group by t1_day;</span><br><span class="line"></span><br><span class="line">   t1_day   | count</span><br><span class="line">------------+-------</span><br><span class="line">            |     1</span><br><span class="line">2019-09-20 |     3</span><br><span class="line">2019-09-11 |     1</span><br><span class="line">2019-03-01 |     1</span><br><span class="line">2019-01-12 |     1</span><br></pre></td></tr></table></figure></p>
+<p>当select语句中有where子句，group by子句要写在其后面，执行顺序为 <code>from</code> — <code>where</code> — <code>group by</code> — <code>select</code></p>
+<p>格式：<code>select &lt;列名1&gt;, ... from &lt;表名&gt; where &lt;条件表达式&gt; group by &lt;列名1&gt;, ...;</code></p>
+<p>查询出t1_title是办公用品并按照t1_jin分组的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select t1_jin,count(*) from t1 where t1_title = &apos;办公用品&apos; group by t1_jin;</span><br><span class="line"></span><br><span class="line">t1_jin | count</span><br><span class="line">--------+-------</span><br><span class="line">    500 |     2</span><br><span class="line">  77777 |     1</span><br></pre></td></tr></table></figure></p>
+<p>group by注意事项<br> 1）使用group by子句，select子句不能出现在聚合链以为的列名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select t1_name,t1_jin,count(*) from t1 where t1_title = &apos;办公用品&apos; gr</span><br><span class="line">oup by t1_jin;</span><br><span class="line">ERROR:  column &quot;t1.t1_name&quot; must appear in the GROUP BY clause or be used in an</span><br><span class="line">aggregate function</span><br></pre></td></tr></table></figure></p>
+<p>2）group by子句不能使用select子句定义的别名，原因是先执行group by子句不识别别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select t1_jin as sb,count(*) from t1 where t1_title = &apos;办公用品&apos; grou</span><br><span class="line">p by t1_jin as sb;</span><br><span class="line">ERROR:  syntax error at or near &quot;as&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3）group by子句结果是随机的<br>4）只有select子句，having子句和order by子句才可以使用聚合函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select t1_jin,count(*) from t1 where count(*) =2 group by t1_jin;</span><br><span class="line">ERROR:  aggregate functions are not allowed in WHERE</span><br></pre></td></tr></table></figure></p>
+<h3 id="为聚合结果指定条件"><a href="#为聚合结果指定条件" class="headerlink" title="为聚合结果指定条件"></a>为聚合结果指定条件</h3><p><code>having</code>子句用来指定分组的条件<br><code>where</code>子句是数据行的条件<br><code>having</code>子句写在<code>group by</code>子句之后<br>格式：<code>select &lt;列名1&gt;, ... from &lt;表名&gt;  where &lt;条件表达式&gt; group by &lt;列名1&gt;, ... having &lt;条件表达式&gt;;</code></p>
+<p>查询出列t1_title分组统计行数后是3的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select t1_title, count(*) from t1 group by t1_title having count(*) = 3;</span><br><span class="line"></span><br><span class="line">t1_title | count</span><br><span class="line">----------+-------</span><br><span class="line">办公用品 |     3</span><br><span class="line">厨房用品 |     3</span><br></pre></td></tr></table></figure></p>
+<p>查询出t1_title分组求t1_jin平均值后小于1000的记录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_title, avg(t1_jin) from t1 group by t1_title having avg(t1_jin) &lt; 1000;</span><br><span class="line"></span><br><span class="line">t1_title |         avg</span><br><span class="line">----------+----------------------</span><br><span class="line">厨房用品 | 947.6666666666666667</span><br></pre></td></tr></table></figure></p>
+<p>注意：使用having子句只能出现三种元素：<code>常数</code> <code>聚合函数</code> <code>group by指定的列名（聚合键）</code></p>
+<p>由于where子句是指定行的条件，having子句指定分组的条件。当出现某个条件放在where或者having结果都是一样时，<code>默认应该把聚合键所对应的条件写到where上</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_title, count(*) from t1 where t1_title = &apos;衣服&apos; group by t1_title;</span><br><span class="line"></span><br><span class="line">t1_title | count</span><br><span class="line">----------+-------</span><br><span class="line">衣服     |     2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select t1_title, count(*) from t1 group by t1_title having t1_title =&apos;衣服&apos;;</span><br><span class="line"></span><br><span class="line">t1_title | count</span><br><span class="line">----------+-------</span><br><span class="line">衣服     |     2</span><br></pre></td></tr></table></figure>
+<h3 id="对查询结果进行排序"><a href="#对查询结果进行排序" class="headerlink" title="对查询结果进行排序"></a>对查询结果进行排序</h3><p>由于select子句查询结果是<code>随机排序</code>的<br>因此使用<code>order by</code>子句可以对查询结果进行排序，<code>asc</code>表升序 <code>desc</code>表降序。<br><code>order by</code>子句是写在select语句中的末尾。<br>格式：<code>select &lt;列名1&gt;, ... from &lt;表名&gt; order by &lt;排序基准列1&gt; ... ;</code></p>
+<p>按照t1_jin升序排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select t1_id,t1_name,t1_jin from t1 order by t1_jin;</span><br><span class="line"></span><br><span class="line">t1_id | t1_name | t1_jin</span><br><span class="line">-------+---------+--------</span><br><span class="line">4     | 菜刀    |     66</span><br><span class="line">2     | 打孔器  |    500</span><br><span class="line">8     | 书本    |    500</span><br><span class="line">6     | 叉子    |    555</span><br><span class="line">1     | 衬衫    |   1000</span><br><span class="line">5     | 高压锅  |   2222</span><br><span class="line">3     | 运动衫  |   5000</span><br><span class="line">7     | 圆珠笔  |  77777</span><br></pre></td></tr></table></figure></p>
+<p>按照t1_jin降序排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select t1_id,t1_name,t1_jin from t1 order by t1_jin desc;</span><br><span class="line"></span><br><span class="line">t1_id | t1_name | t1_jin</span><br><span class="line">-------+---------+--------</span><br><span class="line">7     | 圆珠笔  |  77777</span><br><span class="line">3     | 运动衫  |   5000</span><br><span class="line">5     | 高压锅  |   2222</span><br><span class="line">1     | 衬衫    |   1000</span><br><span class="line">6     | 叉子    |    555</span><br><span class="line">2     | 打孔器  |    500</span><br><span class="line">8     | 书本    |    500</span><br><span class="line">4     | 菜刀    |     66</span><br></pre></td></tr></table></figure></p>
+<p>按照t1_jin升序排序 ，但值一样时按照t1_id降序来排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select t1_id,t1_name,t1_jin from t1 order by t1_jin, t1_id desc;</span><br><span class="line"></span><br><span class="line">t1_id | t1_name | t1_jin</span><br><span class="line">-------+---------+--------</span><br><span class="line">4     | 菜刀    |     66</span><br><span class="line">8     | 书本    |    500</span><br><span class="line">2     | 打孔器  |    500</span><br><span class="line">6     | 叉子    |    555</span><br><span class="line">1     | 衬衫    |   1000</span><br><span class="line">5     | 高压锅  |   2222</span><br><span class="line">3     | 运动衫  |   5000</span><br><span class="line">7     | 圆珠笔  |  77777</span><br></pre></td></tr></table></figure></p>
+<p>order by子句中可以使用别名，原因是select语句的执行顺序为 <code>from</code> — <code>where</code> — <code>group by</code> — <code>having</code> — <code>select</code> — <code>order by</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select t1_id as id,t1_name,t1_jin as sb from t1 order by sb, id desc;</span><br><span class="line"></span><br><span class="line">  id  | t1_name |  sb</span><br><span class="line">------+---------+-------</span><br><span class="line">4    | 菜刀    |    66</span><br><span class="line">8    | 书本    |   500</span><br><span class="line">2    | 打孔器  |   500</span><br><span class="line">6    | 叉子    |   555</span><br><span class="line">1    | 衬衫    |  1000</span><br><span class="line">5    | 高压锅  |  2222</span><br><span class="line">3    | 运动衫  |  5000</span><br><span class="line">7    | 圆珠笔  | 77777</span><br></pre></td></tr></table></figure></p>
+<p>order by子句可以使用select子句中为使用的列或者聚合函数</p>
+<p>以t1_chu排序，t1_chu没在 select子句中使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select t1_id,t1_name,t1_jin from t1 order by t1_chu;</span><br><span class="line"></span><br><span class="line">t1_id | t1_name | t1_jin</span><br><span class="line">-------+---------+--------</span><br><span class="line">6     | 叉子    |    555</span><br><span class="line">4     | 菜刀    |     66</span><br><span class="line">5     | 高压锅  |   2222</span><br><span class="line">2     | 打孔器  |    500</span><br><span class="line">1     | 衬衫    |   1000</span><br><span class="line">3     | 运动衫  |   5000</span><br><span class="line">7     | 圆珠笔  |  77777</span><br><span class="line">8     | 书本    |    500</span><br></pre></td></tr></table></figure></p>
+<p>以聚合函数count降序排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select t1_title,count(*) from t1 group by t1_title order by count(*) desc;</span><br><span class="line"></span><br><span class="line">t1_title | count</span><br><span class="line">----------+-------</span><br><span class="line">办公用品 |     3</span><br><span class="line">厨房用品 |     3</span><br><span class="line">衣服     |     2</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -231,7 +313,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
         		</li>
       		
 		</ul>
@@ -287,7 +369,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/19/分发系统-1（7月19日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/31/sql-2-查询基础/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +383,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/20/分发系统-2（7月20日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          分发系统 2（7月20日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/19/告警系统-2（7月18日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">告警系统 2（7月18日）</div>
+    <a href="/2019/03/31/sql-1-数据库基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql 1 数据库基础</div>
       <i class="icon-circle-right"></i>
     </a>
   
