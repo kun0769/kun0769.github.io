@@ -6,35 +6,44 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>jenkins 3（9月28日） | kun0769的博客</title>
+  <title>sql 7 窗口函数 grouping运算符 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="26.6 jenkins邮件设置26.7 插件email-ext26.8 破解jenkins管理员密码">
-<meta name="keywords" content="jenkins">
+  <meta name="description" content="sql 7 窗口函数 grouping运算符">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jenkins 3（9月28日）">
-<meta property="og:url" content="http://yoursite.com/2018/10/03/jenkins-3（9月28日）/index.html">
+<meta property="og:title" content="sql 7 窗口函数 grouping运算符">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/sql-7-窗口函数-grouping运算符/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="26.6 jenkins邮件设置26.7 插件email-ext26.8 破解jenkins管理员密码">
+<meta property="og:description" content="sql 7 窗口函数 grouping运算符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003143918.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003144048.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003144829.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003145303.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003145847.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003152921.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003153154.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154003.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154141.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154334.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154735.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154937.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003162850.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003162931.png">
-<meta property="og:updated_time" content="2018-11-20T06:27:55.542Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-1.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-2.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-3.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-4.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-5.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-6.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-7.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-8.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-9.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-10.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-11.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-12.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-13.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-14.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-15.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-16.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-17.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-18.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-19.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-20.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-21.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-22.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-23.png">
+<meta property="og:updated_time" content="2019-03-31T08:02:35.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jenkins 3（9月28日）">
-<meta name="twitter:description" content="26.6 jenkins邮件设置26.7 插件email-ext26.8 破解jenkins管理员密码">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003143918.png">
+<meta name="twitter:title" content="sql 7 窗口函数 grouping运算符">
+<meta name="twitter:description" content="sql 7 窗口函数 grouping运算符">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-1.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -160,74 +169,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jenkins-3（9月28日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql-7-窗口函数-grouping运算符" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      jenkins 3（9月28日）
+      sql 7 窗口函数 grouping运算符
     </h1>
   
 
         
-        <a href="/2018/10/03/jenkins-3（9月28日）/" class="archive-article-date">
-  	<time datetime="2018-10-03T08:39:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-03</time>
+        <a href="/2019/03/31/sql-7-窗口函数-grouping运算符/" class="archive-article-date">
+  	<time datetime="2019-03-31T07:35:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>26.6 jenkins邮件设置<br>26.7 插件email-ext<br>26.8 破解jenkins管理员密码<br><a id="more"></a></p>
-<h2 id="26-6-jenkins邮件配置"><a href="#26-6-jenkins邮件配置" class="headerlink" title="26.6 jenkins邮件配置"></a>26.6 jenkins邮件配置</h2><p>用Jenkins发布了代码时是可以使用邮件通知客户是否发布代码成功的</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.设置系统管理员邮件地址</p>
-</blockquote>
-<p><code>系统管理</code> —- <code>系统设置</code> —-  <code>Jenkins Location</code> —- <code>系统管理员邮件地址</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003143918.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003144048.png" alt=""><br>注意：<code>发送通知的邮件地址必须和管理员邮件地址一致，否则发送邮件失败</code></p>
-<blockquote>
-<p>2.设置发送邮件地址</p>
-</blockquote>
-<p><code>邮件通知</code> —- <code>SMTP服务器</code> —- 点勾 <code>使用SMTP认证</code> —- <code>用户名</code>（邮件地址）和 <code>密码</code>（授权码）—- <code>SMTP端口</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003144829.png" alt=""></p>
-<blockquote>
-<p>3.在对应的job中设置接受邮件的地址</p>
-</blockquote>
-<p><code>构建后操作</code> —- <code>E-mail Notification</code> —-  <code>Recipients</code>（接受邮件的地址）<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003145303.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003145847.png" alt=""><br>注意：<code>Recipients 填的邮件地址只能是发布代码失败才发送邮件给此地址</code></p>
-<h2 id="26-7-插件email-ext"><a href="#26-7-插件email-ext" class="headerlink" title="26.7 插件email-ext"></a>26.7 插件email-ext</h2><p>使用email-ext插件可以自定义发送邮件。不论是否成功发布代码都会发邮件到你指定的邮箱。发送的内容也可以自定义。<br>参考文章 <img src="" alt=""><a href="http://www.cnblogs.com/zz0412/p/jenkins_jj_01.html" target="_blank" rel="noopener">http://www.cnblogs.com/zz0412/p/jenkins_jj_01.html</a></p>
-<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
-<p>1.安装插件 Email Extension Plugin，默认自带安装</p>
-</blockquote>
-<p><code>系统管理</code> —- <code>插件管理</code> —- <code>Email Extension Plugin</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003152921.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003153154.png" alt=""></p>
-<blockquote>
-<p>2.设置Email Extension Plugin中的邮件地址</p>
-</blockquote>
-<p>设置Email Extension Plugin之前，先把邮件通知里面设置的清空掉<br><code>系统管理</code> —- <code>系统配置</code> —-  <code>Extended E-mail Notification</code> —- <code>SMTP服务器</code> —- 点勾 <code>Use SMTP Authentication</code> —- <code>用户名</code>（邮件地址）和 <code>密码</code>（授权码）—- <code>SMTP端口</code> —-  <code>Default Triggers</code>（Always）<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154003.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154141.png" alt=""></p>
-<blockquote>
-<p>3.在对应的job中设置接受邮件的地址</p>
-</blockquote>
-<p><code>构建后操作</code> —- <code>Editable Email Notification</code> —-  <code>Project Recipient List</code>（接收邮件地址）—-  <code>Triggers</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154334.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154735.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003154937.png" alt=""></p>
-<h2 id="26-8-破解管理员密码"><a href="#26-8-破解管理员密码" class="headerlink" title="26.8 破解管理员密码"></a>26.8 破解管理员密码</h2><blockquote>
-<p>进入Jenkins用户配置文件 </p>
-</blockquote>
-<p><code>/var/lib/jenkins/users/</code> 是Jenkins存放用户的目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /var/lib/jenkins/users/kun/config.xml</span><br></pre></td></tr></table></figure></p>
-<p>找到<code>&lt;passwordHash&gt;</code>并删除掉并改为下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;passwordHash&gt;#jbcrypt:$2a$10$3ivnAUbPrkWnq.zaWjF3uuujGUcfFR2u/E9gbFOLE21vspmNKa1ua&lt;/passwordHash&gt;</span><br></pre></td></tr></table></figure></p>
-<p>新密码为<code>123456</code></p>
-<blockquote>
-<p>重启Jenkins服务</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# systemctl restart jenkins</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>输入新密码进入管理员账号并设置新密码</p>
-</blockquote>
-<p>在右上角的<code>用户</code> —- <code>设置</code> —- <code>密码</code><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003162850.png" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20181003162931.png" alt=""></p>
+        <p>sql 7 窗口函数 grouping运算符<br><a id="more"></a></p>
+<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>窗口函数也叫OLAP（online analytical processing）函数。意思是对数据库进行实时分析处理，就是利用SQL语句对数据进行实时分析。暂时MySQL并不支持窗口函数。而且只能用在select子句中，不能使用在where，group by子句中。</p>
+<p>语法格式：<code>&lt;窗口函数&gt; over ([partition by &lt;列清单&gt;] order by &lt;序号用列清单&gt;)</code></p>
+<h3 id="能够作为窗口函数而使用的函数"><a href="#能够作为窗口函数而使用的函数" class="headerlink" title="能够作为窗口函数而使用的函数"></a>能够作为窗口函数而使用的函数</h3><p>1）能作为窗口函数使用的聚合函数（sum avg count  max min）<br>2）专用窗口函数（rank dense_rank row_number）</p>
+<h3 id="rank函数"><a href="#rank函数" class="headerlink" title="rank函数"></a>rank函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select product_name, product_type, sale_price, rank () over (partition by product_type order by sale_price) as ranking</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-1.png" alt=""></p>
+<p><code>rank</code>函数是计算记录排序<br><code>partition by</code> 设定排序的对象范围（分组），这里是指定按照商品种类排序<br><code>order by</code> 指定按照哪列来排序 默认是asc升序（排序）， 这里指定按照商品销售价格升序排序</p>
+<p>通过<code>partition by</code>进行分组的后的记录集合称为“窗口”，它代表范围的意思。当不指定partition by时，相当于把这个<code>表作为一个大窗口</code>来看待。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select product_name, product_type, sale_price, rank () over ( order by sale_price) as ranking</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-2.png" alt=""></p>
+<h3 id="专用窗口函数"><a href="#专用窗口函数" class="headerlink" title="专用窗口函数"></a>专用窗口函数</h3><table>
+<thead>
+<tr>
+<th>专用窗口函数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rank</td>
+<td>计算排序 存在相同位次的记录，会跳过之后的位次 有3条记录排在第一位 1位 1位 1位 4位</td>
+</tr>
+<tr>
+<td>dense_rank</td>
+<td>计算排序 存在相同位次的记录，不会跳过之后的位次 有3条记录排在第一位 1位 1位 1位 2位</td>
+</tr>
+<tr>
+<td>row_number</td>
+<td>唯一连续位次 有3条记录排在第一位 1位 2位 3位 4位</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select product_name, product_type, sale_price, </span><br><span class="line">rank() over (order by sale_price) as ramking,</span><br><span class="line">dense_rank() over (order by sale_price) as dense_ramking,</span><br><span class="line">row_number() over (order by sale_price) as row_num</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image7-3.png" alt=""></p>
+<h3 id="能作为窗口函数使用的聚合函数"><a href="#能作为窗口函数使用的聚合函数" class="headerlink" title="能作为窗口函数使用的聚合函数"></a>能作为窗口函数使用的聚合函数</h3><p>按照 product_id升序并做出按照sale_price来计算合计值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select product_id, product_name, sale_price, </span><br><span class="line">sum(sale_price) over (order by product_id) as current_sum</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-4.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select product_id, product_name, sale_price, </span><br><span class="line">avg(sale_price) over (order by product_id) as current_sum</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-5.png" alt=""></p>
+<h3 id="计算移动平均"><a href="#计算移动平均" class="headerlink" title="计算移动平均"></a>计算移动平均</h3><p>窗口函数是将表以窗口为单位来分割，并在其中进行排序的函数。还可以在窗口中指定汇总范围（框架）的功能。</p>
+<p>指定最靠近的3行为汇总对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select product_id, product_name, sale_price, </span><br><span class="line">avg(sale_price) over (order by product_id rows 2 preceding) as current_sum</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-6.png" alt=""></p>
+<p>通过rows 2 preceding（截止到之前的2行）来指定框架范围<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-7.png" alt=""></p>
+<p>使用rows 2 following （截止到之后的2行）作为框架<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-8.png" alt=""></p>
+<p>也可以同时使用他们两个来做框架<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select product_id, product_name, sale_price, </span><br><span class="line">avg(sale_price) over (order by product_id rows between 1 preceding and 1 following) as moving_avg</span><br><span class="line">from Product;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-9.png" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-10.png" alt=""><br>这种统计方法叫做移动平均。用于把握实时最佳状态的数据。</p>
+<p>over子句中order by 只是决定窗口函数按照什么样的顺序来计算的，对结果的排序的顺序没有影响的。因此可以在句尾再添加order by子句来对结果进行排序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select product_id, product_name, sale_price, </span><br><span class="line">rank() over (order by  sale_price) as ranking</span><br><span class="line">from Product</span><br><span class="line">order by  ranking;</span><br></pre></td></tr></table></figure></p>
+<h2 id="groping算术符"><a href="#groping算术符" class="headerlink" title="groping算术符"></a>groping算术符</h2><p>为了同时得到合计和小计，以下结果<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-11.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select &apos;合计&apos; as product_type, sum(sale_price) from Product</span><br><span class="line">union all</span><br><span class="line">select product_type, sum(sale_price) from Product group by product_type;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-12.png" alt=""><br>但是这个命令实在太繁琐并且处理速度也慢，因此引用grouping运算符</p>
+<h3 id="rollup-同时得出合计和小计"><a href="#rollup-同时得出合计和小计" class="headerlink" title="rollup 同时得出合计和小计"></a>rollup 同时得出合计和小计</h3><p>rollup是“卷起”的意思，类似百叶窗，窗帘。从小聚合逐渐扩大。</p>
+<p>得出合计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select product_type, sum(sale_price) as sum_price from Product group by rollup (product_type);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-13.png" alt=""><br>select语句union对2模式的聚合级不同结果进行连接，而且合计的行叫做超级分组记录。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-14.png" alt=""></p>
+<p>得出合计和小计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select product_type, regist_date, sum(sale_price) as sum_price from Product group by rollup (product_type, regist_date);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-15.png" alt=""></p>
+<p>select语句等于使用union对3模式的聚合级不同结果进行连接<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-16.png" alt=""></p>
+<h3 id="grouping-让null更容易分辨"><a href="#grouping-让null更容易分辨" class="headerlink" title="grouping 让null更容易分辨"></a>grouping 让null更容易分辨</h3><p>grouping函数可以判断该列的值为超级分组记录所产生的null返回1，其他情况返回0</p>
+<p>上例中不能判断哪个null是超级分组记录所产生的null<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-17.png" alt=""></p>
+<p>使用grouping函数显示null对应的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select grouping(product_type) as product_type, grouping(regist_date) as regist_date, sum(sale_price) as sum_price </span><br><span class="line">from Product </span><br><span class="line">group by rollup (product_type, regist_date);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-18.png" alt=""></p>
+<p>让对应的值显示为字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select case when grouping(product_type) = 1 then  &apos;商品种类 合计&apos; else product_type as end product_type, </span><br><span class="line">case when grouping(regist_date) = 1 then &apos;登录日期 合计&apos; else cast(regist_date as varchar(16)) end as regist_date, </span><br><span class="line">sum(sale_price) as sum_price </span><br><span class="line">from Product </span><br><span class="line">group by rollup (product_type, regist_date);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-19.png" alt=""></p>
+<p><code>cast(regist_date as varchar(16))</code> 转换类型为了满足case表达式所有分支的返回值要一致的条件，否则会报错。一般用grouping和rollup会一起使用。</p>
+<h3 id="cube-用数据来搭积木"><a href="#cube-用数据来搭积木" class="headerlink" title="cube 用数据来搭积木"></a>cube 用数据来搭积木</h3><p>cube意思是立方体，用法和grouping一样。就是把group by子句中聚合建“所有可能的组合”汇总结果集合到一个结果中。组合的个数是2^n次方（n是聚合键的个数），因此每个聚合键可以看作为一个轴，3个聚合建就类似立方体了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select case when grouping(product_type) = 1 then  &apos;商品种类 合计&apos; else product_type as end product_type, </span><br><span class="line">case when grouping(regist_date) = 1 then &apos;登录日期 合计&apos; else cast(regist_date as varchar(16)) end as regist_date, </span><br><span class="line">sum(sale_price) as sum_price </span><br><span class="line">from Product </span><br><span class="line">group by cube (product_type, regist_date);</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-20.png" alt=""></p>
+<p>结果和rollup的相比，多出几行记录是把regist_date作为聚合键汇聚到的结果<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-21.png" alt=""></p>
+<h3 id="grouping-sets-取得期望的积木"><a href="#grouping-sets-取得期望的积木" class="headerlink" title="grouping sets 取得期望的积木"></a>grouping sets 取得期望的积木</h3><p>grouping sets用于从rolluup和cube结果中却出部分记录</p>
+<p>将“商品种类”和“登录日期”单独作为聚合建或不想得到“合计记录和使用2个聚合键的记录”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select case when grouping(product_type) = 1 then  &apos;商品种类 合计&apos; else product_type as end product_type, </span><br><span class="line">case when grouping(regist_date) = 1 then &apos;登录日期 合计&apos; else cast(regist_date as varchar(16)) end as regist_date, </span><br><span class="line">sum(sale_price) as sum_price </span><br><span class="line">from Product </span><br><span class="line">group by grouping set (product_type, regist_date);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-22.png" alt=""></p>
+<p>结果和rollup,cube比少了合计和使用2个聚合建的记录<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/clipboard7-23.png" alt=""></p>
 
       
 
@@ -241,7 +270,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
         		</li>
       		
 		</ul>
@@ -297,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/03/jenkins-3（9月28日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/31/sql-7-窗口函数-grouping运算符/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,18 +340,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/10/06/jenkins-4（9月29日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          jenkins 4（9月29日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/30/jenkins-2（9月27日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jenkins 2（9月27日）</div>
+    <a href="/2019/03/31/sql-6-集合运算/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql 6 集合运算</div>
       <i class="icon-circle-right"></i>
     </a>
   
