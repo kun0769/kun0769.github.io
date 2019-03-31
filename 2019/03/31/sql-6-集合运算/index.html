@@ -26,7 +26,10 @@
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-8.png">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-9.png">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-10.png">
-<meta property="og:updated_time" content="2019-03-31T07:24:57.292Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-11.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-12.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-13.png">
+<meta property="og:updated_time" content="2019-03-31T07:26:47.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql 6 集合运算">
 <meta name="twitter:description" content="sql 6 集合运算">
@@ -200,12 +203,20 @@
 <h3 id="inner-join（内联结）"><a href="#inner-join（内联结）" class="headerlink" title="inner join（内联结）"></a>inner join（内联结）</h3><p>语法格式：<code>select 子句 from 表1 inner join 表2 on 联结键;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price</span><br><span class="line">from shopproduct as sp inner join product as p</span><br><span class="line">on sp.product_id = p.product_id;</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-10.png" alt=""></p>
 <h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><p>1）from子句中有两张表 别名可有可无<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from shopproduct as sp inner join product as p</span><br></pre></td></tr></table></figure></p>
-<p>2）on子句写在from和where之间，on子句指定两张表联结所使用的的列（联结键）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">on sp.product_id = p.product_id</span><br><span class="line">``</span><br><span class="line">3）select子句按照&lt;表名/表的别名&gt;.&lt;列名&gt;格式书写</span><br></pre></td></tr></table></figure></p>
-<p>select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 联结结合where</span><br></pre></td></tr></table></figure></p>
-<p>select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price<br>from shopproduct as sp inner join product as p<br>on sp.product_id = p.product_id<br>where sp.shop_id = ‘000A’;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">![](https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-11.png)</span><br><span class="line">因此，同样也联结也可以`group by`，`having`，`order by`结合一起使用。</span><br><span class="line"></span><br><span class="line">### outer join（外联结）</span><br><span class="line"></span><br><span class="line">外联结和内联结一样，都是把两张表通过联结键联结在一起，只是结果不一样</span><br><span class="line"></span><br><span class="line">语法格式：</span><br><span class="line">`select 子句 from 表1 left outer join 表2 on 联结键;`</span><br><span class="line">`select 子句 from 表1 right outer join 表2 on 联结键;`</span><br></pre></td></tr></table></figure></p>
-<p>select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price<br>from shopproduct as sp right outer join product as p<br>on sp.product_id = p.product_id;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">![](https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-12.png)</span><br><span class="line"></span><br><span class="line">### 注意事项：</span><br><span class="line"></span><br><span class="line">1）可以得到单张表的全部信息。上面的结果是得到product表的全部信息</span><br><span class="line">2）通过left right来指定from子句中左边还是右边的表为主表，结果会包含主表中的所有信息</span><br><span class="line"></span><br><span class="line">3张以上的表的联结</span><br></pre></td></tr></table></figure></p>
-<p>select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price<br>from shopproduct as sp inner join product as p<br>on sp.product_id = p.product_id<br>inner join inventoryproduct as ip<br>on p.product_id = ip.product_id;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![](https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-13.png)</span><br><span class="line"></span><br><span class="line">### cross join（交叉联结/笛卡儿积）</span><br><span class="line"></span><br><span class="line">语法格式：`select 子句 from 表1 cross join 表2 ;`</span><br></pre></td></tr></table></figure></p>
-<p>select sp.shop_id, sp.shop_name, sp.product_id, p.product_name<br>from shopproduct as sp cross join product as p;<br><code>`</code><br>结果为shopproduct表的行数 * product表的行数。由于结果行数多和没有实际价值，一般很少使用交叉联结</p>
+<p>2）on子句写在from和where之间，on子句指定两张表联结所使用的的列（联结键）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">on sp.product_id = p.product_id</span><br></pre></td></tr></table></figure></p>
+<p>3）select子句按照&lt;表名/表的别名&gt;.&lt;列名&gt;格式书写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price</span><br></pre></td></tr></table></figure></p>
+<h3 id="联结结合where"><a href="#联结结合where" class="headerlink" title="联结结合where"></a>联结结合where</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price</span><br><span class="line">from shopproduct as sp inner join product as p</span><br><span class="line">on sp.product_id = p.product_id</span><br><span class="line">where sp.shop_id = &apos;000A&apos;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-11.png" alt=""><br>因此，同样也联结也可以<code>group by</code>，<code>having</code>，<code>order by</code>结合一起使用。</p>
+<h3 id="outer-join（外联结）"><a href="#outer-join（外联结）" class="headerlink" title="outer join（外联结）"></a>outer join（外联结）</h3><p>外联结和内联结一样，都是把两张表通过联结键联结在一起，只是结果不一样</p>
+<p>语法格式：<br><code>select 子句 from 表1 left outer join 表2 on 联结键;</code><br><code>select 子句 from 表1 right outer join 表2 on 联结键;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price</span><br><span class="line">from shopproduct as sp right outer join product as p</span><br><span class="line">on sp.product_id = p.product_id;</span><br></pre></td></tr></table></figure>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-12.png" alt=""></p>
+<h3 id="注意事项：-1"><a href="#注意事项：-1" class="headerlink" title="注意事项："></a>注意事项：</h3><p>1）可以得到单张表的全部信息。上面的结果是得到product表的全部信息<br>2）通过left right来指定from子句中左边还是右边的表为主表，结果会包含主表中的所有信息</p>
+<p>3张以上的表的联结<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name, p.sale_price</span><br><span class="line">from shopproduct as sp inner join product as p</span><br><span class="line">on sp.product_id = p.product_id</span><br><span class="line">inner join inventoryproduct as ip </span><br><span class="line">on p.product_id = ip.product_id;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Image6-13.png" alt=""></p>
+<h3 id="cross-join（交叉联结-笛卡儿积）"><a href="#cross-join（交叉联结-笛卡儿积）" class="headerlink" title="cross join（交叉联结/笛卡儿积）"></a>cross join（交叉联结/笛卡儿积）</h3><p>语法格式：<code>select 子句 from 表1 cross join 表2 ;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select sp.shop_id, sp.shop_name, sp.product_id, p.product_name </span><br><span class="line">from shopproduct as sp cross join product as p;</span><br></pre></td></tr></table></figure>
+<p>结果为shopproduct表的行数 * product表的行数。由于结果行数多和没有实际价值，一般很少使用交叉联结</p>
 
       
 
@@ -475,19 +486,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,11 +506,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">生成器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,11 +534,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
