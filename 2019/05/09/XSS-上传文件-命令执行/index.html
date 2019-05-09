@@ -6,33 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>五周第一次课（4月18日） | kun0769的博客</title>
+  <title>XSS &amp;&amp; 上传文件 &amp;&amp; 命令执行 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="7.1 安装软件包的三种方法7.2 rpm包介绍7.3 rpm工具用法7.4 yum工具用法7.5 yum搭建本地仓库">
-<meta name="keywords" content="Linux,软件包">
+  <meta name="description" content="XSS &amp;amp;&amp;amp; 上传文件 &amp;amp;&amp;amp; 命令执行">
+<meta name="keywords" content="运维安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="五周第一次课（4月18日）">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/五周第一次课（4月18日）/index.html">
+<meta property="og:title" content="XSS &amp;&amp; 上传文件 &amp;&amp; 命令执行">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/XSS-上传文件-命令执行/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="7.1 安装软件包的三种方法7.2 rpm包介绍7.3 rpm工具用法7.4 yum工具用法7.5 yum搭建本地仓库">
+<meta property="og:description" content="XSS &amp;amp;&amp;amp; 上传文件 &amp;amp;&amp;amp; 命令执行">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417220051.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417220759.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417221029.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417231240.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418194518.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418195345.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418203113.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418203628.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418211608.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418212151.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418221423.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418221841.jpg">
-<meta property="og:updated_time" content="2018-11-20T06:13:24.929Z">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss1.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss2.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss3.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss4.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss5.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss6.png">
+<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss7.png">
+<meta property="og:updated_time" content="2019-05-09T03:47:58.042Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="五周第一次课（4月18日）">
-<meta name="twitter:description" content="7.1 安装软件包的三种方法7.2 rpm包介绍7.3 rpm工具用法7.4 yum工具用法7.5 yum搭建本地仓库">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417220051.jpg">
+<meta name="twitter:title" content="XSS &amp;&amp; 上传文件 &amp;&amp; 命令执行">
+<meta name="twitter:description" content="XSS &amp;amp;&amp;amp; 上传文件 &amp;amp;&amp;amp; 命令执行">
+<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss1.png">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -158,198 +153,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-五周第一次课（4月18日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-XSS-上传文件-命令执行" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      五周第一次课（4月18日）
+      XSS &amp;&amp; 上传文件 &amp;&amp; 命令执行
     </h1>
   
 
         
-        <a href="/2018/04/18/五周第一次课（4月18日）/" class="archive-article-date">
-  	<time datetime="2018-04-18T14:41:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
+        <a href="/2019/05/09/XSS-上传文件-命令执行/" class="archive-article-date">
+  	<time datetime="2019-05-09T03:36:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>7.1 安装软件包的三种方法<br>7.2 rpm包介绍<br>7.3 rpm工具用法<br>7.4 yum工具用法<br>7.5 yum搭建本地仓库<br><a id="more"></a></p>
-<h2 id="7-1安装软件包的三种方法"><a href="#7-1安装软件包的三种方法" class="headerlink" title="7.1安装软件包的三种方法"></a>7.1安装软件包的三种方法</h2><p><code>rpm工具</code> 系统默认下载安装软件包工具<br><code>yum工具</code> 下载安装软件包工具 相当于app store 安装软件时候会自动下载所依赖的包<br><code>源码包</code> 由编程语言编写好的源代码的软件包 需要通过编译才可以得到软件</p>
-<p>先点击虚拟机的右下角的光驱，点连接来加载光驱<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417220051.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount /dev/cdrom /mnt   ##挂载光驱到mnt目录下</span><br><span class="line">mount: /dev/sr0 写保护，将以只读方式挂载</span><br></pre></td></tr></table></figure></p>
-<p>光驱的软件包在Packages目录下<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417220759.jpg" alt=""></p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417221029.jpg" alt=""></p>
-<h2 id="7-2-rpm包介绍"><a href="#7-2-rpm包介绍" class="headerlink" title="7.2 rpm包介绍"></a>7.2 rpm包介绍</h2><p>以 <code>zziplib-0.13.62-5.el7.x86_64.rpm</code> 为例<br>zziplib是包名<br>0.13.62是版本号 其中0是主版本号 13是次版本号 62是修正版号<br>5.el7是发布版本号<br>x86_64是平台 64位还是32位系统</p>
-<h2 id="7-3-rpm工具用法​​​​​​​"><a href="#7-3-rpm工具用法​​​​​​​" class="headerlink" title="7.3 rpm工具用法​​​​​​​"></a>7.3 rpm工具用法​​​​​​​</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-i</td>
-<td>安装</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>可视化过程</td>
-</tr>
-<tr>
-<td>-h</td>
-<td>人性化显示</td>
-</tr>
-<tr>
-<td>-U</td>
-<td>升级</td>
-</tr>
-<tr>
-<td>-e</td>
-<td>卸载</td>
-</tr>
-<tr>
-<td>-q</td>
-<td>查询</td>
-</tr>
-<tr>
-<td>-a</td>
-<td>显示所有安装过的软件包</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>显示软件包的列表</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>显示文件的安装包</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>rpm -ivh rpm包：安装</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -ivh zsh-5.0.2-28.el7.x86_64.rpm</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:zsh-5.0.2-28.el7                 ################################# [100%]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -Uvh rpm包：升级</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -Uvh zsh-5.0.2-28.el7.x86_64.rpm  </span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">    软件包 zsh-5.0.2-28.el7.x86_64 已经安装</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -e 包名：卸载</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -e zsh</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -qa：查询所有已经安装的包</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -qa   </span><br><span class="line">firewalld-0.4.4.4-6.el7.noarch</span><br><span class="line">grub2-common-2.02-0.64.el7.centos.noarch</span><br><span class="line">grub2-2.02-0.64.el7.centos.x86_64</span><br><span class="line">setup-2.8.71-7.el7.noarch</span><br><span class="line">NetworkManager-team-1.8.0-9.el7.x86_64</span><br><span class="line">basesystem-10.0-7.el7.centos.noarch</span><br><span class="line">audit-2.7.6-3.el7.x86_64</span><br><span class="line">bind-license-9.9.4-50.el7.noarch</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -q 包名：查询指定的包是否安装</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -q zsh</span><br><span class="line">zsh-5.0.2-28.el7.x86_64</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -qi 包名：查询指定包的信息</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180417231240.jpg" alt=""></p>
-<blockquote>
-<p>rpm -ql 包名：列出包安装的文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -ql zsh  ##知道包名查安装路径文件</span><br><span class="line">/bin/zsh</span><br><span class="line">/etc/skel/.zshrc</span><br><span class="line">/etc/zlogin</span><br><span class="line">/etc/zlogout</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>rpm -qf 文件绝对路径：查看一个文件由哪个包安装的</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -qf /usr/lib64/zsh  ##知道安装路径文件查包</span><br><span class="line">zsh-5.0.2-28.el7.x86_64</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -qf `which wc`  ##反引号中的内容先执行再输出结果代替反引号的内容</span><br><span class="line">coreutils-8.22-18.el7.x86_64</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Packages]# rpm -qf $(which wc) ## $() 等于反引号</span><br><span class="line">coreutils-8.22-18.el7.x86_64</span><br></pre></td></tr></table></figure>
-<h2 id="7-4-yum工具用法​​​​​​​"><a href="#7-4-yum工具用法​​​​​​​" class="headerlink" title="7.4 yum工具用法​​​​​​​"></a>7.4 yum工具用法​​​​​​​</h2><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>意思</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>list</td>
-<td>列出软件包的信息</td>
-</tr>
-<tr>
-<td>search</td>
-<td>搜索指定的包</td>
-</tr>
-<tr>
-<td>install</td>
-<td>安装rpm包</td>
-</tr>
-<tr>
-<td>grouplist</td>
-<td>列出软件包组的信息</td>
-</tr>
-<tr>
-<td>groupinstall</td>
-<td>升级软件包组</td>
-</tr>
-<tr>
-<td>remove</td>
-<td>删除指定软件包</td>
-</tr>
-<tr>
-<td>update</td>
-<td>更新rpm包</td>
-</tr>
-<tr>
-<td>provides</td>
-<td>搜索命令由哪个包所安装的</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>yum list：列出可用的rpm包信息</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum list</span><br></pre></td></tr></table></figure>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418194518.jpg" alt=""></p>
-<p>第一列是软件包名<br>第二列是版本号<br>第三列是仓库位置 表示从那个仓库中的镜像地址中下载此包</p>
-<p>其中仓库在 <code>/etc/yum.repos.d/CentOS-Base.repo</code> 这个文件下定义<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418195345.jpg" alt=""></p>
-<blockquote>
-<p>yum search 内容 ：搜索内容相关的包</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418203113.jpg" alt=""><br>或者<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418203628.jpg" alt=""></p>
-<blockquote>
-<p>yum install [-y] 包名：安装rpm包</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum install -y vim  ##-y表示yes</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>yum grouplist：列出可用的组 组中有组相关的rpm包</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418211608.jpg" alt=""></p>
-<blockquote>
-<p>yum groupinstall [-y] 组名：安装rpm包组</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418212151.jpg" alt=""></p>
-<blockquote>
-<p>yum remove [-y] 包名：卸载rpm包 并把所依赖的包也一起卸载</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum remove ppp ##卸载ppp的rpm包</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>yum update [-y] 包名：升级rpm包</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum update ppp</span><br></pre></td></tr></table></figure>
-<p>当刚刚安装完系统时候使用 yum update 可以升级CenOS的为最新的版本</p>
-<blockquote>
-<p>yum provides “命令”：搜索命令由那个包所安装的</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum provides &quot;/*/vim&quot;  ##搜索vim命令由那些包所安装的 *表示某些路径 但是你不知到</span><br></pre></td></tr></table></figure>
-<h2 id="7-5yum搭建本地仓库"><a href="#7-5yum搭建本地仓库" class="headerlink" title="7.5yum搭建本地仓库"></a>7.5yum搭建本地仓库</h2><p>因为yum是通过上网来下载线上的仓库 假如不能上网 也可以用yum提前搭建好仓库来下载rpm包<br>我们可以包CenOS光盘里面的rpm包作为本地仓库</p>
-<h3 id="1-先挂载光盘"><a href="#1-先挂载光盘" class="headerlink" title="1.先挂载光盘"></a>1.先挂载光盘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mount /dev/cdrom /mnt/</span><br><span class="line">mount: /dev/sr0 写保护，将以只读方式挂载</span><br></pre></td></tr></table></figure>
-<h3 id="2-备份一份yum-repos-d目录以防万一"><a href="#2-备份一份yum-repos-d目录以防万一" class="headerlink" title="2.备份一份yum.repos.d目录以防万一"></a>2.备份一份yum.repos.d目录以防万一</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp -r /etc/yum.repos.d/ /etc/yum.repos.d.bak  ##把yum.repos.d目录下的文件都做次备份</span><br></pre></td></tr></table></figure>
-<h3 id="3-删除原来的yum-repos-d目录下的文件"><a href="#3-删除原来的yum-repos-d目录下的文件" class="headerlink" title="3.删除原来的yum.repos.d目录下的文件"></a>3.删除原来的yum.repos.d目录下的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rm -f /etc/yum.repos.d/*</span><br></pre></td></tr></table></figure>
-<h3 id="4-编辑新的源配置文件"><a href="#4-编辑新的源配置文件" class="headerlink" title="4.编辑新的源配置文件"></a>4.编辑新的源配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vim /etc/yum.repos.d/dvd.repo   ##编辑新的配置文件 名为dvd.repo</span><br><span class="line">[dvd]             ##仓库名字</span><br><span class="line">name=install dvd   ##仓库备注</span><br><span class="line">baseurl=file:///mnt  ##仓库的镜像路径 路径为挂载的光驱</span><br><span class="line">enable=1    ##表示可使用</span><br><span class="line">gpgcheck=0   ##表示不是检查</span><br></pre></td></tr></table></figure>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418221423.jpg" alt=""></p>
-<h3 id="5-清除缓存"><a href="#5-清除缓存" class="headerlink" title="5.清除缓存"></a>5.清除缓存</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# yum clean all  ##清除缓存</span><br></pre></td></tr></table></figure>
-<p>​<img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180418221841.jpg" alt=""><br>搭建成功 可以看到本地仓库名为dvd 其中@表示已经安装过的rpm包</p>
+        <p>XSS &amp;&amp; 上传文件 &amp;&amp; 命令执行<br><a id="more"></a></p>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>XSS又叫CSS(Cross Site Scripting),跨站脚本攻击，常见的Web漏洞之一，在2013年度OWASP TOP 10中排名第三。<br>XSS是指攻击者在网页中嵌入客户端脚本，通常是JS恶意代码，当用户使用浏览器访问被嵌入恶意代码网页时，就会在用户浏览器上执行。</p>
+<h3 id="XSS的危害"><a href="#XSS的危害" class="headerlink" title="XSS的危害"></a>XSS的危害</h3><p>网络钓鱼、窃取用户Cookies、弹广告刷流量、具备改页面信息、删除文章、获取客户端信息、传播蠕虫</p>
+<h3 id="XSS类型"><a href="#XSS类型" class="headerlink" title="XSS类型"></a>XSS类型</h3><p>1）反射型<br>又称为非持久性XSS,最容易出现的一种XSS漏洞，通常是一次性触发的。主要用于将恶意脚本附加到URL地址的参数上。受害者点击链接就会触发恶意js脚本。例如恶意邮件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss1.png" alt=""></p>
+<p>2）存储型<br>攻击者把恶意js脚本存储到网站的数据库中，当受害者点击网站就会自动触发脚本。一般恶意脚本存放在论坛，留言板上<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss2.png" alt=""></p>
+<p>3）Dom Base XSS<br>DOM型就是JavaScript中的Document对象HTML注入，直接浏览器处理。<br>DOM型XSS并不需要服务器解析响应的直接参与触发XSS靠的是浏览器DOM解析</p>
+<h3 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h3><p>HttpOnly <img src="" alt=""><a href="https://www.cnblogs.com/softidea/p/6040260.html" target="_blank" rel="noopener">https://www.cnblogs.com/softidea/p/6040260.html</a><br>CSP <img src="" alt=""><a href="https://blog.csdn.net/qq_37943295/article/details/79978761" target="_blank" rel="noopener">https://blog.csdn.net/qq_37943295/article/details/79978761</a></p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>Web应用程序通常会有文件上传功能，发布图片、招聘网站上发布doc格式简历，只要web应用程序允许上传就有可能存在文件上传漏洞。</p>
+<p>文件上传流程</p>
+<p>文件上传一般会在客户端进行后缀名的验证 ，在客户端会进行文件类型的验证，文件内容的验证<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss3.png" alt=""></p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss4.png" alt=""></p>
+<h3 id="绕过客户端的验证"><a href="#绕过客户端的验证" class="headerlink" title="绕过客户端的验证"></a>绕过客户端的验证</h3><p>文件上传的漏洞环境  <img src="" alt=""><a href="https://github.com/c0ny1/upload-labs" target="_blank" rel="noopener">https://github.com/c0ny1/upload-labs</a><br>这里上传一个一句话木马后缀名.jpg的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim test.jpg</span><br><span class="line">&lt;?php @eval($_POST[&apos;a&apos;]; ?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>把文件上传到网站的同事使用BurpSuite抓包并更改包的文件后缀名<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss5.png" alt=""></p>
+<h3 id="绕过MIME验证"><a href="#绕过MIME验证" class="headerlink" title="绕过MIME验证"></a>绕过MIME验证</h3><p>MIME type的缩写为(Multipurpose Internet Mail Extensions)代表互联网媒体类型(Internet media type)，MIME使用一个简单的字符串组成，最初是为了标识邮件Email附件的类型，在html文件中可以使用content-type属性表示，描述了文件类型的互联网标准。</p>
+<p>MIME主类别：<br>text：用于标准化地表示的文本信息，文本消息可以是多种字符集和或者多种格式的；<br>Multipart：用于连接消息体的多个部分构成一个消息，这些部分可以是不同类型的数据；<br>Application：用于传输应用程序数据或者二进制数据；<br>Message：用于包装一个E-mail消息；<br>Image：用于传输静态图片数据；<br>Audio：用于传输音频或者音声数据；<br>Video：用于传输动态影像数据，可以是与音频编辑在一起的视频数据格式。<br>简单的说就是服务端对文件类型的验证。</p>
+<p>方法和上面一样<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss6.png" alt=""></p>
+<h3 id="防护-1"><a href="#防护-1" class="headerlink" title="防护"></a>防护</h3><p>对上传目录的权限执行设置 <code>chmod -x dir</code></p>
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>命令执行漏洞是指攻击者可以随意执行系统命令，通过脚本语言中的函数来调用操作系统命令。是脚本语言没有对输入的参数进行过滤而产生的。属于高危漏洞之一。<br>应用有时需要调用一些执行系统命令的函数，如PHP中的system、exec、shell_exec、passthru、popen、proc_popen等，当用户能控制这些函数中的参数时，就可以将恶意系统命令<br>拼接到正常命令中，从而造成命令执行攻击，这就是命令执行漏洞。<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/xss7.png" alt=""><br>上面代码中 变量target 是用来接受用户输入的ip地址，但用户可以通过 | &amp;&amp;来执行其他命令 例如 <code>127.0.0.1 &amp;&amp; uname -a</code></p>
 
       
 
@@ -363,11 +204,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">软件包</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">运维安全</a>
         		</li>
       		
 		</ul>
@@ -423,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/18/五周第一次课（4月18日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/09/XSS-上传文件-命令执行/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -437,18 +274,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/19/五周第二次课（4月19日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          五周第二次课（4月19日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/17/四周第五次课（4月17日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">四周第五次课（4月17日）</div>
+    <a href="/2019/05/09/SQL注入/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SQL注入</div>
       <i class="icon-circle-right"></i>
     </a>
   
