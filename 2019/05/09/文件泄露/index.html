@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="文件泄露">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-09T15:39:45.108Z">
+<meta property="og:updated_time" content="2019-05-09T15:45:10.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件泄露">
 <meta name="twitter:description" content="文件泄露">
@@ -167,43 +167,43 @@
       
         <p>文件泄露<br><a id="more"></a></p>
 <h2 id="文件泄露"><a href="#文件泄露" class="headerlink" title="文件泄露"></a>文件泄露</h2><p>文件泄露是指其他人通过访问到项目上的版本管理工具的隐藏文件来获得网站的源码。版本管理工具报货github,svn等。</p>
-<h3 id="Github泄露"><a href="#Github泄露" class="headerlink" title="Github泄露"></a>Github泄露</h3><p>Github是目前全球最热门的在线协作网站，大量的程序员都会在Github上分享自己的代码以及协力进行软件开发。但与此同时，部分的程序员出于各种原因而没有删除所分享代码中的重要敏感信息（邮箱信息 svn信息 内部账号和密码 数据库连接信息 数据库的配置信息），而被黑客利用与攻击系统。</p>
+<h2 id="Github泄露"><a href="#Github泄露" class="headerlink" title="Github泄露"></a>Github泄露</h2><p>Github是目前全球最热门的在线协作网站，大量的程序员都会在Github上分享自己的代码以及协力进行软件开发。但与此同时，部分的程序员出于各种原因而没有删除所分享代码中的重要敏感信息（邮箱信息 svn信息 内部账号和密码 数据库连接信息 数据库的配置信息），而被黑客利用与攻击系统。</p>
 <p>UC某业务导致敏感内部邮件信息泄露<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2015-091525.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2015-091525.html</a></p>
 <p>高德软件多个信息泄露，影响公司安全<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2015-094921.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2015-094921.html</a></p>
-<h4 id="预防"><a href="#预防" class="headerlink" title="预防"></a>预防</h4><p>1）提高安全意识</p>
-<h3 id="Git文件泄露"><a href="#Git文件泄露" class="headerlink" title="Git文件泄露"></a>Git文件泄露</h3><p>在运行git init初始化代码库的时候，会在当前目录下面产生一个.git的隐藏目录，用来记录代码的变更记录等等。使用这个文件，可以用来恢复源代码。别人可以通过访问.git目录获得源代码里面数据库等信息。因此在发布代码的时候，把.git这个目录没有删除，才直接发布了。</p>
+<h3 id="预防"><a href="#预防" class="headerlink" title="预防"></a>预防</h3><p>1）提高安全意识</p>
+<h2 id="Git文件泄露"><a href="#Git文件泄露" class="headerlink" title="Git文件泄露"></a>Git文件泄露</h2><p>在运行git init初始化代码库的时候，会在当前目录下面产生一个.git的隐藏目录，用来记录代码的变更记录等等。使用这个文件，可以用来恢复源代码。别人可以通过访问.git目录获得源代码里面数据库等信息。因此在发布代码的时候，把.git这个目录没有删除，才直接发布了。</p>
 <p>陌陌某重要应用源码泄露<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2014-086227.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2014-086227.html</a></p>
-<h4 id="获得源码"><a href="#获得源码" class="headerlink" title="获得源码"></a>获得源码</h4><p>通过GItHack利用.git目录来获得源码<br>下载地址 <img src="" alt=""><a href="https://github.com/lijiejie/GitHack" target="_blank" rel="noopener">https://github.com/lijiejie/GitHack</a></p>
+<h3 id="获得源码"><a href="#获得源码" class="headerlink" title="获得源码"></a>获得源码</h3><p>通过GItHack利用.git目录来获得源码<br>下载地址 <img src="" alt=""><a href="https://github.com/lijiejie/GitHack" target="_blank" rel="noopener">https://github.com/lijiejie/GitHack</a></p>
 <p>使用方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/lijiejie/GitHack</span><br><span class="line"></span><br><span class="line">python GitHack.py http:localhost/.git</span><br></pre></td></tr></table></figure></p>
-<h4 id="预防-1"><a href="#预防-1" class="headerlink" title="预防"></a>预防</h4><p>1）删除.git文件<br>2）通过apache/nginx来拒绝.git访问</p>
-<h3 id="SVN文件泄露"><a href="#SVN文件泄露" class="headerlink" title="SVN文件泄露"></a>SVN文件泄露</h3><p>Subversion，简称SVN，是一个开放源代码的版本控制系统，相对于的RCS、CVS，采用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。<br>svn同样在项目根目录下会创建一个名为.svn的隐藏文件夹, 包含了所有分支commit信息和代码记录.</p>
+<h3 id="预防-1"><a href="#预防-1" class="headerlink" title="预防"></a>预防</h3><p>1）删除.git文件<br>2）通过apache/nginx来拒绝.git访问</p>
+<h2 id="SVN文件泄露"><a href="#SVN文件泄露" class="headerlink" title="SVN文件泄露"></a>SVN文件泄露</h2><p>Subversion，简称SVN，是一个开放源代码的版本控制系统，相对于的RCS、CVS，采用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。<br>svn同样在项目根目录下会创建一个名为.svn的隐藏文件夹, 包含了所有分支commit信息和代码记录.</p>
 <p>淘宝网某应用svn信息导致代码泄露<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2012-012665.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2012-012665.html</a></p>
-<h4 id="获得源码-1"><a href="#获得源码-1" class="headerlink" title="获得源码"></a>获得源码</h4><p>1）手动复现</p>
+<h3 id="获得源码-1"><a href="#获得源码-1" class="headerlink" title="获得源码"></a>获得源码</h3><p>1）手动复现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -r --no-parent --mirror http://www.example.com/.svn</span><br><span class="line">cd www.example.com &amp;&amp; svn revert --recursive .</span><br></pre></td></tr></table></figure>
 <p>2）通过dvcs-ripper脚本获得源码 下载地址 <img src="" alt=""><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-svn.pl -v -u http://www.example.com/.svn/</span><br></pre></td></tr></table></figure>
 <p>3）通过Seay-Svn软件获得源码<br>在谷歌浏览器上输入  <code>&quot;.svn&quot; intitle:&quot;index of&quot;</code><br>把搜索的网址直接放在Seay-Svn上就可以获得整个网站的代码</p>
-<h4 id="预防-2"><a href="#预防-2" class="headerlink" title="预防"></a>预防</h4><p>1）设置SVN密码，并将匿名访问用户的权限设置为none。<br>2）发布代码时使用svn export导出，而不要使用svn co检索，防止泄露目录结构。<br>3）通过apache/nginx来拒绝.svn访问</p>
+<h3 id="预防-2"><a href="#预防-2" class="headerlink" title="预防"></a>预防</h3><p>1）设置SVN密码，并将匿名访问用户的权限设置为none。<br>2）发布代码时使用svn export导出，而不要使用svn co检索，防止泄露目录结构。<br>3）通过apache/nginx来拒绝.svn访问</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#Apache:</span><br><span class="line">&lt;Directory ~ &quot;\.svn&quot;&gt;</span><br><span class="line">	Order allow,deny</span><br><span class="line">	Deny from all</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#Nginx:</span><br><span class="line">	location ~ ^(.*)\/\.svn\/ &#123;</span><br><span class="line">	return 404;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="DS-Store文件泄露"><a href="#DS-Store文件泄露" class="headerlink" title="DS_Store文件泄露"></a>DS_Store文件泄露</h3><p>.DS_Store是Mac下Finder用来保存文件/文件夹的数据文件，每个文件夹下对应一个。<br>如果开发/设计人员将.DS_Store上传部署到线上环境，可能造成文件目录结构泄漏，特别是备份文件、源代码文件。</p>
+<h2 id="DS-Store文件泄露"><a href="#DS-Store文件泄露" class="headerlink" title="DS_Store文件泄露"></a>DS_Store文件泄露</h2><p>.DS_Store是Mac下Finder用来保存文件/文件夹的数据文件，每个文件夹下对应一个。<br>如果开发/设计人员将.DS_Store上传部署到线上环境，可能造成文件目录结构泄漏，特别是备份文件、源代码文件。</p>
 <p>TCL某网站DS_Store文件泄露敏感信息<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2015-091869.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2015-091869.html</a></p>
-<h4 id="获得源码-2"><a href="#获得源码-2" class="headerlink" title="获得源码"></a>获得源码</h4><p>利用工具  下载地址 <img src="" alt=""><a href="https://github.com/lijiejie/ds_store_exp" target="_blank" rel="noopener">https://github.com/lijiejie/ds_store_exp</a></p>
-<h4 id="预防-3"><a href="#预防-3" class="headerlink" title="预防"></a>预防</h4><p>删除.Ds_Store文件</p>
+<h3 id="获得源码-2"><a href="#获得源码-2" class="headerlink" title="获得源码"></a>获得源码</h3><p>利用工具  下载地址 <img src="" alt=""><a href="https://github.com/lijiejie/ds_store_exp" target="_blank" rel="noopener">https://github.com/lijiejie/ds_store_exp</a></p>
+<h3 id="预防-3"><a href="#预防-3" class="headerlink" title="预防"></a>预防</h3><p>删除.Ds_Store文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;.DS_Store&quot; -depth -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-<h3 id="hg文件泄露"><a href="#hg文件泄露" class="headerlink" title=".hg文件泄露"></a>.hg文件泄露</h3><p>Mercurial 是一个 版本控制系统. 开发者可以用它来管理源代码.<br>hg在初始化代码库的时候，会在当前目录下面产生一个.hg的隐藏文件</p>
-<h4 id="获得源码-3"><a href="#获得源码-3" class="headerlink" title="获得源码"></a>获得源码</h4><p>利用工具 下载地址 <img src="" alt=""><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper</a></p>
+<h2 id="hg文件泄露"><a href="#hg文件泄露" class="headerlink" title=".hg文件泄露"></a>.hg文件泄露</h2><p>Mercurial 是一个 版本控制系统. 开发者可以用它来管理源代码.<br>hg在初始化代码库的时候，会在当前目录下面产生一个.hg的隐藏文件</p>
+<h3 id="获得源码-3"><a href="#获得源码-3" class="headerlink" title="获得源码"></a>获得源码</h3><p>利用工具 下载地址 <img src="" alt=""><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rip-hg.pl -v -u http://www.example.com/.hg/</span><br></pre></td></tr></table></figure>
-<h4 id="预防-4"><a href="#预防-4" class="headerlink" title="预防"></a>预防</h4><p>删除.hg</p>
-<h3 id="bzr文件泄露"><a href="#bzr文件泄露" class="headerlink" title=".bzr文件泄露"></a>.bzr文件泄露</h3><p>Bazaar-NG 是个分散式版本控制系统，旨在易于开发人员和最终用户的使用。分散式版本控制系统采用了 集市开发模型 ，可让人们通过互联网进行协作。如果使用 Bazaar-NG，您就可以向最喜欢的自由软件项目提交自己的分支，同时无需特殊权限。</p>
-<h4 id="获得源码-4"><a href="#获得源码-4" class="headerlink" title="获得源码"></a>获得源码</h4><p>利用工具 下载地址 <img src="" alt=""><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper</a></p>
-<h4 id="预防-5"><a href="#预防-5" class="headerlink" title="预防"></a>预防</h4><p>删除.bzr</p>
-<h3 id="WEB-INF-web-xml文件泄露"><a href="#WEB-INF-web-xml文件泄露" class="headerlink" title="WEB-INF/web.xml文件泄露"></a>WEB-INF/web.xml文件泄露</h3><p>WEB-INF是Java的WEB应用的安全目录。所谓安全就是客户端无法访问，只有服务端可以访问的目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。</p>
+<h3 id="预防-4"><a href="#预防-4" class="headerlink" title="预防"></a>预防</h3><p>删除.hg</p>
+<h2 id="bzr文件泄露"><a href="#bzr文件泄露" class="headerlink" title=".bzr文件泄露"></a>.bzr文件泄露</h2><p>Bazaar-NG 是个分散式版本控制系统，旨在易于开发人员和最终用户的使用。分散式版本控制系统采用了 集市开发模型 ，可让人们通过互联网进行协作。如果使用 Bazaar-NG，您就可以向最喜欢的自由软件项目提交自己的分支，同时无需特殊权限。</p>
+<h3 id="获得源码-4"><a href="#获得源码-4" class="headerlink" title="获得源码"></a>获得源码</h3><p>利用工具 下载地址 <img src="" alt=""><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">https://github.com/kost/dvcs-ripper</a></p>
+<h3 id="预防-5"><a href="#预防-5" class="headerlink" title="预防"></a>预防</h3><p>删除.bzr</p>
+<h2 id="WEB-INF-web-xml文件泄露"><a href="#WEB-INF-web-xml文件泄露" class="headerlink" title="WEB-INF/web.xml文件泄露"></a>WEB-INF/web.xml文件泄露</h2><p>WEB-INF是Java的WEB应用的安全目录。所谓安全就是客户端无法访问，只有服务端可以访问的目录。如果想在页面中直接访问其中的文件，必须通过web.xml文件对要访问的文件进行相应映射才能访问。</p>
 <p>/WEB-INF/web.xml：Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。<br>/WEB-INF/classes/：含了站点所有用的 class 文件，包括 servlet class 和非servlet class。<br>/WEB-INF/lib/：存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件<br>/WEB-INF/src/：源码目录，按照包名结构放置各个java文件。<br>/WEB-INF/database.properties：数据库配置文件。</p>
 <p>中国电信-wlan上网某节点web.xml可读取导致ldap数据库泄露<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2013-039809.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2013-039809.html</a></p>
-<h4 id="预防-6"><a href="#预防-6" class="headerlink" title="预防"></a>预防</h4><p>禁止访问WEB-INF目录</p>
+<h3 id="预防-6"><a href="#预防-6" class="headerlink" title="预防"></a>预防</h3><p>禁止访问WEB-INF目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/WEB-INF/* &#123; deny all; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="网站备份文件泄露"><a href="#网站备份文件泄露" class="headerlink" title="网站备份文件泄露"></a>网站备份文件泄露</h3><p>网站备份文件(zip、sql、rar、swp)泄露指管理员误将网站备份文件或是敏感信息文件存放在某个网站目录下。外部黑客可通过暴力破解文件名等方法下载该备份文件，导致网站敏感信息泄露。</p>
-<h4 id="预防-7"><a href="#预防-7" class="headerlink" title="预防"></a>预防</h4><p>不要在网站目录下存放网站备份文件或包含敏感信息的文件。<br>如需存放该类文件，请将文件名命名为难以破解的字符串。</p>
+<h2 id="网站备份文件泄露"><a href="#网站备份文件泄露" class="headerlink" title="网站备份文件泄露"></a>网站备份文件泄露</h2><p>网站备份文件(zip、sql、rar、swp)泄露指管理员误将网站备份文件或是敏感信息文件存放在某个网站目录下。外部黑客可通过暴力破解文件名等方法下载该备份文件，导致网站敏感信息泄露。</p>
+<h3 id="预防-7"><a href="#预防-7" class="headerlink" title="预防"></a>预防</h3><p>不要在网站目录下存放网站备份文件或包含敏感信息的文件。<br>如需存放该类文件，请将文件名命名为难以破解的字符串。</p>
 
       
 
@@ -437,10 +437,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
@@ -465,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -485,10 +485,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
               </li>
              
@@ -501,11 +497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,15 +521,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,10 +542,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,15 +573,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,6 +586,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
