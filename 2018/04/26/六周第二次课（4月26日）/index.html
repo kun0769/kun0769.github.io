@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="9.4/9.5 sed">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-26T15:36:30.604Z">
+<meta property="og:updated_time" content="2019-12-22T11:39:31.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="六周第二次课（4月26日）">
 <meta name="twitter:description" content="9.4/9.5 sed">
@@ -200,51 +200,51 @@
 </tr>
 </tbody>
 </table>
-<p><code>-n</code>：只显示查找内容的行 可和p使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;p 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<p><code>-r</code>：支持扩展正则表达式 即+ ? () {} | 不需要转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -nr &apos;/o+t/&apos;p 1.txt  ##+需要转义</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
-<p><code>-e</code>：同时执行多个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -e &apos;5&apos;p -e &apos;/root/&apos;p -n 1.txt   ##打印出第五行和带有root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
-<p><code>-i</code>：修改文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -i &apos;1,20&apos;d 1.txt   ##显示20行之后的行并删除文件1-20行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-n</code>：只显示查找内容的行 可和p使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/p&apos; 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-r</code>：支持扩展正则表达式 即+ ? () {} | 不需要转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -nr &apos;/o+t/p&apos; 1.txt  ##+需要转义</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p><code>-e</code>：同时执行多个命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -e &apos;5&apos;p -e &apos;/root/p&apos; -n 1.txt   ##打印出第五行和带有root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p><code>-i</code>：修改文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -i &apos;1,20d&apos; 1.txt   ##显示20行之后的行并删除文件1-20行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>p打印 </p>
 </blockquote>
-<p>用法：<code>sed -n &#39;内容&#39;p 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;5&apos;p 1.txt  ##打印第五行</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;2,4&apos;p 1.txt   ##打印第二到第四行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;p 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+<p>用法：<code>sed -n &#39;内容p&#39; 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;5p&apos; 1.txt  ##打印第五行</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;2,4p&apos; 1.txt   ##打印第二到第四行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/p&apos; 1.txt  ##显示出有字符串root的行</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>I不区分匹配字符的大小写</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/&apos;Ip 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/root/Ip&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>d删除  实际对文件内容不影响</p>
 </blockquote>
-<p>用法：<code>sed &#39;内容&#39;d 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1&apos;d 1.txt  ##显示1行之后的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1,20&apos;d 1.txt   ##显示20行之后的行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;/oot/&apos;d 1.txt  ##显示不带有oot的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>用法：<code>sed &#39;内容d&#39; 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1d&apos; 1.txt  ##显示1行之后的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1,20d&apos; 1.txt   ##显示20行之后的行</span><br><span class="line">kun05:x:1390:1390::/home/kun05:/bin/bash</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br><span class="line">kun3:x:8890:8890::/home/kun3:/bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;/oot/d&apos; 1.txt  ##显示不带有oot的行</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>s替换 不输人范围默认全部行</p>
 </blockquote>
 <p>用法：<code>sed &#39;范围 s/word1/word2/g&#39; 文件名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;1,5s/sbin/kun/g&apos; 1.txt  ##1-5行中把sbin全局替换为kun</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/kun/nologin</span><br><span class="line">daemon:x:2:2:daemon:/kun:/kun/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/kun/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/kun/nologin</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed &apos;s#/sbin/#123#g&apos; 1.txt  视同# @来做替换符也是可以的</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:123nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:123nologin</span><br></pre></td></tr></table></figure>
 <h2 id="sed中正则用法"><a href="#sed中正则用法" class="headerlink" title="sed中正则用法"></a>sed中正则用法</h2><blockquote>
-<p>sed -n ‘1,$’p 1.txt  打印出所有行</p>
+<p>sed -n ‘1,$p’ 1.txt  打印出所有行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;1,$&apos;p 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;1,$p&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>sed -n ‘/^1/‘p 1.txt   打印开头是1的行</p>
+<p>sed -n ‘/^1/p’ 1.txt   打印开头是1的行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/^1/&apos;p 1.txt</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/^1/p&apos; 1.txt</span><br><span class="line">111:x:8889:8889::/home/111:/bin/bash</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>sed -n ‘/lt$/‘p 1.txt  打印结尾是lt的行</p>
+<p>sed -n ‘/lt$/p’ 1.txt  打印结尾是lt的行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/lt$/&apos;p 1.txt</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/lt$/p&apos; 1.txt</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>sed -n ‘/r..o/‘p 1.txt  打印出ro间有两个任意字符的行</p>
+<p>sed -n ‘/r..o/p’ 1.txt  打印出ro间有两个任意字符的行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/r..o/&apos;p 1.txt</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User for polkitd:/:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/r..o/p&apos; 1.txt</span><br><span class="line">operator:x:11:0:operator:/ROOT:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User for polkitd:/:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>sed -n ‘/oo*/‘p 1.txt   打印带o oo … 的行</p>
+<p>sed -n ‘/oo*/p’ 1.txt   打印带o oo … 的行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/oo*/&apos;p 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -n &apos;/oo*/p&apos; 1.txt</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>sed -r ‘s/([^:]+):(.*):([^:]+)/\3:\2:\1/‘ 1.txt   把第一段和最后一段换位置  </p>
 </blockquote>
@@ -261,6 +261,11 @@
 <p>sed -r ‘s/(.*)/kun.&amp;/g’ 1.txt  把所有行前面加上kun.</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# sed -r &apos;s/(.*)/kun.&amp;/g&apos; 1.txt  ##&amp;表示前面的括号</span><br><span class="line">kun.root:x:0:0:root:/root:/bin/bash</span><br><span class="line">kun.bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">kun.daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sed -ri ‘/----autoupdate/{s/(\/\*|\*\/)//g}’ a.txt   把a.txt有----autoupdate的行 并把/*或*/去掉</p>
+</blockquote>
+<p>注意：-i后面必须是修改的内容 不能是其他参数 匹配后执行后面花括号中的一组命令，每个命令之间用分号分隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">修改前</span><br><span class="line">/*    sendfile            on;     //     ----autoupdate</span><br><span class="line">    types_hash_max_size 2048;  */ //     ----autoupdate</span><br><span class="line"></span><br><span class="line">修改后</span><br><span class="line">    sendfile            on;     //     ----update</span><br><span class="line">    types_hash_max_size 2048;   //     ----update</span><br></pre></td></tr></table></figure>
       
 
       
@@ -506,11 +511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,11 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,6 +547,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
@@ -550,7 +559,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,10 +572,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础语法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,10 +595,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -603,6 +604,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,15 +703,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
