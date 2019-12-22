@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞 | kun0769的博客</title>
+  <title>常见黑客术语 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ElasticSearch漏洞 &amp;amp;&amp;amp; Mongodb漏洞 &amp;amp;&amp;amp; Mongodb漏洞">
-<meta name="keywords" content="运维安全">
+  <meta name="description" content="常见黑客术语">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞">
-<meta property="og:url" content="http://yoursite.com/2019/05/15/ElasticSearch漏洞-Mongodb漏洞-Mongodb漏洞/index.html">
+<meta property="og:title" content="常见黑客术语">
+<meta property="og:url" content="http://yoursite.com/2019/12/22/常见黑客术语/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="ElasticSearch漏洞 &amp;amp;&amp;amp; Mongodb漏洞 &amp;amp;&amp;amp; Mongodb漏洞">
+<meta property="og:description" content="常见黑客术语">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/memcached1.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/memcached2.png">
-<meta property="og:updated_time" content="2019-05-15T15:18:42.924Z">
+<meta property="og:updated_time" content="2019-12-22T06:23:48.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞">
-<meta name="twitter:description" content="ElasticSearch漏洞 &amp;amp;&amp;amp; Mongodb漏洞 &amp;amp;&amp;amp; Mongodb漏洞">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/memcached1.png">
+<meta name="twitter:title" content="常见黑客术语">
+<meta name="twitter:description" content="常见黑客术语">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -148,44 +144,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ElasticSearch漏洞-Mongodb漏洞-Mongodb漏洞" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-常见黑客术语" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞
+      常见黑客术语
     </h1>
   
 
         
-        <a href="/2019/05/15/ElasticSearch漏洞-Mongodb漏洞-Mongodb漏洞/" class="archive-article-date">
-  	<time datetime="2019-05-15T15:14:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+        <a href="/2019/12/22/常见黑客术语/" class="archive-article-date">
+  	<time datetime="2019-12-22T06:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ElasticSearch漏洞 &amp;&amp; Mongodb漏洞 &amp;&amp; Mongodb漏洞<br><a id="more"></a></p>
-<h2 id="ElasticSearch漏洞"><a href="#ElasticSearch漏洞" class="headerlink" title="ElasticSearch漏洞"></a>ElasticSearch漏洞</h2><p>漏洞环境下载：<br><img src="" alt=""><a href="https://github.com/vulhub/vulhub/tree/master/elasticsearch" target="_blank" rel="noopener">https://github.com/vulhub/vulhub/tree/master/elasticsearch</a></p>
-<p>启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></p>
-<h3 id="CVE-2014-3120漏洞-命令执行"><a href="#CVE-2014-3120漏洞-命令执行" class="headerlink" title="CVE-2014-3120漏洞 命令执行"></a>CVE-2014-3120漏洞 命令执行</h3><p>老版本ElasticSearch支持传入动态脚本（MVEL）来执行一些复杂的操作，而MVEL可执行Java代码，而且没有沙盒，所以我们可以直接执行任意代码。<br>具体流程<br><img src="" alt=""><a href="https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2014-3120" target="_blank" rel="noopener">https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2014-3120</a></p>
-<h3 id="CVE-2015-3337漏洞-目录穿越"><a href="#CVE-2015-3337漏洞-目录穿越" class="headerlink" title="CVE-2015-3337漏洞 目录穿越"></a>CVE-2015-3337漏洞 目录穿越</h3><p>在安装了具有“site”功能的插件以后，插件目录使用../即可向上跳转，导致目录穿越漏洞，可读取任意文件。没有安装任意插件的elasticsearch不受影响。<br>具体流程<br><img src="" alt=""><a href="https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2015-3337" target="_blank" rel="noopener">https://github.com/vulhub/vulhub/tree/master/elasticsearch/CVE-2015-3337</a></p>
-<h3 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h3><p>1）不要暴露在公网上<br>2）不要以root身份运行<br>3）9200加上Http Basic-Auth基本身份认证</p>
-<h2 id="Mongodb未授权访问利用"><a href="#Mongodb未授权访问利用" class="headerlink" title="Mongodb未授权访问利用"></a>Mongodb未授权访问利用</h2><p>2016年底至2017年初,爆发了针对MongoDB的勒索事件。<br>MongoDB数据库意外暴露超过200万墨西哥公民的医疗健康数据<br><img src="" alt=""><a href="https://www.freebuf.com/news/180103.html" target="_blank" rel="noopener">https://www.freebuf.com/news/180103.html</a></p>
-<p>某游戏平台mongodb未授权访问泄露大量数据<br><img src="" alt=""><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2015-0101829.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2015-0101829.html</a></p>
-<p>以上事件都是对MongoDB未授权访问导致的，在刚安装完毕的时候MongoDB都默认有一个admin数据库,此时admin数据库是空的,没有记录权限相关的信息！找到该漏洞后可以用<code>MongoVUE</code> <code>Robo 3T</code>工具来链接 </p>
-<p>MongoDB黑客事件浅析<br><img src="" alt=""><a href="https://blog.csdn.net/wl812peter/article/details/56841989" target="_blank" rel="noopener">https://blog.csdn.net/wl812peter/article/details/56841989</a></p>
-<h3 id="防护-1"><a href="#防护-1" class="headerlink" title="防护"></a>防护</h3><p>1）确保对MongoDB数据库启用了身份验证<br>2）不要开放到公网0.0.0.0<br>3）备份机制</p>
-<h2 id="Memcached未授权访问利用"><a href="#Memcached未授权访问利用" class="headerlink" title="Memcached未授权访问利用"></a>Memcached未授权访问利用</h2><p>Memcached是一个高性能的分布式的内存对象缓存系统，能够用于存储各种格式的数据、图像、视频、文件等..,就是将数据调用到内存中，然后从内存中读取，从而大大提高读取的速度。</p>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/memcached1.png" alt=""></p>
-<p>memcached未作IP限制导致缓存数据可被攻击者控制<br><a href="https://wystatic.tuisec.win/static/bugs/wooyun-2010-0790.html" target="_blank" rel="noopener">https://wystatic.tuisec.win/static/bugs/wooyun-2010-0790.html</a></p>
-<h3 id="Memcached-DRDoS攻击"><a href="#Memcached-DRDoS攻击" class="headerlink" title="Memcached DRDoS攻击"></a>Memcached DRDoS攻击</h3><p>DRDoS是英文“Distributed Reflection Denial of Service ”的缩写，中文意思是“分布式反射拒绝服务”。与DoS、DDoS不同，该方式靠的是发送大量带有被害者IP地址的数据包给攻击主机，然后攻击主机对IP地址源做出大量回应，形成拒绝服务攻击。</p>
-<p>要进行DRDoS攻击，需要下面几个条件<br>1）Memcached支撑UTP<br>2）Memcached有高上传带宽（机器多一样）<br>3）Memcached不需要认证就可以访问</p>
-<h3 id="Python脚本进行DRDoS攻击"><a href="#Python脚本进行DRDoS攻击" class="headerlink" title="Python脚本进行DRDoS攻击"></a>Python脚本进行DRDoS攻击</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/memcached2.png" alt=""></p>
-<h3 id="防护-2"><a href="#防护-2" class="headerlink" title="防护"></a>防护</h3><p>1）限制访问IP<br>2）设置启动用户<br>3）新版本Memcached<br>4）配置监听地址仅限本地回环地址</p>
+        <p>常见黑客术语<br><a id="more"></a></p>
+<h3 id="肉鸡"><a href="#肉鸡" class="headerlink" title="肉鸡"></a>肉鸡</h3><p>已经被种马的机器，多用该机器的流量进行ddos攻击，或刷流量，广告之类，或那该机器ip作跳板做其他违法事情。</p>
+<h3 id="抓鸡"><a href="#抓鸡" class="headerlink" title="抓鸡"></a>抓鸡</h3><p>通过扫描弱口令，爆破，漏洞自动化种马达到控制机器。如:1433抓鸡，3389抓鸡，3306抓鸡，数字指端口号。</p>
+<h3 id="抓鸡流程"><a href="#抓鸡流程" class="headerlink" title="抓鸡流程"></a>抓鸡流程</h3><p>1）收集地区IP网段<br>2）扫描端口并开放端口<br>3）破解sa账户的弱密码获得系统权限<br>4）下载木马</p>
+<h3 id="木马分类"><a href="#木马分类" class="headerlink" title="木马分类"></a>木马分类</h3><p>1）计算机木马<br>2）网页木马（webshell）：<br>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。<br>3）大马<br>4）小马：体积小，主要用与上传大文件（大马）和webshell。由于网站上有上传文件大小的限制。<br>5）一句话木马：小马的一种，用与执行网站命令等操作，可使用中国菜刀来控制一句话木马<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ASP &lt;%execute(request(&quot;MH&quot;))%&gt;</span><br><span class="line">PHP &lt;?php eval($_POST[a]); ?&gt;</span><br><span class="line">.NET &lt;%@Page Language=&quot;Jscript&quot;%&gt;&lt;%eval(Request.Item[&quot;pass&quot;],&quot;unsafe&quot;);%&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h3><p>蜜罐技术本质上是一种对攻击方进行欺骗的技术，通过布置一些作为诱饵的主机、网络服务或者信息，诱使攻击方对它们实施攻击，从而可以对攻击行为进行捕获和分析，了解攻击方所使用的工具与方法，推测攻击意图和动机，能够让防御方清晰地了解他们所面对的安全威胁，并通过技术和管理手段来增强实际系统的安全防护能力。<br>蜜罐好比是情报收集系统。蜜罐好像是故意让人攻击的目标，引诱黑客前来攻击。所以攻击者入侵后，你就可以知道他是如何得逞的，随时了解针对服务器发动的最新的攻击和漏洞。还可以通过窃听黑客之间的联系，收集黑客所用的种种工具，并且掌握他们的社交网络。</p>
+<h3 id="互联网由3层网络组成"><a href="#互联网由3层网络组成" class="headerlink" title="互联网由3层网络组成"></a>互联网由3层网络组成</h3><p>表层网：可以通过浏览器访问的网站<br>深网：无法通过搜索引擎访问，只能通过特定软件访问的内容，如QQ,通信软件之类的<br>暗网：深网的子网（分支）也是只能通过特定浏览器访问 域名后缀名多是.onion</p>
+<h3 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h3><p>使软件避开杀毒软件的杀死</p>
+<h3 id="APT攻击"><a href="#APT攻击" class="headerlink" title="APT攻击"></a>APT攻击</h3><p>APT攻击是（<br>Advanced Persistent Threat）高级持续性威胁。<br>利用先进的攻击手段对特定目标进行长期持续性网络攻击的攻击形式。一般是国家或者集团支撑一伙人去做违法的事情。</p>
+<h3 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h3><p>Exploit（EXP）是指漏洞利用，有漏洞不一定有Exploit，但有Exploit就肯定有漏洞。</p>
+<h3 id="概念验证"><a href="#概念验证" class="headerlink" title="概念验证"></a>概念验证</h3><p>概念验证（POC）是指漏洞概念证明 证明该版本有漏洞，但还不能利用。<br><img src="" alt=""><a href="http://www.exploit-db.com/" target="_blank" rel="noopener">http://www.exploit-db.com/</a></p>
+<h3 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h3><p>通过手段来获得公司内部网络的信息资料。</p>
+<h3 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h3><p>心里学中的分支，在计算机科学中，社<br>会工程学是通过和他人的合法交流，使其心里受到影响，做出某些动作或者透露一些机密信息的方式。通常被认为是一种欺诈他人以收集信息，行骗和入侵计算机系统的行为。简单的说通过对话来引导别人做自己想做的事情。</p>
+<h3 id="社工库"><a href="#社工库" class="headerlink" title="社工库"></a>社工库</h3><p>通过社会工程系方式收集到的信息搭建成的数据库</p>
+<h3 id="脱裤"><a href="#脱裤" class="headerlink" title="脱裤"></a>脱裤</h3><p>脱库。通过非法手段获取网站的数据库信息。简单到说就是把数据库下载下来。</p>
+<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><p>把普通用户提升为管理员权限。</p>
+<h3 id="谷歌黑客"><a href="#谷歌黑客" class="headerlink" title="谷歌黑客"></a>谷歌黑客</h3><p>谷歌黑客（Google Hacking）指利用Google搜索引擎搜索信息来进行入侵的技术和行为。</p>
+<h3 id="0day"><a href="#0day" class="headerlink" title="0day"></a>0day</h3><p>一种计算机软件的攻击方式。通常是指还没有补丁的漏洞。通常掌握该技术的人都是该技术的发现者。</p>
+<h3 id="旁站"><a href="#旁站" class="headerlink" title="旁站"></a>旁站</h3><p>目标站点所在服务器上的其他网站，然后再想办法跨到真正目标站点的目录中。</p>
+<h3 id="C段"><a href="#C段" class="headerlink" title="C段"></a>C段</h3><p>网段中的任意一台机器，只要子网相同就可以嗅探到账号密码</p>
 
       
 
@@ -194,17 +192,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">运维安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -255,7 +242,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/15/ElasticSearch漏洞-Mongodb漏洞-Mongodb漏洞/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/22/常见黑客术语/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -270,8 +257,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/05/14/Rsync漏洞-Redis漏洞/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Rsync漏洞 &amp;&amp; Redis漏洞</div>
+    <a href="/2019/12/22/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -419,11 +406,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,15 +422,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,15 +450,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +490,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">简介</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,10 +502,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简介</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -527,11 +510,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +542,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color5">日常运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,6 +598,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
@@ -620,10 +611,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
