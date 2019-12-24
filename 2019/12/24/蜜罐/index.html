@@ -9,13 +9,14 @@
   <title>蜜罐 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="蜜罐">
+<meta name="keywords" content="运维安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蜜罐">
 <meta property="og:url" content="http://yoursite.com/2019/12/24/蜜罐/index.html">
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="蜜罐">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-24T12:21:21.958Z">
+<meta property="og:updated_time" content="2019-12-24T12:27:15.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蜜罐">
 <meta name="twitter:description" content="蜜罐">
@@ -164,7 +165,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>蜜罐<br><a id="more"></a><br>蜜罐技术本质上是一种对攻击方进行欺骗的技术，通过布置一些作为诱饵的主机。<br>Cowrie是一款中度交互的SSH与Telnet蜜罐，它可以获取攻击者用于暴力破解的字典、输入的命令以及上传或下载的恶意文件。它是被动型蜜罐，不会自动发送流量给攻击者，让攻击者主动攻击IP地址来获得字典和使用的工具。</p>
+        <p>蜜罐<br><a id="more"></a></p>
+<p>蜜罐技术本质上是一种对攻击方进行欺骗的技术，通过布置一些作为诱饵的主机。<br>Cowrie是一款中度交互的SSH与Telnet蜜罐，它可以获取攻击者用于暴力破解的字典、输入的命令以及上传或下载的恶意文件。它是被动型蜜罐，不会自动发送流量给攻击者，让攻击者主动攻击IP地址来获得字典和使用的工具。</p>
 <p>特性：<br>1）伪装的文件系统可增加/移除文件；完整的文件系统搭配有Debian 5.0<br>2）可增加文件内容，攻击者就能用cat命令查看如/etc/passwd等文件；系统中进包含最少的文件内容<br>3）会话日志记录在UML兼容格式中，便于重演<br>4）Cowrie保存文件，下载用wget/curl，或者为后续检查——上传采用SFTP和scp</p>
 <p>参考文章 <img src="" alt=""><a href="https://www.cnblogs.com/HacTF/p/8094516.html" target="_blank" rel="noopener">https://www.cnblogs.com/HacTF/p/8094516.html</a></p>
 <h3 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h3><p>1）创建普通用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd cowrie</span><br><span class="line">passwd cowrie</span><br></pre></td></tr></table></figure></p>
@@ -200,6 +202,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">运维安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -263,6 +276,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/12/24/监控主机信息/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          监控主机信息
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/22/常见黑客术语/" id="article-nav-older" class="article-nav-link-wrap">
@@ -422,6 +444,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
@@ -474,19 +500,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">生成器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,6 +521,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,10 +541,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
