@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="端口扫描">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-26T13:00:34.478Z">
+<meta property="og:updated_time" content="2019-12-28T15:41:14.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="端口扫描">
 <meta name="twitter:description" content="端口扫描">
@@ -170,7 +170,45 @@
 <h4 id="windows下载安装"><a href="#windows下载安装" class="headerlink" title="windows下载安装"></a>windows下载安装</h4><p><img src="" alt=""><a href="https://nmap.org/dist/nmap-7.70-setup.exe" target="_blank" rel="noopener">https://nmap.org/dist/nmap-7.70-setup.exe</a></p>
 <h4 id="linux下载安装"><a href="#linux下载安装" class="headerlink" title="linux下载安装"></a>linux下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -vhU https://nmap.org/dist/nmap-7.70-1.x86_64.rpm</span><br><span class="line">rpm -vhU https://nmap.org/dist/zenmap-7.70-1.noarch.rpm</span><br><span class="line">rpm -vhU https://nmap.org/dist/ncat-7.70-1.x86_64.rpm</span><br><span class="line">rpm -vhU https://nmap.org/dist/nping-0.7.70-1.x86_64.rpm</span><br></pre></td></tr></table></figure>
 <h4 id="mac下载安装"><a href="#mac下载安装" class="headerlink" title="mac下载安装"></a>mac下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">https://nmap.org/dist/nmap-7.70.dmg</span><br><span class="line">https://nmap.org/dist/nmap-7.70.tar.bz2</span><br><span class="line">bzip2 -cd nmap-7.70.tar.bz2 | tar xvf -</span><br><span class="line">cd nmap-7.70</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">su root</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><blockquote>
+<h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-sS</td>
+<td>只发布SYN包TCP扫描 不回复</td>
+</tr>
+<tr>
+<td>-sT</td>
+<td>完整TCP连接扫描 会回复ACK包(常用)</td>
+</tr>
+<tr>
+<td>-sF</td>
+<td>只发FIN包TCP扫描</td>
+</tr>
+<tr>
+<td>-sU</td>
+<td>UTP连接扫描 连接时间长 开放端口没回应 没开放端口会端口不可达</td>
+</tr>
+<tr>
+<td>-sn</td>
+<td>ping扫描</td>
+</tr>
+<tr>
+<td>-sV</td>
+<td>详细说明端口的开放服务信息(常用)</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>对主机综合扫描(常用)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
 <p> 扫描单个主机</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1</span><br></pre></td></tr></table></figure>
@@ -178,6 +216,14 @@
 <p>扫描整个子网</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>扫描整个子网除了254</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24 -exclude 192.168.1.254</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>扫描整个子网除了主机清单的机器</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.1.1/24 -excludefile ip.txt</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>ip地址列表</p>
 </blockquote>
@@ -193,7 +239,7 @@
 <blockquote>
 <p>非ping命令扫描所有端口服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV -Pn -p1-65535 192.168.1.1 -v -n</span><br><span class="line"># -v 详细信息 -sV 扫描端口服务 -Pn 非ping命令扫描（用于跨过防火墙）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV -Pn -p1-65535 192.168.1.1 -v -n</span><br><span class="line"># -v 详细信息 -sV 扫描端口服务 -Pn 非ping命令扫描（用于跨过防火墙）-n 不做DNS解析</span><br></pre></td></tr></table></figure>
 <p>nmap默认存放脚本路径在<code>/usr/share/nmap/scripts</code> 可以通过这些脚本来让nmap去扫描机器漏洞</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -sV --script=vulscan/vulscan.nse target</span><br><span class="line">nmap -sS -sV --script=vulscan/vulscan.nse –script-args vulscandb=scipvuldb.csv target</span><br><span class="line">nmap -sS -sV --script=vulscan/vulscan.nse –script-args vulscandb=scipvuldb.csv -p80 target</span><br><span class="line">nmap -PN -sS -sV --script=vulscan –script-args vulscancorrelation=1 -p80 target</span><br><span class="line">nmap -sV --script=vuln target</span><br><span class="line">nmap -PN -sS -sV --script=all –script-args vulscancorrelation=1 target</span><br></pre></td></tr></table></figure>
 <h3 id="Masscan"><a href="#Masscan" class="headerlink" title="Masscan"></a>Masscan</h3><p>Masscan这款工具被称为“最快的端口扫描”神器。缺点扫描量大，运营商会封ip和上门查水表。</p>
@@ -446,15 +492,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,10 +520,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -482,11 +528,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,7 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,11 +560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,7 +580,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,7 +592,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,15 +632,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,15 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,6 +689,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
