@@ -162,26 +162,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="AWVS"><a href="#AWVS" class="headerlink" title="AWVS"></a>AWVS</h3><p>AWVS是一个自动化的web应用程序安全测试工具，他可以扫描任何可通过web浏览器访问的和遵循HTTP/HTTPS规则的web站点和web应用程序。AWVS可以通过SQL注入攻击漏洞、跨站脚本漏洞等来审核web应用程序的安全性。他可以扫描任何可通过web浏览器访问的和遵循HTTP/HTTPS的web站点和web应用程序。<br>AWVS只负责网站的漏洞扫描，主机扫描并不会。它是先通过爬虫来获得网站信息，再通过各种规则把网站的规则给报告出来。其中AWVS10是客户端，AWVS12是网页版。</p>
-<h3 id="使用AWVS10"><a href="#使用AWVS10" class="headerlink" title="使用AWVS10"></a>使用AWVS10</h3><p><code>网站扫描</code>：找出站点的目录和文件和漏洞<br><code>爬虫扫描</code>：找出站点的目录和文件</p>
-<p><img src="en-resource://database/4892:1" alt="23f881c8d12068ae77485eb3716b8a30.png"></p>
-<p>1）选择网站扫描<br><img src="en-resource://database/4894:1" alt="112dd8439999eb5937c6f8c60f7e8862.png"></p>
-<p>2）选择扫描的漏洞 默认表示扫描全部<br><img src="en-resource://database/4896:1" alt="1738a171166b1ee451b79f125482fee4.png"></p>
-<p>3）自动把网站的基本信息扫描出来<br><img src="en-resource://database/4898:1" alt="48f1075fc9320f35cdb3bf614c901d75.png"></p>
-<p>4）登录网站设置 选择用户名和密码登录<br><code>令牌登录</code>：模拟登录页面保存为令牌<br><img src="en-resource://database/4900:1" alt="ab09bcdffb1371c1fc9a4b39e0a5ebd1.png"></p>
-<p>扫描结果<br><img src="en-resource://database/4902:1" alt="896d859d32495f2c9c55d182ebaa8d9d.png"></p>
-<h4 id="HTTP-Editor模块"><a href="#HTTP-Editor模块" class="headerlink" title="HTTP Editor模块"></a>HTTP Editor模块</h4><p>可以针对单独每个页面做漏洞测试，找到有漏洞的页面右键 —- <code>Edit with HTTP Editor</code><br><img src="en-resource://database/4904:1" alt="c7925868d355306c5e6644caf0d66889.png"><br>手动添加或修改信息在 点击start发布请求<br><img src="en-resource://database/4908:1" alt="d55378b5e502b69628b65d4b5700ae5a.png"><br><img src="en-resource://database/4906:1" alt="b0e9691143042ebaaeb2f0ede5647f25.png"><br><img src="en-resource://database/4910:1" alt="00f8df476e0635a188062964e602490d.png"></p>
-<p>导出报告<br>确认扫描成功 导出为报告<br><img src="en-resource://database/4912:1" alt="82b985f6f931f2960dedd4eff7dedccd.png"></p>
-<h4 id="web主机发现"><a href="#web主机发现" class="headerlink" title="web主机发现"></a>web主机发现</h4><p>该功能类似于Nmap 点击左边菜单栏<code>TargetFinder</code> 输入IP段和扫描的端口<br><img src="en-resource://database/4916:1" alt="e154a697f083e0c881d2e7b713ca7f2d.png"></p>
-<p>可以把扫描出来的ip保存为文档或CSV(用于Excel) 右键 —- <code>Save list for targets</code>和<code>Export list for servers to CSV</code><br><img src="en-resource://database/4920:1" alt="c1b2f537f103d7eb5cadb77233c7c677.png"></p>
-<h4 id="爬虫模块"><a href="#爬虫模块" class="headerlink" title="爬虫模块"></a>爬虫模块</h4><p>用于找出站点的目录结构和找出敏感文件 点击左边菜单栏<code>Site Crawler</code> 输入IP段点击<code>Start</code><br><img src="en-resource://database/4922:1" alt="37e2a9967cb407668bd8848c3d7d501d.png"><br>点击文件右键<br><img src="en-resource://database/4924:1" alt="bb2363903c715265e47d636137840f84.png"><br>点击空白处右键<br><img src="en-resource://database/4928:1" alt="0244d2e8913c578dd27a57eff3670212.png"></p>
-<h4 id="HTTP-Fuzzer模块"><a href="#HTTP-Fuzzer模块" class="headerlink" title="HTTP Fuzzer模块"></a>HTTP Fuzzer模块</h4><p>爬虫模块只能找出浏览器显示出来的目录，不对客户开放的后台目录或文件可通过HTTP Fuzzer来找出并使用字典爆破找出页面。HTTP Fuzzer可以在请求里面添加变量名，对应的值使用字典里面的网页来找出后台页面。该功能类似于Burp Suite</p>
-<p><code>Add Generator</code> —- <code>File generator</code> —- <code>Insert into Request</code> —- <code>Start</code><br><img src="en-resource://database/4930:1" alt="c92191ee835fe9f11a47419f92bbfcea.png"><br><img src="en-resource://database/4934:1" alt="840d87f52539f19c6e76f6d369b3fd8d.png"><br><code>Fuzzer Filters</code> 可以用来过滤得到的结果<br><img src="en-resource://database/4936:1" alt="e9ce169ef54140fd79472831c4cc52f8.png"></p>
-<h4 id="HTTP-Sniffer模块"><a href="#HTTP-Sniffer模块" class="headerlink" title="HTTP Sniffer模块"></a>HTTP Sniffer模块</h4><p>用于访问浏览器时监听本机端口来过滤信息</p>
-<p>监控所有网卡的8080端口设置<code>Configuration</code> —- <code>Application Settings</code> —- <code>Http Sniffer</code><br><img src="en-resource://database/4940:1" alt="beddc642ca05cc8265177e25c3b251f5.png"></p>
-<p><code>Http Sniffer</code> —- <code>Edit Traps</code> —- <code>Enable Traps</code> —- <code>Start</code><br><img src="en-resource://database/4938:1" alt="c05c020a9d8a63b54119487498521510.png"></p>
-<h4 id="Subdomain-Scanner"><a href="#Subdomain-Scanner" class="headerlink" title="Subdomain Scanner"></a>Subdomain Scanner</h4><p>用于扫描站点的子域名<br>点击左边菜单栏<code>Subdomain Scanner</code> 输入IP段 点击<code>Start</code> 其中可以选择本地或者指定DNS来目标站点的子域名<br><img src="en-resource://database/4942:0" alt="5f8653f5a169031666cd99ae67c33b52.png"></p>
-
+        <p>AWVS<br>
+        
+          <a class="article-more-a" href="/2019/12/29/漏洞扫描/#more">more >></a>
+        
       
 
       
@@ -189,6 +173,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">运维安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -244,7 +239,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>端口扫描<br>
+        <p>Nmap &amp;&amp; Masscan<br>
         
           <a class="article-more-a" href="/2019/12/26/端口扫描/#more">more >></a>
         
@@ -629,19 +624,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,11 +688,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,11 +716,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,10 +733,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,11 +748,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,6 +772,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
@@ -789,19 +788,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color5">磁盘管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -821,15 +816,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
