@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>docker 1（9月18日） | kun0769的博客</title>
+  <title>IP资产扫描 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="25.1 docker简介25.2 安装docker25.3 镜像管理25.4 通过容器创建镜像">
-<meta name="keywords" content="docker">
+  <meta name="description" content="PublicMonitors">
+<meta name="keywords" content="运维安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker 1（9月18日）">
-<meta property="og:url" content="http://yoursite.com/2018/09/18/docker-1（9月18日）/index.html">
+<meta property="og:title" content="IP资产扫描">
+<meta property="og:url" content="http://yoursite.com/2020/01/01/IP资产扫描/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="25.1 docker简介25.2 安装docker25.3 镜像管理25.4 通过容器创建镜像">
+<meta property="og:description" content="PublicMonitors">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png">
-<meta property="og:updated_time" content="2018-11-20T06:29:46.342Z">
+<meta property="og:updated_time" content="2020-01-01T09:26:11.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker 1（9月18日）">
-<meta name="twitter:description" content="25.1 docker简介25.2 安装docker25.3 镜像管理25.4 通过容器创建镜像">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png">
+<meta name="twitter:title" content="IP资产扫描">
+<meta name="twitter:description" content="PublicMonitors">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -148,107 +145,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-docker-1（9月18日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-IP资产扫描" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      docker 1（9月18日）
+      IP资产扫描
     </h1>
   
 
         
-        <a href="/2018/09/18/docker-1（9月18日）/" class="archive-article-date">
-  	<time datetime="2018-09-18T14:30:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
+        <a href="/2020/01/01/IP资产扫描/" class="archive-article-date">
+  	<time datetime="2020-01-01T09:24:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>25.1 docker简介<br>25.2 安装docker<br>25.3 镜像管理<br>25.4 通过容器创建镜像<br><a id="more"></a></p>
-<h2 id="25-1-Docker简介"><a href="#25-1-Docker简介" class="headerlink" title="25.1 Docker简介"></a>25.1 Docker简介</h2><p>Docker是一种容器技术，它可以快速部署环境。<br>其官网 <img src="" alt=""><a href="http://www.docker.com" target="_blank" rel="noopener">www.docker.com</a>   github <img src="" alt=""><a href="https://github.com/docker/docker.github.io" target="_blank" rel="noopener">https://github.com/docker/docker.github.io</a><br>Docker是开源的容器引擎，可以让开发者打包应用以及依赖的库，然后发布到任何流行的linux发行版上，移植很方便。<br>它由go语言编写，基于apache2.0协议发布。基于linux kernel，要想在win下运行需要借助一个vm（虚拟机）来实现<br>自2013年开始，近些年发展迅猛，docker从1.13x开始，版本分为社区版ce和企业版ee，并且基于年月的时间线形式，当前最新稳定版为17.09 参考 <img src="" alt=""><a href="http://blog.csdn.net/chenhaifeng2016/article/details/68062414" target="_blank" rel="noopener">http://blog.csdn.net/chenhaifeng2016/article/details/68062414</a></p>
-<h3 id="Docker和传统的虚拟化比较"><a href="#Docker和传统的虚拟化比较" class="headerlink" title="Docker和传统的虚拟化比较"></a>Docker和传统的虚拟化比较</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917222556.png" alt=""></p>
-<p>传统虚拟化和docker都是建立在有硬件支持的物理机上的操作系统上。传统虚拟化在操作系统上建立Hypervisor来驱动虚拟化。docker 上的docker engine 也Hypervisor类似，也是用来驱动虚拟化的。不同的是<code>docker是不需要安装客户虚拟机来安装应用或者服务</code>。</p>
-<ul>
-<li>Docker的优势<ul>
-<li>启动非常快，秒级实现</li>
-<li>资源利用率高，一台高配置服务器可以跑上千个docker容器</li>
-<li>更快的交付和部署，一次创建和配置后，可以在任意地方运行</li>
-<li>内核级别的虚拟化，不需要额外的hypevisor支持，会有更高的性能和效率</li>
-<li>易迁移，平台依赖性不强</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180917223358.png" alt=""></p>
-<h3 id="Docker核心概念"><a href="#Docker核心概念" class="headerlink" title="Docker核心概念"></a>Docker核心概念</h3><p><code>镜像</code>，是一个只读的模板，类似于安装系统用到的那个iso文件，我们通过镜像来完成各种应用的部署。<br><code>容器</code>，镜像类似于操作系统，而容器类似于虚拟机本身。它可以被启动、开始、停止、删除等操作，每个容器都是相互隔离的。<br><code>仓库</code>，存放镜像的一个场所，仓库分为公开仓库和私有仓库。 最大的公开仓库是Docker hub <img src="" alt="">hub.docker.com 国内公开仓库 <img src="" alt="">dockerpool.com</p>
-<h2 id="25-2-安装Docker"><a href="#25-2-安装Docker" class="headerlink" title="25.2 安装Docker"></a>25.2 安装Docker</h2><p>安装docker有两种方法</p>
+        <p>PublicMonitors<br><a id="more"></a></p>
+<h3 id="PublicMonitors"><a href="#PublicMonitors" class="headerlink" title="PublicMonitors"></a>PublicMonitors</h3><p>PublicMonitors是GitHub上使用python编写的项目。它可以用来定期检查机器开放的服务是否存在弱口令的风险，并生产excel报告发送指定邮箱。<br>GitHub地址 <img src="" alt=""><a href="https://github.com/grayddq/PublicMonitors" target="_blank" rel="noopener">https://github.com/grayddq/PublicMonitors</a></p>
+<h4 id="实现逻辑"><a href="#实现逻辑" class="headerlink" title="实现逻辑"></a>实现逻辑</h4><p>1）调用Masscan进行快速扫描<br>2）调用Nmap进行扫描端口服务版本信息<br>3）调用Hydra进行对服务弱口令爆破<br>4）生产报告并发送所有结果到email</p>
+<h4 id="PublicMonitors安装步骤"><a href="#PublicMonitors安装步骤" class="headerlink" title="PublicMonitors安装步骤"></a>PublicMonitors安装步骤</h4><p>1）安装nmap hydra masscan<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nmap</span><br><span class="line"></span><br><span class="line">yum install -y openssl-devel pcre-devel ncpfs-devel postgresql-devel libssh-devel gcc libpcap-devel</span><br><span class="line">git clone https://github.com/vanhauser-thc/thc-hydra</span><br><span class="line">cd thc-hydra &amp;&amp; ./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">git clone https://github.com/robertdavidgraham/masscan.git</span><br><span class="line">cd masscan &amp;&amp; make</span><br><span class="line">cp bin/masscan /usr/local/sbin/</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>1.下载官方最新的源并下载最新的包</p>
+<p>安装hydra报错</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# curl https://download.docker.com/linux/centos/docker-ce.repo -o  /etc/yum.repos.d/docker.repo</span><br><span class="line"></span><br><span class="line">[root@kun01 ~]# yum install -y docker-ce</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.下载网址的rpm包上传到机器上<br><img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/25docker/docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/25docker/docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm</a></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# yum install -y container-selinux</span><br><span class="line">[root@kun01 src]# rpm -ivh docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>启动docker服务</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# systemctl start docker</span><br></pre></td></tr></table></figure>
-<h2 id="25-3-镜像管理"><a href="#25-3-镜像管理" class="headerlink" title="25.3 镜像管理"></a>25.3 镜像管理</h2><blockquote>
-<p>下载镜像</p>
-</blockquote>
-<p>格式：<code>docker pull 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 src]# docker pull centos</span><br></pre></td></tr></table></figure></p>
-<p>由于下载国外的镜像慢 这里可以使用国内的加速器 重启服务再下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# vim /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://dhq9bx4f.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# systemctl restart docker</span><br><span class="line">[root@kun01 ~]# docker pull centos</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>查看本地的所有镜像</p>
-</blockquote>
-<p>格式：<code>docker images</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              5182e96772bf        6 weeks ago         200MB</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>搜索指定的镜像</p>
-</blockquote>
-<p>格式：<code>docker search 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker search jumpserver</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>给镜像改名字 原来的镜像还在</p>
-</blockquote>
-<p>格式：<code>docker tag 镜像名 新镜像名[:备注]</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker tag centos kun_centos</span><br><span class="line"></span><br><span class="line">[root@kun01 ~]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              5182e96772bf        6 weeks ago         200MB</span><br><span class="line">kun_centos          latest              5182e96772bf        6 weeks ago         200MB</span><br></pre></td></tr></table></figure></p>
-<p>centos和 kun_centos名字不一样 但是 <code>IMAGE ID</code> 是一致的，它们是同一个镜像</p>
-<p>也可以添加备注标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker tag centos kun_centos:180918</span><br><span class="line"></span><br><span class="line">[root@kun01 ~]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              5182e96772bf        6 weeks ago         200MB</span><br><span class="line">kun_centos          180918              5182e96772bf        6 weeks ago         200MB</span><br><span class="line">kun_centos          latest              5182e96772bf        6 weeks ago         200MB</span><br></pre></td></tr></table></figure></p>
-<p><code>:180918</code>指TAG的备注信息</p>
-<blockquote>
-<p>把镜像启动为容器</p>
-</blockquote>
-<p>格式：<code>docker run -itd 镜像名</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker run -itd centos</span><br><span class="line">cdc6436e64ff3773c48d02f9847473326a3001a526db9808aecdfdff7e7dd9da</span><br></pre></td></tr></table></figure></p>
-<p><code>-i</code>表示让容器的标准输入打开<br><code>-t</code>表示分配一个伪终端<br><code>-d</code>表示后台启动，要把-i -t -d 放到镜像名字前面</p>
-<blockquote>
-<p>查看运行的容器</p>
-</blockquote>
-<p>格式：<code>docker ps</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES</span><br><span class="line">cdc6436e64ff        centos              &quot;/bin/bash&quot;         About a minute ago   Up About a minute</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>查看全部容器 包括停止的容器</p>
-</blockquote>
-<p>格式：<code>docker ps -a</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker ps -a</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>删除指定镜像</p>
-</blockquote>
-<p>格式：<code>docker rmi 镜像名[:备注]/ID</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker rmi kun_centos</span><br><span class="line">Untagged: kun_centos:latest</span><br><span class="line"></span><br><span class="line">[root@kun01 ~]# docker rmi kun_centos:180918</span><br><span class="line">Untagged: kun_centos:180918</span><br></pre></td></tr></table></figure></p>
-<p>当镜像有备注时，删除镜像也要带上备注，否则默认删除带<code>latest</code>的镜像，也可以指定<code>image id</code> 来删除镜像来把其他改名的镜像一同删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker rmi 5182e96772bf</span><br></pre></td></tr></table></figure></p>
-<h2 id="25-4-Docker通过容器创建镜像"><a href="#25-4-Docker通过容器创建镜像" class="headerlink" title="25.4 Docker通过容器创建镜像"></a>25.4 Docker通过容器创建镜像</h2><p>可以通过容器来自定义镜像 来创建自己的镜像</p>
-<blockquote>
-<p>进入启动的容器里</p>
-</blockquote>
-<p>格式：<code>docker exec -it 容器ip bash</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker exec -it cdc643 bash</span><br></pre></td></tr></table></figure></p>
-<p>容器id可以用d<code>ocker ps</code>查看，最后面的<code>bash</code>为进入容器后我们要执行的命令，这样就可以打开一个终端。<br>进入到该容器中，我们做一些变更，比如安装一些东西，然后针对这个容器进行创建新的镜像。这里我们安装net-tools工具 并按<code>Ctrl+D</code>退出容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@cdc6436e64ff /]# yum install -y net-tools</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>容器创建新镜像</p>
-</blockquote>
-<p>格式：<code>docker commit -m &quot;备注信息&quot; [-a  &quot;作者名字&quot;] image IP 新镜像名字</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker commit -m &quot;install net-tools&quot; -a &quot;kun&quot; cdc6436e centos_net</span><br></pre></td></tr></table></figure></p>
-<p><code>-m</code> 加一些改动信息<br><code>-a</code> 指定作者相关信息 ，可以不加<br><code>cdc6436e</code>这一串为容器id，再后面为新镜像的名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos_net          latest              aa79b8e09df5        4 minutes ago       293MB</span><br><span class="line">centos              latest              5182e96772bf        6 weeks ago         200MB</span><br></pre></td></tr></table></figure>
-<p>已经多了一个centos_net得镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cc -I. -O3 -march=native -flto -pie -fPIE -fstack-protector-all --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -Wl,-z,now -Wl,-z,relro   -c bfg.c -DLIBOPENSSL -DHAVE_PCRE -DLIBPOSTGRES -DLIBSSH -DHAVE_ZLIB -DHAVE_MATH_H -DHAVE_SYS_PARAM_H -I/usr/include -I/usr/include</span><br><span class="line">bfg.c: 在函数‘accu’中:</span><br><span class="line">bfg.c:196:3: 错误：只允许在 C99 模式下使用‘for’循环初始化声明</span><br><span class="line">   for(int a=1; a&lt;=value; ++a)</span><br><span class="line">   ^</span><br><span class="line">bfg.c:196:3: 附注：使用 -std=c99 或 -std=gnu99 来编译您的代码</span><br><span class="line">make: *** [bfg.o] 错误 1</span><br></pre></td></tr></table></figure>
+<p>原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim bfg.c</span><br><span class="line"></span><br><span class="line">for(int a=1; a&lt;=value; ++a)</span><br><span class="line">改为</span><br><span class="line">nt a;</span><br><span class="line">for(a=1; a&lt;=value; ++a)</span><br></pre></td></tr></table></figure>
+<p>2）安装PublicMonitors<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/grayddq/PublicMonitors.git</span><br><span class="line">yum install -y python-pip</span><br><span class="line">cd PublicMonitors</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>3）配置PublicMonitors<br><code>conf/ip.txt</code> 扫描ip的存放文件但不能扫描本机(Masscan不支持扫描本机)<br><code>conf/user.txt</code>和<code>conf/pass.txt</code>是爆破的字典集合 可以继续添加<br><code>type</code>表示扫描方式 <code>monitors</code> 代表最终不进行弱口令扫描 <code>weakpass</code> 针对最后的一次扫描结果进行弱口令扫描 <code>all</code> 代表端口监听后进行弱口令扫描<br><code>rate</code> 表示Masscan扫描速度<br><code>[Email]</code>填写发布的邮箱地址 不填表示不发送 结果保存在<code>./out/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim conf/info.conf</span><br><span class="line"></span><br><span class="line">[OPTIONS]</span><br><span class="line">ip_file = conf/ip.txt</span><br><span class="line">db_user = conf/user.txt</span><br><span class="line">db_pass = conf/pass.txt</span><br><span class="line"># monitors / weakpass / all</span><br><span class="line">type = all</span><br><span class="line"></span><br><span class="line">[Masscan]</span><br><span class="line">rate = 2000</span><br><span class="line"></span><br><span class="line">[Email]</span><br><span class="line">user = </span><br><span class="line">pass = </span><br><span class="line">target_email = </span><br><span class="line">smtp_server =</span><br></pre></td></tr></table></figure>
+<p>4）启动扫描ip脚本查看out目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Python PublicMonitors.py</span><br><span class="line"></span><br><span class="line">cd out &amp;&amp; ls</span><br><span class="line">2020-01-01.xls  Result.txt  Weakpass.txt</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -262,7 +192,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">运维安全</a>
         		</li>
       		
 		</ul>
@@ -318,7 +248,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/18/docker-1（9月18日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/01/IP资产扫描/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +262,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/20/docker-2（9月19日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          docker 2（9月19日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/16/ansible-4（9月17日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ansible 4（9月17日）</div>
+    <a href="/2020/01/01/漏洞扫描3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">漏洞扫描3</div>
       <i class="icon-circle-right"></i>
     </a>
   
