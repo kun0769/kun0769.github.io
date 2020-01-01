@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="PublicMonitors">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-01T09:26:11.981Z">
+<meta property="og:updated_time" content="2020-01-01T09:29:55.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IP资产扫描">
 <meta name="twitter:description" content="PublicMonitors">
@@ -173,8 +173,7 @@
 <p>安装hydra报错</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cc -I. -O3 -march=native -flto -pie -fPIE -fstack-protector-all --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -Wl,-z,now -Wl,-z,relro   -c bfg.c -DLIBOPENSSL -DHAVE_PCRE -DLIBPOSTGRES -DLIBSSH -DHAVE_ZLIB -DHAVE_MATH_H -DHAVE_SYS_PARAM_H -I/usr/include -I/usr/include</span><br><span class="line">bfg.c: 在函数‘accu’中:</span><br><span class="line">bfg.c:196:3: 错误：只允许在 C99 模式下使用‘for’循环初始化声明</span><br><span class="line">   for(int a=1; a&lt;=value; ++a)</span><br><span class="line">   ^</span><br><span class="line">bfg.c:196:3: 附注：使用 -std=c99 或 -std=gnu99 来编译您的代码</span><br><span class="line">make: *** [bfg.o] 错误 1</span><br></pre></td></tr></table></figure>
-<p>原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim bfg.c</span><br><span class="line"></span><br><span class="line">for(int a=1; a&lt;=value; ++a)</span><br><span class="line">改为</span><br><span class="line">nt a;</span><br><span class="line">for(a=1; a&lt;=value; ++a)</span><br></pre></td></tr></table></figure>
+<h4 id="原因：-编译器不支持for-int-a-1-a-lt-value-a-写法-编辑bfg-c文件把for-int-a-1-a-lt-value-a-改为定义int-a变量"><a href="#原因：-编译器不支持for-int-a-1-a-lt-value-a-写法-编辑bfg-c文件把for-int-a-1-a-lt-value-a-改为定义int-a变量" class="headerlink" title="原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量"></a>原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim bfg.c</span><br><span class="line"></span><br><span class="line">for(int a=1; a&lt;=value; ++a)</span><br><span class="line">改为</span><br><span class="line">nt a;</span><br><span class="line">for(a=1; a&lt;=value; ++a)</span><br></pre></td></tr></table></figure>
 <p>2）安装PublicMonitors<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/grayddq/PublicMonitors.git</span><br><span class="line">yum install -y python-pip</span><br><span class="line">cd PublicMonitors</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
 <p>3）配置PublicMonitors<br><code>conf/ip.txt</code> 扫描ip的存放文件但不能扫描本机(Masscan不支持扫描本机)<br><code>conf/user.txt</code>和<code>conf/pass.txt</code>是爆破的字典集合 可以继续添加<br><code>type</code>表示扫描方式 <code>monitors</code> 代表最终不进行弱口令扫描 <code>weakpass</code> 针对最后的一次扫描结果进行弱口令扫描 <code>all</code> 代表端口监听后进行弱口令扫描<br><code>rate</code> 表示Masscan扫描速度<br><code>[Email]</code>填写发布的邮箱地址 不填表示不发送 结果保存在<code>./out/</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim conf/info.conf</span><br><span class="line"></span><br><span class="line">[OPTIONS]</span><br><span class="line">ip_file = conf/ip.txt</span><br><span class="line">db_user = conf/user.txt</span><br><span class="line">db_pass = conf/pass.txt</span><br><span class="line"># monitors / weakpass / all</span><br><span class="line">type = all</span><br><span class="line"></span><br><span class="line">[Masscan]</span><br><span class="line">rate = 2000</span><br><span class="line"></span><br><span class="line">[Email]</span><br><span class="line">user = </span><br><span class="line">pass = </span><br><span class="line">target_email = </span><br><span class="line">smtp_server =</span><br></pre></td></tr></table></figure>
@@ -420,15 +419,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +503,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +535,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,15 +551,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
