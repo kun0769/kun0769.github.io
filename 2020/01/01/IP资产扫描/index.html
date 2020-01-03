@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="PublicMonitors">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-01T09:29:55.981Z">
+<meta property="og:updated_time" content="2020-01-03T12:58:18.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IP资产扫描">
 <meta name="twitter:description" content="PublicMonitors">
@@ -168,17 +168,27 @@
         <p>PublicMonitors<br><a id="more"></a></p>
 <h3 id="PublicMonitors"><a href="#PublicMonitors" class="headerlink" title="PublicMonitors"></a>PublicMonitors</h3><p>PublicMonitors是GitHub上使用python编写的项目。它可以用来定期检查机器开放的服务是否存在弱口令的风险，并生产excel报告发送指定邮箱。<br>GitHub地址 <img src="" alt=""><a href="https://github.com/grayddq/PublicMonitors" target="_blank" rel="noopener">https://github.com/grayddq/PublicMonitors</a></p>
 <h4 id="实现逻辑"><a href="#实现逻辑" class="headerlink" title="实现逻辑"></a>实现逻辑</h4><p>1）调用Masscan进行快速扫描<br>2）调用Nmap进行扫描端口服务版本信息<br>3）调用Hydra进行对服务弱口令爆破<br>4）生产报告并发送所有结果到email</p>
-<h4 id="PublicMonitors安装步骤"><a href="#PublicMonitors安装步骤" class="headerlink" title="PublicMonitors安装步骤"></a>PublicMonitors安装步骤</h4><p>1）安装nmap hydra masscan<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nmap</span><br><span class="line"></span><br><span class="line">yum install -y openssl-devel pcre-devel ncpfs-devel postgresql-devel libssh-devel gcc libpcap-devel</span><br><span class="line">git clone https://github.com/vanhauser-thc/thc-hydra</span><br><span class="line">cd thc-hydra &amp;&amp; ./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">git clone https://github.com/robertdavidgraham/masscan.git</span><br><span class="line">cd masscan &amp;&amp; make</span><br><span class="line">cp bin/masscan /usr/local/sbin/</span><br></pre></td></tr></table></figure></p>
+<h4 id="PublicMonitors安装步骤"><a href="#PublicMonitors安装步骤" class="headerlink" title="PublicMonitors安装步骤"></a>PublicMonitors安装步骤</h4><p><strong><strong>1）安装nmap hydra masscan</strong></strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nmap</span><br><span class="line"></span><br><span class="line">yum install -y openssl-devel pcre-devel ncpfs-devel postgresql-devel libssh-devel gcc libpcap-devel</span><br><span class="line">git clone https://github.com/vanhauser-thc/thc-hydra</span><br><span class="line">cd thc-hydra &amp;&amp; ./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">git clone https://github.com/robertdavidgraham/masscan.git</span><br><span class="line">cd masscan &amp;&amp; make</span><br><span class="line">cp bin/masscan /usr/local/sbin/</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>安装hydra报错</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cc -I. -O3 -march=native -flto -pie -fPIE -fstack-protector-all --param ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -Wl,-z,now -Wl,-z,relro   -c bfg.c -DLIBOPENSSL -DHAVE_PCRE -DLIBPOSTGRES -DLIBSSH -DHAVE_ZLIB -DHAVE_MATH_H -DHAVE_SYS_PARAM_H -I/usr/include -I/usr/include</span><br><span class="line">bfg.c: 在函数‘accu’中:</span><br><span class="line">bfg.c:196:3: 错误：只允许在 C99 模式下使用‘for’循环初始化声明</span><br><span class="line">   for(int a=1; a&lt;=value; ++a)</span><br><span class="line">   ^</span><br><span class="line">bfg.c:196:3: 附注：使用 -std=c99 或 -std=gnu99 来编译您的代码</span><br><span class="line">make: *** [bfg.o] 错误 1</span><br></pre></td></tr></table></figure>
-<h4 id="原因：-编译器不支持for-int-a-1-a-lt-value-a-写法-编辑bfg-c文件把for-int-a-1-a-lt-value-a-改为定义int-a变量"><a href="#原因：-编译器不支持for-int-a-1-a-lt-value-a-写法-编辑bfg-c文件把for-int-a-1-a-lt-value-a-改为定义int-a变量" class="headerlink" title="原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量"></a>原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim bfg.c</span><br><span class="line"></span><br><span class="line">for(int a=1; a&lt;=value; ++a)</span><br><span class="line">改为</span><br><span class="line">nt a;</span><br><span class="line">for(a=1; a&lt;=value; ++a)</span><br></pre></td></tr></table></figure>
-<p>2）安装PublicMonitors<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/grayddq/PublicMonitors.git</span><br><span class="line">yum install -y python-pip</span><br><span class="line">cd PublicMonitors</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
-<p>3）配置PublicMonitors<br><code>conf/ip.txt</code> 扫描ip的存放文件但不能扫描本机(Masscan不支持扫描本机)<br><code>conf/user.txt</code>和<code>conf/pass.txt</code>是爆破的字典集合 可以继续添加<br><code>type</code>表示扫描方式 <code>monitors</code> 代表最终不进行弱口令扫描 <code>weakpass</code> 针对最后的一次扫描结果进行弱口令扫描 <code>all</code> 代表端口监听后进行弱口令扫描<br><code>rate</code> 表示Masscan扫描速度<br><code>[Email]</code>填写发布的邮箱地址 不填表示不发送 结果保存在<code>./out/</code></p>
+<blockquote>
+<p>原因： 编译器不支持for(int a=1; a&lt;=value; ++a)写法 编辑bfg.c文件把for(int a=1; a&lt;=value; ++a)改为定义int a变量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim bfg.c</span><br><span class="line"></span><br><span class="line">for(int a=1; a&lt;=value; ++a)</span><br><span class="line">改为</span><br><span class="line">nt a;</span><br><span class="line">for(a=1; a&lt;=value; ++a)</span><br></pre></td></tr></table></figure>
+<p><strong><strong>2）安装PublicMonitors</strong></strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/grayddq/PublicMonitors.git</span><br><span class="line">yum install -y python-pip</span><br><span class="line">cd PublicMonitors</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p><strong><strong>3）配置PublicMonitors</strong></strong></p>
+<hr>
+<p><code>conf/ip.txt</code> 扫描ip的存放文件但不能扫描本机(Masscan不支持扫描本机)<br><code>conf/user.txt</code>和<code>conf/pass.txt</code>是爆破的字典集合 可以继续添加<br><code>type</code>表示扫描方式 <code>monitors</code> 代表最终不进行弱口令扫描 <code>weakpass</code> 针对最后的一次扫描结果进行弱口令扫描 <code>all</code> 代表端口监听后进行弱口令扫描<br><code>rate</code> 表示Masscan扫描速度<br><code>[Email]</code>填写发布的邮箱地址 不填表示不发送 结果保存在<code>./out/</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim conf/info.conf</span><br><span class="line"></span><br><span class="line">[OPTIONS]</span><br><span class="line">ip_file = conf/ip.txt</span><br><span class="line">db_user = conf/user.txt</span><br><span class="line">db_pass = conf/pass.txt</span><br><span class="line"># monitors / weakpass / all</span><br><span class="line">type = all</span><br><span class="line"></span><br><span class="line">[Masscan]</span><br><span class="line">rate = 2000</span><br><span class="line"></span><br><span class="line">[Email]</span><br><span class="line">user = </span><br><span class="line">pass = </span><br><span class="line">target_email = </span><br><span class="line">smtp_server =</span><br></pre></td></tr></table></figure>
-<p>4）启动扫描ip脚本查看out目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Python PublicMonitors.py</span><br><span class="line"></span><br><span class="line">cd out &amp;&amp; ls</span><br><span class="line">2020-01-01.xls  Result.txt  Weakpass.txt</span><br></pre></td></tr></table></figure></p>
-
+<p><strong><strong>4）启动扫描ip脚本查看out目录</strong></strong></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Python PublicMonitors.py</span><br><span class="line"></span><br><span class="line">cd out &amp;&amp; ls</span><br><span class="line">2020-01-01.xls  Result.txt  Weakpass.txt</span><br></pre></td></tr></table></figure>
       
 
       
@@ -411,11 +421,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,11 +461,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,6 +509,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
@@ -508,10 +522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,10 +561,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
@@ -563,11 +569,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,6 +593,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">软件包</a>
               </li>
              
@@ -595,11 +605,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,10 +622,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
