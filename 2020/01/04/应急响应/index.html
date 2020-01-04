@@ -17,7 +17,7 @@
 <meta property="og:description" content="应急响应">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%941.png">
-<meta property="og:updated_time" content="2020-01-04T05:43:23.308Z">
+<meta property="og:updated_time" content="2020-01-04T06:28:13.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应急响应">
 <meta name="twitter:description" content="应急响应">
@@ -190,7 +190,7 @@
 <h4 id="4）检测系统"><a href="#4）检测系统" class="headerlink" title="4）检测系统"></a>4）检测系统</h4><p>使用BusyBox工具来检测</p>
 <p>1.检查系统用户<br>判断是否有黑客登录系统<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">last <span class="comment">#登录时间与运维人员时间对不上</span></span><br><span class="line">w <span class="comment">#当前登录时间</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line">grep :0 /etc/passwd</span><br><span class="line">awk -F: <span class="string">'$3==0&#123;print $1&#125;'</span> /etc/passwd <span class="comment">#uid为0</span></span><br><span class="line">ls -l /etc/passwd <span class="comment">#查看passwd最后修改时间</span></span><br><span class="line">cat /etc/passwd |ag -v <span class="string">'nologin$|false$'</span> <span class="comment">#查看可以登录的用户</span></span><br><span class="line">cat /etc/sudoers <span class="comment">#查看sudo配置文件</span></span><br></pre></td></tr></table></figure></p>
 <p>2.检查异常进程<br>判断是否被种马<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">perf top -s pid,comm,dso,symbol <span class="comment">#查看恶意进程</span></span><br><span class="line">top <span class="comment">#查看进程信息</span></span><br><span class="line">lsof -p PID <span class="comment">#查看进程占用信息</span></span><br><span class="line">lsof -i :port <span class="comment">#检查哪个进程使用该端口</span></span><br><span class="line">ps aux</span><br><span class="line">pstree <span class="comment">#以树状图显示进程关系</span></span><br><span class="line">strace -f -f PID <span class="comment">#跟踪分析进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 PID <span class="comment">#杀死进程</span></span><br></pre></td></tr></table></figure></p>
-<p>3.检查异常系统文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find / -name <span class="string">"name"</span></span><br><span class="line">find / -mtime 1 -name * <span class="comment">#文件创建时间查找</span></span><br><span class="line">ls alh <span class="comment">#目录下详细信息</span></span><br><span class="line">find / -uid 0 -<span class="built_in">print</span> 查看特权用户文件</span><br><span class="line">ls -alt /tmp/</span><br><span class="line">ls -alt /etc/init.d/ <span class="comment">#查看开机启动项内容</span></span><br></pre></td></tr></table></figure></p>
+<p>3.检查异常系统文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find / -name <span class="string">"name"</span></span><br><span class="line">find / -mtime 1 -name * <span class="comment">#文件创建时间查找</span></span><br><span class="line">ls alh <span class="comment">#目录下详细信息</span></span><br><span class="line">find / -uid 0 -<span class="built_in">print</span> <span class="comment">#查看特权用户文件</span></span><br><span class="line">ls -alt /tmp/</span><br><span class="line">ls -alt /etc/init.d/ <span class="comment">#查看开机启动项内容</span></span><br></pre></td></tr></table></figure></p>
 <p>4.检查网络<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp <span class="comment">#检查可以IP，端口</span></span><br><span class="line">lsof -i:5000 <span class="comment">#查看5000端口占用情况</span></span><br><span class="line">watcch netstat -antop <span class="comment">#实时监控网络连接</span></span><br></pre></td></tr></table></figure></p>
 <p>5.检查计划任务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontable -l <span class="comment">#查看当前任务计划</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line">ls -alh /etc/cron.*</span><br><span class="line">/var/spool/cron/</span><br></pre></td></tr></table></figure></p>
 <p>6.检查系统命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env <span class="comment">#环境变量</span></span><br><span class="line"><span class="built_in">history</span></span><br><span class="line">/etc/init.d</span><br></pre></td></tr></table></figure></p>
@@ -518,15 +518,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
