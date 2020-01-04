@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="sql 1 数据库基础">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T04:10:44.021Z">
+<meta property="og:updated_time" content="2020-01-04T05:54:27.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql 1 数据库基础">
 <meta name="twitter:description" content="sql 1 数据库基础">
@@ -273,9 +273,9 @@
 </table>
 <h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h3><p>1）为分号结尾<br>2）关键字不区分大小写。数据名区分大小写<br>3）字符串和日期使用单引号（‘’），数字直接写即可<br>4）单词直接使用半角空格或者换行进行分隔</p>
 <h3 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h3><p>格式：<code>create database &lt;数据库名称&gt;;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database shop;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> shop;</span><br></pre></td></tr></table></figure>
 <h3 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h3><p>格式：<code>create table &lt;表名&gt; (&lt;列名1&gt; &lt;数据类型&gt; &lt;该列所需约束&gt;, &lt;列名2&gt; &lt;数据类型&gt; &lt;该列所需约束&gt;, ...);</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create tabele t1(t1_id char(4) not null, t1_name varchar(100) not null, t1_title varchar(100) not null, t1_jin integer , t1_chu integer , t1_day date , primary key(t1_id));</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> tabele t1(t1_id <span class="built_in">char</span>(<span class="number">4</span>) <span class="keyword">not</span> <span class="literal">null</span>, t1_name <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">not</span> <span class="literal">null</span>, t1_title <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">not</span> <span class="literal">null</span>, t1_jin <span class="built_in">integer</span> , t1_chu <span class="built_in">integer</span> , t1_day <span class="built_in">date</span> , primary <span class="keyword">key</span>(t1_id));</span><br></pre></td></tr></table></figure>
 <h3 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h3><p>数据库名，表名，列名只能使用英语字母，数字和_下划线。并且以英语字母开头</p>
 <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>每定义字段都要定义数据类型</p>
 <table>
@@ -324,14 +324,14 @@
 </tbody>
 </table>
 <h3 id="表的删除"><a href="#表的删除" class="headerlink" title="表的删除"></a>表的删除</h3><p>格式：<code>drop table &lt;表名&gt;;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table t1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> t1;</span><br></pre></td></tr></table></figure>
 <h3 id="表结构更新"><a href="#表结构更新" class="headerlink" title="表结构更新"></a>表结构更新</h3><p>格式：<code>alter table &lt;表名&gt; add column &lt;列的定义&gt;;</code><br>注意：<code>alter更改表结构 update更改数据</code></p>
-<p>在t1表中新添加字段t1_add<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table t1 add column t1_add varchar(100);</span><br></pre></td></tr></table></figure></p>
+<p>在t1表中新添加字段t1_add<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t1 <span class="keyword">add</span> <span class="keyword">column</span> t1_add <span class="built_in">varchar</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
 <p>格式：<code>alter table &lt;表名&gt; drop column &lt;列名&gt;;</code></p>
-<p>删除t1表中的t1_add字段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table t1 drop column t1_add;</span><br></pre></td></tr></table></figure></p>
+<p>删除t1表中的t1_add字段<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t1 <span class="keyword">drop</span> <span class="keyword">column</span> t1_add;</span><br></pre></td></tr></table></figure></p>
 <h3 id="重命名表名"><a href="#重命名表名" class="headerlink" title="重命名表名"></a>重命名表名</h3><p>格式：<code>alter table &lt;旧表名&gt; rename to &lt;新表名&gt;;</code></p>
 <p>MySQL/DB2用法<br><code>rename table &lt;旧表名&gt;  to &lt;新表名&gt;;</code>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table t1 rename to t2;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> t1 <span class="keyword">rename</span> <span class="keyword">to</span> t2;</span><br></pre></td></tr></table></figure>
       
 
       
