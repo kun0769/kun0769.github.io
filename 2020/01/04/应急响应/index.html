@@ -17,7 +17,7 @@
 <meta property="og:description" content="应急响应">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%941.png">
-<meta property="og:updated_time" content="2020-01-04T05:14:58.074Z">
+<meta property="og:updated_time" content="2020-01-04T05:32:38.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应急响应">
 <meta name="twitter:description" content="应急响应">
@@ -186,7 +186,7 @@
 <h4 id="2）抑制扩散"><a href="#2）抑制扩散" class="headerlink" title="2）抑制扩散"></a>2）抑制扩散</h4><p>先对被入侵机器执行隔离，防止扩散，通过iptables完成网络层隔离<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iptables-save &gt;/root/iptables.bak <span class="comment">##备份系统的的 iptables文件</span></span><br><span class="line">iptables -F</span><br><span class="line">iptables -A INPUT -s 允许登录IP -p tcp --dport 22 -j ACCEPT </span><br><span class="line">iptables -A OUTPUT -d 允许登录IP -p tcp --sport 22 -j ACCEPT </span><br><span class="line">iptables -A INPUT -j DROP</span><br><span class="line">iptables -A FORWARD -j DROP</span><br><span class="line">iptables -A OUTPUT -j DROP</span><br></pre></td></tr></table></figure></p>
 <p>清理完后门后，回复网络<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-restore &lt; /root/iptables.bak</span><br></pre></td></tr></table></figure></p>
 <h4 id="3）常见后门技术"><a href="#3）常见后门技术" class="headerlink" title="3）常见后门技术"></a>3）常见后门技术</h4><p>增加超级用户帐号<br>破解/嗅控用户密码<br>放置SUID Shell<br>利用系统服务程序<br>TCP/UDP/ICMP Shell<br>Crontab定时任务<br>共享库文件<br>工具包rootkit<br>可装载内枋模块(LKM)</p>
-<p>查看文档 </p>
+<p>查看文档 <img src="" alt=""><a href="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Linux%E5%90%8E%E9%97%A8.html" target="_blank" rel="noopener">https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/Linux%E5%90%8E%E9%97%A8.html</a></p>
 <h4 id="4）检测系统"><a href="#4）检测系统" class="headerlink" title="4）检测系统"></a>4）检测系统</h4><p>使用BusyBox工具来检测</p>
 <ol>
 <li>检查系统用户</li>
@@ -215,7 +215,7 @@
 <ol>
 <li>检查系统日志</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/var/<span class="built_in">log</span>/httpd/access_log</span><br><span class="line">/var/<span class="built_in">log</span>/httpd/error_log</span><br><span class="line">/var/<span class="built_in">log</span>/messages <span class="comment">#包括主题系统信息，其中包含系统启动时间的日志，此外，mail cron daemon kern和auth等内容也记录在此</span></span><br><span class="line">/var/<span class="built_in">log</span>/dmesg <span class="comment">#包含内核缓冲信息(kernel ring buffer)，系统启动时，会在屏幕上显示许多和硬件有关的信息，可以使用dmesg查看</span></span><br><span class="line">/var/<span class="built_in">log</span>/auth.log <span class="comment">#包含系统授权信息，包括用户登录和使用的权限机制</span></span><br><span class="line">/var/<span class="built_in">log</span>/daemon.log <span class="comment">#包含各种系统后台守护进程日志信息</span></span><br><span class="line">/var/logboot.log <span class="comment">#包含系统启动的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/dpkg/<span class="built_in">log</span> <span class="comment">#包括安装或dpkg命令清除软件包的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/kern.log <span class="comment">#包含内核产生的日志，有助于在定制内核时解决问题</span></span><br><span class="line">/var/<span class="built_in">log</span>/lastlog <span class="comment">#记录所有用户的最近信息。需要使用lastlog命令查看内容</span></span><br><span class="line">/var/<span class="built_in">log</span>/maillog /var/<span class="built_in">log</span>/mail.log <span class="comment">#包含系统运行电子邮件服务器的日志信息。sedmail日志信息就全部送到这个文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/user/<span class="built_in">log</span> <span class="comment">#记录所有登记用户信息的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/Xorg.x.log <span class="comment">#来自X的日志信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/alternatives.log <span class="comment">#更新替换信息都记录在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/btmp <span class="comment">#记录所有失败登录信息。使用last命令可以查看btmp文件 last -f /var/log/btmp |more</span></span><br><span class="line">/var/<span class="built_in">log</span>/cpus <span class="comment">#涉及所有打印信息的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/anaconda.log <span class="comment">#安装linux时，所有安装信息都储存在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/yum.log <span class="comment">#包含使用yum安装软件包信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/cron <span class="comment">#每当cron进程开始一个工作，就会将相关信息记录在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/secure <span class="comment">#包含验证和授权方面信息，sshd会将所有信息记录(包括失败登录)在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/wtmp或/var/<span class="built_in">log</span>/apache2 <span class="comment">#包含服务器access_log和error_log信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/faillog <span class="comment">#包含用户登录失败信息，此外，错误登录命也会记录在本文件中</span></span><br><span class="line"></span><br><span class="line">除了上述<span class="built_in">log</span>文件外，/var/<span class="built_in">log</span>还基于系统的具体应用包含以下子目录</span><br><span class="line">/var/<span class="built_in">log</span>/lighttpd <span class="comment">#包含light HTTPD的access_log和error_log</span></span><br><span class="line">/var/<span class="built_in">log</span>/mail/ <span class="comment">#该目录包含右键服务器的额外日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/prelink/ <span class="comment">#包含.so文件被prelink修改的信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/samba/ <span class="comment">#包含由samba存储的信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/sa/ <span class="comment">#包含没有sysstat软件包收集的sar文件</span></span><br><span class="line">/var/<span class="built_in">log</span>/sssd <span class="comment">#用于守护进程的安全服务</span></span><br><span class="line">~/.bash_history 非常重要的日志 黑客会使用<span class="built_in">history</span> -c清理相关的日志</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/var/<span class="built_in">log</span>/httpd/access_log</span><br><span class="line">/var/<span class="built_in">log</span>/httpd/error_log</span><br><span class="line">/var/<span class="built_in">log</span>/messages <span class="comment">#包括主题系统信息，其中包含系统启动时间的日志，此外，mail cron daemon kern和auth等内容也记录在此</span></span><br><span class="line">/var/<span class="built_in">log</span>/dmesg <span class="comment">#包含内核缓冲信息(kernel ring buffer)，系统启动时，会在屏幕上显示许多和硬件有关的信息，可以使用dmesg查看</span></span><br><span class="line">/var/<span class="built_in">log</span>/auth.log <span class="comment">#包含系统授权信息，包括用户登录和使用的权限机制</span></span><br><span class="line">/var/<span class="built_in">log</span>/daemon.log <span class="comment">#包含各种系统后台守护进程日志信息</span></span><br><span class="line">/var/logboot.log <span class="comment">#包含系统启动的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/dpkg/<span class="built_in">log</span> <span class="comment">#包括安装或dpkg命令清除软件包的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/kern.log <span class="comment">#包含内核产生的日志，有助于在定制内核时解决问题</span></span><br><span class="line">/var/<span class="built_in">log</span>/lastlog <span class="comment">#记录所有用户的最近信息。需要使用lastlog命令查看内容</span></span><br><span class="line">/var/<span class="built_in">log</span>/maillog /var/<span class="built_in">log</span>/mail.log <span class="comment">#包含系统运行电子邮件服务器的日志信息。sedmail日志信息就全部送到这个文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/user/<span class="built_in">log</span> <span class="comment">#记录所有登记用户信息的日志。</span></span><br><span class="line">/var/<span class="built_in">log</span>/Xorg.x.log <span class="comment">#来自X的日志信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/alternatives.log <span class="comment">#更新替换信息都记录在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/btmp <span class="comment">#记录所有失败登录信息。使用last命令可以查看btmp文件 last -f /var/log/btmp |more</span></span><br><span class="line">/var/<span class="built_in">log</span>/cpus <span class="comment">#涉及所有打印信息的日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/anaconda.log <span class="comment">#安装linux时，所有安装信息都储存在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/yum.log <span class="comment">#包含使用yum安装软件包信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/cron <span class="comment">#每当cron进程开始一个工作，就会将相关信息记录在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/secure <span class="comment">#包含验证和授权方面信息，sshd会将所有信息记录(包括失败登录)在这文件中</span></span><br><span class="line">/var/<span class="built_in">log</span>/wtmp或/var/<span class="built_in">log</span>/apache2 <span class="comment">#包含服务器access_log和error_log信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/faillog <span class="comment">#包含用户登录失败信息，此外，错误登录命也会记录在本文件中</span></span><br><span class="line"></span><br><span class="line">除了上述<span class="built_in">log</span>文件外，/var/<span class="built_in">log</span>还基于系统的具体应用包含以下子目录</span><br><span class="line">/var/<span class="built_in">log</span>/lighttpd <span class="comment">#包含light HTTPD的access_log和error_log</span></span><br><span class="line">/var/<span class="built_in">log</span>/mail/ <span class="comment">#该目录包含右键服务器的额外日志</span></span><br><span class="line">/var/<span class="built_in">log</span>/prelink/ <span class="comment">#包含.so文件被prelink修改的信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/samba/ <span class="comment">#包含由samba存储的信息</span></span><br><span class="line">/var/<span class="built_in">log</span>/sa/ <span class="comment">#包含没有sysstat软件包收集的sar文件</span></span><br><span class="line">/var/<span class="built_in">log</span>/sssd <span class="comment">#用于守护进程的安全服务</span></span><br><span class="line">~/.bash_history <span class="comment">#非常重要的日志 黑客会使用history -c清理相关的日志</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>检查WebShell</li>
 </ol>
@@ -473,15 +473,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LAMP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,15 +541,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,11 +553,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +569,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +581,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,15 +597,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
