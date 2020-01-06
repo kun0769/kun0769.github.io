@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="把一个文本文档的前5行包含字母的行删除掉，同时把6到10行中的全部字母删除掉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T12:27:21.338Z">
+<meta property="og:updated_time" content="2020-01-06T15:35:49.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题9 删除字母和行">
 <meta name="twitter:description" content="把一个文本文档的前5行包含字母的行删除掉，同时把6到10行中的全部字母删除掉">
@@ -167,7 +167,7 @@
       
         <p>把一个文本文档的前5行包含字母的行删除掉，同时把6到10行中的全部字母删除掉<br><a id="more"></a></p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>使用sed命令删除含有字母的行 <code>sed &#39;/[a-zA-Z]/&#39;d</code> sed中精确配置字符时使用<code>&#39;/内容/&#39;</code><br>使用sed命令删除所有字母 <code>sed &#39;s/[a-zA-Z]//g&#39;</code></p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">sed -n &apos;1,5&apos;p 1.txt | sed &apos;/[a-zA-Z]/&apos;d</span><br><span class="line">sed -n &apos;6,10&apos;p 1.txt | sed &apos;s/[a-zA-Z]//g&apos;</span><br><span class="line">sed -n &apos;11,$&apos;p 1.txt</span><br></pre></td></tr></table></figure>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">sed -n <span class="string">'1,5'</span>p 1.txt | sed <span class="string">'/[a-zA-Z]/'</span>d</span><br><span class="line">sed -n <span class="string">'6,10'</span>p 1.txt | sed <span class="string">'s/[a-zA-Z]//g'</span></span><br><span class="line">sed -n <span class="string">'11,$'</span>p 1.txt</span><br></pre></td></tr></table></figure>
       
 
       
@@ -413,15 +413,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,10 +437,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -445,15 +445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,15 +529,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">

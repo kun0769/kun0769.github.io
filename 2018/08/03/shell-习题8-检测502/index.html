@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="服务器上跑LNMP环境，最近总是有502现象。502为网站访问的状态码，200为正常，502错误是Nginx最为普遍的错误状态码。由于502只是暂时的，并且只要一重启php-fpm服务则502消失，但不重启的话，就是一直持续很长的时间。所以有必要写一个监控脚本，监控访问日志的状态码，一旦发生502，就会自动重启php-fpm。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T12:27:18.562Z">
+<meta property="og:updated_time" content="2020-01-06T15:36:00.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题8 检测502">
 <meta name="twitter:description" content="服务器上跑LNMP环境，最近总是有502现象。502为网站访问的状态码，200为正常，502错误是Nginx最为普遍的错误状态码。由于502只是暂时的，并且只要一重启php-fpm服务则502消失，但不重启的话，就是一直持续很长的时间。所以有必要写一个监控脚本，监控访问日志的状态码，一旦发生502，就会自动重启php-fpm。">
@@ -168,7 +168,7 @@
         <p>服务器上跑LNMP环境，最近总是有502现象。502为网站访问的状态码，200为正常，502错误是Nginx最为普遍的错误状态码。由于502只是暂时的，并且只要一重启php-fpm服务则502消失，但不重启的话，就是一直持续很长的时间。所以有必要写一个监控脚本，监控访问日志的状态码，一旦发生502，就会自动重启php-fpm。<br><a id="more"></a></p>
 <p>假定：<br>访问日志路径 /data/log/access.log<br>脚本死循环，每10秒检测一次（假如10秒钟的日志条数为300）<br>重启php-fpm /etc/init.d/php-fpm restart</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>检测502状态码有两种方法：1.<code>curl命令</code> 2.<code>统计访问日志</code> 由于curl只能获取网站的每个时刻的状态码，并不能代表网站一段时间的状态码，因此不合适。<br>由于是10s内检测一次，需要把10s的日志（日志为300条）过滤出来，并统计出有502状态码的次数。一般502状态码超过10%已经十分严重。我们可以设定一个值为10条 当502状态码的次数大于10条就重启php-fpm。</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">log=/data/log/access.log</span><br><span class="line">n=10</span><br><span class="line">while :</span><br><span class="line">do</span><br><span class="line">tail -n 300 $log &gt;/tmp/log</span><br><span class="line">n_502=`grep -c &apos; 502&quot; &apos; /tmp/log`</span><br><span class="line">if [ $n_502 -ge $n ]</span><br><span class="line">then    </span><br><span class="line">        /etc/inid.d/php-fpm restart 2&gt;/dev/null</span><br><span class="line">        sleep 60</span><br><span class="line">fi</span><br><span class="line">sleep 10</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">log</span>=/data/<span class="built_in">log</span>/access.log</span><br><span class="line">n=10</span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">tail -n 300 <span class="variable">$log</span> &gt;/tmp/<span class="built_in">log</span></span><br><span class="line">n_502=`grep -c <span class="string">' 502" '</span> /tmp/<span class="built_in">log</span>`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$n_502</span> -ge <span class="variable">$n</span> ]</span><br><span class="line"><span class="keyword">then</span>    </span><br><span class="line">        /etc/inid.d/php-fpm restart 2&gt;/dev/null</span><br><span class="line">        sleep 60</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">sleep 10</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><p><code>sleep 60</code>代表当php-fpm重启后，再过1分钟后再次检测，这样做的目的是为了防止因为脚本bug导致php-fpm服务崩溃。假如脚本有问题，一直检测502，10s重启一次php-fmp，会导致系统的稳定性。</p>
 
       
@@ -416,15 +416,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,10 +440,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -448,15 +448,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,11 +496,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +532,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">

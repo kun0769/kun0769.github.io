@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="找到/123目录下的所有后缀名为.txt的文件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T12:27:08.438Z">
+<meta property="og:updated_time" content="2020-01-06T15:37:09.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题5 批量修改文件">
 <meta name="twitter:description" content="找到/123目录下的所有后缀名为.txt的文件">
@@ -167,7 +167,7 @@
       
         <p>找到/123目录下的所有后缀名为.txt的文件<br><a id="more"></a><br>1.批量修改.txt为.txt.bak<br>2.把所有的.bak文件打包压缩为 123.txt.bak<br>3.批量还原文件的名字，即把增加的.bak再删除掉</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p><code>find</code>命令可以寻找文件 <code>|xargs</code>可以把找出来的文件执行某个命令<br><code>tar zcvf</code>打包并压缩 当寻找的文件为多个可以把他们放进目录中再进行打包处理</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line">find /123/ -type f -name &quot;*.txt&quot; &gt;/tmp/file.list</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        mv $i $i.bak</span><br><span class="line">done</span><br><span class="line">d=`date +%F:%T`</span><br><span class="line">mkdir /tmp/123_$d</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        cp $i.bak /tmp/123_$d</span><br><span class="line">done</span><br><span class="line">cd /tmp</span><br><span class="line">tar zcf 123.tar.gz 123_$d</span><br><span class="line">#由于上面的for只对cat出内容操作 因此本来文件内容没有变化 还是.txt结尾的 下面内容可以不用执行</span><br><span class="line">for i in `cat /tmp/file.list`</span><br><span class="line">do</span><br><span class="line">        mv $i.bak $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">find /123/ -<span class="built_in">type</span> f -name <span class="string">"*.txt"</span> &gt;/tmp/file.list</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `cat /tmp/file.list`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        mv <span class="variable">$i</span> <span class="variable">$i</span>.bak</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">d=`date +%F:%T`</span><br><span class="line">mkdir /tmp/123_<span class="variable">$d</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `cat /tmp/file.list`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        cp <span class="variable">$i</span>.bak /tmp/123_<span class="variable">$d</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">tar zcf 123.tar.gz 123_<span class="variable">$d</span></span><br><span class="line"><span class="comment">#由于上面的for只对cat出内容操作 因此本来文件内容没有变化 还是.txt结尾的 下面内容可以不用执行</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `cat /tmp/file.list`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        mv <span class="variable">$i</span>.bak <span class="variable">$i</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -413,15 +413,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -433,10 +437,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -445,15 +445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,15 +529,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">

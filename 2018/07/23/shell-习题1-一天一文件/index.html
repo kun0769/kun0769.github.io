@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T12:27:05.981Z">
+<meta property="og:updated_time" content="2020-01-06T15:37:26.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题1 一天一文件">
 <meta name="twitter:description" content="请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）">
@@ -168,7 +168,7 @@
         <p>请按照这样的格式（xxxx-xx-xx）每日生成一个文件，例如今天生成的文件为2018-07-23.log，并且把磁盘使用的情况写到此文件中（不考虑cron）<br><a id="more"></a></p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p><code>date +%F</code> 显示日期以xxxx-xx-xx</p>
 <p><code>dh -h</code> 显示磁盘使用情况</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!bin/bash</span><br><span class="line">day=`date +%F`</span><br><span class="line">logfile=$day.log</span><br><span class="line">df -h &gt; $logfile</span><br></pre></td></tr></table></figure>
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!bin/bash</span></span><br><span class="line">day=`date +%F`</span><br><span class="line">logfile=<span class="variable">$day</span>.<span class="built_in">log</span></span><br><span class="line">df -h &gt; <span class="variable">$logfile</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -414,15 +414,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,10 +438,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -446,15 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,11 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,15 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">

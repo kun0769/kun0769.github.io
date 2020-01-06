@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="写一个脚本计算出Linux系统所有的进程占用内存大小的和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-22T12:27:04.612Z">
+<meta property="og:updated_time" content="2020-01-06T15:37:46.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题3 统计说有进程占内存之和">
 <meta name="twitter:description" content="写一个脚本计算出Linux系统所有的进程占用内存大小的和">
@@ -168,14 +168,15 @@
         <p>写一个脚本计算出Linux系统所有的进程占用内存大小的和<br><a id="more"></a></p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>在<code>ps aux</code> 中的<code>RSS</code>列表示该进程占用物理内存的大小 </p>
 <p><code>for</code>循环可以把RSS的值加起来</p>
-<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><pre><code>#!/bin/bash
+<h2 id="内容："><a href="#内容：" class="headerlink" title="内容："></a>内容：</h2><pre><code class="bash"><span class="meta">#!/bin/bash</span>
 sum=0
-for i in `ps aux |awk &apos;{print $6}&apos; |grep -v RSS`
-do
-        sum=$[$sum+$i]
-done
-echo $sum
+<span class="keyword">for</span> i <span class="keyword">in</span> `ps aux |awk <span class="string">'{print $6}'</span> |grep -v RSS`
+<span class="keyword">do</span>
+        sum=$[<span class="variable">$sum</span>+<span class="variable">$i</span>]
+<span class="keyword">done</span>
+<span class="built_in">echo</span> <span class="variable">$sum</span>
 </code></pre>
+
       
 
       
@@ -421,15 +422,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,10 +446,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">LNMP</a>
               </li>
              
@@ -453,15 +454,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +502,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,15 +538,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
