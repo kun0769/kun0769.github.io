@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="有日志1.log，内容如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-06T15:37:36.852Z">
+<meta property="og:updated_time" content="2020-01-06T15:41:59.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题2 统计IP的访问量">
 <meta name="twitter:description" content="有日志1.log，内容如下：">
@@ -165,7 +165,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有日志1.log，内容如下：<br><a id="more"></a><br>112.111.12.248 – [25/Sep/2013:16:08:31 +0800]formula-x.haotui.com “/seccode.php?update=0.5593110133088248″ 200″<a href="http://formula-x.haotui.com/registerbbs.php”" target="_blank" rel="noopener">http://formula-x.haotui.com/registerbbs.php”</a> “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1;)”<br>61.147.76.51 – [25/Sep/2013:16:08:31 +0800]xyzdiy.5d6d.com “/attachment.php?aid=4554&amp;k=9ce51e2c376bc861603c7689d97c04a1&amp;t=1334564048&amp;fid=9&amp;sid=zgohwYoLZq2qPW233ZIRsJiUeu22XqE8f49jY9mouRSoE71″ 301″<a href="http://xyzdiy.5d6d.com/thread-1435-1-23.html”" target="_blank" rel="noopener">http://xyzdiy.5d6d.com/thread-1435-1-23.html”</a> “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)”<br>要求： 统计出每个IP的访问量有多少？</p>
+        <p>有日志1.log，内容如下：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">112.111.12.248 – [25/Sep/2013:16:08:31 +0800]formula-x.haotui.com “/seccode.php?update=0.5593110133088248″ 200″http://formula-x.haotui.com/registerbbs.php” “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1;)”</span><br><span class="line">61.147.76.51 – [25/Sep/2013:16:08:31 +0800]xyzdiy.5d6d.com “/attachment.php?aid=4554&amp;k=9ce51e2c376bc861603c7689d97c04a1&amp;t=1334564048&amp;fid=9&amp;sid=zgohwYoLZq2qPW233ZIRsJiUeu22XqE8f49jY9mouRSoE71″ 301″http://xyzdiy.5d6d.com/thread-1435-1-23.html” “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)”</span><br></pre></td></tr></table></figure></p>
+<p>要求： 统计出每个IP的访问量有多少？</p>
 <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>每一行日志表示一次的访问 开头的就是表示访问的IP地址，然后再统计出该IP地址的访问次数即可</p>
 <p><code>awk &#39;{print $1}&#39;</code> 可以打印出每行的第一段 <code>-F</code> 指定分隔符 不写默认空格</p>
 <p><code>sort -n</code> 以数字顺序排序</p>
@@ -416,11 +417,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,11 +449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +477,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,15 +505,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
