@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>shell 习题14 封IP | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/18/index.html">
+  <meta name="description" content="题目要求需求：根据web服务器上的访问日志，把一些请求量非常高的ip给拒绝掉！并且每隔半小时把不再发起请求或者请求量很小的ip给解封。假设：">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题14 封IP">
+<meta property="og:url" content="http://yoursite.com/2020/01/12/shell-习题14-封IP/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="题目要求需求：根据web服务器上的访问日志，把一些请求量非常高的ip给拒绝掉！并且每隔半小时把不再发起请求或者请求量很小的ip给解封。假设：">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T03:00:54.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题14 封IP">
+<meta name="twitter:description" content="题目要求需求：根据web服务器上的访问日志，把一些请求量非常高的ip给拒绝掉！并且每隔半小时把不再发起请求或者请求量很小的ip给解封。假设：">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +145,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-saltstack-1（9月7日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-shell-习题14-封IP" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/08/saltstack-1（9月7日）/">saltstack 1（9月7日）</a>
+    <h1 class="article-title" itemprop="name">
+      shell 习题14 封IP
     </h1>
   
 
         
-        <a href="/2018/09/08/saltstack-1（9月7日）/" class="archive-article-date">
-  	<time datetime="2018-09-08T02:53:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+        <a href="/2020/01/12/shell-习题14-封IP/" class="archive-article-date">
+  	<time datetime="2020-01-12T02:56:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>24.1 自动化运维介绍<br>24.2 saltstack安装<br>24.3 启动saltstack服务<br>24.4 saltstack配置认证<br>
-        
-          <a class="article-more-a" href="/2018/09/08/saltstack-1（9月7日）/#more">more >></a>
-        
+        <p>题目要求需求：根据web服务器上的访问日志，把一些请求量非常高的ip给拒绝掉！并且每隔半小时把不再发起请求或者请求量很小的ip给解封。假设：<br><a id="more"></a><br>1.一分钟内请求量高于100次的IP视为不正常请求。<br>2.访问日志路径为/date/logs/access_log。</p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><ul>
+<li>用第2例中的1.登录作为演示日志核心要点</li>
+<li>统计IP访问次数，排序</li>
+<li>如何标记每隔半小时</li>
+<li>iptables的计数器是一个重要的判断指标</li>
+<li>函数（封IP，解封IP）</li>
+</ul>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    封ip和解封ip</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">block_ip</span></span>()&#123;</span><br><span class="line">    d1=$(date -d <span class="string">"-1min"</span> +%Y:%H:%M)</span><br><span class="line">    logfile=/date/logs/access_log</span><br><span class="line">    </span><br><span class="line">    egrep <span class="string">"<span class="variable">$d1</span>:[0-9]+"</span> <span class="variable">$logfile</span> &gt; /tmp/tmp_last_min.log</span><br><span class="line">    awk <span class="string">'&#123;print $1&#125;'</span> /tmp/tmp_last_min.log |sort -n |uniq -c |sort -n |awk <span class="string">'if $1&gt;100 &#123;print $2&#125;'</span>&gt;/tmp/bad_ip.list</span><br><span class="line">    n=$(wc -l /tmp/bad_ip.list |awk <span class="string">'&#123;print $1&#125;'</span>)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$n</span> -nq 0 ];<span class="keyword">then</span></span><br><span class="line">        <span class="keyword">for</span> ip <span class="keyword">in</span> $(cat /tmp/bad_ip.list);<span class="keyword">do</span></span><br><span class="line">            iptables -I INPUT -s <span class="variable">$ip</span> -j REJECT</span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">unblock_ip</span></span>()&#123;</span><br><span class="line">    iptables -nvL INPUT| sed <span class="string">'1d'</span>| awk <span class="string">'$1&lt;5 &#123;print $8&#125;'</span> &gt; /tmp/good_ip.list</span><br><span class="line">    n=$(wc -l /tmp/bad_ip.list |awk <span class="string">'&#123;print $1&#125;'</span>)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$n</span> -ne 0 ];<span class="keyword">then</span></span><br><span class="line">        <span class="keyword">for</span> ip <span class="keyword">in</span> $(cat /tmp/good_ip.list);<span class="keyword">do</span></span><br><span class="line">            iptables -D INPUT -s <span class="variable">$ip</span> -j REJECT</span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    iptables -Z</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">t=$(date +%M)</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$t</span>"</span> == <span class="string">"00"</span> ]||[<span class="string">"<span class="variable">$t</span>"</span> == <span class="string">"30"</span> ];<span class="keyword">then</span></span><br><span class="line">    unblock_ip</span><br><span class="line">    block_ip</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    block_ip</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -178,7 +186,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">saltstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -187,16 +195,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/08/saltstack-1（9月7日）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/12/shell-习题14-封IP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/12/shell-习题13-监控httpd进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题13 监控httpd进程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -216,334 +283,37 @@
 
 
 
-
-
-  
-    <article id="post-jumpserver-2（9月6日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/jumpserver-2（9月6日）/">jumpserver 2（9月6日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/06/jumpserver-2（9月6日）/" class="archive-article-date">
-  	<time datetime="2018-09-06T15:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>23.9 创建jumpserver普通用户<br>23.10 添加机器<br>23.11 添加系统用户并授权<br>23.12 添加授权规则<br>23.13 客户端登录jumpserver<br>
-        
-          <a class="article-more-a" href="/2018/09/06/jumpserver-2（9月6日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">堡垒机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jumpserver</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/06/jumpserver-2（9月6日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-jumpserver-1（9月5日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/jumpserver-1（9月5日）/">jumpserver 1（9月5日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/05/jumpserver-1（9月5日）/" class="archive-article-date">
-  	<time datetime="2018-09-05T15:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>23.5 jumpserver介绍<br>23.6 安装jumpserver<br>23.7 登录jumpserver<br>23.8 创建管理用户<br>
-        
-          <a class="article-more-a" href="/2018/09/05/jumpserver-1（9月5日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">堡垒机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jumpserver</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/05/jumpserver-1（9月5日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-jailkit-自建堡垒机（9月4日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/jailkit-自建堡垒机（9月4日）/">jailkit 自建堡垒机（9月4日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/04/jailkit-自建堡垒机（9月4日）/" class="archive-article-date">
-  	<time datetime="2018-09-04T14:43:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>23.1 什么是堡垒机<br>23.2 搭建简易堡垒机<br>23.3 安装jailkit实现chroot<br>23.4 日志审计<br>
-        
-          <a class="article-more-a" href="/2018/09/04/jailkit-自建堡垒机（9月4日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">堡垒机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jailkit</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/04/jailkit-自建堡垒机（9月4日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-gitlab（8月31日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/gitlab（8月31日）/">gitlab（8月31日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/02/gitlab（8月31日）/" class="archive-article-date">
-  	<time datetime="2018-09-02T03:50:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>22.13 搭建git服务器<br>22.14/22.15 安装gitlab<br>22.16 使用gitlab<br>22.17 gitlab备份和恢复<br>
-        
-          <a class="article-more-a" href="/2018/09/02/gitlab（8月31日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gitlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/02/gitlab（8月31日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/17/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/19/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -565,8 +335,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
