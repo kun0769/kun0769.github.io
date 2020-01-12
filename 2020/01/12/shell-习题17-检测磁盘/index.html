@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>shell 习题17 检测磁盘 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/9/index.html">
+  <meta name="description" content="题目要求写一个shell脚本，检测所有磁盘分区使用率和inode使用率并记录到以当天日期为命名的日志文件里，当发现某个分区容量或者inode使用量大于85%时，发邮件通知你自己。">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题17 检测磁盘">
+<meta property="og:url" content="http://yoursite.com/2020/01/12/shell-习题17-检测磁盘/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="题目要求写一个shell脚本，检测所有磁盘分区使用率和inode使用率并记录到以当天日期为命名的日志文件里，当发现某个分区容量或者inode使用量大于85%时，发邮件通知你自己。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-12T03:20:08.746Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题17 检测磁盘">
+<meta name="twitter:description" content="题目要求写一个shell脚本，检测所有磁盘分区使用率和inode使用率并记录到以当天日期为命名的日志文件里，当发现某个分区容量或者inode使用量大于85%时，发邮件通知你自己。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,254 +145,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-shell-习题17-检测磁盘" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/31/CentOS使用ISO镜像做本地yum源/" class="archive-article-date">
-  	<time datetime="2019-01-31T04:17:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/31/CentOS使用ISO镜像做本地yum源/">CentOS使用ISO镜像做本地yum源</a>
+    <h1 class="article-title" itemprop="name">
+      shell 习题17 检测磁盘
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/12/shell-习题17-检测磁盘/" class="archive-article-date">
+  	<time datetime="2020-01-12T03:17:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目要求写一个shell脚本，检测所有磁盘分区使用率和inode使用率并记录到以当天日期为命名的日志文件里，当发现某个分区容量或者inode使用量大于85%时，发邮件通知你自己。<br><a id="more"></a></p>
+<p>##核心要点</p>
+<p><code>df</code> 显示磁盘分区使用率<br><code>df -i</code> 显示磁盘inode使用率<br><code>date +%F</code> 显示日期</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    检测记录磁盘分区使用率和inode使用率</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/17    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">log</span>=/tmp/disk/$(date +%F).<span class="built_in">log</span></span><br><span class="line">tag1=0</span><br><span class="line">tag2=0</span><br><span class="line"></span><br><span class="line">exprot <span class="built_in">export</span> LC_ALL=C</span><br><span class="line">[ ! -d /tmp/disk ] &amp;&amp; mkdir -p /tmp/disk</span><br><span class="line">date +%F:%T &gt;&gt; <span class="variable">$log</span></span><br><span class="line">df &gt;&gt; <span class="variable">$log</span></span><br><span class="line">df -i &gt;&gt; <span class="variable">$log</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(df |sed <span class="string">'1d'</span>|awk <span class="string">'&#123;print $5&#125;'</span> |sed -r <span class="string">'s/(\.(.*)%$|%$)//'</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$i</span> -gt 85 ];<span class="keyword">then</span></span><br><span class="line">        tag1=1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(df -i|sed <span class="string">'1d'</span>|awk <span class="string">'&#123;print $5&#125;'</span> |sed -r <span class="string">'s/(\.(.*)%$|%$)//'</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$i</span> -gt 85 ];<span class="keyword">then</span></span><br><span class="line">        tag2=1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$tag1</span> -eq 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$tag2</span> -eq 0 ];<span class="keyword">then</span></span><br><span class="line">        tag=0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        tag=2</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$tag</span> -eq 1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$tag2</span> -eq 1 ];<span class="keyword">then</span></span><br><span class="line">        tag=3</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        tag=1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$tag</span> <span class="keyword">in</span></span><br><span class="line">    1)</span><br><span class="line">    python mail.py <span class="string">"磁盘空间大于85%..."</span> <span class="string">"<span class="variable">$(df)</span>"</span></span><br><span class="line">    ;;</span><br><span class="line">    2)</span><br><span class="line">    python mail.py <span class="string">"inode使用率大于85%..."</span> <span class="string">"<span class="variable">$(df -i)</span>"</span></span><br><span class="line">    ;;</span><br><span class="line">    3)</span><br><span class="line">    python mail.py <span class="string">"磁盘空间和inode使用率都大于85%..."</span> <span class="string">"<span class="variable">$(df;df -i)</span>"</span></span><br><span class="line">    ;;</span><br><span class="line">    0)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"没事。。。"</span></span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">yum</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/" class="archive-article-date">
-  	<time datetime="2018-12-07T12:56:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/">Python 基础语法 使用装饰器来装饰生成器</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生成器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/12/shell-习题17-检测磁盘/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/07/Python-基础语法-（可迭代对象-迭代器-生成器）/" class="archive-article-date">
-  	<time datetime="2018-12-07T07:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/12/shell-习题16-查户口/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题16 查户口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/07/Python-基础语法-（可迭代对象-迭代器-生成器）/">Python 基础语法（可迭代对象 迭代器 生成器）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生成器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/06/Python-基础语法-15-rc脚本/" class="archive-article-date">
-  	<time datetime="2018-12-06T13:22:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/06/Python-基础语法-15-rc脚本/">Python 基础语法 15 rc脚本</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/06/Python-基础语法-14-类的属性和方法总结/" class="archive-article-date">
-  	<time datetime="2018-12-06T13:13:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/06/Python-基础语法-14-类的属性和方法总结/">Python 基础语法 14 类的属性和方法总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/39/">39</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
   
+
 
 
           </div>
@@ -410,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
