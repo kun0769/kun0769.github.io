@@ -6,55 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一周第五次课（3月23日） | kun0769的博客</title>
+  <title>shell 习题27 带选项的增删用户脚本 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2.1/2.2 系统目录结构2.3 ls命令2.4 文件类型2.5 alias命令">
-<meta name="keywords" content="Linux,文件与目录">
+  <meta name="description" content="题目要求写一个支持选项的增加或删除用户的shell脚本，具体要求如下：">
+<meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一周第五次课（3月23日）">
-<meta property="og:url" content="http://yoursite.com/2018/03/31/一周第五次课（3月23日）/index.html">
+<meta property="og:title" content="shell 习题27 带选项的增删用户脚本">
+<meta property="og:url" content="http://yoursite.com/2020/01/13/shell-习题27-带选项的增删用户脚本/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="2.1/2.2 系统目录结构2.3 ls命令2.4 文件类型2.5 alias命令">
+<meta property="og:description" content="题目要求写一个支持选项的增加或删除用户的shell脚本，具体要求如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322202129.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322204644.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205112.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205201.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205938.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210302.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212049.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212239.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212343.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212609.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322213935.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210847.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210905.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322211838.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322211206.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322215158.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220131.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220406.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220715.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322221140.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322221552.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322222339.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322222520.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223124.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223130.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223228.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223235.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223248.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223409.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224020.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224601.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224930.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322225312.jpg">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322225503.jpg">
-<meta property="og:updated_time" content="2018-11-20T06:12:50.763Z">
+<meta property="og:updated_time" content="2020-01-13T12:31:08.472Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一周第五次课（3月23日）">
-<meta name="twitter:description" content="2.1/2.2 系统目录结构2.3 ls命令2.4 文件类型2.5 alias命令">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322202129.jpg">
+<meta name="twitter:title" content="shell 习题27 带选项的增删用户脚本">
+<meta name="twitter:description" content="题目要求写一个支持选项的增加或删除用户的shell脚本，具体要求如下：">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -180,110 +145,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-一周第五次课（3月23日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题27-带选项的增删用户脚本" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一周第五次课（3月23日）
+      shell 习题27 带选项的增删用户脚本
     </h1>
   
 
         
-        <a href="/2018/03/31/一周第五次课（3月23日）/" class="archive-article-date">
-  	<time datetime="2018-03-31T12:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+        <a href="/2020/01/13/shell-习题27-带选项的增删用户脚本/" class="archive-article-date">
+  	<time datetime="2020-01-13T12:29:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2.1/2.2 系统目录结构<br>2.3 ls命令<br>2.4 文件类型<br>2.5 alias命令<br><a id="more"></a></p>
-<h2 id="2-1-2-2系统目录结构"><a href="#2-1-2-2系统目录结构" class="headerlink" title="2.1/2.2系统目录结构"></a>2.1/2.2系统目录结构</h2><p>列出根目录下的目录和文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322202129.jpg" alt=""></p>
-<blockquote>
-<p>/bin/  /sbin/  /usr/bin/  /usr/sbin/：用于存放系统中用户的命令，其中/sbin/ /usr/sbin/是用来放root的命令 只有root才有权限使用，/bin/ /usr/bin/是普通用户使用的命令，当然root也可以使用。</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322204644.jpg" alt=""></p>
-<blockquote>
-<p>/root/：root用户的家目录。用来存放root用户的文件的目录</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205112.jpg" alt=""></p>
-<blockquote>
-<p>/home/：普通用户的家目录。用来存放普通用户登录时需要使用的配置文件和个人文件</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205201.jpg" alt=""></p>
-<p>假如是普通用户要用密钥远程连接服务器 那就要在普通用户的家目录下放下<code>/.ssh/authorized_keys</code>并把公钥放进去<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322205938.jpg" alt=""></p>
-<p>/.ssh/authorized_keys这个文件名字的路径是不能改变的 这个是sshd的配置文件决定的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210302.jpg" alt=""></p>
-<blockquote>
-<p>/boot/：系统启动加载相关的文件</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212049.jpg" alt=""></p>
-<blockquote>
-<p>/dev/：设备文件 如 硬盘 光盘 鼠标等等</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212239.jpg" alt=""></p>
-<blockquote>
-<p>/etc/：配置文件</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212343.jpg" alt=""></p>
-<blockquote>
-<p>/lib/ /lib64/：系统的库文件 文件依赖于库文件</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322212609.jpg" alt=""></p>
-<blockquote>
-<p>/media/：媒介目录 默认为空 U盘内用显示在这里<br>/mut/：临时挂载目录 默认为空 新硬盘可以挂载这里<br>/proc/：系统进程<br>/run/：进程长生的临时文件<br>/sru/：存放服务的临时文件<br>/sys/：系统内核的文件<br>/tem/：系统临时目录<br>/usr/：用户的文件</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322213935.jpg" alt=""></p>
-<blockquote>
-<p>/var/：系统进程 服务的文件 日常使用的目录 比较重要</p>
-</blockquote>
-<blockquote>
-<p>tree：已树形的结构来显示目录和子目录，文件<br>先安装tree  <code>yum install -y tree</code></p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210847.jpg" alt=""><br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322210905.jpg" alt=""></p>
-<p><code>-L</code>：指定目录显示的层数<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322211838.jpg" alt=""></p>
-<blockquote>
-<p>man：看文件或者命令的帮助文档</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322211206.jpg" alt=""></p>
-<h2 id="2-3ls命令"><a href="#2-3ls命令" class="headerlink" title="2.3ls命令"></a>2.3ls命令</h2><blockquote>
-<p>ls：列出当前目录或者文件<br><code>-l /ll</code>：可以列出详细信息</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322215158.jpg" alt=""></p>
-<p>第一列 文件的属性<br>第二列 表示有多少个使用相同的icode的文件或者目录<br>第三列 所有者<br>第四列 所属组<br>第五列 文件大小 单位字节<br>第六列 文件创建时间<br>第七列 文件名字</p>
-<p><code>-i</code>：显示文件的icode号<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220131.jpg" alt=""></p>
-<p><code>-a</code>：显示所有文件 包括隐藏文件用.表示<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220406.jpg" alt=""></p>
-<p><code>.</code>：表示当前目录</p>
-<p><code>..</code>：表示上一级目录</p>
-<p><code>-d</code>：显示目录本身<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322220715.jpg" alt=""></p>
-<p><code>-t</code>：已时间的顺序来显示<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322221140.jpg" alt=""></p>
-<p><code>-h</code>：使用合适的单位来显示<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322221552.jpg" alt=""></p>
-<p>例子应用<br><code>ls -lath</code>详细的按时间顺序和适合的单位来列出全部文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322222339.jpg" alt=""></p>
-<p><code>ls -ald</code>详细的列出所有目录<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322222520.jpg" alt=""></p>
-<h2 id="2-4文件类型"><a href="#2-4文件类型" class="headerlink" title="2.4文件类型"></a>2.4文件类型</h2><p>d:目录<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223124.jpg" alt=""><br>-：普通文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223130.jpg" alt=""><br>b：块设备文件 磁盘 光盘<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223228.jpg" alt=""><br>c：字符串设备文件 鼠标 键盘<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223235.jpg" alt=""><br>l：软连接文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223248.jpg" alt=""><br>s：同一个机器中文件内部通信文件<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322223409.jpg" alt=""></p>
-<h2 id="2-5alias命令"><a href="#2-5alias命令" class="headerlink" title="2.5alias命令"></a>2.5alias命令</h2><blockquote>
-<p>which：查看命令的别名和文件所在的路径</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224020.jpg" alt=""></p>
-<blockquote>
-<p>PATH：环境变量 命令在环境变量所指定的路径中可以直接生效<br><code>echo $PATH</code>查看环境变量所指定的路径</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224601.jpg" alt=""></p>
-<blockquote>
-<p>alias：查看所有使用别名的命令</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322224930.jpg" alt=""></p>
-<blockquote>
-<p>alias AA=’ ‘：自定义别名</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322225312.jpg" alt=""></p>
-<blockquote>
-<p>unalias AA：取消别名</p>
-</blockquote>
-<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180322225503.jpg" alt=""></p>
-
+        <p>题目要求写一个支持选项的增加或删除用户的shell脚本，具体要求如下：<br><a id="more"></a></p>
+<ol>
+<li>只支持三个选项:’–del’,’–add’,’–help’，输入其他选项报错。</li>
+<li>使用’–add’时，需要验证用户名是否存在，存在则反馈存在，且不添加。 不存在则创建该用户，需要设置与该用户名相同的密码。</li>
+<li>使用’–del’时，需要验证用户名是否存在，存在则删除用户及其家目录。不存在则反馈该用户不存在。 </li>
+<li>–help选项反馈出使用方法。</li>
+<li>能用echo $?检测脚本执行情况，成功删除或添加用户为0，不成功为非0正整数。</li>
+<li>能以英文逗号分割，一次性添加或者删除多个用户。例如 adddel.sh –add user1,user2,user3</li>
+</ol>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>case</code>判断<br>批量添加多用户 需要for循环</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    带选项的增删用户脚本</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/22    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -eq 0 ] || [ <span class="variable">$#</span> -gt 2 ] || [ <span class="variable">$#</span> -eq 1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Usage: [--add user|--add user1,user2] [--del user|--del user1,user2] [--help]"</span>    </span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#判断用户存在并添加用户</span></span><br><span class="line"><span class="function"><span class="title">add_user</span></span>()&#123;</span><br><span class="line">    <span class="keyword">if</span> id <span class="variable">$1</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span> is exist."</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span> add successful."</span></span><br><span class="line">        useradd <span class="variable">$1</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span>"</span> |passwd --stdin <span class="variable">$1</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#判断用户存在并删除用户</span></span><br><span class="line"><span class="function"><span class="title">del_user</span></span>()&#123;</span><br><span class="line">        <span class="keyword">if</span> id <span class="variable">$1</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">         <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span> delete successful."</span></span><br><span class="line">        userdel -r <span class="variable">$1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span> is not exist."</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">    --add)</span><br><span class="line">        n=$(<span class="built_in">echo</span> <span class="variable">$2</span> |awk -F<span class="string">','</span> <span class="string">'&#123;print NF&#125;'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 <span class="variable">$n</span>);<span class="keyword">do</span></span><br><span class="line">            user=$(<span class="built_in">echo</span> <span class="variable">$2</span> |awk -v j=<span class="variable">$i</span> -F<span class="string">','</span> <span class="string">'&#123;print $j&#125;'</span>)</span><br><span class="line">            add_user <span class="variable">$user</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    ;;</span><br><span class="line">    --del)</span><br><span class="line">        n=$(<span class="built_in">echo</span> <span class="variable">$2</span> |awk -F<span class="string">','</span> <span class="string">'&#123;print NF&#125;'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 <span class="variable">$n</span>);<span class="keyword">do</span></span><br><span class="line">            user=$(<span class="built_in">echo</span> <span class="variable">$2</span> |awk -v j=<span class="variable">$i</span> -F<span class="string">','</span> <span class="string">'&#123;print $j&#125;'</span>)</span><br><span class="line">            del_user <span class="variable">$user</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    ;;</span><br><span class="line">    --<span class="built_in">help</span>)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: [--add user|--add user1,user2] [--del user|--del user1,user2] [--help]"</span></span><br><span class="line">    ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: [--add user|--add user1,user2] [--del user|--del user1,user2] [--help]"</span></span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -296,11 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">文件与目录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -356,7 +244,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/03/31/一周第五次课（3月23日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/13/shell-习题27-带选项的增删用户脚本/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -370,18 +258,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/31/二周第一次课（3月26日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          二周第一次课（3月26日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/31/一周第四次课（3月22日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一周第四次课（3月22日）</div>
+    <a href="/2020/01/13/shell-习题26-监控mysql服务/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题26 监控mysql服务</div>
       <i class="icon-circle-right"></i>
     </a>
   

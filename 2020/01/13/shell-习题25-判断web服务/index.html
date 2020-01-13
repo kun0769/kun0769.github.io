@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell 习题25 判断web服务 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目要求写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
+  <meta name="description" content="写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 习题25 判断web服务">
 <meta property="og:url" content="http://yoursite.com/2020/01/13/shell-习题25-判断web服务/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="题目要求写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
+<meta property="og:description" content="写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T12:19:56.511Z">
+<meta property="og:updated_time" content="2020-01-13T12:26:54.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题25 判断web服务">
-<meta name="twitter:description" content="题目要求写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
+<meta name="twitter:description" content="写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>题目要求写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？<br><a id="more"></a></p>
+        <p>写一个脚本判断你的Linux服务器里是否开启web服务？（监听80端口）如果开启了，请判断出跑的是什么服务，是httpd呢还是nginx又或者是其他的什么？<br><a id="more"></a></p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>netstat -lntp |grep &quot;80: &quot;</code> 查看80端口服务</p>
 <h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    检测web服务</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/22    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">n=$(netstat -lntp |grep <span class="string">":22 "</span>|wc -l)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$n</span> == 0 ];<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"没有web服务在监听..."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    n1=$(netstat -lntp |grep <span class="string">":22 "</span> |awk -F<span class="string">'/'</span> <span class="string">'&#123;print $NF&#125;'</span>|sort|uniq|sed <span class="string">'s/ //g'</span>)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"现在监听的服务是<span class="variable">$n1</span>."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
@@ -413,15 +413,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,10 +497,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -510,6 +506,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
