@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-12T03:12:19.449Z">
+<meta property="og:updated_time" content="2020-01-13T11:42:17.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题15 算数字">
 <meta name="twitter:description" content="题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
@@ -168,7 +168,7 @@
         <p>题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。<br><a id="more"></a><br>10 31 53 77  105 141 …….</p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>计算两个数值之间的差值</p>
 <p>第一行 10 31 53 77  105 141<br>第二行&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;22&nbsp;24&nbsp;28&nbsp;&nbsp;36<br>第三行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;8</p>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    计算数字的规律##history:</span></span><br><span class="line"><span class="comment">#2019/09/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">x=10</span><br><span class="line">y=21</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 0 15);<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$x</span></span><br><span class="line">	x=$[<span class="variable">$x</span>+<span class="variable">$y</span>]</span><br><span class="line">	z=$[2**<span class="variable">$i</span>]</span><br><span class="line">	y=$[<span class="variable">$y</span>+<span class="variable">$z</span>]</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    计算数字的规律</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">x=10</span><br><span class="line">y=21</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 0 15);<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$x</span></span><br><span class="line">	x=$[<span class="variable">$x</span>+<span class="variable">$y</span>]</span><br><span class="line">	z=$[2**<span class="variable">$i</span>]</span><br><span class="line">	y=$[<span class="variable">$y</span>+<span class="variable">$z</span>]</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -410,15 +410,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,15 +462,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,14 +494,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -510,11 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,11 +518,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
+                <a href="javascript:void(0)" class="js-tag color1">jumpserver</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">memcached</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,15 +550,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +574,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">用户与组</a>
+                <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,19 +602,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LVS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LVS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
               </li>
             
             <div class="clearfix"></div>
