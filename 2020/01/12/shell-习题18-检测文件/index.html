@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell 习题18 检测文件 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目要求有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
+  <meta name="description" content="有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 习题18 检测文件">
 <meta property="og:url" content="http://yoursite.com/2020/01/12/shell-习题18-检测文件/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="题目要求有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
+<meta property="og:description" content="有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-12T03:25:36.672Z">
+<meta property="og:updated_time" content="2020-01-13T12:47:51.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题18 检测文件">
-<meta name="twitter:description" content="题目要求有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
+<meta name="twitter:description" content="有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>题目要求有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。<br><a id="more"></a><br>所以，需要我们每5分钟做一次检测是否有新文件生成。请写一个shell脚本去完成检测。检测完成后若是有新文件，还需要将新文件的列表输出到一个按年、月、日、时、分为名字的日志里。</p>
+        <p>有一台服务器作为web应用，有一个目录（/data/web/attachment）不定时地会被用户上传新的文件，但是不知道什么时候会上传。<br><a id="more"></a><br>所以，需要我们每5分钟做一次检测是否有新文件生成。请写一个shell脚本去完成检测。检测完成后若是有新文件，还需要将新文件的列表输出到一个按年、月、日、时、分为名字的日志里。</p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>find -mmin 5</code> 找出5分钟前的文件或目录<br><code>date +%Y%m%d%H%M</code> 以年月日时分格式显示日期</p>
 <h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    检测新文件</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/18    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">d=$(date +%Y%m%d%H%M)</span><br><span class="line">dir=/data/web/attachment</span><br><span class="line">list=/tmp/file_list.txt</span><br><span class="line"></span><br><span class="line">find <span class="variable">$dir</span> -<span class="built_in">type</span> d -mmin -5 &gt; <span class="variable">$list</span></span><br><span class="line"></span><br><span class="line">n=$(wc -l <span class="variable">$list</span>)</span><br><span class="line"></span><br><span class="line">[ <span class="variable">$n</span> -nq 0 ] &amp;&amp; mv <span class="variable">$list</span> /tmp/<span class="variable">$d</span>.txt</span><br></pre></td></tr></table></figure>
       

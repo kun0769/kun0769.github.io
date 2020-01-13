@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell 习题12 批量创建用户 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目要求用外壳脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
+  <meta name="description" content="用shell脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 习题12 批量创建用户">
 <meta property="og:url" content="http://yoursite.com/2020/01/11/shell-习题12-批量创建用户/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="题目要求用外壳脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
+<meta property="og:description" content="用shell脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-11T12:21:34.322Z">
+<meta property="og:updated_time" content="2020-01-13T12:49:02.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题12 批量创建用户">
-<meta name="twitter:description" content="题目要求用外壳脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
+<meta name="twitter:description" content="用shell脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>题目要求用外壳脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。<br><a id="more"></a><br>提示：<br>    1.随机密码使用命令mkpasswd<br>    2.在脚本中给用户设置密码，可以使用echo然后管道passwd命令</p>
+        <p>用shell脚本实现如下需求：添加user_00 - user_09 10个用户，并且给他们设置一个随机密码，密码要求10位包含大小写字母以及数字，注意需要把每个用户的密码记录到一个日志文件里。<br><a id="more"></a><br>提示：<br>    1.随机密码使用命令mkpasswd<br>    2.在脚本中给用户设置密码，可以使用echo然后管道passwd命令</p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>SEQ实现数字递增  <code>seq -w 00 09</code><br>mkpasswd产生随机字符 <code>mkpasswd -l 10 -s 0 -d 6</code> <code>-l</code> 指定长度 <code>-s</code> 指定特殊符合 <code>-d</code> 指定数字个数</p>
 <p>给创建的用户设置新密码<br>1）<code>echo -e &quot;root1234\nroot1234&quot; |passwd user1</code><br>2）<code>echo &quot;root1234&quot; |passwd --stdin user1</code></p>
 <p>批量删除用户 <code>for i in $(seq -w 00 09);do userdel -r user_$i;done</code></p>

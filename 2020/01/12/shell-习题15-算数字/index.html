@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell 习题15 算数字 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
+  <meta name="description" content="请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 习题15 算数字">
 <meta property="og:url" content="http://yoursite.com/2020/01/12/shell-习题15-算数字/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
+<meta property="og:description" content="请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T11:42:17.184Z">
+<meta property="og:updated_time" content="2020-01-13T12:47:32.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题15 算数字">
-<meta name="twitter:description" content="题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
+<meta name="twitter:description" content="请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>题目要求请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。<br><a id="more"></a><br>10 31 53 77  105 141 …….</p>
+        <p>请仔细查看如下几个数字的规律，并使用shell脚本输出后面的十个数字。<br><a id="more"></a><br>10 31 53 77  105 141 …….</p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>计算两个数值之间的差值</p>
 <p>第一行 10 31 53 77  105 141<br>第二行&nbsp;&nbsp;&nbsp;&nbsp;21&nbsp;22&nbsp;24&nbsp;28&nbsp;&nbsp;36<br>第三行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;8</p>
 <h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    计算数字的规律</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2019/09/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">x=10</span><br><span class="line">y=21</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 0 15);<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$x</span></span><br><span class="line">	x=$[<span class="variable">$x</span>+<span class="variable">$y</span>]</span><br><span class="line">	z=$[2**<span class="variable">$i</span>]</span><br><span class="line">	y=$[<span class="variable">$y</span>+<span class="variable">$z</span>]</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
