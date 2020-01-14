@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>shell 习题40 格式化数字输出 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/34/index.html">
+  <meta name="description" content="输入一串随机字符串，然后按照千分位输出">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题40 格式化数字输出">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/shell-习题40-格式化数字输出/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="输入一串随机字符串，然后按照千分位输出">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-14T15:26:54.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题40 格式化数字输出">
+<meta name="twitter:description" content="输入一串随机字符串，然后按照千分位输出">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-LNMP第五节（6月12日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-shell-习题40-格式化数字输出" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/12/LNMP第五节（6月12日）/">LNMP第五节（6月12日）</a>
+    <h1 class="article-title" itemprop="name">
+      shell 习题40 格式化数字输出
     </h1>
   
 
         
-        <a href="/2018/06/12/LNMP第五节（6月12日）/" class="archive-article-date">
-  	<time datetime="2018-06-12T11:42:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
+        <a href="/2020/01/14/shell-习题40-格式化数字输出/" class="archive-article-date">
+  	<time datetime="2020-01-14T15:25:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>12.17 Nginx负载均衡<br>12.18 ssl原理<br>12.19 生成ssl密钥对<br>12.20 Nginx配置ssl<br>
-        
-          <a class="article-more-a" href="/2018/06/12/LNMP第五节（6月12日）/#more">more >></a>
-        
+        <p>输入一串随机字符串，然后按照千分位输出<br><a id="more"></a><br>例子：输入的字符串”123456789”,输出为”123,456,789”</p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>for循环的目标是以空格来遍历 例如 <code>for i in 1 2 3 4</code><br><code>sed &#39;s/./&amp; /g&#39;</code> <code>&amp;</code>表示前面匹配的字符 这个在字符串中加空格 例子 1234 —&gt; 1 2 3 4<br><code>echo -n</code> 不换行输出结果 </p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    输入一串随机字符串，然后按照千分位输出</span></span><br><span class="line"><span class="comment">#    例子：输入的字符串"123456789",输出为"123,456,789"</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/11    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">n=`<span class="built_in">echo</span> <span class="variable">$1</span>|wc -L`</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `<span class="built_in">echo</span> <span class="variable">$1</span>|sed <span class="string">'s/./&amp; /g'</span>`;<span class="keyword">do</span></span><br><span class="line">    <span class="comment">#n1表示当前位置,被3整除就在前加, 再通过$[$n-1]来遍历下一位</span></span><br><span class="line">    n1=$[<span class="variable">$n</span>%3]</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$n1</span> -eq 0 ];<span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">",<span class="variable">$i</span>"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$i</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    n=$[<span class="variable">$n</span>-1]</span><br><span class="line"><span class="keyword">done</span>|sed <span class="string">'s/^,//'</span> <span class="comment">#除去开头的,</span></span><br><span class="line"><span class="built_in">echo</span>  <span class="comment">#用于换行</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -178,11 +180,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -191,16 +189,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/12/LNMP第五节（6月12日）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/14/shell-习题40-格式化数字输出/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/14/shell-习题39-检查脚本语法错误/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题39 检查脚本语法错误</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -220,338 +277,37 @@
 
 
 
-
-
-  
-    <article id="post-LNMP第四节（6月11日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/11/LNMP第四节（6月11日）/">LNMP第四节（6月11日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/11/LNMP第四节（6月11日）/" class="archive-article-date">
-  	<time datetime="2018-06-11T12:42:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12.13 Nginx防盗链<br>12.14 Nginx访问控制<br>12.15 Nginx解析php相关配置<br>12.16 Nginx代理<br>
-        
-          <a class="article-more-a" href="/2018/06/11/LNMP第四节（6月11日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/11/LNMP第四节（6月11日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-LNMP第三节（6月8日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/LNMP第三节（6月8日）/">LNMP第三节（6月8日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/08/LNMP第三节（6月8日）/" class="archive-article-date">
-  	<time datetime="2018-06-08T14:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12.10 Nginx访问日志<br>12.11 Nginx日志切割<br>12.12 静态文件不记录日志和过期时间<br>
-        
-          <a class="article-more-a" href="/2018/06/08/LNMP第三节（6月8日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/08/LNMP第三节（6月8日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-LNMP第二节（6月7日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/08/LNMP第二节（6月7日）/">LNMP第二节（6月7日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/08/LNMP第二节（6月7日）/" class="archive-article-date">
-  	<time datetime="2018-06-07T17:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12.6 Nginx安装<br>12.7 默认虚拟主机<br>12.8 Nginx用户认证<br>12.9 Nginx域名重定向<br>
-        
-          <a class="article-more-a" href="/2018/06/08/LNMP第二节（6月7日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/08/LNMP第二节（6月7日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-LNMP第一节（6月6日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/LNMP第一节（6月6日）/">LNMP第一节（6月6日）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/06/LNMP第一节（6月6日）/" class="archive-article-date">
-  	<time datetime="2018-06-06T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12.1 LNMP架构介绍<br>12.2 MySQL安装<br>12.3/12.4 PHP安装<br>12.5 Nginx介绍<br>
-        
-          <a class="article-more-a" href="/2018/06/06/LNMP第一节（6月6日）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/06/LNMP第一节（6月6日）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/33/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/35/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -573,8 +329,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
