@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>shell 习题13 监控httpd进程 | kun0769的博客</title>
+  <title>shell 习题39 检查脚本语法错误 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在服务器上，写一个监控脚本，要求如下：">
+  <meta name="description" content="写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell 习题13 监控httpd进程">
-<meta property="og:url" content="http://yoursite.com/2020/01/12/shell-习题13-监控httpd进程/index.html">
+<meta property="og:title" content="shell 习题39 检查脚本语法错误">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/shell-习题39-检查脚本语法错误/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="在服务器上，写一个监控脚本，要求如下：">
+<meta property="og:description" content="写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T12:48:48.085Z">
+<meta property="og:updated_time" content="2020-01-14T15:20:53.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell 习题13 监控httpd进程">
-<meta name="twitter:description" content="在服务器上，写一个监控脚本，要求如下：">
+<meta name="twitter:title" content="shell 习题39 检查脚本语法错误">
+<meta name="twitter:description" content="写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,29 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-shell-习题13-监控httpd进程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题39-检查脚本语法错误" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      shell 习题13 监控httpd进程
+      shell 习题39 检查脚本语法错误
     </h1>
   
 
         
-        <a href="/2020/01/12/shell-习题13-监控httpd进程/" class="archive-article-date">
-  	<time datetime="2020-01-12T02:44:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
+        <a href="/2020/01/14/shell-习题39-检查脚本语法错误/" class="archive-article-date">
+  	<time datetime="2020-01-14T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在服务器上，写一个监控脚本，要求如下：<br><a id="more"></a><br>1）每隔10秒去检测一次服务器上的的httpd进程数，如果大于等于500的时候，就需要自动重启一下apache的服务，并检测启动是否成功？<br>2）若没有正常启动还需再一次启动，最大不成功数超过5次则需要立即发邮件通知管理员，并且以后不需要再检测！<br>3）如果启动成功后，1分钟后再次检测的httpd进程数，若正常则重复之前操作（每隔10秒检测一次），若还是大于等于500，那放弃重启并需要发邮件给管理员，然后自动退出该脚本。假设其中发邮件脚本为之前使用的mail.py核心要点</p>
-<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>pgrep -l httpd</code>或者<code>ps -C httpd --no-heading</code>检查进程<br>对于循环5次计数器使用函数完成</p>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">check_service()</span><br><span class="line">&#123;</span><br><span class="line">    c=0</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 5);<span class="keyword">do</span></span><br><span class="line">        /usr/<span class="built_in">local</span>/apache2/bin/apachectl -k restart 2&gt; /tmp/apache.err</span><br><span class="line">        <span class="keyword">if</span> [ ! $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">            c=$[<span class="variable">$c</span>+1]</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">break</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$c</span> -eq 5 ];<span class="keyword">then</span></span><br><span class="line">        python mail.py aaa.qq.com <span class="string">"httpd进程数量大于500,重启失败"</span> <span class="string">"<span class="variable">$(tail -1 /tmp/apache.err)</span>"</span></span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    n=$(pgrep -l httpd |wc -l)</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$n</span> -ge 500 ];<span class="keyword">then</span></span><br><span class="line">        /usr/<span class="built_in">local</span>/apache2/bin/apachectl -k restart 2&gt; /tmp/apache.err</span><br><span class="line">        <span class="keyword">if</span> [ ! $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">            check_service</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        sleep 60</span><br><span class="line">        new_n=$(pgrep -l httpd |wc -l)</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$new_n</span> -ge 500 ];<span class="keyword">then</span></span><br><span class="line">            python mail.py aaa.qq.com <span class="string">"httpd进程数量大于500,重启失败"</span> <span class="string">"<span class="variable">$(tail -1 /tmp/apache.err)</span>"</span></span><br><span class="line">            <span class="built_in">exit</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    sleep 10</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+        <p>写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本<br><a id="more"></a></p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>sh -n</code> 检查脚本是否有语法错误</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/11    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">sh -n <span class="variable">$1</span> 2&gt;/tmp/39.err</span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"脚本<span class="variable">$1</span>没有语法错误..."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    cat /tmp/39.err</span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">"请输入q/Q退出脚本:"</span> cmd</span><br><span class="line">    [ -z <span class="string">"<span class="variable">$cmd</span>"</span> ] &amp;&amp; /usr/bin/vim <span class="variable">$1</span> &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$cmd</span> == <span class="string">"q"</span> ] || [ <span class="variable">$cmd</span> == <span class="string">"Q"</span> ];<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    /usr/bin/vim <span class="variable">$1</span></span><br><span class="line">    <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -236,7 +236,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/12/shell-习题13-监控httpd进程/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/14/shell-习题39-检查脚本语法错误/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,18 +250,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/12/shell-习题14-封IP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          shell 习题14 封IP
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/11/shell-习题12-批量创建用户/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">shell 习题12 批量创建用户</div>
+    <a href="/2020/01/14/shell-习题38-查找在线IP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题38 查找在线IP</div>
       <i class="icon-circle-right"></i>
     </a>
   

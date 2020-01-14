@@ -142,6 +142,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shell-习题39-检查脚本语法错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/14/shell-习题39-检查脚本语法错误/">shell 习题39 检查脚本语法错误</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/14/shell-习题39-检查脚本语法错误/" class="archive-article-date">
+  	<time datetime="2020-01-14T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写一个shell脚本，检查指定的shell脚本是否有语法错误。有错误，显示错误信息，然后提示用户输入q或者Q退出脚本，输入其他内容则直接用vim打开该脚本<br>
+        
+          <a class="article-more-a" href="/2020/01/14/shell-习题39-检查脚本语法错误/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/14/shell-习题39-检查脚本语法错误/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-shell-习题38-查找在线IP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,9 +239,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。</p>
-<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>for循环遍历所有IP<br><code>ping -c 次数 -w 超时时间</code></p>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash    </span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#program:    </span></span><br><span class="line"><span class="comment">#    写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。    </span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#history:    </span></span><br><span class="line"><span class="comment">#2020/01/11    kun    V1.0    </span></span><br><span class="line">    </span><br><span class="line">ip=<span class="string">"192.168.0."</span>    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 254`;<span class="keyword">do</span>    </span><br><span class="line">    <span class="keyword">if</span> ping -c 1 -w 1 <span class="variable">$ip</span><span class="variable">$i</span> &gt;/dev/null 2&gt;&amp;1;<span class="keyword">then</span>    </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$ip</span><span class="variable">$i</span> 是通的."</span>    </span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$ip</span><span class="variable">$i</span> 不通."</span>    </span><br><span class="line">    <span class="keyword">fi</span>    </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+        <p>写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。<br>
+        
+          <a class="article-more-a" href="/2020/01/14/shell-习题38-查找在线IP/#more">more >></a>
+        
       
 
       
@@ -449,83 +527,6 @@
 
 
   
-    <article id="post-shell-习题34-猜数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/14/shell-习题34-猜数字/">shell 习题34 猜数字</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/14/shell-习题34-猜数字/" class="archive-article-date">
-  	<time datetime="2020-01-14T14:55:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写一个猜数字脚本，当用户输入的数字和预设数字（随机生成一个0-100的数字）一样时，直接退出，否则让用户一直输入，并且提示用户的数字比预设数字大或者小。<br>
-        
-          <a class="article-more-a" href="/2020/01/14/shell-习题34-猜数字/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/14/shell-习题34-猜数字/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -763,10 +764,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
@@ -788,6 +785,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">

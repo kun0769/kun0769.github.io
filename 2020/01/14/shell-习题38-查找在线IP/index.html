@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>shell 习题38 查找在线IP | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。 核心要点for循环遍历所有IPping -c 次数 -w 超时时间 代码内容1234567891011121314151617#!/bin/bash    #    #program:    #    写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。    #    #history:    #2">
+  <meta name="description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 习题38 查找在线IP">
 <meta property="og:url" content="http://yoursite.com/2020/01/14/shell-习题38-查找在线IP/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。 核心要点for循环遍历所有IPping -c 次数 -w 超时时间 代码内容1234567891011121314151617#!/bin/bash    #    #program:    #    写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。    #    #history:    #2">
+<meta property="og:description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-14T15:18:13.626Z">
+<meta property="og:updated_time" content="2020-01-14T15:20:54.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题38 查找在线IP">
-<meta name="twitter:description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。 核心要点for循环遍历所有IPping -c 次数 -w 超时时间 代码内容1234567891011121314151617#!/bin/bash    #    #program:    #    写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。    #    #history:    #2">
+<meta name="twitter:description" content="写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。</p>
+        <p>写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。<br><a id="more"></a></p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>for循环遍历所有IP<br><code>ping -c 次数 -w 超时时间</code></p>
 <h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash    </span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#program:    </span></span><br><span class="line"><span class="comment">#    写一个shell脚本，把192.168.0.0/24网段在线的IP列出来。    </span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#history:    </span></span><br><span class="line"><span class="comment">#2020/01/11    kun    V1.0    </span></span><br><span class="line">    </span><br><span class="line">ip=<span class="string">"192.168.0."</span>    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 1 254`;<span class="keyword">do</span>    </span><br><span class="line">    <span class="keyword">if</span> ping -c 1 -w 1 <span class="variable">$ip</span><span class="variable">$i</span> &gt;/dev/null 2&gt;&amp;1;<span class="keyword">then</span>    </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$ip</span><span class="variable">$i</span> 是通的."</span>    </span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$ip</span><span class="variable">$i</span> 不通."</span>    </span><br><span class="line">    <span class="keyword">fi</span>    </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
       
@@ -249,6 +249,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/01/14/shell-习题39-检查脚本语法错误/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          shell 习题39 检查脚本语法错误
+        
+      </div>
+    </a>
   
   
     <a href="/2020/01/14/shell-习题37-日志切割归档/" id="article-nav-older" class="article-nav-link-wrap">
@@ -540,10 +549,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
@@ -565,6 +570,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">防火墙</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
