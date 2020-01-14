@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>memcache 2（8月15日） | kun0769的博客</title>
+  <title>shell 习题35 根据名字得数字 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="21.5 memcached命令行21.6 memcached数据导出和导入21.7 php连接memcached21.8 memcached中存储sessions">
-<meta name="keywords" content="memcached">
+  <meta name="description" content="写一个shell脚本，能实现如下需求：">
+<meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="memcache 2（8月15日）">
-<meta property="og:url" content="http://yoursite.com/2018/08/15/memcache-2（8月15日）/index.html">
+<meta property="og:title" content="shell 习题35 根据名字得数字">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/shell-习题35-根据名字得数字/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="21.5 memcached命令行21.6 memcached数据导出和导入21.7 php连接memcached21.8 memcached中存储sessions">
+<meta property="og:description" content="写一个shell脚本，能实现如下需求：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180815205024.png">
-<meta property="og:updated_time" content="2018-11-20T06:24:37.898Z">
+<meta property="og:updated_time" content="2020-01-14T15:00:41.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="memcache 2（8月15日）">
-<meta name="twitter:description" content="21.5 memcached命令行21.6 memcached数据导出和导入21.7 php连接memcached21.8 memcached中存储sessions">
-<meta name="twitter:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180815205024.png">
+<meta name="twitter:title" content="shell 习题35 根据名字得数字">
+<meta name="twitter:description" content="写一个shell脚本，能实现如下需求：">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -147,129 +145,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-memcache-2（8月15日）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题35-根据名字得数字" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      memcache 2（8月15日）
+      shell 习题35 根据名字得数字
     </h1>
   
 
         
-        <a href="/2018/08/15/memcache-2（8月15日）/" class="archive-article-date">
-  	<time datetime="2018-08-15T14:28:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+        <a href="/2020/01/14/shell-习题35-根据名字得数字/" class="archive-article-date">
+  	<time datetime="2020-01-14T14:59:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>21.5 memcached命令行<br>21.6 memcached数据导出和导入<br>21.7 php连接memcached<br>21.8 memcached中存储sessions<br><a id="more"></a></p>
-<h2 id="21-5-memcached命令行"><a href="#21-5-memcached命令行" class="headerlink" title="21.5 memcached命令行"></a>21.5 memcached命令行</h2><h3 id="使用Telnet进入memcached"><a href="#使用Telnet进入memcached" class="headerlink" title="使用Telnet进入memcached"></a>使用Telnet进入memcached</h3><p>格式：<code>telnet IP 端口</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# yum install -y telnet </span><br><span class="line"></span><br><span class="line">[root@kun01 ~]# telnet 127.0.0.1 11211</span><br><span class="line">Trying 127.0.0.1...</span><br><span class="line">Connected to 127.0.0.1.</span><br><span class="line">Escape character is &apos;^]&apos;.</span><br><span class="line"></span><br><span class="line">^]</span><br><span class="line">telnet&gt; quit</span><br></pre></td></tr></table></figure></p>
-<p>退出Telnet按<code>Ctrl+]</code>再输入<code>quit</code>撤销按<code>Ctrl+退格键</code></p>
-<h3 id="使用nc进入memcached"><a href="#使用nc进入memcached" class="headerlink" title="使用nc进入memcached"></a>使用nc进入memcached</h3><p>格式：<code>nc IP 端口</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# nc 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
-<h3 id="Memcached语法规则"><a href="#Memcached语法规则" class="headerlink" title="Memcached语法规则"></a>Memcached语法规则</h3><p><code>&lt;command name&gt; &lt;key&gt; &lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt;\r\n &lt;data block&gt;\r\n</code><br>注：<code>\r\n</code>等于是windows下的<code>Enter键</code></p>
-<ul>
-<li><code>&lt;command name&gt;</code> 可以是set, add, replace<ul>
-<li><code>set</code>表示按照相应的<key>存储该数据，没有的时候增加，有的时候覆盖</key></li>
-<li><code>add</code>表示按照相应的<key>添加该数据,但是如果该<key>已经存在则会操作失败</key></key></li>
-<li><code>replace</code>表示按照相应的<key>替换数据,但是如果该<key>不存在则操作失败。</key></key></li>
-</ul>
-</li>
-</ul>
-<p><code>&lt;key&gt;</code> 客户端需要保存数据的key</p>
-<p><code>&lt;flags&gt;</code> 是一个16位的无符号的整数(以十进制的方式表示)。<br>该标志将和需要存储的数据一起存储,并在客户端get数据时返回。<br>客户端可以将此标志用做特殊用途，此标志对服务器来说是不透明的。</p>
-<p><code>&lt;exptime&gt;</code> 为过期的时间。若为<code>0</code>表示存储的<code>数据永远不过期</code>(但可被服务器算法：LRU 等替换)。<br>如果非0(unix时间或者距离此时的秒数),当过期后,服务器可以保证用户得不到该数据(以服务器时间为标准)。<br>例如：10表示10秒的存储时间</p>
-<p><code>&lt;bytes&gt;</code> 需要存储的字节数，当用户希望存储空数据时<bytes>可以为0<br>例如：2 表示2位</bytes></p>
-<p><code>&lt;data block&gt;</code>需要存储的内容，即为值。输入完成后，最后客户端需要加上<code>\r\n</code>（直接点击Enter）作为结束标志。</p>
-<blockquote>
-<p>添加键</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set key1 0 100 2 ## 0为标记 100为存储时间 2为2位数</span><br><span class="line">ab</span><br><span class="line">STORED</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>获得键对应的值</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get key1  </span><br><span class="line">VALUE key1 0 2</span><br><span class="line">ab</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>替换值</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">replace key1 0 1000 3 ##replace和set一样也要输入&lt;flags&gt; &lt;exptime&gt; &lt;bytes&gt;</span><br><span class="line">123</span><br><span class="line">STORED</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>删除键</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete key1</span><br><span class="line">DELETED</span><br></pre></td></tr></table></figure>
-<h2 id="21-6-memcached数据导出和导入"><a href="#21-6-memcached数据导出和导入" class="headerlink" title="21.6 memcached数据导出和导入"></a>21.6 memcached数据导出和导入</h2><p>由于memcached在重启服务或者重启机器就会把数据丢掉，因此需要把数据进行备份。</p>
-<h3 id="使用memcached-tool命令把数据导出"><a href="#使用memcached-tool命令把数据导出" class="headerlink" title="使用memcached-tool命令把数据导出"></a>使用memcached-tool命令把数据导出</h3><p>格式：<code>memcached-tool IP:端口 dump &gt; 备份文件</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# memcached-tool 127.0.0.1:11211 dump &gt; date.txt</span><br><span class="line">Dumping memcache contents</span><br><span class="line">  Number of buckets: 1</span><br><span class="line">  Number of items  : 3</span><br><span class="line">Dumping bucket 1 - 3 total items</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# cat date.txt</span><br><span class="line">add name 0 1534285054 3</span><br><span class="line">kun</span><br><span class="line">add key1 0 1534285054 4</span><br><span class="line">1234</span><br><span class="line">add age 0 1534285054 2</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# date -d @1534285054</span><br><span class="line">2018年 08月 15日 星期三 06:17:34 CST</span><br></pre></td></tr></table></figure>
-<p>通过时间戳找出对应的时间。因为我们装置设定数据的过期时间为0，永不过期。但是导出数据就会把创建数据的时间为过期时间，因此要把时间改一改，不然导入数据就会出问题</p>
-<h3 id="使用nc命令把数据导入"><a href="#使用nc命令把数据导入" class="headerlink" title="使用nc命令把数据导入"></a>使用nc命令把数据导入</h3><p>格式：<code>nc IP 端口 &lt; 备份文件</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# nc 127.0.0.1 11211 &lt; date.txt</span><br><span class="line">STORED</span><br><span class="line">STORED</span><br><span class="line">STORED</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun01 ~]# nc 127.0.0.1 11211 ##使用nc进入memcached发型数据还在</span><br><span class="line">get name</span><br><span class="line">VALUE name 0 3</span><br><span class="line">kun</span><br><span class="line">END</span><br><span class="line">get age</span><br><span class="line">VALUE age 0 2</span><br><span class="line">30</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<h2 id="21-7-php连接memcached"><a href="#21-7-php连接memcached" class="headerlink" title="21.7 php连接memcached"></a>21.7 php连接memcached</h2><p>当php和memcached打交道时候，需要有memcache模块。而memcache模块下载回来是需要源码安装的。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><blockquote>
+        <p>写一个shell脚本，能实现如下需求：<br><a id="more"></a></p>
 <ol>
-<li>进入src目录并下载解压memcache</li>
+<li>执行脚本后，提示输入名字（英文，可以是大小写字母，数字不能有其他特殊符号），然后输出一个随机的0-99之间的数字，脚本并不会退出，继续提示让输入名字</li>
+<li>如果输入相同的名字，输出的数字还是第一次输入该名字时输出的结果</li>
+<li>前面已经输出过的数字，下次不能再出现</li>
+<li>当输入q或者Q时，脚本会退出。</li>
 </ol>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun07 ~]# cd /usr/local/src/</span><br><span class="line">[root@kun07 src]# wget http://www.apelearn.com/bbs/data/attachment/forum/memcache-2.2.3.tgz</span><br><span class="line">[root@kun07 src]# tar zxvf memcache-2.2.3.tgz</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>2.进入memcache目录下并生成configure文件</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@kun07 src]# cd memcache-2.2.3</span><br><span class="line">[root@kun07 memcache-2.2.3]# /usr/local/php-fpm/bin/phpize</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:         20160303</span><br><span class="line">Zend Module Api No:      20160303</span><br><span class="line">Zend Extension Api No:   320160303</span><br><span class="line">Cannot find autoconf. Please check your autoconf installation and the</span><br><span class="line">$PHP_AUTOCONF environment variable. Then, rerun this script.</span><br></pre></td></tr></table></figure>
-<p>这里是缺少autoconf导致的因此安装autoconf再来phpize<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@kun07 memcache-2.2.3]# yum install -y autoconf</span><br><span class="line">[root@kun07 memcache-2.2.3]# /usr/local/php-fpm/bin/phpize</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:         20160303</span><br><span class="line">Zend Module Api No:      20160303</span><br><span class="line">Zend Extension Api No:   320160303</span><br></pre></td></tr></table></figure></p>
-<p><code>/usr/local/php-fpm/bin/phpizes</code>用来生成configure文件</p>
-<blockquote>
-<p>3.初始化</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun07 memcache-2.2.3]# ./configure --with-php-config=/usr/local/php-fpm/bin/php-config</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>4.编译 安装</p>
-</blockquote>
-<p>错误1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/src/memcache-2.2.3/memcache.c:40:40: 致命错误：ext/standard/php_smart_str.h：没有那个文件或目录</span><br><span class="line">#include &quot;ext/standard/php_smart_str.h&quot;</span><br></pre></td></tr></table></figure></p>
-<p>这里是由于PHP7中缺少php_smart_str.h的文件导致的只能使用php5.几的版本来安装memcache模块 我们重新使用php5来安装memcache模块</p>
-<p>错误2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In file included from /usr/local/php/include/php/Zend/zend_API.h:27:0,</span><br><span class="line">                 from /usr/local/php/include/php/main/php.h:39,</span><br><span class="line">                 from /usr/local/src/memcache-2.2.3/memcache.c:26:</span><br><span class="line">/usr/local/php/include/php/Zend/zend_list.h:73:14: 附注：在此声明</span><br><span class="line">ZEND_API int zend_list_insert(void *ptr, int type TSRMLS_DC);</span><br><span class="line">              ^</span><br><span class="line">make: *** [memcache.lo] 错误 1</span><br></pre></td></tr></table></figure></p>
-<p>将所有的：<code>zend_list_insert(pool, le_memcache_pool);</code><br>改为：<code>zend_list_insert(pool, le_memcache_pool TSRMLS_CC);</code></p>
-<p>将所有的：<code>zend_list_insert(mmc, le_pmemcache);</code><br>改为：<code>zend_list_insert(mmc, le_pmemcache TSRMLS_CC);</code></p>
-<p>讲所有的：<code>if (!zend_is_callable(failure_callback, 0, NULL))</code><br>改为：<code>if (!zend_is_callable(failure_callback, 0, NULL, NULL))</code></p>
-<p>修改memcache.c下面的参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim memcache.c</span><br><span class="line"></span><br><span class="line">:1,$s/zend_list_insert(pool, le_memcache_pool);/zend_list_insert(pool, le_memcache_pool TSRMLS_CC);/g</span><br><span class="line">:1,$s/zend_list_insert(mmc, le_pmemcache);/zend_list_insert(mmc, le_pmemcache TSRMLS_CC);/g</span><br><span class="line">:1,$s/if (!zend_is_callable(failure_callback, 0, NULL))/if (!zend_is_callable(failure_callback, 0, NULL, NULL))/g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 memcache-2.2.3]# make</span><br><span class="line">[root@kun02 memcache-2.2.3]# make install</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>5.查看模块</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 memcache-2.2.3]# ls /usr/local/php/lib/php/extensions/no-debug-zts-20131226/</span><br><span class="line">memcache.so  opcache.so  redis.so  zip.so</span><br><span class="line">/usr/local/php/lib/php/extensions/no-debug-zts-20131226/ 安装模块的目录</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>6.加载扩张模块</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 memcache-2.2.3]# vim /usr/local/php/etc/php.ini</span><br><span class="line"></span><br><span class="line">;extension=php_soap.dll</span><br><span class="line">;extension=php_sockets.dll</span><br><span class="line">;extension=php_sqlite3.dll</span><br><span class="line">;extension=php_sybase_ct.dll</span><br><span class="line">;extension=php_tidy.dll</span><br><span class="line">;extension=php_xmlrpc.dll</span><br><span class="line">;extension=php_xsl.dll</span><br></pre></td></tr></table></figure>
-<p>在下面添加上<code>extension=memcache.so</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension=memcache.so</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>7.查看加载的模块</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 memcache-2.2.3]# /usr/local/php/bin/php -m |grep memcache</span><br><span class="line">memcache</span><br></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>下载一个php的测试页面看是否支持php来操作memcache<br>代码内容在<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/1.php" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/1.php</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl www.apelearn.com/study_v2/.memcache.txt &gt; 1.php 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line">[root@kun02 ~]# /usr/local/php/bin/php 1.php</span><br><span class="line">Get key1 value: This is first value&lt;br&gt;Get key1 value: This is replace value&lt;br&gt;Get key2 value: Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; aaa</span><br><span class="line">    [1] =&gt; bbb</span><br><span class="line">    [2] =&gt; ccc</span><br><span class="line">    [3] =&gt; ddd</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>在浏览器下访问<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/QQ%E6%88%AA%E5%9B%BE20180815205024.png" alt=""></p>
-<h2 id="21-8-memcached中存储session"><a href="#21-8-memcached中存储session" class="headerlink" title="21.8 memcached中存储session"></a>21.8 memcached中存储session</h2><p>当某个用户登录web服务器上时候，由于后端有多台服务器，为了让用户的登录状态等信息持续在线，就可以让用户的session（一般存在服务器磁盘上）存在memcached中，即使用户登录不同的web服务器，他的登录状态也不会发生变化。有三种方法</p>
-<h3 id="1-编辑php-ini文件"><a href="#1-编辑php-ini文件" class="headerlink" title="1.编辑php.ini文件"></a>1.编辑php.ini文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /usr/local/php/etc/php.ini</span><br></pre></td></tr></table></figure>
-<p>找到下面参数，并注释掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.save_handler = files</span><br></pre></td></tr></table></figure></p>
-<p>它表示session以文件的形式存在<code>tmp</code>目录下</p>
-<p>添加下面参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.save_handler = memcache</span><br><span class="line">session.save_path = &quot;tcp://192.168.80.101:11211&quot;</span><br></pre></td></tr></table></figure></p>
-<p><code>session.save_handler</code> 定义session的存储类型 <code>session.save_path</code> 定义session的地址</p>
-<h3 id="2-编辑httpd-conf中对应的虚拟主机"><a href="#2-编辑httpd-conf中对应的虚拟主机" class="headerlink" title="2.编辑httpd.conf中对应的虚拟主机"></a>2.编辑httpd.conf中对应的虚拟主机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /usr/local/apache2.4/conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
-<p>在<code>&lt;VirtualHost *:80&gt;</code>里面添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php_value session.save_handler &quot;memcache&quot; </span><br><span class="line">php_value session.save_path &quot;tcp://192.168.80.101:11211&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-编辑php-fpm-conf对应的pool"><a href="#3-编辑php-fpm-conf对应的pool" class="headerlink" title="3.编辑php-fpm.conf对应的pool"></a>3.编辑php-fpm.conf对应的pool</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# vim /usr/local/php-fpm/etc/php-fpm.d/test1.conf</span><br></pre></td></tr></table></figure>
-<p>在pool中添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php_value[session.save_handler] = memcache</span><br><span class="line">php_value[session.save_path] = &quot;tcp://192.168.80.101:11211&quot;</span><br></pre></td></tr></table></figure></p>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>下载一个php测试页面看memcache是否存储了session<br>代码内容在<img src="" alt=""><a href="https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php" target="_blank" rel="noopener">https://coding.net/u/aminglinux/p/yuanke_centos7/git/blob/master/21NOSQL/session.php</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# wget http://study.lishiming.net/.mem_se.txt</span><br><span class="line">[root@kun02 ~]# cp .mem_se.txt /var/www/test1.com/index.php</span><br></pre></td></tr></table></figure></p>
-<p>访问几次测试页面 最后的为键名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# curl localhost</span><br><span class="line">1534369326&lt;br&gt;&lt;br&gt;1534369326&lt;br&gt;&lt;br&gt;hgabpcb0fj86rq2fkf3j8osr77</span><br><span class="line">[root@kun02 ~]# curl localhost</span><br><span class="line">1534369332&lt;br&gt;&lt;br&gt;1534369332&lt;br&gt;&lt;br&gt;ln16irtfbb24ollb29alemc763</span><br></pre></td></tr></table></figure></p>
-<p>发现memcached下多了3个项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# memcached-tool 127.0.0.1:11211 stats |grep curr_items</span><br><span class="line">              curr_items           3</span><br></pre></td></tr></table></figure></p>
-<p>进入memcached<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@kun02 ~]# telnet 127.0.0.1 11211</span><br><span class="line">Trying 127.0.0.1...</span><br><span class="line">Connected to 127.0.0.1.</span><br><span class="line">Escape character is &apos;^]&apos;.</span><br><span class="line">get hgabpcb0fj86rq2fkf3j8osr77</span><br><span class="line">VALUE hgabpcb0fj86rq2fkf3j8osr77 0 37</span><br><span class="line">TEST|i:1534369326;TEST3|i:1534369326;</span><br><span class="line">END</span><br><span class="line">get ln16irtfbb24ollb29alemc763</span><br><span class="line">VALUE ln16irtfbb24ollb29alemc763 0 37</span><br><span class="line">TEST|i:1534369332;TEST3|i:1534369332;</span><br><span class="line">END</span><br></pre></td></tr></table></figure></p>
-<p>发现mem已经存储了session了</p>
-
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>判断名字的合法性<code>[a-zA-Z0-9]</code><br><code>$RANDOM</code>除以100取余得到0-99之前的随机数<br>判断名字或者数字是否重复，把它们记录在临时文件中<br><code>-eq</code> 适用于整数数字，不能进行字符串的条件测试<br><code>=</code> 既适用于数字，又适用于字符串。</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    输出一个随机的0-99之间的数字,输入相同的名字，输出的数字还是第一次输入该名字时输出的结果</span></span><br><span class="line"><span class="comment">#    前面已经输出过的数字，下次不能再出现,当输入q或者Q时，脚本会退出。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/08    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">judge</span></span>()&#123;</span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    num=$[<span class="variable">$RANDOM</span>%100]</span><br><span class="line">    <span class="keyword">if</span> grep -w <span class="string">"<span class="variable">$name</span>"</span> <span class="variable">$filetarget</span> &gt;/dev/null 2&gt;&amp;1;<span class="keyword">then</span></span><br><span class="line">    grep_name=`grep -w <span class="string">"<span class="variable">$name</span>"</span> <span class="variable">$filetarget</span>|awk <span class="string">'&#123;print $1&#125;'</span>`</span><br><span class="line">    grep_num=`grep -w <span class="string">"<span class="variable">$name</span>"</span> <span class="variable">$filetarget</span>|awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"用户<span class="variable">$grep_name</span>获得数字-&gt;<span class="variable">$grep_num</span>"</span></span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">if</span> awk <span class="string">'&#123;print $2&#125;'</span> <span class="variable">$filetarget</span>|grep <span class="variable">$num</span> &gt;/dev/null 2&gt;&amp;1;<span class="keyword">then</span></span><br><span class="line">        <span class="built_in">continue</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"用户<span class="variable">$name</span>获得数字-&gt;<span class="variable">$num</span>"</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$name</span> <span class="variable">$num</span>"</span> &gt;&gt; <span class="variable">$filetarget</span></span><br><span class="line">        <span class="built_in">break</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filetarget=/tmp/shell_35.log</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">"请输入名字(q/Q退出脚本):"</span> name</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$name</span>"</span> == <span class="string">"q"</span> ] || [ <span class="string">"<span class="variable">$name</span>"</span> == <span class="string">"Q"</span> ];<span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"退出脚本..."</span> &amp;&amp; <span class="built_in">exit</span> 0</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    name_1=`<span class="built_in">echo</span> <span class="variable">$name</span>|sed s/[a-zA-A0-9]//g`</span><br><span class="line">    <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$name_1</span>"</span> ];<span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"输入名字必须是英文，可以是大小写字母，数字不能有其他特殊符号!"</span></span><br><span class="line">        <span class="built_in">continue</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="variable">$filetarget</span> ];<span class="keyword">then</span></span><br><span class="line">    judge</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        &gt; <span class="variable">$filetarget</span></span><br><span class="line">    judge</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -282,7 +186,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">memcached</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -338,7 +242,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/15/memcache-2（8月15日）/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/14/shell-习题35-根据名字得数字/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -352,18 +256,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/17/redis-1（8月16日）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          redis 1（8月16日）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/13/memcache-1（8月13日）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">memcache 1（8月13日）</div>
+    <a href="/2020/01/14/shell-习题34-猜数字/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题34 猜数字</div>
       <i class="icon-circle-right"></i>
     </a>
   
