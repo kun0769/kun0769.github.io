@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>shell 习题42 select菜单脚本 | kun0769的博客</title>
+  <title>shell 习题43 检查用户是否登录 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写一个shell脚本，实现简单的弹出式菜单功能，用户可以根据显示的菜单选项从键盘选择执行对眼的命令。">
+  <meta name="description" content="写一个shell脚本，执行中每隔5分钟检测指定的用户是否登录系统，用户名从命令行输入，如果指定的用户已经登录，则显示相关信息。">
 <meta name="keywords" content="shell 习题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell 习题42 select菜单脚本">
-<meta property="og:url" content="http://yoursite.com/2020/01/16/shell-习题42-select菜单脚本/index.html">
+<meta property="og:title" content="shell 习题43 检查用户是否登录">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/shell-习题43-检查用户是否登录/index.html">
 <meta property="og:site_name" content="kun0769的博客">
-<meta property="og:description" content="写一个shell脚本，实现简单的弹出式菜单功能，用户可以根据显示的菜单选项从键盘选择执行对眼的命令。">
+<meta property="og:description" content="写一个shell脚本，执行中每隔5分钟检测指定的用户是否登录系统，用户名从命令行输入，如果指定的用户已经登录，则显示相关信息。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-16T14:53:30.236Z">
+<meta property="og:updated_time" content="2020-01-16T14:55:56.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell 习题42 select菜单脚本">
-<meta name="twitter:description" content="写一个shell脚本，实现简单的弹出式菜单功能，用户可以根据显示的菜单选项从键盘选择执行对眼的命令。">
+<meta name="twitter:title" content="shell 习题43 检查用户是否登录">
+<meta name="twitter:description" content="写一个shell脚本，执行中每隔5分钟检测指定的用户是否登录系统，用户名从命令行输入，如果指定的用户已经登录，则显示相关信息。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -145,35 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-shell-习题42-select菜单脚本" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-shell-习题43-检查用户是否登录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      shell 习题42 select菜单脚本
+      shell 习题43 检查用户是否登录
     </h1>
   
 
         
-        <a href="/2020/01/16/shell-习题42-select菜单脚本/" class="archive-article-date">
-  	<time datetime="2020-01-16T14:48:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-16</time>
+        <a href="/2020/01/16/shell-习题43-检查用户是否登录/" class="archive-article-date">
+  	<time datetime="2020-01-16T14:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写一个shell脚本，实现简单的弹出式菜单功能，用户可以根据显示的菜单选项从键盘选择执行对眼的命令。<br><a id="more"></a></p>
-<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>使用select和case或者while和case都是可以实现</p>
-<h3 id="select命令"><a href="#select命令" class="headerlink" title="select命令"></a>select命令</h3><p>它会把in后门的列表中的每个字符串按照序号顺序显示出来让用户选择。<br>select语法和for类似，并且是个死循环。</p>
-<h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name <span class="keyword">in</span> string1 string2 ...</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="variable">$name</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>用户按照菜单选择数字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">select num <span class="keyword">in</span> one two three;<span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"The number is <span class="variable">$num</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1) one</span><br><span class="line">2) two</span><br><span class="line">3) three</span><br><span class="line"><span class="comment">#? 1</span></span><br><span class="line">The number is one</span><br><span class="line"><span class="comment">#? 2</span></span><br><span class="line">The number is two</span><br><span class="line"><span class="comment">#? 3</span></span><br><span class="line">The number is three</span><br></pre></td></tr></table></figure></p>
-<p>说明：select命令使用PS3提示符，默认为(#?)<br>在Select使用中，可以搭配<code>PS3=&#39;string&#39;</code> 来设置提示字符串。</p>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    实现简单的弹出式菜单功能</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/12    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">PS3=<span class="string">"请选择数字1-4:"</span></span><br><span class="line"></span><br><span class="line">select cmd <span class="keyword">in</span> w ls <span class="built_in">pwd</span> quit;<span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="variable">$cmd</span> <span class="keyword">in</span></span><br><span class="line">    w)</span><br><span class="line">        w</span><br><span class="line">        ;;</span><br><span class="line">    ls)</span><br><span class="line">        ls</span><br><span class="line">        ;;</span><br><span class="line">    <span class="built_in">pwd</span>)</span><br><span class="line">        <span class="built_in">pwd</span></span><br><span class="line">        ;;</span><br><span class="line">    quit)</span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"请输入数字1-4"</span></span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>或者使用while case方式实现</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    实现简单的弹出式菜单功能</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/12    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"1) w\n2) ls\n3) pwd\n4) quit"</span></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">"请选择数字1-4:"</span> cmd</span><br><span class="line">    <span class="keyword">case</span> <span class="variable">$cmd</span> <span class="keyword">in</span></span><br><span class="line">    1)</span><br><span class="line">        w</span><br><span class="line">        ;;</span><br><span class="line">    2)</span><br><span class="line">        ls</span><br><span class="line">        ;;</span><br><span class="line">    3)</span><br><span class="line">        <span class="built_in">pwd</span></span><br><span class="line">        ;;</span><br><span class="line">    4)</span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"请输入数字1-4"</span></span><br><span class="line">        ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+        <p>写一个shell脚本，执行中每隔5分钟检测指定的用户是否登录系统，用户名从命令行输入，如果指定的用户已经登录，则显示相关信息。<br><a id="more"></a></p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>while死循环<br><code>w|sed &#39;1,2d&#39;|awk &#39;{print $1}&#39;|grep -qw &quot;用户&quot;</code> 找出已经登录系统的用户</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    检测指定的用户是否登录系统</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/01/12    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> :</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> w|sed <span class="string">'1,2d'</span>|awk <span class="string">'&#123;print $1&#125;'</span>|grep -qw <span class="string">"<span class="variable">$1</span>"</span>;<span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"用户<span class="variable">$1</span>已经登录系统..."</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"用户<span class="variable">$1</span>不在系统..."</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    sleep 300</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -242,7 +236,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/16/shell-习题42-select菜单脚本/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/16/shell-习题43-检查用户是否登录/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,18 +250,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/16/shell-习题43-检查用户是否登录/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          shell 习题43 检查用户是否登录
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/16/shell-习题41-问候脚本/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">shell 习题41 问候脚本</div>
+    <a href="/2020/01/16/shell-习题42-select菜单脚本/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题42 select菜单脚本</div>
       <i class="icon-circle-right"></i>
     </a>
   
