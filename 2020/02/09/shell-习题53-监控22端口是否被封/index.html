@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="一个同学不小心用iptables规则把sshd端口22给封掉了，结果不能远程登陆，要想解决这个问题，还要去机房，登录真机去删除这条规则。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-09T15:46:49.862Z">
+<meta property="og:updated_time" content="2020-02-09T15:51:02.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题53 监控22端口是否被封">
 <meta name="twitter:description" content="一个同学不小心用iptables规则把sshd端口22给封掉了，结果不能远程登陆，要想解决这个问题，还要去机房，登录真机去删除这条规则。">
@@ -166,8 +166,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一个同学不小心用iptables规则把sshd端口22给封掉了，结果不能远程登陆，要想解决这个问题，还要去机房，登录真机去删除这条规则。<br><a id="more"></a><br>问题来了，要写个监控脚本，监控iptables规则是否正确封掉了22端口，如果封掉了，给打开。写好脚本，放到任务计划里，每分钟执行一次</p>
-<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>思路是查看iptables INPUT链规则，看是否有目标端口是22的规则，并且target为DROP或者REJECT<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插入来自1.1.1.1和2.2.2.2屏蔽22端口规则</span></span><br><span class="line">$ iptables -I INPUT -p tcp --dport 22 -s 1.1.1.1 -j DROP</span><br><span class="line">$ iptables -I INPUT -p tcp --dport 22 -s 2.2.2.2 -j REJECT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看INPUT链规则</span></span><br><span class="line">$ iptables -nvL INPUT</span><br><span class="line">Chain INPUT (policy ACCEPT 48 packets, 3208 bytes)</span><br><span class="line">pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">    0     0 REJECT     tcp  --  *      *       2.2.2.2              0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable</span><br><span class="line">    0     0 DROP       tcp  --  *      *       1.1.1.1              0.0.0.0/0            tcp dpt:22</span><br><span class="line"></span><br><span class="line"><span class="comment">#  序号形式显示规则，便于删除，但删除上一条规则后面规则的序号会自动向上更改</span></span><br><span class="line">$ iptables -nvL INPUT --line-numbers</span><br><span class="line">Chain INPUT (policy ACCEPT 112 packets, 7628 bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 REJECT     tcp  --  *      *       2.2.2.2              0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable</span><br><span class="line">2        0     0 DROP       tcp  --  *      *       1.1.1.1              0.0.0.0/0            tcp dpt:22</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出目标端口是22的规则</span></span><br><span class="line">$ iptables -nvL INPUT --line-numbers |grep -w <span class="string">'dpt:22'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 中出目标端口是22并且是DROP和REJECT的规则序号</span></span><br><span class="line">$ iptables -nvL INPUT --line-numbers |grep -w <span class="string">'dpt:22'</span> |awk <span class="string">'$4 ~/DROP|REJECT/ &#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    监控iptables规则是否正确封掉了22端口，如果封掉了，给打开。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/09    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">iptables -nvL INPUT --line-numbers |grep -w <span class="string">'dpt:22'</span> |awk <span class="string">'$4 ~/DROP|REJECT/ &#123;print $1&#125;'</span> &gt; /tmp/53.log</span><br><span class="line"></span><br><span class="line">n=`cat /tmp/53.log |wc -l`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$n</span> -ne 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment">#顺序删除规则,后面的规则序号会自动更改为上一个序号</span></span><br><span class="line">    <span class="comment">#因此使用tac命令来倒序读取文件</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> `tac /tmp/53.log`</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        iptables -D INPUT <span class="variable">$i</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>思路是查看iptables INPUT链规则，看是否有目标端口是22的规则，并且target为DROP或者REJECT<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插入来自1.1.1.1和2.2.2.2屏蔽22端口规则</span></span><br><span class="line">$ iptables -I INPUT -p tcp --dport 22 -s 1.1.1.1 -j DROP</span><br><span class="line">$ iptables -I INPUT -p tcp --dport 22 -s 2.2.2.2 -j REJECT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看INPUT链规则</span></span><br><span class="line">$ iptables -nvL INPUT</span><br><span class="line">Chain INPUT (policy ACCEPT 48 packets, 3208 bytes)</span><br><span class="line">pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">    0     0 REJECT     tcp  --  *      *       2.2.2.2              0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable</span><br><span class="line">    0     0 DROP       tcp  --  *      *       1.1.1.1              0.0.0.0/0            tcp dpt:22</span><br><span class="line"></span><br><span class="line"><span class="comment">#  序号形式显示规则，便于删除，但删除上一条规则后面规则的序号会自动向上更改</span></span><br><span class="line">$ iptables -nvL INPUT --line-number</span><br><span class="line">Chain INPUT (policy ACCEPT 112 packets, 7628 bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 REJECT     tcp  --  *      *       2.2.2.2              0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable</span><br><span class="line">2        0     0 DROP       tcp  --  *      *       1.1.1.1              0.0.0.0/0            tcp dpt:22</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找出目标端口是22的规则</span></span><br><span class="line">$ iptables -nvL INPUT --line-number |grep -w <span class="string">'dpt:22'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 中出目标端口是22并且是DROP和REJECT的规则序号</span></span><br><span class="line">$ iptables -nvL INPUT --line-number |grep -w <span class="string">'dpt:22'</span> |awk <span class="string">'$4 ~/DROP|REJECT/ &#123;print $1&#125;'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    监控iptables规则是否正确封掉了22端口，如果封掉了，给打开。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/09    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">iptables -nvL INPUT --line-number |grep -w <span class="string">'dpt:22'</span> |awk <span class="string">'$4 ~/DROP|REJECT/ &#123;print $1&#125;'</span> &gt; /tmp/53.log</span><br><span class="line"></span><br><span class="line">n=`cat /tmp/53.log |wc -l`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$n</span> -ne 0 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment">#顺序删除规则,后面的规则序号会自动更改为上一个序号</span></span><br><span class="line">    <span class="comment">#因此使用tac命令来倒序读取文件</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> `tac /tmp/53.log`</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        iptables -D INPUT <span class="variable">$i</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -249,6 +249,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/02/10/shell-习题54-分析日志/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          shell 习题54 分析日志
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/09/shell-习题52-小于5k文件打包/" id="article-nav-older" class="article-nav-link-wrap">
@@ -404,11 +413,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,19 +445,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mysql备份</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mysql主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,15 +501,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,11 +533,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +593,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
               </li>
              
               <li class="article-tag-list-item">
