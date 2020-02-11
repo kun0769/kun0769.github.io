@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="有两个文件a.txt和b.txt，需求是，把a.txt中有的但b.txt中没有的行发现来，并写入到c.txt，然后计算c.txt文件的行数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-11T14:08:29.937Z">
+<meta property="og:updated_time" content="2020-02-11T14:13:06.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题61 找文件差异">
 <meta name="twitter:description" content="有两个文件a.txt和b.txt，需求是，把a.txt中有的但b.txt中没有的行发现来，并写入到c.txt，然后计算c.txt文件的行数。">
@@ -172,8 +172,8 @@
 <li>使用while循环遍历a.txt，进行逐个匹配，如果该行b.txt中没有就重定向到c.txt</li>
 </ol>
 <h3 id="grep-f-在文件2中找出有文件1里面内容的行"><a href="#grep-f-在文件2中找出有文件1里面内容的行" class="headerlink" title="grep -f 在文件2中找出有文件1里面内容的行"></a>grep -f 在文件2中找出有文件1里面内容的行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ cat a.txt</span><br><span class="line">kun</span><br><span class="line">root</span><br><span class="line">333</span><br><span class="line"></span><br><span class="line">$ cat b.txt</span><br><span class="line">root</span><br><span class="line">kun</span><br><span class="line">1111</span><br><span class="line">2222</span><br><span class="line"></span><br><span class="line">$ grep -f a.txt b.txt  #root和kun在b.txt文件中存在</span><br><span class="line">root</span><br><span class="line">kun</span><br></pre></td></tr></table></figure>
-<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><p>使用grep -f<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#a.txt有 b.txt没有 先找出a.txt中有b.txt的内容再取反</span><br><span class="line">$ grep -vf b.txt a.txt &gt;&gt; c.txt</span><br></pre></td></tr></table></figure></p>
-<p>使用脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    有两个文件a.txt和b.txt，需求是，把a.txt中有的但b.txt中没有的行发现来，并写入到c.txt，然后计算c.txt文件的行数。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/11    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">cat a.txt |<span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> ! grep -q <span class="string">"<span class="variable">$line</span>"</span> b.txt</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span> &gt;&gt; c.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><p>使用grep -f<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#a.txt有 b.txt没有 先找出a.txt中有b.txt的内容再取反</span><br><span class="line">$ grep -vf b.txt a.txt &gt;&gt; c.txt;wc -l c.txt</span><br></pre></td></tr></table></figure></p>
+<p>使用脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    有两个文件a.txt和b.txt，需求是，把a.txt中有的但b.txt中没有的行发现来，并写入到c.txt，然后计算c.txt文件的行数。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/11    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">cat a.txt |<span class="keyword">while</span> <span class="built_in">read</span> line</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> ! grep -q <span class="string">"<span class="variable">$line</span>"</span> b.txt</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span> &gt;&gt; c.txt</span><br><span class="line">wc -l c.txt</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -407,15 +407,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ELK</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,15 +451,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,10 +495,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
@@ -508,6 +504,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +591,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">压缩和打包</a>
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,10 +608,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
