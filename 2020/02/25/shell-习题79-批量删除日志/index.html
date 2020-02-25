@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>kun0769的博客</title>
+  <title>shell 习题79 批量删除日志 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/page/21/index.html">
+  <meta name="description" content="要求：两类机器一共300多台，写个脚本自动清理这两类机器里面的日志文件。在堡垒机批量发布，也要批量发布到crontab里面。">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题79 批量删除日志">
+<meta property="og:url" content="http://yoursite.com/2020/02/25/shell-习题79-批量删除日志/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="要求：两类机器一共300多台，写个脚本自动清理这两类机器里面的日志文件。在堡垒机批量发布，也要批量发布到crontab里面。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-25T14:26:15.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题79 批量删除日志">
+<meta name="twitter:description" content="要求：两类机器一共300多台，写个脚本自动清理这两类机器里面的日志文件。在堡垒机批量发布，也要批量发布到crontab里面。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,32 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-sql-3-数据更新" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-shell-习题79-批量删除日志" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/sql-3-数据更新/">sql 3 数据更新</a>
+    <h1 class="article-title" itemprop="name">
+      shell 习题79 批量删除日志
     </h1>
   
 
         
-        <a href="/2019/03/31/sql-3-数据更新/" class="archive-article-date">
-  	<time datetime="2019-03-31T05:20:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
+        <a href="/2020/02/25/shell-习题79-批量删除日志/" class="archive-article-date">
+  	<time datetime="2020-02-25T14:25:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>sql 3 数据更新<br>
-        
-          <a class="article-more-a" href="/2019/03/31/sql-3-数据更新/#more">more >></a>
-        
+        <p>要求：两类机器一共300多台，写个脚本自动清理这两类机器里面的日志文件。在堡垒机批量发布，也要批量发布到crontab里面。<br><a id="more"></a><br>A类机器日志存放路径很统一，B类机器日志存放路径需要用匹配（因为这个目录里除了日志外，还有其他文件，不能删除。匹配的时候可用.log）<br>A类：/opt/cloud/log/ 删除7天前的<br>B类: /opt/cloud/instances/ 删除15天前的<br>要求写在一个脚本里面。不用考虑堡垒机上的操作，只需要写出shell脚本。</p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>判断是A类机器是B类机器，可以通过判断目录/opt/cloud/log/或者/opt/cloud/instances/目录的存在来确定哪类机器</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    两类机器一共300多台，写个脚本自动清理这两类机器里面的日志文件。在堡垒机批量发布，也要批量发布到crontab里面。</span></span><br><span class="line"><span class="comment">#    A类机器日志存放路径很统一，B类机器日志存放路径需要用匹配（因为这个目录里除了日志外，还有其他文件，不能删除。匹配的时候可用.log）</span></span><br><span class="line"><span class="comment">#    A类：/opt/cloud/log/ 删除7天前的</span></span><br><span class="line"><span class="comment">#    B类: /opt/cloud/instances/ 删除15天前的</span></span><br><span class="line"><span class="comment">#    要求写在一个脚本里面。不用考虑堡垒机上的操作，只需要写出shell脚本。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/25    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">a=/opt/cloud/<span class="built_in">log</span>/</span><br><span class="line">b=/opt/cloud/instances/</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="variable">$a</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    find <span class="variable">$a</span> -mtime +7 -<span class="built_in">type</span> f |xargs rm -rf</span><br><span class="line"><span class="keyword">elif</span> [ -d <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    find <span class="variable">$b</span> -name <span class="string">"*.log"</span> -<span class="built_in">type</span> f -mtime +15 |xargs rm -rf</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -178,7 +180,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
@@ -187,16 +189,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/31/sql-3-数据更新/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/25/shell-习题79-批量删除日志/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/25/shell-习题78-处理文本/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题78 处理文本</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -216,334 +277,37 @@
 
 
 
-
-
-  
-    <article id="post-sql-2-查询基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/sql-2-查询基础/">sql 2 查询基础</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/31/sql-2-查询基础/" class="archive-article-date">
-  	<time datetime="2019-03-31T04:15:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>sql 2 查询基础<br>
-        
-          <a class="article-more-a" href="/2019/03/31/sql-2-查询基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/31/sql-2-查询基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-sql-1-数据库基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/sql-1-数据库基础/">sql 1 数据库基础</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/31/sql-1-数据库基础/" class="archive-article-date">
-  	<time datetime="2019-03-31T03:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>sql 1 数据库基础<br>
-        
-          <a class="article-more-a" href="/2019/03/31/sql-1-数据库基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/31/sql-1-数据库基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-CentOS使用ISO镜像做本地yum源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/31/CentOS使用ISO镜像做本地yum源/">CentOS使用ISO镜像做本地yum源</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/31/CentOS使用ISO镜像做本地yum源/" class="archive-article-date">
-  	<time datetime="2019-01-31T04:17:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CentOS使用ISO镜像做本地yum源<br>
-        
-          <a class="article-more-a" href="/2019/01/31/CentOS使用ISO镜像做本地yum源/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">yum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/31/CentOS使用ISO镜像做本地yum源/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-Python-基础语法-使用装饰器来装饰生成器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/">Python 基础语法 使用装饰器来装饰生成器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/" class="archive-article-date">
-  	<time datetime="2018-12-07T12:56:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用装饰器来装饰生成器<br>
-        
-          <a class="article-more-a" href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础语法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">生成器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">装饰器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/07/Python-基础语法-使用装饰器来装饰生成器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/20/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/22/">Next &raquo;</a>
-    </nav>
   
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -565,8 +329,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
