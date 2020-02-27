@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kun0769的博客</title>
+  <title>shell 习题91 部署MySQL主从 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/45/index.html">
+  <meta name="description" content="用shell脚本实现，部署MySQL主从，假设两台机器上已经安装了MySQL，并且当前无新库。">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题91 部署MySQL主从">
+<meta property="og:url" content="http://yoursite.com/2020/02/27/shell-习题91-部署MySQL主从/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="用shell脚本实现，部署MySQL主从，假设两台机器上已经安装了MySQL，并且当前无新库。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-27T11:22:41.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题91 部署MySQL主从">
+<meta name="twitter:description" content="用shell脚本实现，部署MySQL主从，假设两台机器上已经安装了MySQL，并且当前无新库。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,236 +145,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-shell-习题91-部署MySQL主从" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell 习题91 部署MySQL主从
+    </h1>
+  
+
+        
+        <a href="/2020/02/27/shell-习题91-部署MySQL主从/" class="archive-article-date">
+  	<time datetime="2020-02-27T11:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用shell脚本实现，部署MySQL主从，假设两台机器上已经安装了MySQL，并且当前无新库。<br><a id="more"></a></p>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p>主从步骤</p>
+<ol>
+<li>主上更改配置文件，打开bin-log，设定server-id，设定ignore-db(忽略同步的库)，重启服务，授权用户，锁表，show master status</li>
+<li>从上修改配置文件，设定server-id，重启服务，stop slave，change master，start slave</li>
+<li>主上解开锁表<br>思路：先在主上把1步骤完成再把2步骤逻辑写入到slave.sh再使用expect发送到从机器和执行slave.sh</li>
+</ol>
+<h2 id="核心要点-1"><a href="#核心要点-1" class="headerlink" title="核心要点"></a>核心要点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash    </span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#program:    </span></span><br><span class="line"><span class="comment">#    部署MySQL主从</span></span><br><span class="line"><span class="comment">#    </span></span><br><span class="line"><span class="comment">#history:    </span></span><br><span class="line"><span class="comment">#2020/02/27    kun    V1.0  </span></span><br><span class="line"></span><br><span class="line">master_ip=192.168.100.12</span><br><span class="line">slave_ip=192.168.100.13</span><br><span class="line">mysqlc=<span class="string">"mysql -uroot -ptest"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 检测上一条命令是否执行成功的函数</span></span><br><span class="line">check_ok()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> [ $? -ne 0 ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span> 出错了。"</span></span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 修改文件名字函数</span></span><br><span class="line">f_exist()</span><br><span class="line">&#123;</span><br><span class="line">    d=`date +%F%T`</span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="variable">$1</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        mv <span class="variable">$1</span> <span class="variable">$1_</span><span class="variable">$d</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 设置主mysql配置</span></span><br><span class="line"><span class="keyword">if</span> ! grep <span class="string">'^server-id'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment">## 在[mysql]下一行添加server-id = 1001</span></span><br><span class="line">    sed -i <span class="string">'/^\[mysqld\]$/a\server-id = 1001'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ! grep <span class="string">'^log-bin.*=.*'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    sed -i <span class="string">'/^\[mysqld\]$/a\log-bin = test'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sed -i <span class="string">'/^log-bin.*/a\binlog-ignore-db = mysql '</span> /etc/my.cnf</span><br><span class="line"></span><br><span class="line">/etc/init.d/mysqld restart</span><br><span class="line">check_ok <span class="string">"主上重启mysql"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 登录mysql，授权用户、锁表以及show master status。</span></span><br><span class="line"><span class="variable">$mysqlc</span> &lt;&lt;EOF</span><br><span class="line">    grant replication slave on *.* to <span class="string">'repl'</span>@<span class="variable">$slave_ip</span> identified by <span class="string">'yourpassword'</span>;</span><br><span class="line">    flush tables with <span class="built_in">read</span> lock;</span><br><span class="line">EOF</span><br><span class="line"><span class="variable">$mysqlc</span> -e <span class="string">"show master status"</span> &gt; /tmp/master.log</span><br><span class="line">file=`tail -1 /tmp/master.log|awk <span class="string">'&#123;print $1&#125;'</span>`</span><br><span class="line">pos=`tail -1 /tmp/master.log|awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建在从上配置和操作的脚本</span></span><br><span class="line">f_exist /tmp/slave.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">## slave.sh发送到从上执行的脚本</span></span><br><span class="line">cat &gt; /tmp/slave.sh &lt;&lt; EOF</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">if</span> ! grep <span class="string">'^server-id'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    sed -i <span class="string">'/^\[mysqld\]$/a\server-id = 1002'</span> /etc/my.cnf</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">/etc/init.d/mysqld restart</span><br><span class="line">check_ok <span class="string">"从上重启mysql"</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$mysqlc</span>  &lt;&lt;KUN</span><br><span class="line">    stop slave;</span><br><span class="line">    change master to master_host=<span class="string">"<span class="variable">$master_ip</span>"</span>, master_user=<span class="string">"repl"</span>, master_password=<span class="string">"yourpassword"</span>, master_log_file=<span class="string">"<span class="variable">$file</span>"</span>, master_log_pos=<span class="variable">$pos</span>;</span><br><span class="line">    start slave;</span><br><span class="line">KUN</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建传输slave.sh的expect脚本</span></span><br><span class="line">f_exist /tmp/rs_slave.expect</span><br><span class="line"></span><br><span class="line"><span class="comment">## rs_slave.expect脚本把slave.sh发送从上</span></span><br><span class="line">cat &gt; /tmp/rs_slave.expect &lt;&lt;EOF</span><br><span class="line"><span class="comment">#!/usr/bin/expect</span></span><br><span class="line"><span class="built_in">set</span> passwd <span class="string">"root1234"</span></span><br><span class="line">spawn rsync -a /tmp/slave.sh root@<span class="variable">$slave_ip</span>:/tmp/slave.sh</span><br><span class="line">expect &#123;</span><br><span class="line">    <span class="string">"yes/no"</span> &#123; send <span class="string">"yes\r"</span>&#125;</span><br><span class="line">    <span class="string">"password:"</span> &#123; send <span class="string">"\$passwd\r"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment">## 执行expect脚本</span></span><br><span class="line">chmod +x /tmp/rs_slave.expect</span><br><span class="line">/tmp/rs_slave.expect</span><br><span class="line">check_ok <span class="string">"传输slave.sh"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建远程执行命令的expect脚本</span></span><br><span class="line">f_exist /tmp/exe.expect</span><br><span class="line"></span><br><span class="line"><span class="comment">##  exe.expect脚本远程执行从上的slave.sh</span></span><br><span class="line">cat &gt; /tmp/exe.expect &lt;&lt;EOF</span><br><span class="line"><span class="comment">#!/usr/bin/expect</span></span><br><span class="line"><span class="built_in">set</span> passwd <span class="string">"root1234"</span></span><br><span class="line">spawn ssh root@<span class="variable">$slave_ip</span></span><br><span class="line">expect &#123;</span><br><span class="line">    <span class="string">"yes/no"</span> &#123; send <span class="string">"yes\r"</span>&#125;</span><br><span class="line">    <span class="string">"password:"</span> &#123; send <span class="string">"\$passwd\r"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">expect <span class="string">"]*"</span></span><br><span class="line">send <span class="string">"/bin/bash /tmp/slave.sh\r"</span></span><br><span class="line">expect <span class="string">"]*"</span></span><br><span class="line">send <span class="string">"exit\r"</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment">## 执行expect脚本</span></span><br><span class="line">chmod +x /tmp/exe.expect</span><br><span class="line">/tmp/exe.expect</span><br><span class="line">check_ok <span class="string">"远程执行slave.sh"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 主上解锁表</span></span><br><span class="line"><span class="variable">$mysqlc</span> -e <span class="string">"unlock tables"</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/08/LNMP第二节（6月7日）/" class="archive-article-date">
-  	<time datetime="2018-06-07T17:10:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/LNMP第二节（6月7日）/">LNMP第二节（6月7日）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/27/shell-习题91-部署MySQL主从/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/06/LNMP第一节（6月6日）/" class="archive-article-date">
-  	<time datetime="2018-06-06T14:26:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/27/shell-习题90-自动密钥认证/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题90 自动密钥认证</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LNMP第一节（6月6日）/">LNMP第一节（6月6日）</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LNMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/LAMP第九节（6月4日）/" class="archive-article-date">
-  	<time datetime="2018-06-04T12:09:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/LAMP第九节（6月4日）/">LAMP第九节（6月4日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/01/LAMP第八节（6月1日）/" class="archive-article-date">
-  	<time datetime="2018-06-01T15:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/01/LAMP第八节（6月1日）/">LAMP第八节（6月1日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/30/LAMP第七节（5月31日）/" class="archive-article-date">
-  	<time datetime="2018-05-30T15:14:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/30/LAMP第七节（5月31日）/">LAMP第七节（5月31日）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">LAMP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/44/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/43/">43</a><a class="page-number" href="/archives/page/44/">44</a><span class="page-number current">45</span><a class="page-number" href="/archives/page/46/">46</a><a class="page-number" href="/archives/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/54/">54</a><a class="extend next" rel="next" href="/archives/page/46/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -392,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
