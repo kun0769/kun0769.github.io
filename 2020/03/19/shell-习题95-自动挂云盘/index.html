@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="我们使用的云主机，购买一块云盘后，默认并不是挂载状态的，用shell写一个脚本，只要把盘符和挂载点以参数的形式提供给脚本，该脚本就可以自动格式化、挂载。要求：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T15:22:25.498Z">
+<meta property="og:updated_time" content="2020-03-19T15:33:47.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题95 自动挂云盘">
 <meta name="twitter:description" content="我们使用的云主机，购买一块云盘后，默认并不是挂载状态的，用shell写一个脚本，只要把盘符和挂载点以参数的形式提供给脚本，该脚本就可以自动格式化、挂载。要求：">
@@ -175,7 +175,7 @@
 <li>格式化磁盘命令是<code>mkfs.ext4</code> 磁盘设备名</li>
 <li><code>mount</code>命令加载，挂载完还要在<code>/etc/fstab</code>文件添加新增的设备名</li>
 </ol>
-<h2 id="核心要点-1"><a href="#核心要点-1" class="headerlink" title="核心要点"></a>核心要点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    只要把盘符和挂载点以参数的形式提供给脚本，该脚本就可以自动格式化、挂载</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/03/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 2 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Useage <span class="variable">$0</span> 盘符 挂载点, 如： <span class="variable">$0</span> /dev/xvdb /data"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -b检测是否为设备</span></span><br><span class="line"><span class="keyword">if</span> [ ! -b <span class="variable">$1</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"你提供的盘符不正确，请检查后再操作"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"格式化<span class="variable">$1</span>"</span></span><br><span class="line">mkfs -t ext4 <span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$2</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    mkdir -p <span class="variable">$2</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ! grep -wq <span class="string">"<span class="variable">$2</span>"</span> /ect/fstab</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span>              <span class="variable">$2</span>                      ext4   defaults  0  0"</span> &gt;&gt; /etc/fstab</span><br><span class="line">    mount -a</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"配置文件/etc/fstab中已经存在挂载点<span class="variable">$2</span>,请检查一下."</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    只要把盘符和挂载点以参数的形式提供给脚本，该脚本就可以自动格式化、挂载</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/03/16    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 2 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Useage <span class="variable">$0</span> 盘符 挂载点, 如： <span class="variable">$0</span> /dev/xvdb /data"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -b检测是否为设备</span></span><br><span class="line"><span class="keyword">if</span> [ ! -b <span class="variable">$1</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"你提供的盘符不正确，请检查后再操作"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"格式化<span class="variable">$1</span>"</span></span><br><span class="line">mkfs -t ext4 <span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$2</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    mkdir -p <span class="variable">$2</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ! grep -wq <span class="string">"<span class="variable">$2</span>"</span> /ect/fstab</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$1</span>              <span class="variable">$2</span>                      ext4   defaults  0  0"</span> &gt;&gt; /etc/fstab</span><br><span class="line">    mount -a</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"配置文件/etc/fstab中已经存在挂载点<span class="variable">$2</span>,请检查一下."</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -257,6 +257,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/19/shell-习题96-并发备份数据库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          shell 习题96 并发备份数据库
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/19/shell-习题94-批量查看堕胎机器负载/" id="article-nav-older" class="article-nav-link-wrap">
@@ -548,15 +557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">监控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
