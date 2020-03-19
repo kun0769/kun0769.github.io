@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | kun0769的博客</title>
+  <title>shell 习题98 截取字符串 | kun0769的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kun0769的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/5/index.html">
+  <meta name="description" content="利用你学过的知识点，想办法根据要求截取出字符。">
+<meta name="keywords" content="shell 习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell 习题98 截取字符串">
+<meta property="og:url" content="http://yoursite.com/2020/03/19/shell-习题98-截取字符串/index.html">
 <meta property="og:site_name" content="kun0769的博客">
+<meta property="og:description" content="利用你学过的知识点，想办法根据要求截取出字符。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-19T15:56:29.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kun0769的博客">
+<meta name="twitter:title" content="shell 习题98 截取字符串">
+<meta name="twitter:description" content="利用你学过的知识点，想办法根据要求截取出字符。">
   
     <link rel="alternative" href="/atom.xml" title="kun0769的博客" type="application/atom+xml">
   
@@ -140,36 +145,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-shell-习题98-截取字符串" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell 习题98 截取字符串
+    </h1>
+  
+
+        
+        <a href="/2020/03/19/shell-习题98-截取字符串/" class="archive-article-date">
+  	<time datetime="2020-03-19T15:52:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>利用你学过的知识点，想办法根据要求截取出字符。<br><a id="more"></a><br>字符串var= <a href="http://www.aaa.com/root/123.htm" target="_blank" rel="noopener">http://www.aaa.com/root/123.htm</a></p>
+<ol>
+<li>取出 <a href="http://www.aaa.com/root/123.htm" target="_blank" rel="noopener">www.aaa.com/root/123.htm</a></li>
+<li>取出123.htm</li>
+<li>取出 <a href="http://www.aaa.com/root" target="_blank" rel="noopener">http://www.aaa.com/root</a></li>
+<li>取出http:</li>
+<li>取出http://</li>
+<li>取出root/123.htm</li>
+<li>取出123</li>
+</ol>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>grep -o</code> 只匹配关键字的字符<br><code>grep -P</code> 支持perl模式 包括非贪婪匹配的正则  <code>{m,n}?</code> <code>{m,}?</code> <code>??</code> <code>*?</code> <code>+?</code><br><code>grep -E/egrep</code> 支持扩展正则 有 <code>+</code> <code>?</code> <code>|</code> <code>{}</code>和<code>()</code> 不需要转义<br>sed/awk</p>
+<h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    截取出字符</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/03/18    kun    V1.0</span></span><br><span class="line"></span><br><span class="line">var=http://www.aaa.com/root/123.htm</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|grep -o <span class="string">"www.*"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|awk -F<span class="string">'//'</span> <span class="string">'&#123;print $2&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|awk -F<span class="string">'/'</span> <span class="string">'&#123;print $NF&#125;'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|grep -o <span class="string">"[0-9]*\.htm"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|grep -o <span class="string">"http.*root"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|sed <span class="string">"s#/123.htm##g"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|awk -F <span class="string">'//'</span> <span class="string">'&#123;print $1&#125;'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|sed <span class="string">"s#//.*##g"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|awk -F <span class="string">'www'</span> <span class="string">'&#123;print $1&#125;'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|sed <span class="string">"s#www.*##g"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|awk -F <span class="string">'/'</span> <span class="string">'&#123;print $4"/"$5&#125;'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|sed <span class="string">"s#^.*.com/##g"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|grep -o <span class="string">"[0-9]*"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var</span>|sed <span class="string">"s#[^0-9]##g"</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/25/shell-习题78-处理文本/" class="archive-article-date">
-  	<time datetime="2020-02-25T14:20:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/25/shell-习题78-处理文本/">shell 习题78 处理文本</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -181,175 +195,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/19/shell-习题98-截取字符串/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/25/shell-习题77-查找老日志打包/" class="archive-article-date">
-  	<time datetime="2020-02-25T14:13:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/19/shell-习题97-打印三角形/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 习题97 打印三角形</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/25/shell-习题77-查找老日志打包/">shell 习题77 查找老日志打包</a>
-    </h1>
+  
+  
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTM4MC8xMTkxNg==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/24/shell-习题76-批量杀远程机器进程/" class="archive-article-date">
-  	<time datetime="2020-02-24T11:35:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/24/shell-习题76-批量杀远程机器进程/">shell 习题76 批量杀远程机器进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/24/shell-习题75-小函数/" class="archive-article-date">
-  	<time datetime="2020-02-24T11:32:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/24/shell-习题75-小函数/">shell 习题75 小函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/24/shell-习题74-格式化输出xml/" class="archive-article-date">
-  	<time datetime="2020-02-24T11:26:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/24/shell-习题74-格式化输出xml/">shell 习题74 格式化输出xml</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shell 习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/2020/page/6/">6</a><a class="page-number" href="/archives/2020/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/19/">19</a><a class="extend next" rel="next" href="/archives/2020/page/6/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -372,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
