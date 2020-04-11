@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-35.png">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-36.png">
 <meta property="og:image" content="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-37.png">
-<meta property="og:updated_time" content="2020-04-11T16:01:59.314Z">
+<meta property="og:updated_time" content="2020-04-11T16:12:17.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web前端 3 CSS">
 <meta name="twitter:description" content="CSS">
@@ -206,39 +206,25 @@
         <p>CSS<br><a id="more"></a></p>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>层叠样式表。html为内容，css可以起到改变样式，换肤。</p>
 <h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><p>每行最后的分号可加可不加 规范加上<br><code>选择器</code> 规定样式名字并作用于所有对应的html标签<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-1.png" alt=""></p>
-<h3 id="CSS添加方法"><a href="#CSS添加方法" class="headerlink" title="CSS添加方法"></a>CSS添加方法</h3><ol>
-<li><p>行内样式 直接使用style属性在每个标签中 只能针对当前标签起作用<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-2.png" alt=""></p>
-</li>
-<li><p>内嵌样式 使用style标签写在head标签之内 只对当前页面起作用<br><code>type=&quot;text/css&quot;</code> 表示当前样式以css文本规定的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-3.png" alt=""></p>
-</li>
-<li><p>单独CSS文件链接样式 使用link标签执行外部一个单独CSS文件 所有样式可以应用不同网页中<br>外部文件style.css定义样式 使用<code>link</code>标签引用样式 <code>link</code>标签用来链接一个文件 <code>rel=&quot;stylesheet&quot;</code>表示链接的文件类型是css<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-4.png" alt=""></p>
-</li>
-</ol>
+<h3 id="CSS添加方法"><a href="#CSS添加方法" class="headerlink" title="CSS添加方法"></a>CSS添加方法</h3><p>1）行内样式 直接使用style属性在每个标签中 只能针对当前标签起作用</p>
+<p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-2.png" alt=""></p>
+<p>2）内嵌样式 使用style标签写在head标签之内 只对当前页面起作用</p>
+<p><code>type=&quot;text/css&quot;</code> 表示当前样式以css文本规定的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-3.png" alt=""></p>
+<p>3）单独CSS文件链接样式 使用link标签执行外部一个单独CSS文件 所有样式可以应用不同网页中</p>
+<p>外部文件style.css定义样式 使用<code>link</code>标签引用样式 <code>link</code>标签用来链接一个文件 <code>rel=&quot;stylesheet&quot;</code>表示链接的文件类型是css<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-4.png" alt=""></p>
 <h3 id="CSS优先级"><a href="#CSS优先级" class="headerlink" title="CSS优先级"></a>CSS优先级</h3><p><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-5.png" alt=""></p>
 <p>外面规定的属性最里面的并没有规定的 那么外面规定的属性也会显示出来<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-6.png" alt=""></p>
-<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><ol>
-<li>标签类型选择器 样式名字和标签同名 作用于该标签的所有网页元素</li>
-</ol>
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><p>1）标签类型选择器 样式名字和标签同名 作用于该标签的所有网页元素</p>
 <p>在style中定义选择的名字是body 作用于正文的body标签<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-7.png" alt=""></p>
-<ol>
-<li>类别类型选择器 使用<code>.</code>开头 使用<code>class</code>属性进行引用 作用于所有class引用这种选择器的网页元素</li>
-</ol>
+<p>2）类别类型选择器 使用<code>.</code>开头 使用<code>class</code>属性进行引用 作用于所有class引用这种选择器的网页元素</p>
 <p>在style中定义了<code>.one</code>的样式 正文中使用<code>class=&quot;one&quot;</code>来引用该样式<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-8.png" alt=""></p>
-<ol>
-<li>ID类型选择器 使用<code>#</code>开头 使用<code>id</code>属性进行引用 具有唯一性 对比类别类型选择器，它通常被引用一次</li>
-</ol>
+<p>3）ID类型选择器 使用<code>#</code>开头 使用<code>id</code>属性进行引用 具有唯一性 对比类别类型选择器，它通常被引用一次</p>
 <p>在style中定义了<code>#one</code>的样式 正文中使用<code>id=&quot;one&quot;</code>来引用该样式 定义id样式只能被引用一次<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-9.png" alt=""></p>
-<ol>
-<li>嵌套定义的选择器 两个选择器之间使用空格 <code>p span</code>表示p标签内部的span标签使用该样式</li>
-</ol>
+<p>4）嵌套定义的选择器 两个选择器之间使用空格 <code>p span</code>表示p标签内部的span标签使用该样式</p>
 <p>在style中定义选择器名字是是<code>p span</code>表示该样式是p标签内部的span标签使用的<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-10.png" alt=""></p>
-<ol>
-<li>样式集体声明 多种标签使用该样式 <code>p,h1</code>表示p标签和h1标签同事使用该样式</li>
-</ol>
+<p>5）样式集体声明 多种标签使用该样式 <code>p,h1</code>表示p标签和h1标签同事使用该样式</p>
 <p>style中使用<code>h1,p</code>作为选择器名 表示该样式同时作用于正文的h1标签和p标签<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-11.png" alt=""></p>
-<ol>
-<li>全局样式 使用<code>*</code>作为选择器名字 表示整个网页默认的样式</li>
-</ol>
+<p>6）全局样式 使用<code>*</code>作为选择器名字 表示整个网页默认的样式</p>
 <p>在style中使用<code>*</code>声明的选择器表示该样式作用于整个网页<br><img src="https://kun0769-1258107287.cos.ap-guangzhou.myqcloud.com/web%E5%89%8D%E7%AB%AF3/web-3-12.png" alt=""></p>
 <h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
 <li>多个类别类型样式可以同时使用class引用，使用空格分开</li>
@@ -595,15 +581,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
