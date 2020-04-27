@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-20T15:55:09.697Z">
+<meta property="og:updated_time" content="2020-04-27T15:59:35.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分发系统 1（7月19日）">
 <meta name="twitter:description" content="20.27 分发系统介绍20.28 expect脚本远程登录20.29 expect脚本远程执行命令20.30 expect脚本传递参数">
@@ -180,7 +180,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# cd /usr/local/sbin/</span><br><span class="line">[root@kun05 sbin]# vim expect1.exp</span><br></pre></td></tr></table></figure>
 <p>写入下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">#定义变量</span><br><span class="line">set host &quot;192.168.80.102&quot;</span><br><span class="line">set passwd &quot;coco0769&quot;</span><br><span class="line">#执行命令</span><br><span class="line">spawn ssh root@$host</span><br><span class="line">#与远程机器交互 截取特定信息 发送变量</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;yes/no&quot; &#123; send &quot;yes\r&quot;;exp_continue &#125;</span><br><span class="line">&quot;password:&quot; &#123; send &quot;$passwd\r&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure></p>
-<p><code>set</code> 定义变量<br><code>spawn</code> 执行命令<br><code>expect</code> 使用expect语句进行交互<br><code>\r</code>表示回车<br><code>exp_contunue</code>表示继续<br><code>interact</code>表示继续交互<br><code>expect eof</code>表示停留远程机器上一会儿再退出</p>
+<p><code>set</code> 定义变量<br><code>spawn</code> 执行命令<br><code>expect</code> 使用expect语句进行交互<br><code>\r</code>表示回车<br><code>exp_contunue</code>表示在同一个expect命令内当前内容判断执行后会继续执行下个内容判断<br><code>interact</code>表示继续交互<br><code>expect eof</code>表示停留远程机器上一会儿再退出</p>
 <p>为了让远程登录时候出现提示，可以清空<code>/root/.ssh/known_hosts</code>目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kun05 ~]# &gt; /root/.ssh/known_hosts</span><br></pre></td></tr></table></figure></p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
 <p>1.添加执行权限</p>
@@ -524,11 +524,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
+                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">装饰器</a>
+                <a href="javascript:void(0)" class="js-tag color4">生成器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
