@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="写一个shell脚本，当我们执行时，提示要输入对方的ip和root密码，然后可以自动把本机的公钥增加到对方机器上，从而实现密钥认证。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-27T15:53:50.972Z">
+<meta property="og:updated_time" content="2020-09-05T05:07:12.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 习题90 自动密钥认证">
 <meta name="twitter:description" content="写一个shell脚本，当我们执行时，提示要输入对方的ip和root密码，然后可以自动把本机的公钥增加到对方机器上，从而实现密钥认证。">
@@ -168,6 +168,9 @@
         <p>写一个shell脚本，当我们执行时，提示要输入对方的ip和root密码，然后可以自动把本机的公钥增加到对方机器上，从而实现密钥认证。<br><a id="more"></a></p>
 <h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>ssh-copy-id 用户名@IP</code> 把本地公钥发送到目标机器的用户家目录的authorized_keys<br><code>ssh-keygen</code> 生成公钥id_ras.pub和秘钥id_rsa <code>-N/-P</code> 指定新密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/home/kun1/.ssh/id_rsa): </span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /home/kun1/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /home/kun1/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:gU0ILMs12i7UlRuDySJfImyZDVlwTlfZ+ua5HlPbGSI kun1@kun01</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|.oO*.=.++        |</span><br><span class="line">|o*B.X *= .       |</span><br><span class="line">|.= % o.++        |</span><br><span class="line">|  * o .. .       |</span><br><span class="line">| . .    SE o .   |</span><br><span class="line">|  . .    oo + o  |</span><br><span class="line">|   .    oo.. o   |</span><br><span class="line">|         oo      |</span><br><span class="line">|        .o.      |</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line"></span><br><span class="line"># 流程 1.公钥私钥存放路径 2.确认密码 3.再确认密码</span><br><span class="line"></span><br><span class="line">#自动生成公钥秘钥 \n用来指定默认存放路径 -N/-P &apos;&apos; 指定新密码为空</span><br><span class="line">$ echo -e &quot;\n&quot; |ssh-keygen -N &apos;&apos;</span><br><span class="line"></span><br><span class="line"># known_hosts 第一次连接服务器提示是否连接服务器 并在本地机器的known_hosts文件存放服务器验证公钥 </span><br><span class="line"></span><br><span class="line"># authorized_keys 用于存放公钥 本机把公钥发送到服务器的authorized_keys上 当登录服务器时 服务器会发送字符串给用户，用户通过本机的密钥对字符串执行加密再发送给服务器，服务器使用公钥对其执行解密 解密成功即可登录</span><br></pre></td></tr></table></figure></p>
 <h2 id="代码内容"><a href="#代码内容" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    提示要输入对方的ip和root密码，然后可以自动把本机的公钥增加到对方机器上，从而实现密钥认证。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/27    kun    V1.0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入目标机器IP地址: "</span> ip</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入此机器root密码: "</span> passwd</span><br><span class="line"></span><br><span class="line">is_install()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ! rpm -q <span class="variable">$1</span> &amp;&gt;/dev/null</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        yum install -y <span class="variable">$1</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#ssh-copy-id命令通过openssh-cliens包安装</span></span><br><span class="line">is_install openssh-cliens</span><br><span class="line">is_install expect</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -f ./ssh/id_ras.pub ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment">#没有公钥自动添加</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\n"</span> |ssh-keygen -P <span class="string">''</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">cat &gt; key.exp &lt;&lt;<span class="string">"EOF"</span></span><br><span class="line"><span class="comment">#!/usr/bin/expect</span></span><br><span class="line"><span class="built_in">set</span> host [lindex <span class="variable">$argv</span> 0]</span><br><span class="line"><span class="built_in">set</span> passwd [lindex <span class="variable">$argv</span> 1]</span><br><span class="line"></span><br><span class="line">spawn ssh-copy-id root@<span class="variable">$host</span></span><br><span class="line">expect &#123;</span><br><span class="line">    <span class="string">"yes/no"</span> &#123;send <span class="string">"yes\r"</span>;exp_continue&#125;</span><br><span class="line">    <span class="string">"password:"</span> &#123;send <span class="string">"<span class="variable">$passwd</span>\r"</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">chmod a+x key.exp</span><br><span class="line">./key.exp <span class="variable">$ip</span> <span class="variable">$passwd</span></span><br></pre></td></tr></table></figure>
+<p>还可以使用另一种方式</p>
+<h2 id="核心要点-1"><a href="#核心要点-1" class="headerlink" title="核心要点"></a>核心要点</h2><p><code>sshpass</code> 命令行指定密码 不适用交互形式 <code>-p</code> 指定密码 <code>-e</code> 使用环境变量中的SSHPASS作为密码<br><code>-o StrictHostKeyChecking=no</code> 忽略提示公钥确认<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p 密码 ssh -o StrictHostKeyChecking=no -p端口 ip地址</span><br><span class="line">sshpass -p 密码 ssh-copy-id -i 公钥地址 -o StrictHostKeyChecking=no -p端口 ip地址</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码内容-1"><a href="#代码内容-1" class="headerlink" title="代码内容"></a>代码内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#program:</span></span><br><span class="line"><span class="comment">#    提示要输入对方的ip和root密码，然后可以自动把本机的公钥增加到对方机器上，从而实现密钥认证。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#history:</span></span><br><span class="line"><span class="comment">#2020/02/27    kun    V1.1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入目标机器IP地址: "</span> ip</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入此机器root密码: "</span> passwd</span><br><span class="line"></span><br><span class="line">is_install()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ! rpm -q <span class="variable">$1</span> &amp;&gt;/dev/null</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        yum install -y <span class="variable">$1</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#ssh-copy-id命令通过openssh-cliens包安装</span></span><br><span class="line">is_install openssh-cliensa</span><br><span class="line">is_install sshpass</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -f ./ssh/id_rsa.pub ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="comment">#没有公钥自动添加</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">"\n"</span> |ssh-keygen -P <span class="string">''</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">sshpass -p <span class="variable">$passwd</span> ssh-copy-id -i ./ssh/id_rsa.pub -o StrictHostKeyChecking=no  <span class="variable">$ip</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -417,11 +420,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
+                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ELK</a>
+                <a href="javascript:void(0)" class="js-tag color4">FTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,11 +456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+                <a href="javascript:void(0)" class="js-tag color4">NFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">堡垒机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jailkit</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,11 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
+                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">saltstack</a>
+                <a href="javascript:void(0)" class="js-tag color4">shell 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,15 +608,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
