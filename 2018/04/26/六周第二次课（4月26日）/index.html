@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="kun0769的博客">
 <meta property="og:description" content="9.4/9.5 sed">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-19T15:48:21.323Z">
+<meta property="og:updated_time" content="2021-08-31T13:28:33.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="六周第二次课（4月26日）">
 <meta name="twitter:description" content="9.4/9.5 sed">
@@ -290,6 +290,14 @@
 <p>q 搜索关键字退出程序</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tail -f  logfile |sed /<span class="string">'success'</span>/q  <span class="comment"># 读取logfile 文件，搜索关键字success再退出程序</span></span><br></pre></td></tr></table></figure>
+<h2 id="sed命令调用外部变量"><a href="#sed命令调用外部变量" class="headerlink" title="sed命令调用外部变量"></a>sed命令调用外部变量</h2><blockquote>
+<p>1）sed命令使用双引号情况，使用<code>$var</code>直接调用</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a=3</span><br><span class="line">$ sed -n <span class="string">"1,<span class="variable">$&#123;a&#125;</span>p"</span> file.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2）sed命令使用单引号情况，使用<code>&#39;&quot;$var&quot;&#39;</code>应用，<code>单引号+双引号+变量+双引号+单引号</code> 格式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a=3</span><br><span class="line">$ sed -n <span class="string">''</span><span class="string">"<span class="variable">$&#123;a&#125;</span>"</span><span class="string">',$p'</span> file.txt</span><br></pre></td></tr></table></figure>
       
 
       
@@ -535,11 +543,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">yum</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
+                <a href="javascript:void(0)" class="js-tag color5">运维安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,11 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyCharm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Python 习题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,11 +699,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件与目录</a>
+                <a href="javascript:void(0)" class="js-tag color5">基础配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,15 +739,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LVS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">keepalived</a>
               </li>
              
               <li class="article-tag-list-item">
